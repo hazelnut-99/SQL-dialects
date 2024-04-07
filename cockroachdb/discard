@@ -1,0 +1,160 @@
+statement ok
+SET SEARCH_PATH = foo
+
+query T
+SHOW SEARCH_PATH
+----
+foo
+
+statement ok
+DISCARD ALL
+
+query T
+SHOW SEARCH_PATH
+----
+"$user", public
+
+query T
+SET timezone = 'Europe/Amsterdam'; SHOW TIMEZONE
+----
+Europe/Amsterdam
+
+statement ok
+DISCARD ALL;
+
+query T
+SHOW TIMEZONE
+----
+UTC
+
+query T
+SET TIME ZONE 'Europe/Amsterdam'; SHOW TIME ZONE
+----
+Europe/Amsterdam
+
+statement ok
+DISCARD ALL
+
+query T
+SHOW TIME ZONE
+----
+UTC
+
+statement ok
+PREPARE a AS SELECT 1
+
+statement ok
+DISCARD ALL
+
+statement error prepared statement \"a\" does not exist
+DEALLOCATE a
+
+statement ok
+BEGIN
+
+statement error DISCARD ALL cannot run inside a transaction block
+DISCARD ALL
+
+statement ok
+ROLLBACK
+
+statement ok
+CREATE SEQUENCE discard_seq_test START WITH 10
+
+query I
+SELECT nextval('discard_seq_test')
+----
+10
+
+query I
+SELECT lastval()
+----
+10
+
+query I
+SELECT currval('discard_seq_test')
+----
+10
+
+statement ok
+DISCARD SEQUENCES
+
+statement error pgcode 55000 pq: lastval\(\): lastval is not yet defined in this session
+SELECT lastval()
+
+statement error pgcode 55000 pq: currval\(\): currval of sequence "test.public.discard_seq_test" is not yet defined in this session
+SELECT currval('discard_seq_test')
+
+statement ok
+CREATE SEQUENCE discard_seq_test_2 START WITH 10
+
+query I
+SELECT nextval('discard_seq_test_2')
+----
+10
+
+statement ok
+DISCARD ALL
+
+statement error pgcode 55000 pq: lastval\(\): lastval is not yet defined in this session
+SELECT lastval()
+
+statement ok
+CREATE SEQUENCE S2 CACHE 10
+
+query I
+SELECT nextval('s2')
+----
+1
+
+statement ok
+DISCARD SEQUENCES
+
+query I
+SELECT nextval('s2')
+----
+11
+
+statement ok
+SET experimental_enable_temp_tables=on
+
+query I
+SELECT count(*) FROM [SHOW SCHEMAS] WHERE schema_name LIKE 'pg_temp_%'
+----
+0
+
+statement ok
+DISCARD TEMP;
+
+query I
+SELECT count(*) FROM [SHOW SCHEMAS] WHERE schema_name LIKE 'pg_temp_%'
+----
+0
+
+statement ok
+CREATE TEMP TABLE test (a int);
+
+statement ok
+CREATE TEMP TABLE test2 (a uuid);
+
+query T rowsort
+SELECT table_name FROM [SHOW TABLES FROM pg_temp]
+----
+test
+test2
+
+statement ok
+DISCARD TEMP;
+
+query T rowsort
+SELECT table_name FROM [SHOW TABLES FROM pg_temp]
+----
+
+#Ensure temp schema is not deleted
+query I
+SELECT count(*) FROM [SHOW SCHEMAS] WHERE schema_name LIKE 'pg_temp_%'
+----
+1
+
+statement ok
+UNLISTEN temp

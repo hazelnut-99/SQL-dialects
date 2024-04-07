@@ -1,0 +1,381 @@
+# Check that we can alter the default zone config.
+statement ok
+ALTER RANGE default CONFIGURE ZONE USING num_replicas = 1
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR RANGE default]
+----
+0  ALTER RANGE default CONFIGURE ZONE USING
+     range_min_bytes = 134217728,
+     range_max_bytes = 536870912,
+     gc.ttlseconds = 14400,
+     num_replicas = 1,
+     constraints = '[]',
+     lease_preferences = '[]'
+
+# Check that we can reset the default zone config to defaults.
+
+statement ok
+ALTER RANGE default CONFIGURE ZONE USING DEFAULT
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR RANGE default]
+----
+0  ALTER RANGE default CONFIGURE ZONE USING
+     range_min_bytes = 134217728,
+     range_max_bytes = 536870912,
+     gc.ttlseconds = 14400,
+     num_replicas = 3,
+     constraints = '[]',
+     lease_preferences = '[]'
+
+# Make an override for the tests below
+
+statement ok
+ALTER RANGE default CONFIGURE ZONE USING range_min_bytes = 1234567
+
+statement ok
+CREATE TABLE a (id INT PRIMARY KEY)
+
+# Ensure that SHOW ZONE CONFIGURATION retrieves the default zone (ID 0) if
+# no zone was set.
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+0  ALTER RANGE default CONFIGURE ZONE USING
+     range_min_bytes = 1234567,
+     range_max_bytes = 536870912,
+     gc.ttlseconds = 14400,
+     num_replicas = 3,
+     constraints = '[]',
+     lease_preferences = '[]'
+
+# Once USING DEFAULT has been used, we get the default config
+# but with our own zone config ID.
+
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING DEFAULT
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+       range_min_bytes = 1234567,
+       range_max_bytes = 536870912,
+       gc.ttlseconds = 14400,
+       num_replicas = 3,
+       constraints = '[]',
+       lease_preferences = '[]'
+
+# Check that configurations can be adjusted with USING.
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING
+  range_min_bytes = 200000 + 1,
+  range_max_bytes = 100000000 + 1,
+  gc.ttlseconds = 3000 + 600,
+  num_replicas = floor(1.2)::int,
+  constraints = '[+region=test]',
+  lease_preferences = '[[+region=test]]'
+
+# This should reflect in the metrics.
+query T
+SELECT feature_name FROM crdb_internal.feature_usage
+WHERE feature_name IN (
+  'sql.schema.zone_config.table.range_min_bytes',
+  'sql.schema.zone_config.table.range_max_bytes',
+  'sql.schema.zone_config.table.gc.ttlseconds',
+  'sql.schema.zone_config.table.num_replicas',
+  'sql.schema.zone_config.table.constraints'
+) AND usage_count > 0 ORDER BY feature_name
+----
+sql.schema.zone_config.table.constraints
+sql.schema.zone_config.table.gc.ttlseconds
+sql.schema.zone_config.table.num_replicas
+sql.schema.zone_config.table.range_max_bytes
+sql.schema.zone_config.table.range_min_bytes
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+     range_min_bytes = 200001,
+     range_max_bytes = 100000001,
+     gc.ttlseconds = 3600,
+     num_replicas = 1,
+     constraints = '[+region=test]',
+     lease_preferences = '[[+region=test]]'
+
+# Check that we can set just one value without altering the others.
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING range_max_bytes = 400000000
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+     range_min_bytes = 200001,
+     range_max_bytes = 400000000,
+     gc.ttlseconds = 3600,
+     num_replicas = 1,
+     constraints = '[+region=test]',
+     lease_preferences = '[[+region=test]]'
+
+# Check that we can configure zones in tables in non-public schemas, and that
+# they don't conflict with tables of the same name in different schemas.
+
+statement ok
+CREATE SCHEMA test
+
+statement ok
+CREATE TABLE test.a (a INT PRIMARY KEY)
+
+statement ok
+ALTER TABLE test.a CONFIGURE ZONE USING gc.ttlseconds=1234
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE test.a]
+----
+108  ALTER TABLE test.a CONFIGURE ZONE USING
+     range_min_bytes = 1234567,
+     range_max_bytes = 536870912,
+     gc.ttlseconds = 1234,
+     num_replicas = 3,
+     constraints = '[]',
+     lease_preferences = '[]'
+
+# Check that the original table's zone config is unmodified.
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+     range_min_bytes = 200001,
+     range_max_bytes = 400000000,
+     gc.ttlseconds = 3600,
+     num_replicas = 1,
+     constraints = '[+region=test]',
+     lease_preferences = '[[+region=test]]'
+
+# Test SHOW CREATE TABLE correctly shows the CREATE TABLE.
+query TT
+SHOW CREATE TABLE a
+----
+a  CREATE TABLE public.a (
+     id INT8 NOT NULL,
+     CONSTRAINT a_pkey PRIMARY KEY (id ASC)
+   );
+   ALTER TABLE test.public.a CONFIGURE ZONE USING
+     range_min_bytes = 200001,
+     range_max_bytes = 400000000,
+     gc.ttlseconds = 3600,
+     num_replicas = 1,
+     constraints = '[+region=test]',
+     lease_preferences = '[[+region=test]]'
+
+# Check that we can reset the configuration to defaults.
+
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING DEFAULT
+
+# Note: the range_min_bytes here should reflect the non-standard
+# default that was set initially.
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+       range_min_bytes = 1234567,
+       range_max_bytes = 536870912,
+       gc.ttlseconds = 14400,
+       num_replicas = 3,
+       constraints = '[]',
+       lease_preferences = '[]'
+
+# Check that we can drop a configuration to get back to inherinting
+# the defaults.
+statement ok
+ALTER TABLE a CONFIGURE ZONE DISCARD
+
+query I
+SELECT zone_id FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+0
+
+subtest alter_table_telemetry
+
+query T
+SELECT feature_name FROM crdb_internal.feature_usage
+WHERE feature_name IN ('sql.schema.alter_range.configure_zone', 'sql.schema.alter_table.configure_zone')
+ORDER BY feature_name
+----
+sql.schema.alter_range.configure_zone
+sql.schema.alter_table.configure_zone
+
+# Check that configuring num_voters separately from num_replicas behaves as
+# expected, across setting them directly and through inheritance.
+#
+# 1. Check that voter_constraints cannot be set without setting num_voters as
+# well.
+statement error pq: could not validate zone config: when voter_constraints are set, num_voters must be set as well
+ALTER TABLE a CONFIGURE ZONE USING voter_constraints = '{"+region=test": 3}'
+
+# 2. Check that num_voters and voter_constraints show up in tandem once
+# num_voters is explicitly set.
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING num_replicas = 3;
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+       range_min_bytes = 1234567,
+       range_max_bytes = 536870912,
+       gc.ttlseconds = 14400,
+       num_replicas = 3,
+       constraints = '[]',
+       lease_preferences = '[]'
+
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING num_voters = 1;
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+       range_min_bytes = 1234567,
+       range_max_bytes = 536870912,
+       gc.ttlseconds = 14400,
+       num_replicas = 3,
+       num_voters = 1,
+       constraints = '[]',
+       voter_constraints = '[]',
+       lease_preferences = '[]'
+
+# 3. Sanity check that `voter_constraints` can be reset.
+statement ok
+ALTER TABLE a CONFIGURE ZONE USING voter_constraints = '{"+region=test": 1}'
+
+statement error pq: could not validate zone config: when voter_constraints are set, num_voters must be set as well
+ALTER TABLE a CONFIGURE ZONE USING num_voters = COPY FROM PARENT
+
+query IT
+SELECT zone_id, raw_config_sql FROM [SHOW ZONE CONFIGURATION FOR TABLE a]
+----
+106  ALTER TABLE a CONFIGURE ZONE USING
+       range_min_bytes = 1234567,
+       range_max_bytes = 536870912,
+       gc.ttlseconds = 14400,
+       num_replicas = 3,
+       num_voters = 1,
+       constraints = '[]',
+       voter_constraints = '{+region=test: 1}',
+       lease_preferences = '[]'
+
+# Different error based on if the test is being run in the system tenant or
+# a secondary tenant.
+statement error pq: (.* matches no existing nodes within the cluster)|(region "shouldFail" not found)
+ALTER TABLE a CONFIGURE ZONE USING voter_constraints = '{"+region=shouldFail": 1}'
+
+# Check entities for which we can set zone configs.
+subtest test_entity_validity
+
+statement ok
+CREATE TABLE zc (
+  a INT PRIMARY KEY,
+  b INT
+)
+
+statement ok
+ALTER TABLE zc CONFIGURE ZONE USING gc.ttlseconds = 100000
+
+statement ok
+CREATE MATERIALIZED VIEW vm (x, y) AS SELECT a,b FROM zc; ALTER TABLE vm CONFIGURE ZONE USING gc.ttlseconds = 100000
+
+statement error pgcode 42809 cannot set a zone configuration on non-physical object v
+CREATE VIEW v (x, y) AS SELECT a, b FROM zc; ALTER TABLE v CONFIGURE ZONE USING gc.ttlseconds = 100000
+
+user root
+
+statement error pq: user root does not have CREATE or ZONECONFIG privilege on relation pg_type
+ALTER TABLE pg_catalog.pg_type CONFIGURE ZONE USING gc.ttlseconds = 100000
+
+statement error pq: user root does not have CREATE or ZONECONFIG privilege on relation columns
+ALTER TABLE information_schema.columns CONFIGURE ZONE USING gc.ttlseconds = 100000
+
+# Test tables in different schemas do not show the zone configs
+# of the other.
+
+statement ok
+CREATE TABLE same_table_name();
+ALTER TABLE same_table_name CONFIGURE ZONE USING gc.ttlseconds = 500;
+CREATE SCHEMA alternative_schema;
+CREATE TABLE alternative_schema.same_table_name();
+ALTER TABLE alternative_schema.same_table_name CONFIGURE ZONE USING gc.ttlseconds = 600
+
+query TT
+SHOW CREATE TABLE same_table_name
+----
+same_table_name  CREATE TABLE public.same_table_name (
+                   rowid INT8 NOT VISIBLE NOT NULL DEFAULT unique_rowid(),
+                   CONSTRAINT same_table_name_pkey PRIMARY KEY (rowid ASC)
+                 );
+                 ALTER TABLE test.public.same_table_name CONFIGURE ZONE USING
+                   gc.ttlseconds = 500
+
+query TT
+SHOW CREATE TABLE alternative_schema.same_table_name
+----
+alternative_schema.same_table_name  CREATE TABLE alternative_schema.same_table_name (
+                                      rowid INT8 NOT VISIBLE NOT NULL DEFAULT unique_rowid(),
+                                      CONSTRAINT same_table_name_pkey PRIMARY KEY (rowid ASC)
+                                    );
+                                    ALTER TABLE test.alternative_schema.same_table_name CONFIGURE ZONE USING
+                                      gc.ttlseconds = 600
+
+statement ok
+DROP TABLE zc CASCADE
+
+statement ok
+CREATE DATABASE foo
+
+statement ok
+ALTER DATABASE foo CONFIGURE ZONE USING gc.ttlseconds = 12345
+
+statement ok
+CREATE TABLE foo.public.bar (x INT PRIMARY KEY)
+
+statement ok
+DROP DATABASE foo CASCADE
+
+statement ok
+CREATE TABLE baz (x INT PRIMARY KEY)
+
+statement ok
+DROP TABLE baz
+
+query TT
+SELECT name, ttl FROM crdb_internal.kv_dropped_relations ORDER BY name;
+----
+bar  03:25:45
+baz  04:00:00
+vm   27:46:40
+zc   27:46:40
+
+statement error pgcode 23514 pq: cannot remove default zone
+ALTER RANGE default CONFIGURE ZONE DISCARD;
+
+# https://github.com/cockroachdb/cockroach/issues/108253
+subtest transactional_schemachanges
+
+statement ok
+CREATE DATABASE foo
+
+statement ok
+ALTER RANGE default CONFIGURE ZONE USING gc.ttlseconds = 3; ALTER RANGE default CONFIGURE ZONE USING gc.ttlseconds = 4;
+
+statement ok
+ALTER DATABASE foo CONFIGURE ZONE USING gc.ttlseconds = 3; ALTER DATABASE foo CONFIGURE ZONE USING gc.ttlseconds = 4;
+
+statement ok
+ALTER DATABASE foo CONFIGURE ZONE DISCARD; ALTER DATABASE foo CONFIGURE ZONE DISCARD;
+
+subtest end

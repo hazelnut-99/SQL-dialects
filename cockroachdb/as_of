@@ -1,0 +1,169 @@
+statement ok
+CREATE TABLE t (i INT)
+
+statement ok
+INSERT INTO t VALUES (2)
+
+# Verify strings can be parsed as intervals.
+query I
+SELECT * FROM t AS OF SYSTEM TIME '-1us'
+----
+2
+
+# Verify a forced interval type works.
+query I
+SELECT * FROM t AS OF SYSTEM TIME INTERVAL '-1us'
+----
+2
+
+# Verify that we can use computed expressions.
+query I
+SELECT * FROM t AS OF SYSTEM TIME -( parse_interval('1000' || 'us') )
+----
+2
+
+statement error pq: AS OF SYSTEM TIME: only constant expressions, with_min_timestamp, with_max_staleness, or follower_read_timestamp are allowed
+SELECT * FROM t AS OF SYSTEM TIME cluster_logical_timestamp()
+
+statement error pq: subqueries are not allowed in AS OF SYSTEM TIME
+SELECT * FROM t AS OF SYSTEM TIME (SELECT '-1h'::INTERVAL)
+
+statement error pgcode 3D000 pq: database "test" does not exist
+SELECT * FROM t AS OF SYSTEM TIME '-1h'
+
+query T noticetrace
+SELECT pg_sleep(5) -- we need to sleep so that the 4.8s elapses and the SELECT * FROM t returns something.
+----
+
+# Notices print twice -- once during planning and once during execution.
+# There's no nice way of reducing this to once without some hacks -- so left as is.
+skipif config 3node-tenant-default-configs
+query T noticetrace,nosort
+SELECT * FROM t AS OF SYSTEM TIME follower_read_timestamp()
+----
+NOTICE: follower reads disabled because you are running a non-CCL distribution
+NOTICE: follower reads disabled because you are running a non-CCL distribution
+
+statement error pq: unknown signature: follower_read_timestamp\(string\) \(desired <timestamptz>\)
+SELECT * FROM t AS OF SYSTEM TIME follower_read_timestamp('boom')
+
+statement error pq: AS OF SYSTEM TIME: only constant expressions, with_min_timestamp, with_max_staleness, or follower_read_timestamp are allowed
+SELECT * FROM t AS OF SYSTEM TIME now()
+
+statement error pq: request timestamp .* too far in future
+SELECT * FROM t AS OF SYSTEM TIME '10s'
+
+query I
+SELECT * FROM t AS OF SYSTEM TIME interval '1 microsecond'
+----
+2
+
+# Verify that the TxnTimestamp used to generate now() and current_timestamp() is
+# set to the historical timestamp.
+
+query T
+SELECT * FROM (SELECT now()) AS OF SYSTEM TIME '2018-01-01'
+----
+2018-01-01 00:00:00 +0000 UTC
+
+# Verify that timezones are not truncated
+
+query T
+SELECT * FROM (SELECT now()) AS OF SYSTEM TIME '2018-01-01 00:00:00-1:00'
+----
+2018-01-01 01:00:00 +0000 UTC
+
+# Verify that zero intervals indistinguishable from zero cause an error.
+
+statement error pq: AS OF SYSTEM TIME: interval value '0.1us' too small, absolute value must be >= 1µs
+SELECT * FROM t AS OF SYSTEM TIME '0.1us'
+
+statement error pq: AS OF SYSTEM TIME: interval value '0-0' too small, absolute value must be >= 1µs
+SELECT * FROM t AS OF SYSTEM TIME '0-0'
+
+statement error pq: AS OF SYSTEM TIME: interval value '-0.1us' too small, absolute value must be >= 1µs
+SELECT * FROM t AS OF SYSTEM TIME '-0.1us'
+
+statement error pq: AS OF SYSTEM TIME: zero timestamp is invalid
+SELECT * FROM t AS OF SYSTEM TIME '0'
+
+# Verify we can explain a statement that has AS OF.
+statement ok
+EXPLAIN SELECT * FROM t AS OF SYSTEM TIME '-1us'
+
+skipif config 3node-tenant-default-configs
+# Regression test for out of bounds error during the type-checking of AOST with
+# a placeholder (#56488).
+statement error pq: no value provided for placeholder: \$1
+SELECT * FROM t AS OF SYSTEM TIME $1
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_min_timestamp can only be used with a CCL distribution
+SELECT with_min_timestamp('2020-01-15 15:16:17')
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_min_timestamp can only be used with a CCL distribution
+SELECT with_min_timestamp(statement_timestamp())
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_max_staleness can only be used with a CCL distribution
+SELECT with_max_staleness('1s')
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_min_timestamp can only be used with a CCL distribution
+SELECT * FROM t AS OF SYSTEM TIME with_min_timestamp('2020-01-15 15:16:17')
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_min_timestamp can only be used with a CCL distribution
+SELECT * FROM t AS OF SYSTEM TIME with_min_timestamp(statement_timestamp())
+
+skipif config 3node-tenant-default-configs
+statement error pgcode XXC01 with_max_staleness can only be used with a CCL distribution
+SELECT * FROM t AS OF SYSTEM TIME with_max_staleness('1s'::interval)
+
+statement ok
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE
+
+statement ok
+SELECT * from t
+
+statement error cannot set fixed timestamp, .* already performed reads
+SET TRANSACTION AS OF system time '-1s'
+
+statement ok
+ROLLBACK
+
+statement ok
+BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE
+
+statement ok
+INSERT INTO t VALUES(1)
+
+statement error cannot set fixed timestamp, .* already performed writes
+SET TRANSACTION AS OF system time '-1s'
+
+statement ok
+ROLLBACK
+
+# Verify that an expression that requires normalization does not result in an
+# internal error.
+statement error pq: AS OF SYSTEM TIME: expected timestamp, decimal, or interval, got bool
+SELECT * FROM t AS OF SYSTEM TIME ('' BETWEEN '' AND '')
+
+# Check that AOST in multi-stmt implicit transaction has the proper error.
+statement error inconsistent AS OF SYSTEM TIME timestamp
+insert into t values(1); select * from t as of system time '-1s';
+
+statement error inconsistent AS OF SYSTEM TIME timestamp
+select * from t as of system time '-1s'; select * from t as of system time '-2s';
+
+# Specifying the AOST in the first statement (and no others) is allowed.
+statement ok
+select * from t as of system time '-1s'; select * from t;
+
+# Verify that statements with AOST are read-only.
+statement error cannot execute UPDATE in a read-only transaction
+WITH x AS (UPDATE t SET i = 3 WHERE i = 2 RETURNING i) SELECT * FROM x AS OF SYSTEM TIME '-1ms'
+
+statement error cannot execute SELECT FOR UPDATE in a read-only transaction
+SELECT * FROM t AS OF SYSTEM TIME '-1ms' FOR UPDATE

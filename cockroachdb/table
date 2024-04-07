@@ -1,0 +1,934 @@
+statement ok
+SET DATABASE = ""
+
+statement error no database or schema specified
+CREATE TABLE a (id INT PRIMARY KEY)
+
+statement error invalid table name: test.""
+CREATE TABLE test."" (id INT PRIMARY KEY)
+
+statement ok
+CREATE TABLE test.a (id INT PRIMARY KEY)
+
+statement error pgcode 42P07 relation "test.public.a" already exists
+CREATE TABLE test.a (id INT PRIMARY KEY)
+
+statement ok
+SET DATABASE = test
+
+statement error invalid table name: ""
+CREATE TABLE "" (id INT PRIMARY KEY)
+
+statement error pgcode 42P07 relation "test.public.a" already exists
+CREATE TABLE a (id INT PRIMARY KEY)
+
+statement error duplicate column name: "id"
+CREATE TABLE b (id INT PRIMARY KEY, id INT)
+
+statement error multiple primary keys for table "b" are not allowed
+CREATE TABLE b (id INT PRIMARY KEY, id2 INT PRIMARY KEY)
+
+statement error index \"dup_primary_pkey\" contains duplicate column \"a\"
+CREATE TABLE dup_primary (a int, primary key (a,a))
+
+statement error index \"dup_unique_a_a_key\" contains duplicate column \"a\"
+CREATE TABLE dup_unique (a int, unique (a,a))
+
+statement ok
+CREATE TABLE IF NOT EXISTS a (id INT PRIMARY KEY)
+
+statement ok
+COMMENT ON TABLE a IS 'a_comment'
+
+query TTTTIT colnames
+SHOW TABLES FROM test
+----
+schema_name  table_name  type   owner  estimated_row_count  locality
+public       a           table  root   0                    NULL
+
+statement ok
+CREATE TABLE b (id INT PRIMARY KEY)
+
+statement ok
+CREATE TABLE c (
+  id INT PRIMARY KEY,
+  foo INT CONSTRAINT foo_positive CHECK (foo > 0),
+  bar INT,
+  INDEX c_foo_idx (foo),
+  INDEX (foo),
+  INDEX c_foo_bar_idx (foo ASC, bar DESC),
+  UNIQUE (bar)
+)
+
+statement ok
+COMMENT ON INDEX c_foo_idx IS 'index_comment'
+
+query TTBITTTBBBF colnames,rowsort
+SHOW INDEXES FROM c
+----
+table_name  index_name     non_unique  seq_in_index  column_name  definition  direction  storing  implicit  visible  visibility
+c           c_bar_key      false       1             bar          bar         ASC        false    false     true     1
+c           c_bar_key      false       2             id           id          ASC        true     true      true     1
+c           c_foo_bar_idx  true        1             foo          foo         ASC        false    false     true     1
+c           c_foo_bar_idx  true        2             bar          bar         DESC       false    false     true     1
+c           c_foo_bar_idx  true        3             id           id          ASC        false    true      true     1
+c           c_foo_idx      true        1             foo          foo         ASC        false    false     true     1
+c           c_foo_idx      true        2             id           id          ASC        false    true      true     1
+c           c_foo_idx1     true        1             foo          foo         ASC        false    false     true     1
+c           c_foo_idx1     true        2             id           id          ASC        false    true      true     1
+c           c_pkey         false       1             id           id          ASC        false    false     true     1
+c           c_pkey         false       2             foo          foo         N/A        true     false     true     1
+c           c_pkey         false       3             bar          bar         N/A        true     false     true     1
+
+query TTBITTTBBBFT colnames,rowsort
+SHOW INDEXES FROM c WITH COMMENT
+----
+table_name  index_name     non_unique  seq_in_index  column_name  definition  direction  storing  implicit  visible  visibility  comment
+c           c_bar_key      false       1             bar          bar         ASC        false    false     true     1           NULL
+c           c_bar_key      false       2             id           id          ASC        true     true      true     1           NULL
+c           c_foo_bar_idx  true        1             foo          foo         ASC        false    false     true     1           NULL
+c           c_foo_bar_idx  true        2             bar          bar         DESC       false    false     true     1           NULL
+c           c_foo_bar_idx  true        3             id           id          ASC        false    true      true     1           NULL
+c           c_foo_idx      true        1             foo          foo         ASC        false    false     true     1           index_comment
+c           c_foo_idx      true        2             id           id          ASC        false    true      true     1           index_comment
+c           c_foo_idx1     true        1             foo          foo         ASC        false    false     true     1           NULL
+c           c_foo_idx1     true        2             id           id          ASC        false    true      true     1           NULL
+c           c_pkey         false       1             id           id          ASC        false    false     true     1           NULL
+c           c_pkey         false       2             foo          foo         N/A        true     false     true     1           NULL
+c           c_pkey         false       3             bar          bar         N/A        true     false     true     1           NULL
+
+# primary keys can never be null
+
+query TTTTBT colnames
+SELECT * FROM [SHOW CONSTRAINTS FROM c WITH COMMENT] ORDER BY constraint_name
+----
+table_name  constraint_name  constraint_type  details               validated  comment
+c           c_bar_key        UNIQUE           UNIQUE (bar ASC)      true       NULL
+c           c_pkey           PRIMARY KEY      PRIMARY KEY (id ASC)  true       NULL
+c           foo_positive     CHECK            CHECK ((foo > 0))     true       NULL
+
+statement ok
+CREATE TABLE d (
+  id    INT PRIMARY KEY NULL
+)
+
+query TTBTTTB colnames
+SHOW COLUMNS FROM d
+----
+column_name  data_type  is_nullable  column_default  generation_expression  indices   is_hidden
+id           INT8       false        NULL            ·                      {d_pkey}  false
+
+statement ok
+CREATE TABLE e (
+  id    INT NULL PRIMARY KEY
+)
+
+query TTBTTTB colnames
+SHOW COLUMNS FROM e
+----
+column_name  data_type  is_nullable  column_default  generation_expression  indices   is_hidden
+id           INT8       false        NULL            ·                      {e_pkey}  false
+
+statement ok
+CREATE TABLE f (
+  a INT,
+  b INT,
+  c INT,
+  PRIMARY KEY (a, b, c)
+)
+
+query TTBTTTB colnames,rowsort
+SHOW COLUMNS FROM f
+----
+column_name  data_type  is_nullable  column_default  generation_expression  indices   is_hidden
+a            INT8       false        NULL            ·                      {f_pkey}  false
+b            INT8       false        NULL            ·                      {f_pkey}  false
+c            INT8       false        NULL            ·                      {f_pkey}  false
+
+query TTTTITT colnames,rowsort
+SHOW TABLES FROM test WITH COMMENT
+----
+schema_name  table_name  type   owner  estimated_row_count  locality  comment
+public       a           table  root   0                    NULL      a_comment
+public       b           table  root   0                    NULL      ·
+public       c           table  root   0                    NULL      ·
+public       d           table  root   0                    NULL      ·
+public       e           table  root   0                    NULL      ·
+public       f           table  root   0                    NULL      ·
+
+statement ok
+SET DATABASE = ""
+
+query error pgcode 42P01 relation "users" does not exist
+SHOW COLUMNS FROM users
+
+query error pgcode 42P01 relation "test.users" does not exist
+SHOW COLUMNS FROM test.users
+
+query error pgcode 42P01 relation "users" does not exist
+SHOW INDEXES FROM users
+
+query error pgcode 42P01 relation "test.users" does not exist
+SHOW INDEXES FROM test.users
+
+statement ok
+CREATE TABLE test.users (
+  id        INT PRIMARY KEY,
+  name      VARCHAR NOT NULL,
+  title     VARCHAR,
+  nickname  STRING CHECK (length(nickname) < 10),
+  username  STRING(10),
+  email     VARCHAR(100) NULL,
+  INDEX foo (name),
+  CHECK (length(nickname) < length(name)),
+  UNIQUE INDEX bar (id, name),
+  FAMILY "primary" (id, name),
+  FAMILY fam_1_title (title),
+  FAMILY fam_2_nickname (nickname),
+  FAMILY fam_3_username_email (username, email)
+)
+
+query TTBTTTB colnames,rowsort
+SHOW COLUMNS FROM test.users
+----
+column_name  data_type     is_nullable  column_default  generation_expression  indices               is_hidden
+id           INT8          false        NULL            ·                      {bar,foo,users_pkey}  false
+name         VARCHAR       false        NULL            ·                      {bar,foo,users_pkey}  false
+title        VARCHAR       true         NULL            ·                      {users_pkey}          false
+nickname     STRING        true         NULL            ·                      {users_pkey}          false
+username     STRING(10)    true         NULL            ·                      {users_pkey}          false
+email        VARCHAR(100)  true         NULL            ·                      {users_pkey}          false
+
+query TTBITTTBBBF colnames,rowsort
+SHOW INDEXES FROM test.users
+----
+table_name  index_name  non_unique  seq_in_index  column_name  definition  direction  storing  implicit  visible  visibility
+users       bar         false       1             id           id          ASC        false    false     true     1
+users       bar         false       2             name         name        ASC        false    false     true     1
+users       foo         true        1             name         name        ASC        false    false     true     1
+users       foo         true        2             id           id          ASC        false    true      true     1
+users       users_pkey  false       1             id           id          ASC        false    false     true     1
+users       users_pkey  false       2             name         name        N/A        true     false     true     1
+users       users_pkey  false       3             title        title       N/A        true     false     true     1
+users       users_pkey  false       4             nickname     nickname    N/A        true     false     true     1
+users       users_pkey  false       5             username     username    N/A        true     false     true     1
+users       users_pkey  false       6             email        email       N/A        true     false     true     1
+
+statement error precision for type float must be at least 1 bit
+CREATE TABLE test.precision (x FLOAT(0))
+
+statement error at or near "\)": syntax error: scale \(2\) must be between 0 and precision \(0\)
+CREATE TABLE test.precision (x DECIMAL(0, 2))
+
+statement error at or near "\)": syntax error: scale \(4\) must be between 0 and precision \(2\)
+CREATE TABLE test.precision (x DECIMAL(2, 4))
+
+query TT
+SHOW CREATE TABLE test.users
+----
+test.public.users  CREATE TABLE public.users (
+                     id INT8 NOT NULL,
+                     name VARCHAR NOT NULL,
+                     title VARCHAR NULL,
+                     nickname STRING NULL,
+                     username STRING(10) NULL,
+                     email VARCHAR(100) NULL,
+                     CONSTRAINT users_pkey PRIMARY KEY (id ASC),
+                     INDEX foo (name ASC),
+                     UNIQUE INDEX bar (id ASC, name ASC),
+                     FAMILY "primary" (id, name),
+                     FAMILY fam_1_title (title),
+                     FAMILY fam_2_nickname (nickname),
+                     FAMILY fam_3_username_email (username, email),
+                     CONSTRAINT check_nickname_name CHECK (length(nickname) < length(name)),
+                     CONSTRAINT check_nickname CHECK (length(nickname) < 10:::INT8)
+                   )
+
+statement ok
+CREATE TABLE test.dupe_generated (
+  foo INT CHECK (foo > 1),
+  bar INT CHECK (bar > 2),
+  CHECK (foo > 2),
+  CHECK (foo < 10)
+)
+
+query TTTTB colnames
+SELECT * FROM [SHOW CONSTRAINTS FROM test.dupe_generated] ORDER BY constraint_name
+----
+table_name      constraint_name      constraint_type  details                  validated
+dupe_generated  check_bar            CHECK            CHECK ((bar > 2))        true
+dupe_generated  check_foo            CHECK            CHECK ((foo > 2))        true
+dupe_generated  check_foo1           CHECK            CHECK ((foo < 10))       true
+dupe_generated  check_foo2           CHECK            CHECK ((foo > 1))        true
+dupe_generated  dupe_generated_pkey  PRIMARY KEY      PRIMARY KEY (rowid ASC)  true
+
+statement ok
+CREATE TABLE test.named_constraints (
+  id        INT CONSTRAINT pk PRIMARY KEY,
+  name      VARCHAR CONSTRAINT nn NOT NULL,
+  title     VARCHAR  CONSTRAINT def DEFAULT 'VP of Something',
+  nickname  STRING CONSTRAINT ck1 CHECK (length(nickname) < 10),
+  username  STRING(10) CONSTRAINT nl NULL,
+  email     VARCHAR(100) CONSTRAINT uq UNIQUE,
+  INDEX foo (name),
+  CONSTRAINT uq2 UNIQUE (username),
+  CONSTRAINT ck2 CHECK (length(nickname) < length(name)),
+  UNIQUE INDEX bar (id, name),
+  FAMILY "primary" (id, name),
+  FAMILY fam_1_title (title),
+  FAMILY fam_2_nickname (nickname),
+  FAMILY fam_3_username_email (username, email)
+)
+
+query TT
+SHOW CREATE TABLE test.named_constraints
+----
+test.public.named_constraints  CREATE TABLE public.named_constraints (
+                                 id INT8 NOT NULL,
+                                 name VARCHAR NOT NULL,
+                                 title VARCHAR NULL DEFAULT 'VP of Something':::STRING,
+                                 nickname STRING NULL,
+                                 username STRING(10) NULL,
+                                 email VARCHAR(100) NULL,
+                                 CONSTRAINT pk PRIMARY KEY (id ASC),
+                                 UNIQUE INDEX uq (email ASC),
+                                 INDEX foo (name ASC),
+                                 UNIQUE INDEX uq2 (username ASC),
+                                 UNIQUE INDEX bar (id ASC, name ASC),
+                                 FAMILY "primary" (id, name),
+                                 FAMILY fam_1_title (title),
+                                 FAMILY fam_2_nickname (nickname),
+                                 FAMILY fam_3_username_email (username, email),
+                                 CONSTRAINT ck2 CHECK (length(nickname) < length(name)),
+                                 CONSTRAINT ck1 CHECK (length(nickname) < 10:::INT8)
+                               )
+
+query TTTTB colnames
+SELECT * FROM [SHOW CONSTRAINTS FROM test.named_constraints] ORDER BY constraint_name
+----
+table_name         constraint_name  constraint_type  details                                    validated
+named_constraints  bar              UNIQUE           UNIQUE (id ASC, name ASC)                  true
+named_constraints  ck1              CHECK            CHECK ((length(nickname) < 10))            true
+named_constraints  ck2              CHECK            CHECK ((length(nickname) < length(name)))  true
+named_constraints  pk               PRIMARY KEY      PRIMARY KEY (id ASC)                       true
+named_constraints  uq               UNIQUE           UNIQUE (email ASC)                         true
+named_constraints  uq2              UNIQUE           UNIQUE (username ASC)                      true
+
+statement error duplicate constraint name: "pk"
+CREATE TABLE test.dupe_named_constraints (
+  id        INT CONSTRAINT pk PRIMARY KEY,
+  title     VARCHAR CONSTRAINT one CHECK (1>1),
+  name      VARCHAR CONSTRAINT pk UNIQUE
+)
+
+statement error duplicate constraint name: "one"
+CREATE TABLE test.dupe_named_constraints (
+  id        INT CONSTRAINT pk PRIMARY KEY,
+  title     VARCHAR CONSTRAINT one CHECK (1>1),
+  name      VARCHAR CONSTRAINT one UNIQUE
+)
+
+statement error duplicate constraint name: "one"
+CREATE TABLE test.dupe_named_constraints (
+  id        INT CONSTRAINT pk PRIMARY KEY,
+  title     VARCHAR CONSTRAINT one CHECK (1>1),
+  name      VARCHAR CONSTRAINT one REFERENCES test.named_constraints (username),
+  INDEX (name)
+)
+
+statement error duplicate constraint name: "one"
+CREATE TABLE test.dupe_named_constraints (
+  id        INT CONSTRAINT pk PRIMARY KEY,
+  title     VARCHAR CONSTRAINT one CHECK (1>1) CONSTRAINT one CHECK (1<1)
+)
+
+statement ok
+SET database = test
+
+statement ok
+CREATE TABLE alltypes (
+  cbigint BIGINT,
+  cbigserial BIGSERIAL,
+  cblob BLOB,
+  cbool BOOL,
+  cbit BIT,
+  cbit12 BIT(12),
+  cvarbit VARBIT,
+  cvarbit12 VARBIT(12),
+  cbytea BYTEA,
+  cbytes BYTES,
+  cchar CHAR,
+  cchar12 CHAR(12),
+  cdate DATE,
+  cdec DEC,
+  cdec1 DEC(1),
+  cdec21 DEC(2,1),
+  cdecimal DECIMAL,
+  cdecimal1 DECIMAL(1),
+  cdecimal21 DECIMAL(2,1),
+  cdoubleprecision DOUBLE PRECISION,
+  cfloat FLOAT,
+  cfloat4 FLOAT4,
+  cfloat8 FLOAT8,
+  cint INT,
+  cint2 INT2,
+  cint4 INT4,
+  cint64 INT64,
+  cint8 INT8,
+  cinteger INTEGER,
+  cinterval INTERVAL,
+  cjson JSONB,
+  cnumeric NUMERIC,
+  cnumeric1 NUMERIC(1),
+  cnumeric21 NUMERIC(2,1),
+  cqchar "char",
+  creal REAL,
+  cserial SERIAL,
+  csmallint SMALLINT,
+  csmallserial SMALLSERIAL,
+  cstring STRING,
+  cstring12 STRING(12),
+  ctext TEXT,
+  ctimestamp TIMESTAMP,
+  ctimestampwtz TIMESTAMPTZ,
+  cvarchar VARCHAR,
+  cvarchar12 VARCHAR(12)
+  )
+
+query TTBTTTB colnames,rowsort
+SHOW COLUMNS FROM alltypes
+----
+column_name       data_type     is_nullable  column_default  generation_expression  indices          is_hidden
+cbigint           INT8          true         NULL            ·                      {alltypes_pkey}  false
+cbigserial        INT8          false        unique_rowid()  ·                      {alltypes_pkey}  false
+cblob             BYTES         true         NULL            ·                      {alltypes_pkey}  false
+cbool             BOOL          true         NULL            ·                      {alltypes_pkey}  false
+cbit              BIT           true         NULL            ·                      {alltypes_pkey}  false
+cbit12            BIT(12)       true         NULL            ·                      {alltypes_pkey}  false
+cvarbit           VARBIT        true         NULL            ·                      {alltypes_pkey}  false
+cvarbit12         VARBIT(12)    true         NULL            ·                      {alltypes_pkey}  false
+cbytea            BYTES         true         NULL            ·                      {alltypes_pkey}  false
+cbytes            BYTES         true         NULL            ·                      {alltypes_pkey}  false
+cchar             CHAR          true         NULL            ·                      {alltypes_pkey}  false
+cchar12           CHAR(12)      true         NULL            ·                      {alltypes_pkey}  false
+cdate             DATE          true         NULL            ·                      {alltypes_pkey}  false
+cdec              DECIMAL       true         NULL            ·                      {alltypes_pkey}  false
+cdec1             DECIMAL(1)    true         NULL            ·                      {alltypes_pkey}  false
+cdec21            DECIMAL(2,1)  true         NULL            ·                      {alltypes_pkey}  false
+cdecimal          DECIMAL       true         NULL            ·                      {alltypes_pkey}  false
+cdecimal1         DECIMAL(1)    true         NULL            ·                      {alltypes_pkey}  false
+cdecimal21        DECIMAL(2,1)  true         NULL            ·                      {alltypes_pkey}  false
+cdoubleprecision  FLOAT8        true         NULL            ·                      {alltypes_pkey}  false
+cfloat            FLOAT8        true         NULL            ·                      {alltypes_pkey}  false
+cfloat4           FLOAT4        true         NULL            ·                      {alltypes_pkey}  false
+cfloat8           FLOAT8        true         NULL            ·                      {alltypes_pkey}  false
+cint              INT8          true         NULL            ·                      {alltypes_pkey}  false
+cint2             INT2          true         NULL            ·                      {alltypes_pkey}  false
+cint4             INT4          true         NULL            ·                      {alltypes_pkey}  false
+cint64            INT8          true         NULL            ·                      {alltypes_pkey}  false
+cint8             INT8          true         NULL            ·                      {alltypes_pkey}  false
+cinteger          INT8          true         NULL            ·                      {alltypes_pkey}  false
+cinterval         INTERVAL      true         NULL            ·                      {alltypes_pkey}  false
+cjson             JSONB         true         NULL            ·                      {alltypes_pkey}  false
+cnumeric          DECIMAL       true         NULL            ·                      {alltypes_pkey}  false
+cnumeric1         DECIMAL(1)    true         NULL            ·                      {alltypes_pkey}  false
+cnumeric21        DECIMAL(2,1)  true         NULL            ·                      {alltypes_pkey}  false
+cqchar            "char"        true         NULL            ·                      {alltypes_pkey}  false
+creal             FLOAT4        true         NULL            ·                      {alltypes_pkey}  false
+cserial           INT8          false        unique_rowid()  ·                      {alltypes_pkey}  false
+csmallint         INT2          true         NULL            ·                      {alltypes_pkey}  false
+csmallserial      INT8          false        unique_rowid()  ·                      {alltypes_pkey}  false
+cstring           STRING        true         NULL            ·                      {alltypes_pkey}  false
+cstring12         STRING(12)    true         NULL            ·                      {alltypes_pkey}  false
+ctext             STRING        true         NULL            ·                      {alltypes_pkey}  false
+ctimestamp        TIMESTAMP     true         NULL            ·                      {alltypes_pkey}  false
+ctimestampwtz     TIMESTAMPTZ   true         NULL            ·                      {alltypes_pkey}  false
+cvarchar          VARCHAR       true         NULL            ·                      {alltypes_pkey}  false
+cvarchar12        VARCHAR(12)   true         NULL            ·                      {alltypes_pkey}  false
+rowid             INT8          false        unique_rowid()  ·                      {alltypes_pkey}  true
+
+statement ok
+CREATE DATABASE IF NOT EXISTS smtng
+
+statement ok
+CREATE TABLE IF NOT EXISTS smtng.something (
+ID SERIAL PRIMARY KEY
+)
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS OWNER_ID INT
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS MODEL_ID INT
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS NAME STRING
+
+statement ok
+CREATE DATABASE IF NOT EXISTS smtng
+
+statement ok
+CREATE TABLE IF NOT EXISTS smtng.something (
+ID SERIAL PRIMARY KEY
+)
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS OWNER_ID INT
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS MODEL_ID INT
+
+statement ok
+ALTER TABLE smtng.something ADD COLUMN IF NOT EXISTS NAME STRING
+
+# Regression test for #13725
+statement ok
+CREATE TABLE test.empty ()
+
+statement ok
+SELECT * FROM test.empty
+
+# Issue #14308: support tables with DEFAULT NULL columns.
+statement ok
+CREATE TABLE test.null_default (
+  ts timestamp NULL DEFAULT NULL
+)
+
+query TT
+SHOW CREATE TABLE test.null_default
+----
+test.public.null_default  CREATE TABLE public.null_default (
+                            ts TIMESTAMP NULL,
+                            rowid INT8 NOT VISIBLE NOT NULL DEFAULT unique_rowid(),
+                            CONSTRAINT null_default_pkey PRIMARY KEY (rowid ASC)
+                          )
+
+# Issue #13873: don't permit invalid default columns
+statement error could not parse "blah" as type decimal
+CREATE TABLE test.t1 (a DECIMAL DEFAULT (DECIMAL 'blah'));
+
+statement error could not parse "blah" as type decimal
+create table test.t1 (c decimal default if(false, 1, 'blah'::decimal));
+
+statement ok
+CREATE DATABASE a; CREATE TABLE a.c(d INT); INSERT INTO a.public.c(d) VALUES (1)
+
+query I
+SELECT a.public.c.d FROM a.public.c
+----
+1
+
+statement ok
+CREATE TABLE t0 (a INT)
+
+statement ok
+GRANT ALL ON t0 to testuser
+
+statement ok
+CREATE DATABASE rowtest
+
+statement ok
+GRANT ALL ON DATABASE rowtest TO testuser
+
+user testuser
+
+statement ok
+SET DATABASE = rowtest
+
+statement ok
+CREATE TABLE t1 (a INT)
+
+statement ok
+INSERT INTO t1 SELECT a FROM generate_series(1, 1024) AS a(a)
+
+# only tables from current database
+query TTTTIT
+SHOW TABLES
+----
+public  t1  table  testuser  0  NULL
+
+# see only virtual tables (estimated_row_count is NULL)
+# and tables testuser has access to (estimated_row_count >= 0)
+query TI rowsort
+select table_name, estimated_row_count from crdb_internal.table_row_statistics;
+----
+active_range_feeds                           NULL
+backward_dependencies                        NULL
+builtin_functions                            NULL
+cluster_contended_indexes                    NULL
+cluster_contended_keys                       NULL
+cluster_contended_tables                     NULL
+cluster_contention_events                    NULL
+cluster_database_privileges                  NULL
+cluster_distsql_flows                        NULL
+cluster_execution_insights                   NULL
+cluster_inflight_traces                      NULL
+cluster_locks                                NULL
+cluster_queries                              NULL
+cluster_replication_node_stream_checkpoints  NULL
+cluster_replication_node_stream_spans        NULL
+cluster_replication_node_streams             NULL
+cluster_replication_spans                    NULL
+cluster_sessions                             NULL
+cluster_settings                             NULL
+cluster_statement_statistics                 NULL
+cluster_transaction_statistics               NULL
+cluster_transactions                         NULL
+cluster_txn_execution_insights               NULL
+create_function_statements                   NULL
+create_procedure_statements                  NULL
+create_schema_statements                     NULL
+create_statements                            NULL
+create_type_statements                       NULL
+cross_db_references                          NULL
+databases                                    NULL
+default_privileges                           NULL
+feature_usage                                NULL
+forward_dependencies                         NULL
+gossip_alerts                                NULL
+gossip_liveness                              NULL
+gossip_network                               NULL
+gossip_nodes                                 NULL
+index_columns                                NULL
+index_spans                                  NULL
+index_usage_statistics                       NULL
+invalid_objects                              NULL
+jobs                                         NULL
+kv_builtin_function_comments                 NULL
+kv_catalog_comments                          NULL
+kv_catalog_descriptor                        NULL
+kv_catalog_namespace                         NULL
+kv_catalog_zones                             NULL
+kv_dropped_relations                         NULL
+kv_flow_control_handles                      NULL
+kv_flow_controller                           NULL
+kv_flow_token_deductions                     NULL
+kv_inherited_role_members                    NULL
+kv_node_liveness                             NULL
+kv_node_status                               NULL
+kv_protected_ts_records                      NULL
+kv_repairable_catalog_corruptions            NULL
+kv_session_based_leases                      NULL
+kv_store_status                              NULL
+kv_system_privileges                         NULL
+leases                                       NULL
+lost_descriptors_with_data                   NULL
+node_build_info                              NULL
+node_contention_events                       NULL
+node_distsql_flows                           NULL
+node_execution_insights                      NULL
+node_inflight_trace_spans                    NULL
+node_memory_monitors                         NULL
+node_metrics                                 NULL
+node_queries                                 NULL
+node_runtime_info                            NULL
+node_sessions                                NULL
+node_statement_statistics                    NULL
+node_tenant_capabilities_cache               NULL
+node_transaction_statistics                  NULL
+node_transactions                            NULL
+node_txn_execution_insights                  NULL
+node_txn_stats                               NULL
+partitions                                   NULL
+pg_catalog_table_is_implemented              NULL
+ranges                                       NULL
+ranges_no_leases                             NULL
+regions                                      NULL
+schema_changes                               NULL
+session_trace                                NULL
+session_variables                            NULL
+statement_activity                           NULL
+statement_statistics                         NULL
+statement_statistics_persisted               NULL
+statement_statistics_persisted_v22_2         NULL
+super_regions                                NULL
+system_jobs                                  NULL
+table_columns                                NULL
+table_indexes                                NULL
+table_row_statistics                         NULL
+table_spans                                  NULL
+tables                                       NULL
+tenant_usage_details                         NULL
+transaction_activity                         NULL
+transaction_contention_events                NULL
+transaction_statistics                       NULL
+transaction_statistics_persisted             NULL
+transaction_statistics_persisted_v22_2       NULL
+zones                                        NULL
+administrable_role_authorizations            NULL
+applicable_roles                             NULL
+attributes                                   NULL
+character_sets                               NULL
+check_constraint_routine_usage               NULL
+check_constraints                            NULL
+collation_character_set_applicability        NULL
+collations                                   NULL
+column_column_usage                          NULL
+column_domain_usage                          NULL
+column_options                               NULL
+column_privileges                            NULL
+column_statistics                            NULL
+column_udt_usage                             NULL
+columns                                      NULL
+columns_extensions                           NULL
+constraint_column_usage                      NULL
+constraint_table_usage                       NULL
+data_type_privileges                         NULL
+domain_constraints                           NULL
+domain_udt_usage                             NULL
+domains                                      NULL
+element_types                                NULL
+enabled_roles                                NULL
+engines                                      NULL
+events                                       NULL
+files                                        NULL
+foreign_data_wrapper_options                 NULL
+foreign_data_wrappers                        NULL
+foreign_server_options                       NULL
+foreign_servers                              NULL
+foreign_table_options                        NULL
+foreign_tables                               NULL
+information_schema_catalog_name              NULL
+key_column_usage                             NULL
+keywords                                     NULL
+optimizer_trace                              NULL
+parameters                                   NULL
+partitions                                   NULL
+plugins                                      NULL
+processlist                                  NULL
+profiling                                    NULL
+referential_constraints                      NULL
+resource_groups                              NULL
+role_column_grants                           NULL
+role_routine_grants                          NULL
+role_table_grants                            NULL
+role_udt_grants                              NULL
+role_usage_grants                            NULL
+routine_privileges                           NULL
+routines                                     NULL
+schema_privileges                            NULL
+schemata                                     NULL
+schemata_extensions                          NULL
+sequences                                    NULL
+session_variables                            NULL
+sql_features                                 NULL
+sql_implementation_info                      NULL
+sql_parts                                    NULL
+sql_sizing                                   NULL
+st_geometry_columns                          NULL
+st_spatial_reference_systems                 NULL
+st_units_of_measure                          NULL
+statistics                                   NULL
+table_constraints                            NULL
+table_constraints_extensions                 NULL
+table_privileges                             NULL
+tables                                       NULL
+tables_extensions                            NULL
+tablespaces                                  NULL
+tablespaces_extensions                       NULL
+transforms                                   NULL
+triggered_update_columns                     NULL
+triggers                                     NULL
+type_privileges                              NULL
+udt_privileges                               NULL
+usage_privileges                             NULL
+user_attributes                              NULL
+user_defined_types                           NULL
+user_mapping_options                         NULL
+user_mappings                                NULL
+user_privileges                              NULL
+view_column_usage                            NULL
+view_routine_usage                           NULL
+view_table_usage                             NULL
+views                                        NULL
+pg_aggregate                                 NULL
+pg_am                                        NULL
+pg_amop                                      NULL
+pg_amproc                                    NULL
+pg_attrdef                                   NULL
+pg_attribute                                 NULL
+pg_auth_members                              NULL
+pg_authid                                    NULL
+pg_available_extension_versions              NULL
+pg_available_extensions                      NULL
+pg_cast                                      NULL
+pg_class                                     NULL
+pg_collation                                 NULL
+pg_config                                    NULL
+pg_constraint                                NULL
+pg_conversion                                NULL
+pg_cursors                                   NULL
+pg_database                                  NULL
+pg_db_role_setting                           NULL
+pg_default_acl                               NULL
+pg_depend                                    NULL
+pg_description                               NULL
+pg_enum                                      NULL
+pg_event_trigger                             NULL
+pg_extension                                 NULL
+pg_file_settings                             NULL
+pg_foreign_data_wrapper                      NULL
+pg_foreign_server                            NULL
+pg_foreign_table                             NULL
+pg_group                                     NULL
+pg_hba_file_rules                            NULL
+pg_index                                     NULL
+pg_indexes                                   NULL
+pg_inherits                                  NULL
+pg_init_privs                                NULL
+pg_language                                  NULL
+pg_largeobject                               NULL
+pg_largeobject_metadata                      NULL
+pg_locks                                     NULL
+pg_matviews                                  NULL
+pg_namespace                                 NULL
+pg_opclass                                   NULL
+pg_operator                                  NULL
+pg_opfamily                                  NULL
+pg_partitioned_table                         NULL
+pg_policies                                  NULL
+pg_policy                                    NULL
+pg_prepared_statements                       NULL
+pg_prepared_xacts                            NULL
+pg_proc                                      NULL
+pg_publication                               NULL
+pg_publication_rel                           NULL
+pg_publication_tables                        NULL
+pg_range                                     NULL
+pg_replication_origin                        NULL
+pg_replication_origin_status                 NULL
+pg_replication_slots                         NULL
+pg_rewrite                                   NULL
+pg_roles                                     NULL
+pg_rules                                     NULL
+pg_seclabel                                  NULL
+pg_seclabels                                 NULL
+pg_sequence                                  NULL
+pg_sequences                                 NULL
+pg_settings                                  NULL
+pg_shadow                                    NULL
+pg_shdepend                                  NULL
+pg_shdescription                             NULL
+pg_shmem_allocations                         NULL
+pg_shseclabel                                NULL
+pg_stat_activity                             NULL
+pg_stat_all_indexes                          NULL
+pg_stat_all_tables                           NULL
+pg_stat_archiver                             NULL
+pg_stat_bgwriter                             NULL
+pg_stat_database                             NULL
+pg_stat_database_conflicts                   NULL
+pg_stat_gssapi                               NULL
+pg_stat_progress_analyze                     NULL
+pg_stat_progress_basebackup                  NULL
+pg_stat_progress_cluster                     NULL
+pg_stat_progress_create_index                NULL
+pg_stat_progress_vacuum                      NULL
+pg_stat_replication                          NULL
+pg_stat_slru                                 NULL
+pg_stat_ssl                                  NULL
+pg_stat_subscription                         NULL
+pg_stat_sys_indexes                          NULL
+pg_stat_sys_tables                           NULL
+pg_stat_user_functions                       NULL
+pg_stat_user_indexes                         NULL
+pg_stat_user_tables                          NULL
+pg_stat_wal_receiver                         NULL
+pg_stat_xact_all_tables                      NULL
+pg_stat_xact_sys_tables                      NULL
+pg_stat_xact_user_functions                  NULL
+pg_stat_xact_user_tables                     NULL
+pg_statio_all_indexes                        NULL
+pg_statio_all_sequences                      NULL
+pg_statio_all_tables                         NULL
+pg_statio_sys_indexes                        NULL
+pg_statio_sys_sequences                      NULL
+pg_statio_sys_tables                         NULL
+pg_statio_user_indexes                       NULL
+pg_statio_user_sequences                     NULL
+pg_statio_user_tables                        NULL
+pg_statistic                                 NULL
+pg_statistic_ext                             NULL
+pg_statistic_ext_data                        NULL
+pg_stats                                     NULL
+pg_stats_ext                                 NULL
+pg_subscription                              NULL
+pg_subscription_rel                          NULL
+pg_tables                                    NULL
+pg_tablespace                                NULL
+pg_timezone_abbrevs                          NULL
+pg_timezone_names                            NULL
+pg_transform                                 NULL
+pg_trigger                                   NULL
+pg_ts_config                                 NULL
+pg_ts_config_map                             NULL
+pg_ts_dict                                   NULL
+pg_ts_parser                                 NULL
+pg_ts_template                               NULL
+pg_type                                      NULL
+pg_user                                      NULL
+pg_user_mapping                              NULL
+pg_user_mappings                             NULL
+pg_views                                     NULL
+geography_columns                            NULL
+geometry_columns                             NULL
+spatial_ref_sys                              NULL
+t1                                           0
+
+statement ok
+ANALYZE t1
+
+query I
+SELECT estimated_row_count FROM [SHOW TABLES] where table_name = 't1'
+----
+1024
+
+statement ok
+DELETE FROM rowtest.t1 WHERE a > 1000;
+
+statement ok
+ANALYZE rowtest.t1
+
+query I
+SELECT estimated_row_count FROM [SHOW TABLES from rowtest] where table_name = 't1'
+----
+1000
+
+# Tests that the collections cache is properly invalidated when uncommitted
+# descriptors are added as observed in #75825.
+subtest collection-improper-release
+
+statement ok
+BEGIN;
+CREATE TABLE tblmodified (price INT8, quantity INT8);
+ALTER TABLE tblmodified ADD CONSTRAINT quan_check CHECK (quantity > 0);
+ALTER TABLE tblmodified ADD CONSTRAINT pr_check CHECK (price > 0);
+
+# Check out the descriptor for tblmodified under the all descriptors cache,
+query TTB
+SELECT conname,
+       pg_get_constraintdef(c.oid) AS constraintdef,
+       c.convalidated AS valid
+  FROM pg_constraint AS c JOIN pg_class AS t ON c.conrelid = t.oid
+ WHERE c.contype = 'c' AND t.relname = 'tblmodified' ORDER BY conname ASC;
+----
+pr_check    CHECK ((price > 0))     true
+quan_check  CHECK ((quantity > 0))  true
+
+# Descriptor is modified, so the cache should be invalidated.
+statement ok
+ALTER TABLE tblmodified DROP CONSTRAINT quan_check;
+
+# If the cache is properly invalidated then we should only see a single
+# constraint.
+query TTB
+SELECT conname,
+       pg_get_constraintdef(c.oid) AS constraintdef,
+       c.convalidated AS valid
+  FROM pg_constraint AS c JOIN pg_class AS t ON c.conrelid = t.oid
+ WHERE c.contype = 'c' AND t.relname = 'tblmodified' ORDER BY conname ASC;
+----
+pr_check    CHECK ((price > 0))     true
+
+statement ok
+COMMIT;

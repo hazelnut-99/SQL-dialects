@@ -1,0 +1,693 @@
+PRAGMA enable_verification
+SELECT 'NAN'::FLOAT
+SELECT 'NAN'::FLOAT
+
+SELECT 'NAN'::FLOAT
+SELECT CAST('NAN' AS FLOAT)
+
+
+
+
+SELECT 'NAN'::FLOAT
+CREATE TABLE floats(f FLOAT UNIQUE);
+INSERT INTO floats VALUES ('NAN'), (1)
+SELECT * FROM floats
+SELECT * FROM floats
+
+SELECT * FROM floats
+SELECT * FROM floats
+
+
+
+
+SELECT * FROM floats
+select 'nan'::FLOAT == 'nan'::FLOAT
+select 'nan'::FLOAT == 'nan'::FLOAT
+
+select 'nan'::FLOAT == 'nan'::FLOAT
+SELECT (CAST('nan' AS FLOAT) = CAST('nan' AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT == 'nan'::FLOAT
+select 'nan'::FLOAT <> 'nan'::FLOAT
+select 'nan'::FLOAT <> 'nan'::FLOAT
+
+select 'nan'::FLOAT <> 'nan'::FLOAT
+SELECT (CAST('nan' AS FLOAT) != CAST('nan' AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT <> 'nan'::FLOAT
+select 'nan'::FLOAT <> 3.0::FLOAT
+select 'nan'::FLOAT <> 3.0::FLOAT
+
+select 'nan'::FLOAT <> 3.0::FLOAT
+SELECT (CAST('nan' AS FLOAT) != CAST(3.0 AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT <> 3.0::FLOAT
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f=1
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE (f = 1)
+
+
+
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE f='nan'::FLOAT
+
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE (f = CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>1
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE (f != 1)
+
+
+
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE (f != CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>0
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE (f > 0)
+
+
+
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE (f > CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>=1
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE (f >= 1)
+
+
+
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE (f >= CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<1
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE (f < 1)
+
+
+
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE (f < CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<=1
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE (f <= 1)
+
+
+
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+SELECT f FROM floats WHERE (f <= CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+DROP TABLE floats
+SELECT 'NAN'::FLOAT
+SELECT 'NAN'::FLOAT
+
+SELECT 'NAN'::FLOAT
+SELECT CAST('NAN' AS FLOAT)
+
+
+
+
+SELECT 'NAN'::FLOAT
+CREATE TABLE floats(f FLOAT CHECK(1));
+INSERT INTO floats VALUES ('NAN'), (1)
+SELECT * FROM floats
+SELECT * FROM floats
+
+SELECT * FROM floats
+SELECT * FROM floats
+
+
+
+
+SELECT * FROM floats
+select 'nan'::FLOAT == 'nan'::FLOAT
+select 'nan'::FLOAT == 'nan'::FLOAT
+
+select 'nan'::FLOAT == 'nan'::FLOAT
+SELECT (CAST('nan' AS FLOAT) = CAST('nan' AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT == 'nan'::FLOAT
+select 'nan'::FLOAT <> 'nan'::FLOAT
+select 'nan'::FLOAT <> 'nan'::FLOAT
+
+select 'nan'::FLOAT <> 'nan'::FLOAT
+SELECT (CAST('nan' AS FLOAT) != CAST('nan' AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT <> 'nan'::FLOAT
+select 'nan'::FLOAT <> 3.0::FLOAT
+select 'nan'::FLOAT <> 3.0::FLOAT
+
+select 'nan'::FLOAT <> 3.0::FLOAT
+SELECT (CAST('nan' AS FLOAT) != CAST(3.0 AS FLOAT))
+
+
+
+
+select 'nan'::FLOAT <> 3.0::FLOAT
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f=1
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE (f = 1)
+
+
+
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE f='nan'::FLOAT
+
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE (f = CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f='nan'::FLOAT
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>1
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE (f != 1)
+
+
+
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE (f != CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<>'nan'::FLOAT
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>0
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE (f > 0)
+
+
+
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE (f > CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f>'nan'::FLOAT
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>=1
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE (f >= 1)
+
+
+
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE (f >= CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f>='nan'::FLOAT
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<1
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE (f < 1)
+
+
+
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE (f < CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<'nan'::FLOAT
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<=1
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE (f <= 1)
+
+
+
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+SELECT f FROM floats WHERE (f <= CAST('nan' AS FLOAT))
+
+
+
+
+SELECT f FROM floats WHERE f<='nan'::FLOAT
+DROP TABLE floats
+SELECT 'NAN'::DOUBLE
+SELECT 'NAN'::DOUBLE
+
+SELECT 'NAN'::DOUBLE
+SELECT CAST('NAN' AS DOUBLE)
+
+
+
+
+SELECT 'NAN'::DOUBLE
+CREATE TABLE floats(f DOUBLE UNIQUE);
+INSERT INTO floats VALUES ('NAN'), (1)
+SELECT * FROM floats
+SELECT * FROM floats
+
+SELECT * FROM floats
+SELECT * FROM floats
+
+
+
+
+SELECT * FROM floats
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) = CAST('nan' AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) != CAST('nan' AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) != CAST(3.0 AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f=1
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE (f = 1)
+
+
+
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE (f = CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>1
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE (f != 1)
+
+
+
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE (f != CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>0
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE (f > 0)
+
+
+
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE (f > CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>=1
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE (f >= 1)
+
+
+
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE (f >= CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<1
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE (f < 1)
+
+
+
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE (f < CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<=1
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE (f <= 1)
+
+
+
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+SELECT f FROM floats WHERE (f <= CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+DROP TABLE floats
+SELECT 'NAN'::DOUBLE
+SELECT 'NAN'::DOUBLE
+
+SELECT 'NAN'::DOUBLE
+SELECT CAST('NAN' AS DOUBLE)
+
+
+
+
+SELECT 'NAN'::DOUBLE
+CREATE TABLE floats(f DOUBLE CHECK(1));
+INSERT INTO floats VALUES ('NAN'), (1)
+SELECT * FROM floats
+SELECT * FROM floats
+
+SELECT * FROM floats
+SELECT * FROM floats
+
+
+
+
+SELECT * FROM floats
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) = CAST('nan' AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE == 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) != CAST('nan' AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE <> 'nan'::DOUBLE
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) != CAST(3.0 AS DOUBLE))
+
+
+
+
+select 'nan'::DOUBLE <> 3.0::DOUBLE
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f=1
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE (f = 1)
+
+
+
+
+SELECT f FROM floats WHERE f=1
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE (f = CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f='nan'::DOUBLE
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>1
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE (f != 1)
+
+
+
+
+SELECT f FROM floats WHERE f<>1
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE (f != CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>0
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE (f > 0)
+
+
+
+
+SELECT f FROM floats WHERE f>0
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE (f > CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f>'nan'::DOUBLE
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>=1
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE (f >= 1)
+
+
+
+
+SELECT f FROM floats WHERE f>=1
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE (f >= CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f>='nan'::DOUBLE
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<1
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE (f < 1)
+
+
+
+
+SELECT f FROM floats WHERE f<1
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE (f < CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<'nan'::DOUBLE
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<=1
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE (f <= 1)
+
+
+
+
+SELECT f FROM floats WHERE f<=1
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+SELECT f FROM floats WHERE (f <= CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT f FROM floats WHERE f<='nan'::DOUBLE
+DROP TABLE floats

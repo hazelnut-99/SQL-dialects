@@ -1,0 +1,106 @@
+PRAGMA enable_verification
+SELECT ARRAY_AGG(NULL), ARRAY_AGG(42)
+SELECT ARRAY_AGG(NULL), ARRAY_AGG(42)
+
+SELECT ARRAY_AGG(NULL), ARRAY_AGG(42)
+SELECT array_agg(NULL), array_agg(42)
+
+
+
+
+SELECT ARRAY_AGG(NULL), ARRAY_AGG(42)
+SELECT ARRAY_AGG(i) FROM range(0, 3) tbl(i)
+SELECT ARRAY_AGG(i) FROM range(0, 3) tbl(i)
+
+SELECT ARRAY_AGG(i) FROM range(0, 3) tbl(i)
+SELECT array_agg(i) FROM range(0, 3) AS tbl(i)
+
+
+
+
+SELECT ARRAY_AGG(i) FROM range(0, 3) tbl(i)
+SELECT ARRAY_AGG(i) FROM range(0, 0) tbl(i)
+SELECT ARRAY_AGG(i) FROM range(0, 0) tbl(i)
+
+SELECT ARRAY_AGG(i) FROM range(0, 0) tbl(i)
+SELECT array_agg(i) FROM range(0, 0) AS tbl(i)
+
+
+
+
+SELECT ARRAY_AGG(i) FROM range(0, 0) tbl(i)
+CREATE TABLE films(film_id INTEGER, title VARCHAR)
+CREATE TABLE actors(actor_id INTEGER, first_name VARCHAR, last_name VARCHAR)
+CREATE TABLE film_actor(film_id INTEGER, actor_id INTEGER)
+INSERT INTO films VALUES (1, 'The Martian'), (2, 'Saving Private Ryan'), (3, 'Team America');
+INSERT INTO actors VALUES (1, 'Matt', 'Damon'), (2, 'Jessica', 'Chastain'), (3, 'Tom', 'Hanks'), (4, 'Edward', 'Burns'),
+						  (5, 'Kim', 'Jong Un'), (6, 'Alec', 'Baldwin');
+INSERT INTO film_actor VALUES (1, 1), (2, 1), (3, 1), (1, 2), (2, 3), (2, 4), (3, 5), (3, 6);
+SELECT
+	title,
+	ARRAY_AGG (
+	CASE WHEN first_name='Matt' and title='Team America'
+	THEN 'MATT DAAAMON'
+	ELSE first_name || ' ' || last_name END order by actor_id) actors
+FROM films
+JOIN film_actor USING (film_id)
+JOIN actors USING (actor_id)
+GROUP BY
+	title
+ORDER BY
+	title;
+SELECT
+	title,
+	ARRAY_AGG (
+	CASE WHEN first_name='Matt' and title='Team America'
+	THEN 'MATT DAAAMON'
+	ELSE first_name || ' ' || last_name END order by actor_id) actors
+FROM films
+JOIN film_actor USING (film_id)
+JOIN actors USING (actor_id)
+GROUP BY
+	title
+ORDER BY
+	title;
+
+SELECT
+	title,
+	ARRAY_AGG (
+	CASE WHEN first_name='Matt' and title='Team America'
+	THEN 'MATT DAAAMON'
+	ELSE first_name || ' ' || last_name END order by actor_id) actors
+FROM films
+JOIN film_actor USING (film_id)
+JOIN actors USING (actor_id)
+GROUP BY
+	title
+ORDER BY
+	title;
+SELECT title, array_agg(CASE  WHEN (((first_name = 'Matt') AND (title = 'Team America'))) THEN ('MATT DAAAMON') ELSE ((first_name || ' ') || last_name) END ORDER BY actor_id) AS actors FROM films INNER JOIN film_actor USING (film_id) INNER JOIN actors USING (actor_id) GROUP BY title ORDER BY title
+
+
+
+
+SELECT
+	title,
+	ARRAY_AGG (
+	CASE WHEN first_name='Matt' and title='Team America'
+	THEN 'MATT DAAAMON'
+	ELSE first_name || ' ' || last_name END order by actor_id) actors
+FROM films
+JOIN film_actor USING (film_id)
+JOIN actors USING (actor_id)
+GROUP BY
+	title
+ORDER BY
+	title;
+select film_id, ARRAY_AGG(actor_id order by actor_id) FROM film_actor GROUP BY film_id ORDER BY ALL;
+select film_id, ARRAY_AGG(actor_id order by actor_id) FROM film_actor GROUP BY film_id ORDER BY ALL;
+
+select film_id, ARRAY_AGG(actor_id order by actor_id) FROM film_actor GROUP BY film_id ORDER BY ALL;
+SELECT film_id, array_agg(actor_id ORDER BY actor_id) FROM film_actor GROUP BY film_id ORDER BY COLUMNS(*)
+
+
+
+
+select film_id, ARRAY_AGG(actor_id order by actor_id) FROM film_actor GROUP BY film_id ORDER BY ALL;

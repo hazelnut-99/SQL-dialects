@@ -1,0 +1,59 @@
+PRAGMA enable_verification
+PREPARE v1 AS SELECT ?
+EXECUTE v1(27)
+EXECUTE v1('hello world')
+EXECUTE v1([1, 2, 3])
+PREPARE v2 AS SELECT ?=?
+EXECUTE v2(27, 27)
+EXECUTE v2('hello world', 'hello mars')
+EXECUTE v2(1, 1.0)
+EXECUTE v2([1, 2, 3], '[1, 2, 3]')
+EXECUTE v2([[1, 2, 3]], [1, 2, 3])
+PREPARE v3 AS SELECT (SELECT ?)
+EXECUTE v3(27)
+EXECUTE v3('hello world')
+EXECUTE v3([1, 2, 3])
+PREPARE v4 AS SELECT ? IS NULL
+EXECUTE v4(27)
+EXECUTE v4('hello world')
+EXECUTE v4(NULL)
+PREPARE v5 AS SELECT ? IN (?, ?)
+EXECUTE v5(27, 27, 28)
+EXECUTE v5('hello world', 'hello', 'world')
+EXECUTE v5(NULL, 27, 28)
+PREPARE v6 AS SELECT COUNT(?)
+EXECUTE v6(27)
+EXECUTE v6('hello world')
+EXECUTE v6(NULL)
+PREPARE v7 AS SELECT printf('%s: %d', ?, ?)
+EXECUTE v7('time', 27)
+EXECUTE v7('hello world', [1, 2, 3])
+PREPARE v8 AS SELECT [?]
+EXECUTE v8(27)
+EXECUTE v8('hello world')
+EXECUTE v8(NULL)
+PREPARE v9 AS SELECT [?, NULL]
+EXECUTE v9(27)
+EXECUTE v9('hello world')
+EXECUTE v9(NULL)
+PREPARE v10 AS SELECT {'x': ?}
+EXECUTE v10(27)
+EXECUTE v10('hello world')
+EXECUTE v10(NULL)
+PREPARE v11 AS SELECT {'x': ?, 'y': NULL}
+EXECUTE v11(27)
+EXECUTE v11('hello world')
+EXECUTE v11(NULL)
+PREPARE v12 AS SELECT * FROM (VALUES (?, ?), (?, ?)) tbl(i, j)
+EXECUTE v12(27, 28, 29, 30)
+EXECUTE v12('hello', 'world', 'a', NULL)
+PREPARE v13 AS SELECT CASE WHEN ? THEN ? ELSE ? END
+EXECUTE v13(1=1, 1, 2)
+EXECUTE v13(1=0, 'hello', 'world')
+PREPARE v14 AS SELECT ?+NULL
+EXECUTE v14(1)
+PREPARE v15 AS SELECT ?=NULL
+EXECUTE v15(1)
+PREPARE v16 AS SELECT CASE WHEN (? = 1) AND (? = 2) AND (? = 3) AND ((? IS NULL)) THEN 1.5 ELSE 2.5 END AS a
+EXECUTE v16(1, 2, 3, NULL)
+EXECUTE v16(1, 2, 4, NULL)

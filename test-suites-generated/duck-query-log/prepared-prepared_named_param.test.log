@@ -1,0 +1,4 @@
+prepare q123 as select $param, $other_name, $param;
+execute q123(param := 5, other_name := 3);
+prepare q01 as select $1, ?, $2;
+execute q01(4, 2, 0)

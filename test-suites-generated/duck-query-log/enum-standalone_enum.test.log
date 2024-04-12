@@ -1,0 +1,22 @@
+PRAGMA enable_verification
+SELECT 'hello'::ENUM('world', 'hello');
+SELECT 'hello'::ENUM('world', 'hello');
+
+SELECT 'hello'::ENUM('world', 'hello');
+SELECT CAST('hello' AS ENUM('world', 'hello'))
+
+
+
+
+SELECT 'hello'::ENUM('world', 'hello');
+CREATE TABLE test AS SELECT 'hello'::ENUM('world', 'hello') AS h;
+SELECT * FROM test
+SELECT * FROM test
+
+SELECT * FROM test
+SELECT * FROM test
+
+
+
+
+SELECT * FROM test

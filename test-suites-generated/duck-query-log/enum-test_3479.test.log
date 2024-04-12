@@ -1,0 +1,11 @@
+PRAGMA enable_verification
+CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+CREATE TYPE mood_2 AS ENUM ('1', '2', '3');
+CREATE TABLE m (
+    m mood
+);
+CREATE TABLE m_2 (
+    m mood_2
+);
+insert into m_2 values ('1')
+insert into m SELECT * FROM m_2

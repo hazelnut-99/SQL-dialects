@@ -1,0 +1,11 @@
+PRAGMA enable_verification
+select 42 having unnest([1,2,3]);
+select 42 having unnest([1,2,3]);
+
+select 42 having unnest([1,2,3]);
+select 42 having unnest([1,2,3]);
+select row_number() over () qualify unnest([1,2,3]);
+select row_number() over () qualify unnest([1,2,3]);
+
+select row_number() over () qualify unnest([1,2,3]);
+select row_number() over () qualify unnest([1,2,3]);

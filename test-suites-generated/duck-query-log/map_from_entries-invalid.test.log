@@ -1,0 +1,31 @@
+PRAGMA enable_verification
+SELECT map_from_entries(ARRAY[(1,2), (3,4)], ARRAY[(5,6), (7,8)]);
+SELECT map_from_entries(ARRAY[(1,2), (3,4)], ARRAY[(5,6), (7,8)]);
+
+SELECT map_from_entries(ARRAY[(1,2), (3,4)], ARRAY[(5,6), (7,8)]);
+SELECT map_from_entries(ARRAY[(1,2), (3,4)], ARRAY[(5,6), (7,8)]);
+SELECT map_from_entries(5);
+SELECT map_from_entries(5);
+
+SELECT map_from_entries(5);
+SELECT map_from_entries(5);
+SELECT map_from_entries(ARRAY[5,4,3]);
+SELECT map_from_entries(ARRAY[5,4,3]);
+
+SELECT map_from_entries(ARRAY[5,4,3]);
+SELECT map_from_entries(ARRAY[5,4,3]);
+select MAP_FROM_ENTRIES(ARRAY[(1, 'x', 'extra'), (2, 'y', 'extra')]);
+select MAP_FROM_ENTRIES(ARRAY[(1, 'x', 'extra'), (2, 'y', 'extra')]);
+
+select MAP_FROM_ENTRIES(ARRAY[(1, 'x', 'extra'), (2, 'y', 'extra')]);
+select MAP_FROM_ENTRIES(ARRAY[(1, 'x', 'extra'), (2, 'y', 'extra')]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(1, 'x'), (2, 'y', 'extra')]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(1, 'x'), (2, 'y', 'extra')]);
+
+SELECT MAP_FROM_ENTRIES(ARRAY[(1, 'x'), (2, 'y', 'extra')]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(1, 'x'), (2, 'y', 'extra')]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(NULL, 2), ([3,4], 4)]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(NULL, 2), ([3,4], 4)]);
+
+SELECT MAP_FROM_ENTRIES(ARRAY[(NULL, 2), ([3,4], 4)]);
+SELECT MAP_FROM_ENTRIES(ARRAY[(NULL, 2), ([3,4], 4)]);

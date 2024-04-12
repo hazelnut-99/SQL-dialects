@@ -1,0 +1,53 @@
+PRAGMA enable_verification
+PRAGMA verify_external
+CREATE TABLE t1 (a INT[4096]);
+INSERT INTO t1 VALUES (range(0, 4096));
+SELECT list_sum(a::INT[]) == list_sum(range(0, 4096)) FROM t1;
+SELECT list_sum(a::INT[]) == list_sum(range(0, 4096)) FROM t1;
+
+SELECT list_sum(a::INT[]) == list_sum(range(0, 4096)) FROM t1;
+SELECT list_sum(a::INT[]) == list_sum(range(0, 4096)) FROM t1;
+SELECT (list_sum(CAST(a AS INTEGER[])) = list_sum(range(0, 4096))) FROM t1
+
+
+
+
+SELECT list_sum(a::INT[]) == list_sum(range(0, 4096)) FROM t1;
+CREATE TABLE t2 AS SELECT array_value(a) AS i FROM range(0, 4096) r(a);
+SELECT sum(i[1]) FROM t2;
+SELECT sum(i[1]) FROM t2;
+
+SELECT sum(i[1]) FROM t2;
+SELECT sum(i[1]) FROM t2;
+SELECT sum(i[1]) FROM t2
+
+
+
+
+SELECT sum(i[1]) FROM t2;
+CREATE TABLE t3 AS SELECT array_value(a, a+1) AS i FROM range(0, 4096) r(a);
+SELECT sum(i[1]) == 8386560 AND sum(i[2]) == 8390656 FROM t3;
+SELECT sum(i[1]) == 8386560 AND sum(i[2]) == 8390656 FROM t3;
+
+SELECT sum(i[1]) == 8386560 AND sum(i[2]) == 8390656 FROM t3;
+SELECT sum(i[1]) == 8386560 AND sum(i[2]) == 8390656 FROM t3;
+SELECT ((sum(i[1]) = 8386560) AND (sum(i[2]) = 8390656)) FROM t3
+
+
+
+
+SELECT sum(i[1]) == 8386560 AND sum(i[2]) == 8390656 FROM t3;
+CREATE OR REPLACE TABLE t4 AS SELECT * FROM range(0, 4096) as r(a);
+UPDATE t4 SET a = NULL WHERE a % 2 = 0;
+CREATE TABLE t5 AS SELECT array_value(a) AS i FROM t4;
+SELECT sum(i[1]) FROM t5;
+SELECT sum(i[1]) FROM t5;
+
+SELECT sum(i[1]) FROM t5;
+SELECT sum(i[1]) FROM t5;
+SELECT sum(i[1]) FROM t5
+
+
+
+
+SELECT sum(i[1]) FROM t5;

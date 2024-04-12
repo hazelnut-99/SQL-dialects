@@ -1,0 +1,101 @@
+PRAGMA enable_verification
+select timestamp '2020-12-31 21:25:58.745232';
+select timestamp '2020-12-31 21:25:58.745232';
+
+select timestamp '2020-12-31 21:25:58.745232';
+SELECT CAST('2020-12-31 21:25:58.745232' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232';
+select timestamp '2020-12-31 21:25:58.745232';
+select timestamp '2020-12-31 21:25:58.745232';
+
+select timestamp '2020-12-31 21:25:58.745232';
+SELECT CAST('2020-12-31 21:25:58.745232' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232';
+select timestamp '2020-12-31 21:25:58.745232+00';
+select timestamp '2020-12-31 21:25:58.745232+00';
+
+select timestamp '2020-12-31 21:25:58.745232+00';
+SELECT CAST('2020-12-31 21:25:58.745232+00' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232+00';
+select timestamp '2020-12-31 21:25:58.745232+0000';
+select timestamp '2020-12-31 21:25:58.745232+0000';
+
+select timestamp '2020-12-31 21:25:58.745232+0000';
+SELECT CAST('2020-12-31 21:25:58.745232+0000' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232+0000';
+select timestamp '2020-12-31 21:25:58.745232+02';
+select timestamp '2020-12-31 21:25:58.745232+02';
+
+select timestamp '2020-12-31 21:25:58.745232+02';
+SELECT CAST('2020-12-31 21:25:58.745232+02' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232+02';
+select timestamp '2020-12-31 21:25:58.745232-02';
+select timestamp '2020-12-31 21:25:58.745232-02';
+
+select timestamp '2020-12-31 21:25:58.745232-02';
+SELECT CAST('2020-12-31 21:25:58.745232-02' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232-02';
+select timestamp '2020-12-31 21:25:58.745232+0215';
+select timestamp '2020-12-31 21:25:58.745232+0215';
+
+select timestamp '2020-12-31 21:25:58.745232+0215';
+SELECT CAST('2020-12-31 21:25:58.745232+0215' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232+0215';
+select timestamp '2020-12-31 21:25:58.745232+02:15';
+select timestamp '2020-12-31 21:25:58.745232+02:15';
+
+select timestamp '2020-12-31 21:25:58.745232+02:15';
+SELECT CAST('2020-12-31 21:25:58.745232+02:15' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232+02:15';
+select timestamp '2020-12-31 21:25:58.745232-0215';
+select timestamp '2020-12-31 21:25:58.745232-0215';
+
+select timestamp '2020-12-31 21:25:58.745232-0215';
+SELECT CAST('2020-12-31 21:25:58.745232-0215' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58.745232-0215';
+select timestamp '2020-12-31 21:25:58+02:15';
+select timestamp '2020-12-31 21:25:58+02:15';
+
+select timestamp '2020-12-31 21:25:58+02:15';
+SELECT CAST('2020-12-31 21:25:58+02:15' AS TIMESTAMP)
+
+
+
+
+select timestamp '2020-12-31 21:25:58+02:15';

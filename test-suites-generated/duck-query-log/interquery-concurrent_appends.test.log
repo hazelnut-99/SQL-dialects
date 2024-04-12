@@ -1,0 +1,2 @@
+CREATE TABLE integers(i INTEGER)
+SELECT COUNT(*), SUM(i) FROM integers

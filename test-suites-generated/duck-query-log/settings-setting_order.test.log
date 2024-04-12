@@ -1,0 +1,11 @@
+PRAGMA default_order='desc'
+SELECT * FROM range(3) ORDER BY 1
+PRAGMA default_order='asc'
+SELECT * FROM range(3) ORDER BY 1
+PRAGMA default_order='unknown_order'
+SET default_order='desc'
+SELECT * FROM range(3) ORDER BY 1
+SET default_order='asc'
+SELECT * FROM range(3) ORDER BY 1
+SET default_order='unknown_order'
+SET SESSION default_order='asc'

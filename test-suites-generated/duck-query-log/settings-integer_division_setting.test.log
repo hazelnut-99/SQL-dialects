@@ -1,0 +1,63 @@
+PRAGMA enable_verification
+SELECT 1/2
+SELECT 1/2
+
+SELECT 1/2
+SELECT (1 / 2)
+
+
+
+
+SELECT 1/2
+SELECT 1//2
+SELECT 1//2
+
+SELECT 1//2
+SELECT (1 // 2)
+
+
+
+
+SELECT 1//2
+SET integer_division=true
+SELECT 1/2
+SELECT 1/2
+
+SELECT 1/2
+SELECT (1 // 2)
+
+
+
+
+SELECT 1/2
+SELECT 1//2
+SELECT 1//2
+
+SELECT 1//2
+SELECT (1 // 2)
+
+
+
+
+SELECT 1//2
+SET integer_division=false
+SELECT 1/2
+SELECT 1/2
+
+SELECT 1/2
+SELECT (1 / 2)
+
+
+
+
+SELECT 1/2
+SELECT 1//2
+SELECT 1//2
+
+SELECT 1//2
+SELECT (1 // 2)
+
+
+
+
+SELECT 1//2

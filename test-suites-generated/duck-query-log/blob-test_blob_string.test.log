@@ -1,0 +1,15 @@
+PRAGMA enable_verification
+CREATE TABLE blobs (b BYTEA);
+INSERT INTO blobs VALUES ('aaaaaaaaaa')
+INSERT INTO blobs SELECT b||b||b||b||b||b||b||b||b||b FROM blobs WHERE OCTET_LENGTH(b)=(SELECT MAX(OCTET_LENGTH(b)) FROM blobs)
+INSERT INTO blobs SELECT b||b||b||b||b||b||b||b||b||b FROM blobs WHERE OCTET_LENGTH(b)=(SELECT MAX(OCTET_LENGTH(b)) FROM blobs)
+INSERT INTO blobs SELECT b||b||b||b||b||b||b||b||b||b FROM blobs WHERE OCTET_LENGTH(b)=(SELECT MAX(OCTET_LENGTH(b)) FROM blobs)
+SELECT OCTET_LENGTH(b) FROM blobs ORDER BY 1
+SELECT OCTET_LENGTH(b) FROM blobs ORDER BY 1
+
+SELECT OCTET_LENGTH(b) FROM blobs ORDER BY 1
+SELECT octet_length(b) FROM blobs ORDER BY 1
+
+
+
+SELECT OCTET_LENGTH(b) FROM blobs ORDER BY 1

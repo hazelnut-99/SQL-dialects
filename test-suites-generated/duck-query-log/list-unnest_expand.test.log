@@ -1,0 +1,54 @@
+PRAGMA enable_verification
+CREATE TABLE tbl1 (str VARCHAR, str_list VARCHAR[]);
+INSERT INTO tbl1 VALUES ('a', ['vibrant', 'plant', 'day']);
+CREATE TABLE tbl2 (data struct (str VARCHAR, str_list VARCHAR[]));
+INSERT INTO tbl2 VALUES (('a', ['sunny', 'vibrant', 'day']));
+SELECT UNNEST(data) FROM tbl2;
+SELECT UNNEST(data) FROM tbl2;
+
+SELECT UNNEST(data) FROM tbl2;
+SELECT unnest("data") FROM tbl2
+
+
+
+
+SELECT UNNEST(data) FROM tbl2;
+SELECT UNNEST(str_list) FROM tbl1;
+SELECT UNNEST(str_list) FROM tbl1;
+
+SELECT UNNEST(str_list) FROM tbl1;
+SELECT unnest(str_list) FROM tbl1
+
+
+
+
+SELECT UNNEST(str_list) FROM tbl1;
+SELECT UNNEST(data) FROM tbl2 INTERSECT SELECT * FROM tbl1;
+SELECT UNNEST(data) FROM tbl2 INTERSECT SELECT * FROM tbl1;
+
+SELECT UNNEST(data) FROM tbl2 INTERSECT SELECT * FROM tbl1;
+(SELECT unnest("data") FROM tbl2) INTERSECT (SELECT * FROM tbl1)
+
+
+
+
+SELECT UNNEST(data) FROM tbl2 INTERSECT SELECT * FROM tbl1;
+CREATE TABLE test (id VARCHAR, b STRUCT("n" VARCHAR, "v" STRUCT("n" VARCHAR, "v" BIGINT)[])[]);
+SELECT DISTINCT * FROM (SELECT id, UNNEST(b, recursive := true) FROM test);
+SELECT DISTINCT * FROM (SELECT id, UNNEST(b, recursive := true) FROM test);
+
+SELECT DISTINCT * FROM (SELECT id, UNNEST(b, recursive := true) FROM test);
+SELECT DISTINCT * FROM (SELECT id, unnest(b, "recursive" := CAST('t' AS BOOLEAN)) FROM test)
+
+
+
+SELECT DISTINCT * FROM (SELECT id, UNNEST(b, recursive := true) FROM test);
+SELECT DISTINCT id, UNNEST(b, recursive := true) FROM test;
+SELECT DISTINCT id, UNNEST(b, recursive := true) FROM test;
+
+SELECT DISTINCT id, UNNEST(b, recursive := true) FROM test;
+SELECT DISTINCT id, unnest(b, "recursive" := CAST('t' AS BOOLEAN)) FROM test
+
+
+
+SELECT DISTINCT id, UNNEST(b, recursive := true) FROM test;

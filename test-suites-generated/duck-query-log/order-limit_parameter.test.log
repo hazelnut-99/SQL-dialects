@@ -1,0 +1,48 @@
+PRAGMA enable_verification
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT 5
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT 5
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT 5
+SELECT * FROM generate_series(0, 10000, 1) AS tbl(i) ORDER BY i DESC LIMIT 5
+
+
+
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT 5
+CREATE TABLE integers AS SELECT 5 k
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM integers)
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM integers)
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM integers)
+SELECT * FROM generate_series(0, 10000, 1) AS tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM integers)
+
+
+
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM integers)
+CREATE TABLE strings AS SELECT '5'::VARCHAR k
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM strings)
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM strings)
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM strings)
+SELECT * FROM generate_series(0, 10000, 1) AS tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM strings)
+
+
+
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT k FROM strings)
+PREPARE v1 AS SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT ?::VARCHAR
+EXECUTE v1(5)
+PREPARE v1 AS SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT ?::VARCHAR %
+EXECUTE v1('0.05')
+CREATE TABLE doubles AS SELECT 0.05 d
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT d FROM doubles) %
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT d FROM doubles) %
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT d FROM doubles) %
+SELECT * FROM generate_series(0, 10000, 1) AS tbl(i) ORDER BY i DESC LIMIT ((SELECT d FROM doubles)) %
+
+
+
+
+SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT (SELECT d FROM doubles) %

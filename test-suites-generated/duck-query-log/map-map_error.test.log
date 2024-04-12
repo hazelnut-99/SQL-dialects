@@ -1,0 +1,73 @@
+PRAGMA enable_verification;
+SELECT MAP(list_value(NULL, NULL, NULL, NULL, NULL), list_value(10, 9, 10, 11, 13))
+SELECT MAP(list_value(NULL, NULL, NULL, NULL, NULL), list_value(10, 9, 10, 11, 13))
+
+SELECT MAP(list_value(NULL, NULL, NULL, NULL, NULL), list_value(10, 9, 10, 11, 13))
+SELECT MAP(list_value(NULL, NULL, NULL, NULL, NULL), list_value(10, 9, 10, 11, 13))
+SELECT MAP(list_value(1, NULL, 3), list_value(6, 5, 4))
+SELECT MAP(list_value(1, NULL, 3), list_value(6, 5, 4))
+
+SELECT MAP(list_value(1, NULL, 3), list_value(6, 5, 4))
+SELECT MAP(list_value(1, NULL, 3), list_value(6, 5, 4))
+SELECT MAP(list_value(1, 2, 3, 4, 1), list_value(10, 9, 8, 7, 6))
+SELECT MAP(list_value(1, 2, 3, 4, 1), list_value(10, 9, 8, 7, 6))
+
+SELECT MAP(list_value(1, 2, 3, 4, 1), list_value(10, 9, 8, 7, 6))
+SELECT MAP(list_value(1, 2, 3, 4, 1), list_value(10, 9, 8, 7, 6))
+SELECT MAP(NULL)
+SELECT MAP(NULL)
+
+SELECT MAP(NULL)
+SELECT MAP(NULL)
+CREATE TABLE tbl (a INTEGER[], b TEXT[])
+INSERT INTO tbl VALUES (ARRAY[7, 5, 7], ARRAY['a', 'b', 'c'])
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(a, b) FROM tbl;
+
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(list_value(10), list_value())
+SELECT MAP(list_value(10), list_value())
+
+SELECT MAP(list_value(10), list_value())
+SELECT MAP(list_value(10), list_value())
+SELECT MAP(10, 12)
+SELECT MAP(10, 12)
+
+SELECT MAP(10, 12)
+SELECT MAP(10, 12)
+SELECT MAP(list_value(10), list_value(10), list_value(10))
+SELECT MAP(list_value(10), list_value(10), list_value(10))
+
+SELECT MAP(list_value(10), list_value(10), list_value(10))
+SELECT MAP(list_value(10), list_value(10), list_value(10))
+SELECT MAP(list_value(10), 10)
+SELECT MAP(list_value(10), 10)
+
+SELECT MAP(list_value(10), 10)
+SELECT MAP(list_value(10), 10)
+SELECT MAP(list_value(10, 20), list_value(10))
+SELECT MAP(list_value(10, 20), list_value(10))
+
+SELECT MAP(list_value(10, 20), list_value(10))
+SELECT MAP(list_value(10, 20), list_value(10))
+CREATE TABLE t AS SELECT MAP(list_value(1, 2, 3), list_value(10, 9, 10)) AS m;
+SELECT struct_extract(m, 'key') FROM t;
+SELECT struct_extract(m, 'key') FROM t;
+
+SELECT struct_extract(m, 'key') FROM t;
+SELECT struct_extract(m, 'key') FROM t;
+CREATE TABLE null_keys_list (k INT[], v INT[]);
+INSERT INTO null_keys_list VALUES ([1], [2]), (NULL, [4]);
+SELECT MAP(k, v) FROM null_keys_list;
+SELECT MAP(k, v) FROM null_keys_list;
+
+SELECT MAP(k, v) FROM null_keys_list;
+SELECT MAP(k, v) FROM null_keys_list;
+CREATE TABLE null_values_list (k INT[], v INT[]);
+INSERT INTO null_values_list VALUES ([1], [2]), ([4], NULL);
+SELECT MAP(k, v) FROM null_values_list;
+SELECT MAP(k, v) FROM null_values_list;
+
+SELECT MAP(k, v) FROM null_values_list;
+SELECT MAP(k, v) FROM null_values_list;

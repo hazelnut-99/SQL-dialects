@@ -1,0 +1,12 @@
+PRAGMA enable_verification
+CREATE TYPE str_alias as VARCHAR;
+SELECT upper('hello'::str_alias)
+SELECT upper('hello'::str_alias)
+
+SELECT upper('hello'::str_alias)
+SELECT upper(CAST('hello' AS str_alias))
+
+
+
+
+SELECT upper('hello'::str_alias)

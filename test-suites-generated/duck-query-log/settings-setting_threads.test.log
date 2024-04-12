@@ -1,0 +1,6 @@
+SET threads TO '3'
+SET threads TO '-1'
+SET threads TO 'blabla'
+SET worker_threads TO '3'
+SET worker_threads TO '-1'
+SET worker_threads TO 'blabla'

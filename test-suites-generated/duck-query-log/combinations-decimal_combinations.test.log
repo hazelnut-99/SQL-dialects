@@ -1,0 +1,250 @@
+PRAGMA enable_verification
+CREATE TABLE tinyint_limits AS SELECT (-128)::TINYINT min, 127::TINYINT max
+CREATE TABLE smallint_limits AS SELECT (-32768)::SMALLINT min, 32767::SMALLINT max
+CREATE TABLE integer_limits AS SELECT (-2147483648)::INTEGER min, 2147483647::INTEGER max
+CREATE TABLE bigint_limits AS SELECT (-9223372036854775808)::BIGINT min, 9223372036854775807::BIGINT max
+CREATE TABLE utinyint_limits AS SELECT (0)::UTINYINT min, 255::UTINYINT max
+CREATE TABLE usmallint_limits AS SELECT (0)::USMALLINT min, 65535::USMALLINT max
+CREATE TABLE uinteger_limits AS SELECT (0)::UINTEGER min, 4294967295::UINTEGER max
+CREATE TABLE ubigint_limits AS SELECT (0)::UBIGINT min, 18446744073709551615::UBIGINT max
+CREATE TABLE hugeint_limits AS SELECT (-17014118346046923173168730371588410572)::HUGEINT min, 17014118346046923173168730371588410572::HUGEINT max
+select (typeof([(SELECT max from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM TINYINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM TINYINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from TINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM SMALLINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM SMALLINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from SMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM INTEGER_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM INTEGER_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from INTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM BIGINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM BIGINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from BIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM UTINYINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM UTINYINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from UTINYINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM USMALLINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM USMALLINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from USMALLINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM UINTEGER_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM UINTEGER_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from UINTEGER_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT max FROM UBIGINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT max from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+SELECT CAST(typeof(main.list_value((SELECT min FROM UBIGINT_limits), 1.00005)) AS VARCHAR)[:7]
+
+
+
+
+select (typeof([(SELECT min from UBIGINT_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT min from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]
+select (typeof([(SELECT max from hugeint_limits), 1.00005])::VARCHAR)[:7]

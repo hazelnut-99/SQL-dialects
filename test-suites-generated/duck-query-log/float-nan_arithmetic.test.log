@@ -1,0 +1,581 @@
+PRAGMA enable_verification
+SELECT 'nan'::FLOAT + 1
+SELECT 'nan'::FLOAT + 1
+
+SELECT 'nan'::FLOAT + 1
+SELECT (CAST('nan' AS FLOAT) + 1)
+
+
+
+
+SELECT 'nan'::FLOAT + 1
+SELECT 'nan'::FLOAT + 'inf'::FLOAT
+SELECT 'nan'::FLOAT + 'inf'::FLOAT
+
+SELECT 'nan'::FLOAT + 'inf'::FLOAT
+SELECT (CAST('nan' AS FLOAT) + CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'nan'::FLOAT + 'inf'::FLOAT
+SELECT 'nan'::FLOAT - 1
+SELECT 'nan'::FLOAT - 1
+
+SELECT 'nan'::FLOAT - 1
+SELECT (CAST('nan' AS FLOAT) - 1)
+
+
+
+
+SELECT 'nan'::FLOAT - 1
+SELECT 'nan'::FLOAT - 'inf'::FLOAT
+SELECT 'nan'::FLOAT - 'inf'::FLOAT
+
+SELECT 'nan'::FLOAT - 'inf'::FLOAT
+SELECT (CAST('nan' AS FLOAT) - CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'nan'::FLOAT - 'inf'::FLOAT
+SELECT 'nan'::FLOAT * 1
+SELECT 'nan'::FLOAT * 1
+
+SELECT 'nan'::FLOAT * 1
+SELECT (CAST('nan' AS FLOAT) * 1)
+
+
+
+
+SELECT 'nan'::FLOAT * 1
+SELECT 'nan'::FLOAT * 'inf'::FLOAT
+SELECT 'nan'::FLOAT * 'inf'::FLOAT
+
+SELECT 'nan'::FLOAT * 'inf'::FLOAT
+SELECT (CAST('nan' AS FLOAT) * CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'nan'::FLOAT * 'inf'::FLOAT
+SELECT 'nan'::FLOAT / 1
+SELECT 'nan'::FLOAT / 1
+
+SELECT 'nan'::FLOAT / 1
+SELECT (CAST('nan' AS FLOAT) / 1)
+
+
+
+
+SELECT 'nan'::FLOAT / 1
+SELECT 'nan'::FLOAT / 'inf'::FLOAT
+SELECT 'nan'::FLOAT / 'inf'::FLOAT
+
+SELECT 'nan'::FLOAT / 'inf'::FLOAT
+SELECT (CAST('nan' AS FLOAT) / CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'nan'::FLOAT / 'inf'::FLOAT
+SELECT 'nan'::FLOAT % 1
+SELECT 'nan'::FLOAT % 1
+
+SELECT 'nan'::FLOAT % 1
+SELECT (CAST('nan' AS FLOAT) % 1)
+
+
+
+
+SELECT 'nan'::FLOAT % 1
+SELECT 'nan'::FLOAT % 'inf'::FLOAT
+SELECT 'nan'::FLOAT % 'inf'::FLOAT
+
+SELECT 'nan'::FLOAT % 'inf'::FLOAT
+SELECT (CAST('nan' AS FLOAT) % CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'nan'::FLOAT % 'inf'::FLOAT
+SELECT -('nan'::FLOAT)
+SELECT -('nan'::FLOAT)
+
+SELECT -('nan'::FLOAT)
+SELECT -(CAST('nan' AS FLOAT))
+
+
+
+
+SELECT -('nan'::FLOAT)
+SELECT 'nan'::DOUBLE + 1
+SELECT 'nan'::DOUBLE + 1
+
+SELECT 'nan'::DOUBLE + 1
+SELECT (CAST('nan' AS DOUBLE) + 1)
+
+
+
+
+SELECT 'nan'::DOUBLE + 1
+SELECT 'nan'::DOUBLE + 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE + 'inf'::DOUBLE
+
+SELECT 'nan'::DOUBLE + 'inf'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) + CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'nan'::DOUBLE + 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE - 1
+SELECT 'nan'::DOUBLE - 1
+
+SELECT 'nan'::DOUBLE - 1
+SELECT (CAST('nan' AS DOUBLE) - 1)
+
+
+
+
+SELECT 'nan'::DOUBLE - 1
+SELECT 'nan'::DOUBLE - 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE - 'inf'::DOUBLE
+
+SELECT 'nan'::DOUBLE - 'inf'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) - CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'nan'::DOUBLE - 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE * 1
+SELECT 'nan'::DOUBLE * 1
+
+SELECT 'nan'::DOUBLE * 1
+SELECT (CAST('nan' AS DOUBLE) * 1)
+
+
+
+
+SELECT 'nan'::DOUBLE * 1
+SELECT 'nan'::DOUBLE * 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE * 'inf'::DOUBLE
+
+SELECT 'nan'::DOUBLE * 'inf'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) * CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'nan'::DOUBLE * 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE / 1
+SELECT 'nan'::DOUBLE / 1
+
+SELECT 'nan'::DOUBLE / 1
+SELECT (CAST('nan' AS DOUBLE) / 1)
+
+
+
+
+SELECT 'nan'::DOUBLE / 1
+SELECT 'nan'::DOUBLE / 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE / 'inf'::DOUBLE
+
+SELECT 'nan'::DOUBLE / 'inf'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) / CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'nan'::DOUBLE / 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE % 1
+SELECT 'nan'::DOUBLE % 1
+
+SELECT 'nan'::DOUBLE % 1
+SELECT (CAST('nan' AS DOUBLE) % 1)
+
+
+
+
+SELECT 'nan'::DOUBLE % 1
+SELECT 'nan'::DOUBLE % 'inf'::DOUBLE
+SELECT 'nan'::DOUBLE % 'inf'::DOUBLE
+
+SELECT 'nan'::DOUBLE % 'inf'::DOUBLE
+SELECT (CAST('nan' AS DOUBLE) % CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'nan'::DOUBLE % 'inf'::DOUBLE
+SELECT -('nan'::DOUBLE)
+SELECT -('nan'::DOUBLE)
+
+SELECT -('nan'::DOUBLE)
+SELECT -(CAST('nan' AS DOUBLE))
+
+
+
+
+SELECT -('nan'::DOUBLE)
+SELECT 'inf'::FLOAT + 1
+SELECT 'inf'::FLOAT + 1
+
+SELECT 'inf'::FLOAT + 1
+SELECT (CAST('inf' AS FLOAT) + 1)
+
+
+
+
+SELECT 'inf'::FLOAT + 1
+SELECT 'inf'::FLOAT + 'inf'::FLOAT 
+SELECT 'inf'::FLOAT + 'inf'::FLOAT 
+
+SELECT 'inf'::FLOAT + 'inf'::FLOAT 
+SELECT (CAST('inf' AS FLOAT) + CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'inf'::FLOAT + 'inf'::FLOAT 
+SELECT 'inf'::FLOAT - 1
+SELECT 'inf'::FLOAT - 1
+
+SELECT 'inf'::FLOAT - 1
+SELECT (CAST('inf' AS FLOAT) - 1)
+
+
+
+
+SELECT 'inf'::FLOAT - 1
+SELECT 'inf'::FLOAT - 'inf'::FLOAT 
+SELECT 'inf'::FLOAT - 'inf'::FLOAT 
+
+SELECT 'inf'::FLOAT - 'inf'::FLOAT 
+SELECT (CAST('inf' AS FLOAT) - CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'inf'::FLOAT - 'inf'::FLOAT 
+SELECT 'inf'::FLOAT * 1
+SELECT 'inf'::FLOAT * 1
+
+SELECT 'inf'::FLOAT * 1
+SELECT (CAST('inf' AS FLOAT) * 1)
+
+
+
+
+SELECT 'inf'::FLOAT * 1
+SELECT 'inf'::FLOAT * 'inf'::FLOAT
+SELECT 'inf'::FLOAT * 'inf'::FLOAT
+
+SELECT 'inf'::FLOAT * 'inf'::FLOAT
+SELECT (CAST('inf' AS FLOAT) * CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 'inf'::FLOAT * 'inf'::FLOAT
+SELECT 'inf'::FLOAT * '-inf'::FLOAT
+SELECT 'inf'::FLOAT * '-inf'::FLOAT
+
+SELECT 'inf'::FLOAT * '-inf'::FLOAT
+SELECT (CAST('inf' AS FLOAT) * CAST('-inf' AS FLOAT))
+
+
+
+
+SELECT 'inf'::FLOAT * '-inf'::FLOAT
+SELECT 'inf'::FLOAT / 1
+SELECT 'inf'::FLOAT / 1
+
+SELECT 'inf'::FLOAT / 1
+SELECT (CAST('inf' AS FLOAT) / 1)
+
+
+
+
+SELECT 'inf'::FLOAT / 1
+SELECT 1 / 'inf'::FLOAT
+SELECT 1 / 'inf'::FLOAT
+
+SELECT 1 / 'inf'::FLOAT
+SELECT (1 / CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 1 / 'inf'::FLOAT
+SELECT 'inf'::FLOAT % 1
+SELECT 'inf'::FLOAT % 1
+
+SELECT 'inf'::FLOAT % 1
+SELECT (CAST('inf' AS FLOAT) % 1)
+
+
+
+
+SELECT 'inf'::FLOAT % 1
+SELECT 1 % 'inf'::FLOAT
+SELECT 1 % 'inf'::FLOAT
+
+SELECT 1 % 'inf'::FLOAT
+SELECT (1 % CAST('inf' AS FLOAT))
+
+
+
+
+SELECT 1 % 'inf'::FLOAT
+SELECT -('inf'::FLOAT)
+SELECT -('inf'::FLOAT)
+
+SELECT -('inf'::FLOAT)
+SELECT -(CAST('inf' AS FLOAT))
+
+
+
+
+SELECT -('inf'::FLOAT)
+SELECT 'inf'::DOUBLE + 1
+SELECT 'inf'::DOUBLE + 1
+
+SELECT 'inf'::DOUBLE + 1
+SELECT (CAST('inf' AS DOUBLE) + 1)
+
+
+
+
+SELECT 'inf'::DOUBLE + 1
+SELECT 'inf'::DOUBLE + 'inf'::DOUBLE 
+SELECT 'inf'::DOUBLE + 'inf'::DOUBLE 
+
+SELECT 'inf'::DOUBLE + 'inf'::DOUBLE 
+SELECT (CAST('inf' AS DOUBLE) + CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'inf'::DOUBLE + 'inf'::DOUBLE 
+SELECT 'inf'::DOUBLE - 1
+SELECT 'inf'::DOUBLE - 1
+
+SELECT 'inf'::DOUBLE - 1
+SELECT (CAST('inf' AS DOUBLE) - 1)
+
+
+
+
+SELECT 'inf'::DOUBLE - 1
+SELECT 'inf'::DOUBLE - 'inf'::DOUBLE 
+SELECT 'inf'::DOUBLE - 'inf'::DOUBLE 
+
+SELECT 'inf'::DOUBLE - 'inf'::DOUBLE 
+SELECT (CAST('inf' AS DOUBLE) - CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'inf'::DOUBLE - 'inf'::DOUBLE 
+SELECT 'inf'::DOUBLE * 1
+SELECT 'inf'::DOUBLE * 1
+
+SELECT 'inf'::DOUBLE * 1
+SELECT (CAST('inf' AS DOUBLE) * 1)
+
+
+
+
+SELECT 'inf'::DOUBLE * 1
+SELECT 'inf'::DOUBLE * 'inf'::DOUBLE
+SELECT 'inf'::DOUBLE * 'inf'::DOUBLE
+
+SELECT 'inf'::DOUBLE * 'inf'::DOUBLE
+SELECT (CAST('inf' AS DOUBLE) * CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 'inf'::DOUBLE * 'inf'::DOUBLE
+SELECT 'inf'::DOUBLE * '-inf'::DOUBLE
+SELECT 'inf'::DOUBLE * '-inf'::DOUBLE
+
+SELECT 'inf'::DOUBLE * '-inf'::DOUBLE
+SELECT (CAST('inf' AS DOUBLE) * CAST('-inf' AS DOUBLE))
+
+
+
+
+SELECT 'inf'::DOUBLE * '-inf'::DOUBLE
+SELECT 'inf'::DOUBLE / 1
+SELECT 'inf'::DOUBLE / 1
+
+SELECT 'inf'::DOUBLE / 1
+SELECT (CAST('inf' AS DOUBLE) / 1)
+
+
+
+
+SELECT 'inf'::DOUBLE / 1
+SELECT 1 / 'inf'::DOUBLE
+SELECT 1 / 'inf'::DOUBLE
+
+SELECT 1 / 'inf'::DOUBLE
+SELECT (1 / CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 1 / 'inf'::DOUBLE
+SELECT 'inf'::DOUBLE % 1
+SELECT 'inf'::DOUBLE % 1
+
+SELECT 'inf'::DOUBLE % 1
+SELECT (CAST('inf' AS DOUBLE) % 1)
+
+
+
+
+SELECT 'inf'::DOUBLE % 1
+SELECT 1 % 'inf'::DOUBLE
+SELECT 1 % 'inf'::DOUBLE
+
+SELECT 1 % 'inf'::DOUBLE
+SELECT (1 % CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT 1 % 'inf'::DOUBLE
+SELECT -('inf'::DOUBLE)
+SELECT -('inf'::DOUBLE)
+
+SELECT -('inf'::DOUBLE)
+SELECT -(CAST('inf' AS DOUBLE))
+
+
+
+
+SELECT -('inf'::DOUBLE)
+SELECT '-inf'::FLOAT + 1
+SELECT '-inf'::FLOAT + 1
+
+SELECT '-inf'::FLOAT + 1
+SELECT (CAST('-inf' AS FLOAT) + 1)
+
+
+
+
+SELECT '-inf'::FLOAT + 1
+SELECT '-inf'::FLOAT - 1
+SELECT '-inf'::FLOAT - 1
+
+SELECT '-inf'::FLOAT - 1
+SELECT (CAST('-inf' AS FLOAT) - 1)
+
+
+
+
+SELECT '-inf'::FLOAT - 1
+SELECT '-inf'::FLOAT * 1
+SELECT '-inf'::FLOAT * 1
+
+SELECT '-inf'::FLOAT * 1
+SELECT (CAST('-inf' AS FLOAT) * 1)
+
+
+
+
+SELECT '-inf'::FLOAT * 1
+SELECT '-inf'::FLOAT / 1
+SELECT '-inf'::FLOAT / 1
+
+SELECT '-inf'::FLOAT / 1
+SELECT (CAST('-inf' AS FLOAT) / 1)
+
+
+
+
+SELECT '-inf'::FLOAT / 1
+SELECT '-inf'::FLOAT % 1
+SELECT '-inf'::FLOAT % 1
+
+SELECT '-inf'::FLOAT % 1
+SELECT (CAST('-inf' AS FLOAT) % 1)
+
+
+
+
+SELECT '-inf'::FLOAT % 1
+SELECT -('-inf'::FLOAT)
+SELECT -('-inf'::FLOAT)
+
+SELECT -('-inf'::FLOAT)
+SELECT -(CAST('-inf' AS FLOAT))
+
+
+
+
+SELECT -('-inf'::FLOAT)
+SELECT '-inf'::DOUBLE + 1
+SELECT '-inf'::DOUBLE + 1
+
+SELECT '-inf'::DOUBLE + 1
+SELECT (CAST('-inf' AS DOUBLE) + 1)
+
+
+
+
+SELECT '-inf'::DOUBLE + 1
+SELECT '-inf'::DOUBLE - 1
+SELECT '-inf'::DOUBLE - 1
+
+SELECT '-inf'::DOUBLE - 1
+SELECT (CAST('-inf' AS DOUBLE) - 1)
+
+
+
+
+SELECT '-inf'::DOUBLE - 1
+SELECT '-inf'::DOUBLE * 1
+SELECT '-inf'::DOUBLE * 1
+
+SELECT '-inf'::DOUBLE * 1
+SELECT (CAST('-inf' AS DOUBLE) * 1)
+
+
+
+
+SELECT '-inf'::DOUBLE * 1
+SELECT '-inf'::DOUBLE / 1
+SELECT '-inf'::DOUBLE / 1
+
+SELECT '-inf'::DOUBLE / 1
+SELECT (CAST('-inf' AS DOUBLE) / 1)
+
+
+
+
+SELECT '-inf'::DOUBLE / 1
+SELECT '-inf'::DOUBLE % 1
+SELECT '-inf'::DOUBLE % 1
+
+SELECT '-inf'::DOUBLE % 1
+SELECT (CAST('-inf' AS DOUBLE) % 1)
+
+
+
+
+SELECT '-inf'::DOUBLE % 1
+SELECT -('-inf'::DOUBLE)
+SELECT -('-inf'::DOUBLE)
+
+SELECT -('-inf'::DOUBLE)
+SELECT -(CAST('-inf' AS DOUBLE))
+
+
+
+
+SELECT -('-inf'::DOUBLE)

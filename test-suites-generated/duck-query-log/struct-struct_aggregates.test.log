@@ -1,0 +1,51 @@
+PRAGMA enable_verification
+select min(struct_pack(i :=  i, j := i + 2)), max(struct_pack(i :=  i, j := i + 2)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+select min(struct_pack(i :=  i, j := i + 2)), max(struct_pack(i :=  i, j := i + 2)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+
+select min(struct_pack(i :=  i, j := i + 2)), max(struct_pack(i :=  i, j := i + 2)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+SELECT min(struct_pack(i := i, j := (i + 2))), max(struct_pack(i := i, j := (i + 2))), first(struct_pack(i := i, j := (i + 2))) FROM range(10) AS tbl(i)
+
+
+
+
+select min(struct_pack(i :=  i, j := i + 2)), max(struct_pack(i :=  i, j := i + 2)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+select min(struct_pack(i := -i, j := -i - 2)), max(struct_pack(i := i + 2, j := i + 4)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+select min(struct_pack(i := -i, j := -i - 2)), max(struct_pack(i := i + 2, j := i + 4)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+
+select min(struct_pack(i := -i, j := -i - 2)), max(struct_pack(i := i + 2, j := i + 4)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+SELECT min(struct_pack(i := -(i), j := (-(i) - 2))), max(struct_pack(i := (i + 2), j := (i + 4))), first(struct_pack(i := i, j := (i + 2))) FROM range(10) AS tbl(i)
+
+
+
+
+select min(struct_pack(i := -i, j := -i - 2)), max(struct_pack(i := i + 2, j := i + 4)), first(struct_pack(i :=  i, j := i + 2)) from range(10) tbl(i);
+select string_agg(struct_pack(i :=  i, j := i + 2)::VARCHAR, ',') from range(10) tbl(i);
+select string_agg(struct_pack(i :=  i, j := i + 2)::VARCHAR, ',') from range(10) tbl(i);
+
+select string_agg(struct_pack(i :=  i, j := i + 2)::VARCHAR, ',') from range(10) tbl(i);
+SELECT string_agg(CAST(struct_pack(i := i, j := (i + 2)) AS VARCHAR), ',') FROM range(10) AS tbl(i)
+
+
+
+
+select string_agg(struct_pack(i :=  i, j := i + 2)::VARCHAR, ',') from range(10) tbl(i);
+CREATE VIEW struct_int AS
+SELECT * FROM (VALUES
+	({'x': 1, 'y': 0}),
+	({'x': 1, 'y': 2}),
+	({'x': 1, 'y': NULL}),
+	({'x': NULL, 'y': 2}),
+	({'x': NULL, 'y': NULL}),
+	({'x': NULL, 'y': 0}),
+	(NULL)
+) tbl(i);
+select min(i), max(i), first(i) from struct_int;
+select min(i), max(i), first(i) from struct_int;
+
+select min(i), max(i), first(i) from struct_int;
+SELECT min(i), max(i), first(i) FROM struct_int
+
+
+
+
+select min(i), max(i), first(i) from struct_int;

@@ -1,0 +1,1601 @@
+PRAGMA enable_verification
+SELECT [1] < [2]
+SELECT [1] < [2]
+
+SELECT [1] < [2]
+SELECT (main.list_value(1) < main.list_value(2))
+
+
+
+
+SELECT [1] < [2]
+SELECT [1] < [1]
+SELECT [1] < [1]
+
+SELECT [1] < [1]
+SELECT (main.list_value(1) < main.list_value(1))
+
+
+
+
+SELECT [1] < [1]
+SELECT NULL < [1]
+SELECT NULL < [1]
+
+SELECT NULL < [1]
+SELECT (NULL < main.list_value(1))
+
+
+
+
+SELECT NULL < [1]
+SELECT [1] < NULL
+SELECT [1] < NULL
+
+SELECT [1] < NULL
+SELECT (main.list_value(1) < NULL)
+
+
+
+
+SELECT [1] < NULL
+SELECT [1] <= [2]
+SELECT [1] <= [2]
+
+SELECT [1] <= [2]
+SELECT (main.list_value(1) <= main.list_value(2))
+
+
+
+
+SELECT [1] <= [2]
+SELECT [1] <= [1]
+SELECT [1] <= [1]
+
+SELECT [1] <= [1]
+SELECT (main.list_value(1) <= main.list_value(1))
+
+
+
+
+SELECT [1] <= [1]
+SELECT NULL <= [1]
+SELECT NULL <= [1]
+
+SELECT NULL <= [1]
+SELECT (NULL <= main.list_value(1))
+
+
+
+
+SELECT NULL <= [1]
+SELECT [1] <= NULL
+SELECT [1] <= NULL
+
+SELECT [1] <= NULL
+SELECT (main.list_value(1) <= NULL)
+
+
+
+
+SELECT [1] <= NULL
+SELECT [1] = [2]
+SELECT [1] = [2]
+
+SELECT [1] = [2]
+SELECT (main.list_value(1) = main.list_value(2))
+
+
+
+
+SELECT [1] = [2]
+SELECT [1] = [1]
+SELECT [1] = [1]
+
+SELECT [1] = [1]
+SELECT (main.list_value(1) = main.list_value(1))
+
+
+
+
+SELECT [1] = [1]
+SELECT NULL = [1]
+SELECT NULL = [1]
+
+SELECT NULL = [1]
+SELECT (NULL = main.list_value(1))
+
+
+
+
+SELECT NULL = [1]
+SELECT [1] = NULL
+SELECT [1] = NULL
+
+SELECT [1] = NULL
+SELECT (main.list_value(1) = NULL)
+
+
+
+
+SELECT [1] = NULL
+SELECT [1] <> [2]
+SELECT [1] <> [2]
+
+SELECT [1] <> [2]
+SELECT (main.list_value(1) != main.list_value(2))
+
+
+
+
+SELECT [1] <> [2]
+SELECT [1] <> [1]
+SELECT [1] <> [1]
+
+SELECT [1] <> [1]
+SELECT (main.list_value(1) != main.list_value(1))
+
+
+
+
+SELECT [1] <> [1]
+SELECT NULL <> [1]
+SELECT NULL <> [1]
+
+SELECT NULL <> [1]
+SELECT (NULL != main.list_value(1))
+
+
+
+
+SELECT NULL <> [1]
+SELECT [1] <> NULL
+SELECT [1] <> NULL
+
+SELECT [1] <> NULL
+SELECT (main.list_value(1) != NULL)
+
+
+
+
+SELECT [1] <> NULL
+SELECT [1] >= [2]
+SELECT [1] >= [2]
+
+SELECT [1] >= [2]
+SELECT (main.list_value(1) >= main.list_value(2))
+
+
+
+
+SELECT [1] >= [2]
+SELECT [1] >= [1]
+SELECT [1] >= [1]
+
+SELECT [1] >= [1]
+SELECT (main.list_value(1) >= main.list_value(1))
+
+
+
+
+SELECT [1] >= [1]
+SELECT NULL >= [1]
+SELECT NULL >= [1]
+
+SELECT NULL >= [1]
+SELECT (NULL >= main.list_value(1))
+
+
+
+
+SELECT NULL >= [1]
+SELECT [1] >= NULL
+SELECT [1] >= NULL
+
+SELECT [1] >= NULL
+SELECT (main.list_value(1) >= NULL)
+
+
+
+
+SELECT [1] >= NULL
+SELECT [1] > [2]
+SELECT [1] > [2]
+
+SELECT [1] > [2]
+SELECT (main.list_value(1) > main.list_value(2))
+
+
+
+
+SELECT [1] > [2]
+SELECT [1] > [1]
+SELECT [1] > [1]
+
+SELECT [1] > [1]
+SELECT (main.list_value(1) > main.list_value(1))
+
+
+
+
+SELECT [1] > [1]
+SELECT NULL > [1]
+SELECT NULL > [1]
+
+SELECT NULL > [1]
+SELECT (NULL > main.list_value(1))
+
+
+
+
+SELECT NULL > [1]
+SELECT [1] > NULL
+SELECT [1] > NULL
+
+SELECT [1] > NULL
+SELECT (main.list_value(1) > NULL)
+
+
+
+
+SELECT [1] > NULL
+CREATE VIEW list_int1 AS SELECT * FROM (VALUES
+	([1], [1]),
+	([1], [2]),
+	([2], [1]),
+	(NULL, [1]),
+	([2], NULL),
+	(NULL, NULL)
+	) tbl(l, r);
+SELECT l < r FROM list_int1
+SELECT l < r FROM list_int1
+
+SELECT l < r FROM list_int1
+SELECT (l < r) FROM list_int1
+
+
+
+
+SELECT l < r FROM list_int1
+SELECT l <= r FROM list_int1
+SELECT l <= r FROM list_int1
+
+SELECT l <= r FROM list_int1
+SELECT (l <= r) FROM list_int1
+
+
+
+
+SELECT l <= r FROM list_int1
+SELECT l = r FROM list_int1
+SELECT l = r FROM list_int1
+
+SELECT l = r FROM list_int1
+SELECT (l = r) FROM list_int1
+
+
+
+
+SELECT l = r FROM list_int1
+SELECT l <> r FROM list_int1
+SELECT l <> r FROM list_int1
+
+SELECT l <> r FROM list_int1
+SELECT (l != r) FROM list_int1
+
+
+
+
+SELECT l <> r FROM list_int1
+SELECT l >= r FROM list_int1
+SELECT l >= r FROM list_int1
+
+SELECT l >= r FROM list_int1
+SELECT (l >= r) FROM list_int1
+
+
+
+
+SELECT l >= r FROM list_int1
+SELECT l > r FROM list_int1
+SELECT l > r FROM list_int1
+
+SELECT l > r FROM list_int1
+SELECT (l > r) FROM list_int1
+
+
+
+
+SELECT l > r FROM list_int1
+SELECT [1] < [1, 2]
+SELECT [1] < [1, 2]
+
+SELECT [1] < [1, 2]
+SELECT (main.list_value(1) < main.list_value(1, 2))
+
+
+
+
+SELECT [1] < [1, 2]
+SELECT [1] < [1]
+SELECT [1] < [1]
+
+SELECT [1] < [1]
+SELECT (main.list_value(1) < main.list_value(1))
+
+
+
+
+SELECT [1] < [1]
+SELECT NULL < [1]
+SELECT NULL < [1]
+
+SELECT NULL < [1]
+SELECT (NULL < main.list_value(1))
+
+
+
+
+SELECT NULL < [1]
+SELECT [1] < NULL
+SELECT [1] < NULL
+
+SELECT [1] < NULL
+SELECT (main.list_value(1) < NULL)
+
+
+
+
+SELECT [1] < NULL
+SELECT [1] <= [1, 2]
+SELECT [1] <= [1, 2]
+
+SELECT [1] <= [1, 2]
+SELECT (main.list_value(1) <= main.list_value(1, 2))
+
+
+
+
+SELECT [1] <= [1, 2]
+SELECT [1] <= [1]
+SELECT [1] <= [1]
+
+SELECT [1] <= [1]
+SELECT (main.list_value(1) <= main.list_value(1))
+
+
+
+
+SELECT [1] <= [1]
+SELECT NULL <= [1]
+SELECT NULL <= [1]
+
+SELECT NULL <= [1]
+SELECT (NULL <= main.list_value(1))
+
+
+
+
+SELECT NULL <= [1]
+SELECT [1] <= NULL
+SELECT [1] <= NULL
+
+SELECT [1] <= NULL
+SELECT (main.list_value(1) <= NULL)
+
+
+
+
+SELECT [1] <= NULL
+SELECT [1] = [1, 2]
+SELECT [1] = [1, 2]
+
+SELECT [1] = [1, 2]
+SELECT (main.list_value(1) = main.list_value(1, 2))
+
+
+
+
+SELECT [1] = [1, 2]
+SELECT [1] = [1]
+SELECT [1] = [1]
+
+SELECT [1] = [1]
+SELECT (main.list_value(1) = main.list_value(1))
+
+
+
+
+SELECT [1] = [1]
+SELECT NULL = [1]
+SELECT NULL = [1]
+
+SELECT NULL = [1]
+SELECT (NULL = main.list_value(1))
+
+
+
+
+SELECT NULL = [1]
+SELECT [1] = NULL
+SELECT [1] = NULL
+
+SELECT [1] = NULL
+SELECT (main.list_value(1) = NULL)
+
+
+
+
+SELECT [1] = NULL
+SELECT [1] <> [1, 2]
+SELECT [1] <> [1, 2]
+
+SELECT [1] <> [1, 2]
+SELECT (main.list_value(1) != main.list_value(1, 2))
+
+
+
+
+SELECT [1] <> [1, 2]
+SELECT [1] <> [1]
+SELECT [1] <> [1]
+
+SELECT [1] <> [1]
+SELECT (main.list_value(1) != main.list_value(1))
+
+
+
+
+SELECT [1] <> [1]
+SELECT NULL <> [1]
+SELECT NULL <> [1]
+
+SELECT NULL <> [1]
+SELECT (NULL != main.list_value(1))
+
+
+
+
+SELECT NULL <> [1]
+SELECT [1] <> NULL
+SELECT [1] <> NULL
+
+SELECT [1] <> NULL
+SELECT (main.list_value(1) != NULL)
+
+
+
+
+SELECT [1] <> NULL
+SELECT [1] >= [1, 2]
+SELECT [1] >= [1, 2]
+
+SELECT [1] >= [1, 2]
+SELECT (main.list_value(1) >= main.list_value(1, 2))
+
+
+
+
+SELECT [1] >= [1, 2]
+SELECT [1] >= [1]
+SELECT [1] >= [1]
+
+SELECT [1] >= [1]
+SELECT (main.list_value(1) >= main.list_value(1))
+
+
+
+
+SELECT [1] >= [1]
+SELECT NULL >= [1]
+SELECT NULL >= [1]
+
+SELECT NULL >= [1]
+SELECT (NULL >= main.list_value(1))
+
+
+
+
+SELECT NULL >= [1]
+SELECT [1] >= NULL
+SELECT [1] >= NULL
+
+SELECT [1] >= NULL
+SELECT (main.list_value(1) >= NULL)
+
+
+
+
+SELECT [1] >= NULL
+SELECT [1] > [1, 2]
+SELECT [1] > [1, 2]
+
+SELECT [1] > [1, 2]
+SELECT (main.list_value(1) > main.list_value(1, 2))
+
+
+
+
+SELECT [1] > [1, 2]
+SELECT [1] > [1]
+SELECT [1] > [1]
+
+SELECT [1] > [1]
+SELECT (main.list_value(1) > main.list_value(1))
+
+
+
+
+SELECT [1] > [1]
+SELECT NULL > [1]
+SELECT NULL > [1]
+
+SELECT NULL > [1]
+SELECT (NULL > main.list_value(1))
+
+
+
+
+SELECT NULL > [1]
+SELECT [1] > NULL
+SELECT [1] > NULL
+
+SELECT [1] > NULL
+SELECT (main.list_value(1) > NULL)
+
+
+
+
+SELECT [1] > NULL
+CREATE VIEW list_int AS SELECT * FROM (VALUES
+	([1], [1]),
+	([1], [1, 2]),
+	([1, 2], [1]),
+	(NULL, [1]),
+	([1, 2], NULL),
+	(NULL, NULL)
+	) tbl(l, r);
+SELECT l < r FROM list_int
+SELECT l < r FROM list_int
+
+SELECT l < r FROM list_int
+SELECT (l < r) FROM list_int
+
+
+
+
+SELECT l < r FROM list_int
+SELECT l <= r FROM list_int
+SELECT l <= r FROM list_int
+
+SELECT l <= r FROM list_int
+SELECT (l <= r) FROM list_int
+
+
+
+
+SELECT l <= r FROM list_int
+SELECT l = r FROM list_int
+SELECT l = r FROM list_int
+
+SELECT l = r FROM list_int
+SELECT (l = r) FROM list_int
+
+
+
+
+SELECT l = r FROM list_int
+SELECT l <> r FROM list_int
+SELECT l <> r FROM list_int
+
+SELECT l <> r FROM list_int
+SELECT (l != r) FROM list_int
+
+
+
+
+SELECT l <> r FROM list_int
+SELECT l >= r FROM list_int
+SELECT l >= r FROM list_int
+
+SELECT l >= r FROM list_int
+SELECT (l >= r) FROM list_int
+
+
+
+
+SELECT l >= r FROM list_int
+SELECT l > r FROM list_int
+SELECT l > r FROM list_int
+
+SELECT l > r FROM list_int
+SELECT (l > r) FROM list_int
+
+
+
+
+SELECT l > r FROM list_int
+SELECT [] < [1, 2]
+SELECT [] < [1, 2]
+
+SELECT [] < [1, 2]
+SELECT (main.list_value() < main.list_value(1, 2))
+
+
+
+
+SELECT [] < [1, 2]
+SELECT [] < []
+SELECT [] < []
+
+SELECT [] < []
+SELECT (main.list_value() < main.list_value())
+
+
+
+
+SELECT [] < []
+SELECT NULL < []
+SELECT NULL < []
+
+SELECT NULL < []
+SELECT (NULL < main.list_value())
+
+
+
+
+SELECT NULL < []
+SELECT [] < NULL
+SELECT [] < NULL
+
+SELECT [] < NULL
+SELECT (main.list_value() < NULL)
+
+
+
+
+SELECT [] < NULL
+SELECT [] <= [1, 2]
+SELECT [] <= [1, 2]
+
+SELECT [] <= [1, 2]
+SELECT (main.list_value() <= main.list_value(1, 2))
+
+
+
+
+SELECT [] <= [1, 2]
+SELECT [] <= []
+SELECT [] <= []
+
+SELECT [] <= []
+SELECT (main.list_value() <= main.list_value())
+
+
+
+
+SELECT [] <= []
+SELECT NULL <= []
+SELECT NULL <= []
+
+SELECT NULL <= []
+SELECT (NULL <= main.list_value())
+
+
+
+
+SELECT NULL <= []
+SELECT [] <= NULL
+SELECT [] <= NULL
+
+SELECT [] <= NULL
+SELECT (main.list_value() <= NULL)
+
+
+
+
+SELECT [] <= NULL
+SELECT [] = [1, 2]
+SELECT [] = [1, 2]
+
+SELECT [] = [1, 2]
+SELECT (main.list_value() = main.list_value(1, 2))
+
+
+
+
+SELECT [] = [1, 2]
+SELECT [] = []
+SELECT [] = []
+
+SELECT [] = []
+SELECT (main.list_value() = main.list_value())
+
+
+
+
+SELECT [] = []
+SELECT NULL = []
+SELECT NULL = []
+
+SELECT NULL = []
+SELECT (NULL = main.list_value())
+
+
+
+
+SELECT NULL = []
+SELECT [] = NULL
+SELECT [] = NULL
+
+SELECT [] = NULL
+SELECT (main.list_value() = NULL)
+
+
+
+
+SELECT [] = NULL
+SELECT [] <> [1, 2]
+SELECT [] <> [1, 2]
+
+SELECT [] <> [1, 2]
+SELECT (main.list_value() != main.list_value(1, 2))
+
+
+
+
+SELECT [] <> [1, 2]
+SELECT [] <> []
+SELECT [] <> []
+
+SELECT [] <> []
+SELECT (main.list_value() != main.list_value())
+
+
+
+
+SELECT [] <> []
+SELECT NULL <> []
+SELECT NULL <> []
+
+SELECT NULL <> []
+SELECT (NULL != main.list_value())
+
+
+
+
+SELECT NULL <> []
+SELECT [] <> NULL
+SELECT [] <> NULL
+
+SELECT [] <> NULL
+SELECT (main.list_value() != NULL)
+
+
+
+
+SELECT [] <> NULL
+SELECT [] >= [1, 2]
+SELECT [] >= [1, 2]
+
+SELECT [] >= [1, 2]
+SELECT (main.list_value() >= main.list_value(1, 2))
+
+
+
+
+SELECT [] >= [1, 2]
+SELECT [] >= []
+SELECT [] >= []
+
+SELECT [] >= []
+SELECT (main.list_value() >= main.list_value())
+
+
+
+
+SELECT [] >= []
+SELECT NULL >= []
+SELECT NULL >= []
+
+SELECT NULL >= []
+SELECT (NULL >= main.list_value())
+
+
+
+
+SELECT NULL >= []
+SELECT [] >= NULL
+SELECT [] >= NULL
+
+SELECT [] >= NULL
+SELECT (main.list_value() >= NULL)
+
+
+
+
+SELECT [] >= NULL
+SELECT [] > [1, 2]
+SELECT [] > [1, 2]
+
+SELECT [] > [1, 2]
+SELECT (main.list_value() > main.list_value(1, 2))
+
+
+
+
+SELECT [] > [1, 2]
+SELECT [] > []
+SELECT [] > []
+
+SELECT [] > []
+SELECT (main.list_value() > main.list_value())
+
+
+
+
+SELECT [] > []
+SELECT NULL > []
+SELECT NULL > []
+
+SELECT NULL > []
+SELECT (NULL > main.list_value())
+
+
+
+
+SELECT NULL > []
+SELECT [] > NULL
+SELECT [] > NULL
+
+SELECT [] > NULL
+SELECT (main.list_value() > NULL)
+
+
+
+
+SELECT [] > NULL
+CREATE VIEW list_int_empty AS SELECT * FROM (VALUES
+	([], []),
+	([], [1, 2]),
+	([1, 2], []),
+	(NULL, []),
+	([1, 2], NULL),
+	(NULL, NULL)
+	) tbl(l, r);
+SELECT l < r FROM list_int_empty
+SELECT l < r FROM list_int_empty
+
+SELECT l < r FROM list_int_empty
+SELECT (l < r) FROM list_int_empty
+
+
+
+
+SELECT l < r FROM list_int_empty
+SELECT l <= r FROM list_int_empty
+SELECT l <= r FROM list_int_empty
+
+SELECT l <= r FROM list_int_empty
+SELECT (l <= r) FROM list_int_empty
+
+
+
+
+SELECT l <= r FROM list_int_empty
+SELECT l = r FROM list_int_empty
+SELECT l = r FROM list_int_empty
+
+SELECT l = r FROM list_int_empty
+SELECT (l = r) FROM list_int_empty
+
+
+
+
+SELECT l = r FROM list_int_empty
+SELECT l <> r FROM list_int_empty
+SELECT l <> r FROM list_int_empty
+
+SELECT l <> r FROM list_int_empty
+SELECT (l != r) FROM list_int_empty
+
+
+
+
+SELECT l <> r FROM list_int_empty
+SELECT l >= r FROM list_int_empty
+SELECT l >= r FROM list_int_empty
+
+SELECT l >= r FROM list_int_empty
+SELECT (l >= r) FROM list_int_empty
+
+
+
+
+SELECT l >= r FROM list_int_empty
+SELECT l > r FROM list_int_empty
+SELECT l > r FROM list_int_empty
+
+SELECT l > r FROM list_int_empty
+SELECT (l > r) FROM list_int_empty
+
+
+
+
+SELECT l > r FROM list_int_empty
+SELECT ['duck'] < ['duck', 'goose']
+SELECT ['duck'] < ['duck', 'goose']
+
+SELECT ['duck'] < ['duck', 'goose']
+SELECT (main.list_value('duck') < main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] < ['duck', 'goose']
+SELECT ['duck'] < ['duck']
+SELECT ['duck'] < ['duck']
+
+SELECT ['duck'] < ['duck']
+SELECT (main.list_value('duck') < main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] < ['duck']
+SELECT NULL < ['duck']
+SELECT NULL < ['duck']
+
+SELECT NULL < ['duck']
+SELECT (NULL < main.list_value('duck'))
+
+
+
+
+SELECT NULL < ['duck']
+SELECT ['duck'] < NULL
+SELECT ['duck'] < NULL
+
+SELECT ['duck'] < NULL
+SELECT (main.list_value('duck') < NULL)
+
+
+
+
+SELECT ['duck'] < NULL
+SELECT ['duck'] <= ['duck', 'goose']
+SELECT ['duck'] <= ['duck', 'goose']
+
+SELECT ['duck'] <= ['duck', 'goose']
+SELECT (main.list_value('duck') <= main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] <= ['duck', 'goose']
+SELECT ['duck'] <= ['duck']
+SELECT ['duck'] <= ['duck']
+
+SELECT ['duck'] <= ['duck']
+SELECT (main.list_value('duck') <= main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] <= ['duck']
+SELECT NULL <= ['duck']
+SELECT NULL <= ['duck']
+
+SELECT NULL <= ['duck']
+SELECT (NULL <= main.list_value('duck'))
+
+
+
+
+SELECT NULL <= ['duck']
+SELECT ['duck'] <= NULL
+SELECT ['duck'] <= NULL
+
+SELECT ['duck'] <= NULL
+SELECT (main.list_value('duck') <= NULL)
+
+
+
+
+SELECT ['duck'] <= NULL
+SELECT ['duck'] = ['duck', 'goose']
+SELECT ['duck'] = ['duck', 'goose']
+
+SELECT ['duck'] = ['duck', 'goose']
+SELECT (main.list_value('duck') = main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] = ['duck', 'goose']
+SELECT ['duck'] = ['duck']
+SELECT ['duck'] = ['duck']
+
+SELECT ['duck'] = ['duck']
+SELECT (main.list_value('duck') = main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] = ['duck']
+SELECT NULL = ['duck']
+SELECT NULL = ['duck']
+
+SELECT NULL = ['duck']
+SELECT (NULL = main.list_value('duck'))
+
+
+
+
+SELECT NULL = ['duck']
+SELECT ['duck'] = NULL
+SELECT ['duck'] = NULL
+
+SELECT ['duck'] = NULL
+SELECT (main.list_value('duck') = NULL)
+
+
+
+
+SELECT ['duck'] = NULL
+SELECT ['duck'] <> ['duck', 'goose']
+SELECT ['duck'] <> ['duck', 'goose']
+
+SELECT ['duck'] <> ['duck', 'goose']
+SELECT (main.list_value('duck') != main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] <> ['duck', 'goose']
+SELECT ['duck'] <> ['duck']
+SELECT ['duck'] <> ['duck']
+
+SELECT ['duck'] <> ['duck']
+SELECT (main.list_value('duck') != main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] <> ['duck']
+SELECT NULL <> ['duck']
+SELECT NULL <> ['duck']
+
+SELECT NULL <> ['duck']
+SELECT (NULL != main.list_value('duck'))
+
+
+
+
+SELECT NULL <> ['duck']
+SELECT ['duck'] <> NULL
+SELECT ['duck'] <> NULL
+
+SELECT ['duck'] <> NULL
+SELECT (main.list_value('duck') != NULL)
+
+
+
+
+SELECT ['duck'] <> NULL
+SELECT ['duck'] >= ['duck', 'goose']
+SELECT ['duck'] >= ['duck', 'goose']
+
+SELECT ['duck'] >= ['duck', 'goose']
+SELECT (main.list_value('duck') >= main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] >= ['duck', 'goose']
+SELECT ['duck'] >= ['duck']
+SELECT ['duck'] >= ['duck']
+
+SELECT ['duck'] >= ['duck']
+SELECT (main.list_value('duck') >= main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] >= ['duck']
+SELECT NULL >= ['duck']
+SELECT NULL >= ['duck']
+
+SELECT NULL >= ['duck']
+SELECT (NULL >= main.list_value('duck'))
+
+
+
+
+SELECT NULL >= ['duck']
+SELECT ['duck'] >= NULL
+SELECT ['duck'] >= NULL
+
+SELECT ['duck'] >= NULL
+SELECT (main.list_value('duck') >= NULL)
+
+
+
+
+SELECT ['duck'] >= NULL
+SELECT ['duck'] > ['duck', 'goose']
+SELECT ['duck'] > ['duck', 'goose']
+
+SELECT ['duck'] > ['duck', 'goose']
+SELECT (main.list_value('duck') > main.list_value('duck', 'goose'))
+
+
+
+
+SELECT ['duck'] > ['duck', 'goose']
+SELECT ['duck'] > ['duck']
+SELECT ['duck'] > ['duck']
+
+SELECT ['duck'] > ['duck']
+SELECT (main.list_value('duck') > main.list_value('duck'))
+
+
+
+
+SELECT ['duck'] > ['duck']
+SELECT NULL > ['duck']
+SELECT NULL > ['duck']
+
+SELECT NULL > ['duck']
+SELECT (NULL > main.list_value('duck'))
+
+
+
+
+SELECT NULL > ['duck']
+SELECT ['duck'] > NULL
+SELECT ['duck'] > NULL
+
+SELECT ['duck'] > NULL
+SELECT (main.list_value('duck') > NULL)
+
+
+
+
+SELECT ['duck'] > NULL
+CREATE VIEW list_str AS SELECT * FROM (VALUES
+	(['duck'], ['duck']),
+	(['duck'], ['duck', 'goose']),
+	(['duck', 'goose'], ['duck']),
+	(NULL, ['duck']),
+	(['duck', 'goose'], NULL),
+	(NULL, NULL)
+	) tbl(l, r);
+SELECT l < r FROM list_str
+SELECT l < r FROM list_str
+
+SELECT l < r FROM list_str
+SELECT (l < r) FROM list_str
+
+
+
+
+SELECT l < r FROM list_str
+SELECT l <= r FROM list_str
+SELECT l <= r FROM list_str
+
+SELECT l <= r FROM list_str
+SELECT (l <= r) FROM list_str
+
+
+
+
+SELECT l <= r FROM list_str
+SELECT l = r FROM list_str
+SELECT l = r FROM list_str
+
+SELECT l = r FROM list_str
+SELECT (l = r) FROM list_str
+
+
+
+
+SELECT l = r FROM list_str
+SELECT l <> r FROM list_str
+SELECT l <> r FROM list_str
+
+SELECT l <> r FROM list_str
+SELECT (l != r) FROM list_str
+
+
+
+
+SELECT l <> r FROM list_str
+SELECT l >= r FROM list_str
+SELECT l >= r FROM list_str
+
+SELECT l >= r FROM list_str
+SELECT (l >= r) FROM list_str
+
+
+
+
+SELECT l >= r FROM list_str
+SELECT l > r FROM list_str
+SELECT l > r FROM list_str
+
+SELECT l > r FROM list_str
+SELECT (l > r) FROM list_str
+
+
+
+
+SELECT l > r FROM list_str
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) < main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) < main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] < [{'x': 'duck', 'y': 1}]
+SELECT NULL < [{'x': 'duck', 'y': 1}]
+SELECT NULL < [{'x': 'duck', 'y': 1}]
+
+SELECT NULL < [{'x': 'duck', 'y': 1}]
+SELECT (NULL < main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL < [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] < NULL
+SELECT [{'x': 'duck', 'y': 1}] < NULL
+
+SELECT [{'x': 'duck', 'y': 1}] < NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) < NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] < NULL
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) <= main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) <= main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <= [{'x': 'duck', 'y': 1}]
+SELECT NULL <= [{'x': 'duck', 'y': 1}]
+SELECT NULL <= [{'x': 'duck', 'y': 1}]
+
+SELECT NULL <= [{'x': 'duck', 'y': 1}]
+SELECT (NULL <= main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL <= [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] <= NULL
+SELECT [{'x': 'duck', 'y': 1}] <= NULL
+
+SELECT [{'x': 'duck', 'y': 1}] <= NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) <= NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <= NULL
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) = main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) = main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] = [{'x': 'duck', 'y': 1}]
+SELECT NULL = [{'x': 'duck', 'y': 1}]
+SELECT NULL = [{'x': 'duck', 'y': 1}]
+
+SELECT NULL = [{'x': 'duck', 'y': 1}]
+SELECT (NULL = main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL = [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] = NULL
+SELECT [{'x': 'duck', 'y': 1}] = NULL
+
+SELECT [{'x': 'duck', 'y': 1}] = NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) = NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] = NULL
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) != main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) != main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <> [{'x': 'duck', 'y': 1}]
+SELECT NULL <> [{'x': 'duck', 'y': 1}]
+SELECT NULL <> [{'x': 'duck', 'y': 1}]
+
+SELECT NULL <> [{'x': 'duck', 'y': 1}]
+SELECT (NULL != main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL <> [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] <> NULL
+SELECT [{'x': 'duck', 'y': 1}] <> NULL
+
+SELECT [{'x': 'duck', 'y': 1}] <> NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) != NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] <> NULL
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) >= main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) >= main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] >= [{'x': 'duck', 'y': 1}]
+SELECT NULL >= [{'x': 'duck', 'y': 1}]
+SELECT NULL >= [{'x': 'duck', 'y': 1}]
+
+SELECT NULL >= [{'x': 'duck', 'y': 1}]
+SELECT (NULL >= main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL >= [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] >= NULL
+SELECT [{'x': 'duck', 'y': 1}] >= NULL
+
+SELECT [{'x': 'duck', 'y': 1}] >= NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) >= NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] >= NULL
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) > main.list_value(main.struct_pack(x := 'duck', y := 1), main.struct_pack(x := 'goose', y := 2)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}]
+
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}]
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) > main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] > [{'x': 'duck', 'y': 1}]
+SELECT NULL > [{'x': 'duck', 'y': 1}]
+SELECT NULL > [{'x': 'duck', 'y': 1}]
+
+SELECT NULL > [{'x': 'duck', 'y': 1}]
+SELECT (NULL > main.list_value(main.struct_pack(x := 'duck', y := 1)))
+
+
+
+
+SELECT NULL > [{'x': 'duck', 'y': 1}]
+SELECT [{'x': 'duck', 'y': 1}] > NULL
+SELECT [{'x': 'duck', 'y': 1}] > NULL
+
+SELECT [{'x': 'duck', 'y': 1}] > NULL
+SELECT (main.list_value(main.struct_pack(x := 'duck', y := 1)) > NULL)
+
+
+
+
+SELECT [{'x': 'duck', 'y': 1}] > NULL
+CREATE VIEW list_of_struct AS SELECT * FROM (VALUES
+	([{'x': 'duck', 'y': 1}], [{'x': 'duck', 'y': 1}]),
+	([{'x': 'duck', 'y': 1}], [{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}]),
+	([{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}], [{'x': 'duck', 'y': 1}]),
+	(NULL, [{'x': 'duck', 'y': 1}]),
+	([{'x': 'duck', 'y': 1}, {'x': 'goose', 'y': 2}], NULL),
+	(NULL, NULL)
+	) tbl(l, r);
+SELECT l < r FROM list_of_struct
+SELECT l < r FROM list_of_struct
+
+SELECT l < r FROM list_of_struct
+SELECT (l < r) FROM list_of_struct
+
+
+
+
+SELECT l < r FROM list_of_struct
+SELECT l <= r FROM list_of_struct
+SELECT l <= r FROM list_of_struct
+
+SELECT l <= r FROM list_of_struct
+SELECT (l <= r) FROM list_of_struct
+
+
+
+
+SELECT l <= r FROM list_of_struct
+SELECT l = r FROM list_of_struct
+SELECT l = r FROM list_of_struct
+
+SELECT l = r FROM list_of_struct
+SELECT (l = r) FROM list_of_struct
+
+
+
+
+SELECT l = r FROM list_of_struct
+SELECT l <> r FROM list_of_struct
+SELECT l <> r FROM list_of_struct
+
+SELECT l <> r FROM list_of_struct
+SELECT (l != r) FROM list_of_struct
+
+
+
+
+SELECT l <> r FROM list_of_struct
+SELECT l >= r FROM list_of_struct
+SELECT l >= r FROM list_of_struct
+
+SELECT l >= r FROM list_of_struct
+SELECT (l >= r) FROM list_of_struct
+
+
+
+
+SELECT l >= r FROM list_of_struct
+SELECT l > r FROM list_of_struct
+SELECT l > r FROM list_of_struct
+
+SELECT l > r FROM list_of_struct
+SELECT (l > r) FROM list_of_struct
+
+
+
+
+SELECT l > r FROM list_of_struct
+select [a,a+1,a+2]<[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]<[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]<[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) < main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]<[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]<=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]<=[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]<=[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) <= main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]<=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]=[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]=[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) = main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]<>[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]<>[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]<>[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) != main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]<>[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]>=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]>=[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]>=[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) >= main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]>=[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]>[1,2,3] from range(5) tbl(a);
+select [a,a+1,a+2]>[1,2,3] from range(5) tbl(a);
+
+select [a,a+1,a+2]>[1,2,3] from range(5) tbl(a);
+SELECT (main.list_value(a, (a + 1), (a + 2)) > main.list_value(1, 2, 3)) FROM range(5) AS tbl(a)
+
+
+
+
+select [a,a+1,a+2]>[1,2,3] from range(5) tbl(a);

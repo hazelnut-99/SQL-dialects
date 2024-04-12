@@ -1,0 +1,81 @@
+PRAGMA enable_verification
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, ['abcd', 'efgh'], ['123456789abcd']), (2, NULL, ['123456789efgh', '123456789klmnop']), (3, ['hello', NULL, 'world'], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, ['abcd', 'efgh'], ['123456789abcd']), (2, NULL, ['123456789efgh', '123456789klmnop']), (3, ['hello', NULL, 'world'], [NULL])) tbl(id, i, j)
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, ['abcd', 'efgh'], ['123456789abcd']), (2, NULL, ['123456789efgh', '123456789klmnop']), (3, ['hello', NULL, 'world'], [NULL])) tbl(id, i, j)
+SELECT id, unnest(i), unnest(j) FROM (SELECT * FROM (VALUES (1, main.list_value('abcd', 'efgh'), main.list_value('123456789abcd')), (2, NULL, main.list_value('123456789efgh', '123456789klmnop')), (3, main.list_value('hello', NULL, 'world'), main.list_value(NULL))) AS valueslist) AS tbl(id, i, j)
+
+
+
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, ['abcd', 'efgh'], ['123456789abcd']), (2, NULL, ['123456789efgh', '123456789klmnop']), (3, ['hello', NULL, 'world'], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [1, 2], [10]), (2, NULL, [11, 12]), (3, [3, NULL, 4], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [1, 2], [10]), (2, NULL, [11, 12]), (3, [3, NULL, 4], [NULL])) tbl(id, i, j)
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [1, 2], [10]), (2, NULL, [11, 12]), (3, [3, NULL, 4], [NULL])) tbl(id, i, j)
+SELECT id, unnest(i), unnest(j) FROM (SELECT * FROM (VALUES (1, main.list_value(1, 2), main.list_value(10)), (2, NULL, main.list_value(11, 12)), (3, main.list_value(3, NULL, 4), main.list_value(NULL))) AS valueslist) AS tbl(id, i, j)
+
+
+
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [1, 2], [10]), (2, NULL, [11, 12]), (3, [3, NULL, 4], [NULL])) tbl(id, i, j)
+SELECT UNNEST(i) FROM (VALUES ([[1, 2, 3], [4, 5]]), (NULL), ([[6, 7], NULL, [8, 9, NULL]])) tbl(i)
+SELECT UNNEST(i) FROM (VALUES ([[1, 2, 3], [4, 5]]), (NULL), ([[6, 7], NULL, [8, 9, NULL]])) tbl(i)
+
+SELECT UNNEST(i) FROM (VALUES ([[1, 2, 3], [4, 5]]), (NULL), ([[6, 7], NULL, [8, 9, NULL]])) tbl(i)
+SELECT unnest(i) FROM (SELECT * FROM (VALUES (main.list_value(main.list_value(1, 2, 3), main.list_value(4, 5))), (NULL), (main.list_value(main.list_value(6, 7), NULL, main.list_value(8, 9, NULL)))) AS valueslist) AS tbl(i)
+
+
+
+
+SELECT UNNEST(i) FROM (VALUES ([[1, 2, 3], [4, 5]]), (NULL), ([[6, 7], NULL, [8, 9, NULL]])) tbl(i)
+SELECT UNNEST(i), UNNEST(j) FROM (VALUES ([[1, 2, 3], [4, 5]], [[10, 11], [12, 13]]), (NULL, [[14, 15], [NULL, 16], NULL, NULL]), ([[6, 7], NULL, [8, 9, NULL]], NULL)) tbl(i, j)
+SELECT UNNEST(i), UNNEST(j) FROM (VALUES ([[1, 2, 3], [4, 5]], [[10, 11], [12, 13]]), (NULL, [[14, 15], [NULL, 16], NULL, NULL]), ([[6, 7], NULL, [8, 9, NULL]], NULL)) tbl(i, j)
+
+SELECT UNNEST(i), UNNEST(j) FROM (VALUES ([[1, 2, 3], [4, 5]], [[10, 11], [12, 13]]), (NULL, [[14, 15], [NULL, 16], NULL, NULL]), ([[6, 7], NULL, [8, 9, NULL]], NULL)) tbl(i, j)
+SELECT unnest(i), unnest(j) FROM (SELECT * FROM (VALUES (main.list_value(main.list_value(1, 2, 3), main.list_value(4, 5)), main.list_value(main.list_value(10, 11), main.list_value(12, 13))), (NULL, main.list_value(main.list_value(14, 15), main.list_value(NULL, 16), NULL, NULL)), (main.list_value(main.list_value(6, 7), NULL, main.list_value(8, 9, NULL)), NULL)) AS valueslist) AS tbl(i, j)
+
+
+
+
+SELECT UNNEST(i), UNNEST(j) FROM (VALUES ([[1, 2, 3], [4, 5]], [[10, 11], [12, 13]]), (NULL, [[14, 15], [NULL, 16], NULL, NULL]), ([[6, 7], NULL, [8, 9, NULL]], NULL)) tbl(i, j)
+SELECT UNNEST(i) FROM (VALUES ([{'a': 10, 'b': 1}, {'a': 11, 'b': 2}]), (NULL), ([{'a': 12, 'b': 3}, NULL, {'a': NULL, 'b': NULL}])) tbl(i)
+SELECT UNNEST(i) FROM (VALUES ([{'a': 10, 'b': 1}, {'a': 11, 'b': 2}]), (NULL), ([{'a': 12, 'b': 3}, NULL, {'a': NULL, 'b': NULL}])) tbl(i)
+
+SELECT UNNEST(i) FROM (VALUES ([{'a': 10, 'b': 1}, {'a': 11, 'b': 2}]), (NULL), ([{'a': 12, 'b': 3}, NULL, {'a': NULL, 'b': NULL}])) tbl(i)
+SELECT unnest(i) FROM (SELECT * FROM (VALUES (main.list_value(main.struct_pack(a := 10, b := 1), main.struct_pack(a := 11, b := 2))), (NULL), (main.list_value(main.struct_pack(a := 12, b := 3), NULL, main.struct_pack(a := NULL, b := NULL)))) AS valueslist) AS tbl(i)
+
+
+
+
+SELECT UNNEST(i) FROM (VALUES ([{'a': 10, 'b': 1}, {'a': 11, 'b': 2}]), (NULL), ([{'a': 12, 'b': 3}, NULL, {'a': NULL, 'b': NULL}])) tbl(i)
+SELECT UNNEST(i) FROM (VALUES ([{'a': {'a1': 7, 'a2': NULL}, 'b': 1}, {'a': {'a1': 9, 'a2': 10}, 'b': 2}]), (NULL), ([{'a': {'a1': 11, 'a2': 12}, 'b': 3}, NULL, {'a': NULL, 'b': NULL}, {'a': {'a1': NULL, 'a2': NULL}, 'b': 3}])) tbl(i)
+SELECT UNNEST(i) FROM (VALUES ([{'a': {'a1': 7, 'a2': NULL}, 'b': 1}, {'a': {'a1': 9, 'a2': 10}, 'b': 2}]), (NULL), ([{'a': {'a1': 11, 'a2': 12}, 'b': 3}, NULL, {'a': NULL, 'b': NULL}, {'a': {'a1': NULL, 'a2': NULL}, 'b': 3}])) tbl(i)
+
+SELECT UNNEST(i) FROM (VALUES ([{'a': {'a1': 7, 'a2': NULL}, 'b': 1}, {'a': {'a1': 9, 'a2': 10}, 'b': 2}]), (NULL), ([{'a': {'a1': 11, 'a2': 12}, 'b': 3}, NULL, {'a': NULL, 'b': NULL}, {'a': {'a1': NULL, 'a2': NULL}, 'b': 3}])) tbl(i)
+SELECT unnest(i) FROM (SELECT * FROM (VALUES (main.list_value(main.struct_pack(a := main.struct_pack(a1 := 7, a2 := NULL), b := 1), main.struct_pack(a := main.struct_pack(a1 := 9, a2 := 10), b := 2))), (NULL), (main.list_value(main.struct_pack(a := main.struct_pack(a1 := 11, a2 := 12), b := 3), NULL, main.struct_pack(a := NULL, b := NULL), main.struct_pack(a := main.struct_pack(a1 := NULL, a2 := NULL), b := 3)))) AS valueslist) AS tbl(i)
+
+
+
+
+SELECT UNNEST(i) FROM (VALUES ([{'a': {'a1': 7, 'a2': NULL}, 'b': 1}, {'a': {'a1': 9, 'a2': 10}, 'b': 2}]), (NULL), ([{'a': {'a1': 11, 'a2': 12}, 'b': 3}, NULL, {'a': NULL, 'b': NULL}, {'a': {'a1': NULL, 'a2': NULL}, 'b': 3}])) tbl(i)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': 1, 'b': NULL}, {'a': 2, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': 3, 'b': 'test the best unnest fest'}, NULL, {'a': 4, 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': 1, 'b': NULL}, {'a': 2, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': 3, 'b': 'test the best unnest fest'}, NULL, {'a': 4, 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': 1, 'b': NULL}, {'a': 2, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': 3, 'b': 'test the best unnest fest'}, NULL, {'a': 4, 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+SELECT id, unnest(i), unnest(j) FROM (SELECT * FROM (VALUES (1, main.list_value(main.struct_pack(a := 1, b := NULL), main.struct_pack(a := 2, b := 'hello')), main.list_value(main.list_value(1, 2, 3), main.list_value(4, 5))), (2, NULL, main.list_value(main.list_value(11, 12), NULL)), (3, main.list_value(main.struct_pack(a := 3, b := 'test the best unnest fest'), NULL, main.struct_pack(a := 4, b := 'abcd')), main.list_value(NULL))) AS valueslist) AS tbl(id, i, j)
+
+
+
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': 1, 'b': NULL}, {'a': 2, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': 3, 'b': 'test the best unnest fest'}, NULL, {'a': 4, 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': [1, 2], 'b': NULL}, {'a': NULL, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': [NULL, 4, 5], 'b': 'test the best unnest fest'}, NULL, {'a': [6, 7, NULL, 9], 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': [1, 2], 'b': NULL}, {'a': NULL, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': [NULL, 4, 5], 'b': 'test the best unnest fest'}, NULL, {'a': [6, 7, NULL, 9], 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': [1, 2], 'b': NULL}, {'a': NULL, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': [NULL, 4, 5], 'b': 'test the best unnest fest'}, NULL, {'a': [6, 7, NULL, 9], 'b': 'abcd'}], [NULL])) tbl(id, i, j)
+SELECT id, unnest(i), unnest(j) FROM (SELECT * FROM (VALUES (1, main.list_value(main.struct_pack(a := main.list_value(1, 2), b := NULL), main.struct_pack(a := NULL, b := 'hello')), main.list_value(main.list_value(1, 2, 3), main.list_value(4, 5))), (2, NULL, main.list_value(main.list_value(11, 12), NULL)), (3, main.list_value(main.struct_pack(a := main.list_value(NULL, 4, 5), b := 'test the best unnest fest'), NULL, main.struct_pack(a := main.list_value(6, 7, NULL, 9), b := 'abcd')), main.list_value(NULL))) AS valueslist) AS tbl(id, i, j)
+
+
+
+
+SELECT id, UNNEST(i), UNNEST(j) FROM (VALUES (1, [{'a': [1, 2], 'b': NULL}, {'a': NULL, 'b': 'hello'}], [[1, 2, 3], [4, 5]]), (2, NULL, [[11, 12], NULL]), (3, [{'a': [NULL, 4, 5], 'b': 'test the best unnest fest'}, NULL, {'a': [6, 7, NULL, 9], 'b': 'abcd'}], [NULL])) tbl(id, i, j)

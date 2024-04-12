@@ -1,0 +1,57 @@
+SET default_null_order='nulls_first';
+PRAGMA enable_verification
+CREATE TABLE blobs (b BYTEA, g INTEGER);
+INSERT INTO blobs VALUES ('hello', 0), ('\x00whatisgoingon', 1), (NULL, 0), ('\xFF\xFE\xFB', 1)
+SELECT COUNT(*), COUNT(b), MIN(b), MAX(b) FROM blobs
+SELECT COUNT(*), COUNT(b), MIN(b), MAX(b) FROM blobs
+
+SELECT COUNT(*), COUNT(b), MIN(b), MAX(b) FROM blobs
+SELECT count_star(), count(b), min(b), max(b) FROM blobs
+
+
+
+
+SELECT COUNT(*), COUNT(b), MIN(b), MAX(b) FROM blobs
+SELECT * FROM blobs ORDER BY b
+SELECT * FROM blobs ORDER BY b
+
+SELECT * FROM blobs ORDER BY b
+SELECT * FROM blobs ORDER BY b
+
+
+
+
+SELECT * FROM blobs ORDER BY b
+INSERT INTO blobs VALUES ('hello', 3), ('\x00whatisgoingon', 9), (NULL, 0), ('\xFF\xFE\xFB', 19)
+SELECT b, SUM(g) FROM blobs GROUP BY b ORDER BY b
+SELECT b, SUM(g) FROM blobs GROUP BY b ORDER BY b
+
+SELECT b, SUM(g) FROM blobs GROUP BY b ORDER BY b
+SELECT b, sum(g) FROM blobs GROUP BY b ORDER BY b
+
+
+
+
+SELECT b, SUM(g) FROM blobs GROUP BY b ORDER BY b
+CREATE TABLE blobs2 (b BYTEA, g INTEGER);
+INSERT INTO blobs2 VALUES ('hello', 0), ('\x00whatisgoingon', 100), (NULL, 0), ('\xFF\xFE\xFB', 200)
+SELECT L.b, SUM(L.g) FROM blobs as L JOIN blobs2 AS R ON L.b=R.b GROUP BY L.b ORDER BY L.b
+SELECT L.b, SUM(L.g) FROM blobs as L JOIN blobs2 AS R ON L.b=R.b GROUP BY L.b ORDER BY L.b
+
+SELECT L.b, SUM(L.g) FROM blobs as L JOIN blobs2 AS R ON L.b=R.b GROUP BY L.b ORDER BY L.b
+SELECT L.b, sum(L.g) FROM blobs AS L INNER JOIN blobs2 AS R ON ((L.b = R.b)) GROUP BY L.b ORDER BY L.b
+
+
+
+
+SELECT L.b, SUM(L.g) FROM blobs as L JOIN blobs2 AS R ON L.b=R.b GROUP BY L.b ORDER BY L.b
+SELECT R.b, SUM(R.g) FROM blobs as L, blobs2 AS R WHERE L.b=R.b GROUP BY R.b ORDER BY R.b
+SELECT R.b, SUM(R.g) FROM blobs as L, blobs2 AS R WHERE L.b=R.b GROUP BY R.b ORDER BY R.b
+
+SELECT R.b, SUM(R.g) FROM blobs as L, blobs2 AS R WHERE L.b=R.b GROUP BY R.b ORDER BY R.b
+SELECT R.b, sum(R.g) FROM blobs AS L , blobs2 AS R WHERE (L.b = R.b) GROUP BY R.b ORDER BY R.b
+
+
+
+
+SELECT R.b, SUM(R.g) FROM blobs as L, blobs2 AS R WHERE L.b=R.b GROUP BY R.b ORDER BY R.b

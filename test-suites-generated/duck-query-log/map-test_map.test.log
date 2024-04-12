@@ -1,0 +1,94 @@
+PRAGMA enable_verification
+SELECT MAP(list_value(1, 2, 3), list_value(10, 9, 8))
+SELECT MAP(list_value(1, 2, 3), list_value(10, 9, 8))
+
+SELECT MAP(list_value(1, 2, 3), list_value(10, 9, 8))
+SELECT map(list_value(1, 2, 3), list_value(10, 9, 8))
+
+
+
+
+SELECT MAP(list_value(1, 2, 3), list_value(10, 9, 8))
+SELECT MAP(list_value({'i':1,'j':2}, {'i':3,'j':4}), list_value({'i':1,'j':2}, {'i':3,'j':4}))
+SELECT MAP(list_value({'i':1,'j':2}, {'i':3,'j':4}), list_value({'i':1,'j':2}, {'i':3,'j':4}))
+
+SELECT MAP(list_value({'i':1,'j':2}, {'i':3,'j':4}), list_value({'i':1,'j':2}, {'i':3,'j':4}))
+SELECT map(list_value(main.struct_pack(i := 1, j := 2), main.struct_pack(i := 3, j := 4)), list_value(main.struct_pack(i := 1, j := 2), main.struct_pack(i := 3, j := 4)))
+
+
+
+
+SELECT MAP(list_value({'i':1,'j':2}, {'i':3,'j':4}), list_value({'i':1,'j':2}, {'i':3,'j':4}))
+SELECT MAP(list_value(1, 2, 3), list_value(6, NULL, 4))
+SELECT MAP(list_value(1, 2, 3), list_value(6, NULL, 4))
+
+SELECT MAP(list_value(1, 2, 3), list_value(6, NULL, 4))
+SELECT map(list_value(1, 2, 3), list_value(6, NULL, 4))
+
+
+
+
+SELECT MAP(list_value(1, 2, 3), list_value(6, NULL, 4))
+SELECT MAP(list_value(1, 2, 3, 4), list_value(10, 9, 8, 7))
+SELECT MAP(list_value(1, 2, 3, 4), list_value(10, 9, 8, 7))
+
+SELECT MAP(list_value(1, 2, 3, 4), list_value(10, 9, 8, 7))
+SELECT map(list_value(1, 2, 3, 4), list_value(10, 9, 8, 7))
+
+
+
+
+SELECT MAP(list_value(1, 2, 3, 4), list_value(10, 9, 8, 7))
+SELECT MAP(list_value(), list_value())
+SELECT MAP(list_value(), list_value())
+
+SELECT MAP(list_value(), list_value())
+SELECT map(list_value(), list_value())
+
+
+
+
+SELECT MAP(list_value(), list_value())
+SELECT MAP()
+SELECT MAP()
+
+SELECT MAP()
+SELECT map()
+
+
+
+
+SELECT MAP()
+CREATE TABLE tbl (a INTEGER[], b TEXT[])
+INSERT INTO tbl VALUES (ARRAY[5, 7], ARRAY['test', 'string']), (ARRAY[6, 3], ARRAY['foo', 'bar'])
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(a, b) FROM tbl;
+
+SELECT MAP(a, b) FROM tbl;
+SELECT map(a, b) FROM tbl
+
+
+
+
+SELECT MAP(a, b) FROM tbl;
+INSERT INTO tbl VALUES (ARRAY[5, 7], ARRAY['also_test', 'also_string'])
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(a, b) FROM tbl;
+
+SELECT MAP(a, b) FROM tbl;
+SELECT map(a, b) FROM tbl
+
+
+
+
+SELECT MAP(a, b) FROM tbl;
+SELECT MAP(list_value([1], [2], [3], [4]), list_value(10, 9, 8, 7))
+SELECT MAP(list_value([1], [2], [3], [4]), list_value(10, 9, 8, 7))
+
+SELECT MAP(list_value([1], [2], [3], [4]), list_value(10, 9, 8, 7))
+SELECT map(list_value(main.list_value(1), main.list_value(2), main.list_value(3), main.list_value(4)), list_value(10, 9, 8, 7))
+
+
+
+
+SELECT MAP(list_value([1], [2], [3], [4]), list_value(10, 9, 8, 7))

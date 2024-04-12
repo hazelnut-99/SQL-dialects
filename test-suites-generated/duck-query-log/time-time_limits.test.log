@@ -1,0 +1,81 @@
+PRAGMA enable_verification
+select time '23:59:59.999999'
+select time '23:59:59.999999'
+
+select time '23:59:59.999999'
+SELECT CAST('23:59:59.999999' AS TIME)
+
+
+
+
+select time '23:59:59.999999'
+select time '23:59:59.999999' + interval (1) microsecond
+select time '23:59:59.999999' + interval (1) microsecond
+
+select time '23:59:59.999999' + interval (1) microsecond
+SELECT (CAST('23:59:59.999999' AS TIME) + to_microseconds(CAST(trunc(CAST(1 AS DOUBLE)) AS BIGINT)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) microsecond
+select time '23:59:59.999999' + interval (1) second
+select time '23:59:59.999999' + interval (1) second
+
+select time '23:59:59.999999' + interval (1) second
+SELECT (CAST('23:59:59.999999' AS TIME) + to_seconds(CAST(1 AS DOUBLE)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) second
+select time '23:59:59.999999' + interval (1) minute
+select time '23:59:59.999999' + interval (1) minute
+
+select time '23:59:59.999999' + interval (1) minute
+SELECT (CAST('23:59:59.999999' AS TIME) + to_minutes(CAST(trunc(CAST(1 AS DOUBLE)) AS BIGINT)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) minute
+select time '23:59:59.999999' + interval (1) hour
+select time '23:59:59.999999' + interval (1) hour
+
+select time '23:59:59.999999' + interval (1) hour
+SELECT (CAST('23:59:59.999999' AS TIME) + to_hours(CAST(trunc(CAST(1 AS DOUBLE)) AS BIGINT)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) hour
+select time '23:59:59.999999' + interval (1) day
+select time '23:59:59.999999' + interval (1) day
+
+select time '23:59:59.999999' + interval (1) day
+SELECT (CAST('23:59:59.999999' AS TIME) + to_days(CAST(trunc(CAST(1 AS DOUBLE)) AS INTEGER)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) day
+select time '23:59:59.999999' + interval (1) month
+select time '23:59:59.999999' + interval (1) month
+
+select time '23:59:59.999999' + interval (1) month
+SELECT (CAST('23:59:59.999999' AS TIME) + to_months(CAST(trunc(CAST(1 AS DOUBLE)) AS INTEGER)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) month
+select time '23:59:59.999999' + interval (1) year
+select time '23:59:59.999999' + interval (1) year
+
+select time '23:59:59.999999' + interval (1) year
+SELECT (CAST('23:59:59.999999' AS TIME) + to_years(CAST(trunc(CAST(1 AS DOUBLE)) AS INTEGER)))
+
+
+
+
+select time '23:59:59.999999' + interval (1) year

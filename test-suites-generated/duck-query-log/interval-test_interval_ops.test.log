@@ -1,0 +1,50 @@
+PRAGMA enable_verification
+CREATE TABLE interval (t INTERVAL);
+INSERT INTO interval VALUES (INTERVAL '20' DAY), (INTERVAL '1' YEAR), (INTERVAL '1' MONTH);
+SELECT COUNT(DISTINCT t) FROM interval
+SELECT COUNT(DISTINCT t) FROM interval
+
+SELECT COUNT(DISTINCT t) FROM interval
+SELECT count(DISTINCT t) FROM "interval"
+
+
+
+
+SELECT COUNT(DISTINCT t) FROM interval
+UPDATE interval SET t=INTERVAL '1' MONTH WHERE t=INTERVAL '20' DAY;
+SELECT * FROM interval i1 JOIN interval i2 USING (t) ORDER BY 1
+SELECT * FROM interval i1 JOIN interval i2 USING (t) ORDER BY 1
+
+SELECT * FROM interval i1 JOIN interval i2 USING (t) ORDER BY 1
+SELECT * FROM "interval" AS i1 INNER JOIN "interval" AS i2 USING (t) ORDER BY 1
+
+
+
+SELECT * FROM interval i1 JOIN interval i2 USING (t) ORDER BY 1
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t <> i2.t) ORDER BY 1
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t <> i2.t) ORDER BY 1
+
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t <> i2.t) ORDER BY 1
+SELECT * FROM "interval" AS i1 INNER JOIN "interval" AS i2 ON ((i1.t != i2.t)) ORDER BY 1
+
+
+
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t <> i2.t) ORDER BY 1
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t > i2.t) ORDER BY 1
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t > i2.t) ORDER BY 1
+
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t > i2.t) ORDER BY 1
+SELECT * FROM "interval" AS i1 INNER JOIN "interval" AS i2 ON ((i1.t > i2.t)) ORDER BY 1
+
+
+
+SELECT * FROM interval i1 JOIN interval i2 ON (i1.t > i2.t) ORDER BY 1
+SELECT t, row_number() OVER (PARTITION BY t ORDER BY t) FROM interval ORDER BY 1, 2;
+SELECT t, row_number() OVER (PARTITION BY t ORDER BY t) FROM interval ORDER BY 1, 2;
+
+SELECT t, row_number() OVER (PARTITION BY t ORDER BY t) FROM interval ORDER BY 1, 2;
+SELECT t, row_number() OVER (PARTITION BY t ORDER BY t) FROM "interval" ORDER BY 1, 2
+
+
+
+SELECT t, row_number() OVER (PARTITION BY t ORDER BY t) FROM interval ORDER BY 1, 2;

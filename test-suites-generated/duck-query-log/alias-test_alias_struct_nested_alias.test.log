@@ -1,0 +1,24 @@
+PRAGMA enable_verification
+CREATE TYPE foobar AS ENUM(
+	'Foo',
+	'Bar'
+);
+CREATE TYPE top_nest AS STRUCT(
+    foobar FOOBAR
+);
+CREATE TABLE failing (
+    top_nest TOP_NEST
+);
+insert into failing VALUES (
+	{'foobar': 'Foo'}
+)
+SELECT top_nest FROM failing;
+SELECT top_nest FROM failing;
+
+SELECT top_nest FROM failing;
+SELECT top_nest FROM failing
+
+
+
+
+SELECT top_nest FROM failing;

@@ -1,0 +1,378 @@
+SET default_null_order='nulls_first';
+PRAGMA enable_verification
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (11, 22), (12, 21), (13, 22), (14, 32), (15, 52)
+SELECT a FROM test LIMIT 20 %
+SELECT a FROM test LIMIT 20 %
+
+SELECT a FROM test LIMIT 20 %
+SELECT a FROM test LIMIT (20) %
+
+
+
+
+SELECT a FROM test LIMIT 20 %
+SELECT a FROM test LIMIT 40 PERCENT
+SELECT a FROM test LIMIT 40 PERCENT
+
+SELECT a FROM test LIMIT 40 PERCENT
+SELECT a FROM test LIMIT (40) %
+
+
+
+
+SELECT a FROM test LIMIT 40 PERCENT
+SELECT a FROM test LIMIT 35%
+SELECT a FROM test LIMIT 35%
+
+SELECT a FROM test LIMIT 35%
+SELECT a FROM test LIMIT (35) %
+
+
+
+
+SELECT a FROM test LIMIT 35%
+SELECT a FROM test LIMIT 79.9%
+SELECT a FROM test LIMIT 79.9%
+
+SELECT a FROM test LIMIT 79.9%
+SELECT a FROM test LIMIT (79.9) %
+
+
+
+
+SELECT a FROM test LIMIT 79.9%
+SELECT a FROM test LIMIT 80.1%
+SELECT a FROM test LIMIT 80.1%
+
+SELECT a FROM test LIMIT 80.1%
+SELECT a FROM test LIMIT (80.1) %
+
+
+
+
+SELECT a FROM test LIMIT 80.1%
+SELECT a FROM test LIMIT 100 PERCENT
+SELECT a FROM test LIMIT 100 PERCENT
+
+SELECT a FROM test LIMIT 100 PERCENT
+SELECT a FROM test LIMIT (100) %
+
+
+
+
+SELECT a FROM test LIMIT 100 PERCENT
+SELECT a FROM test LIMIT (30-10) %
+SELECT a FROM test LIMIT (30-10) %
+
+SELECT a FROM test LIMIT (30-10) %
+SELECT a FROM test LIMIT ((30 - 10)) %
+
+
+
+
+SELECT a FROM test LIMIT (30-10) %
+SELECT a FROM test LIMIT a %
+SELECT a FROM test LIMIT a %
+
+SELECT a FROM test LIMIT a %
+SELECT a FROM test LIMIT a %
+SELECT a FROM test LIMIT (a+1) %
+SELECT a FROM test LIMIT (a+1) %
+
+SELECT a FROM test LIMIT (a+1) %
+SELECT a FROM test LIMIT (a+1) %
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT (a+b*c) %
+
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT (a+b*c) %
+
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT (a+b*c) %
+SELECT a FROM test LIMIT SUM(42) %
+SELECT a FROM test LIMIT SUM(42) %
+
+SELECT a FROM test LIMIT SUM(42) %
+SELECT a FROM test LIMIT SUM(42) %
+SELECT * FROM test LIMIT RANDOM() %;
+SELECT * FROM test LIMIT RANDOM() %;
+
+SELECT * FROM test LIMIT RANDOM() %;
+SELECT * FROM test LIMIT (random()) %
+
+
+
+
+SELECT * FROM test LIMIT RANDOM() %;
+SELECT a FROM test LIMIT 50% OFFSET 2
+SELECT a FROM test LIMIT 50% OFFSET 2
+
+SELECT a FROM test LIMIT 50% OFFSET 2
+SELECT a FROM test LIMIT (50) % OFFSET 2
+
+
+
+
+SELECT a FROM test LIMIT 50% OFFSET 2
+SELECT * FROM range(10) LIMIT 50% OFFSET 2
+SELECT * FROM range(10) LIMIT 50% OFFSET 2
+
+SELECT * FROM range(10) LIMIT 50% OFFSET 2
+SELECT * FROM range(10) LIMIT (50) % OFFSET 2
+
+
+
+
+SELECT * FROM range(10) LIMIT 50% OFFSET 2
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 8000
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 8000
+
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 8000
+SELECT * FROM range(10000) LIMIT (0.1) % OFFSET 8000
+
+
+
+
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 8000
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 9999
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 9999
+
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 9999
+SELECT * FROM range(10000) LIMIT (0.1) % OFFSET 9999
+
+
+
+
+SELECT * FROM range(10000) LIMIT 0.1% OFFSET 9999
+SELECT a FROM test LIMIT (SELECT COUNT(*) FROM test) % OFFSET 1
+SELECT a FROM test LIMIT (SELECT COUNT(*) FROM test) % OFFSET 1
+
+SELECT a FROM test LIMIT (SELECT COUNT(*) FROM test) % OFFSET 1
+SELECT a FROM test LIMIT ((SELECT count_star() FROM test)) % OFFSET 1
+
+
+
+
+SELECT a FROM test LIMIT (SELECT COUNT(*) FROM test) % OFFSET 1
+SELECT a FROM test LIMIT 50% OFFSET (((SELECT MIN(b) FROM test)-1)/10);
+SELECT a FROM test LIMIT 50% OFFSET (((SELECT MIN(b) FROM test)-1)/10);
+
+SELECT a FROM test LIMIT 50% OFFSET (((SELECT MIN(b) FROM test)-1)/10);
+SELECT a FROM test LIMIT (50) % OFFSET (((SELECT min(b) FROM test) - 1) / 10)
+
+
+
+
+SELECT a FROM test LIMIT 50% OFFSET (((SELECT MIN(b) FROM test)-1)/10);
+SELECT b FROM test LIMIT 70% OFFSET (((SELECT MIN(test.a) FROM test)-1)/10);
+SELECT b FROM test LIMIT 70% OFFSET (((SELECT MIN(test.a) FROM test)-1)/10);
+
+SELECT b FROM test LIMIT 70% OFFSET (((SELECT MIN(test.a) FROM test)-1)/10);
+SELECT b FROM test LIMIT (70) % OFFSET (((SELECT min(test.a) FROM test) - 1) / 10)
+
+
+
+
+SELECT b FROM test LIMIT 70% OFFSET (((SELECT MIN(test.a) FROM test)-1)/10);
+SELECT * FROM test LIMIT 30% OFFSET RANDOM() / 10.0;
+SELECT * FROM test LIMIT 30% OFFSET RANDOM() / 10.0;
+
+SELECT * FROM test LIMIT 30% OFFSET RANDOM() / 10.0;
+SELECT * FROM test LIMIT (30) % OFFSET (random() / 10.0)
+
+
+
+
+SELECT * FROM test LIMIT 30% OFFSET RANDOM() / 10.0;
+SELECT b FROM test LIMIT 0%
+SELECT b FROM test LIMIT 0%
+
+SELECT b FROM test LIMIT 0%
+SELECT b FROM test LIMIT (0) %
+
+
+
+
+SELECT b FROM test LIMIT 0%
+SELECT * FROM range(100) LIMIT -10 %;
+SELECT * FROM range(100) LIMIT -10 %;
+
+SELECT * FROM range(100) LIMIT -10 %;
+SELECT * FROM range(100) LIMIT -10 %;
+SELECT * FROM test LIMIT (SELECT 'ab') %
+SELECT * FROM test LIMIT (SELECT 'ab') %
+
+SELECT * FROM test LIMIT (SELECT 'ab') %
+SELECT * FROM test LIMIT (SELECT 'ab') %
+select 1 limit date '2021-11-25' %;
+select 1 limit date '2021-11-25' %;
+
+select 1 limit date '2021-11-25' %;
+select 1 limit date '2021-11-25' %;
+select * from test limit "Hello World" %;
+select * from test limit "Hello World" %;
+
+select * from test limit "Hello World" %;
+select * from test limit "Hello World" %;
+CREATE TABLE test2 (a STRING);
+INSERT INTO test2 VALUES ('first'), ('second'), ('third'), ('4th'), ('5th')
+PREPARE v1 AS SELECT * FROM test2 LIMIT 40%
+EXECUTE v1
+CREATE VIEW v3 AS SELECT i % 5 g, LIST(CASE WHEN i=6 or i=8 then null else i end) l FROM RANGE(20) tbl(i) group by g
+SELECT g, 5=ANY(l) FROM v3 ORDER BY g LIMIT 80%;
+SELECT g, 5=ANY(l) FROM v3 ORDER BY g LIMIT 80%;
+
+SELECT g, 5=ANY(l) FROM v3 ORDER BY g LIMIT 80%;
+SELECT g, (5 = ANY(SELECT unnest(l))) FROM v3 ORDER BY g LIMIT (80) %
+
+
+
+
+SELECT g, 5=ANY(l) FROM v3 ORDER BY g LIMIT 80%;
+SELECT g, 3>ANY(l) FROM v3 ORDER BY g LIMIT 50%;
+SELECT g, 3>ANY(l) FROM v3 ORDER BY g LIMIT 50%;
+
+SELECT g, 3>ANY(l) FROM v3 ORDER BY g LIMIT 50%;
+SELECT g, (3 > ANY(SELECT unnest(l))) FROM v3 ORDER BY g LIMIT (50) %
+
+
+
+
+SELECT g, 3>ANY(l) FROM v3 ORDER BY g LIMIT 50%;
+CREATE TABLE struct_data (g INTEGER, e INTEGER)
+INSERT INTO struct_data VALUES (1, 1), (1, 2), (2, 3), (2, 4), (2, 5), (3, 6), (5, NULL)
+SELECT STRUCT_PACK(a := 42, b := 43)
+SELECT STRUCT_PACK(a := 42, b := 43)
+
+SELECT STRUCT_PACK(a := 42, b := 43)
+SELECT struct_pack(a := 42, b := 43)
+
+
+
+
+SELECT STRUCT_PACK(a := 42, b := 43)
+SELECT e, STRUCT_PACK(e) FROM struct_data ORDER BY e LIMIT 60%
+SELECT e, STRUCT_PACK(e) FROM struct_data ORDER BY e LIMIT 60%
+
+SELECT e, STRUCT_PACK(e) FROM struct_data ORDER BY e LIMIT 60%
+SELECT e, struct_pack(e) FROM struct_data ORDER BY e LIMIT (60) %
+
+
+
+
+SELECT e, STRUCT_PACK(e) FROM struct_data ORDER BY e LIMIT 60%
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (4), (5);
+SELECT * FROM integers as int LIMIT (SELECT max(integers.i) FROM integers where i > 5) %
+SELECT * FROM integers as int LIMIT (SELECT max(integers.i) FROM integers where i > 5) %
+
+SELECT * FROM integers as int LIMIT (SELECT max(integers.i) FROM integers where i > 5) %
+SELECT * FROM integers AS "int" LIMIT ((SELECT max(integers.i) FROM integers WHERE (i > 5))) %
+
+
+
+
+SELECT * FROM integers as int LIMIT (SELECT max(integers.i) FROM integers where i > 5) %
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%
+(((SELECT 1) UNION ALL (SELECT 2)) UNION ALL (SELECT 3)) UNION ALL (SELECT 4) LIMIT (50) %
+
+
+
+
+select 1 union all select 2 union all select 3 union all select 4 limit 50%

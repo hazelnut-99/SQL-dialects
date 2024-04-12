@@ -1,0 +1,45 @@
+PRAGMA enable_verification
+CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+create table a (a string, b mood);
+insert into a values (NULL, 'happy');
+insert into a values ('woof', NULL);
+insert into a values (NULL, NULL);
+insert into a values ('quack', 'ok');
+insert into a values ('moo', 'sad');
+select coalesce(a, b) from a;
+select coalesce(a, b) from a;
+
+select coalesce(a, b) from a;
+SELECT COALESCE(a, b) FROM a
+
+
+
+
+select coalesce(a, b) from a;
+CREATE TYPE onomatopoeia AS ENUM ('woof', 'quack', 'moo');
+create table b (a onomatopoeia, b mood);
+insert into b values (NULL, 'happy');
+insert into b values ('woof', NULL);
+insert into b values (NULL, NULL);
+insert into b values ('quack', 'ok');
+insert into b values ('moo', 'sad');
+select coalesce(a, b) from b;
+select coalesce(a, b) from b;
+
+select coalesce(a, b) from b;
+SELECT COALESCE(a, b) FROM b
+
+
+
+
+select coalesce(a, b) from b;
+select * from a where b in ('sad','woof', NULL)
+select * from a where b in ('sad','woof', NULL)
+
+select * from a where b in ('sad','woof', NULL)
+SELECT * FROM a WHERE (b IN ('sad', 'woof', NULL))
+
+
+
+
+select * from a where b in ('sad','woof', NULL)

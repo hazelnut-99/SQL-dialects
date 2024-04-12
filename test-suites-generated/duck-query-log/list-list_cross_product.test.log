@@ -1,0 +1,124 @@
+PRAGMA enable_verification
+CREATE VIEW v1 AS SELECT * FROM (VALUES (1, [1, 2, 3]), (2, NULL), (3, [NULL, 3, 4])) tbl (a, b);
+SELECT * FROM v1 v, v1 w ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w ORDER BY v.a, w.a;
+
+SELECT * FROM v1 v, v1 w ORDER BY v.a, w.a;
+SELECT * FROM v1 AS v , v1 AS w ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v1 v, v1 w ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v1 v, v1 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 AS v , v1 AS w WHERE (v.a >= w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v1 v, v1 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 AS v , v1 AS w WHERE (v.a != w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a OR v.a>w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a OR v.a>w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a OR v.a>w.a ORDER BY v.a, w.a;
+SELECT * FROM v1 AS v , v1 AS w WHERE ((v.a != w.a) OR (v.a > w.a)) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v1 v, v1 w WHERE v.a <> w.a OR v.a>w.a ORDER BY v.a, w.a;
+CREATE VIEW v2 AS SELECT * FROM (VALUES (1, {'a': [1, 2, 3]}), (2, NULL), (3, {'a': [NULL, 3, 4]})) tbl (a, b);
+SELECT * FROM v2 v, v2 w ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w ORDER BY v.a, w.a;
+
+SELECT * FROM v2 v, v2 w ORDER BY v.a, w.a;
+SELECT * FROM v2 AS v , v2 AS w ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v2 v, v2 w ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v2 v, v2 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 AS v , v2 AS w WHERE (v.a >= w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v2 v, v2 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 AS v , v2 AS w WHERE (v.a != w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+SELECT * FROM v2 AS v , v2 AS w WHERE ((v.a != w.a) OR (v.a > w.a)) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v2 v, v2 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+CREATE VIEW v3 AS SELECT * FROM (VALUES (1, [[1, 2], [3]]), (2, NULL), (3, [[NULL, 3], [4]])) tbl (a, b);
+SELECT * FROM v3 v, v3 w ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w ORDER BY v.a, w.a;
+
+SELECT * FROM v3 v, v3 w ORDER BY v.a, w.a;
+SELECT * FROM v3 AS v , v3 AS w ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v3 v, v3 w ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v3 v, v3 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 AS v , v3 AS w WHERE (v.a >= w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v3 v, v3 w WHERE v.a >= w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 AS v , v3 AS w WHERE (v.a != w.a) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;
+SELECT * FROM v3 AS v , v3 AS w WHERE ((v.a != w.a) OR (v.a > w.a)) ORDER BY v.a, w.a
+
+
+
+
+SELECT * FROM v3 v, v3 w WHERE v.a <> w.a OR v.a > w.a ORDER BY v.a, w.a;

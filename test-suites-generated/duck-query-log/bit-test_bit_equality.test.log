@@ -1,0 +1,11 @@
+PRAGMA enable_verification
+select bitstring('1', 6) from range(100000) group by 1;
+select bitstring('1', 6) from range(100000) group by 1;
+
+select bitstring('1', 6) from range(100000) group by 1;
+SELECT bitstring('1', 6) FROM range(100000) GROUP BY 1
+
+
+
+
+select bitstring('1', 6) from range(100000) group by 1;

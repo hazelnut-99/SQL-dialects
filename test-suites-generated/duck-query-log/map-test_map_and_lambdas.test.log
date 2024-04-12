@@ -1,0 +1,12 @@
+PRAGMA enable_verification
+CREATE TABLE i AS SELECT str_split('my yay', ' ') AS l, range AS i FROM range(3);
+SELECT list_transform(l, x -> {'map1': MAP {x::VARCHAR:1::VARCHAR, 'b'::VARCHAR: x::VARCHAR}}) FROM i;
+SELECT list_transform(l, x -> {'map1': MAP {x::VARCHAR:1::VARCHAR, 'b'::VARCHAR: x::VARCHAR}}) FROM i;
+
+SELECT list_transform(l, x -> {'map1': MAP {x::VARCHAR:1::VARCHAR, 'b'::VARCHAR: x::VARCHAR}}) FROM i;
+SELECT list_transform(l, (x -> main.struct_pack(map1 := main.map(main.list_value(CAST(x AS VARCHAR), CAST('b' AS VARCHAR)), main.list_value(CAST(1 AS VARCHAR), CAST(x AS VARCHAR)))))) FROM i
+
+
+
+
+SELECT list_transform(l, x -> {'map1': MAP {x::VARCHAR:1::VARCHAR, 'b'::VARCHAR: x::VARCHAR}}) FROM i;

@@ -1,0 +1,113 @@
+PRAGMA enable_verification
+SELECT NULL
+SELECT NULL
+
+SELECT NULL
+SELECT NULL
+
+
+
+
+SELECT NULL
+SELECT 3 + NULL
+SELECT 3 + NULL
+
+SELECT 3 + NULL
+SELECT (3 + NULL)
+
+
+
+
+SELECT 3 + NULL
+SELECT NULL + 3
+SELECT NULL + 3
+
+SELECT NULL + 3
+SELECT (NULL + 3)
+
+
+
+
+SELECT NULL + 3
+SELECT NULL + NULL
+SELECT NULL + NULL
+
+SELECT NULL + NULL
+SELECT (NULL + NULL)
+
+
+
+
+SELECT NULL + NULL
+SELECT 1 + (NULL + NULL)
+SELECT 1 + (NULL + NULL)
+
+SELECT 1 + (NULL + NULL)
+SELECT (1 + (NULL + NULL))
+
+
+
+
+SELECT 1 + (NULL + NULL)
+SELECT 4 / 0
+SELECT 4 / 0
+
+SELECT 4 / 0
+SELECT (4 / 0)
+
+
+
+
+SELECT 4 / 0
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (11, 22), (NULL, 21), (13, 22)
+SELECT a FROM test
+SELECT a FROM test
+
+SELECT a FROM test
+SELECT a FROM test
+
+
+
+
+SELECT a FROM test
+SELECT cast(a AS BIGINT) FROM test;
+SELECT cast(a AS BIGINT) FROM test;
+
+SELECT cast(a AS BIGINT) FROM test;
+SELECT CAST(a AS BIGINT) FROM test
+
+
+
+
+SELECT cast(a AS BIGINT) FROM test;
+SELECT a / 0 FROM test;
+SELECT a / 0 FROM test;
+
+SELECT a / 0 FROM test;
+SELECT (a / 0) FROM test
+
+
+
+
+SELECT a / 0 FROM test;
+SELECT a / (a - a) FROM test;
+SELECT a / (a - a) FROM test;
+
+SELECT a / (a - a) FROM test;
+SELECT (a / (a - a)) FROM test
+
+
+
+
+SELECT a / (a - a) FROM test;
+SELECT a + b FROM test
+SELECT a + b FROM test
+
+SELECT a + b FROM test
+SELECT (a + b) FROM test
+
+
+
+
+SELECT a + b FROM test

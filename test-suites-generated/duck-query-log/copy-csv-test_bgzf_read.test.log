@@ -1,0 +1,4 @@
+CREATE TABLE bgzf AS SELECT * FROM read_csv_auto('test/sql/copy/csv/data/test/bgzf.gz');;
+SELECT COUNT(*) FROM bgzf;;
+CREATE TABLE concat AS SELECT * FROM read_csv_auto('test/sql/copy/csv/data/test/concat.gz');;
+SELECT COUNT(*) FROM concat;;

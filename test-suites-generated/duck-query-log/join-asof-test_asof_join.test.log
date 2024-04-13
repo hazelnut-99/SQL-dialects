@@ -1,0 +1,98 @@
+PRAGMA enable_verification;
+CREATE TABLE events0 (begin DOUBLE, value INTEGER);;
+INSERT INTO events0 VALUES
+	(1, 0),
+	(3, 1),
+	(6, 2),
+	(8, 3)
+;;
+create table prices("when" timestamp, symbol int, price int);;
+insert into prices values ('2020-01-01 00:00:00', 1, 42);;
+create table trades("when" timestamp, symbol int);;
+insert into trades values ('2020-01-01 00:00:03', 1);;
+SELECT t.*, p.price
+FROM trades t ASOF JOIN prices p 
+  ON t.symbol = p.symbol AND t.when >= p.when;;
+SELECT t.*, p.price
+FROM trades t ASOF JOIN prices p 
+  ON t.symbol = p.symbol AND t.when >= p.when;;
+;
+SELECT t.*, p.price
+FROM trades t ASOF JOIN prices p 
+  ON t.symbol = p.symbol AND t.when >= p.when;;
+SELECT t.*, p.price FROM trades AS t ASOF INNER JOIN prices AS p ON (((t.symbol = p.symbol) AND (t."when" >= p."when")));
+;
+;
+;
+;
+SELECT t.*, p.price
+FROM trades t ASOF JOIN prices p 
+  ON t.symbol = p.symbol AND t.when >= p.when;;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts <> e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts <> e.begin
+ORDER BY p.ts ASC;
+;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts <> e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts <> e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON 1 = 1 AND p.ts >= e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON 1 = 1 AND p.ts >= e.begin
+ORDER BY p.ts ASC;
+;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON 1 = 1 AND p.ts >= e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON 1 = 1 AND p.ts >= e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts = e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts = e.begin
+ORDER BY p.ts ASC;
+;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts = e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts = e.begin
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts >= e.begin AND p.ts >= e.value
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts >= e.begin AND p.ts >= e.value
+ORDER BY p.ts ASC;
+;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts >= e.begin AND p.ts >= e.value
+ORDER BY p.ts ASC;
+SELECT p.ts, e.value
+FROM range(0,10) p(ts) ASOF JOIN events0 e
+ON p.ts >= e.begin AND p.ts >= e.value
+ORDER BY p.ts ASC;

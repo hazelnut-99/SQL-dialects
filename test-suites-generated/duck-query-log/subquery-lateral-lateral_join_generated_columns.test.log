@@ -1,0 +1,16 @@
+PRAGMA enable_verification;
+CREATE TABLE tbl (
+	x INTEGER,
+	gen_x AS (x + 5)
+);;
+INSERT INTO tbl VALUES (1), (2), (3), (NULL);;
+SELECT * FROM tbl, (SELECT gen_x + 10) ORDER BY x NULLS LAST;
+SELECT * FROM tbl, (SELECT gen_x + 10) ORDER BY x NULLS LAST;
+;
+SELECT * FROM tbl, (SELECT gen_x + 10) ORDER BY x NULLS LAST;
+SELECT * FROM tbl , (SELECT (gen_x + 10)) ORDER BY x NULLS LAST;
+;
+;
+;
+;
+SELECT * FROM tbl, (SELECT gen_x + 10) ORDER BY x NULLS LAST;

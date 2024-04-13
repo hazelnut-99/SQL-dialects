@@ -1,0 +1,5 @@
+select * from 'test/sql/copy/csv/data/test/dateformat.csv';;
+select * from 'test/sql/copy/csv/data/test/dateformat.csv', 'test/sql/copy/csv/data/test/dateformat_2.csv';;
+select mytbl.column0 from 'test/sql/copy/csv/data/test/dateformat.csv'mytbl;;
+select mytbl.mycol from 'test/sql/copy/csv/data/test/dateformat.csv' mytbl(mycol);;
+select blob.ids from 'data/parquet-testing/blob.parquet';

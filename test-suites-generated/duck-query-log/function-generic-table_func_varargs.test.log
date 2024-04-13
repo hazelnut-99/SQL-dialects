@@ -1,0 +1,1 @@
+SELECT * FROM repeat_row(1, 2, 'foo', num_rows=3);

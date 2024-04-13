@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+from 'data/csv/inconsistent_cells.csv';
+from 'data/csv/inconsistent_cells.csv';
+;
+from 'data/csv/inconsistent_cells.csv';
+SELECT * FROM "data/csv/inconsistent_cells.csv";
+;
+;
+;
+;
+from 'data/csv/inconsistent_cells.csv';

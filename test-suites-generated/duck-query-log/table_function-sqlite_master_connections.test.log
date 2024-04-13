@@ -1,0 +1,2 @@
+SELECT * FROM sqlite_master;;
+DROP VIEW sqlite_master;

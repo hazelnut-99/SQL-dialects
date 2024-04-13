@@ -1,0 +1,3 @@
+PRAGMA verify_parallelism;
+CREATE OR REPLACE TABLE timings(tool string, sf float, day string, batch_type string, q string, parameters string, time float);;
+COPY timings FROM 'data/csv/timings.csv' (HEADER, DELIMITER '|');

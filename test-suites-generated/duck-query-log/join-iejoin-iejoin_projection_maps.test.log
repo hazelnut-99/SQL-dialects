@@ -1,0 +1,114 @@
+PRAGMA threads=1;
+SELECT SETSEED(0.8765309);;
+CREATE TABLE df AS
+    SELECT 
+        (random() * 100)::INTEGER + 1 as id,
+        (random() * 10)::INTEGER + 1 as id2,
+        (random() * 5)::INTEGER + 1 as id3,
+        ROUND(random(), 4)::DECIMAL(4,3) as value,
+    FROM range(5000);;
+SELECT SUM(id) AS id, SUM(id2) AS id2, SUM(id3) AS id3, SUM(value) AS value
+FROM df;
+PRAGMA enable_verification;
+PRAGMA prefer_range_joins=False;;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+SELECT id2, id3, id3_right, sum(("value" * value_right)) AS "value" FROM (SELECT df.*, df2.id3 AS id3_right, df2."value" AS value_right FROM df INNER JOIN df AS df2 ON (((df.id = df2.id) AND (df.id2 = df2.id2) AND (df.id3 > df2.id3) AND (df.id3 < (df2.id3 + 30))))) AS tbl GROUP BY ALL ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+PRAGMA prefer_range_joins=True;;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;
+SELECT id2, id3, id3_right, sum(("value" * value_right)) AS "value" FROM (SELECT df.*, df2.id3 AS id3_right, df2."value" AS value_right FROM df INNER JOIN df AS df2 ON (((df.id = df2.id) AND (df.id2 = df2.id2) AND (df.id3 > df2.id3) AND (df.id3 < (df2.id3 + 30))))) AS tbl GROUP BY ALL ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT id2, id3, id3_right, sum(value * value_right) as value
+FROM (
+	SELECT df.*, df2.id3 as id3_right, df2.value as value_right
+	FROM df JOIN df as df2
+		ON (df.id = df2.id
+		AND df.id2 = df2.id2
+		AND df.id3 > df2.id3
+		AND df.id3 < df2.id3 + 30)
+	) tbl
+GROUP BY ALL
+ORDER BY ALL;

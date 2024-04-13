@@ -1,8 +1,0 @@
-CREATE TABLE test (l INTEGER[]);
-INSERT INTO test VALUES ([1, 2, 3]), ([NULL]), (NULL), ([-2, NULL, 4, 2]);
-SELECT list_extract(l, 0) FROM test;
-SELECT list_extract(l, 1) FROM test;
-SELECT l[:] FROM test;
-SELECT l[0:0] FROM test;
-SELECT l[0:1] FROM test;
-SELECT l[1:0] FROM test;

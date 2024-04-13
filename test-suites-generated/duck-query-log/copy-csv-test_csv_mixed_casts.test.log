@@ -1,0 +1,392 @@
+PRAGMA enable_verification;
+FROM read_csv(
+    'data/csv/mixed_dates.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DATE',
+    },
+    dateformat = '%m/%d/%Y',
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_dates.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DATE',
+    },
+    dateformat = '%m/%d/%Y',
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_dates.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DATE',
+    },
+    dateformat = '%m/%d/%Y',
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_dates.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), ("columns" = main.struct_pack(A := 'INTEGER', B := 'DATE')), (dateformat = '%m/%d/%Y'), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_dates.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DATE',
+    },
+    dateformat = '%m/%d/%Y',
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_timestamps.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'TIMESTAMP',
+    },
+    timestampformat = '%m/%d/%Y %H:%M:%S',
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_timestamps.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'TIMESTAMP',
+    },
+    timestampformat = '%m/%d/%Y %H:%M:%S',
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_timestamps.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'TIMESTAMP',
+    },
+    timestampformat = '%m/%d/%Y %H:%M:%S',
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_timestamps.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), ("columns" = main.struct_pack(A := 'INTEGER', B := 'TIMESTAMP')), (timestampformat = '%m/%d/%Y %H:%M:%S'), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_timestamps.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'TIMESTAMP',
+    },
+    timestampformat = '%m/%d/%Y %H:%M:%S',
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'FLOAT',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'FLOAT',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'FLOAT',
+    },
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_double.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), ("columns" = main.struct_pack(A := 'INTEGER', B := 'FLOAT')), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'FLOAT',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DOUBLE',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DOUBLE',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DOUBLE',
+    },
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_double.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), ("columns" = main.struct_pack(A := 'INTEGER', B := 'DOUBLE')), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DOUBLE',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_double.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), ("columns" = main.struct_pack(A := 'INTEGER', B := 'DECIMAL')), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_double.csv',
+    auto_detect = false,
+    header = true,
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_decimal.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), (delim = ';'), ("columns" = main.struct_pack(A := 'INTEGER', B := 'DECIMAL')), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+    decimal_separator = ',',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+    decimal_separator = ',',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+    decimal_separator = ',',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+SELECT * FROM read_csv('data/csv/mixed_decimal.csv', (auto_detect = CAST('f' AS BOOLEAN)), ("header" = CAST('t' AS BOOLEAN)), (delim = ';'), (decimal_separator = ','), ("columns" = main.struct_pack(A := 'INTEGER', B := 'DECIMAL')), (ignore_errors = CAST('t' AS BOOLEAN)));
+;
+;
+;
+;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = ';',
+    decimal_separator = ',',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = '|',
+    decimal_separator = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = '|',
+    decimal_separator = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = '|',
+    decimal_separator = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;
+FROM read_csv(
+    'data/csv/mixed_decimal.csv',
+    auto_detect = false,
+    header = true,
+    delim = '|',
+    decimal_separator = ';',
+     columns = {
+      'A': 'INTEGER',
+      'B': 'DECIMAL',
+    },
+    ignore_errors = true
+);;

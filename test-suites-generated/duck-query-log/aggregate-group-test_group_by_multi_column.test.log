@@ -1,0 +1,3 @@
+CREATE TABLE integers(i INTEGER, j INTEGER, k INTEGER);;
+INSERT INTO integers VALUES (1, 1, 2), (1, 2, 2), (1, 1, 2), (2, 1, 2), (1, 2, 4), (1, 2, NULL);;
+SELECT i, j, SUM(k), COUNT(*), COUNT(k) FROM integers GROUP BY i, j ORDER BY 1, 2;

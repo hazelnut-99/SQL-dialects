@@ -1,0 +1,11 @@
+select list_kurtosis([1]);
+select list_kurtosis([0, 0, 0, 0, 0, 0]);
+select list_kurtosis([2e304, 2e305, 2e306, 2e307]);
+create table aggr(k int[]);;
+insert into aggr values ([1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), 
+	([10, 10, 10, 10, 20, 20, 25, 30, 30, 30, 30]),
+	([NULL, 11, 15, 18, 22, 25, NULL, 35, 40, 50, 51]), 
+	(NULL), ([]), ([NULL]);;
+select list_kurtosis(k) from aggr;;
+select list_kurtosis_pop(k) from aggr;;
+select list_kurtosis();

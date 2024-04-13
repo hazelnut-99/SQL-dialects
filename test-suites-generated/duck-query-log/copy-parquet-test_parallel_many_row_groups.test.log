@@ -1,0 +1,5 @@
+SELECT COUNT(*), MIN(i), MAX(i), SUM(i) FROM parquet_scan('data/parquet-testing/manyrowgroups.parquet') t(i);
+SELECT COUNT(*), MIN(i), MAX(i), SUM(i) FROM parquet_scan('data/parquet-testing/manyrowgroups*') t(i);
+PRAGMA threads=4;
+SELECT COUNT(*), MIN(i), MAX(i), SUM(i) FROM parquet_scan('data/parquet-testing/manyrowgroups.parquet') t(i);
+SELECT COUNT(*), MIN(i), MAX(i), SUM(i) FROM parquet_scan('data/parquet-testing/manyrowgroups*') t(i);

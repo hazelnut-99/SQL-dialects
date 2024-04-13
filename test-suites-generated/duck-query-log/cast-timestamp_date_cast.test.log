@@ -1,0 +1,175 @@
+PRAGMA enable_verification;
+create table test as
+select '2021-02-04 19:30:00'::timestamp t;;
+select *
+from test
+where (t::date) = '2021-02-04'::date;;
+select *
+from test
+where (t::date) = '2021-02-04'::date;;
+;
+select *
+from test
+where (t::date) = '2021-02-04'::date;;
+SELECT * FROM test WHERE (CAST(t AS DATE) = CAST('2021-02-04' AS DATE));
+;
+;
+;
+;
+select *
+from test
+where (t::date) = '2021-02-04'::date;;
+select *
+from test
+where (t::date) = '2021-02-04';;
+select *
+from test
+where (t::date) = '2021-02-04';;
+;
+select *
+from test
+where (t::date) = '2021-02-04';;
+SELECT * FROM test WHERE (CAST(t AS DATE) = '2021-02-04');
+;
+;
+;
+;
+select *
+from test
+where (t::date) = '2021-02-04';;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (SELECT CAST('2020-09-13 00:30:00' AS TIMESTAMP) AS a)SELECT (CAST(a AS DATE) = CAST('2020-09-13' AS DATE)) FROM t;
+;
+;
+;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_S AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_S AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_S AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (SELECT CAST('2020-09-13 00:30:00' AS TIMESTAMP_S) AS a)SELECT (CAST(a AS DATE) = CAST('2020-09-13' AS DATE)) FROM t;
+;
+;
+;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_S AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_MS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_MS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_MS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (SELECT CAST('2020-09-13 00:30:00' AS TIMESTAMP_MS) AS a)SELECT (CAST(a AS DATE) = CAST('2020-09-13' AS DATE)) FROM t;
+;
+;
+;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_MS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_NS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_NS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_NS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;
+WITH t AS (SELECT CAST('2020-09-13 00:30:00' AS TIMESTAMP_NS) AS a)SELECT (CAST(a AS DATE) = CAST('2020-09-13' AS DATE)) FROM t;
+;
+;
+;
+;
+WITH t AS (
+    SELECT
+        '2020-09-13 00:30:00'::TIMESTAMP_NS AS a,
+)
+SELECT
+    a::DATE = '2020-09-13'::DATE,
+FROM t;;

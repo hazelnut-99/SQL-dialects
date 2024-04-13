@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+SELECT * FROM 'data/parquet-testing/parquet_go.parquet';
+SELECT * FROM 'data/parquet-testing/parquet_go.parquet';
+;
+SELECT * FROM 'data/parquet-testing/parquet_go.parquet';
+SELECT * FROM "data/parquet-testing/parquet_go.parquet";
+;
+;
+;
+;
+SELECT * FROM 'data/parquet-testing/parquet_go.parquet';

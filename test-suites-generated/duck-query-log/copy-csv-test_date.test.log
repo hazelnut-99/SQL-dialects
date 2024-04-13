@@ -1,0 +1,7 @@
+CREATE TABLE date_test(d date);;
+COPY date_test FROM 'test/sql/copy/csv/data/test/date.csv';;
+SELECT cast(d as string) FROM date_test;;
+Select * from read_csv('data/csv/custom_date.csv', header=true, dateformat='%m/%d/%Y, %-I:%-M %p', types = ['BIGINT', 'DATE'] );;
+Select * from read_csv('data/csv/custom_date.csv', header=true, dateformat='%m/%d/%Y, %-I:%-M %p');;
+Select * from read_csv('data/csv/custom_date.csv', header=true, timestampformat='%m/%d/%Y, %-I:%-M %p', types = ['BIGINT', 'TIMESTAMP'] );;
+Select * from read_csv('data/csv/custom_date.csv', header=true, timestampformat='%m/%d/%Y, %-I:%-M %p');;

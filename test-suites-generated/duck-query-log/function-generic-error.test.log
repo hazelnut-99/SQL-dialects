@@ -1,0 +1,80 @@
+PRAGMA enable_verification;
+SELECT error('test');
+SELECT error('test');
+;
+SELECT error('test');
+SELECT error('test');
+SELECT
+  CASE
+    WHEN value = 'foo' THEN 'Value is foo.'
+    ELSE ERROR(CONCAT('Found unexpected value: ', value))
+  END AS new_value
+FROM (
+  SELECT 'foo' AS value UNION ALL
+  SELECT 'baz' AS value);;
+SELECT
+  CASE
+    WHEN value = 'foo' THEN 'Value is foo.'
+    ELSE ERROR(CONCAT('Found unexpected value: ', value))
+  END AS new_value
+FROM (
+  SELECT 'foo' AS value UNION ALL
+  SELECT 'baz' AS value);;
+;
+SELECT
+  CASE
+    WHEN value = 'foo' THEN 'Value is foo.'
+    ELSE ERROR(CONCAT('Found unexpected value: ', value))
+  END AS new_value
+FROM (
+  SELECT 'foo' AS value UNION ALL
+  SELECT 'baz' AS value);;
+SELECT
+  CASE
+    WHEN value = 'foo' THEN 'Value is foo.'
+    ELSE ERROR(CONCAT('Found unexpected value: ', value))
+  END AS new_value
+FROM (
+  SELECT 'foo' AS value UNION ALL
+  SELECT 'baz' AS value);;
+SELECT *
+FROM (SELECT 4 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even number but is {}', x)));;
+SELECT *
+FROM (SELECT 4 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even number but is {}', x)));;
+;
+SELECT *
+FROM (SELECT 4 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even number but is {}', x)));;
+SELECT * FROM (SELECT 4 AS x) WHERE CASE  WHEN (((x % 2) = 0)) THEN (CAST('t' AS BOOLEAN)) ELSE error(format('x must be even number but is {}', x)) END;
+;
+;
+;
+;
+SELECT *
+FROM (SELECT 4 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even number but is {}', x)));;
+SELECT *
+FROM (SELECT 3 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even but is {}', x)));;
+SELECT *
+FROM (SELECT 3 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even but is {}', x)));;
+;
+SELECT *
+FROM (SELECT 3 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even but is {}', x)));;
+SELECT *
+FROM (SELECT 3 AS x)
+WHERE IF(x % 2 = 0, true, ERROR(FORMAT('x must be even but is {}', x)));;
+SELECT 42=error('hello world');
+SELECT 42=error('hello world');
+;
+SELECT 42=error('hello world');
+SELECT 42=error('hello world');
+SELECT error('hello world') IS NULL;
+SELECT error('hello world') IS NULL;
+;
+SELECT error('hello world') IS NULL;
+SELECT error('hello world') IS NULL;

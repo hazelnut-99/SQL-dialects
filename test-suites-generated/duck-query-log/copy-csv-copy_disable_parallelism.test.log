@@ -1,0 +1,2 @@
+CREATE TABLE test (a INTEGER, b INTEGER, c VARCHAR(10));;
+COPY test FROM 'test/sql/copy/csv/data/test/test.csv';;

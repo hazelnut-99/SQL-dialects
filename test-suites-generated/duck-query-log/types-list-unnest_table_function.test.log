@@ -1,0 +1,199 @@
+PRAGMA enable_verification;
+SELECT * FROM UNNEST(ARRAY[1, 2, 3]);;
+SELECT * FROM UNNEST(ARRAY[1, 2, 3]);;
+;
+SELECT * FROM UNNEST(ARRAY[1, 2, 3]);;
+SELECT * FROM unnest((ARRAY[1, 2, 3]));
+;
+;
+;
+;
+SELECT * FROM UNNEST(ARRAY[1, 2, 3]);;
+SELECT * FROM UNNEST([1, 2, 3]::INT ARRAY);;
+SELECT * FROM UNNEST([1, 2, 3]::INT ARRAY);;
+;
+SELECT * FROM UNNEST([1, 2, 3]::INT ARRAY);;
+SELECT * FROM unnest(CAST(main.list_value(1, 2, 3) AS INTEGER[]));
+;
+;
+;
+;
+SELECT * FROM UNNEST([1, 2, 3]::INT ARRAY);;
+SELECT i FROM UNNEST(ARRAY[1, 2, 3]) AS tbl(i);;
+SELECT i FROM UNNEST(ARRAY[1, 2, 3]) AS tbl(i);;
+;
+SELECT i FROM UNNEST(ARRAY[1, 2, 3]) AS tbl(i);;
+SELECT i FROM unnest((ARRAY[1, 2, 3])) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST(ARRAY[1, 2, 3]) AS tbl(i);;
+SELECT i FROM UNNEST(ARRAY[NULL, 'hello', 'world', 'bleorkbaejkoreijgaiorjgare']) AS tbl(i);;
+SELECT i FROM UNNEST(ARRAY[NULL, 'hello', 'world', 'bleorkbaejkoreijgaiorjgare']) AS tbl(i);;
+;
+SELECT i FROM UNNEST(ARRAY[NULL, 'hello', 'world', 'bleorkbaejkoreijgaiorjgare']) AS tbl(i);;
+SELECT i FROM unnest((ARRAY[NULL, 'hello', 'world', 'bleorkbaejkoreijgaiorjgare'])) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST(ARRAY[NULL, 'hello', 'world', 'bleorkbaejkoreijgaiorjgare']) AS tbl(i);;
+SELECT i FROM UNNEST([[1, 2], [3, 4], NULL, [4, 5, 6, 7]]) AS tbl(i);;
+SELECT i FROM UNNEST([[1, 2], [3, 4], NULL, [4, 5, 6, 7]]) AS tbl(i);;
+;
+SELECT i FROM UNNEST([[1, 2], [3, 4], NULL, [4, 5, 6, 7]]) AS tbl(i);;
+SELECT i FROM unnest(main.list_value(main.list_value(1, 2), main.list_value(3, 4), NULL, main.list_value(4, 5, 6, 7))) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST([[1, 2], [3, 4], NULL, [4, 5, 6, 7]]) AS tbl(i);;
+SELECT i FROM UNNEST([{'a': [1, 2, 3], 'b': [4, 5, 6]}, {'a': [4, 5], 'b': [7, 8, 9, 10]}]) AS tbl(i);;
+SELECT i FROM UNNEST([{'a': [1, 2, 3], 'b': [4, 5, 6]}, {'a': [4, 5], 'b': [7, 8, 9, 10]}]) AS tbl(i);;
+;
+SELECT i FROM UNNEST([{'a': [1, 2, 3], 'b': [4, 5, 6]}, {'a': [4, 5], 'b': [7, 8, 9, 10]}]) AS tbl(i);;
+SELECT i FROM unnest(main.list_value(main.struct_pack(a := main.list_value(1, 2, 3), b := main.list_value(4, 5, 6)), main.struct_pack(a := main.list_value(4, 5), b := main.list_value(7, 8, 9, 10)))) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST([{'a': [1, 2, 3], 'b': [4, 5, 6]}, {'a': [4, 5], 'b': [7, 8, 9, 10]}]) AS tbl(i);;
+SELECT COUNT(*) FROM UNNEST((SELECT LIST(range) FROM range(4000))) AS tbl(i);;
+SELECT COUNT(*) FROM UNNEST((SELECT LIST(range) FROM range(4000))) AS tbl(i);;
+;
+SELECT COUNT(*) FROM UNNEST((SELECT LIST(range) FROM range(4000))) AS tbl(i);;
+SELECT count_star() FROM unnest((SELECT list("range") FROM range(4000))) AS tbl(i);
+;
+;
+;
+;
+SELECT COUNT(*) FROM UNNEST((SELECT LIST(range) FROM range(4000))) AS tbl(i);;
+SELECT i FROM UNNEST(NULL::INT[]) AS tbl(i);;
+SELECT i FROM UNNEST(NULL::INT[]) AS tbl(i);;
+;
+SELECT i FROM UNNEST(NULL::INT[]) AS tbl(i);;
+SELECT i FROM unnest(CAST(NULL AS INTEGER[])) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST(NULL::INT[]) AS tbl(i);;
+SELECT i FROM UNNEST([]::INT[]) AS tbl(i);;
+SELECT i FROM UNNEST([]::INT[]) AS tbl(i);;
+;
+SELECT i FROM UNNEST([]::INT[]) AS tbl(i);;
+SELECT i FROM unnest(CAST(main.list_value() AS INTEGER[])) AS tbl(i);
+;
+;
+;
+;
+SELECT i FROM UNNEST([]::INT[]) AS tbl(i);;
+SELECT * FROM UNNEST((SELECT [1,2,3] UNION ALL SELECT [4,5]));;
+SELECT * FROM UNNEST((SELECT [1,2,3] UNION ALL SELECT [4,5]));;
+;
+SELECT * FROM UNNEST((SELECT [1,2,3] UNION ALL SELECT [4,5]));;
+SELECT * FROM unnest(((SELECT main.list_value(1, 2, 3)) UNION ALL (SELECT main.list_value(4, 5))));
+;
+;
+;
+;
+SELECT * FROM UNNEST((SELECT [1,2,3] UNION ALL SELECT [4,5]));;
+CREATE TABLE lists AS SELECT [1,2,3] l UNION ALL SELECT [4,5] UNION ALL SELECT [] UNION ALL SELECT [NULL] UNION ALL SELECT [7, 8];;
+SELECT * FROM UNNEST((SELECT l FROM lists));;
+SELECT * FROM UNNEST((SELECT l FROM lists));;
+;
+SELECT * FROM UNNEST((SELECT l FROM lists));;
+SELECT * FROM unnest((SELECT l FROM lists));
+;
+;
+;
+;
+SELECT * FROM UNNEST((SELECT l FROM lists));;
+PREPARE v1 AS SELECT * FROM UNNEST(?::INT[]);;
+EXECUTE v1([1,2,3,4,5]);;
+SELECT i FROM UNNEST(NULL) AS tbl(i);;
+SELECT i FROM UNNEST(NULL) AS tbl(i);;
+;
+SELECT i FROM UNNEST(NULL) AS tbl(i);;
+SELECT i FROM UNNEST(NULL) AS tbl(i);;
+SELECT i FROM UNNEST(1) AS tbl(i);;
+SELECT i FROM UNNEST(1) AS tbl(i);;
+;
+SELECT i FROM UNNEST(1) AS tbl(i);;
+SELECT i FROM UNNEST(1) AS tbl(i);;
+SELECT i FROM UNNEST([1, 2], [3, 4]) AS tbl(i);;
+SELECT i FROM UNNEST([1, 2], [3, 4]) AS tbl(i);;
+;
+SELECT i FROM UNNEST([1, 2], [3, 4]) AS tbl(i);;
+SELECT i FROM UNNEST([1, 2], [3, 4]) AS tbl(i);;
+CREATE TABLE tbl AS
+SELECT * FROM (VALUES
+	('a', array[4, 5, 5], array[5, 7]),
+	('b', array[2, 3], array[1, 2, 3, 4]),
+	('c', array[2, 3], array[4])
+) t(k, a,b);;
+SELECT list_sort(array(
+	SELECT list_contains(b, ax)
+	FROM UNNEST(a) ta(ax)
+)) ab_intersect
+FROM tbl;;
+SELECT list_sort(array(
+	SELECT list_contains(b, ax)
+	FROM UNNEST(a) ta(ax)
+)) ab_intersect
+FROM tbl;;
+;
+SELECT list_sort(array(
+	SELECT list_contains(b, ax)
+	FROM UNNEST(a) ta(ax)
+)) ab_intersect
+FROM tbl;;
+SELECT list_sort((SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT list_contains(b, ax) FROM unnest(a) AS ta(ax)))) AS ab_intersect FROM tbl;
+;
+;
+;
+;
+SELECT list_sort(array(
+	SELECT list_contains(b, ax)
+	FROM UNNEST(a) ta(ax)
+)) ab_intersect
+FROM tbl;;
+SELECT k, a, b,
+	list_sort(ARRAY(
+		SELECT DISTINCT ax
+			FROM UNNEST(a) ta(ax)
+			WHERE ax = any(b)
+			ORDER BY ALL
+	)) ab_intersect
+	FROM tbl;;
+SELECT k, a, b,
+	list_sort(ARRAY(
+		SELECT DISTINCT ax
+			FROM UNNEST(a) ta(ax)
+			WHERE ax = any(b)
+			ORDER BY ALL
+	)) ab_intersect
+	FROM tbl;;
+;
+SELECT k, a, b,
+	list_sort(ARRAY(
+		SELECT DISTINCT ax
+			FROM UNNEST(a) ta(ax)
+			WHERE ax = any(b)
+			ORDER BY ALL
+	)) ab_intersect
+	FROM tbl;;
+SELECT k, a, b, list_sort((SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY COLUMNS(*)) END FROM (SELECT DISTINCT ax FROM unnest(a) AS ta(ax) WHERE (ax = ANY(SELECT unnest(b))) ORDER BY COLUMNS(*)))) AS ab_intersect FROM tbl;
+;
+;
+;
+;
+SELECT k, a, b,
+	list_sort(ARRAY(
+		SELECT DISTINCT ax
+			FROM UNNEST(a) ta(ax)
+			WHERE ax = any(b)
+			ORDER BY ALL
+	)) ab_intersect
+	FROM tbl;;

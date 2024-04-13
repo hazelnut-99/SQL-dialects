@@ -1,0 +1,11 @@
+COPY (SELECT i::VARCHAR as a, (i*10)::VARCHAR as b, (i*100)::VARCHAR as c from range(0,10) tbl(i)) TO 'duckdb_unittest_tempdir/54696/hive_pushdown_bug' (FORMAT PARQUET, PARTITION_BY c);;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1) where a > b;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1) where a > b;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet') where a > b;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1) where a::VARCHAR > c::VARCHAR;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1) where a::VARCHAR > c::VARCHAR;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet') where a::VARCHAR > c::VARCHAR;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1, HIVE_TYPES_AUTOCAST=1) where c=500;;
+explain SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54696/hive_pushdown_bug/*/*.parquet', HIVE_PARTITIONING=1, HIVE_TYPES_AUTOCAST=1) where c=500 and b='20';;
+COPY (SELECT i::VARCHAR as a, (i*10)::VARCHAR as b, (i*100)::VARCHAR as c from range(0,10) tbl(i)) TO 'duckdb_unittest_tempdir/54696/hive_pushdown_bug_csv' (FORMAT CSV, PARTITION_BY c);;
+explain SELECT * FROM read_csv_auto('duckdb_unittest_tempdir/54696/hive_pushdown_bug_csv/*/*.csv', HIVE_PARTITIONING=1, HIVE_TYPES_AUTOCAST=1, names=['a','b','c']) where c=500;;

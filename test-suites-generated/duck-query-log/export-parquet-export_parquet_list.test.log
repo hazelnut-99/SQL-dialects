@@ -1,0 +1,26 @@
+begin transaction;;
+create table tbl as select val from (
+	select ['01010101'::BIT, '01011101001'::BIT] val
+), range(3);;
+select * from tbl;;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54872/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE tbl(val BIT[]);
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54872/export_test/tbl.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl(val BIT[]);
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54872/export_test/tbl.parquet' ( FORMAT parquet );;
+select * from tbl;;

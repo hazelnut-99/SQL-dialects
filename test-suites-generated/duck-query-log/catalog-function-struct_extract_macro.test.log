@@ -1,0 +1,12 @@
+PRAGMA enable_verification;
+CREATE MACRO my_extract(x) AS x.a.b;
+SELECT my_extract({'a': {'b': 42}});
+SELECT my_extract({'a': {'b': 42}});
+;
+SELECT my_extract({'a': {'b': 42}});
+SELECT my_extract(main.struct_pack(a := main.struct_pack(b := 42)));
+;
+;
+;
+;
+SELECT my_extract({'a': {'b': 42}});

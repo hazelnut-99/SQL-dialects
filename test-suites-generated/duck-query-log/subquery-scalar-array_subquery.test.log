@@ -1,0 +1,165 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);;
+INSERT INTO integers VALUES (1), (2), (3), (NULL);;
+SELECT i, ARRAY(
+	SELECT 42
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT 42
+) top
+FROM integers i1
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT 42
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT 42)) AS top FROM integers AS i1 ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT 42
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i1.i=i
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i1.i=i
+) top
+FROM integers i1
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i1.i=i
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT i FROM integers WHERE (i1.i = i))) AS top FROM integers AS i1 ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i1.i=i
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i>i1.i ORDER BY i ASC NULLS FIRST
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i>i1.i ORDER BY i ASC NULLS FIRST
+) top
+FROM integers i1
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i>i1.i ORDER BY i ASC NULLS FIRST
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i ASC NULLS FIRST) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i ASC NULLS FIRST) END FROM (SELECT i FROM integers WHERE (i > i1.i) ORDER BY i ASC NULLS FIRST)) AS top FROM integers AS i1 ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT i FROM integers WHERE i>i1.i ORDER BY i ASC NULLS FIRST
+) top
+FROM integers i1
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3
+) top
+FROM integers
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT i1.i FROM integers AS i1 , integers AS i2 , integers AS i3 , integers AS i4 WHERE (i1.i = integers.i) LIMIT 3)) AS top FROM integers ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 3
+) top
+FROM integers
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT i1.i FROM integers AS i1 , integers AS i2 , integers AS i3 , integers AS i4 WHERE (i1.i = integers.i) LIMIT 3 OFFSET 3)) AS top FROM integers ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 3
+) top
+FROM integers
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 62
+) top
+FROM integers
+ORDER BY i;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 62
+) top
+FROM integers
+ORDER BY i;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 62
+) top
+FROM integers
+ORDER BY i;
+SELECT i, (SELECT CASE  WHEN ((array_agg(COLUMNS(*)) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*)) END FROM (SELECT i1.i FROM integers AS i1 , integers AS i2 , integers AS i3 , integers AS i4 WHERE (i1.i = integers.i) LIMIT 3 OFFSET 62)) AS top FROM integers ORDER BY i;
+;
+;
+;
+;
+SELECT i, ARRAY(
+	SELECT i1.i FROM integers i1, integers i2, integers i3, integers i4 WHERE i1.i=integers.i LIMIT 3 OFFSET 62
+) top
+FROM integers
+ORDER BY i;
+select array(select 1,2);
+select array(select 1,2);
+;
+select array(select 1,2);
+select array(select 1,2);

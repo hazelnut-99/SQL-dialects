@@ -1,0 +1,5 @@
+PRAGMA enable_verification;
+CREATE TABLE t14(c0 BIGINT);;
+INSERT INTO t14(c0) VALUES ((1)), ((1)), ((1));;
+CREATE INDEX i1 ON t14(c0 );;
+DELETE FROM t14 WHERE t14.rowid;;

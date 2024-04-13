@@ -1,0 +1,3 @@
+CREATE TABLE nfcstrings (s STRING);;
+COPY nfcstrings FROM 'test/sql/copy/csv/data/test/nfc.csv';;
+SELECT COUNT(*) FROM nfcstrings WHERE s COLLATE NFC = 'ü';

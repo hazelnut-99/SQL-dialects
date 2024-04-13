@@ -1,0 +1,10 @@
+CREATE TABLE a(id INTEGER, b INTEGER[][]);;
+INSERT INTO a VALUES (0, [[1, 2], NULL, [3, NULL]]), (1, NULL), (2, [[4, 5, 6, 7], [NULL]]);
+SELECT * FROM a ORDER BY id;
+SELECT id, b[0:1] FROM a ORDER BY id;
+SELECT id, b[0:2] FROM a ORDER BY id;
+SELECT id, b[1:1] FROM a ORDER BY id;
+SELECT id, b[1:2] FROM a ORDER BY id;
+SELECT id, b[0:0] FROM a ORDER BY id;
+SELECT id, b[:] FROM a ORDER BY id;
+SELECT id, list_extract(b[:], 0) FROM a ORDER BY id;

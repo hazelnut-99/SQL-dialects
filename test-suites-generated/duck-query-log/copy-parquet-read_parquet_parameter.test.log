@@ -1,0 +1,4 @@
+PRAGMA enable_verification;
+PREPARE v1 AS SELECT * FROM parquet_scan($1) ORDER BY 1;
+EXECUTE v1('data/parquet-testing/arrow/alltypes_plain.parquet');
+EXECUTE v1('data/parquet-testing/pandas-date.parquet');

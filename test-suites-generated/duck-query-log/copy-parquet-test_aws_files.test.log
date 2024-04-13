@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+SELECT * FROM parquet_scan('data/parquet-testing/aws1.snappy.parquet') limit 100;
+SELECT * FROM parquet_scan('data/parquet-testing/aws1.snappy.parquet') limit 100;
+;
+SELECT * FROM parquet_scan('data/parquet-testing/aws1.snappy.parquet') limit 100;
+SELECT * FROM parquet_scan('data/parquet-testing/aws1.snappy.parquet') LIMIT 100;
+;
+;
+;
+;
+SELECT * FROM parquet_scan('data/parquet-testing/aws1.snappy.parquet') limit 100;

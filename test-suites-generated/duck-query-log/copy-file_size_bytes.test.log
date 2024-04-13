@@ -1,0 +1,8 @@
+CREATE TABLE bigdata AS SELECT i AS col_a, i AS col_b FROM range(0,10000) tbl(i);;
+set threads=1;
+COPY (FROM bigdata) TO 'duckdb_unittest_tempdir/54493/file_size_bytes_csv1' (FORMAT CSV, FILE_SIZE_BYTES 1000);;
+SELECT COUNT(*) FROM read_csv_auto('duckdb_unittest_tempdir/54493/file_size_bytes_csv1/*.csv');
+SELECT count(*) FROM glob('duckdb_unittest_tempdir/54493/file_size_bytes_csv1/*.csv');
+COPY (FROM bigdata) TO 'duckdb_unittest_tempdir/54493/file_size_bytes_csv2' (FORMAT CSV, FILE_SIZE_BYTES '1kb');;
+SELECT COUNT(*) FROM read_csv_auto('duckdb_unittest_tempdir/54493/file_size_bytes_csv2/*.csv');
+SELECT count(*) FROM glob('duckdb_unittest_tempdir/54493/file_size_bytes_csv2/*.csv');

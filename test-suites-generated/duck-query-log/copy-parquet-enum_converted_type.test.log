@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+select * from 'data/parquet-testing/enum.parquet';;
+select * from 'data/parquet-testing/enum.parquet';;
+;
+select * from 'data/parquet-testing/enum.parquet';;
+SELECT * FROM "data/parquet-testing/enum.parquet";
+;
+;
+;
+;
+select * from 'data/parquet-testing/enum.parquet';;

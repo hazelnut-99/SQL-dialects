@@ -1,0 +1,2 @@
+create sequence seq;;
+drop sequence seq;;

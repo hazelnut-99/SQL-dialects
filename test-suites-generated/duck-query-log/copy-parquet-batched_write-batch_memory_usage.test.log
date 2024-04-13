@@ -1,0 +1,4 @@
+SELECT setseed(0.72);
+COPY (SELECT uuid()::VARCHAR as varchar, uuid() AS uuid FROM range(10000000) t(i)) TO 'duckdb_unittest_tempdir/54803/random_uuids.parquet';
+SET memory_limit='500MB';
+COPY 'duckdb_unittest_tempdir/54803/random_uuids.parquet' TO 'duckdb_unittest_tempdir/54803/random_uuids_copy.parquet';;

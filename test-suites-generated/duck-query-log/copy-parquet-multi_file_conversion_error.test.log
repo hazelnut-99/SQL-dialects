@@ -1,0 +1,3 @@
+copy (select 42 as a) to 'duckdb_unittest_tempdir/54747/conversion_error1.parquet';;
+copy (select blob 'hello world' as a) to 'duckdb_unittest_tempdir/54747/conversion_error2.parquet';;
+SELECT * FROM read_parquet(['duckdb_unittest_tempdir/54747/conversion_error1.parquet', 'duckdb_unittest_tempdir/54747/conversion_error2.parquet']);

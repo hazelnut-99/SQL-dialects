@@ -1,31 +1,31 @@
-explain PRAGMA enable_verification
-explain CREATE TABLE integers(i INTEGER);
-explain SELECT * FROM integers;
-explain INSERT INTO integers VALUES (1);
-CREATE TABLE integers(i INTEGER);
-explain SELECT * FROM integers;
-explain INSERT INTO integers VALUES (1);
-INSERT INTO integers VALUES (1);
-explain DELETE FROM integers WHERE i=1
-explain UPDATE integers SET i=i+1
-explain CREATE INDEX i_index ON integers(i)
-explain ALTER TABLE integers RENAME TO integers2
-explain ALTER TABLE integers ADD COLUMN j INTEGER
-explain ALTER TABLE integers RENAME i TO k
-SELECT * FROM integers
-explain PREPARE v1 AS SELECT * FROM integers WHERE i=?
-PREPARE v1 AS SELECT * FROM integers WHERE i=?
-explain EXECUTE v1(1);
-explain DEALLOCATE v1
-EXECUTE v1(1)
-explain VACUUM
-explain CREATE SEQUENCE seq
-explain CREATE VIEW v1 AS SELECT * FROM integers
-explain DROP TABLE integers
-explain CHECKPOINT
-explain BEGIN TRANSACTION
-explain SET memory_limit='1GB'
-explain CREATE MACRO f(x) AS x+1
-SELECT f(1)
-CREATE MACRO f(x) AS x+1
-SELECT f(1)
+explain PRAGMA enable_verification;
+explain CREATE TABLE integers(i INTEGER);;
+explain SELECT * FROM integers;;
+explain INSERT INTO integers VALUES (1);;
+CREATE TABLE integers(i INTEGER);;
+explain SELECT * FROM integers;;
+explain INSERT INTO integers VALUES (1);;
+INSERT INTO integers VALUES (1);;
+explain DELETE FROM integers WHERE i=1;
+explain UPDATE integers SET i=i+1;
+explain CREATE INDEX i_index ON integers(i);
+explain ALTER TABLE integers RENAME TO integers2;
+explain ALTER TABLE integers ADD COLUMN j INTEGER;
+explain ALTER TABLE integers RENAME i TO k;
+SELECT * FROM integers;
+explain PREPARE v1 AS SELECT * FROM integers WHERE i=?;
+PREPARE v1 AS SELECT * FROM integers WHERE i=?;
+explain EXECUTE v1(1);;
+explain DEALLOCATE v1;
+EXECUTE v1(1);
+explain VACUUM;
+explain CREATE SEQUENCE seq;
+explain CREATE VIEW v1 AS SELECT * FROM integers;
+explain DROP TABLE integers;
+explain CHECKPOINT;
+explain BEGIN TRANSACTION;
+explain SET memory_limit='1GB';
+explain CREATE MACRO f(x) AS x+1;
+SELECT f(1);
+CREATE MACRO f(x) AS x+1;
+SELECT f(1);

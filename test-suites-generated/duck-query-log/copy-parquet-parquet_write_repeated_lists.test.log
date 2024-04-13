@@ -1,0 +1,16 @@
+PRAGMA enable_verification;
+COPY (
+    SELECT *
+            FROM (values(['asdf', 'fdsa']))
+            JOIN (values(1),(2)) ON TRUE
+) to 'duckdb_unittest_tempdir/54751/lists.parquet';;
+SELECT * FROM read_parquet('duckdb_unittest_tempdir/54751/lists.parquet');;
+SELECT * FROM read_parquet('duckdb_unittest_tempdir/54751/lists.parquet');;
+;
+SELECT * FROM read_parquet('duckdb_unittest_tempdir/54751/lists.parquet');;
+SELECT * FROM read_parquet('duckdb_unittest_tempdir/54751/lists.parquet');
+;
+;
+;
+;
+SELECT * FROM read_parquet('duckdb_unittest_tempdir/54751/lists.parquet');;

@@ -1,12 +1,12 @@
-PREPARE v1 AS SELECT list_transform(?, x -> x + 1)
-EXECUTE v1([1, 2, 3])
-PREPARE v2 AS SELECT list_transform([1, 2, 3], x -> x + ?)
-EXECUTE v2(1)
-PREPARE v3 AS SELECT list_transform(?, x -> x + ? + ?)
-EXECUTE v3([1, 2, 3], 1, 1)
-PREPARE v4 AS SELECT list_filter(?, x -> x > 1)
-EXECUTE v4([1, 2, 3])
-PREPARE v5 AS SELECT list_filter([1, 2, 3], x -> x > ?)
-EXECUTE v5(1)
-PREPARE v6 AS SELECT list_filter(?, x -> x > ? AND ?)
-EXECUTE v6([1, 2, 3], 1, True)
+PREPARE v1 AS SELECT list_transform(?, x -> x + 1);
+EXECUTE v1([1, 2, 3]);
+PREPARE v2 AS SELECT list_transform([1, 2, 3], x -> x + ?);
+EXECUTE v2(1);
+PREPARE v3 AS SELECT list_transform(?, x -> x + ? + ?);
+EXECUTE v3([1, 2, 3], 1, 1);
+PREPARE v4 AS SELECT list_filter(?, x -> x > 1);
+EXECUTE v4([1, 2, 3]);
+PREPARE v5 AS SELECT list_filter([1, 2, 3], x -> x > ?);
+EXECUTE v5(1);
+PREPARE v6 AS SELECT list_filter(?, x -> x > ? AND ?);
+EXECUTE v6([1, 2, 3], 1, True);

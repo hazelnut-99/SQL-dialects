@@ -1,0 +1,7 @@
+create sequence seq;;
+create table integers(i integer default nextval('seq'));;
+drop sequence seq;;
+begin transaction;;
+drop table integers;;
+drop sequence seq;;
+commit;

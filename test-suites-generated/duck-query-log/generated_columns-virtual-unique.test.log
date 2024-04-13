@@ -1,0 +1,17 @@
+PRAGMA enable_verification;
+CREATE TABLE unit (
+	price INTEGER,
+	amount_sold AS (price) UNIQUE,
+);;
+CREATE TABLE unit (
+	price INTEGER,
+	amount_sold AS (price),
+	UNIQUE (amount_sold),
+);;
+CREATE TABLE tbl (
+	gen1 AS (price),
+	gen2 AS (price),
+	price INTEGER UNIQUE
+);;
+INSERT INTO tbl VALUES (5);;
+INSERT INTO tbl VALUES (5);;

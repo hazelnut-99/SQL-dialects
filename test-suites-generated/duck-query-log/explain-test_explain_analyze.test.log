@@ -1,37 +1,37 @@
-PRAGMA enable_verification
-CREATE TABLE integers AS SELECT * FROM range(100) tbl(i);
-EXPLAIN ANALYZE SELECT SUM(i) FROM integers
-EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);
-PRAGMA enable_profiling
-EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);
-PRAGMA disable_profiling
-EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);
-PRAGMA profiling_output='duckdb_unittest_tempdir/17768/test.json'
-PRAGMA enable_profiling='json'
-SELECT 42
-SELECT 42
-
-SELECT 42
-SELECT 42
-
-
-
-
-SELECT 42
-PRAGMA disable_profiling
-PRAGMA profiling_output='duckdb_unittest_tempdir/17768/test_2.json'
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-PRAGMA profiling_output='duckdb_unittest_tempdir/17768/test.json'
-PRAGMA enable_profiling='json'
-EXPLAIN ANALYZE SELECT SUM(i) FROM integers
-PRAGMA disable_profiling
-PRAGMA profiling_output='duckdb_unittest_tempdir/17768/test_2.json'
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
-SELECT * FROM read_csv('duckdb_unittest_tempdir/17768/test.json', columns={'json': 'VARCHAR'}, sep='🦆');
+PRAGMA enable_verification;
+CREATE TABLE integers AS SELECT * FROM range(100) tbl(i);;
+EXPLAIN ANALYZE SELECT SUM(i) FROM integers;
+EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);;
+PRAGMA enable_profiling;
+EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);;
+PRAGMA disable_profiling;
+EXPLAIN ANALYZE SELECT SUM(i) FROM (SELECT * FROM integers i1, integers i2 UNION ALL SELECT * FROM integers i1, integers i2);;
+PRAGMA profiling_output='duckdb_unittest_tempdir/53036/test.json';
+PRAGMA enable_profiling='json';
+SELECT 42;
+SELECT 42;
+;
+SELECT 42;
+SELECT 42;
+;
+;
+;
+;
+SELECT 42;
+PRAGMA disable_profiling;
+PRAGMA profiling_output='duckdb_unittest_tempdir/53036/test_2.json';
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+PRAGMA profiling_output='duckdb_unittest_tempdir/53036/test.json';
+PRAGMA enable_profiling='json';
+EXPLAIN ANALYZE SELECT SUM(i) FROM integers;
+PRAGMA disable_profiling;
+PRAGMA profiling_output='duckdb_unittest_tempdir/53036/test_2.json';
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;
+SELECT * FROM read_csv('duckdb_unittest_tempdir/53036/test.json', columns={'json': 'VARCHAR'}, sep='🦆');;

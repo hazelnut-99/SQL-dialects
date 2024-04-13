@@ -1,0 +1,48 @@
+SET default_null_order='nulls_first';;
+CREATE TABLE ubn1(a BIGINT);;
+CREATE TABLE ubn2(a INTEGER, b INTEGER);;
+CREATE TABLE ubn3(a INTEGER, c INTEGER);;
+INSERT INTO ubn1 VALUES (1), (2), (9223372036854775807);;
+INSERT INTO ubn2 VALUES (3,4), (5, 6);;
+INSERT INTO ubn3 VALUES (100,101), (102, 103);;
+COPY ubn1 TO 'duckdb_unittest_tempdir/54534/ubn1.csv' WITH ( DELIMITER ',');;
+COPY ubn2 TO 'duckdb_unittest_tempdir/54534/ubn2.csv' WITH (DELIMITER ',');;
+COPY ubn3 TO 'duckdb_unittest_tempdir/54534/ubn3.csv' WITH (DELIMITER ',');;
+SELECT * FROM read_csv_auto(['duckdb_unittest_tempdir/54534/ubn1.csv', 'duckdb_unittest_tempdir/54534/ubn2.csv', 'duckdb_unittest_tempdir/54534/ubn3.csv']);;
+SELECT a, b, c
+FROM  read_csv_auto(['duckdb_unittest_tempdir/54534/ubn1.csv', 'duckdb_unittest_tempdir/54534/ubn2.csv', 'duckdb_unittest_tempdir/54534/ubn3.csv'], UNION_BY_NAME=TRUE)
+ORDER BY a;;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM read_csv_auto(['duckdb_unittest_tempdir/54534/ubn1.csv', 'duckdb_unittest_tempdir/54534/ubn2.csv', 'duckdb_unittest_tempdir/54534/ubn3.csv'], UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT * FROM read_csv_auto(['data/csv/union-by-name/ubn1.csv', 'data/csv/union-by-name/ubn2.csv', 'data/csv/union-by-name/ubn3.csv', 'data/csv/union-by-name/ubn4.csv']);
+SELECT  a, b, c, ts, k
+FROM read_csv_auto('data/csv/union-by-name/ubn*.csv',UNION_BY_NAME=TRUE)
+ORDER BY a, c, ts;
+SELECT  typeof(a), typeof(b), typeof(c), typeof(ts), typeof(k)
+FROM read_csv_auto('data/csv/union-by-name/ubn*.csv',UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT  c, k
+FROM read_csv_auto('data/csv/union-by-name/ubn*.csv',UNION_BY_NAME=TRUE)
+ORDER BY c NULLS LAST, k NULLS LAST;
+SELECT  ts
+FROM read_csv_auto('data/csv/union-by-name/ubn*.csv',UNION_BY_NAME=TRUE)
+ORDER BY ts NULLS LAST;
+SELECT typeof(a), typeof(b), typeof(ts) FROM read_csv_auto('data/csv/union-by-name/ubn2.csv') LIMIT 1;;
+SELECT a, b, c, ts, replace(filename, '\', '/')
+FROM read_csv_auto('data/csv/union-by-name/ubn[12].csv',FILENAME=TRUE ,UNION_BY_NAME=TRUE)
+ORDER BY a, c, ts;
+SELECT typeof(a), typeof(b), typeof(c), typeof(ts)
+FROM read_csv_auto('data/csv/union-by-name/ubn[12].csv',UNION_BY_NAME=TRUE)
+LIMIT 1;
+SELECT typeof(ts)
+FROM read_csv_auto('data/csv/union-by-name/ubn[23].csv',UNION_BY_NAME=TRUE)
+LIMIT 1;
+SELECT k, c, ts, replace(filename, '\', '/')
+FROM read_csv_auto('data/csv/union-by-name/ubn[!1-2].csv',FILENAME=TRUE ,UNION_BY_NAME=TRUE)
+ORDER BY c;
+SELECT * FROM read_csv_auto('data/csv/union-by-name/part=[ab]/*',HIVE_PARTITIONING=TRUE, null_padding=0);
+SELECT id, value, a, part
+FROM read_csv_auto('data/csv/union-by-name/part=[ab]/*',HIVE_PARTITIONING=TRUE ,UNION_BY_NAME=TRUE)
+ORDER BY id;
+SELECT * FROM read_csv_auto('data/csv/union-by-name/*[!a]/*',HIVE_PARTITIONING=TRUE ,UNION_BY_NAME=TRUE);

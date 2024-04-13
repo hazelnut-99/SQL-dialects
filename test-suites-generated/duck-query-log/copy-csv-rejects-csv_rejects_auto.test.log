@@ -1,0 +1,23 @@
+SELECT typeof(first(column0)), typeof(first(column1)), COUNT(*), SUM(column0), MAX(len(column1)) FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/big_bad*.csv',
+    sample_size=1,
+    store_rejects=true);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT SUM(num) FROM read_csv_auto(
+	'test/sql/copy/csv/data/error/mismatch/half1.csv',
+	header=true,
+	sample_size=1,
+	store_rejects=true);
+SELECT COUNT(*) FROM reject_errors;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT SUM(num) FROM read_csv_auto(
+	'test/sql/copy/csv/data/error/mismatch/half2.csv',
+	header=true,
+	ignore_errors=true,
+	sample_size=1,
+	rejects_table='csv_rejects_table');;
+SELECT COUNT(*) FROM csv_rejects_table;;
+DROP TABLE csv_rejects_table;;

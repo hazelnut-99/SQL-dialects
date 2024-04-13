@@ -1,0 +1,9 @@
+PRAGMA enable_verification;
+CREATE TABLE unit (price INTEGER, amount_sold INTEGER);;
+INSERT INTO unit VALUES (5,4);
+ALTER TABLE unit DROP COLUMN price;;
+CREATE TABLE tbl (
+	price INTEGER,
+	total_profit AS (price)
+);;
+ALTER TABLE tbl DROP COLUMN price;;

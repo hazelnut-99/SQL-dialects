@@ -1,0 +1,173 @@
+PRAGMA enable_verification;
+select map_entries(MAP());
+select map_entries(MAP());
+;
+select map_entries(MAP());
+SELECT map_entries(map());
+;
+;
+;
+;
+select map_entries(MAP());
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5), main.row('b', 6), main.row('x', 21), main.row('abc', 0))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map([5], [NULL]));
+;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map(main.list_value(5), main.list_value(NULL)));
+;
+;
+;
+;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5), main.row('b', 6), main.row('x', 21), main.row('abc', 0))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+select map_entries(MAP());
+select map_entries(MAP());
+;
+select map_entries(MAP());
+SELECT map_entries(map());
+;
+;
+;
+;
+select map_entries(MAP());
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries([('a', 5)]));;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5), main.row('b', 6), main.row('x', 21), main.row('abc', 0))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries([
+	('a', 5), ('b', 6), ('x', 21), ('abc', 0)
+]));;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map([5], [NULL]));
+;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map(main.list_value(5), main.list_value(NULL)));
+;
+;
+;
+;
+SELECT map_entries(map([5], [NULL]));
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;
+SELECT map_entries(map_from_entries(main.list_value(main.row('a', 5), main.row('b', 6), main.row('x', 21), main.row('abc', 0))));
+;
+;
+;
+;
+SELECT map_entries(map_from_entries(
+	[
+		('a', 5),
+		('b', 6),
+		('x', 21),
+		('abc', 0)
+	]
+));;

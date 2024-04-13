@@ -1,0 +1,5 @@
+CREATE TABLE integers(i INTEGER);;
+SELECT COUNT(*), COUNT(i), STDDEV_SAMP(i), SUM(i), SUM(DISTINCT i), FIRST(i), LAST(i), MAX(i), MIN(i) FROM integers WHERE i > 100;
+CREATE TABLE emptyaggr(i INTEGER);;
+SELECT COUNT(*) FROM emptyaggr;
+SELECT SUM(i), COUNT(i), COUNT(DISTINCT i), COUNT(*), AVG(i), COUNT(*)+1, COUNT(i)+1, MIN(i), MIN(i+1), MIN(i)+1 FROM emptyaggr;

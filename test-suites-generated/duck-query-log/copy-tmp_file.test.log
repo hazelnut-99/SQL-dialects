@@ -1,0 +1,7 @@
+copy (select 42 as x) to 'duckdb_unittest_tempdir/54490/foo';;
+copy (select 42 as x) to 'duckdb_unittest_tempdir/54490/foo';;
+COPY (SELECT 36) TO 'duckdb_unittest_tempdir/54490/.a.b';;
+COPY (SELECT 37 as x) TO 'duckdb_unittest_tempdir/54490/.a.b';;
+FROM read_csv('duckdb_unittest_tempdir/54490/.a.b');;
+COPY (SELECT 50) TO 'duckdb_unittest_tempdir/54490/.a.b.c.d.e..';;
+COPY (SELECT 51) TO 'duckdb_unittest_tempdir/54490/.a.b.c.d.e..';;

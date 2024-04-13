@@ -1,0 +1,1 @@
+SELECT * FROM 'data/parquet-testing/issue10279_delta_encoding.parquet';

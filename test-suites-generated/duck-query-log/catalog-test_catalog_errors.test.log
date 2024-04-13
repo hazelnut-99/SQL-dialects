@@ -1,0 +1,16 @@
+CREATE TABLE integers(i INTEGER);;
+CREATE VIEW vintegers AS SELECT 42;;
+CREATE OR REPLACE VIEW integers AS SELECT 42;;
+DROP VIEW integers;
+DROP TABLE blabla;
+ALTER TABLE blabla RENAME COLUMN i TO k;
+DROP TABLE IF EXISTS vintegers;
+CREATE INDEX i_index ON integers(i);;
+CREATE INDEX i_index ON integers(i);;
+CREATE INDEX IF NOT EXISTS i_index ON integers(i);;
+DROP INDEX i_index;
+DROP INDEX i_index;
+DROP INDEX IF EXISTS i_index;
+CREATE INDEX i_index ON integers(i);;
+DROP TABLE integers;;
+DROP INDEX i_index;

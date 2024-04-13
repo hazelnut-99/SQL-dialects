@@ -1,0 +1,5 @@
+create or replace table orders(m int,v int,j int);;
+insert into orders select i%12+1,i,j from range(360)t(i),range(1000)s(j);;
+copy (select 2000+(v//12)y,m,v,j from orders) TO 'duckdb_unittest_tempdir/54719/orders_m' (FORMAT PARQUET, PARTITION_BY (m));;
+copy (select 2000+(v//12)y,m,v,j from orders) TO 'duckdb_unittest_tempdir/54719/orders_y' (FORMAT PARQUET, PARTITION_BY (y));;
+copy (select 2000+(v//12)y,m,v,j from orders) TO 'duckdb_unittest_tempdir/54719/orders_ym' (FORMAT PARQUET,PARTITION_BY (y,m));;

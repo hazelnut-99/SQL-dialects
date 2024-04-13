@@ -1,0 +1,175 @@
+PRAGMA enable_verification;
+SELECT STARTS_WITH('hello world', 'h'),
+       STARTS_WITH('hello world', 'he'),
+       STARTS_WITH('hello world', 'hel'),
+       STARTS_WITH('hello world', 'hell'),
+       STARTS_WITH('hello world', 'hello'),
+       STARTS_WITH('hello world', 'hello '),
+       STARTS_WITH('hello world', 'hello w'),
+       STARTS_WITH('hello world', 'hello wo'),
+       STARTS_WITH('hello world', 'hello wor'),
+       STARTS_WITH('hello world', 'hello worl');
+SELECT STARTS_WITH('hello world', 'h'),
+       STARTS_WITH('hello world', 'he'),
+       STARTS_WITH('hello world', 'hel'),
+       STARTS_WITH('hello world', 'hell'),
+       STARTS_WITH('hello world', 'hello'),
+       STARTS_WITH('hello world', 'hello '),
+       STARTS_WITH('hello world', 'hello w'),
+       STARTS_WITH('hello world', 'hello wo'),
+       STARTS_WITH('hello world', 'hello wor'),
+       STARTS_WITH('hello world', 'hello worl');
+;
+SELECT STARTS_WITH('hello world', 'h'),
+       STARTS_WITH('hello world', 'he'),
+       STARTS_WITH('hello world', 'hel'),
+       STARTS_WITH('hello world', 'hell'),
+       STARTS_WITH('hello world', 'hello'),
+       STARTS_WITH('hello world', 'hello '),
+       STARTS_WITH('hello world', 'hello w'),
+       STARTS_WITH('hello world', 'hello wo'),
+       STARTS_WITH('hello world', 'hello wor'),
+       STARTS_WITH('hello world', 'hello worl');
+SELECT starts_with('hello world', 'h'), starts_with('hello world', 'he'), starts_with('hello world', 'hel'), starts_with('hello world', 'hell'), starts_with('hello world', 'hello'), starts_with('hello world', 'hello '), starts_with('hello world', 'hello w'), starts_with('hello world', 'hello wo'), starts_with('hello world', 'hello wor'), starts_with('hello world', 'hello worl');
+;
+;
+;
+;
+SELECT STARTS_WITH('hello world', 'h'),
+       STARTS_WITH('hello world', 'he'),
+       STARTS_WITH('hello world', 'hel'),
+       STARTS_WITH('hello world', 'hell'),
+       STARTS_WITH('hello world', 'hello'),
+       STARTS_WITH('hello world', 'hello '),
+       STARTS_WITH('hello world', 'hello w'),
+       STARTS_WITH('hello world', 'hello wo'),
+       STARTS_WITH('hello world', 'hello wor'),
+       STARTS_WITH('hello world', 'hello worl');
+SELECT STARTS_WITH('hello world', 'a'),
+       STARTS_WITH('hello world', 'ha'),
+       STARTS_WITH('hello world', 'hea'),
+       STARTS_WITH('hello world', 'hela'),
+       STARTS_WITH('hello world', 'hella'),
+       STARTS_WITH('hello world', 'helloa'),
+       STARTS_WITH('hello world', 'hello a'),
+       STARTS_WITH('hello world', 'hello wa'),
+       STARTS_WITH('hello world', 'hello woa'),
+       STARTS_WITH('hello world', 'hello wora');
+SELECT STARTS_WITH('hello world', 'a'),
+       STARTS_WITH('hello world', 'ha'),
+       STARTS_WITH('hello world', 'hea'),
+       STARTS_WITH('hello world', 'hela'),
+       STARTS_WITH('hello world', 'hella'),
+       STARTS_WITH('hello world', 'helloa'),
+       STARTS_WITH('hello world', 'hello a'),
+       STARTS_WITH('hello world', 'hello wa'),
+       STARTS_WITH('hello world', 'hello woa'),
+       STARTS_WITH('hello world', 'hello wora');
+;
+SELECT STARTS_WITH('hello world', 'a'),
+       STARTS_WITH('hello world', 'ha'),
+       STARTS_WITH('hello world', 'hea'),
+       STARTS_WITH('hello world', 'hela'),
+       STARTS_WITH('hello world', 'hella'),
+       STARTS_WITH('hello world', 'helloa'),
+       STARTS_WITH('hello world', 'hello a'),
+       STARTS_WITH('hello world', 'hello wa'),
+       STARTS_WITH('hello world', 'hello woa'),
+       STARTS_WITH('hello world', 'hello wora');
+SELECT starts_with('hello world', 'a'), starts_with('hello world', 'ha'), starts_with('hello world', 'hea'), starts_with('hello world', 'hela'), starts_with('hello world', 'hella'), starts_with('hello world', 'helloa'), starts_with('hello world', 'hello a'), starts_with('hello world', 'hello wa'), starts_with('hello world', 'hello woa'), starts_with('hello world', 'hello wora');
+;
+;
+;
+;
+SELECT STARTS_WITH('hello world', 'a'),
+       STARTS_WITH('hello world', 'ha'),
+       STARTS_WITH('hello world', 'hea'),
+       STARTS_WITH('hello world', 'hela'),
+       STARTS_WITH('hello world', 'hella'),
+       STARTS_WITH('hello world', 'helloa'),
+       STARTS_WITH('hello world', 'hello a'),
+       STARTS_WITH('hello world', 'hello wa'),
+       STARTS_WITH('hello world', 'hello woa'),
+       STARTS_WITH('hello world', 'hello wora');
+select starts_with('hello', ''), starts_with('', ''), starts_with(NULL, '');
+select starts_with('hello', ''), starts_with('', ''), starts_with(NULL, '');
+;
+select starts_with('hello', ''), starts_with('', ''), starts_with(NULL, '');
+SELECT starts_with('hello', ''), starts_with('', ''), starts_with(NULL, '');
+;
+;
+;
+;
+select starts_with('hello', ''), starts_with('', ''), starts_with(NULL, '');
+CREATE TABLE strings(s VARCHAR, off INTEGER, length INTEGER);;
+INSERT INTO strings VALUES ('hello', 1, 2), ('world', 2, 3), ('h', 1, 1), (NULL, 2, 2);
+SELECT starts_with(s,'h') FROM strings;
+SELECT starts_with(s,'h') FROM strings;
+;
+SELECT starts_with(s,'h') FROM strings;
+SELECT starts_with(s, 'h') FROM strings;
+;
+;
+;
+;
+SELECT starts_with(s,'h') FROM strings;
+SELECT starts_with(s,'he') FROM strings;
+SELECT starts_with(s,'he') FROM strings;
+;
+SELECT starts_with(s,'he') FROM strings;
+SELECT starts_with(s, 'he') FROM strings;
+;
+;
+;
+;
+SELECT starts_with(s,'he') FROM strings;
+SELECT starts_with(s,'he-man') FROM strings;
+SELECT starts_with(s,'he-man') FROM strings;
+;
+SELECT starts_with(s,'he-man') FROM strings;
+SELECT starts_with(s, 'he-man') FROM strings;
+;
+;
+;
+;
+SELECT starts_with(s,'he-man') FROM strings;
+SELECT starts_with(NULL,'h') FROM strings;
+SELECT starts_with(NULL,'h') FROM strings;
+;
+SELECT starts_with(NULL,'h') FROM strings;
+SELECT starts_with(NULL, 'h') FROM strings;
+;
+;
+;
+;
+SELECT starts_with(NULL,'h') FROM strings;
+SELECT starts_with(s,NULL) FROM strings;
+SELECT starts_with(s,NULL) FROM strings;
+;
+SELECT starts_with(s,NULL) FROM strings;
+SELECT starts_with(s, NULL) FROM strings;
+;
+;
+;
+;
+SELECT starts_with(s,NULL) FROM strings;
+SELECT starts_with(NULL,NULL) FROM strings;
+SELECT starts_with(NULL,NULL) FROM strings;
+;
+SELECT starts_with(NULL,NULL) FROM strings;
+SELECT starts_with(NULL, NULL) FROM strings;
+;
+;
+;
+;
+SELECT starts_with(NULL,NULL) FROM strings;
+SELECT starts_with(s,'') FROM strings;
+SELECT starts_with(s,'') FROM strings;
+;
+SELECT starts_with(s,'') FROM strings;
+SELECT starts_with(s, '') FROM strings;
+;
+;
+;
+;
+SELECT starts_with(s,'') FROM strings;

@@ -1,0 +1,56 @@
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects=true, auto_detect=false, header = 1, max_line_size=10);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=10, buffer_size=22);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=10, buffer_size=23);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=10, buffer_size=24);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=10, buffer_size=25);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/max_10.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=10, buffer_size=26);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/over_vector.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=20);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/maximum_line/*.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+     store_rejects = true, auto_detect=false, header = 1, max_line_size=10);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;

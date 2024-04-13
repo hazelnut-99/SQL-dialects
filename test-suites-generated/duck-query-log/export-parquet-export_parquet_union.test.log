@@ -1,0 +1,50 @@
+begin transaction;;
+create table tbl as select "union" from test_all_types(), range(3);;
+create table tbl2 (a UNION(a bit, b bool));;
+insert into tbl2 VALUES ('00101010'::BIT), (True::BOOL), (NULL::BIT);;
+select * from tbl;;
+select * from tbl2;;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54878/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE tbl("union" UNION("name" VARCHAR, age SMALLINT));
+CREATE TABLE tbl2(a UNION(a BIT, b BOOLEAN));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54878/export_test/tbl.parquet' ( FORMAT parquet );COPY tbl2 FROM 'duckdb_unittest_tempdir/54878/export_test/tbl_.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl("union" UNION("name" VARCHAR, age SMALLINT));
+CREATE TABLE tbl2(a UNION(a BIT, b BOOLEAN));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54878/export_test/tbl.parquet' ( FORMAT parquet );COPY tbl2 FROM 'duckdb_unittest_tempdir/54878/export_test/tbl_.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl("union" UNION("name" VARCHAR, age SMALLINT));
+CREATE TABLE tbl2(a UNION(a BIT, b BOOLEAN));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54878/export_test/tbl.parquet' ( FORMAT parquet );COPY tbl2 FROM 'duckdb_unittest_tempdir/54878/export_test/tbl_.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl("union" UNION("name" VARCHAR, age SMALLINT));
+CREATE TABLE tbl2(a UNION(a BIT, b BOOLEAN));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54878/export_test/tbl.parquet' ( FORMAT parquet );COPY tbl2 FROM 'duckdb_unittest_tempdir/54878/export_test/tbl_.parquet' ( FORMAT parquet );;
+select * from tbl;;
+select * from tbl2;;

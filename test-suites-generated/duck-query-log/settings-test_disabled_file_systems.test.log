@@ -1,33 +1,33 @@
-PRAGMA enable_verification
-SELECT current_setting('disabled_filesystems')
-SELECT current_setting('disabled_filesystems')
-
-SELECT current_setting('disabled_filesystems')
-SELECT current_setting('disabled_filesystems')
-
-
-
-
-SELECT current_setting('disabled_filesystems')
-RESET disabled_filesystems;
-RESET disabled_filesystems;
-SET disabled_filesystems='';
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-
-
-
-
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SET disabled_filesystems='LocalFileSystem';
-RESET disabled_filesystems;
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv')
-SET disabled_filesystems='LocalFileSystem,LocalFileSystem';
-SET disabled_filesystems='';
+PRAGMA enable_verification;
+SELECT current_setting('disabled_filesystems');
+SELECT current_setting('disabled_filesystems');
+;
+SELECT current_setting('disabled_filesystems');
+SELECT current_setting('disabled_filesystems');
+;
+;
+;
+;
+SELECT current_setting('disabled_filesystems');
+RESET disabled_filesystems;;
+RESET disabled_filesystems;;
+SET disabled_filesystems='';;
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+;
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+;
+;
+;
+;
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SET disabled_filesystems='LocalFileSystem';;
+RESET disabled_filesystems;;
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+;
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SELECT * FROM read_csv_auto('test/sql/copy/csv/data/auto/skip_row.csv');
+SET disabled_filesystems='LocalFileSystem,LocalFileSystem';;
+SET disabled_filesystems='';;

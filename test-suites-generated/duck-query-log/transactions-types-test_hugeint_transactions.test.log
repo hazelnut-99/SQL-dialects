@@ -1,0 +1,2 @@
+PRAGMA enable_verification;
+UPDATE hugeints SET h=h+1 WHERE h=100;;

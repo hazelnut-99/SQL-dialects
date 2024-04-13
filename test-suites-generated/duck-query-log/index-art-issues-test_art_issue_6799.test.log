@@ -1,0 +1,44 @@
+PRAGMA enable_verification;
+CREATE TABLE key_value_pairs (key VARCHAR PRIMARY KEY, value VARCHAR);
+INSERT INTO key_value_pairs
+	SELECT concat('key_', i::VARCHAR), concat('value_', i::VARCHAR)
+	FROM range(10000) t(i)
+	WHERE random() < 0.5;
+CREATE TABLE keys_to_lookup (key VARCHAR PRIMARY KEY);
+INSERT INTO keys_to_lookup
+	SELECT concat('key_', i::VARCHAR)
+	FROM range(100) t(i);
+SELECT COUNT(*) FROM
+(
+	SELECT key, value
+	FROM
+		keys_to_lookup
+		JOIN key_value_pairs USING(key)
+);
+SELECT COUNT(*) FROM
+(
+	SELECT key, value
+	FROM
+		keys_to_lookup
+		JOIN key_value_pairs USING(key)
+);
+;
+SELECT COUNT(*) FROM
+(
+	SELECT key, value
+	FROM
+		keys_to_lookup
+		JOIN key_value_pairs USING(key)
+);
+SELECT count_star() FROM (SELECT "key", "value" FROM keys_to_lookup INNER JOIN key_value_pairs USING (key));
+;
+;
+;
+;
+SELECT COUNT(*) FROM
+(
+	SELECT key, value
+	FROM
+		keys_to_lookup
+		JOIN key_value_pairs USING(key)
+);

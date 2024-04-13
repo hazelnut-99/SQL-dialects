@@ -1,0 +1,46 @@
+PRAGMA enable_verification;
+CREATE TYPE mood AS ENUM ('joy', 'ok', 'happy');;
+CREATE TABLE enums(m mood);;
+INSERT INTO enums VALUES
+	('happy'), ('happy'), ('joy'), ('joy'),
+	('happy'), ('happy'), ('joy'), ('joy'),
+    ('happy'), ('happy'), ('joy'), ('joy'),
+    ('happy'), ('happy'), ('joy'), ('joy'),
+    ('happy'), ('happy'), ('joy'), ('joy'),
+    ('happy'), ('happy'), ('joy'), ('joy'),
+    ('happy'), ('happy'), ('joy'), ('joy'), ('joy');
+COPY enums TO 'duckdb_unittest_tempdir/54835/enums.parquet' (FORMAT PARQUET);;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM "duckdb_unittest_tempdir/54835/enums.parquet";
+;
+;
+;
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+UPDATE enums SET m=NULL WHERE m='joy';
+COPY enums TO 'duckdb_unittest_tempdir/54835/enums.parquet' (FORMAT PARQUET);;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM "duckdb_unittest_tempdir/54835/enums.parquet";
+;
+;
+;
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+UPDATE enums SET m=NULL;
+COPY enums TO 'duckdb_unittest_tempdir/54835/enums.parquet' (FORMAT PARQUET);;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';
+SELECT * FROM "duckdb_unittest_tempdir/54835/enums.parquet";
+;
+;
+;
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54835/enums.parquet';

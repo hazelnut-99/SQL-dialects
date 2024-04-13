@@ -1,0 +1,271 @@
+PRAGMA enable_verification;
+CREATE TABLE filenames (filename VARCHAR);;
+INSERT INTO filenames VALUES 
+	('rundate_2023-01-01_pass_1'),
+	('rundate_2023-01-01_pass_2'),
+	('rundate_2023-01-01_pass_3'),
+	('rundate_2023-01-10_pass_1'),
+	('rundate_2023-01-10_pass_2'),
+	('rundate_2023-02-14_pass_1'),
+	('invalid'),
+	(NULL)
+;;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (SELECT f.*, payload FROM filenames AS f , range(3) AS t(payload)), extracted AS (SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', main.list_value('rundate', 'pass')) AS "groups", payload FROM files)SELECT CAST("groups".rundate AS DATE) AS rundate, CAST("groups".pass AS SMALLINT) AS PASS, sum(payload) FROM extracted WHERE (length("groups".rundate) > 0) GROUP BY ALL;
+;
+;
+;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(1000) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(1000) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(1000) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (SELECT f.*, payload FROM filenames AS f , range(1000) AS t(payload)), extracted AS (SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', main.list_value('rundate', 'pass')) AS "groups", payload FROM files)SELECT CAST("groups".rundate AS DATE) AS rundate, CAST("groups".pass AS SMALLINT) AS PASS, sum(payload) FROM extracted WHERE (length("groups".rundate) > 0) GROUP BY ALL;
+;
+;
+;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(1000) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.pass::SMALLINT AS PASS, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([a-z]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([a-z]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([a-z]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (SELECT f.*, payload FROM filenames AS f , range(3) AS t(payload)), extracted AS (SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([a-z]+?)_(\d+)', main.list_value('rundate', 'opt', 'pass')) AS "groups", payload FROM files)SELECT CAST("groups".rundate AS DATE) AS rundate, "groups".opt AS opt, CAST("groups".pass AS SMALLINT) AS pass, sum(payload) FROM extracted WHERE (length("groups".rundate) > 0) GROUP BY ALL;
+;
+;
+;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([a-z]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([0-9]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([0-9]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([0-9]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+WITH files AS (SELECT f.*, payload FROM filenames AS f , range(3) AS t(payload)), extracted AS (SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([0-9]+?)_(\d+)', main.list_value('rundate', 'opt', 'pass')) AS "groups", payload FROM files)SELECT CAST("groups".rundate AS DATE) AS rundate, "groups".opt AS opt, CAST("groups".pass AS SMALLINT) AS pass, sum(payload) FROM extracted WHERE (length("groups".rundate) > 0) GROUP BY ALL;
+;
+;
+;
+;
+WITH files AS (
+	SELECT f.*, payload FROM filenames f, range(3) t(payload)
+), extracted AS (
+	SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_([0-9]+?)_(\d+)', ['rundate', 'opt', 'pass']) AS groups, payload 
+	FROM files
+)
+SELECT groups.rundate::DATE AS rundate, groups.opt AS opt, groups.pass::SMALLINT AS pass, SUM(payload)
+FROM extracted
+WHERE LENGTH(groups.rundate) > 0
+GROUP BY ALL;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', []) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', []) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', []) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', []) AS groups
+FROM filenames;
+WITH patterns AS (
+	SELECT 'rundate_(\d+-\d+-\d+)_pass_(\d+)' AS pattern FROM range(3)
+)
+SELECT regexp_extract(filename, pattern, ['rundate', 'pass']) AS groups
+FROM filenames, patterns;
+WITH patterns AS (
+	SELECT 'rundate_(\d+-\d+-\d+)_pass_(\d+)' AS pattern FROM range(3)
+)
+SELECT regexp_extract(filename, pattern, ['rundate', 'pass']) AS groups
+FROM filenames, patterns;
+;
+WITH patterns AS (
+	SELECT 'rundate_(\d+-\d+-\d+)_pass_(\d+)' AS pattern FROM range(3)
+)
+SELECT regexp_extract(filename, pattern, ['rundate', 'pass']) AS groups
+FROM filenames, patterns;
+WITH patterns AS (
+	SELECT 'rundate_(\d+-\d+-\d+)_pass_(\d+)' AS pattern FROM range(3)
+)
+SELECT regexp_extract(filename, pattern, ['rundate', 'pass']) AS groups
+FROM filenames, patterns;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', NULL]) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', NULL]) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', NULL]) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', NULL]) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'rundate']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'rundate']) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'rundate']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'rundate']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'RUNDATE']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'RUNDATE']) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'RUNDATE']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'RUNDATE']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass', 'overflow']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass', 'overflow']) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass', 'overflow']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, 'rundate_(\d+-\d+-\d+)_pass_(\d+)', ['rundate', 'pass', 'overflow']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, NULL, ['rundate', 'pass']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, NULL, ['rundate', 'pass']) AS groups
+FROM filenames;
+;
+SELECT regexp_extract(filename, NULL, ['rundate', 'pass']) AS groups
+FROM filenames;
+SELECT regexp_extract(filename, NULL, ['rundate', 'pass']) AS groups
+FROM filenames;

@@ -1,0 +1,67 @@
+PRAGMA enable_verification;
+select
+    field1,
+    field2,
+    min(datum) as firstseen,
+    max(datum) as lastseen
+from read_csv('data/csv/hebere.csv.gz',
+        delim='\t',
+        header=0,
+        columns={field1: varchar, field2: varchar, datum: varchar},
+        compression='gzip',
+        ignore_errors=0,
+        auto_detect = false)
+group by field1, field2
+order by all
+limit 10;;
+select
+    field1,
+    field2,
+    min(datum) as firstseen,
+    max(datum) as lastseen
+from read_csv('data/csv/hebere.csv.gz',
+        delim='\t',
+        header=0,
+        columns={field1: varchar, field2: varchar, datum: varchar},
+        compression='gzip',
+        ignore_errors=0,
+        auto_detect = false)
+group by field1, field2
+order by all
+limit 10;;
+;
+select
+    field1,
+    field2,
+    min(datum) as firstseen,
+    max(datum) as lastseen
+from read_csv('data/csv/hebere.csv.gz',
+        delim='\t',
+        header=0,
+        columns={field1: varchar, field2: varchar, datum: varchar},
+        compression='gzip',
+        ignore_errors=0,
+        auto_detect = false)
+group by field1, field2
+order by all
+limit 10;;
+SELECT field1, field2, min(datum) AS firstseen, max(datum) AS lastseen FROM read_csv('data/csv/hebere.csv.gz', (delim = '\t'), ("header" = 0), ("columns" = main.struct_pack(field1 := "varchar", field2 := "varchar", datum := "varchar")), ("compression" = 'gzip'), (ignore_errors = 0), (auto_detect = CAST('f' AS BOOLEAN))) GROUP BY field1, field2 ORDER BY COLUMNS(*) LIMIT 10;
+;
+;
+;
+;
+select
+    field1,
+    field2,
+    min(datum) as firstseen,
+    max(datum) as lastseen
+from read_csv('data/csv/hebere.csv.gz',
+        delim='\t',
+        header=0,
+        columns={field1: varchar, field2: varchar, datum: varchar},
+        compression='gzip',
+        ignore_errors=0,
+        auto_detect = false)
+group by field1, field2
+order by all
+limit 10;;

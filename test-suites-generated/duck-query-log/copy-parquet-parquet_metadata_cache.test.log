@@ -1,0 +1,16 @@
+pragma enable_object_cache;
+select * from parquet_scan('data/parquet-testing/cache/cache1.parquet');
+select * from parquet_scan('data/parquet-testing/cache/cache1.parquet');
+COPY (
+	SELECT * FROM parquet_scan('data/parquet-testing/cache/cache1.parquet')
+	)
+TO 'duckdb_unittest_tempdir/54722/cached.parquet' (FORMAT 'parquet');
+select * from parquet_scan('duckdb_unittest_tempdir/54722/cached.parquet');
+COPY (
+	SELECT * FROM parquet_scan('data/parquet-testing/cache/cache2.parquet')
+	)
+TO 'duckdb_unittest_tempdir/54722/cached.parquet' (FORMAT 'parquet');
+select * from parquet_scan('duckdb_unittest_tempdir/54722/cached.parquet');
+select * from parquet_scan('data/parquet-testing/glob/t1.parquet');
+select * from parquet_scan('data/parquet-testing/glob2/t1.parquet');
+select count(*) from parquet_scan('data/parquet-testing/glob/*.parquet');

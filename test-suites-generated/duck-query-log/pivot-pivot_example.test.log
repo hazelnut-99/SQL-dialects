@@ -1,499 +1,499 @@
-PRAGMA enable_verification
-CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
-INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
-INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
-INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
-SET pivot_filter_threshold=99
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR (Country) IN __pivot_enum_0_0 ("Name") IN ('xx'))
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-
-
-
-
-
-SELECT Country, "Name", "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (SELECT * FROM Cities PIVOT (sum(Population) AS total_pop FOR ("Year") IN __pivot_enum_0_0))
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2010, 2020))
-
-
-
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2020))
-
-
-
-
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-
-(SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)) UNION ALL BY NAME (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0))
-
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)) INNER JOIN (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0 GROUP BY Country)) USING (Country)
-
-
-
-
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-SELECT * FROM Cities PIVOT (sum(Population) FOR (main.row(Country, "Name")) IN ('xx'))
-
-
-
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-
-
-
-
-
-SELECT * FROM (SELECT Country, Population, "Year" FROM Cities) PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population), count(population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC LIMIT 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1 OFFSET 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY COLUMNS(*)
-
-
-
-
-
-SET pivot_filter_threshold=0
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR (Country) IN __pivot_enum_0_0 ("Name") IN ('xx'))
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-
-
-
-
-
-SELECT Country, "Name", "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (SELECT * FROM Cities PIVOT (sum(Population) AS total_pop FOR ("Year") IN __pivot_enum_0_0))
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2010, 2020))
-
-
-
-
-FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2020))
-
-
-
-
-PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-
-(SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)) UNION ALL BY NAME (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0))
-
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)) INNER JOIN (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0 GROUP BY Country)) USING (Country)
-
-
-
-
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-SELECT * FROM Cities PIVOT (sum(Population) FOR (main.row(Country, "Name")) IN ('xx'))
-
-
-
-
-PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
-
-
-
-
-
-SELECT * FROM (SELECT Country, Population, "Year" FROM Cities) PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population), count(population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC LIMIT 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1 OFFSET 1
-
-
-
-
-
-
-
-
-
-
-SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY COLUMNS(*)
-
-
-
-
-
-SET pivot_filter_threshold=0
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;
-UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;
-SELECT * FROM PivotedCities UNPIVOT (Population FOR "Year" IN (2000, 2010, 2020))
-
-
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;
-FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));
-FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));
-
-FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));
-SELECT * FROM PivotedCities UNPIVOT (Population FOR "Year" IN (2000, 2010, 2020))
-
-
-
-
-FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));
-UNPIVOT PivotedCities ON 2000, 2010, 2020;
-UNPIVOT PivotedCities ON 2000, 2010, 2020;
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020;
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020))
-
-
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020;
-UNPIVOT PivotedCities ON COLUMNS('\d+');
-UNPIVOT PivotedCities ON COLUMNS('\d+');
-
-UNPIVOT PivotedCities ON COLUMNS('\d+');
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (COLUMNS('\d+')))
-
-
-
-
-UNPIVOT PivotedCities ON COLUMNS('\d+');
-UNPIVOT PivotedCities ON * EXCLUDE (Country, Name)
-UNPIVOT PivotedCities ON * EXCLUDE (Country, Name)
-
-UNPIVOT PivotedCities ON * EXCLUDE (Country, Name)
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (* EXCLUDE (Name, Country)))
-
-
-
-
-UNPIVOT PivotedCities ON * EXCLUDE (Country, Name)
-PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;
-PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;
-
-PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020))
-
-
-
-
-PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY COLUMNS(*) DESC LIMIT 1
-
-
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY COLUMNS(*) LIMIT 1
-
-
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1
-SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY 1 LIMIT 1 OFFSET 1
-
-
-
-UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);;
+SET pivot_filter_threshold=99;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR (Country) IN __pivot_enum_0_0 ("Name") IN ('xx'));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT Country, "Name", "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (SELECT * FROM Cities PIVOT (sum(Population) AS total_pop FOR ("Year") IN __pivot_enum_0_0));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2010, 2020));
+;
+;
+;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2020));
+;
+;
+;
+;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+(SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)) UNION ALL BY NAME (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)) INNER JOIN (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0 GROUP BY Country)) USING (Country);
+;
+;
+;
+;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+SELECT * FROM Cities PIVOT (sum(Population) FOR (main.row(Country, "Name")) IN ('xx'));
+;
+;
+;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+;
+;
+;
+;
+;
+SELECT * FROM (SELECT Country, Population, "Year" FROM Cities) PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population), count(population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC LIMIT 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1 OFFSET 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY COLUMNS(*);
+;
+;
+;
+;
+;
+SET pivot_filter_threshold=0;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR (Country) IN __pivot_enum_0_0 ("Name") IN ('xx'));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT Country, "Name", "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (SELECT * FROM Cities PIVOT (sum(Population) AS total_pop FOR ("Year") IN __pivot_enum_0_0));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2010, 2020));
+;
+;
+;
+;
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN (2000, 2020));
+;
+;
+;
+;
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+(SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0)) UNION ALL BY NAME (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0));
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country)) INNER JOIN (SELECT * FROM Cities PIVOT (sum(Population) FOR ("Name") IN __pivot_enum_1_0 GROUP BY Country)) USING (Country);
+;
+;
+;
+;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+SELECT * FROM Cities PIVOT (sum(Population) FOR (main.row(Country, "Name")) IN ('xx'));
+;
+;
+;
+;
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);;
+;
+;
+;
+;
+;
+SELECT * FROM (SELECT Country, Population, "Year" FROM Cities) PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) AS sum_pop, count(population) AS count_pop FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population), count(population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY Country);
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country DESC LIMIT 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY country LIMIT 1 OFFSET 1;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+SELECT * FROM Cities PIVOT (sum(Population) FOR ("Year") IN __pivot_enum_0_0 GROUP BY country) ORDER BY COLUMNS(*);
+;
+;
+;
+;
+;
+SET pivot_filter_threshold=0;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;;
+SELECT * FROM PivotedCities UNPIVOT (Population FOR "Year" IN (2000, 2010, 2020));
+;
+;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;;
+FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));;
+FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));;
+;
+FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));;
+SELECT * FROM PivotedCities UNPIVOT (Population FOR "Year" IN (2000, 2010, 2020));
+;
+;
+;
+;
+FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));;
+UNPIVOT PivotedCities ON 2000, 2010, 2020;;
+UNPIVOT PivotedCities ON 2000, 2010, 2020;;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020;;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020));
+;
+;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020;;
+UNPIVOT PivotedCities ON COLUMNS('\d+');;
+UNPIVOT PivotedCities ON COLUMNS('\d+');;
+;
+UNPIVOT PivotedCities ON COLUMNS('\d+');;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (COLUMNS('\d+')));
+;
+;
+;
+;
+UNPIVOT PivotedCities ON COLUMNS('\d+');;
+UNPIVOT PivotedCities ON * EXCLUDE (Country, Name);
+UNPIVOT PivotedCities ON * EXCLUDE (Country, Name);
+;
+UNPIVOT PivotedCities ON * EXCLUDE (Country, Name);
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (* EXCLUDE (Name, Country)));
+;
+;
+;
+;
+UNPIVOT PivotedCities ON * EXCLUDE (Country, Name);
+PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;;
+PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;;
+;
+PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020));
+;
+;
+;
+;
+PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY COLUMNS(*) DESC LIMIT 1;
+;
+;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY COLUMNS(*) LIMIT 1;
+;
+;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1;
+SELECT * FROM PivotedCities UNPIVOT ("value" FOR "name" IN (2000, 2010, 2020)) ORDER BY 1 LIMIT 1 OFFSET 1;
+;
+;
+;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1;

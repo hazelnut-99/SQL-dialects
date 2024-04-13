@@ -1,0 +1,359 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+create table students (course VARCHAR, type VARCHAR);;
+insert into students
+		(course, type)
+	values
+		('CS', 'Bachelor'),
+		('CS', 'Bachelor'),
+		('CS', 'PhD'),
+		('Math', 'Masters'),
+		('CS', NULL),
+		('CS', NULL),
+		('Math', NULL);;
+select 1 from students group by ();;
+select 1 from students group by ();;
+;
+select 1 from students group by ();;
+SELECT 1 FROM students GROUP BY ();
+;
+;
+;
+;
+select 1 from students group by ();;
+select count(*) from students group by ();;
+select count(*) from students group by ();;
+;
+select count(*) from students group by ();;
+SELECT count_star() FROM students GROUP BY ();
+;
+;
+;
+;
+select count(*) from students group by ();;
+select course, type, count(*) from students group by course, type order by 1, 2, 3;;
+select course, type, count(*) from students group by course, type order by 1, 2, 3;;
+;
+select course, type, count(*) from students group by course, type order by 1, 2, 3;;
+SELECT course, "type", count_star() FROM students GROUP BY course, "type" ORDER BY 1, 2, 3;
+;
+;
+;
+select course, type, count(*) from students group by course, type order by 1, 2, 3;;
+select course, type, count(*) from students group by (course, type) order by 1, 2, 3;;
+select course, type, count(*) from students group by (course, type) order by 1, 2, 3;;
+;
+select course, type, count(*) from students group by (course, type) order by 1, 2, 3;;
+SELECT course, "type", count_star() FROM students GROUP BY course, "type" ORDER BY 1, 2, 3;
+;
+;
+;
+select course, type, count(*) from students group by (course, type) order by 1, 2, 3;;
+select course, count(*) from students group by (), course, () ORDER BY 1;;
+select course, count(*) from students group by (), course, () ORDER BY 1;;
+;
+select course, count(*) from students group by (), course, () ORDER BY 1;;
+SELECT course, count_star() FROM students GROUP BY course ORDER BY 1;
+;
+;
+;
+select course, count(*) from students group by (), course, () ORDER BY 1;;
+select count(*), course, type
+	from students
+	group by grouping sets ((course), (type))
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets ((course), (type))
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by grouping sets ((course), (type))
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by grouping sets ((course), (type))
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets (course), grouping sets(type)
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets (course), grouping sets(type)
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by grouping sets (course), grouping sets(type)
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY course, "type" ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by grouping sets (course), grouping sets(type)
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type)
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type)
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type)
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY course, "type" ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type)
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type, ())
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type, ())
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type, ())
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course, "type"),(course)) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by course, grouping sets(type, ())
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets((course, type), (course))
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets((course, type), (course))
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by grouping sets((course, type), (course))
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course, "type"),(course)) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by grouping sets((course, type), (course))
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets (grouping sets(course), grouping sets(type))
+	order by 1, 2, 3;;
+select count(*), course, type
+	from students
+	group by grouping sets (grouping sets(course), grouping sets(type))
+	order by 1, 2, 3;;
+;
+select count(*), course, type
+	from students
+	group by grouping sets (grouping sets(course), grouping sets(type))
+	order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+	from students
+	group by grouping sets (grouping sets(course), grouping sets(type))
+	order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type))
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type))
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course),(),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets ((course), (), (type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets ((course), (), (type))
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets ((course), (), (type))
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course),(),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets ((course), (), (type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), grouping sets(type)
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), grouping sets(type)
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), grouping sets(type)
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course, "type"),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), grouping sets(type)
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), type
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), type
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), type
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course, "type"),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets(course, ()), type
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets((course, type), (type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets((course, type), (type))
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets((course, type), (type))
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course, "type"),("type")) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets((course, type), (type))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets((2, 3), (3))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets((2, 3), (3))
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets((2, 3), (3))
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((2, 3),(3)) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets((2, 3), (3))
+        order by 1, 2, 3;;
+select count(*), course AS crs, type AS tp
+        from students
+        group by grouping sets((crs, tp), (tp))
+        order by 1, 2, 3;;
+select count(*), course AS crs, type AS tp
+        from students
+        group by grouping sets((crs, tp), (tp))
+        order by 1, 2, 3;;
+;
+select count(*), course AS crs, type AS tp
+        from students
+        group by grouping sets((crs, tp), (tp))
+        order by 1, 2, 3;;
+SELECT count_star(), course AS crs, "type" AS tp FROM students GROUP BY GROUPING SETS ((crs, tp),(tp)) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course AS crs, type AS tp
+        from students
+        group by grouping sets((crs, tp), (tp))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type, ()))
+        order by 1, 2, 3;;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type, ()))
+        order by 1, 2, 3;;
+;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type, ()))
+        order by 1, 2, 3;;
+SELECT count_star(), course, "type" FROM students GROUP BY GROUPING SETS ((course),(),("type"),()) ORDER BY 1, 2, 3;
+;
+;
+;
+select count(*), course, type
+        from students
+        group by grouping sets (grouping sets(course, ()), grouping sets(type, ()))
+        order by 1, 2, 3;;
+select course from students group by ();;
+select course from students group by ();;
+;
+select course from students group by ();;
+select course from students group by ();;

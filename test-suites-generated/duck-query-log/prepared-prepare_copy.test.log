@@ -1,18 +1,18 @@
-pragma enable_verification;
+pragma enable_verification;;
 PREPARE q1 AS
 	COPY (
 		select $1 as 'col'
-	) to 'duckdb_unittest_tempdir/17736/res.csv' (
+	) to 'duckdb_unittest_tempdir/53009/res.csv' (
 		FORMAT csv
-	);
-execute q1 (42);
-select i from 'duckdb_unittest_tempdir/17736/res.csv' tbl(i);
-select i from 'duckdb_unittest_tempdir/17736/res.csv' tbl(i);
-
-select i from 'duckdb_unittest_tempdir/17736/res.csv' tbl(i);
-SELECT i FROM "duckdb_unittest_tempdir/17736/res.csv" AS tbl(i)
-
-
-
-
-select i from 'duckdb_unittest_tempdir/17736/res.csv' tbl(i);
+	);;
+execute q1 (42);;
+select i from 'duckdb_unittest_tempdir/53009/res.csv' tbl(i);;
+select i from 'duckdb_unittest_tempdir/53009/res.csv' tbl(i);;
+;
+select i from 'duckdb_unittest_tempdir/53009/res.csv' tbl(i);;
+SELECT i FROM "duckdb_unittest_tempdir/53009/res.csv" AS tbl(i);
+;
+;
+;
+;
+select i from 'duckdb_unittest_tempdir/53009/res.csv' tbl(i);;

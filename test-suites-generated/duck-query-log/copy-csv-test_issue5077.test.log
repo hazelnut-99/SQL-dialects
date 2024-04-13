@@ -1,0 +1,3 @@
+select * from 'data/csv/issue5077_aligned.csv';
+select * from read_csv('data/csv/issue5077.csv', header=0);
+select * from 'data/csv/lineitem-carriage.csv';;

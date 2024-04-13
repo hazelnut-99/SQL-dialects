@@ -1,0 +1,8 @@
+PRAGMA enable_verification;
+PRAGMA verify_external;
+SELECT array_value();;
+SELECT array_value();;
+;
+SELECT array_value();;
+SELECT array_value();;
+SELECT array_value();;

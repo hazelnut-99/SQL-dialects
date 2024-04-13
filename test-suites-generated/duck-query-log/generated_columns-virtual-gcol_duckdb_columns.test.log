@@ -1,0 +1,2 @@
+create table t (i int, j int as (1));;
+select column_default from duckdb_columns;;

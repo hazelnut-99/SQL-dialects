@@ -1,0 +1,828 @@
+PRAGMA enable_verification;
+CREATE TABLE intervals(i INTERVAL, s VARCHAR);;
+INSERT INTO intervals VALUES ('2 years', 'year'), ('16 months', 'quarter'), ('42 days', 'day'), ('2066343400 microseconds', 'minute');;
+SELECT date_part(NULL::VARCHAR, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(NULL::VARCHAR, NULL::INTERVAL) FROM intervals;;
+;
+SELECT date_part(NULL::VARCHAR, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(CAST(NULL AS VARCHAR), CAST(NULL AS INTERVAL)) FROM intervals;
+;
+;
+;
+;
+SELECT date_part(NULL::VARCHAR, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(s, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(s, NULL::INTERVAL) FROM intervals;;
+;
+SELECT date_part(s, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(s, CAST(NULL AS INTERVAL)) FROM intervals;
+;
+;
+;
+;
+SELECT date_part(s, NULL::INTERVAL) FROM intervals;;
+SELECT date_part(NULL, i) FROM intervals;;
+SELECT date_part(NULL, i) FROM intervals;;
+;
+SELECT date_part(NULL, i) FROM intervals;;
+SELECT date_part(NULL, i) FROM intervals;
+;
+;
+;
+;
+SELECT date_part(NULL, i) FROM intervals;;
+SELECT date_part(s, INTERVAL '4 years 5 months 18 days 128 seconds') FROM intervals;;
+SELECT date_part(s, INTERVAL '4 years 5 months 18 days 128 seconds') FROM intervals;;
+;
+SELECT date_part(s, INTERVAL '4 years 5 months 18 days 128 seconds') FROM intervals;;
+SELECT date_part(s, CAST('4 years 5 months 18 days 128 seconds' AS INTERVAL)) FROM intervals;
+;
+;
+;
+;
+SELECT date_part(s, INTERVAL '4 years 5 months 18 days 128 seconds') FROM intervals;;
+SELECT date_part('seconds', i) FROM intervals;;
+SELECT date_part('seconds', i) FROM intervals;;
+;
+SELECT date_part('seconds', i) FROM intervals;;
+SELECT date_part('seconds', i) FROM intervals;
+;
+;
+;
+;
+SELECT date_part('seconds', i) FROM intervals;;
+SELECT date_part('epoch', i) FROM intervals;;
+SELECT date_part('epoch', i) FROM intervals;;
+;
+SELECT date_part('epoch', i) FROM intervals;;
+SELECT date_part('epoch', i) FROM intervals;
+;
+;
+;
+;
+SELECT date_part('epoch', i) FROM intervals;;
+SELECT date_part(s, i) FROM intervals;;
+SELECT date_part(s, i) FROM intervals;;
+;
+SELECT date_part(s, i) FROM intervals;;
+SELECT date_part(s, i) FROM intervals;
+;
+;
+;
+;
+SELECT date_part(s, i) FROM intervals;;
+SELECT dayofweek(i) FROM intervals;
+SELECT dayofweek(i) FROM intervals;
+;
+SELECT dayofweek(i) FROM intervals;
+SELECT dayofweek(i) FROM intervals;
+SELECT isodow(i) FROM intervals;
+SELECT isodow(i) FROM intervals;
+;
+SELECT isodow(i) FROM intervals;
+SELECT isodow(i) FROM intervals;
+SELECT dayofyear(i) FROM intervals;
+SELECT dayofyear(i) FROM intervals;
+;
+SELECT dayofyear(i) FROM intervals;
+SELECT dayofyear(i) FROM intervals;
+SELECT week(i) FROM intervals;
+SELECT week(i) FROM intervals;
+;
+SELECT week(i) FROM intervals;
+SELECT week(i) FROM intervals;
+SELECT era(i) FROM intervals;;
+SELECT era(i) FROM intervals;;
+;
+SELECT era(i) FROM intervals;;
+SELECT era(i) FROM intervals;;
+SELECT julian(i) FROM intervals;;
+SELECT julian(i) FROM intervals;;
+;
+SELECT julian(i) FROM intervals;;
+SELECT julian(i) FROM intervals;;
+SELECT extract(era from i) FROM intervals;;
+SELECT extract(era from i) FROM intervals;;
+;
+SELECT extract(era from i) FROM intervals;;
+SELECT extract(era from i) FROM intervals;;
+SELECT extract(julian from i) FROM intervals;;
+SELECT extract(julian from i) FROM intervals;;
+;
+SELECT extract(julian from i) FROM intervals;;
+SELECT extract(julian from i) FROM intervals;;
+SELECT date_part('era', i) FROM intervals;;
+SELECT date_part('era', i) FROM intervals;;
+;
+SELECT date_part('era', i) FROM intervals;;
+SELECT date_part('era', i) FROM intervals;;
+SELECT date_part('julian', i) FROM intervals;;
+SELECT date_part('julian', i) FROM intervals;;
+;
+SELECT date_part('julian', i) FROM intervals;;
+SELECT date_part('julian', i) FROM intervals;;
+SELECT date_part('offset', i) FROM intervals;;
+SELECT date_part('offset', i) FROM intervals;;
+;
+SELECT date_part('offset', i) FROM intervals;;
+SELECT date_part('offset', i) FROM intervals;;
+SELECT i, DATE_PART('millennium', i) AS p, millennium(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('millennium', i) AS p, millennium(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('millennium', i) AS p, millennium(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('millennium', i) AS p, millennium(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('millennium', i) AS p, millennium(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('century', i) AS p, century(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('century', i) AS p, century(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('century', i) AS p, century(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('century', i) AS p, century(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('century', i) AS p, century(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('decade', i) AS p, decade(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('decade', i) AS p, decade(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('decade', i) AS p, decade(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('decade', i) AS p, decade(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('decade', i) AS p, decade(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('year', i) AS p, year(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('year', i) AS p, year(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('year', i) AS p, year(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('year', i) AS p, year(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('year', i) AS p, year(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('quarter', i) AS p, quarter(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('quarter', i) AS p, quarter(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('quarter', i) AS p, quarter(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('quarter', i) AS p, quarter(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('quarter', i) AS p, quarter(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('month', i) AS p, month(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('month', i) AS p, month(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('month', i) AS p, month(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('month', i) AS p, month(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('month', i) AS p, month(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('day', i) AS p, day(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('day', i) AS p, day(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('day', i) AS p, day(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('day', i) AS p, day(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('day', i) AS p, day(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('hour', i) AS p, hour(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('hour', i) AS p, hour(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('hour', i) AS p, hour(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('hour', i) AS p, hour(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('hour', i) AS p, hour(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('minute', i) AS p, minute(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('minute', i) AS p, minute(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('minute', i) AS p, minute(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('minute', i) AS p, minute(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('minute', i) AS p, minute(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('second', i) AS p, second(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('second', i) AS p, second(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('second', i) AS p, second(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('second', i) AS p, second(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('second', i) AS p, second(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('millisecond', i) AS p, millisecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('millisecond', i) AS p, millisecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('millisecond', i) AS p, millisecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('millisecond', i) AS p, millisecond(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('millisecond', i) AS p, millisecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('microsecond', i) AS p, microsecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('microsecond', i) AS p, microsecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('microsecond', i) AS p, microsecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('microsecond', i) AS p, microsecond(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('microsecond', i) AS p, microsecond(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('epoch', i) AS p, epoch(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('epoch', i) AS p, epoch(i) AS f
+FROM intervals
+WHERE p <> f;;
+;
+SELECT i, DATE_PART('epoch', i) AS p, epoch(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, date_part('epoch', i) AS p, epoch(i) AS f FROM intervals WHERE (p != f);
+;
+;
+;
+;
+SELECT i, DATE_PART('epoch', i) AS p, epoch(i) AS f
+FROM intervals
+WHERE p <> f;;
+SELECT i, DATE_PART('millennium', i) AS p, DATE_PART(['millennium'], i) AS st
+FROM intervals
+WHERE p <> st['millennium'];;
+SELECT i, DATE_PART('millennium', i) AS p, DATE_PART(['millennium'], i) AS st
+FROM intervals
+WHERE p <> st['millennium'];;
+;
+SELECT i, DATE_PART('millennium', i) AS p, DATE_PART(['millennium'], i) AS st
+FROM intervals
+WHERE p <> st['millennium'];;
+SELECT i, date_part('millennium', i) AS p, date_part(main.list_value('millennium'), i) AS st FROM intervals WHERE (p != st['millennium']);
+;
+;
+;
+;
+SELECT i, DATE_PART('millennium', i) AS p, DATE_PART(['millennium'], i) AS st
+FROM intervals
+WHERE p <> st['millennium'];;
+SELECT i, DATE_PART('century', i) AS p, DATE_PART(['century'], i) AS st
+FROM intervals
+WHERE p <> st['century'];;
+SELECT i, DATE_PART('century', i) AS p, DATE_PART(['century'], i) AS st
+FROM intervals
+WHERE p <> st['century'];;
+;
+SELECT i, DATE_PART('century', i) AS p, DATE_PART(['century'], i) AS st
+FROM intervals
+WHERE p <> st['century'];;
+SELECT i, date_part('century', i) AS p, date_part(main.list_value('century'), i) AS st FROM intervals WHERE (p != st['century']);
+;
+;
+;
+;
+SELECT i, DATE_PART('century', i) AS p, DATE_PART(['century'], i) AS st
+FROM intervals
+WHERE p <> st['century'];;
+SELECT i, DATE_PART('decade', i) AS p, DATE_PART(['decade'], i) AS st
+FROM intervals
+WHERE p <> st['decade'];;
+SELECT i, DATE_PART('decade', i) AS p, DATE_PART(['decade'], i) AS st
+FROM intervals
+WHERE p <> st['decade'];;
+;
+SELECT i, DATE_PART('decade', i) AS p, DATE_PART(['decade'], i) AS st
+FROM intervals
+WHERE p <> st['decade'];;
+SELECT i, date_part('decade', i) AS p, date_part(main.list_value('decade'), i) AS st FROM intervals WHERE (p != st['decade']);
+;
+;
+;
+;
+SELECT i, DATE_PART('decade', i) AS p, DATE_PART(['decade'], i) AS st
+FROM intervals
+WHERE p <> st['decade'];;
+SELECT i, DATE_PART('year', i) AS p, DATE_PART(['year'], i) AS st
+FROM intervals
+WHERE p <> st['year'];;
+SELECT i, DATE_PART('year', i) AS p, DATE_PART(['year'], i) AS st
+FROM intervals
+WHERE p <> st['year'];;
+;
+SELECT i, DATE_PART('year', i) AS p, DATE_PART(['year'], i) AS st
+FROM intervals
+WHERE p <> st['year'];;
+SELECT i, date_part('year', i) AS p, date_part(main.list_value('year'), i) AS st FROM intervals WHERE (p != st['year']);
+;
+;
+;
+;
+SELECT i, DATE_PART('year', i) AS p, DATE_PART(['year'], i) AS st
+FROM intervals
+WHERE p <> st['year'];;
+SELECT i, DATE_PART('quarter', i) AS p, DATE_PART(['quarter'], i) AS st
+FROM intervals
+WHERE p <> st['quarter'];;
+SELECT i, DATE_PART('quarter', i) AS p, DATE_PART(['quarter'], i) AS st
+FROM intervals
+WHERE p <> st['quarter'];;
+;
+SELECT i, DATE_PART('quarter', i) AS p, DATE_PART(['quarter'], i) AS st
+FROM intervals
+WHERE p <> st['quarter'];;
+SELECT i, date_part('quarter', i) AS p, date_part(main.list_value('quarter'), i) AS st FROM intervals WHERE (p != st['quarter']);
+;
+;
+;
+;
+SELECT i, DATE_PART('quarter', i) AS p, DATE_PART(['quarter'], i) AS st
+FROM intervals
+WHERE p <> st['quarter'];;
+SELECT i, DATE_PART('month', i) AS p, DATE_PART(['month'], i) AS st
+FROM intervals
+WHERE p <> st['month'];;
+SELECT i, DATE_PART('month', i) AS p, DATE_PART(['month'], i) AS st
+FROM intervals
+WHERE p <> st['month'];;
+;
+SELECT i, DATE_PART('month', i) AS p, DATE_PART(['month'], i) AS st
+FROM intervals
+WHERE p <> st['month'];;
+SELECT i, date_part('month', i) AS p, date_part(main.list_value('month'), i) AS st FROM intervals WHERE (p != st['month']);
+;
+;
+;
+;
+SELECT i, DATE_PART('month', i) AS p, DATE_PART(['month'], i) AS st
+FROM intervals
+WHERE p <> st['month'];;
+SELECT i, DATE_PART('day', i) AS p, DATE_PART(['day'], i) AS st
+FROM intervals
+WHERE p <> st['day'];;
+SELECT i, DATE_PART('day', i) AS p, DATE_PART(['day'], i) AS st
+FROM intervals
+WHERE p <> st['day'];;
+;
+SELECT i, DATE_PART('day', i) AS p, DATE_PART(['day'], i) AS st
+FROM intervals
+WHERE p <> st['day'];;
+SELECT i, date_part('day', i) AS p, date_part(main.list_value('day'), i) AS st FROM intervals WHERE (p != st['day']);
+;
+;
+;
+;
+SELECT i, DATE_PART('day', i) AS p, DATE_PART(['day'], i) AS st
+FROM intervals
+WHERE p <> st['day'];;
+SELECT i, DATE_PART('hour', i) AS p, DATE_PART(['hour'], i) AS st
+FROM intervals
+WHERE p <> st['hour'];;
+SELECT i, DATE_PART('hour', i) AS p, DATE_PART(['hour'], i) AS st
+FROM intervals
+WHERE p <> st['hour'];;
+;
+SELECT i, DATE_PART('hour', i) AS p, DATE_PART(['hour'], i) AS st
+FROM intervals
+WHERE p <> st['hour'];;
+SELECT i, date_part('hour', i) AS p, date_part(main.list_value('hour'), i) AS st FROM intervals WHERE (p != st['hour']);
+;
+;
+;
+;
+SELECT i, DATE_PART('hour', i) AS p, DATE_PART(['hour'], i) AS st
+FROM intervals
+WHERE p <> st['hour'];;
+SELECT i, DATE_PART('minute', i) AS p, DATE_PART(['minute'], i) AS st
+FROM intervals
+WHERE p <> st['minute'];;
+SELECT i, DATE_PART('minute', i) AS p, DATE_PART(['minute'], i) AS st
+FROM intervals
+WHERE p <> st['minute'];;
+;
+SELECT i, DATE_PART('minute', i) AS p, DATE_PART(['minute'], i) AS st
+FROM intervals
+WHERE p <> st['minute'];;
+SELECT i, date_part('minute', i) AS p, date_part(main.list_value('minute'), i) AS st FROM intervals WHERE (p != st['minute']);
+;
+;
+;
+;
+SELECT i, DATE_PART('minute', i) AS p, DATE_PART(['minute'], i) AS st
+FROM intervals
+WHERE p <> st['minute'];;
+SELECT i, DATE_PART('second', i) AS p, DATE_PART(['second'], i) AS st
+FROM intervals
+WHERE p <> st['second'];;
+SELECT i, DATE_PART('second', i) AS p, DATE_PART(['second'], i) AS st
+FROM intervals
+WHERE p <> st['second'];;
+;
+SELECT i, DATE_PART('second', i) AS p, DATE_PART(['second'], i) AS st
+FROM intervals
+WHERE p <> st['second'];;
+SELECT i, date_part('second', i) AS p, date_part(main.list_value('second'), i) AS st FROM intervals WHERE (p != st['second']);
+;
+;
+;
+;
+SELECT i, DATE_PART('second', i) AS p, DATE_PART(['second'], i) AS st
+FROM intervals
+WHERE p <> st['second'];;
+SELECT i, DATE_PART('millisecond', i) AS p, DATE_PART(['millisecond'], i) AS st
+FROM intervals
+WHERE p <> st['millisecond'];;
+SELECT i, DATE_PART('millisecond', i) AS p, DATE_PART(['millisecond'], i) AS st
+FROM intervals
+WHERE p <> st['millisecond'];;
+;
+SELECT i, DATE_PART('millisecond', i) AS p, DATE_PART(['millisecond'], i) AS st
+FROM intervals
+WHERE p <> st['millisecond'];;
+SELECT i, date_part('millisecond', i) AS p, date_part(main.list_value('millisecond'), i) AS st FROM intervals WHERE (p != st['millisecond']);
+;
+;
+;
+;
+SELECT i, DATE_PART('millisecond', i) AS p, DATE_PART(['millisecond'], i) AS st
+FROM intervals
+WHERE p <> st['millisecond'];;
+SELECT i, DATE_PART('microsecond', i) AS p, DATE_PART(['microsecond'], i) AS st
+FROM intervals
+WHERE p <> st['microsecond'];;
+SELECT i, DATE_PART('microsecond', i) AS p, DATE_PART(['microsecond'], i) AS st
+FROM intervals
+WHERE p <> st['microsecond'];;
+;
+SELECT i, DATE_PART('microsecond', i) AS p, DATE_PART(['microsecond'], i) AS st
+FROM intervals
+WHERE p <> st['microsecond'];;
+SELECT i, date_part('microsecond', i) AS p, date_part(main.list_value('microsecond'), i) AS st FROM intervals WHERE (p != st['microsecond']);
+;
+;
+;
+;
+SELECT i, DATE_PART('microsecond', i) AS p, DATE_PART(['microsecond'], i) AS st
+FROM intervals
+WHERE p <> st['microsecond'];;
+SELECT i, DATE_PART('epoch', i) AS p, DATE_PART(['epoch'], i) AS st
+FROM intervals
+WHERE p <> st['epoch'];;
+SELECT i, DATE_PART('epoch', i) AS p, DATE_PART(['epoch'], i) AS st
+FROM intervals
+WHERE p <> st['epoch'];;
+;
+SELECT i, DATE_PART('epoch', i) AS p, DATE_PART(['epoch'], i) AS st
+FROM intervals
+WHERE p <> st['epoch'];;
+SELECT i, date_part('epoch', i) AS p, date_part(main.list_value('epoch'), i) AS st FROM intervals WHERE (p != st['epoch']);
+;
+;
+;
+;
+SELECT i, DATE_PART('epoch', i) AS p, DATE_PART(['epoch'], i) AS st
+FROM intervals
+WHERE p <> st['epoch'];;
+SELECT i, DATE_PART(['year', 'month', 'day'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['year', 'month', 'day'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['year', 'month', 'day'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, date_part(main.list_value('year', 'month', 'day'), i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, DATE_PART(['year', 'month', 'day'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['millennium', 'century', 'decade', 'quarter'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['millennium', 'century', 'decade', 'quarter'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['millennium', 'century', 'decade', 'quarter'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, date_part(main.list_value('millennium', 'century', 'decade', 'quarter'), i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, DATE_PART(['millennium', 'century', 'decade', 'quarter'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['hour', 'minute', 'second', 'epoch'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['hour', 'minute', 'second', 'epoch'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['hour', 'minute', 'second', 'epoch'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, date_part(main.list_value('hour', 'minute', 'second', 'epoch'), i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, DATE_PART(['hour', 'minute', 'second', 'epoch'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ns(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ns(i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, epoch_ns(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ns(i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, epoch_ns(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_us(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_us(i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, epoch_us(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_us(i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, epoch_us(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ms(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ms(i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, epoch_ms(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, epoch_ms(i) AS parts FROM intervals ORDER BY 1;
+;
+;
+;
+SELECT i, epoch_ms(i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['dow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['dow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['dow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['dow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isodow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isodow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['isodow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isodow'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['doy'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['doy'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['doy'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['doy'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['week'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['week'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['week'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['week'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isoyear'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isoyear'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['isoyear'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['isoyear'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['yearweek'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['yearweek'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['yearweek'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['yearweek'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['era'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['era'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['era'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['era'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['timezone'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_hour'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_hour'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['timezone_hour'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_hour'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_minute'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_minute'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+;
+SELECT i, DATE_PART(['timezone_minute'], i) AS parts
+FROM intervals
+ORDER BY 1;;
+SELECT i, DATE_PART(['timezone_minute'], i) AS parts
+FROM intervals
+ORDER BY 1;;

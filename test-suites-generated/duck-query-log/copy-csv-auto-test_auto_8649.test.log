@@ -1,0 +1,2 @@
+PRAGMA verify_parallelism;
+SELECT * FROM read_csv_auto("data/csv/dim0.csv") ;;

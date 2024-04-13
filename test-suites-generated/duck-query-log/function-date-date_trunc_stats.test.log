@@ -1,0 +1,17 @@
+PRAGMA enable_verification;
+CREATE table T1(A0 TIMESTAMP);
+SELECT date_trunc('DAY', A0) FROM T1;
+SELECT date_trunc('DAY', A0) FROM T1;
+;
+SELECT date_trunc('DAY', A0) FROM T1;
+SELECT date_trunc('DAY', A0) FROM T1;
+;
+;
+;
+;
+SELECT date_trunc('DAY', A0) FROM T1;
+SELECT datetrunc('milliseconds', DATE '-2005205-7-28');;
+SELECT datetrunc('milliseconds', DATE '-2005205-7-28');;
+;
+SELECT datetrunc('milliseconds', DATE '-2005205-7-28');;
+SELECT datetrunc('milliseconds', DATE '-2005205-7-28');;

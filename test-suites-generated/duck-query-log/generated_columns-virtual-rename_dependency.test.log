@@ -1,0 +1,31 @@
+PRAGMA enable_verification;
+CREATE TABLE unit (
+	price INTEGER,
+	amount_sold INTEGER,
+	total_profit AS (price * amount_sold),
+	profit_total AS (total_profit),
+	sold_amount AS (5 + 3)
+);;
+INSERT INTO unit VALUES (5,4);
+SELECT total_profit FROM unit;
+SELECT total_profit FROM unit;
+;
+SELECT total_profit FROM unit;
+SELECT total_profit FROM unit;
+;
+;
+;
+;
+SELECT total_profit FROM unit;
+ALTER TABLE unit RENAME COLUMN price TO value;
+ALTER TABLE unit DROP COLUMN value;;
+SELECT * FROM unit;
+SELECT * FROM unit;
+;
+SELECT * FROM unit;
+SELECT * FROM unit;
+;
+;
+;
+;
+SELECT * FROM unit;

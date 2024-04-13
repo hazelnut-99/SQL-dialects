@@ -1,0 +1,1 @@
+SELECT col1, typeof(col1) FROM 'test/sql/copy/csv/data/test/timestampoffset.csv' t1(col1);;

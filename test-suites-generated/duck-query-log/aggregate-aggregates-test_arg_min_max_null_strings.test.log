@@ -1,0 +1,448 @@
+PRAGMA enable_verification;
+PRAGMA verify_external;
+CREATE TABLE tbl(
+	"DATE" DATE,
+	"TIMESTAMP" TIMESTAMP,
+	"INTEGER" INTEGER,
+	"BIGINT" BIGINT,
+	"DOUBLE" DOUBLE,
+	"VARCHAR" VARCHAR
+	);;
+INSERT INTO tbl
+	SELECT
+		DATE '1992-01-02' + INTERVAL ((RANDOM() * 300)::INT) DAYS d,
+		TIMESTAMP '1992-01-02 23:20:11' + INTERVAL ((RANDOM() * 300)::INT) DAYS + INTERVAL ((RANDOM() * 60 * 60)::INT) SECONDS ts,
+		50 + (RANDOM() * 6000)::INT i,
+		10 + (RANDOM() * 899999999)::BIGINT bi,
+		1 + RANDOM() * 99 dbl,
+		concat(chr(98 + (RANDOM() * 24)::INT), chr(98 + (RANDOM() * 24)::INT), chr(98 + (RANDOM() * 24)::INT), chr(98 + (RANDOM() * 24)::INT), repeat(chr(98 + (RANDOM() * 24)::INT), 29)) str
+	FROM
+		range(10000);;
+INSERT INTO tbl VALUES (
+	DATE '1992-01-01',
+	TIMESTAMP '1992-01-01 23:20:11',
+	42,
+	0,
+	0.5,
+	'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+);
+INSERT INTO tbl VALUES (
+	DATE '1993-01-01',
+	TIMESTAMP '1993-01-01 23:20:11',
+	8400,
+	999999999,
+	100.5,
+	'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
+);
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MIN("DATE") FROM tbl;
+SELECT arg_min_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MIN("DATE") FROM tbl;
+;
+SELECT arg_min_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MIN("DATE") FROM tbl;
+SELECT arg_min_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MIN("DATE") FROM tbl;
+(SELECT arg_min_null(DATE, "VARCHAR") FROM tbl) EXCEPT (SELECT min(DATE) FROM tbl);
+;
+;
+;
+;
+SELECT arg_min_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MIN("DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MAX("DATE") FROM tbl;
+SELECT arg_max_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MAX("DATE") FROM tbl;
+;
+SELECT arg_max_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MAX("DATE") FROM tbl;
+SELECT arg_max_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MAX("DATE") FROM tbl;
+(SELECT arg_max_null(DATE, "VARCHAR") FROM tbl) EXCEPT (SELECT max(DATE) FROM tbl);
+;
+;
+;
+;
+SELECT arg_max_null("DATE", "VARCHAR") FROM tbl EXCEPT SELECT MAX("DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MIN("TIMESTAMP") FROM tbl;
+SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MIN("TIMESTAMP") FROM tbl;
+;
+SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MIN("TIMESTAMP") FROM tbl;
+SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MIN("TIMESTAMP") FROM tbl;
+(SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl) EXCEPT (SELECT min("TIMESTAMP") FROM tbl);
+;
+;
+;
+;
+SELECT arg_min_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MIN("TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MAX("TIMESTAMP") FROM tbl;
+SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MAX("TIMESTAMP") FROM tbl;
+;
+SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MAX("TIMESTAMP") FROM tbl;
+SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MAX("TIMESTAMP") FROM tbl;
+(SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl) EXCEPT (SELECT max("TIMESTAMP") FROM tbl);
+;
+;
+;
+;
+SELECT arg_max_null("TIMESTAMP", "VARCHAR") FROM tbl EXCEPT SELECT MAX("TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MIN("INTEGER") FROM tbl;
+SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MIN("INTEGER") FROM tbl;
+;
+SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MIN("INTEGER") FROM tbl;
+SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MIN("INTEGER") FROM tbl;
+(SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl) EXCEPT (SELECT min("INTEGER") FROM tbl);
+;
+;
+;
+;
+SELECT arg_min_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MIN("INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MAX("INTEGER") FROM tbl;
+SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MAX("INTEGER") FROM tbl;
+;
+SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MAX("INTEGER") FROM tbl;
+SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MAX("INTEGER") FROM tbl;
+(SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl) EXCEPT (SELECT max("INTEGER") FROM tbl);
+;
+;
+;
+;
+SELECT arg_max_null("INTEGER", "VARCHAR") FROM tbl EXCEPT SELECT MAX("INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MIN("BIGINT") FROM tbl;
+SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MIN("BIGINT") FROM tbl;
+;
+SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MIN("BIGINT") FROM tbl;
+SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MIN("BIGINT") FROM tbl;
+(SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl) EXCEPT (SELECT min("BIGINT") FROM tbl);
+;
+;
+;
+;
+SELECT arg_min_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MIN("BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MAX("BIGINT") FROM tbl;
+SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MAX("BIGINT") FROM tbl;
+;
+SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MAX("BIGINT") FROM tbl;
+SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MAX("BIGINT") FROM tbl;
+(SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl) EXCEPT (SELECT max("BIGINT") FROM tbl);
+;
+;
+;
+;
+SELECT arg_max_null("BIGINT", "VARCHAR") FROM tbl EXCEPT SELECT MAX("BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MIN("VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MIN("VARCHAR") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MIN("VARCHAR") FROM tbl;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MIN("VARCHAR") FROM tbl;
+(SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl) EXCEPT (SELECT min("VARCHAR") FROM tbl);
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MIN("VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MAX("VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MAX("VARCHAR") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MAX("VARCHAR") FROM tbl;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MAX("VARCHAR") FROM tbl;
+(SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl) EXCEPT (SELECT max("VARCHAR") FROM tbl);
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "VARCHAR") FROM tbl EXCEPT SELECT MAX("VARCHAR") FROM tbl;
+INSERT INTO tbl VALUES (
+	DATE '1991-01-01',
+	TIMESTAMP '1991-01-01 23:20:11',
+	41,
+	-1,
+	0.25,
+	NULL
+);
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+INSERT INTO tbl VALUES (
+	DATE '1994-01-01',
+	TIMESTAMP '1994-01-01 23:20:11',
+	9400,
+	9999999999,
+	101.5,
+	NULL
+);
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_max_null("VARCHAR", DATE) FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "DATE") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "TIMESTAMP") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "INTEGER") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_min_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;
+;
+;
+;
+;
+SELECT arg_max_null("VARCHAR", "BIGINT") FROM tbl;

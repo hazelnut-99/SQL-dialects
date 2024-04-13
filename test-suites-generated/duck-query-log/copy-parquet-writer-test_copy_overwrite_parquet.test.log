@@ -1,0 +1,14 @@
+CREATE TABLE test (a INTEGER, b VARCHAR(10));;
+INSERT INTO test VALUES (1, 'hello'), (2, 'world '), (3, ' xx');;
+SELECT * FROM test ORDER BY 1;;
+COPY test TO 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET);
+COPY (SELECT * FROM test LIMIT 2) TO 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET);;
+DELETE FROM test;;
+COPY test FROM 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET);;
+SELECT * FROM test ORDER BY 1;;
+COPY (SELECT i FROM range(1) tbl(i) UNION ALL SELECT concat('hello', i)::INT i FROM range(1) tbl(i)) to 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET);;
+DELETE FROM test;;
+COPY test FROM 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET);;
+SELECT * FROM test ORDER BY 1;;
+COPY (SELECT i FROM range(1) tbl(i) UNION ALL SELECT concat('hello', i)::INT i FROM range(1) tbl(i)) to 'duckdb_unittest_tempdir/54814/overwrite.parquet' (FORMAT PARQUET, USE_TMP_FILE FALSE);;
+SELECT * FROM 'duckdb_unittest_tempdir/54814/overwrite.parquet';;

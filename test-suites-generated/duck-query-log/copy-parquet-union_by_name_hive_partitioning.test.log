@@ -1,0 +1,42 @@
+SELECT * FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=1);
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=0, union_by_name=1)
+ORDER BY j, x NULLS LAST;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=1, union_by_name=1)
+ORDER BY j;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=1, union_by_name=1)
+WHERE x=2
+ORDER BY j;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1)
+ORDER BY j;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1)
+WHERE k IS NULL
+ORDER BY j;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1)
+WHERE k IS NOT DISTINCT FROM NULL
+ORDER BY j;
+SELECT i, j, k, x
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1)
+WHERE k>0
+ORDER BY j;
+SELECT i, j, k, x, filename.replace('\', '/').split('/')[-2]
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1, filename=1)
+WHERE k>0
+ORDER BY j;
+SELECT i, j, k, x, filename.replace('\', '/').split('/')[-2]
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1, filename=1)
+WHERE filename.replace('\', '/') >= 'data/parquet-testing/hive-partitioning/union_by_name/x=2'
+ORDER BY j;
+SELECT i, j, k, x, filename.replace('\', '/').split('/')[-2]
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1, filename=1)
+WHERE filename.replace('\', '/') < 'data/parquet-testing/hive-partitioning/union_by_name/x=2'
+ORDER BY j;
+SELECT i, j, k, x, filename.replace('\', '/').split('/')[-2]
+FROM read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/f2.parquet', hive_partitioning=1, union_by_name=1, filename=1)
+WHERE filename.replace('\', '/') < 'data/parquet-testing/hive-partitioning/union_by_name/x=1'
+ORDER BY j;

@@ -1,0 +1,7 @@
+CREATE TABLE test(i INTEGER, j INTEGER);
+INSERT INTO test SELECT i, i FROM range(100) tbl(i);;
+ALTER TABLE test DROP COLUMN i;
+DELETE FROM test WHERE j%2=0;
+SELECT COUNT(j), SUM(j) FROM test;
+UPDATE test SET j=j+100;
+SELECT COUNT(j), SUM(j) FROM test;

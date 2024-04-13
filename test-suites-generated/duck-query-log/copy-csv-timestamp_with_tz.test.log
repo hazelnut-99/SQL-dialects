@@ -1,0 +1,2 @@
+CREATE TABLE tbl(id int, ts timestamp);;
+COPY tbl FROM 'data/csv/timestamp_with_tz.csv' (HEADER);

@@ -1,0 +1,82 @@
+PRAGMA enable_verification;
+select t.*
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t;
+select t.*
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t;
+;
+select t.*
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t;
+SELECT t.* FROM (SELECT * FROM (SELECT * FROM (VALUES (1), (2)) AS valueslist) AS t1(a) , (SELECT * FROM (VALUES (3), (4)) AS valueslist) AS t2(b)) AS t;
+;
+;
+;
+;
+select t.*
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t;
+select x, y
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y);
+select x, y
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y);
+;
+select x, y
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y);
+SELECT x, y FROM (SELECT * FROM (SELECT * FROM (VALUES (1), (2)) AS valueslist) AS t1(a) , (SELECT * FROM (VALUES (3), (4)) AS valueslist) AS t2(b)) AS t(x, y);
+;
+;
+;
+;
+select x, y
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y);
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y, z);
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y, z);
+;
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y, z);
+from (
+  (values (1), (2)) as t1 (a)
+  cross join
+  (values (3), (4)) as t2 (b)
+) as t(x, y, z);

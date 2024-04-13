@@ -1,0 +1,3 @@
+create table x (c1 integer, primary key (c1));;
+create table y (c1 integer, foreign key (c1) references x (c1));;
+select count(*) from duckdb_constraints() where constraint_type = 'NOT NULL';;

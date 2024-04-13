@@ -1,0 +1,7 @@
+PRAGMA enable_verification;
+ATTACH 'duckdb_unittest_tempdir/54310/attach_same_db.db' AS db1;
+ATTACH 'duckdb_unittest_tempdir/54310/attach_same_db.db' AS db2;
+BEGIN;
+DETACH db1;
+ATTACH 'duckdb_unittest_tempdir/54310/attach_same_db.db' AS db1;
+COMMIT;

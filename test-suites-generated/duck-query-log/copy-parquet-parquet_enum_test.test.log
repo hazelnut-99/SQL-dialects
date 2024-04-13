@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+SELECT * FROM parquet_scan('data/parquet-testing/adam_genotypes.parquet');
+SELECT * FROM parquet_scan('data/parquet-testing/adam_genotypes.parquet');
+;
+SELECT * FROM parquet_scan('data/parquet-testing/adam_genotypes.parquet');
+SELECT * FROM parquet_scan('data/parquet-testing/adam_genotypes.parquet');
+;
+;
+;
+;
+SELECT * FROM parquet_scan('data/parquet-testing/adam_genotypes.parquet');

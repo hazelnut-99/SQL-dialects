@@ -1,0 +1,15 @@
+SELECT list_sum([2, 2]);
+CREATE TABLE integers(i INTEGER[]);;
+INSERT INTO integers SELECT LIST(i) FROM range(0, 1000, 1) tbl(i);;
+INSERT INTO integers SELECT LIST(i) FROM range(-999, 1000, 1) tbl(i);;
+INSERT INTO integers SELECT LIST(i) FROM range(0, -1000, -1) tbl(i);;
+INSERT INTO integers VALUES (NULL), ([NULL]), ([]);;
+SELECT list_sum(i) FROM integers;;
+CREATE TABLE doubles(n DOUBLE[]);;
+INSERT INTO doubles (n) VALUES (['9007199254740992'::DOUBLE, 1::DOUBLE, 1::DOUBLE, 0::DOUBLE]);;
+SELECT list_aggr(n, 'fsum') FROM doubles;;
+SELECT list_aggr(n, 'sumKahan') FROM doubles;;
+SELECT list_aggr(n, 'kahan_sum') FROM doubles;;
+CREATE TABLE bigints(i BIGINT[]);;
+INSERT INTO bigints SELECT LIST(i) FROM range(4611686018427387904, 4611686018427388904, 1) tbl(i);;
+SELECT list_sum(i) FROM bigints;

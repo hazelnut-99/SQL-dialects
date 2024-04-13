@@ -1,0 +1,42 @@
+PRAGMA enable_verification;
+CREATE TABLE bools(b BOOL);
+INSERT INTO bools SELECT CASE WHEN i%2=0 THEN NULL ELSE i%7=0 OR i%3=0 END b FROM range(10000) tbl(i);;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM bools;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM bools;
+;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM bools;
+SELECT count_star(), count(b), bool_and(b), bool_or(b), sum(CASE  WHEN (b) THEN (1) ELSE 0 END) AS true_count, sum(CASE  WHEN (b) THEN (0) ELSE 1 END) AS false_count FROM bools;
+;
+;
+;
+;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM bools;
+COPY bools TO 'duckdb_unittest_tempdir/54828/bools.parquet' (FORMAT 'parquet');;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM 'duckdb_unittest_tempdir/54828/bools.parquet';
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM 'duckdb_unittest_tempdir/54828/bools.parquet';
+;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM 'duckdb_unittest_tempdir/54828/bools.parquet';
+SELECT count_star(), count(b), bool_and(b), bool_or(b), sum(CASE  WHEN (b) THEN (1) ELSE 0 END) AS true_count, sum(CASE  WHEN (b) THEN (0) ELSE 1 END) AS false_count FROM "duckdb_unittest_tempdir/54828/bools.parquet";
+;
+;
+;
+;
+SELECT COUNT(*), COUNT(b), BOOL_AND(b), BOOL_OR(b), SUM(CASE WHEN b THEN 1 ELSE 0 END) true_count, SUM(CASE WHEN b THEN 0 ELSE 1 END) false_count
+FROM 'duckdb_unittest_tempdir/54828/bools.parquet';
+SELECT typeof(b) FROM 'duckdb_unittest_tempdir/54828/bools.parquet' LIMIT 1;
+SELECT typeof(b) FROM 'duckdb_unittest_tempdir/54828/bools.parquet' LIMIT 1;
+;
+SELECT typeof(b) FROM 'duckdb_unittest_tempdir/54828/bools.parquet' LIMIT 1;
+SELECT typeof(b) FROM "duckdb_unittest_tempdir/54828/bools.parquet" LIMIT 1;
+;
+;
+;
+;
+SELECT typeof(b) FROM 'duckdb_unittest_tempdir/54828/bools.parquet' LIMIT 1;

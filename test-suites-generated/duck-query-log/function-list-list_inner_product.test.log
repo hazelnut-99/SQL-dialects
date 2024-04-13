@@ -1,0 +1,14 @@
+SELECT list_inner_product([1, 1, 1]::FLOAT[], [1, 1, 1]::FLOAT[]);;
+CREATE OR REPLACE TABLE lists (l FLOAT[]);;
+INSERT INTO lists VALUES ([1, 2, 3]), ([1, 2, 4]), ([7, 8, 9]), ([-1, -2, -3]), (NULL);;
+SELECT list_inner_product(l, [1, 2, 3]) FROM lists;;
+SELECT list_inner_product([1, NULL, 3]::FLOAT[], [1, 2, 3]::FLOAT[]);;
+SELECT list_inner_product([1, 2, 3]::FLOAT[], [1, NULL, 3]::FLOAT[]);;
+SELECT list_inner_product([1, 2, 3]::FLOAT[], [1, 2, 3, 4]::FLOAT[]);;
+SELECT list_inner_product([1, 1, 1]::DOUBLE[], [1, 1, 1]::DOUBLE[]);;
+CREATE OR REPLACE TABLE lists (l DOUBLE[]);;
+INSERT INTO lists VALUES ([1, 2, 3]), ([1, 2, 4]), ([7, 8, 9]), ([-1, -2, -3]), (NULL);;
+SELECT list_inner_product(l, [1, 2, 3]) FROM lists;;
+SELECT list_inner_product([1, NULL, 3]::DOUBLE[], [1, 2, 3]::DOUBLE[]);;
+SELECT list_inner_product([1, 2, 3]::DOUBLE[], [1, NULL, 3]::DOUBLE[]);;
+SELECT list_inner_product([1, 2, 3]::DOUBLE[], [1, 2, 3, 4]::DOUBLE[]);;

@@ -1,0 +1,15 @@
+PRAGMA enable_verification;
+CREATE TABLE tbl (u UNION(a INT, b VARCHAR));;
+INSERT INTO tbl VALUES (1), (NULL), (NULL::VARCHAR), (NULL::INT);;
+DELETE FROM tbl;
+INSERT INTO tbl VALUES (1), (NULL), (NULL::VARCHAR), (NULL::INT);;
+SELECT union_tag(u) as tag, u as val FROM tbl;;
+SELECT union_tag(u) as tag, u as val FROM tbl;;
+;
+SELECT union_tag(u) as tag, u as val FROM tbl;;
+SELECT union_tag(u) AS tag, u AS val FROM tbl;
+;
+;
+;
+;
+SELECT union_tag(u) as tag, u as val FROM tbl;;

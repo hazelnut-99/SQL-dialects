@@ -1,0 +1,16 @@
+PRAGMA enable_verification;
+SELECT TRY_CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+SELECT TRY_CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+;
+SELECT TRY_CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+SELECT TRY_CAST(test_vector AS INTEGER[2]) AS a FROM test_vector_types(CAST(NULL AS INTEGER[]));
+;
+;
+;
+;
+SELECT TRY_CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+SELECT CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+SELECT CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+;
+SELECT CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);
+SELECT CAST(test_vector AS INT[2]) AS a FROM test_vector_types(NULL::INTEGER[]);

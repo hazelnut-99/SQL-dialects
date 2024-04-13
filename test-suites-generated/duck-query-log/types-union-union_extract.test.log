@@ -1,0 +1,26 @@
+SELECT union_extract(1, 'b');;
+SELECT union_extract(1::UNION(a INT, b FLOAT), 'a');;
+CREATE TABLE tbl1 (u UNION(a INT, b FLOAT, c VARCHAR));;
+INSERT INTO tbl1 VALUES (1), ('text'), (2.0);;
+SELECT u.a FROM tbl1 WHERE u.a IS NOT NULL;
+SELECT u.a FROM tbl1;
+SELECT u.b FROM tbl1 WHERE u.b IS NOT NULL;
+SELECT u.b FROM tbl1;
+SELECT u.c FROM tbl1 WHERE u.c IS NOT NULL;
+SELECT u.c FROM tbl1;
+SELECT u.a, u.b, u.c FROM tbl1;
+SELECT union_extract(u, 'a') FROM tbl1 WHERE union_extract(u, 'a') IS NOT NULL;
+SELECT union_extract(u, 'a') FROM tbl1;
+SELECT union_extract(u, 'b') FROM tbl1 WHERE union_extract(u, 'b') IS NOT NULL;
+SELECT union_extract(u, 'b') FROM tbl1;
+SELECT union_extract(u, 'c') FROM tbl1 WHERE union_extract(u, 'c') IS NOT NULL;
+SELECT union_extract(u, 'c') FROM tbl1;
+SELECT 
+    union_extract(u, 'a'), 
+    union_extract(u, 'c'),
+    union_extract(u, 'b')
+FROM tbl1;
+PREPARE p1 AS SELECT union_extract(u, ?) FROM tbl1;;
+EXECUTE p1('a');;
+EXECUTE p1('b');;
+EXECUTE p1('c');;

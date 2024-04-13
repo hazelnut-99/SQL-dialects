@@ -1,0 +1,69 @@
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/unquoted_new_line.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, line_byte_position,byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/unquoted_last_value.csv',
+    columns = {'a': 'VARCHAR'},
+    store_rejects=true, auto_detect=false, header = 0, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    buffer_size=35,
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    buffer_size=36,
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    buffer_size=37,
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    buffer_size=38,
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;
+SELECT * FROM read_csv(
+    'data/csv/rejects/unquoted/basic.csv',
+    columns = {'a': 'VARCHAR', 'b': 'INTEGER'},
+    buffer_size=39,
+    store_rejects=true, auto_detect=false, header = 1, quote = '"', escape = '"');;
+SELECT regexp_replace(file_path, '\\', '/', 'g'), line, column_idx, column_name, error_type, csv_line,line_byte_position, byte_position
+FROM reject_scans inner join reject_errors on (reject_scans.scan_id = reject_errors.scan_id and reject_scans.file_id = reject_errors.file_id);;
+DROP TABLE reject_scans;;
+DROP TABLE reject_errors;;

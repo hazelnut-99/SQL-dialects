@@ -1,0 +1,9 @@
+select * FROM parquet_scan('data/parquet-testing/map.parquet') sq limit 3;;
+SELECT * FROM parquet_scan('data/parquet-testing/arrow/nested_lists.snappy.parquet');
+SELECT unnest(a) FROM parquet_scan('data/parquet-testing/arrow/nested_lists.snappy.parquet');
+SELECT * FROM parquet_scan('data/parquet-testing/arrow/list_columns.parquet');
+SELECT id, url FROM parquet_scan('data/parquet-testing/apkwan.parquet') limit 10;
+select * from (SELECT id, unnest(url) u FROM parquet_scan('data/parquet-testing/apkwan.parquet')) sq where u is not null limit 10;
+SELECT id, authors FROM parquet_scan('data/parquet-testing/apkwan.parquet') limit 10;
+SELECT id, unnest(authors) FROM parquet_scan('data/parquet-testing/apkwan.parquet') limit 20;
+SELECT id, struct_extract(unnest(authors), 'name'), struct_extract(unnest(authors), 'id') FROM parquet_scan('data/parquet-testing/apkwan.parquet') limit 20;

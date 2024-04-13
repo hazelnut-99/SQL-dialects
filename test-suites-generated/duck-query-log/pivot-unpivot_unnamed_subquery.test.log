@@ -1,15 +1,15 @@
-PRAGMA enable_verification
+PRAGMA enable_verification;
 unpivot (select cast(columns(*) as varchar) from (select 42 as col1, 'woot' as col2))
-    on columns(*);
+    on columns(*);;
 unpivot (select cast(columns(*) as varchar) from (select 42 as col1, 'woot' as col2))
-    on columns(*);
-
+    on columns(*);;
+;
 unpivot (select cast(columns(*) as varchar) from (select 42 as col1, 'woot' as col2))
-    on columns(*);
-SELECT * FROM (SELECT CAST(COLUMNS(*) AS VARCHAR) FROM (SELECT 42 AS col1, 'woot' AS col2)) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)))
-
-
-
-
+    on columns(*);;
+SELECT * FROM (SELECT CAST(COLUMNS(*) AS VARCHAR) FROM (SELECT 42 AS col1, 'woot' AS col2)) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)));
+;
+;
+;
+;
 unpivot (select cast(columns(*) as varchar) from (select 42 as col1, 'woot' as col2))
-    on columns(*);
+    on columns(*);;

@@ -1,0 +1,45 @@
+PRAGMA enable_verification;
+attach ':memory:' as test;;
+use test;;
+create table tbl1 as select 1 as a;;
+FROM test.tbl1;
+FROM test.tbl1;
+;
+FROM test.tbl1;
+SELECT * FROM test.tbl1;
+;
+;
+;
+;
+FROM test.tbl1;
+export database 'duckdb_unittest_tempdir/54322/test_issue_7660';;
+USE memory;
+DETACH test;
+
+
+
+CREATE TABLE tbl1(a INTEGER);
+
+
+
+
+COPY tbl1 FROM 'duckdb_unittest_tempdir/54322/test_issue_7660/tbl_.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;
+
+
+
+CREATE TABLE tbl1(a INTEGER);
+
+
+
+
+COPY tbl1 FROM 'duckdb_unittest_tempdir/54322/test_issue_7660/tbl_.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;
+FROM tbl1;
+FROM tbl1;
+;
+FROM tbl1;
+SELECT * FROM tbl1;
+;
+;
+;
+;
+FROM tbl1;

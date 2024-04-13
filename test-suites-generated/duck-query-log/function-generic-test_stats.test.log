@@ -1,0 +1,17 @@
+select 1=1;
+SELECT STATS(5);;
+SELECT STATS(7);;
+SELECT STATS('hello');;
+SELECT STATS('1234567ü');;
+SELECT STATS(5+2);;
+CREATE TABLE integers(i INTEGER);;
+INSERT INTO integers VALUES (1), (2), (3);;
+SELECT STATS(i) FROM integers LIMIT 1;;
+SELECT STATS(i+2) FROM integers LIMIT 1;;
+SELECT STATS(i-5) FROM integers LIMIT 1;;
+SELECT STATS(i*2) FROM integers LIMIT 1;;
+SELECT STATS(i*-1) FROM integers LIMIT 1;;
+PRAGMA disable_optimizer;
+SELECT STATS(i+1) FROM integers LIMIT 1;;
+PRAGMA enable_optimizer;
+SELECT STATS(i*-1) FROM integers LIMIT 1;;

@@ -1,0 +1,81 @@
+PRAGMA enable_verification;
+CREATE TABLE a(c ROW(i ROW(a INTEGER), j INTEGER));;
+INSERT INTO a VALUES ({
+	'i': {
+		'a': 3
+	},
+	'j': 4
+});
+SELECT * FROM a;
+SELECT * FROM a;
+;
+SELECT * FROM a;
+SELECT * FROM a;
+;
+;
+;
+;
+SELECT * FROM a;
+SELECT ((c).i).a FROM a;
+SELECT ((c).i).a FROM a;
+;
+SELECT ((c).i).a FROM a;
+SELECT ((c).i).a FROM a;
+;
+;
+;
+;
+SELECT ((c).i).a FROM a;
+INSERT INTO a VALUES (NULL);
+SELECT * FROM a;
+SELECT * FROM a;
+;
+SELECT * FROM a;
+SELECT * FROM a;
+;
+;
+;
+;
+SELECT * FROM a;
+SELECT ((c).i).a FROM a;
+SELECT ((c).i).a FROM a;
+;
+SELECT ((c).i).a FROM a;
+SELECT ((c).i).a FROM a;
+;
+;
+;
+;
+SELECT ((c).i).a FROM a;
+INSERT INTO a VALUES (ROW(ROW(NULL), 1));
+INSERT INTO a VALUES (ROW(ROW(1), NULL));
+INSERT INTO a VALUES (ROW(NULL, 1));
+SELECT * FROM a;
+SELECT * FROM a;
+;
+SELECT * FROM a;
+SELECT * FROM a;
+;
+;
+;
+;
+SELECT * FROM a;
+CREATE TABLE b AS SELECT {
+	'a': {
+		'a': 1,
+		'b': 'hello'
+	}
+} c;;
+SELECT (c).a FROM b;
+SELECT (c).a FROM b;
+;
+SELECT (c).a FROM b;
+SELECT (c).a FROM b;
+;
+;
+;
+;
+SELECT (c).a FROM b;
+INSERT INTO a VALUES (1);
+INSERT INTO a VALUES (ROW(1, 2));
+INSERT INTO a VALUES (ROW(ROW(1, 2, 3), 1));

@@ -1,0 +1,14 @@
+PRAGMA verify_parallelism;
+select *
+from  read_csv('data/csv/bug_7578.csv', delim='\t', quote = '`', columns={
+  'transaction_id': 'VARCHAR',
+  'team_id': 'INT',
+  'direction': 'INT',
+  'amount':'DOUBLE',
+  'account_id':'INT',
+  'transaction_date':'DATE',
+  'recorded_date':'DATE',
+  'tags.transaction_id':'VARCHAR',
+  'tags.team_id':'INT',
+  'tags':'varchar'
+}) order by all;

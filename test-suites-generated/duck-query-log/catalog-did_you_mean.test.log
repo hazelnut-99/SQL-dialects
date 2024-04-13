@@ -1,0 +1,5 @@
+CREATE TABLE hello(i INTEGER);;
+CREATE SCHEMA test;;
+CREATE TABLE test.bye(i INTEGER);;
+SELECT * FROM helloo;;
+SELECT * FROM bye;;

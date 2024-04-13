@@ -1,0 +1,12 @@
+CREATE TABLE integers(i INTEGER PRIMARY KEY, j INTEGER);
+INSERT INTO integers VALUES (3, 4), (3, 5);
+INSERT INTO integers VALUES (3, 4), (2, 5);
+SELECT * FROM integers;
+INSERT INTO integers VALUES (6, 6), (3, 4);;
+INSERT INTO integers VALUES (6, 6);;
+SELECT * FROM integers;
+INSERT INTO integers VALUES (NULL, 4);;
+UPDATE integers SET i=NULL;;
+BEGIN TRANSACTION;
+INSERT INTO integers VALUES (7, 8);;
+COMMIT;

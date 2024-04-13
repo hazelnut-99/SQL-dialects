@@ -1,0 +1,2 @@
+SELECT * FROM pragma_collations() ORDER BY 1;;
+PRAGMA collations=3;

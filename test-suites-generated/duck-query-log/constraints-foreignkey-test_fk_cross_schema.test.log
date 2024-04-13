@@ -1,0 +1,5 @@
+CREATE SCHEMA s1;
+CREATE SCHEMA s2;
+CREATE TABLE s1.pk_integers(i INTEGER PRIMARY KEY);
+INSERT INTO s1.pk_integers VALUES (1), (2), (3);
+CREATE TABLE s2.fk_integers(j INTEGER, FOREIGN KEY (j) REFERENCES s1.pk_intexgers(i));

@@ -1,0 +1,8 @@
+CREATE TABLE tbl1 (u UNION(num INT, str VARCHAR));;
+INSERT INTO tbl1 VALUES (1), ('bar'), (3), ('foo'), (2), ('baz');;
+SELECT FIRST(u), LAST(u) FROM tbl1;;
+SELECT union_tag(u), max(u) FROM tbl1 GROUP BY union_tag(u);;
+SELECT union_tag(u), min(u) FROM tbl1 GROUP BY union_tag(u);;
+SELECT sum(u.num) FROM tbl1;;
+SELECT LAST(u) FROM tbl1 GROUP BY union_tag(u) HAVING union_tag(u) = 'num';;
+SELECT max(u), min(u) FROM tbl1;;

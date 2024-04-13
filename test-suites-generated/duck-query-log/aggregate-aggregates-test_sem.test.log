@@ -1,0 +1,71 @@
+PRAGMA enable_verification;
+select sem();
+select sem();
+;
+select sem();
+select sem();
+select sem(NULL);
+select sem(NULL);
+;
+select sem(NULL);
+SELECT sem(NULL);
+;
+;
+;
+;
+select sem(NULL);
+select sem(1);
+select sem(1);
+;
+select sem(1);
+SELECT sem(1);
+;
+;
+;
+;
+select sem(1);
+select sem(*);
+select sem(*);
+;
+select sem(*);
+select sem(*);
+create table aggr(k int, v decimal(10,2), v2 decimal(10, 2));;
+insert into aggr values(1, 10, null),(2, 10, 11), (2, 20, 22), (2, 25, null), (2, 30, 35);;
+select k, sem(v),sem(v2)  from aggr group by k ORDER BY ALL;;
+select k, sem(v),sem(v2)  from aggr group by k ORDER BY ALL;;
+;
+select k, sem(v),sem(v2)  from aggr group by k ORDER BY ALL;;
+SELECT k, sem(v), sem(v2) FROM aggr GROUP BY k ORDER BY COLUMNS(*);
+;
+;
+;
+;
+select k, sem(v),sem(v2)  from aggr group by k ORDER BY ALL;;
+select  sem(v),sem(v2) from aggr;
+select  sem(v),sem(v2) from aggr;
+;
+select  sem(v),sem(v2) from aggr;
+SELECT sem(v), sem(v2) FROM aggr;
+;
+;
+;
+;
+select  sem(v),sem(v2) from aggr;
+select k, sem(v) over (partition by k)
+from aggr
+order by all;
+select k, sem(v) over (partition by k)
+from aggr
+order by all;
+;
+select k, sem(v) over (partition by k)
+from aggr
+order by all;
+SELECT k, sem(v) OVER (PARTITION BY k) FROM aggr ORDER BY COLUMNS(*);
+;
+;
+;
+;
+select k, sem(v) over (partition by k)
+from aggr
+order by all;

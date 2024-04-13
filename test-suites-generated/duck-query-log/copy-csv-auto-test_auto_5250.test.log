@@ -1,0 +1,2 @@
+PRAGMA verify_parallelism;
+select count(*) from read_csv_auto('data/csv/page_namespacepage_title_sample.csv', SAMPLE_SIZE = -1);

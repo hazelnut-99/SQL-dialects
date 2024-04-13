@@ -1,0 +1,15 @@
+PRAGMA enable_verification;
+create table t1 (date timestamp);;
+insert into t1 values ('2016-12-16T00:00:00.000Z');;
+insert into t1 values ('2020-02-17T23:59:59.998Z');;
+insert into t1 values ('2020-02-17T23:59:59.999Z');;
+insert into t1 values ('2020-02-18T00:00:00.000Z');;
+select * from t1 WHERE (date_trunc('DAY', T1.date) < ('2020-02-17T23:59:59.999Z'::timestamp)) ORDER BY 1;;
+select * from t1 WHERE (date_trunc('DAY', T1.date) < ('2020-02-17T23:59:59.999Z'::timestamp)) ORDER BY 1;;
+;
+select * from t1 WHERE (date_trunc('DAY', T1.date) < ('2020-02-17T23:59:59.999Z'::timestamp)) ORDER BY 1;;
+SELECT * FROM t1 WHERE (date_trunc('DAY', T1.date) < CAST('2020-02-17T23:59:59.999Z' AS TIMESTAMP)) ORDER BY 1;
+;
+;
+;
+select * from t1 WHERE (date_trunc('DAY', T1.date) < ('2020-02-17T23:59:59.999Z'::timestamp)) ORDER BY 1;;

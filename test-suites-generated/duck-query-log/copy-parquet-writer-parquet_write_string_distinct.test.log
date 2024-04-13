@@ -1,0 +1,12 @@
+PRAGMA enable_verification;
+COPY (SELECT 'hello' FROM range(10)) TO 'duckdb_unittest_tempdir/54809/string_dict.parquet';;
+SELECT stats_distinct_count FROM parquet_metadata('duckdb_unittest_tempdir/54809/string_dict.parquet');;
+SELECT stats_distinct_count FROM parquet_metadata('duckdb_unittest_tempdir/54809/string_dict.parquet');;
+;
+SELECT stats_distinct_count FROM parquet_metadata('duckdb_unittest_tempdir/54809/string_dict.parquet');;
+SELECT stats_distinct_count FROM parquet_metadata('duckdb_unittest_tempdir/54809/string_dict.parquet');
+;
+;
+;
+;
+SELECT stats_distinct_count FROM parquet_metadata('duckdb_unittest_tempdir/54809/string_dict.parquet');;

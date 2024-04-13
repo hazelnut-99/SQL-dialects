@@ -1,0 +1,126 @@
+PRAGMA enable_verification;
+SELECT 'test' || ' more testing' as added,
+        added.substr(5) as my_substr;
+SELECT 'test' || ' more testing' as added,
+        added.substr(5) as my_substr;
+;
+SELECT 'test' || ' more testing' as added,
+        added.substr(5) as my_substr;
+SELECT ('test' || ' more testing') AS added, added.substr(5) AS my_substr;
+;
+;
+;
+;
+SELECT 'test' || ' more testing' as added,
+        added.substr(5) as my_substr;
+CREATE TABLE varchars(v VARCHAR);;
+INSERT INTO varchars VALUES ('>>%Test<<'), ('%FUNCTION%'), ('Chaining');
+SELECT v.lower() FROM varchars;
+SELECT v.lower() FROM varchars;
+;
+SELECT v.lower() FROM varchars;
+SELECT v.lower() FROM varchars;
+;
+;
+;
+;
+SELECT v.lower() FROM varchars;
+SELECT  v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT  v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+;
+SELECT  v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT v.trim('><') AS trim_inequality, trim_inequality.replace('%', '') AS only_alphabet, only_alphabet.lower() AS lower FROM varchars;
+;
+;
+;
+;
+SELECT  v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT  varchars.v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT  varchars.v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+;
+SELECT  varchars.v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT varchars.v.trim('><') AS trim_inequality, trim_inequality.replace('%', '') AS only_alphabet, only_alphabet.lower() AS lower FROM varchars;
+;
+;
+;
+;
+SELECT  varchars.v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+DELETE FROM varchars;
+INSERT INTO varchars VALUES ('Test Function Chainging Alias');;
+SELECT  v.split(' ')::VARCHAR strings,
+        strings.lower() lower,
+        lower.upper() upper
+FROM varchars;
+SELECT  v.split(' ')::VARCHAR strings,
+        strings.lower() lower,
+        lower.upper() upper
+FROM varchars;
+;
+SELECT  v.split(' ')::VARCHAR strings,
+        strings.lower() lower,
+        lower.upper() upper
+FROM varchars;
+SELECT CAST(v.split(' ') AS VARCHAR) AS strings, strings.lower() AS lower, lower.upper() AS upper FROM varchars;
+;
+;
+;
+;
+SELECT  v.split(' ')::VARCHAR strings,
+        strings.lower() lower,
+        lower.upper() upper
+FROM varchars;
+SELECT  v.split(' ') strings,
+        strings.apply(x -> x.lower()).filter(x -> x[1] == 't') lower,
+        strings.apply(x -> x.upper()).filter(x -> x[1] == 'T') upper,
+        lower + upper  as mix_case_srings
+FROM varchars;
+SELECT  v.split(' ') strings,
+        strings.apply(x -> x.lower()).filter(x -> x[1] == 't') lower,
+        strings.apply(x -> x.upper()).filter(x -> x[1] == 'T') upper,
+        lower + upper  as mix_case_srings
+FROM varchars;
+;
+SELECT  v.split(' ') strings,
+        strings.apply(x -> x.lower()).filter(x -> x[1] == 't') lower,
+        strings.apply(x -> x.upper()).filter(x -> x[1] == 'T') upper,
+        lower + upper  as mix_case_srings
+FROM varchars;
+SELECT v.split(' ') AS strings, filter(strings.apply((x -> x.lower())), (x -> (x[1] = 't'))) AS lower, filter(strings.apply((x -> x.upper())), (x -> (x[1] = 'T'))) AS upper, (lower + upper) AS mix_case_srings FROM varchars;
+;
+;
+;
+;
+SELECT  v.split(' ') strings,
+        strings.apply(x -> x.lower()).filter(x -> x[1] == 't') lower,
+        strings.apply(x -> x.upper()).filter(x -> x[1] == 'T') upper,
+        lower + upper  as mix_case_srings
+FROM varchars;
+PREPARE v1 AS 
+SELECT (?.split(' ')::VARCHAR).lower() lstrings,
+       (?.split(' ')::VARCHAR).upper() ustrings,
+       list_concat(lstrings::VARCHAR[], ustrings::VARCHAR[]) as mix_case_srings;
+EXECUTE v1('Hello World', 'test function chainging');

@@ -1,0 +1,24 @@
+PRAGMA enable_verification;
+CREATE TABLE unit (
+	price INTEGER,
+	amount_sold INTEGER,
+	total_profit AS (price * amount_sold)
+);;
+INSERT INTO unit VALUES (5,4);
+SELECT total_profit FROM unit;;
+SELECT total_profit FROM unit;;
+;
+SELECT total_profit FROM unit;;
+SELECT total_profit FROM unit;
+;
+;
+;
+;
+SELECT total_profit FROM unit;;
+ALTER TABLE unit ALTER COLUMN total_profit TYPE BOOLEAN;;
+INSERT INTO unit VALUES (5,0);;
+CREATE TABLE tbl (
+	price INTEGER,
+	total_profit DATE AS (price * 5),
+);;
+INSERT INTO tbl VALUES (5);;

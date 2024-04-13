@@ -1,0 +1,13 @@
+CREATE TABLE test (col_a INTEGER, col_b VARCHAR(10), col_c VARCHAR(10));;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL (col_b), NULL 'test', HEADER 0,allow_quoted_nulls false );;
+SELECT * FROM test ORDER BY 1;;
+DELETE FROM test;;
+COPY test (col_a, col_b, col_c) FROM 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL (col_b), NULL 'test', HEADER 0, allow_quoted_nulls false);;
+SELECT * FROM test ORDER BY 1;;
+COPY test TO 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL (col_b), NULL 'test', HEADER 0);;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL, NULL 'test');;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL 42, NULL 'test');;
+COPY test (col_b, col_a) FROM 'test/sql/copy/csv/data/test/force_not_null_reordered.csv' (FORCE_NOT_NULL (col_c, col_b));;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null_reordered.csv' (FORCE_NOT_NULL (col_c, col_d));;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null.csv' (FORCE_NOT_NULL (col_a), HEADER 0);;
+COPY test FROM 'test/sql/copy/csv/data/test/force_not_null_inull.csv' (FORCE_NOT_NULL (col_a), HEADER 0);;

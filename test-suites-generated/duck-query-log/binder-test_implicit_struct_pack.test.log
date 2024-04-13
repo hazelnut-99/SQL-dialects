@@ -1,0 +1,116 @@
+pragma enable_verification;
+create table test as select range i from range(3);
+select test from test;
+select test from test;
+;
+select test from test;
+SELECT test FROM test;
+;
+;
+;
+;
+select test from test;
+select test from main.test;
+select test from main.test;
+;
+select test from main.test;
+SELECT test FROM main.test;
+;
+;
+;
+;
+select test from main.test;
+select main.test from main.test;
+select main.test from main.test;
+;
+select main.test from main.test;
+SELECT main.test FROM main.test;
+;
+;
+;
+;
+select main.test from main.test;
+SELECT t FROM test AS t;
+SELECT t FROM test AS t;
+;
+SELECT t FROM test AS t;
+SELECT t FROM test AS t;
+;
+;
+;
+;
+SELECT t FROM test AS t;
+select t from (SELECT * FROM test) AS t;
+select t from (SELECT * FROM test) AS t;
+;
+select t from (SELECT * FROM test) AS t;
+SELECT t FROM (SELECT * FROM test) AS t;
+;
+;
+;
+;
+select t from (SELECT * FROM test) AS t;
+select main.test from main.test t;
+select main.test from main.test t;
+;
+select main.test from main.test t;
+select main.test from main.test t;
+select main.t from main.test t;
+select main.t from main.test t;
+;
+select main.t from main.test t;
+select main.t from main.test t;
+WITH data AS (
+    SELECT 1 as a, 2 as b, 3 as c
+)
+SELECT d FROM data d;
+WITH data AS (
+    SELECT 1 as a, 2 as b, 3 as c
+)
+SELECT d FROM data d;
+;
+WITH data AS (
+    SELECT 1 as a, 2 as b, 3 as c
+)
+SELECT d FROM data d;
+WITH "data" AS (SELECT 1 AS a, 2 AS b, 3 AS c)SELECT d FROM "data" AS d;
+;
+;
+;
+;
+WITH data AS (
+    SELECT 1 as a, 2 as b, 3 as c
+)
+SELECT d FROM data d;
+create table main as select 3 test;
+select main.test from main, test;
+select main.test from main, test;
+;
+select main.test from main, test;
+SELECT main.test FROM main , test;
+;
+;
+;
+;
+select main.test from main, test;
+select test from main, test;
+select test from main, test;
+;
+select test from main, test;
+SELECT test FROM main , test;
+;
+;
+;
+;
+select test from main, test;
+create table structs as select {test: 4} main;
+select main.test from structs, test;
+select main.test from structs, test;
+;
+select main.test from structs, test;
+SELECT main.test FROM structs , test;
+;
+;
+;
+;
+select main.test from structs, test;

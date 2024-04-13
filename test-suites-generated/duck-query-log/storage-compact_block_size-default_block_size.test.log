@@ -1,0 +1,3 @@
+ATTACH 'data/storage/block_size_16kb.db' (TYPE DUCKDB, READONLY);
+ATTACH 'data/storage/vector_size_512.db' (TYPE DUCKDB, READONLY);
+ATTACH 'data/storage/index_0-9-1.db' (TYPE DUCKDB, READONLY);;

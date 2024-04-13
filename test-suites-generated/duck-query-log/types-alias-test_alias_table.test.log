@@ -1,0 +1,166 @@
+PRAGMA enable_verification;
+CREATE TYPE alias AS VARCHAR;;
+CREATE TABLE person (
+    name text,
+    current_car car
+);;
+CREATE TABLE person (
+    name text,
+    current_alias alias
+);;
+INSERT INTO person VALUES ('Moe', 'happy');;
+select * from person;
+select * from person;
+;
+select * from person;
+SELECT * FROM person;
+;
+;
+;
+;
+select * from person;
+INSERT INTO person VALUES ('Pedro', 'ok');;
+INSERT INTO person VALUES ('Mark', 'sad');;
+select * from person where current_alias = 'sad';
+select * from person where current_alias = 'sad';
+;
+select * from person where current_alias = 'sad';
+SELECT * FROM person WHERE (current_alias = 'sad');
+;
+;
+;
+;
+select * from person where current_alias = 'sad';
+select * from person where current_alias > 'ok';
+select * from person where current_alias > 'ok';
+;
+select * from person where current_alias > 'ok';
+SELECT * FROM person WHERE (current_alias > 'ok');
+;
+;
+;
+;
+select * from person where current_alias > 'ok';
+CREATE TABLE pets (
+    name text,
+    current_alias alias
+);;
+INSERT INTO pets VALUES ('Anne', 'happy');;
+INSERT INTO pets VALUES ('Oogie Boogie', 'ok');;
+INSERT INTO pets VALUES ('Mr. Fluffles McFluffingstein', NULL);;
+select * from pets;;
+select * from pets;;
+;
+select * from pets;;
+SELECT * FROM pets;
+;
+;
+;
+;
+select * from pets;;
+select person.name, pets.name from person inner join pets on  (person.current_alias = pets.current_alias);
+select person.name, pets.name from person inner join pets on  (person.current_alias = pets.current_alias);
+;
+select person.name, pets.name from person inner join pets on  (person.current_alias = pets.current_alias);
+SELECT person."name", pets."name" FROM person INNER JOIN pets ON ((person.current_alias = pets.current_alias));
+;
+;
+;
+;
+select person.name, pets.name from person inner join pets on  (person.current_alias = pets.current_alias);
+DROP TABLE person;;
+DROP TABLE pets;;
+DROP TYPE alias;;
+CREATE TABLE aliens (
+    name text,
+    current_alias alias
+);;
+CREATE TYPE alias AS VARCHAR;;
+CREATE TYPE intelligence AS VARCHAR;;
+CREATE TABLE aliens (
+    name text,
+    current_alias alias
+);;
+INSERT INTO aliens VALUES ('Alf o Eteimoso', 'happy'), ('Dr Zoidberg', 'sad');
+ALTER TABLE aliens ADD COLUMN iq_level intelligence;
+select * from aliens;
+select * from aliens;
+;
+select * from aliens;
+SELECT * FROM aliens;
+;
+;
+;
+;
+select * from aliens;
+INSERT INTO aliens VALUES ('The Borg', 'ok', 'ehh');
+select * from aliens;
+select * from aliens;
+;
+select * from aliens;
+SELECT * FROM aliens;
+;
+;
+;
+;
+select * from aliens;
+ALTER TABLE aliens ALTER current_alias SET DATA TYPE VARCHAR;
+select * from aliens;
+select * from aliens;
+;
+select * from aliens;
+SELECT * FROM aliens;
+;
+;
+;
+;
+select * from aliens;
+CREATE TYPE car_brand AS VARCHAR;;
+CREATE TABLE person (
+    name text,
+    current_alias alias,
+    last_year_alias alias,
+    car car_brand
+);;
+INSERT INTO person VALUES ('Pedro', 'ok', 'ok','Seat'), ('Mark', 'sad', 'happy','Fiets');;
+select * from person where current_alias = last_year_alias;
+select * from person where current_alias = last_year_alias;
+;
+select * from person where current_alias = last_year_alias;
+SELECT * FROM person WHERE (current_alias = last_year_alias);
+;
+;
+;
+;
+select * from person where current_alias = last_year_alias;
+select * from person where current_alias = 'ok';
+select * from person where current_alias = 'ok';
+;
+select * from person where current_alias = 'ok';
+SELECT * FROM person WHERE (current_alias = 'ok');
+;
+;
+;
+;
+select * from person where current_alias = 'ok';
+INSERT INTO person VALUES ('Diego', 'sad', 'happy','Seat'), ('Tim', 'happy', 'sad','Fiets');;
+select count(*), current_alias from person group by current_alias order by all;
+select count(*), current_alias from person group by current_alias order by all;
+;
+select count(*), current_alias from person group by current_alias order by all;
+SELECT count_star(), current_alias FROM person GROUP BY current_alias ORDER BY COLUMNS(*);
+;
+;
+;
+;
+select count(*), current_alias from person group by current_alias order by all;
+select name, current_alias from person order by current_alias;
+select name, current_alias from person order by current_alias;
+;
+select name, current_alias from person order by current_alias;
+SELECT "name", current_alias FROM person ORDER BY current_alias;
+;
+;
+;
+;
+select name, current_alias from person order by current_alias;

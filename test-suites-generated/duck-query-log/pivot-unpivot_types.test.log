@@ -1,21 +1,21 @@
-PRAGMA enable_verification
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*))
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*))
-
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*))
-SELECT column_name, column_type FROM (DESCRIBE (SELECT * FROM (SELECT 42) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)))))
-
-
-
-
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*))
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*))
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*))
-
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*))
-SELECT column_name, column_type FROM (DESCRIBE (SELECT * FROM (SELECT main.struct_pack(n := 1)) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)))))
-
-
-
-
-SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*))
+PRAGMA enable_verification;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*));
+;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE (SELECT * FROM (SELECT 42) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)))));
+;
+;
+;
+;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));
+;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE (SELECT * FROM (SELECT main.struct_pack(n := 1)) UNPIVOT ("value" FOR "name" IN (COLUMNS(*)))));
+;
+;
+;
+;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));

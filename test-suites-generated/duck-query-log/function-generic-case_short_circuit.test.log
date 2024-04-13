@@ -1,0 +1,29 @@
+PRAGMA enable_verification;
+create table t (n text);;
+insert into t values ('1'),('0'),('');;
+select n, case 
+when n <> '' and cast(substr(n, 1, 1) as int) <= 0 then '0' 
+when n <> '' and cast(substr(n, 1, 1) as int) > 0 then '1' 
+else '2'end as x from t
+ORDER BY n;;
+select n, case 
+when n <> '' and cast(substr(n, 1, 1) as int) <= 0 then '0' 
+when n <> '' and cast(substr(n, 1, 1) as int) > 0 then '1' 
+else '2'end as x from t
+ORDER BY n;;
+;
+select n, case 
+when n <> '' and cast(substr(n, 1, 1) as int) <= 0 then '0' 
+when n <> '' and cast(substr(n, 1, 1) as int) > 0 then '1' 
+else '2'end as x from t
+ORDER BY n;;
+SELECT n, CASE  WHEN (((n != '') AND (CAST(substr(n, 1, 1) AS INTEGER) <= 0))) THEN ('0') WHEN (((n != '') AND (CAST(substr(n, 1, 1) AS INTEGER) > 0))) THEN ('1') ELSE '2' END AS x FROM t ORDER BY n;
+;
+;
+;
+;
+select n, case 
+when n <> '' and cast(substr(n, 1, 1) as int) <= 0 then '0' 
+when n <> '' and cast(substr(n, 1, 1) as int) > 0 then '1' 
+else '2'end as x from t
+ORDER BY n;;

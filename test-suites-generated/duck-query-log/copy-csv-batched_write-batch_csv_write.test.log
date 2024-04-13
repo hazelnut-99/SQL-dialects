@@ -1,0 +1,18 @@
+CREATE TABLE integers AS SELECT i, i // 5 AS j FROM range(1000000) t(i) ;;
+COPY integers TO 'duckdb_unittest_tempdir/54685/batched_integers.csv' (HEADER);;
+CREATE TABLE integers_copied AS FROM 'duckdb_unittest_tempdir/54685/batched_integers.csv';
+SELECT SUM(i), SUM(j), COUNT(*), COUNT(i), COUNT(j) FROM integers_copied;
+SELECT * FROM integers_copied LIMIT 5;
+SELECT * FROM integers_copied LIMIT 5 OFFSET 99997;
+SELECT * FROM integers_copied QUALIFY i<=lag(i) over ();
+CREATE VIEW v1 AS SELECT * FROM integers WHERE (i%2=0 AND i<300000) OR (i BETWEEN 500000 AND 700000);
+COPY v1 TO 'duckdb_unittest_tempdir/54685/batched_integers_filters.csv' (HEADER);;
+CREATE TABLE integers_filtered AS FROM 'duckdb_unittest_tempdir/54685/batched_integers_filters.csv';
+SELECT SUM(i), SUM(j), COUNT(*), COUNT(i), COUNT(j) FROM v1;
+SELECT * FROM v1 LIMIT 5;
+SELECT * FROM v1 LIMIT 5 OFFSET 99997;
+SELECT * FROM v1 LIMIT 5 OFFSET 300000;
+SELECT SUM(i), SUM(j), COUNT(*), COUNT(i), COUNT(j) FROM integers_filtered;
+SELECT * FROM integers_filtered LIMIT 5;
+SELECT * FROM integers_filtered LIMIT 5 OFFSET 99997;
+SELECT * FROM integers_filtered LIMIT 5 OFFSET 300000;

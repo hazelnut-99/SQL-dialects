@@ -1,0 +1,7 @@
+ATTACH DATABASE ':memory:' AS db1;;
+CREATE TABLE db1.test(a INTEGER, b INTEGER, c VARCHAR(10));;
+COPY db1.test FROM 'test/sql/copy/csv/data/test/test.csv';;
+COPY db1.main.test FROM 'test/sql/copy/csv/data/test/test.csv';;
+COPY db1.main.test TO 'duckdb_unittest_tempdir/54326/test.csv';;
+USE db1;
+COPY test FROM 'test/sql/copy/csv/data/test/test.csv';;

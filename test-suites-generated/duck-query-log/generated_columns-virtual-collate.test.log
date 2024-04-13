@@ -1,0 +1,17 @@
+PRAGMA enable_verification;
+CREATE TABLE coll (
+	g1 AS (x),
+	g2 AS (x),
+	x VARCHAR COLLATE NOCASE
+);;
+INSERT INTO coll VALUES ('string'), ('STRING');
+SELECT * FROM coll;;
+SELECT * FROM coll;;
+;
+SELECT * FROM coll;;
+SELECT * FROM coll;
+;
+;
+;
+;
+SELECT * FROM coll;;

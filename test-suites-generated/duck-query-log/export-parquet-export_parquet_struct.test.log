@@ -1,0 +1,30 @@
+begin transaction;;
+create table tbl as select val from (
+	select {
+		'a': '01010101000'::BIT,
+		'b': true,
+		'c': NULL
+	} val
+), range(3);;
+select * from tbl;;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54871/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE tbl(val STRUCT(a BIT, b BOOLEAN, c INTEGER));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54871/export_test/tbl.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl(val STRUCT(a BIT, b BOOLEAN, c INTEGER));
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54871/export_test/tbl.parquet' ( FORMAT parquet );;
+select * from tbl;;

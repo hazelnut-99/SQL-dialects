@@ -1,0 +1,2 @@
+SET default_null_order='nulls_first';;
+select * from parquet_scan('data/parquet-testing/zstd.parquet') order by 1;

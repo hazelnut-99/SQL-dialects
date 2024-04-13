@@ -1,0 +1,304 @@
+PRAGMA enable_verification;
+CREATE TABLE flights(
+	"year" INTEGER,
+	"month" INTEGER,
+	"day" INTEGER,
+	dep_time INTEGER,
+	sched_dep_time INTEGER,
+	dep_delay DOUBLE,
+	arr_time INTEGER,
+	sched_arr_time INTEGER,
+	arr_delay DOUBLE,
+	carrier VARCHAR,
+	flight INTEGER,
+	tailnum VARCHAR,
+	origin VARCHAR,
+	dest VARCHAR,
+	air_time DOUBLE,
+	distance DOUBLE,
+	"hour" DOUBLE,
+	"minute" DOUBLE,
+	time_hour TIMESTAMP);;
+SELECT "dest", mode() WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", mode() WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+;
+SELECT "dest", mode() WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT dest, mode() WITHIN GROUP ( ORDER BY arr_delay) AS median_delay FROM flights GROUP BY dest;
+;
+;
+;
+;
+SELECT "dest", mode() WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_cont(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_cont(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+;
+SELECT "dest", percentile_cont(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT dest, quantile_cont(0.5 ORDER BY arr_delay) AS median_delay FROM flights GROUP BY dest;
+;
+;
+;
+;
+SELECT "dest", percentile_cont(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_cont([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_cont([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+;
+SELECT "dest", percentile_cont([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT dest, quantile_cont(main.list_value(0.25, 0.5, 0.75) ORDER BY arr_delay) AS iqr_delay FROM flights GROUP BY dest;
+;
+;
+;
+;
+SELECT "dest", percentile_cont([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_disc(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_disc(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+;
+SELECT "dest", percentile_disc(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT dest, quantile_disc(0.5 ORDER BY arr_delay) AS median_delay FROM flights GROUP BY dest;
+;
+;
+;
+;
+SELECT "dest", percentile_disc(0.5) WITHIN GROUP (ORDER BY "arr_delay") AS "median_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_disc([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT "dest", percentile_disc([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+;
+SELECT "dest", percentile_disc([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+SELECT dest, quantile_disc(main.list_value(0.25, 0.5, 0.75) ORDER BY arr_delay) AS iqr_delay FROM flights GROUP BY dest;
+;
+;
+;
+;
+SELECT "dest", percentile_disc([0.25, 0.5, 0.75]) WITHIN GROUP (ORDER BY "arr_delay") AS "iqr_delay"
+FROM "flights"
+GROUP BY "dest";
+select percentile_disc(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_disc(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+;
+select percentile_disc(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+SELECT quantile_disc(0.25 ORDER BY i DESC) FROM generate_series(0, 100) AS tbl(i);
+;
+;
+;
+;
+select percentile_disc(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_disc([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_disc([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+;
+select percentile_disc([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+SELECT quantile_disc(main.list_value(0.25, 0.5, 0.75) ORDER BY i DESC) FROM generate_series(0, 100) AS tbl(i);
+;
+;
+;
+;
+select percentile_disc([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_cont(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_cont(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+;
+select percentile_cont(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+SELECT quantile_cont(0.25 ORDER BY i DESC) FROM generate_series(0, 100) AS tbl(i);
+;
+;
+;
+;
+select percentile_cont(0.25) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_cont([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+select percentile_cont([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+;
+select percentile_cont([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+SELECT quantile_cont(main.list_value(0.25, 0.5, 0.75) ORDER BY i DESC) FROM generate_series(0, 100) AS tbl(i);
+;
+;
+;
+;
+select percentile_cont([0.25, 0.5, 0.75]) within group(order by i desc) from generate_series(0,100) tbl(i);;
+SELECT percentile_disc(.5) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(.5) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc(.5) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT quantile_disc(.5 ORDER BY col DESC) FROM (SELECT * FROM (VALUES (11000), (3100), (2900), (2800), (2600), (2500)) AS valueslist) AS tab(col);
+;
+;
+;
+;
+SELECT percentile_disc(.5) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([.25, .5, .75]) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([.25, .5, .75]) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc([.25, .5, .75]) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT quantile_disc(main.list_value(.25, .5, .75) ORDER BY col DESC) FROM (SELECT * FROM (VALUES (11000), (3100), (2900), (2800), (2600), (2500)) AS valueslist) AS tab(col);
+;
+;
+;
+;
+SELECT percentile_disc([.25, .5, .75]) WITHIN GROUP (order by col desc) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT MODE() WITHIN GROUP (ORDER BY order_occurrences DESC) FROM (
+VALUES
+	(500, 1),
+	(1000, 2),
+	(800, 3),
+	(1000, 4),
+	(500, 5),
+	(550, 6),
+	(400, 7),
+	(200, 8),
+	(10, 9)
+) items_per_order(order_occurrences, item_count);;
+SELECT MODE() WITHIN GROUP (ORDER BY order_occurrences DESC) FROM (
+VALUES
+	(500, 1),
+	(1000, 2),
+	(800, 3),
+	(1000, 4),
+	(500, 5),
+	(550, 6),
+	(400, 7),
+	(200, 8),
+	(10, 9)
+) items_per_order(order_occurrences, item_count);;
+;
+SELECT MODE() WITHIN GROUP (ORDER BY order_occurrences DESC) FROM (
+VALUES
+	(500, 1),
+	(1000, 2),
+	(800, 3),
+	(1000, 4),
+	(500, 5),
+	(550, 6),
+	(400, 7),
+	(200, 8),
+	(10, 9)
+) items_per_order(order_occurrences, item_count);;
+SELECT mode() WITHIN GROUP ( ORDER BY order_occurrences DESC) FROM (SELECT * FROM (VALUES (500, 1), (1000, 2), (800, 3), (1000, 4), (500, 5), (550, 6), (400, 7), (200, 8), (10, 9)) AS valueslist) AS items_per_order(order_occurrences, item_count);
+;
+;
+;
+;
+SELECT MODE() WITHIN GROUP (ORDER BY order_occurrences DESC) FROM (
+VALUES
+	(500, 1),
+	(1000, 2),
+	(800, 3),
+	(1000, 4),
+	(500, 5),
+	(550, 6),
+	(400, 7),
+	(200, 8),
+	(10, 9)
+) items_per_order(order_occurrences, item_count);;
+SELECT percentile_disc(CAST('NaN' AS REAL)) WITHIN GROUP (ORDER BY 1);;
+SELECT percentile_disc(CAST('NaN' AS REAL)) WITHIN GROUP (ORDER BY 1);;
+;
+SELECT percentile_disc(CAST('NaN' AS REAL)) WITHIN GROUP (ORDER BY 1);;
+SELECT percentile_disc(CAST('NaN' AS REAL)) WITHIN GROUP (ORDER BY 1);;
+SELECT percentile_disc([]) WITHIN GROUP (ORDER BY LAST);;
+SELECT percentile_disc([]) WITHIN GROUP (ORDER BY LAST);;
+;
+SELECT percentile_disc([]) WITHIN GROUP (ORDER BY LAST);;
+SELECT percentile_disc([]) WITHIN GROUP (ORDER BY LAST);;
+select percentile_disc('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+select percentile_disc('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+;
+select percentile_disc('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+select percentile_disc('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+select percentile_cont('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+select percentile_cont('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+;
+select percentile_cont('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+select percentile_cont('duck') within group(order by i) from generate_series(0,100) tbl(i);;
+SELECT percentile_disc(sum(1)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(sum(1)) WITHIN GROUP (ORDER BY 1 DESC);;
+;
+SELECT percentile_disc(sum(1)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(sum(1)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(strftime(DATE '1-11-25',NULL)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(strftime(DATE '1-11-25',NULL)) WITHIN GROUP (ORDER BY 1 DESC);;
+;
+SELECT percentile_disc(strftime(DATE '1-11-25',NULL)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(strftime(DATE '1-11-25',NULL)) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_cont(CASE 1 WHEN 2 THEN 3 END) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_cont(CASE 1 WHEN 2 THEN 3 END) WITHIN GROUP (ORDER BY 1 DESC);;
+;
+SELECT percentile_cont(CASE 1 WHEN 2 THEN 3 END) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_cont(CASE 1 WHEN 2 THEN 3 END) WITHIN GROUP (ORDER BY 1 DESC);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col ASC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc(-.5) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;
+SELECT percentile_disc([-.25, .5, .75]) WITHIN GROUP (order by col DESC) 
+FROM VALUES (11000), (3100), (2900), (2800), (2600), (2500) AS tab(col);;

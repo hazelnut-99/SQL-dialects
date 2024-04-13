@@ -1,0 +1,15 @@
+CREATE TABLE test AS SELECT 'thisisaverylongstringbutitrepeatsmanytimessoitshighlycompressible' || (range % 10) i FROM range(100000);
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet' (dictionary_compression_ratio_threshold -2);
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet';
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet' (dictionary_compression_ratio_threshold -1);
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet' (dictionary_compression_ratio_threshold 10);
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet' (dictionary_compression_ratio_threshold 20);
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');
+CREATE OR REPLACE TABLE test AS SELECT 'coolstring' || range i FROM range(100000);
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet';
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');
+COPY test TO 'duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet' (dictionary_compression_ratio_threshold 0);
+SELECT dictionary_page_offset IS NULL FROM parquet_metadata('duckdb_unittest_tempdir/54752/dictionary_compression_ratio_threshold.parquet');

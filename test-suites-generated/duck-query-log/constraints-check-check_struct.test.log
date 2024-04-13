@@ -1,0 +1,8 @@
+PRAGMA enable_verification;
+CREATE TABLE tbl(t ROW(t INTEGER) CHECK(t.t=42));;
+INSERT INTO tbl VALUES ({'t': 43});
+INSERT INTO tbl VALUES ({'t': 42});
+DROP TABLE tbl;;
+CREATE TABLE tbl(t ROW(t INTEGER) CHECK(tbl.t.t=42));;
+INSERT INTO tbl VALUES ({'t': 43});
+INSERT INTO tbl VALUES ({'t': 42});

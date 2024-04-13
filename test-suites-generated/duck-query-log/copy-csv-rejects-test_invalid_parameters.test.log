@@ -1,0 +1,57 @@
+SELECT * FROM read_csv(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    columns = {'col0': 'INTEGER', 'col1': 'INTEGER', 'col2': 'VARCHAR'},
+    ignore_errors=false,
+    store_rejects=true
+);
+SELECT * FROM read_csv(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    columns = {'col0': 'INTEGER', 'col1': 'INTEGER', 'col2': 'VARCHAR'},
+    ignore_errors=true,
+    rejects_table='');
+SELECT * FROM read_csv(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    columns = {'col0': 'INTEGER', 'col1': 'INTEGER', 'col2': 'VARCHAR'},
+    ignore_errors=true,
+    rejects_table='csv_rejects_table',
+    union_by_name=true);
+SELECT * FROM read_csv(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    columns = {'col0': 'INTEGER', 'col1': 'INTEGER', 'col2': 'VARCHAR'},
+    ignore_errors=true,
+    rejects_limit=10);
+SELECT * FROM read_csv(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    columns = {'col0': 'INTEGER', 'col1': 'INTEGER', 'col2': 'VARCHAR'},
+    ignore_errors=true,
+    rejects_table='csv_rejects_table',
+    rejects_limit=-1);
+SELECT * FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    ignore_errors=false,
+    rejects_table='csv_rejects_table'
+);
+SELECT * FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    ignore_errors=true,
+    rejects_table='');
+SELECT * FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    ignore_errors=true,
+    rejects_table='csv_rejects_table',
+    union_by_name=true);
+SELECT * FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    ignore_errors=true,
+    rejects_limit=10);
+SELECT * FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/bad.csv',
+    ignore_errors=true,
+    rejects_table='csv_rejects_table',
+    rejects_limit=-1);
+SELECT typeof(first(column0)), typeof(first(column1)), COUNT(*) FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/big_bad*.csv',
+    sample_size=3000,
+    rejects_table='csv_rejects_table',
+    ignore_errors=true, header = 0);;
+DROP TABLE csv_rejects_table;;

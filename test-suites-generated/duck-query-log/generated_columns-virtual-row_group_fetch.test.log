@@ -1,0 +1,18 @@
+pragma enable_verification;;
+CREATE TABLE t1 (
+	tr INTEGER,
+	td INTEGER GENERATED ALWAYS AS (tr),
+	tz INTEGER
+);;
+CREATE INDEX id ON t1(tr);;
+INSERT INTO t1(tr) VALUES (2);;
+SELECT tz from t1 WHERE tr < 5;;
+SELECT tz from t1 WHERE tr < 5;;
+;
+SELECT tz from t1 WHERE tr < 5;;
+SELECT tz FROM t1 WHERE (tr < 5);
+;
+;
+;
+;
+SELECT tz from t1 WHERE tr < 5;;

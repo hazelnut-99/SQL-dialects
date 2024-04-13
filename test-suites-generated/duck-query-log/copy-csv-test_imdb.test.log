@@ -1,0 +1,3 @@
+CREATE TABLE movie_info (id integer NOT NULL PRIMARY KEY, movie_id integer NOT NULL, info_type_id integer NOT NULL, info text NOT NULL, note text);;
+COPY movie_info FROM 'test/sql/copy/csv/data/real/imdb_movie_info_escaped.csv' DELIMITER ',' ESCAPE '\';;
+SELECT * FROM movie_info;;

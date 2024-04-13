@@ -1,0 +1,288 @@
+PRAGMA enable_verification;
+CREATE TYPE mood AS ENUM ('sad', 'quackity-quack', 'happy', 'ok');;
+CREATE TABLE person (
+    name text,
+    current_mood mood
+);;
+insert into person values ('Pedro','happy'), ('Mark', NULL), ('Hannes', 'quackity-quack'), ('Tim', 'ok'), ('Diego', 'sad');
+CREATE TABLE robots (
+    name text,
+    current_mood mood
+);;
+insert into robots values ('Timmynator','sad'), ('Tars', 'ok'), ('Diggernaut', NULL);
+select person.name, robots.name from person inner join robots on (person.current_mood = robots.current_mood);
+select person.name, robots.name from person inner join robots on (person.current_mood = robots.current_mood);
+;
+select person.name, robots.name from person inner join robots on (person.current_mood = robots.current_mood);
+SELECT person."name", robots."name" FROM person INNER JOIN robots ON ((person.current_mood = robots.current_mood));
+;
+;
+;
+;
+select person.name, robots.name from person inner join robots on (person.current_mood = robots.current_mood);
+CREATE TYPE pet_mood AS ENUM ( 'happy','beaming', 'quackity-quack');;
+CREATE TABLE pet (
+    name text,
+    current_mood pet_mood
+);;
+insert into pet values ('Oogie','happy'), ('Wilbur', 'quackity-quack'), ('Chorizo', NULL), ('Vacilo', 'beaming');
+select person.name, pet.name from person inner join pet on (person.current_mood > pet.current_mood) where person.name = 'Pedro';
+select person.name, pet.name from person inner join pet on (person.current_mood > pet.current_mood) where person.name = 'Pedro';
+;
+select person.name, pet.name from person inner join pet on (person.current_mood > pet.current_mood) where person.name = 'Pedro';
+SELECT person."name", pet."name" FROM person INNER JOIN pet ON ((person.current_mood > pet.current_mood)) WHERE (person."name" = 'Pedro');
+;
+;
+;
+;
+select person.name, pet.name from person inner join pet on (person.current_mood > pet.current_mood) where person.name = 'Pedro';
+select person.name, pet.name from person inner join pet on (person.current_mood = pet.current_mood);
+select person.name, pet.name from person inner join pet on (person.current_mood = pet.current_mood);
+;
+select person.name, pet.name from person inner join pet on (person.current_mood = pet.current_mood);
+SELECT person."name", pet."name" FROM person INNER JOIN pet ON ((person.current_mood = pet.current_mood));
+;
+;
+;
+;
+select person.name, pet.name from person inner join pet on (person.current_mood = pet.current_mood);
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where person_mood = pet_mood;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where person_mood = pet_mood;
+;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where person_mood = pet_mood;
+SELECT person_name, pet_name FROM (SELECT person."name" AS person_name, pet."name" AS pet_name, person.current_mood AS person_mood, pet.current_mood AS pet_mood FROM person , pet) AS t WHERE (person_mood = pet_mood);
+;
+;
+;
+;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where person_mood = pet_mood;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where pet_mood = person_mood;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where pet_mood = person_mood;
+;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where pet_mood = person_mood;
+SELECT person_name, pet_name FROM (SELECT person."name" AS person_name, pet."name" AS pet_name, person.current_mood AS person_mood, pet.current_mood AS pet_mood FROM person , pet) AS t WHERE (pet_mood = person_mood);
+;
+;
+;
+;
+select person_name,pet_name from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person,pet) as t
+where pet_mood = person_mood;
+SELECT person.current_mood
+FROM person
+UNION ALL
+SELECT pet.current_mood
+FROM pet;
+SELECT person.current_mood
+FROM person
+UNION ALL
+SELECT pet.current_mood
+FROM pet;
+;
+SELECT person.current_mood
+FROM person
+UNION ALL
+SELECT pet.current_mood
+FROM pet;
+(SELECT person.current_mood FROM person) UNION ALL (SELECT pet.current_mood FROM pet);
+;
+;
+;
+;
+SELECT person.current_mood
+FROM person
+UNION ALL
+SELECT pet.current_mood
+FROM pet;
+CREATE TABLE person_pet (
+    person_name text,
+    pet_name text
+);;
+insert into person_pet values ('Pedro','Oogie'), ('Hannes', 'Wilbur'), ('Tim', 'Chorizo'), ('Diego', 'Vacilo');
+CREATE TABLE person_pet_den as select person_name,pet_name, person_mood, pet_mood from
+(select person.name as person_name, pet.name as pet_name, person.current_mood as person_mood, pet.current_mood as pet_mood
+from person inner join person_pet on (person.name = person_pet.person_name) inner join pet on (pet.name = person_pet.pet_name));
+SELECT * FROM person_pet_den;
+SELECT * FROM person_pet_den;
+;
+SELECT * FROM person_pet_den;
+SELECT * FROM person_pet_den;
+;
+;
+;
+;
+SELECT * FROM person_pet_den;
+SELECT CASE WHEN person_name = 'Tim' THEN person_mood ELSE pet_mood END FROM person_pet_den;
+SELECT CASE WHEN person_name = 'Tim' THEN person_mood ELSE pet_mood END FROM person_pet_den;
+;
+SELECT CASE WHEN person_name = 'Tim' THEN person_mood ELSE pet_mood END FROM person_pet_den;
+SELECT CASE  WHEN ((person_name = 'Tim')) THEN (person_mood) ELSE pet_mood END FROM person_pet_den;
+;
+;
+;
+;
+SELECT CASE WHEN person_name = 'Tim' THEN person_mood ELSE pet_mood END FROM person_pet_den;
+SELECT person_mood in ('sad') FROM person_pet_den;
+SELECT person_mood in ('sad') FROM person_pet_den;
+;
+SELECT person_mood in ('sad') FROM person_pet_den;
+SELECT (person_mood IN ('sad')) FROM person_pet_den;
+;
+;
+;
+;
+SELECT person_mood in ('sad') FROM person_pet_den;
+SELECT person_mood in ('beaming'::pet_mood) FROM person_pet_den;
+SELECT person_mood in ('beaming'::pet_mood) FROM person_pet_den;
+;
+SELECT person_mood in ('beaming'::pet_mood) FROM person_pet_den;
+SELECT (person_mood IN (CAST('beaming' AS pet_mood))) FROM person_pet_den;
+;
+;
+;
+;
+SELECT person_mood in ('beaming'::pet_mood) FROM person_pet_den;
+SELECT [person_mood, pet_mood] FROM person_pet_den;
+SELECT [person_mood, pet_mood] FROM person_pet_den;
+;
+SELECT [person_mood, pet_mood] FROM person_pet_den;
+SELECT main.list_value(person_mood, pet_mood) FROM person_pet_den;
+;
+;
+;
+;
+SELECT [person_mood, pet_mood] FROM person_pet_den;
+SELECT person_mood == pet_mood FROM person_pet_den;
+SELECT person_mood == pet_mood FROM person_pet_den;
+;
+SELECT person_mood == pet_mood FROM person_pet_den;
+SELECT (person_mood = pet_mood) FROM person_pet_den;
+;
+;
+;
+;
+SELECT person_mood == pet_mood FROM person_pet_den;
+SELECT * FROM person_pet_den WHERE (person_mood == pet_mood) IS NULL;
+SELECT * FROM person_pet_den WHERE (person_mood == pet_mood) IS NULL;
+;
+SELECT * FROM person_pet_den WHERE (person_mood == pet_mood) IS NULL;
+SELECT * FROM person_pet_den WHERE ((person_mood = pet_mood) IS NULL);
+;
+;
+;
+;
+SELECT * FROM person_pet_den WHERE (person_mood == pet_mood) IS NULL;
+SELECT person_mood::pet_mood FROM person_pet_den;
+SELECT person_mood::pet_mood FROM person_pet_den;
+;
+SELECT person_mood::pet_mood FROM person_pet_den;
+SELECT person_mood::pet_mood FROM person_pet_den;
+SELECT substring(person_mood from 1 for 2) FROM person_pet_den;
+SELECT substring(person_mood from 1 for 2) FROM person_pet_den;
+;
+SELECT substring(person_mood from 1 for 2) FROM person_pet_den;
+SELECT main.substring(person_mood, 1, 2) FROM person_pet_den;
+;
+;
+;
+;
+SELECT substring(person_mood from 1 for 2) FROM person_pet_den;
+SELECT substring(pet_mood from 1 for 2) FROM person_pet_den;
+SELECT substring(pet_mood from 1 for 2) FROM person_pet_den;
+;
+SELECT substring(pet_mood from 1 for 2) FROM person_pet_den;
+SELECT main.substring(pet_mood, 1, 2) FROM person_pet_den;
+;
+;
+;
+;
+SELECT substring(pet_mood from 1 for 2) FROM person_pet_den;
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+;
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT person_mood FROM person_pet_den WHERE (person_mood ~~ '%a%');
+;
+;
+;
+;
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+;
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT person_mood FROM person_pet_den WHERE (person_mood ~~ '%a%');
+;
+;
+;
+;
+SELECT person_mood  FROM person_pet_den where person_mood like '%a%';
+SELECT regexp_matches(person_mood, '.*a.*')  FROM person_pet_den;
+SELECT regexp_matches(person_mood, '.*a.*')  FROM person_pet_den;
+;
+SELECT regexp_matches(person_mood, '.*a.*')  FROM person_pet_den;
+SELECT regexp_matches(person_mood, '.*a.*') FROM person_pet_den;
+;
+;
+;
+;
+SELECT regexp_matches(person_mood, '.*a.*')  FROM person_pet_den;
+CREATE TYPE wealth AS ENUM ('poor', 'medium-class', 'rich', 'very super rich');;
+CREATE TABLE test (
+    a mood,
+    b wealth
+);;
+insert into test values ('happy', 'rich'), ('ok', 'poor');
+SELECT a = b  FROM test;
+SELECT a = b  FROM test;
+;
+SELECT a = b  FROM test;
+SELECT (a = b) FROM test;
+;
+;
+;
+;
+SELECT a = b  FROM test;
+SELECT * FROM test where a = b;
+SELECT * FROM test where a = b;
+;
+SELECT * FROM test where a = b;
+SELECT * FROM test WHERE (a = b);
+;
+;
+;
+;
+SELECT * FROM test where a = b;
+insert into test values (NULL, 'very super rich');
+SELECT * FROM test where (a = b) is NULL;
+SELECT * FROM test where (a = b) is NULL;
+;
+SELECT * FROM test where (a = b) is NULL;
+SELECT * FROM test WHERE ((a = b) IS NULL);
+;
+;
+;
+;
+SELECT * FROM test where (a = b) is NULL;

@@ -1,0 +1,11 @@
+CREATE TABLE 👤(🔑 INTEGER PRIMARY KEY, 🗣 varchar(64), 🗓 DATE);;
+CREATE TABLE ✍(🔑 INTEGER PRIMARY KEY, 🗣 varchar(64));;
+CREATE TABLE 📕(🔑 INTEGER PRIMARY KEY, 💬 varchar(64), 🔖 varchar(64), ✍ INTEGER);;
+CREATE TABLE 👤🏠📕(👤 INTEGER, 📕 INTEGER, ⭐ TEXT);;
+INSERT INTO 👤 VALUES (1, 'Jeff', '2019-01-01'), (2, 'Annie', '2019-01-01');;
+INSERT INTO ✍ VALUES (1, 'Herman Melville'), (2, 'Lewis Carroll');;
+INSERT INTO 📕 VALUES (1, 'Alice in Wonderland', '🔮', 2), (2, 'Moby Dick', '📖', 1), (3, 'Through the Looking-Glass', '🔮', 2);;
+INSERT INTO 👤🏠📕 VALUES (1, 1, '😍'), (1, 2, '🤢'), (2, 2, '🙂');;
+SELECT 👤.🗣 AS 👤, 📕.💬 AS 📕 FROM 👤 JOIN 👤🏠📕 ON 👤.🔑 = 👤🏠📕.👤 JOIN 📕 ON 📕.🔑 = 👤🏠📕.📕 ORDER BY 👤, 📕;;
+SELECT 👤.🗣, 👤🏠📕.⭐ FROM 👤🏠📕 JOIN 📕 ON 👤🏠📕.📕 = 📕.🔑 JOIN 👤 ON 👤🏠📕.👤=👤.🔑 WHERE 📕.💬 = 'Moby Dick' ORDER BY 👤.🗣;;
+SELECT type, name FROM sqlite_master WHERE name='👤' ORDER BY name;;

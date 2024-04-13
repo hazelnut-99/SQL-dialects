@@ -1,0 +1,3 @@
+CREATE TABLE test_5209 AS FROM range(10000);
+COPY test_5209 TO 'duckdb_unittest_tempdir/54723/test_5209.parquet' (ROW_GROUP_SIZE 1000);;
+SELECT total_compressed_size, total_uncompressed_size FROM parquet_metadata('duckdb_unittest_tempdir/54723/test_5209.parquet');

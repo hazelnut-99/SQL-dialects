@@ -1,0 +1,1 @@
+SELECT substr('hello', 3, 2) OVER ();;

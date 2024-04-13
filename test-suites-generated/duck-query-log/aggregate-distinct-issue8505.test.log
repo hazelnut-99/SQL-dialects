@@ -1,0 +1,5 @@
+create table test (id int, provider int, record_key int, record_rank int, record_date int);
+explain select record_key from (
+    select distinct on (id, provider) id, provider, record_key from test order by id, provider, record_rank desc, record_date
+);
+explain select distinct on (id, provider) record_key from test order by id, provider, record_rank desc, record_date;

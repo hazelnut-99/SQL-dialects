@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+SELECT my_map['A'], * FROM parquet_scan('data/parquet-testing/struct_skip_test.parquet') where filter == '0';
+SELECT my_map['A'], * FROM parquet_scan('data/parquet-testing/struct_skip_test.parquet') where filter == '0';
+;
+SELECT my_map['A'], * FROM parquet_scan('data/parquet-testing/struct_skip_test.parquet') where filter == '0';
+SELECT my_map['A'], * FROM parquet_scan('data/parquet-testing/struct_skip_test.parquet') WHERE ("filter" = '0');
+;
+;
+;
+;
+SELECT my_map['A'], * FROM parquet_scan('data/parquet-testing/struct_skip_test.parquet') where filter == '0';

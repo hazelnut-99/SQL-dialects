@@ -1,0 +1,6 @@
+PRAGMA enable_verification;
+SELECT REPEAT ( '[{"a":' , 100000 )::INT[];
+SELECT REPEAT ( '[{"a":' , 100000 )::INT[];
+;
+SELECT REPEAT ( '[{"a":' , 100000 )::INT[];
+SELECT REPEAT ( '[{"a":' , 100000 )::INT[];

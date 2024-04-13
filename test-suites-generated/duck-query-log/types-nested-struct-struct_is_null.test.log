@@ -1,0 +1,13 @@
+PRAGMA enable_verification;
+create table tbl (data struct(str varchar)[]);;
+insert into tbl (data) values ([struct_pack(str := 'value')]), (null), (null), (null);;
+select data[1].str as str from tbl where str is not null;;
+select data[1].str as str from tbl where str is not null;;
+;
+select data[1].str as str from tbl where str is not null;;
+SELECT ("data"[1]).str AS str FROM tbl WHERE (str IS NOT NULL);
+;
+;
+;
+;
+select data[1].str as str from tbl where str is not null;;

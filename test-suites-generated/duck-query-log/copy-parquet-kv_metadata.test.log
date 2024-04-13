@@ -1,0 +1,9 @@
+COPY (SELECT 1, 'foo') TO  'duckdb_unittest_tempdir/54716/kv_metadata_test.parquet' (FORMAT PARQUET, KV_METADATA {foo: 'bar', baz: 42, quz: '\xC3\xB6\xC3\xA4\xC3\xA5'::BLOB});;
+SELECT key::VARCHAR, value::VARCHAR FROM parquet_kv_metadata('duckdb_unittest_tempdir/54716/kv_metadata_test.parquet');;
+SELECT * FROM 'duckdb_unittest_tempdir/54716/kv_metadata_test.parquet';
+SELECT key::VARCHAR, decode(value) FROM parquet_kv_metadata('duckdb_unittest_tempdir/54716/kv_metadata_test.parquet') WHERE key = 'quz';;
+COPY (SELECT 1, 'foo') TO  'duckdb_unittest_tempdir/54716/kv_metadata_test_fail.parquet' (FORMAT PARQUET, KV_METADATA 'foobar');;
+COPY (SELECT 3, 'baz') TO 'duckdb_unittest_tempdir/54716/kv_metadata_test3.parquet' (FORMAT PARQUET);;
+SELECT key::VARCHAR, value::VARCHAR FROM parquet_kv_metadata('duckdb_unittest_tempdir/54716/kv_metadata_test3.parquet');;
+COPY (SELECT 2, 'bar') TO  'duckdb_unittest_tempdir/54716/kv_metadata_test2.parquet' (FORMAT PARQUET, KV_METADATA {a: 'b', c: 'd'});;
+SELECT replace(replace(file_name, '\', '/'),replace('duckdb_unittest_tempdir/54716/', '\', '/'), '') AS file_name, key::VARCHAR, value::VARCHAR FROM parquet_kv_metadata('duckdb_unittest_tempdir/54716/kv_metadata_tes*') ORDER BY 1, 2;;

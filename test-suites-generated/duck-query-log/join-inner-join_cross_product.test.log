@@ -1,0 +1,18 @@
+PRAGMA enable_verification;
+create table t1(i integer);;
+create table t2(j integer);;
+create table t3(k integer);;
+create table t4(l integer);;
+insert into t1 values (1);;
+insert into t2 values (1);;
+insert into t3 values (2), (3);;
+insert into t4 values (2), (3);;
+select * from t1 join t2 on (i=j), t3 join t4 on (k=l) order by 1, 2, 3, 4;;
+select * from t1 join t2 on (i=j), t3 join t4 on (k=l) order by 1, 2, 3, 4;;
+;
+select * from t1 join t2 on (i=j), t3 join t4 on (k=l) order by 1, 2, 3, 4;;
+SELECT * FROM t1 INNER JOIN t2 ON ((i = j)) , t3 INNER JOIN t4 ON ((k = l)) ORDER BY 1, 2, 3, 4;
+;
+;
+;
+select * from t1 join t2 on (i=j), t3 join t4 on (k=l) order by 1, 2, 3, 4;;

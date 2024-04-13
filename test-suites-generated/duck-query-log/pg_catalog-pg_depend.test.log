@@ -1,0 +1,2 @@
+SELECT * FROM pg_depend ORDER BY ALL;
+SELECT * FROM pg_catalog.pg_depend ORDER BY ALL;

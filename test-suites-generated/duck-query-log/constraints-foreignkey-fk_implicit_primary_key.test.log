@@ -1,0 +1,13 @@
+PRAGMA enable_verification;
+create table a (i int primary key);;
+create table b (i int references a);;
+insert into b values (1);
+insert into a values (1);;
+insert into b values (1);
+drop table b;;
+drop table a;;
+create table a (i int);;
+create table b (i int references a);;
+drop table a;
+create table a (i int, j int, primary key(i,j));;
+create table b (i int references a);;

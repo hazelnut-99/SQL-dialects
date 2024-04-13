@@ -1,0 +1,5 @@
+SELECT * FROM read_csv(
+    'data/csv/rejects/frankstein/nightmare.csv',
+    columns = {'a': 'INTEGER', 'b': 'INTEGER', 'c': 'VARCHAR'},
+    store_rejects = true, auto_detect=false, header = 1, max_line_size=20);;
+SELECT * EXCLUDE (scan_id) FROM reject_errors ORDER BY ALL;;

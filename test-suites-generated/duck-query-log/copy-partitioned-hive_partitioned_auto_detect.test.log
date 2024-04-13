@@ -1,0 +1,48 @@
+CREATE TABLE t AS SELECT i%2 AS year, i%3 AS month, i%4 AS c, i%5 AS d FROM RANGE(0,20) tbl(i);;
+COPY t TO 'duckdb_unittest_tempdir/54698/csv_partition_1' (partition_by(year));;
+select count(*) from glob('duckdb_unittest_tempdir/54698/csv_partition_1/**');;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_1/**', names=['a','b','c','d'], HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_1/**', names=['a','b','c','d'], HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_1/**', names=['a','b','c','d']) LIMIT 1;;
+COPY t TO 'duckdb_unittest_tempdir/54698/csv_partition_2' (partition_by(year,month));;
+select count(*) from glob('duckdb_unittest_tempdir/54698/csv_partition_2/**');;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_2/**', names=['a','b','c','d'], HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_2/**', names=['a','b','c','d'], HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/csv_partition_2/**', names=['a','b','c','d']) LIMIT 1;;
+select count(*) from glob('duckdb_unittest_tempdir/54698/t.csv');;
+COPY t TO 'duckdb_unittest_tempdir/54698/bad_file.csv';;
+select count(*) from glob('duckdb_unittest_tempdir/54698/bad_file.csv');;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/bad_file.csv', names=['a','b','c','d'], HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/bad_file.csv', names=['a','b','c','d'], HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto('duckdb_unittest_tempdir/54698/bad_file.csv', names=['a','b','c','d']) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto(['duckdb_unittest_tempdir/54698/csv_partition_2/**', 'duckdb_unittest_tempdir/54698/bad_file.csv'], HIVE_PARTITIONING=0, names=['a','b','c','d']) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto(['duckdb_unittest_tempdir/54698/csv_partition_2/**', 'duckdb_unittest_tempdir/54698/bad_file.csv'], HIVE_PARTITIONING=1, names=['a','b','c','d']) LIMIT 1;;
+select alias(columns(*)) from read_csv_auto(['duckdb_unittest_tempdir/54698/csv_partition_2/**', 'duckdb_unittest_tempdir/54698/bad_file.csv'], names=['a','b','c','d']) LIMIT 1;;
+COPY t TO 'duckdb_unittest_tempdir/54698/parquet_partition_1' (format parquet, partition_by(year));;
+select count(*) from glob('duckdb_unittest_tempdir/54698/parquet_partition_1/**');;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_1/**', HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_1/**', HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_1/**') LIMIT 1;;
+COPY t TO 'duckdb_unittest_tempdir/54698/parquet_partition_2' (format parquet, partition_by(year,month));;
+select count(*) from glob('duckdb_unittest_tempdir/54698/parquet_partition_2/**');;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_2/**', HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_2/**', HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/parquet_partition_2/**') LIMIT 1;;
+select count(*) from glob('duckdb_unittest_tempdir/54698/t.parquet');;
+COPY t TO 'duckdb_unittest_tempdir/54698/t.parquet' (format parquet);;
+select count(*) from glob('duckdb_unittest_tempdir/54698/t.parquet');;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/t.parquet', HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/t.parquet', HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_parquet('duckdb_unittest_tempdir/54698/t.parquet') LIMIT 1;;
+select alias(columns(*)) from read_parquet(['duckdb_unittest_tempdir/54698/parquet_partition_2/**', 'duckdb_unittest_tempdir/54698/t.parquet'], HIVE_PARTITIONING=0) LIMIT 1;;
+select alias(columns(*)) from read_parquet(['duckdb_unittest_tempdir/54698/parquet_partition_2/**', 'duckdb_unittest_tempdir/54698/t.parquet'], HIVE_PARTITIONING=1) LIMIT 1;;
+select alias(columns(*)) from read_parquet(['duckdb_unittest_tempdir/54698/parquet_partition_2/**', 'duckdb_unittest_tempdir/54698/t.parquet']) LIMIT 1;;
+select i,j,k,x 
+from read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=0, union_by_name=1) 
+order by j,x nulls last;;
+select i,j,k,x 
+from read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', hive_partitioning=1, union_by_name=1) 
+order by j,x nulls last;;
+select i,j,k,x 
+from read_parquet('data/parquet-testing/hive-partitioning/union_by_name/*/*.parquet', union_by_name=1) 
+order by j,x nulls last;;

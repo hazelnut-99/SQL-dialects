@@ -1,0 +1,123 @@
+PRAGMA enable_verification;
+WITH t AS (
+	SELECT i, RANK() OVER (ORDER BY i % 50) AS d
+	FROM range(3000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (
+	SELECT i, RANK() OVER (ORDER BY i % 50) AS d
+	FROM range(3000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+;
+WITH t AS (
+	SELECT i, RANK() OVER (ORDER BY i % 50) AS d
+	FROM range(3000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (SELECT i, rank() OVER (ORDER BY (i % 50)) AS d FROM range(3000) AS tbl(i)), w AS (SELECT d, count_star() AS c FROM t GROUP BY ALL)SELECT count_star(), min(d), max(d), min(c), max(c) FROM w;
+;
+;
+;
+;
+WITH t AS (
+	SELECT i, RANK() OVER (ORDER BY i % 50) AS d
+	FROM range(3000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (
+	SELECT i, RANK() OVER (PARTITION BY i // 3000 ORDER BY i % 50) AS d
+	FROM range(9000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (
+	SELECT i, RANK() OVER (PARTITION BY i // 3000 ORDER BY i % 50) AS d
+	FROM range(9000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+;
+WITH t AS (
+	SELECT i, RANK() OVER (PARTITION BY i // 3000 ORDER BY i % 50) AS d
+	FROM range(9000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (SELECT i, rank() OVER (PARTITION BY (i // 3000) ORDER BY (i % 50)) AS d FROM range(9000) AS tbl(i)), w AS (SELECT d, count_star() AS c FROM t GROUP BY ALL)SELECT count_star(), min(d), max(d), min(c), max(c) FROM w;
+;
+;
+;
+;
+WITH t AS (
+	SELECT i, RANK() OVER (PARTITION BY i // 3000 ORDER BY i % 50) AS d
+	FROM range(9000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+SELECT 
+	*, 
+	RANK() OVER (ORDER BY x NULLS FIRST) rank_nulls_first,
+	RANK() OVER (ORDER BY x NULLS LAST) rank_nulls_last,
+FROM VALUES (1), (1), (1), (NULL) as issue8315(x)
+ORDER BY x;
+SELECT 
+	*, 
+	RANK() OVER (ORDER BY x NULLS FIRST) rank_nulls_first,
+	RANK() OVER (ORDER BY x NULLS LAST) rank_nulls_last,
+FROM VALUES (1), (1), (1), (NULL) as issue8315(x)
+ORDER BY x;
+;
+SELECT 
+	*, 
+	RANK() OVER (ORDER BY x NULLS FIRST) rank_nulls_first,
+	RANK() OVER (ORDER BY x NULLS LAST) rank_nulls_last,
+FROM VALUES (1), (1), (1), (NULL) as issue8315(x)
+ORDER BY x;
+SELECT *, rank() OVER (ORDER BY x NULLS FIRST) AS rank_nulls_first, rank() OVER (ORDER BY x NULLS LAST) AS rank_nulls_last FROM (SELECT * FROM (VALUES (1), (1), (1), (NULL)) AS valueslist) AS issue8315(x) ORDER BY x;
+;
+;
+;
+;
+SELECT 
+	*, 
+	RANK() OVER (ORDER BY x NULLS FIRST) rank_nulls_first,
+	RANK() OVER (ORDER BY x NULLS LAST) rank_nulls_last,
+FROM VALUES (1), (1), (1), (NULL) as issue8315(x)
+ORDER BY x;

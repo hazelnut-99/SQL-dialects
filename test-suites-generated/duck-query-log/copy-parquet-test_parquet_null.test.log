@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+select count(col1) from parquet_scan('data/parquet-testing/bug687_nulls.parquet');
+select count(col1) from parquet_scan('data/parquet-testing/bug687_nulls.parquet');
+;
+select count(col1) from parquet_scan('data/parquet-testing/bug687_nulls.parquet');
+SELECT count(col1) FROM parquet_scan('data/parquet-testing/bug687_nulls.parquet');
+;
+;
+;
+;
+select count(col1) from parquet_scan('data/parquet-testing/bug687_nulls.parquet');

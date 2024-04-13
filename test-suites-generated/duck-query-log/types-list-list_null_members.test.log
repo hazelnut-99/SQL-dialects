@@ -1,0 +1,88 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+CREATE VIEW list_int AS
+SELECT * FROM (VALUES
+	([1]),
+	([1, 2]),
+	([1, NULL]),
+	([NULL, 2]),
+	([NULL, NULL]),
+	([NULL]),
+	(NULL)
+) tbl(i);;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_int lhs, list_int rhs
+ORDER BY 1, 2;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_int lhs, list_int rhs
+ORDER BY 1, 2;
+;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_int lhs, list_int rhs
+ORDER BY 1, 2;
+SELECT lhs.i, rhs.i, (lhs.i < rhs.i), (lhs.i <= rhs.i), (lhs.i = rhs.i), (lhs.i != rhs.i), (lhs.i > rhs.i), (lhs.i >= rhs.i), (lhs.i IS NOT DISTINCT FROM rhs.i), (lhs.i IS DISTINCT FROM rhs.i) FROM list_int AS lhs , list_int AS rhs ORDER BY 1, 2;
+;
+;
+;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_int lhs, list_int rhs
+ORDER BY 1, 2;
+CREATE VIEW list_str AS
+SELECT * FROM (VALUES
+	(['duck']),
+	(['duck', 'goose']),
+	(['duck', NULL]),
+	([NULL, 'goose']),
+	([NULL, NULL]),
+	([NULL]),
+	(NULL)
+) tbl(i);;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_str lhs, list_str rhs
+ORDER BY 1, 2;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_str lhs, list_str rhs
+ORDER BY 1, 2;
+;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_str lhs, list_str rhs
+ORDER BY 1, 2;
+SELECT lhs.i, rhs.i, (lhs.i < rhs.i), (lhs.i <= rhs.i), (lhs.i = rhs.i), (lhs.i != rhs.i), (lhs.i > rhs.i), (lhs.i >= rhs.i), (lhs.i IS NOT DISTINCT FROM rhs.i), (lhs.i IS DISTINCT FROM rhs.i) FROM list_str AS lhs , list_str AS rhs ORDER BY 1, 2;
+;
+;
+;
+SELECT lhs.i, rhs.i,
+	lhs.i < rhs.i, lhs.i <= rhs.i,
+	lhs.i = rhs.i, lhs.i <> rhs.i,
+	lhs.i > rhs.i, lhs.i >= rhs.i,
+	lhs.i IS NOT DISTINCT FROM rhs.i, lhs.i IS DISTINCT FROM rhs.i
+FROM list_str lhs, list_str rhs
+ORDER BY 1, 2;

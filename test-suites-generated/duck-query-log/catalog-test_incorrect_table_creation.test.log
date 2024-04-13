@@ -1,0 +1,2 @@
+CREATE TABLE integers(i INTEGER, PRIMARY KEY(j));
+CREATE TABLE integers(i INTEGER, PRIMARY KEY(i, i));

@@ -1,0 +1,1 @@
+SELECT function_name AS name, upper(function_type) AS type, parameter_types AS parameters, varargs, return_type, has_side_effects AS side_effects FROM duckdb_functions() WHERE function_type IN ('scalar', 'aggregate') ORDER BY 1;;

@@ -1,0 +1,12 @@
+create table tbl (str varchar);;
+insert into tbl values ('ABCDE'), ('aBcDe');;
+insert into tbl values ('àbcdë');;
+insert into tbl values ('ÀbCdÈ');;
+select * from tbl where str in ('AbCdE');;
+select * from tbl where str collate nocase in ('abcde');;
+select * from tbl where str collate noaccent in ('abcde');;
+select * from tbl where str collate nocase.noaccent in ('abcde');;
+select * from tbl where str not in ('abcde');;
+select * from tbl where str collate nocase not in ('abcde');;
+select * from tbl where str collate noaccent not in ('abcde');;
+select * from tbl where str collate nocase.noaccent not in ('abcde');;

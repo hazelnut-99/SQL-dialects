@@ -1,0 +1,14 @@
+PRAGMA enable_verification;
+SELECT database_name FROM duckdb_databases() ORDER BY 1;;
+SELECT database_name FROM duckdb_databases() ORDER BY 1;;
+;
+SELECT database_name FROM duckdb_databases() ORDER BY 1;;
+SELECT database_name FROM duckdb_databases() ORDER BY 1;
+;
+;
+;
+SELECT database_name FROM duckdb_databases() ORDER BY 1;;
+DETACH concurrent;;
+ATTACH 'duckdb_unittest_tempdir/54309/db1.db';;
+DETACH db1;;
+ATTACH 'duckdb_unittest_tempdir/54309/db1.db';;

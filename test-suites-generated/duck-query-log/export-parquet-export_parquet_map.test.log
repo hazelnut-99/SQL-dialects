@@ -1,0 +1,59 @@
+begin transaction;;
+create table unsupported_key as select val from (
+	select MAP {
+		'hello': '01010101000'::BIT,
+		'HELLO': NULL::BIT
+	} val
+), range(3);;
+create table unsupported_value as select val from (
+	select MAP {
+		'01010101000'::BIT: 'hello',
+		'11110111101'::BIT: 'world'
+	} val
+), range(3);;
+select * from unsupported_key;;
+select * from unsupported_value;;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54874/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE unsupported_key(val MAP(VARCHAR, BIT));
+CREATE TABLE unsupported_value(val MAP(BIT, VARCHAR));
+
+
+
+
+COPY unsupported_key FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_key.parquet' ( FORMAT parquet );COPY unsupported_value FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_value.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE unsupported_key(val MAP(VARCHAR, BIT));
+CREATE TABLE unsupported_value(val MAP(BIT, VARCHAR));
+
+
+
+
+COPY unsupported_key FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_key.parquet' ( FORMAT parquet );COPY unsupported_value FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_value.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE unsupported_key(val MAP(VARCHAR, BIT));
+CREATE TABLE unsupported_value(val MAP(BIT, VARCHAR));
+
+
+
+
+COPY unsupported_key FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_key.parquet' ( FORMAT parquet );COPY unsupported_value FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_value.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE unsupported_key(val MAP(VARCHAR, BIT));
+CREATE TABLE unsupported_value(val MAP(BIT, VARCHAR));
+
+
+
+
+COPY unsupported_key FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_key.parquet' ( FORMAT parquet );COPY unsupported_value FROM 'duckdb_unittest_tempdir/54874/export_test/unsupported_value.parquet' ( FORMAT parquet );;
+select * from unsupported_key;;
+select * from unsupported_value;;

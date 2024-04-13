@@ -1,0 +1,9 @@
+CREATE TABLE emojis(id INTEGER, s VARCHAR);;
+INSERT INTO emojis VALUES (1, '🦆'), (2, '🦆🍞🦆');
+SELECT * FROM emojis ORDER BY id;
+SELECT substring(s, 1, 1), substring(s, 2, 1) FROM emojis ORDER BY id;
+SELECT substring(decode('u\xD5\x8D1'::BLOB)::VARCHAR, -1);;
+SELECT substring('u🦆', -2, 1);;
+SELECT substring('A3🦤u🦆f', -3, 3);;
+SELECT substring('🦤🦆f', -3, 2);;
+SELECT length(s) FROM emojis ORDER BY id;

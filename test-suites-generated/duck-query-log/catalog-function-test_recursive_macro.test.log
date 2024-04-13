@@ -1,0 +1,15 @@
+CREATE MACRO "sum"(x) AS (CASE WHEN sum(x) IS NULL THEN 0 ELSE sum(x) END);;
+SELECT sum(1);;
+SELECT sum(1) WHERE 42=0;
+DROP MACRO sum;
+CREATE MACRO "sum"(x) AS (CASE WHEN system.main.sum(x) IS NULL THEN 0 ELSE system.main.sum(x) END);;
+SELECT sum(1);;
+SELECT sum(1) WHERE 42=0;
+create macro m1(a) as a+1;;
+create macro m2(a) as m1(a)+1;;
+create or replace macro m1(a) as m2(a)+1;;
+select m2(42);;
+create macro m3(a) as a+1;;
+create macro m4(a) as table select m3(a);;
+create or replace macro m3(a) as (from m4(42));;
+select m3(42);;

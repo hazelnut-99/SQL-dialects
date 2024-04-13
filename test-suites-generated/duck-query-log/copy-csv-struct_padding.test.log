@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+SELECT * FROM read_csv('test/sql/copy/csv/data/test/struct_padding.csv', columns={'col': 'STRUCT(val VARCHAR)'}) ORDER BY 1;;
+SELECT * FROM read_csv('test/sql/copy/csv/data/test/struct_padding.csv', columns={'col': 'STRUCT(val VARCHAR)'}) ORDER BY 1;;
+;
+SELECT * FROM read_csv('test/sql/copy/csv/data/test/struct_padding.csv', columns={'col': 'STRUCT(val VARCHAR)'}) ORDER BY 1;;
+SELECT * FROM read_csv('test/sql/copy/csv/data/test/struct_padding.csv', ("columns" = main.struct_pack(col := 'STRUCT(val VARCHAR)'))) ORDER BY 1;
+;
+;
+;
+;
+SELECT * FROM read_csv('test/sql/copy/csv/data/test/struct_padding.csv', columns={'col': 'STRUCT(val VARCHAR)'}) ORDER BY 1;;

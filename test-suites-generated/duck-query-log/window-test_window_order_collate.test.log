@@ -1,0 +1,73 @@
+PRAGMA enable_verification;
+select
+    *,
+    array_agg(col) over(partition by id order by col collate nocase) as lead_col_nocase
+from (
+	select 
+		unnest(array[1, 1, 1, 1]) as id, 
+		unnest(array['A', 'a', 'b', 'B']) as col
+);
+select
+    *,
+    array_agg(col) over(partition by id order by col collate nocase) as lead_col_nocase
+from (
+	select 
+		unnest(array[1, 1, 1, 1]) as id, 
+		unnest(array['A', 'a', 'b', 'B']) as col
+);
+;
+select
+    *,
+    array_agg(col) over(partition by id order by col collate nocase) as lead_col_nocase
+from (
+	select 
+		unnest(array[1, 1, 1, 1]) as id, 
+		unnest(array['A', 'a', 'b', 'B']) as col
+);
+SELECT *, array_agg(col) OVER (PARTITION BY id ORDER BY col COLLATE nocase) AS lead_col_nocase FROM (SELECT unnest((ARRAY[1, 1, 1, 1])) AS id, unnest((ARRAY['A', 'a', 'b', 'B'])) AS col);
+;
+;
+;
+;
+select
+    *,
+    array_agg(col) over(partition by id order by col collate nocase) as lead_col_nocase
+from (
+	select 
+		unnest(array[1, 1, 1, 1]) as id, 
+		unnest(array['A', 'a', 'b', 'B']) as col
+);
+CREATE TABLE db_city (name VARCHAR, city VARCHAR COLLATE NOCASE);;
+INSERT INTO db_city VALUES
+	('DuckDB', 'Amsterdam'), 
+	('MonetDB','amsterdam'),
+	('VectorWise', 'Amstërdam');
+	;
+SELECT name, city, row_number() OVER (PARTITION BY city) AS row_id 
+FROM db_city;;
+SELECT name, city, row_number() OVER (PARTITION BY city) AS row_id 
+FROM db_city;;
+;
+SELECT name, city, row_number() OVER (PARTITION BY city) AS row_id 
+FROM db_city;;
+SELECT "name", city, row_number() OVER (PARTITION BY city) AS row_id FROM db_city;
+;
+;
+;
+;
+SELECT name, city, row_number() OVER (PARTITION BY city) AS row_id 
+FROM db_city;;
+SELECT name, city, row_number() OVER (PARTITION BY city COLLATE NOCASE) AS row_id 
+FROM db_city;;
+SELECT name, city, row_number() OVER (PARTITION BY city COLLATE NOCASE) AS row_id 
+FROM db_city;;
+;
+SELECT name, city, row_number() OVER (PARTITION BY city COLLATE NOCASE) AS row_id 
+FROM db_city;;
+SELECT "name", city, row_number() OVER (PARTITION BY city COLLATE NOCASE) AS row_id FROM db_city;
+;
+;
+;
+;
+SELECT name, city, row_number() OVER (PARTITION BY city COLLATE NOCASE) AS row_id 
+FROM db_city;;

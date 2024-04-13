@@ -1,0 +1,18 @@
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE test (a INTEGER);
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+;
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+SELECT * FROM test WHERE (a IN ('a', 'b', 'c', 'd', 'e'));
+;
+;
+;
+;
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+INSERT INTO test VALUES (42);
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+;
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');
+SELECT * FROM test WHERE a IN ('a', 'b', 'c', 'd', 'e');

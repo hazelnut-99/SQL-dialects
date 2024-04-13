@@ -1,0 +1,12 @@
+PRAGMA enable_checkpoint_on_shutdown;
+PRAGMA disable_checkpoint_on_shutdown;
+PRAGMA verify_parallelism;
+PRAGMA disable_verify_parallelism;
+PRAGMA explain_output='all';
+PRAGMA explain_output='unknown';
+PRAGMA enable_progress_bar;
+PRAGMA disable_progress_bar;
+PRAGMA enable_print_progress_bar;
+PRAGMA disable_print_progress_bar;
+PRAGMA debug_checkpoint_abort='none';
+PRAGMA debug_checkpoint_abort='unknown';

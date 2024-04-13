@@ -1,0 +1,21 @@
+CREATE TABLE timetzs (i TIMETZ);;
+INSERT INTO timetzs VALUES
+	(NULL),
+	('00:00:00+1559'),
+	('00:00:00+1558'),
+	('02:30:00'),
+	('02:30:00+04'),
+	('02:30:00+04:30'),
+	('02:30:00+04:30:45'),
+	('16:15:03.123456'),
+	('02:30:00+1200'),
+	('02:30:00-1200'),
+	('24:00:00-1558'),
+	('24:00:00-1559'),
+;;
+SELECT EXTRACT(second FROM i) FROM timetzs;
+SELECT EXTRACT(minute FROM i) FROM timetzs;
+SELECT EXTRACT(hour FROM i) FROM timetzs;
+SELECT EXTRACT(milliseconds FROM i) FROM timetzs;
+SELECT EXTRACT(microseconds FROM i) FROM timetzs;
+SELECT EXTRACT(epoch FROM i) FROM timetzs;

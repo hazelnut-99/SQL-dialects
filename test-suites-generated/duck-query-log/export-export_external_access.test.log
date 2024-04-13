@@ -1,0 +1,6 @@
+BEGIN TRANSACTION;
+CREATE TABLE integers(i INTEGER, j INTEGER, CHECK(i+j<10));
+EXPORT DATABASE 'duckdb_unittest_tempdir/54861/export_permissions_test' (FORMAT CSV);
+ROLLBACK;
+SET enable_external_access=false;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54861/export_permissions_test2' (FORMAT CSV);

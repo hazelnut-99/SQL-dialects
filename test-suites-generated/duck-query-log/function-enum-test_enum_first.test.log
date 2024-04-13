@@ -1,0 +1,17 @@
+PRAGMA enable_verification;
+CREATE TYPE rainbow AS ENUM ('red', 'orange', 'yellow', 'green', 'blue', 'purple');;
+SELECT enum_first(null::rainbow);
+SELECT enum_first(null::rainbow);
+;
+SELECT enum_first(null::rainbow);
+SELECT enum_first(CAST(NULL AS rainbow));
+;
+;
+;
+;
+SELECT enum_first(null::rainbow);
+SELECT enum_first('bla');
+SELECT enum_first('bla');
+;
+SELECT enum_first('bla');
+SELECT enum_first('bla');

@@ -1,0 +1,135 @@
+PRAGMA enable_verification;
+BEGIN TRANSACTION;
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+INSERT INTO integers SELECT i, i+1 FROM range(0, 1000) tbl(i);
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54867/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet );;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+INSERT INTO integers VALUES (NULL, NULL);
+DROP TABLE integers;
+BEGIN TRANSACTION;
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+INSERT INTO integers SELECT i, i+1 FROM range(0, 1000) tbl(i);
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54867/export_test' (FORMAT PARQUET, CODEC 'SNAPPY');
+ROLLBACK;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet, CODEC 'SNAPPY' );;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet, CODEC 'SNAPPY' );;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+INSERT INTO integers VALUES (NULL, NULL);
+DROP TABLE integers;
+BEGIN TRANSACTION;
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+INSERT INTO integers SELECT i, i+1 FROM range(0, 1000) tbl(i);
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54867/export_test' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000);;
+ROLLBACK;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet, COMPRESSION 'ZSTD', ROW_GROUP_SIZE 100000 );;
+
+
+
+CREATE TABLE integers(i INTEGER NOT NULL, j INTEGER);
+
+
+
+
+COPY integers FROM 'duckdb_unittest_tempdir/54867/export_test/integers.parquet' ( FORMAT parquet, COMPRESSION 'ZSTD', ROW_GROUP_SIZE 100000 );;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT SUM(i), SUM(j) FROM integers;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+SELECT sum(i), sum(j) FROM integers;
+;
+;
+;
+;
+SELECT SUM(i), SUM(j) FROM integers;
+INSERT INTO integers VALUES (NULL, NULL);

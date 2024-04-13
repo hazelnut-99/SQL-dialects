@@ -1,0 +1,15 @@
+PRAGMA enable_verification;
+CREATE TABLE test(i AS (1), j INTEGER);
+INSERT INTO test VALUES (1), (2);
+ALTER TABLE test ALTER i TYPE VARCHAR;
+ALTER TABLE test ALTER j TYPE VARCHAR;
+SELECT * FROM test;
+SELECT * FROM test;
+;
+SELECT * FROM test;
+SELECT * FROM test;
+;
+;
+;
+;
+SELECT * FROM test;

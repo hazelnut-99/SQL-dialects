@@ -1,0 +1,8 @@
+PRAGMA force_compression='none';
+PRAGMA force_compression='uncompressed';
+PRAGMA force_compression='rle';
+PRAGMA force_compression='dictionary';
+PRAGMA force_compression='pfor';
+PRAGMA force_compression='bitpacking';
+PRAGMA force_compression='fsst';
+PRAGMA force_compression='unknown';

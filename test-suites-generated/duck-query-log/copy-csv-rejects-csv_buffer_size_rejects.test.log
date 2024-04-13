@@ -1,0 +1,27 @@
+SELECT typeof(first(column0)), typeof(first(column1)), COUNT(*), SUM(column0), MAX(len(column1)) FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/big_bad*.csv',
+    sample_size=1,
+    buffer_size=5,
+    store_rejects = true);;
+SELECT * EXCLUDE (scan_id, user_arguments) FROM reject_scans order by all;;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT typeof(first(column0)), typeof(first(column1)), COUNT(*), SUM(column0), MAX(len(column1)) FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/big_bad*.csv',
+    sample_size=1,
+    buffer_size=6,
+    store_rejects = true);;
+SELECT * EXCLUDE (scan_id, user_arguments) FROM reject_scans order by all;;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;
+SELECT typeof(first(column0)), typeof(first(column1)), COUNT(*), SUM(column0), MAX(len(column1)) FROM read_csv_auto(
+    'test/sql/copy/csv/data/error/mismatch/big_bad*.csv',
+    sample_size=1,
+    buffer_size=7,
+    store_rejects = true);;
+SELECT * EXCLUDE (scan_id, user_arguments) FROM reject_scans order by all;;
+SELECT * EXCLUDE (scan_id) FROM reject_errors order by all;;
+DROP TABLE reject_errors;;
+DROP TABLE reject_scans;;

@@ -1,0 +1,11 @@
+CREATE TABLE blobs (b BYTEA);;
+COPY blobs FROM 'test/sql/copy/csv/data/test/blob.csv' (HEADER 0, AUTO_DETECT 0);;
+SELECT b FROM blobs;
+COPY blobs TO 'duckdb_unittest_tempdir/54558/blob.csv';;
+DELETE FROM blobs;
+COPY blobs FROM 'duckdb_unittest_tempdir/54558/blob.csv';;
+SELECT b FROM blobs;
+COPY blobs TO 'duckdb_unittest_tempdir/54558/blob.csv' DELIMITER 'A' QUOTE 'B' ESCAPE 'C';;
+DELETE FROM blobs;
+COPY blobs FROM 'duckdb_unittest_tempdir/54558/blob.csv' (DELIMITER 'A', QUOTE 'B', ESCAPE 'C');;
+SELECT b FROM blobs;

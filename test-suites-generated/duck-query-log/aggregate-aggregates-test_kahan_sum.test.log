@@ -1,0 +1,5 @@
+CREATE TABLE doubles(n DOUBLE);;
+INSERT INTO doubles (n) VALUES ('9007199254740992'::DOUBLE), (1::DOUBLE), (1::DOUBLE), (0::DOUBLE);;
+SELECT FSUM(n)::BIGINT FROM doubles;;
+SELECT sumKahan(n)::BIGINT FROM doubles;;
+SELECT kahan_sum(n)::BIGINT FROM doubles;;

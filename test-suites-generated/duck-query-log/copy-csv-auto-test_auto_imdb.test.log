@@ -1,0 +1,6 @@
+CREATE TABLE movie_info AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/imdb_movie_info_escaped.csv');;
+SELECT COUNT(*) FROM movie_info;;
+CREATE TABLE movie_info2 AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/imdb_movie_info_escaped.csv');;
+(FROM movie_info EXCEPT FROM movie_info2)
+UNION ALL
+(FROM movie_info2 EXCEPT FROM movie_info);

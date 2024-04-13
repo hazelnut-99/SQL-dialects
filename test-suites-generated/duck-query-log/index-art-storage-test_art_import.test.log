@@ -1,0 +1,60 @@
+PRAGMA enable_verification;
+BEGIN TRANSACTION;
+CREATE TABLE tracking("nflId" VARCHAR , "frameId" INTEGER, "gameId" INTEGER, "playId" INTEGER);;
+INSERT INTO tracking values ('a', 0,0,0);;
+create index nflid_idx on tracking (nflid);
+create unique index tracking_key_idx on tracking (gameId, playId, frameId, nflId);
+EXPORT DATABASE 'duckdb_unittest_tempdir/54460/index';;
+ROLLBACK;
+
+
+
+CREATE TABLE tracking(nflId VARCHAR, frameId INTEGER, gameId INTEGER, playId INTEGER);
+
+
+CREATE INDEX nflid_idx ON tracking(nflid);
+
+CREATE UNIQUE INDEX tracking_key_idx ON tracking(gameId, playId, frameId, nflId);
+
+
+
+COPY tracking FROM 'duckdb_unittest_tempdir/54460/index/tracking.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;
+
+
+
+CREATE TABLE tracking(nflId VARCHAR, frameId INTEGER, gameId INTEGER, playId INTEGER);
+
+
+CREATE INDEX nflid_idx ON tracking(nflid);
+
+CREATE UNIQUE INDEX tracking_key_idx ON tracking(gameId, playId, frameId, nflId);
+
+
+
+COPY tracking FROM 'duckdb_unittest_tempdir/54460/index/tracking.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;
+
+
+
+CREATE TABLE tracking(nflId VARCHAR, frameId INTEGER, gameId INTEGER, playId INTEGER);
+
+
+CREATE INDEX nflid_idx ON tracking(nflid);
+
+CREATE UNIQUE INDEX tracking_key_idx ON tracking(gameId, playId, frameId, nflId);
+
+
+
+COPY tracking FROM 'duckdb_unittest_tempdir/54460/index/tracking.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;
+
+
+
+CREATE TABLE tracking(nflId VARCHAR, frameId INTEGER, gameId INTEGER, playId INTEGER);
+
+
+CREATE INDEX nflid_idx ON tracking(nflid);
+
+CREATE UNIQUE INDEX tracking_key_idx ON tracking(gameId, playId, frameId, nflId);
+
+
+
+COPY tracking FROM 'duckdb_unittest_tempdir/54460/index/tracking.csv' ( FORMAT csv, header 1, delimiter ',', quote '"' );;

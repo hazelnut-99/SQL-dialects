@@ -1,0 +1,27 @@
+pragma enable_verification;
+select table_name, column_name
+from duckdb_columns()
+where database_name = 'system'
+and schema_name = 'information_schema'
+and data_type = 'NULL';
+select table_name, column_name
+from duckdb_columns()
+where database_name = 'system'
+and schema_name = 'information_schema'
+and data_type = 'NULL';
+;
+select table_name, column_name
+from duckdb_columns()
+where database_name = 'system'
+and schema_name = 'information_schema'
+and data_type = 'NULL';
+SELECT table_name, column_name FROM duckdb_columns() WHERE ((database_name = 'system') AND (schema_name = 'information_schema') AND (data_type = 'NULL'));
+;
+;
+;
+;
+select table_name, column_name
+from duckdb_columns()
+where database_name = 'system'
+and schema_name = 'information_schema'
+and data_type = 'NULL';

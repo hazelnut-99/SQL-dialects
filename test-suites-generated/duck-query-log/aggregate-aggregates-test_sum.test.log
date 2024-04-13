@@ -1,0 +1,18 @@
+CREATE TABLE integers(i INTEGER);;
+INSERT INTO integers SELECT * FROM range(0, 1000, 1);;
+SELECT SUM(i) FROM integers;;
+INSERT INTO integers SELECT * FROM range(0, -1000, -1);;
+SELECT SUM(i) FROM integers;;
+INSERT INTO integers SELECT * FROM range(0, -1000, -1);;
+SELECT SUM(i) FROM integers;;
+SELECT SUM(1) FROM integers;;
+SELECT SUM(-1) FROM integers;;
+SELECT SUM(-1) FROM integers WHERE i=-1;;
+SELECT SUM(-1) FROM integers WHERE i>10000;;
+CREATE TABLE bigints(b BIGINT);;
+INSERT INTO bigints SELECT * FROM range(4611686018427387904, 4611686018427388904, 1);;
+SELECT SUM(b) FROM bigints;
+SELECT SUM(b)::BIGINT FROM bigints;
+CREATE TABLE doubles(n DOUBLE);;
+INSERT INTO doubles (n) VALUES ('9007199254740992'::DOUBLE), (1::DOUBLE), (1::DOUBLE), (0::DOUBLE);;
+SELECT sum(n ORDER BY ABS(n))::BIGINT FROM doubles;;

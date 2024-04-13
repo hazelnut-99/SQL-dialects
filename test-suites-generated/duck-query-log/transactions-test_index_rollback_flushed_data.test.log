@@ -1,0 +1,12 @@
+PRAGMA enable_verification;
+INSERT INTO integers SELECT i FROM range(2, 4097, 1) t1(i);
+SELECT MAX(i) FROM integers;
+SELECT MAX(i) FROM integers;
+;
+SELECT MAX(i) FROM integers;
+SELECT max(i) FROM integers;
+;
+;
+;
+;
+SELECT MAX(i) FROM integers;

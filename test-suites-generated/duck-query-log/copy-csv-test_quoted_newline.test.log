@@ -1,0 +1,5 @@
+CREATE TABLE test (a VARCHAR, b INTEGER);;
+COPY test FROM 'test/sql/copy/csv/data/test/quoted_newline.csv' (DELIMITER ',', AUTO_DETECT 0);;
+SELECT SUM(b) FROM test;;
+SELECT string_split_regex(a, '[\r\n]+') FROM test ORDER BY a;;
+DROP TABLE test;;

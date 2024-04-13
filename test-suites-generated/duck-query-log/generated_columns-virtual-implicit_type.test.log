@@ -1,0 +1,32 @@
+PRAGMA enable_verification;
+CREATE TABLE test (
+    foo INTEGER,
+    bar GENERATED ALWAYS AS (foo+1),
+    foobar INTEGER DEFAULT 5
+);;
+CREATE TABLE unit (
+    foo INTEGER,
+    bar AS (foo+1),
+);
+INSERT INTO test(foo) VALUES (1);;
+SELECT bar FROM test;
+SELECT bar FROM test;
+;
+SELECT bar FROM test;
+SELECT bar FROM test;
+;
+;
+;
+;
+SELECT bar FROM test;
+INSERT INTO unit VALUES(5);
+SELECT bar FROM unit;
+SELECT bar FROM unit;
+;
+SELECT bar FROM unit;
+SELECT bar FROM unit;
+;
+;
+;
+;
+SELECT bar FROM unit;

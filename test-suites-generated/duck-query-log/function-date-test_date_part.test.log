@@ -1,0 +1,2465 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+CREATE TABLE dates(d DATE, s VARCHAR);;
+INSERT INTO dates VALUES
+	('1992-01-01', 'year'),
+	('1992-03-03', 'month'),
+	('1992-05-05', 'day'),
+	('2022-01-01', 'isoyear'),
+	('044-03-15 (BC)', 'millennium'),
+	('infinity', 'century'),
+	('-infinity', 'decade'),
+	(NULL, 'weekday'),
+;;
+CREATE TABLE specifiers (specifier VARCHAR);;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+INSERT INTO specifiers VALUES ('${partcode}');;
+SELECT date_part(NULL::VARCHAR, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(NULL::VARCHAR, NULL::TIMESTAMP) FROM dates;;
+;
+SELECT date_part(NULL::VARCHAR, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(CAST(NULL AS VARCHAR), CAST(NULL AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(NULL::VARCHAR, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(s, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(s, NULL::TIMESTAMP) FROM dates;;
+;
+SELECT date_part(s, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(s, CAST(NULL AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(s, NULL::TIMESTAMP) FROM dates;;
+SELECT date_part(NULL, d) FROM dates;;
+SELECT date_part(NULL, d) FROM dates;;
+;
+SELECT date_part(NULL, d) FROM dates;;
+SELECT date_part(NULL, d) FROM dates;
+;
+;
+;
+;
+SELECT date_part(NULL, d) FROM dates;;
+SELECT date_part(s, DATE '1992-01-01') FROM dates;;
+SELECT date_part(s, DATE '1992-01-01') FROM dates;;
+;
+SELECT date_part(s, DATE '1992-01-01') FROM dates;;
+SELECT date_part(s, CAST('1992-01-01' AS DATE)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(s, DATE '1992-01-01') FROM dates;;
+SELECT date_part('year', d) FROM dates;;
+SELECT date_part('year', d) FROM dates;;
+;
+SELECT date_part('year', d) FROM dates;;
+SELECT date_part('year', d) FROM dates;
+;
+;
+;
+;
+SELECT date_part('year', d) FROM dates;;
+SELECT date_part('isoyear', d) FROM dates;;
+SELECT date_part('isoyear', d) FROM dates;;
+;
+SELECT date_part('isoyear', d) FROM dates;;
+SELECT date_part('isoyear', d) FROM dates;
+;
+;
+;
+;
+SELECT date_part('isoyear', d) FROM dates;;
+SELECT date_part(s, d) FROM dates;;
+SELECT date_part(s, d) FROM dates;;
+;
+SELECT date_part(s, d) FROM dates;;
+SELECT date_part(s, d) FROM dates;
+;
+;
+;
+;
+SELECT date_part(s, d) FROM dates;;
+SELECT date_part('era', d) FROM dates;;
+SELECT date_part('era', d) FROM dates;;
+;
+SELECT date_part('era', d) FROM dates;;
+SELECT date_part('era', d) FROM dates;
+;
+;
+;
+;
+SELECT date_part('era', d) FROM dates;;
+SELECT date_part('julian', d) FROM dates;;
+SELECT date_part('julian', d) FROM dates;;
+;
+SELECT date_part('julian', d) FROM dates;;
+SELECT date_part('julian', d) FROM dates;
+;
+;
+;
+;
+SELECT date_part('julian', d) FROM dates;;
+SELECT date_part('timezone', d) FROM dates;;
+SELECT date_part('timezone', d) FROM dates;;
+;
+SELECT date_part('timezone', d) FROM dates;;
+SELECT date_part('timezone', d) FROM dates;;
+SELECT date_part('timezone_hour', d) FROM dates;;
+SELECT date_part('timezone_hour', d) FROM dates;;
+;
+SELECT date_part('timezone_hour', d) FROM dates;;
+SELECT date_part('timezone_hour', d) FROM dates;;
+SELECT date_part('timezone_minute', d) FROM dates;;
+SELECT date_part('timezone_minute', d) FROM dates;;
+;
+SELECT date_part('timezone_minute', d) FROM dates;;
+SELECT date_part('timezone_minute', d) FROM dates;;
+SELECT date_part(NULL, d::TIMESTAMP) FROM dates;;
+SELECT date_part(NULL, d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part(NULL, d::TIMESTAMP) FROM dates;;
+SELECT date_part(NULL, CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(NULL, d::TIMESTAMP) FROM dates;;
+SELECT date_part(s, TIMESTAMP '1992-01-01') FROM dates;;
+SELECT date_part(s, TIMESTAMP '1992-01-01') FROM dates;;
+;
+SELECT date_part(s, TIMESTAMP '1992-01-01') FROM dates;;
+SELECT date_part(s, CAST('1992-01-01' AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(s, TIMESTAMP '1992-01-01') FROM dates;;
+SELECT date_part('year', d::TIMESTAMP) FROM dates;;
+SELECT date_part('year', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('year', d::TIMESTAMP) FROM dates;;
+SELECT date_part('year', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('year', d::TIMESTAMP) FROM dates;;
+SELECT date_part('isoyear', d::TIMESTAMP) FROM dates;;
+SELECT date_part('isoyear', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('isoyear', d::TIMESTAMP) FROM dates;;
+SELECT date_part('isoyear', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('isoyear', d::TIMESTAMP) FROM dates;;
+SELECT date_part(s, d::TIMESTAMP) FROM dates;;
+SELECT date_part(s, d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part(s, d::TIMESTAMP) FROM dates;;
+SELECT date_part(s, CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part(s, d::TIMESTAMP) FROM dates;;
+SELECT date_part('era', d::TIMESTAMP) FROM dates;;
+SELECT date_part('era', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('era', d::TIMESTAMP) FROM dates;;
+SELECT date_part('era', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('era', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('timezone', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('timezone', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_hour', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_hour', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('timezone_hour', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_hour', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('timezone_hour', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_minute', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_minute', d::TIMESTAMP) FROM dates;;
+;
+SELECT date_part('timezone_minute', d::TIMESTAMP) FROM dates;;
+SELECT date_part('timezone_minute', CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT date_part('timezone_minute', d::TIMESTAMP) FROM dates;;
+select timezone(interval '4 minute', '12:15:37.123456-08'::TIMETZ);;
+select timezone(interval '4 minute', '12:15:37.123456-08'::TIMETZ);;
+;
+select timezone(interval '4 minute', '12:15:37.123456-08'::TIMETZ);;
+SELECT timezone(CAST('4 minute' AS INTERVAL), CAST('12:15:37.123456-08' AS TIME WITH TIME ZONE));
+;
+;
+;
+;
+select timezone(interval '4 minute', '12:15:37.123456-08'::TIMETZ);;
+SELECT LAST_DAY(DATE '1900-02-12'), LAST_DAY(DATE '1992-02-12'), LAST_DAY(DATE '2000-02-12');;
+SELECT LAST_DAY(DATE '1900-02-12'), LAST_DAY(DATE '1992-02-12'), LAST_DAY(DATE '2000-02-12');;
+;
+SELECT LAST_DAY(DATE '1900-02-12'), LAST_DAY(DATE '1992-02-12'), LAST_DAY(DATE '2000-02-12');;
+SELECT last_day(CAST('1900-02-12' AS DATE)), last_day(CAST('1992-02-12' AS DATE)), last_day(CAST('2000-02-12' AS DATE));
+;
+;
+;
+;
+SELECT LAST_DAY(DATE '1900-02-12'), LAST_DAY(DATE '1992-02-12'), LAST_DAY(DATE '2000-02-12');;
+SELECT LAST_DAY(d) FROM dates;;
+SELECT LAST_DAY(d) FROM dates;;
+;
+SELECT LAST_DAY(d) FROM dates;;
+SELECT last_day(d) FROM dates;
+;
+;
+;
+;
+SELECT LAST_DAY(d) FROM dates;;
+SELECT LAST_DAY(d::timestamp) FROM dates;;
+SELECT LAST_DAY(d::timestamp) FROM dates;;
+;
+SELECT LAST_DAY(d::timestamp) FROM dates;;
+SELECT last_day(CAST(d AS TIMESTAMP)) FROM dates;
+;
+;
+;
+;
+SELECT LAST_DAY(d::timestamp) FROM dates;;
+SELECT MONTHNAME(d) FROM dates;;
+SELECT MONTHNAME(d) FROM dates;;
+;
+SELECT MONTHNAME(d) FROM dates;;
+SELECT monthname(d) FROM dates;
+;
+;
+;
+;
+SELECT MONTHNAME(d) FROM dates;;
+SELECT DAYNAME(d) FROM dates;;
+SELECT DAYNAME(d) FROM dates;;
+;
+SELECT DAYNAME(d) FROM dates;;
+SELECT dayname(d) FROM dates;
+;
+;
+;
+;
+SELECT DAYNAME(d) FROM dates;;
+SELECT YEARWEEK(d) FROM dates;;
+SELECT YEARWEEK(d) FROM dates;;
+;
+SELECT YEARWEEK(d) FROM dates;;
+SELECT yearweek(d) FROM dates;
+;
+;
+;
+;
+SELECT YEARWEEK(d) FROM dates;;
+SELECT DAYOFMONTH(d) FROM dates;;
+SELECT DAYOFMONTH(d) FROM dates;;
+;
+SELECT DAYOFMONTH(d) FROM dates;;
+SELECT dayofmonth(d) FROM dates;
+;
+;
+;
+;
+SELECT DAYOFMONTH(d) FROM dates;;
+SELECT WEEKDAY(d) FROM dates;;
+SELECT WEEKDAY(d) FROM dates;;
+;
+SELECT WEEKDAY(d) FROM dates;;
+SELECT weekday(d) FROM dates;
+;
+;
+;
+;
+SELECT WEEKDAY(d) FROM dates;;
+SELECT WEEKOFYEAR(d) FROM dates;;
+SELECT WEEKOFYEAR(d) FROM dates;;
+;
+SELECT WEEKOFYEAR(d) FROM dates;;
+SELECT weekofyear(d) FROM dates;
+;
+;
+;
+;
+SELECT WEEKOFYEAR(d) FROM dates;;
+SELECT JULIAN(d) FROM dates;;
+SELECT JULIAN(d) FROM dates;;
+;
+SELECT JULIAN(d) FROM dates;;
+SELECT julian(d) FROM dates;
+;
+;
+;
+;
+SELECT JULIAN(d) FROM dates;;
+select
+date_part('quarter', DATE '1992-01-20'),
+date_part('quarter', DATE '1992-02-20'),
+date_part('quarter', DATE '1992-03-20'),
+date_part('quarter', DATE '1992-04-20'),
+date_part('quarter', DATE '1992-05-20'),
+date_part('quarter', DATE '1992-06-20'),
+date_part('quarter', DATE '1992-07-20'),
+date_part('quarter', DATE '1992-08-20'),
+date_part('quarter', DATE '1992-09-20'),
+date_part('quarter', DATE '1992-10-20'),
+date_part('quarter', DATE '1992-11-20'),
+date_part('quarter', DATE '1992-12-20');
+select
+date_part('quarter', DATE '1992-01-20'),
+date_part('quarter', DATE '1992-02-20'),
+date_part('quarter', DATE '1992-03-20'),
+date_part('quarter', DATE '1992-04-20'),
+date_part('quarter', DATE '1992-05-20'),
+date_part('quarter', DATE '1992-06-20'),
+date_part('quarter', DATE '1992-07-20'),
+date_part('quarter', DATE '1992-08-20'),
+date_part('quarter', DATE '1992-09-20'),
+date_part('quarter', DATE '1992-10-20'),
+date_part('quarter', DATE '1992-11-20'),
+date_part('quarter', DATE '1992-12-20');
+;
+select
+date_part('quarter', DATE '1992-01-20'),
+date_part('quarter', DATE '1992-02-20'),
+date_part('quarter', DATE '1992-03-20'),
+date_part('quarter', DATE '1992-04-20'),
+date_part('quarter', DATE '1992-05-20'),
+date_part('quarter', DATE '1992-06-20'),
+date_part('quarter', DATE '1992-07-20'),
+date_part('quarter', DATE '1992-08-20'),
+date_part('quarter', DATE '1992-09-20'),
+date_part('quarter', DATE '1992-10-20'),
+date_part('quarter', DATE '1992-11-20'),
+date_part('quarter', DATE '1992-12-20');
+SELECT date_part('quarter', CAST('1992-01-20' AS DATE)), date_part('quarter', CAST('1992-02-20' AS DATE)), date_part('quarter', CAST('1992-03-20' AS DATE)), date_part('quarter', CAST('1992-04-20' AS DATE)), date_part('quarter', CAST('1992-05-20' AS DATE)), date_part('quarter', CAST('1992-06-20' AS DATE)), date_part('quarter', CAST('1992-07-20' AS DATE)), date_part('quarter', CAST('1992-08-20' AS DATE)), date_part('quarter', CAST('1992-09-20' AS DATE)), date_part('quarter', CAST('1992-10-20' AS DATE)), date_part('quarter', CAST('1992-11-20' AS DATE)), date_part('quarter', CAST('1992-12-20' AS DATE));
+;
+;
+;
+;
+select
+date_part('quarter', DATE '1992-01-20'),
+date_part('quarter', DATE '1992-02-20'),
+date_part('quarter', DATE '1992-03-20'),
+date_part('quarter', DATE '1992-04-20'),
+date_part('quarter', DATE '1992-05-20'),
+date_part('quarter', DATE '1992-06-20'),
+date_part('quarter', DATE '1992-07-20'),
+date_part('quarter', DATE '1992-08-20'),
+date_part('quarter', DATE '1992-09-20'),
+date_part('quarter', DATE '1992-10-20'),
+date_part('quarter', DATE '1992-11-20'),
+date_part('quarter', DATE '1992-12-20');
+SELECT d, DATE_PART('era', d) AS p, era(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('era', d) AS p, era(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('era', d) AS p, era(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('era', d) AS p, era(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('era', d) AS p, era(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('millennium', d) AS p, millennium(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('millennium', d) AS p, millennium(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('millennium', d) AS p, millennium(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('millennium', d) AS p, millennium(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('millennium', d) AS p, millennium(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('century', d) AS p, century(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('century', d) AS p, century(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('century', d) AS p, century(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('century', d) AS p, century(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('century', d) AS p, century(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('decade', d) AS p, decade(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('decade', d) AS p, decade(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('decade', d) AS p, decade(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('decade', d) AS p, decade(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('decade', d) AS p, decade(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('year', d) AS p, year(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('year', d) AS p, year(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('year', d) AS p, year(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('year', d) AS p, year(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('year', d) AS p, year(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('quarter', d) AS p, quarter(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('quarter', d) AS p, quarter(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('quarter', d) AS p, quarter(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('quarter', d) AS p, quarter(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('quarter', d) AS p, quarter(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('month', d) AS p, month(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('month', d) AS p, month(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('month', d) AS p, month(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('month', d) AS p, month(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('month', d) AS p, month(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('day', d) AS p, day(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('day', d) AS p, day(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('day', d) AS p, day(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('day', d) AS p, day(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('day', d) AS p, day(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('week', d) AS p, week(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('week', d) AS p, week(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('week', d) AS p, week(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('week', d) AS p, week(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('week', d) AS p, week(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('weekday', d) AS p, weekday(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('weekday', d) AS p, weekday(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('weekday', d) AS p, weekday(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('weekday', d) AS p, weekday(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('weekday', d) AS p, weekday(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('isodow', d) AS p, isodow(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('isodow', d) AS p, isodow(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('isodow', d) AS p, isodow(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('isodow', d) AS p, isodow(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('isodow', d) AS p, isodow(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('dayofyear', d) AS p, dayofyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('dayofyear', d) AS p, dayofyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('dayofyear', d) AS p, dayofyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('dayofyear', d) AS p, dayofyear(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('dayofyear', d) AS p, dayofyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('isoyear', d) AS p, isoyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('isoyear', d) AS p, isoyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('isoyear', d) AS p, isoyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('isoyear', d) AS p, isoyear(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('isoyear', d) AS p, isoyear(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('yearweek', d) AS p, yearweek(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('yearweek', d) AS p, yearweek(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('yearweek', d) AS p, yearweek(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('yearweek', d) AS p, yearweek(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('yearweek', d) AS p, yearweek(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('julian', d) AS p, julian(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, DATE_PART('julian', d) AS p, julian(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+;
+SELECT d, DATE_PART('julian', d) AS p, julian(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, date_part('julian', d) AS p, julian(d) AS f FROM dates WHERE (p IS DISTINCT FROM f);
+;
+;
+;
+;
+SELECT d, DATE_PART('julian', d) AS p, julian(d) AS f
+FROM dates
+WHERE p IS DISTINCT FROM f;;
+SELECT d, epoch_ns(d) 
+FROM dates 
+WHERE d != '0044-03-15 (BC)' OR d IS NULL
+ORDER BY ALL;;
+SELECT d, epoch_ns(d) 
+FROM dates 
+WHERE d != '0044-03-15 (BC)' OR d IS NULL
+ORDER BY ALL;;
+;
+SELECT d, epoch_ns(d) 
+FROM dates 
+WHERE d != '0044-03-15 (BC)' OR d IS NULL
+ORDER BY ALL;;
+SELECT d, epoch_ns(d) FROM dates WHERE ((d != '0044-03-15 (BC)') OR (d IS NULL)) ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT d, epoch_ns(d) 
+FROM dates 
+WHERE d != '0044-03-15 (BC)' OR d IS NULL
+ORDER BY ALL;;
+SELECT d, epoch_us(d) FROM dates ORDER BY ALL;;
+SELECT d, epoch_us(d) FROM dates ORDER BY ALL;;
+;
+SELECT d, epoch_us(d) FROM dates ORDER BY ALL;;
+SELECT d, epoch_us(d) FROM dates ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT d, epoch_us(d) FROM dates ORDER BY ALL;;
+SELECT d, epoch_ms(d) FROM dates ORDER BY ALL;;
+SELECT d, epoch_ms(d) FROM dates ORDER BY ALL;;
+;
+SELECT d, epoch_ms(d) FROM dates ORDER BY ALL;;
+SELECT d, epoch_ms(d) FROM dates ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT d, epoch_ms(d) FROM dates ORDER BY ALL;;
+SELECT d, DATE_PART('era', d) AS p, DATE_PART(['era'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['era'];;
+SELECT d, DATE_PART('era', d) AS p, DATE_PART(['era'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['era'];;
+;
+SELECT d, DATE_PART('era', d) AS p, DATE_PART(['era'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['era'];;
+SELECT d, date_part('era', d) AS p, date_part(main.list_value('era'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['era']);
+;
+;
+;
+;
+SELECT d, DATE_PART('era', d) AS p, DATE_PART(['era'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['era'];;
+SELECT d, DATE_PART('millennium', d) AS p, DATE_PART(['millennium'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['millennium'];;
+SELECT d, DATE_PART('millennium', d) AS p, DATE_PART(['millennium'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['millennium'];;
+;
+SELECT d, DATE_PART('millennium', d) AS p, DATE_PART(['millennium'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['millennium'];;
+SELECT d, date_part('millennium', d) AS p, date_part(main.list_value('millennium'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['millennium']);
+;
+;
+;
+;
+SELECT d, DATE_PART('millennium', d) AS p, DATE_PART(['millennium'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['millennium'];;
+SELECT d, DATE_PART('century', d) AS p, DATE_PART(['century'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['century'];;
+SELECT d, DATE_PART('century', d) AS p, DATE_PART(['century'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['century'];;
+;
+SELECT d, DATE_PART('century', d) AS p, DATE_PART(['century'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['century'];;
+SELECT d, date_part('century', d) AS p, date_part(main.list_value('century'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['century']);
+;
+;
+;
+;
+SELECT d, DATE_PART('century', d) AS p, DATE_PART(['century'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['century'];;
+SELECT d, DATE_PART('decade', d) AS p, DATE_PART(['decade'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['decade'];;
+SELECT d, DATE_PART('decade', d) AS p, DATE_PART(['decade'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['decade'];;
+;
+SELECT d, DATE_PART('decade', d) AS p, DATE_PART(['decade'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['decade'];;
+SELECT d, date_part('decade', d) AS p, date_part(main.list_value('decade'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['decade']);
+;
+;
+;
+;
+SELECT d, DATE_PART('decade', d) AS p, DATE_PART(['decade'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['decade'];;
+SELECT d, DATE_PART('year', d) AS p, DATE_PART(['year'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['year'];;
+SELECT d, DATE_PART('year', d) AS p, DATE_PART(['year'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['year'];;
+;
+SELECT d, DATE_PART('year', d) AS p, DATE_PART(['year'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['year'];;
+SELECT d, date_part('year', d) AS p, date_part(main.list_value('year'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['year']);
+;
+;
+;
+;
+SELECT d, DATE_PART('year', d) AS p, DATE_PART(['year'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['year'];;
+SELECT d, DATE_PART('quarter', d) AS p, DATE_PART(['quarter'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['quarter'];;
+SELECT d, DATE_PART('quarter', d) AS p, DATE_PART(['quarter'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['quarter'];;
+;
+SELECT d, DATE_PART('quarter', d) AS p, DATE_PART(['quarter'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['quarter'];;
+SELECT d, date_part('quarter', d) AS p, date_part(main.list_value('quarter'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['quarter']);
+;
+;
+;
+;
+SELECT d, DATE_PART('quarter', d) AS p, DATE_PART(['quarter'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['quarter'];;
+SELECT d, DATE_PART('month', d) AS p, DATE_PART(['month'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['month'];;
+SELECT d, DATE_PART('month', d) AS p, DATE_PART(['month'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['month'];;
+;
+SELECT d, DATE_PART('month', d) AS p, DATE_PART(['month'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['month'];;
+SELECT d, date_part('month', d) AS p, date_part(main.list_value('month'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['month']);
+;
+;
+;
+;
+SELECT d, DATE_PART('month', d) AS p, DATE_PART(['month'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['month'];;
+SELECT d, DATE_PART('day', d) AS p, DATE_PART(['day'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['day'];;
+SELECT d, DATE_PART('day', d) AS p, DATE_PART(['day'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['day'];;
+;
+SELECT d, DATE_PART('day', d) AS p, DATE_PART(['day'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['day'];;
+SELECT d, date_part('day', d) AS p, date_part(main.list_value('day'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['day']);
+;
+;
+;
+;
+SELECT d, DATE_PART('day', d) AS p, DATE_PART(['day'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['day'];;
+SELECT d, DATE_PART('week', d) AS p, DATE_PART(['week'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['week'];;
+SELECT d, DATE_PART('week', d) AS p, DATE_PART(['week'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['week'];;
+;
+SELECT d, DATE_PART('week', d) AS p, DATE_PART(['week'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['week'];;
+SELECT d, date_part('week', d) AS p, date_part(main.list_value('week'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['week']);
+;
+;
+;
+;
+SELECT d, DATE_PART('week', d) AS p, DATE_PART(['week'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['week'];;
+SELECT d, DATE_PART('weekday', d) AS p, DATE_PART(['weekday'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['weekday'];;
+SELECT d, DATE_PART('weekday', d) AS p, DATE_PART(['weekday'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['weekday'];;
+;
+SELECT d, DATE_PART('weekday', d) AS p, DATE_PART(['weekday'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['weekday'];;
+SELECT d, date_part('weekday', d) AS p, date_part(main.list_value('weekday'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['weekday']);
+;
+;
+;
+;
+SELECT d, DATE_PART('weekday', d) AS p, DATE_PART(['weekday'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['weekday'];;
+SELECT d, DATE_PART('isodow', d) AS p, DATE_PART(['isodow'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isodow'];;
+SELECT d, DATE_PART('isodow', d) AS p, DATE_PART(['isodow'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isodow'];;
+;
+SELECT d, DATE_PART('isodow', d) AS p, DATE_PART(['isodow'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isodow'];;
+SELECT d, date_part('isodow', d) AS p, date_part(main.list_value('isodow'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['isodow']);
+;
+;
+;
+;
+SELECT d, DATE_PART('isodow', d) AS p, DATE_PART(['isodow'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isodow'];;
+SELECT d, DATE_PART('doy', d) AS p, DATE_PART(['doy'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['doy'];;
+SELECT d, DATE_PART('doy', d) AS p, DATE_PART(['doy'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['doy'];;
+;
+SELECT d, DATE_PART('doy', d) AS p, DATE_PART(['doy'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['doy'];;
+SELECT d, date_part('doy', d) AS p, date_part(main.list_value('doy'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['doy']);
+;
+;
+;
+;
+SELECT d, DATE_PART('doy', d) AS p, DATE_PART(['doy'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['doy'];;
+SELECT d, DATE_PART('isoyear', d) AS p, DATE_PART(['isoyear'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isoyear'];;
+SELECT d, DATE_PART('isoyear', d) AS p, DATE_PART(['isoyear'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isoyear'];;
+;
+SELECT d, DATE_PART('isoyear', d) AS p, DATE_PART(['isoyear'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isoyear'];;
+SELECT d, date_part('isoyear', d) AS p, date_part(main.list_value('isoyear'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['isoyear']);
+;
+;
+;
+;
+SELECT d, DATE_PART('isoyear', d) AS p, DATE_PART(['isoyear'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['isoyear'];;
+SELECT d, DATE_PART('yearweek', d) AS p, DATE_PART(['yearweek'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['yearweek'];;
+SELECT d, DATE_PART('yearweek', d) AS p, DATE_PART(['yearweek'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['yearweek'];;
+;
+SELECT d, DATE_PART('yearweek', d) AS p, DATE_PART(['yearweek'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['yearweek'];;
+SELECT d, date_part('yearweek', d) AS p, date_part(main.list_value('yearweek'), d) AS st FROM dates WHERE (p IS DISTINCT FROM st['yearweek']);
+;
+;
+;
+;
+SELECT d, DATE_PART('yearweek', d) AS p, DATE_PART(['yearweek'], d) AS st
+FROM dates
+WHERE p IS DISTINCT FROM st['yearweek'];;
+SELECT d, DATE_PART(['year', 'month', 'day', 'epoch'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['year', 'month', 'day', 'epoch'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['year', 'month', 'day', 'epoch'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, date_part(main.list_value('year', 'month', 'day', 'epoch'), d) AS parts FROM dates ORDER BY 1;
+;
+;
+;
+SELECT d, DATE_PART(['year', 'month', 'day', 'epoch'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['era', 'millennium', 'century', 'decade', 'quarter'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['era', 'millennium', 'century', 'decade', 'quarter'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['era', 'millennium', 'century', 'decade', 'quarter'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, date_part(main.list_value('era', 'millennium', 'century', 'decade', 'quarter'), d) AS parts FROM dates ORDER BY 1;
+;
+;
+;
+SELECT d, DATE_PART(['era', 'millennium', 'century', 'decade', 'quarter'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['weekday', 'isodow', 'doy', 'julian'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['weekday', 'isodow', 'doy', 'julian'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['weekday', 'isodow', 'doy', 'julian'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, date_part(main.list_value('weekday', 'isodow', 'doy', 'julian'), d) AS parts FROM dates ORDER BY 1;
+;
+;
+;
+SELECT d, DATE_PART(['weekday', 'isodow', 'doy', 'julian'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT DATE_PART(['weekday', 'isodow', 'doy', 'julian'], '2022-01-01'::DATE) AS parts;
+SELECT DATE_PART(['weekday', 'isodow', 'doy', 'julian'], '2022-01-01'::DATE) AS parts;
+;
+SELECT DATE_PART(['weekday', 'isodow', 'doy', 'julian'], '2022-01-01'::DATE) AS parts;
+SELECT date_part(main.list_value('weekday', 'isodow', 'doy', 'julian'), CAST('2022-01-01' AS DATE)) AS parts;
+;
+;
+;
+;
+SELECT DATE_PART(['weekday', 'isodow', 'doy', 'julian'], '2022-01-01'::DATE) AS parts;
+SELECT d, DATE_PART(['isoyear', 'week', 'yearweek'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['isoyear', 'week', 'yearweek'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['isoyear', 'week', 'yearweek'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, date_part(main.list_value('isoyear', 'week', 'yearweek'), d) AS parts FROM dates ORDER BY 1;
+;
+;
+;
+SELECT d, DATE_PART(['isoyear', 'week', 'yearweek'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['year', 'month', 'day'], d) AS parts
+FROM dates
+WHERE s = 'day'
+ORDER BY 1;;
+SELECT d, DATE_PART(['year', 'month', 'day'], d) AS parts
+FROM dates
+WHERE s = 'day'
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['year', 'month', 'day'], d) AS parts
+FROM dates
+WHERE s = 'day'
+ORDER BY 1;;
+SELECT d, date_part(main.list_value('year', 'month', 'day'), d) AS parts FROM dates WHERE (s = 'day') ORDER BY 1;
+;
+;
+;
+SELECT d, DATE_PART(['year', 'month', 'day'], d) AS parts
+FROM dates
+WHERE s = 'day'
+ORDER BY 1;;
+SELECT d, DATE_PART(['hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['second'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['second'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['second'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['second'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['millisecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['millisecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['millisecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['millisecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['microsecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['microsecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['microsecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['microsecond'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['timezone'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['timezone_hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_hour'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+;
+SELECT d, DATE_PART(['timezone_minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT d, DATE_PART(['timezone_minute'], d) AS parts
+FROM dates
+ORDER BY 1;;
+SELECT DATE_PART(['hour', 'minute'], '2023-09-17'::DATE) AS parts;
+SELECT DATE_PART(['hour', 'minute'], '2023-09-17'::DATE) AS parts;
+;
+SELECT DATE_PART(['hour', 'minute'], '2023-09-17'::DATE) AS parts;
+SELECT DATE_PART(['hour', 'minute'], '2023-09-17'::DATE) AS parts;
+SELECT DATE_PART(specifier, 'infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT DATE_PART(specifier, 'infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+;
+SELECT DATE_PART(specifier, 'infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT date_part(specifier, CAST('infinity' AS DATE)) AS result FROM specifiers WHERE (result IS NOT NULL);
+;
+;
+;
+;
+SELECT DATE_PART(specifier, 'infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT year('infinity'::DATE);;
+SELECT year('infinity'::DATE);;
+;
+SELECT year('infinity'::DATE);;
+SELECT year(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT year('infinity'::DATE);;
+SELECT month('infinity'::DATE);;
+SELECT month('infinity'::DATE);;
+;
+SELECT month('infinity'::DATE);;
+SELECT month(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT month('infinity'::DATE);;
+SELECT day('infinity'::DATE);;
+SELECT day('infinity'::DATE);;
+;
+SELECT day('infinity'::DATE);;
+SELECT day(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT day('infinity'::DATE);;
+SELECT decade('infinity'::DATE);;
+SELECT decade('infinity'::DATE);;
+;
+SELECT decade('infinity'::DATE);;
+SELECT decade(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT decade('infinity'::DATE);;
+SELECT century('infinity'::DATE);;
+SELECT century('infinity'::DATE);;
+;
+SELECT century('infinity'::DATE);;
+SELECT century(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT century('infinity'::DATE);;
+SELECT millennium('infinity'::DATE);;
+SELECT millennium('infinity'::DATE);;
+;
+SELECT millennium('infinity'::DATE);;
+SELECT millennium(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT millennium('infinity'::DATE);;
+SELECT quarter('infinity'::DATE);;
+SELECT quarter('infinity'::DATE);;
+;
+SELECT quarter('infinity'::DATE);;
+SELECT quarter(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT quarter('infinity'::DATE);;
+SELECT dayofweek('infinity'::DATE);;
+SELECT dayofweek('infinity'::DATE);;
+;
+SELECT dayofweek('infinity'::DATE);;
+SELECT dayofweek(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofweek('infinity'::DATE);;
+SELECT isodow('infinity'::DATE);;
+SELECT isodow('infinity'::DATE);;
+;
+SELECT isodow('infinity'::DATE);;
+SELECT isodow(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT isodow('infinity'::DATE);;
+SELECT dayofyear('infinity'::DATE);;
+SELECT dayofyear('infinity'::DATE);;
+;
+SELECT dayofyear('infinity'::DATE);;
+SELECT dayofyear(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofyear('infinity'::DATE);;
+SELECT week('infinity'::DATE);;
+SELECT week('infinity'::DATE);;
+;
+SELECT week('infinity'::DATE);;
+SELECT week(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT week('infinity'::DATE);;
+SELECT isoyear('infinity'::DATE);;
+SELECT isoyear('infinity'::DATE);;
+;
+SELECT isoyear('infinity'::DATE);;
+SELECT isoyear(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT isoyear('infinity'::DATE);;
+SELECT era('infinity'::DATE);;
+SELECT era('infinity'::DATE);;
+;
+SELECT era('infinity'::DATE);;
+SELECT era(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT era('infinity'::DATE);;
+SELECT timezone('infinity'::DATE);;
+SELECT timezone('infinity'::DATE);;
+;
+SELECT timezone('infinity'::DATE);;
+SELECT timezone(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone('infinity'::DATE);;
+SELECT timezone_hour('infinity'::DATE);;
+SELECT timezone_hour('infinity'::DATE);;
+;
+SELECT timezone_hour('infinity'::DATE);;
+SELECT timezone_hour(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone_hour('infinity'::DATE);;
+SELECT timezone_minute('infinity'::DATE);;
+SELECT timezone_minute('infinity'::DATE);;
+;
+SELECT timezone_minute('infinity'::DATE);;
+SELECT timezone_minute(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone_minute('infinity'::DATE);;
+SELECT epoch('infinity'::DATE);;
+SELECT epoch('infinity'::DATE);;
+;
+SELECT epoch('infinity'::DATE);;
+SELECT epoch(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT epoch('infinity'::DATE);;
+SELECT microsecond('infinity'::DATE);;
+SELECT microsecond('infinity'::DATE);;
+;
+SELECT microsecond('infinity'::DATE);;
+SELECT microsecond(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT microsecond('infinity'::DATE);;
+SELECT millisecond('infinity'::DATE);;
+SELECT millisecond('infinity'::DATE);;
+;
+SELECT millisecond('infinity'::DATE);;
+SELECT millisecond(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT millisecond('infinity'::DATE);;
+SELECT second('infinity'::DATE);;
+SELECT second('infinity'::DATE);;
+;
+SELECT second('infinity'::DATE);;
+SELECT second(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT second('infinity'::DATE);;
+SELECT minute('infinity'::DATE);;
+SELECT minute('infinity'::DATE);;
+;
+SELECT minute('infinity'::DATE);;
+SELECT minute(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT minute('infinity'::DATE);;
+SELECT hour('infinity'::DATE);;
+SELECT hour('infinity'::DATE);;
+;
+SELECT hour('infinity'::DATE);;
+SELECT hour(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT hour('infinity'::DATE);;
+SELECT yearweek('infinity'::DATE);;
+SELECT yearweek('infinity'::DATE);;
+;
+SELECT yearweek('infinity'::DATE);;
+SELECT yearweek(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT yearweek('infinity'::DATE);;
+SELECT dayofmonth('infinity'::DATE);;
+SELECT dayofmonth('infinity'::DATE);;
+;
+SELECT dayofmonth('infinity'::DATE);;
+SELECT dayofmonth(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofmonth('infinity'::DATE);;
+SELECT weekday('infinity'::DATE);;
+SELECT weekday('infinity'::DATE);;
+;
+SELECT weekday('infinity'::DATE);;
+SELECT weekday(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT weekday('infinity'::DATE);;
+SELECT weekofyear('infinity'::DATE);;
+SELECT weekofyear('infinity'::DATE);;
+;
+SELECT weekofyear('infinity'::DATE);;
+SELECT weekofyear(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT weekofyear('infinity'::DATE);;
+SELECT last_day('infinity'::DATE);;
+SELECT last_day('infinity'::DATE);;
+;
+SELECT last_day('infinity'::DATE);;
+SELECT last_day(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT last_day('infinity'::DATE);;
+SELECT monthname('infinity'::DATE);;
+SELECT monthname('infinity'::DATE);;
+;
+SELECT monthname('infinity'::DATE);;
+SELECT monthname(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT monthname('infinity'::DATE);;
+SELECT dayname('infinity'::DATE);;
+SELECT dayname('infinity'::DATE);;
+;
+SELECT dayname('infinity'::DATE);;
+SELECT dayname(CAST('infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayname('infinity'::DATE);;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::DATE) AS parts;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::DATE) AS parts;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::DATE) AS parts;
+SELECT date_part(main.list_value('year', 'month', 'day', 'epoch'), CAST('infinity' AS DATE)) AS parts;
+;
+;
+;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::DATE) AS parts;
+SELECT DATE_PART(specifier, '-infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT DATE_PART(specifier, '-infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+;
+SELECT DATE_PART(specifier, '-infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT date_part(specifier, CAST('-infinity' AS DATE)) AS result FROM specifiers WHERE (result IS NOT NULL);
+;
+;
+;
+;
+SELECT DATE_PART(specifier, '-infinity'::DATE) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT year('-infinity'::DATE);;
+SELECT year('-infinity'::DATE);;
+;
+SELECT year('-infinity'::DATE);;
+SELECT year(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT year('-infinity'::DATE);;
+SELECT month('-infinity'::DATE);;
+SELECT month('-infinity'::DATE);;
+;
+SELECT month('-infinity'::DATE);;
+SELECT month(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT month('-infinity'::DATE);;
+SELECT day('-infinity'::DATE);;
+SELECT day('-infinity'::DATE);;
+;
+SELECT day('-infinity'::DATE);;
+SELECT day(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT day('-infinity'::DATE);;
+SELECT decade('-infinity'::DATE);;
+SELECT decade('-infinity'::DATE);;
+;
+SELECT decade('-infinity'::DATE);;
+SELECT decade(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT decade('-infinity'::DATE);;
+SELECT century('-infinity'::DATE);;
+SELECT century('-infinity'::DATE);;
+;
+SELECT century('-infinity'::DATE);;
+SELECT century(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT century('-infinity'::DATE);;
+SELECT millennium('-infinity'::DATE);;
+SELECT millennium('-infinity'::DATE);;
+;
+SELECT millennium('-infinity'::DATE);;
+SELECT millennium(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT millennium('-infinity'::DATE);;
+SELECT quarter('-infinity'::DATE);;
+SELECT quarter('-infinity'::DATE);;
+;
+SELECT quarter('-infinity'::DATE);;
+SELECT quarter(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT quarter('-infinity'::DATE);;
+SELECT dayofweek('-infinity'::DATE);;
+SELECT dayofweek('-infinity'::DATE);;
+;
+SELECT dayofweek('-infinity'::DATE);;
+SELECT dayofweek(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofweek('-infinity'::DATE);;
+SELECT isodow('-infinity'::DATE);;
+SELECT isodow('-infinity'::DATE);;
+;
+SELECT isodow('-infinity'::DATE);;
+SELECT isodow(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT isodow('-infinity'::DATE);;
+SELECT dayofyear('-infinity'::DATE);;
+SELECT dayofyear('-infinity'::DATE);;
+;
+SELECT dayofyear('-infinity'::DATE);;
+SELECT dayofyear(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofyear('-infinity'::DATE);;
+SELECT week('-infinity'::DATE);;
+SELECT week('-infinity'::DATE);;
+;
+SELECT week('-infinity'::DATE);;
+SELECT week(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT week('-infinity'::DATE);;
+SELECT isoyear('-infinity'::DATE);;
+SELECT isoyear('-infinity'::DATE);;
+;
+SELECT isoyear('-infinity'::DATE);;
+SELECT isoyear(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT isoyear('-infinity'::DATE);;
+SELECT era('-infinity'::DATE);;
+SELECT era('-infinity'::DATE);;
+;
+SELECT era('-infinity'::DATE);;
+SELECT era(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT era('-infinity'::DATE);;
+SELECT timezone('-infinity'::DATE);;
+SELECT timezone('-infinity'::DATE);;
+;
+SELECT timezone('-infinity'::DATE);;
+SELECT timezone(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone('-infinity'::DATE);;
+SELECT timezone_hour('-infinity'::DATE);;
+SELECT timezone_hour('-infinity'::DATE);;
+;
+SELECT timezone_hour('-infinity'::DATE);;
+SELECT timezone_hour(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone_hour('-infinity'::DATE);;
+SELECT timezone_minute('-infinity'::DATE);;
+SELECT timezone_minute('-infinity'::DATE);;
+;
+SELECT timezone_minute('-infinity'::DATE);;
+SELECT timezone_minute(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT timezone_minute('-infinity'::DATE);;
+SELECT epoch('-infinity'::DATE);;
+SELECT epoch('-infinity'::DATE);;
+;
+SELECT epoch('-infinity'::DATE);;
+SELECT epoch(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT epoch('-infinity'::DATE);;
+SELECT microsecond('-infinity'::DATE);;
+SELECT microsecond('-infinity'::DATE);;
+;
+SELECT microsecond('-infinity'::DATE);;
+SELECT microsecond(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT microsecond('-infinity'::DATE);;
+SELECT millisecond('-infinity'::DATE);;
+SELECT millisecond('-infinity'::DATE);;
+;
+SELECT millisecond('-infinity'::DATE);;
+SELECT millisecond(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT millisecond('-infinity'::DATE);;
+SELECT second('-infinity'::DATE);;
+SELECT second('-infinity'::DATE);;
+;
+SELECT second('-infinity'::DATE);;
+SELECT second(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT second('-infinity'::DATE);;
+SELECT minute('-infinity'::DATE);;
+SELECT minute('-infinity'::DATE);;
+;
+SELECT minute('-infinity'::DATE);;
+SELECT minute(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT minute('-infinity'::DATE);;
+SELECT hour('-infinity'::DATE);;
+SELECT hour('-infinity'::DATE);;
+;
+SELECT hour('-infinity'::DATE);;
+SELECT hour(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT hour('-infinity'::DATE);;
+SELECT yearweek('-infinity'::DATE);;
+SELECT yearweek('-infinity'::DATE);;
+;
+SELECT yearweek('-infinity'::DATE);;
+SELECT yearweek(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT yearweek('-infinity'::DATE);;
+SELECT dayofmonth('-infinity'::DATE);;
+SELECT dayofmonth('-infinity'::DATE);;
+;
+SELECT dayofmonth('-infinity'::DATE);;
+SELECT dayofmonth(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayofmonth('-infinity'::DATE);;
+SELECT weekday('-infinity'::DATE);;
+SELECT weekday('-infinity'::DATE);;
+;
+SELECT weekday('-infinity'::DATE);;
+SELECT weekday(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT weekday('-infinity'::DATE);;
+SELECT weekofyear('-infinity'::DATE);;
+SELECT weekofyear('-infinity'::DATE);;
+;
+SELECT weekofyear('-infinity'::DATE);;
+SELECT weekofyear(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT weekofyear('-infinity'::DATE);;
+SELECT last_day('-infinity'::DATE);;
+SELECT last_day('-infinity'::DATE);;
+;
+SELECT last_day('-infinity'::DATE);;
+SELECT last_day(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT last_day('-infinity'::DATE);;
+SELECT monthname('-infinity'::DATE);;
+SELECT monthname('-infinity'::DATE);;
+;
+SELECT monthname('-infinity'::DATE);;
+SELECT monthname(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT monthname('-infinity'::DATE);;
+SELECT dayname('-infinity'::DATE);;
+SELECT dayname('-infinity'::DATE);;
+;
+SELECT dayname('-infinity'::DATE);;
+SELECT dayname(CAST('-infinity' AS DATE));
+;
+;
+;
+;
+SELECT dayname('-infinity'::DATE);;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::DATE) AS parts;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::DATE) AS parts;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::DATE) AS parts;
+SELECT date_part(main.list_value('year', 'month', 'day', 'epoch'), CAST('-infinity' AS DATE)) AS parts;
+;
+;
+;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::DATE) AS parts;
+SELECT DATE_PART(specifier, 'infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT DATE_PART(specifier, 'infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+;
+SELECT DATE_PART(specifier, 'infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT date_part(specifier, CAST('infinity' AS TIMESTAMP)) AS result FROM specifiers WHERE (result IS NOT NULL);
+;
+;
+;
+;
+SELECT DATE_PART(specifier, 'infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT year('infinity'::TIMESTAMP);;
+SELECT year('infinity'::TIMESTAMP);;
+;
+SELECT year('infinity'::TIMESTAMP);;
+SELECT year(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT year('infinity'::TIMESTAMP);;
+SELECT month('infinity'::TIMESTAMP);;
+SELECT month('infinity'::TIMESTAMP);;
+;
+SELECT month('infinity'::TIMESTAMP);;
+SELECT month(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT month('infinity'::TIMESTAMP);;
+SELECT day('infinity'::TIMESTAMP);;
+SELECT day('infinity'::TIMESTAMP);;
+;
+SELECT day('infinity'::TIMESTAMP);;
+SELECT day(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT day('infinity'::TIMESTAMP);;
+SELECT decade('infinity'::TIMESTAMP);;
+SELECT decade('infinity'::TIMESTAMP);;
+;
+SELECT decade('infinity'::TIMESTAMP);;
+SELECT decade(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT decade('infinity'::TIMESTAMP);;
+SELECT century('infinity'::TIMESTAMP);;
+SELECT century('infinity'::TIMESTAMP);;
+;
+SELECT century('infinity'::TIMESTAMP);;
+SELECT century(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT century('infinity'::TIMESTAMP);;
+SELECT millennium('infinity'::TIMESTAMP);;
+SELECT millennium('infinity'::TIMESTAMP);;
+;
+SELECT millennium('infinity'::TIMESTAMP);;
+SELECT millennium(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT millennium('infinity'::TIMESTAMP);;
+SELECT quarter('infinity'::TIMESTAMP);;
+SELECT quarter('infinity'::TIMESTAMP);;
+;
+SELECT quarter('infinity'::TIMESTAMP);;
+SELECT quarter(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT quarter('infinity'::TIMESTAMP);;
+SELECT dayofweek('infinity'::TIMESTAMP);;
+SELECT dayofweek('infinity'::TIMESTAMP);;
+;
+SELECT dayofweek('infinity'::TIMESTAMP);;
+SELECT dayofweek(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofweek('infinity'::TIMESTAMP);;
+SELECT isodow('infinity'::TIMESTAMP);;
+SELECT isodow('infinity'::TIMESTAMP);;
+;
+SELECT isodow('infinity'::TIMESTAMP);;
+SELECT isodow(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT isodow('infinity'::TIMESTAMP);;
+SELECT dayofyear('infinity'::TIMESTAMP);;
+SELECT dayofyear('infinity'::TIMESTAMP);;
+;
+SELECT dayofyear('infinity'::TIMESTAMP);;
+SELECT dayofyear(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofyear('infinity'::TIMESTAMP);;
+SELECT week('infinity'::TIMESTAMP);;
+SELECT week('infinity'::TIMESTAMP);;
+;
+SELECT week('infinity'::TIMESTAMP);;
+SELECT week(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT week('infinity'::TIMESTAMP);;
+SELECT isoyear('infinity'::TIMESTAMP);;
+SELECT isoyear('infinity'::TIMESTAMP);;
+;
+SELECT isoyear('infinity'::TIMESTAMP);;
+SELECT isoyear(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT isoyear('infinity'::TIMESTAMP);;
+SELECT era('infinity'::TIMESTAMP);;
+SELECT era('infinity'::TIMESTAMP);;
+;
+SELECT era('infinity'::TIMESTAMP);;
+SELECT era(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT era('infinity'::TIMESTAMP);;
+SELECT timezone('infinity'::TIMESTAMP);;
+SELECT timezone('infinity'::TIMESTAMP);;
+;
+SELECT timezone('infinity'::TIMESTAMP);;
+SELECT timezone(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone('infinity'::TIMESTAMP);;
+SELECT timezone_hour('infinity'::TIMESTAMP);;
+SELECT timezone_hour('infinity'::TIMESTAMP);;
+;
+SELECT timezone_hour('infinity'::TIMESTAMP);;
+SELECT timezone_hour(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone_hour('infinity'::TIMESTAMP);;
+SELECT timezone_minute('infinity'::TIMESTAMP);;
+SELECT timezone_minute('infinity'::TIMESTAMP);;
+;
+SELECT timezone_minute('infinity'::TIMESTAMP);;
+SELECT timezone_minute(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone_minute('infinity'::TIMESTAMP);;
+SELECT epoch('infinity'::TIMESTAMP);;
+SELECT epoch('infinity'::TIMESTAMP);;
+;
+SELECT epoch('infinity'::TIMESTAMP);;
+SELECT epoch(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT epoch('infinity'::TIMESTAMP);;
+SELECT microsecond('infinity'::TIMESTAMP);;
+SELECT microsecond('infinity'::TIMESTAMP);;
+;
+SELECT microsecond('infinity'::TIMESTAMP);;
+SELECT microsecond(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT microsecond('infinity'::TIMESTAMP);;
+SELECT millisecond('infinity'::TIMESTAMP);;
+SELECT millisecond('infinity'::TIMESTAMP);;
+;
+SELECT millisecond('infinity'::TIMESTAMP);;
+SELECT millisecond(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT millisecond('infinity'::TIMESTAMP);;
+SELECT second('infinity'::TIMESTAMP);;
+SELECT second('infinity'::TIMESTAMP);;
+;
+SELECT second('infinity'::TIMESTAMP);;
+SELECT second(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT second('infinity'::TIMESTAMP);;
+SELECT minute('infinity'::TIMESTAMP);;
+SELECT minute('infinity'::TIMESTAMP);;
+;
+SELECT minute('infinity'::TIMESTAMP);;
+SELECT minute(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT minute('infinity'::TIMESTAMP);;
+SELECT hour('infinity'::TIMESTAMP);;
+SELECT hour('infinity'::TIMESTAMP);;
+;
+SELECT hour('infinity'::TIMESTAMP);;
+SELECT hour(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT hour('infinity'::TIMESTAMP);;
+SELECT yearweek('infinity'::TIMESTAMP);;
+SELECT yearweek('infinity'::TIMESTAMP);;
+;
+SELECT yearweek('infinity'::TIMESTAMP);;
+SELECT yearweek(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT yearweek('infinity'::TIMESTAMP);;
+SELECT dayofmonth('infinity'::TIMESTAMP);;
+SELECT dayofmonth('infinity'::TIMESTAMP);;
+;
+SELECT dayofmonth('infinity'::TIMESTAMP);;
+SELECT dayofmonth(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofmonth('infinity'::TIMESTAMP);;
+SELECT weekday('infinity'::TIMESTAMP);;
+SELECT weekday('infinity'::TIMESTAMP);;
+;
+SELECT weekday('infinity'::TIMESTAMP);;
+SELECT weekday(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT weekday('infinity'::TIMESTAMP);;
+SELECT weekofyear('infinity'::TIMESTAMP);;
+SELECT weekofyear('infinity'::TIMESTAMP);;
+;
+SELECT weekofyear('infinity'::TIMESTAMP);;
+SELECT weekofyear(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT weekofyear('infinity'::TIMESTAMP);;
+SELECT last_day('infinity'::TIMESTAMP);;
+SELECT last_day('infinity'::TIMESTAMP);;
+;
+SELECT last_day('infinity'::TIMESTAMP);;
+SELECT last_day(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT last_day('infinity'::TIMESTAMP);;
+SELECT monthname('infinity'::TIMESTAMP);;
+SELECT monthname('infinity'::TIMESTAMP);;
+;
+SELECT monthname('infinity'::TIMESTAMP);;
+SELECT monthname(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT monthname('infinity'::TIMESTAMP);;
+SELECT dayname('infinity'::TIMESTAMP);;
+SELECT dayname('infinity'::TIMESTAMP);;
+;
+SELECT dayname('infinity'::TIMESTAMP);;
+SELECT dayname(CAST('infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayname('infinity'::TIMESTAMP);;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::TIMESTAMP) AS parts;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::TIMESTAMP) AS parts;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::TIMESTAMP) AS parts;
+SELECT date_part(main.list_value('year', 'month', 'day', 'epoch'), CAST('infinity' AS TIMESTAMP)) AS parts;
+;
+;
+;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], 'infinity'::TIMESTAMP) AS parts;
+SELECT DATE_PART(specifier, '-infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT DATE_PART(specifier, '-infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+;
+SELECT DATE_PART(specifier, '-infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT date_part(specifier, CAST('-infinity' AS TIMESTAMP)) AS result FROM specifiers WHERE (result IS NOT NULL);
+;
+;
+;
+;
+SELECT DATE_PART(specifier, '-infinity'::TIMESTAMP) AS result
+FROM specifiers
+WHERE result IS NOT NULL;
+SELECT year('-infinity'::TIMESTAMP);;
+SELECT year('-infinity'::TIMESTAMP);;
+;
+SELECT year('-infinity'::TIMESTAMP);;
+SELECT year(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT year('-infinity'::TIMESTAMP);;
+SELECT month('-infinity'::TIMESTAMP);;
+SELECT month('-infinity'::TIMESTAMP);;
+;
+SELECT month('-infinity'::TIMESTAMP);;
+SELECT month(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT month('-infinity'::TIMESTAMP);;
+SELECT day('-infinity'::TIMESTAMP);;
+SELECT day('-infinity'::TIMESTAMP);;
+;
+SELECT day('-infinity'::TIMESTAMP);;
+SELECT day(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT day('-infinity'::TIMESTAMP);;
+SELECT decade('-infinity'::TIMESTAMP);;
+SELECT decade('-infinity'::TIMESTAMP);;
+;
+SELECT decade('-infinity'::TIMESTAMP);;
+SELECT decade(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT decade('-infinity'::TIMESTAMP);;
+SELECT century('-infinity'::TIMESTAMP);;
+SELECT century('-infinity'::TIMESTAMP);;
+;
+SELECT century('-infinity'::TIMESTAMP);;
+SELECT century(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT century('-infinity'::TIMESTAMP);;
+SELECT millennium('-infinity'::TIMESTAMP);;
+SELECT millennium('-infinity'::TIMESTAMP);;
+;
+SELECT millennium('-infinity'::TIMESTAMP);;
+SELECT millennium(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT millennium('-infinity'::TIMESTAMP);;
+SELECT quarter('-infinity'::TIMESTAMP);;
+SELECT quarter('-infinity'::TIMESTAMP);;
+;
+SELECT quarter('-infinity'::TIMESTAMP);;
+SELECT quarter(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT quarter('-infinity'::TIMESTAMP);;
+SELECT dayofweek('-infinity'::TIMESTAMP);;
+SELECT dayofweek('-infinity'::TIMESTAMP);;
+;
+SELECT dayofweek('-infinity'::TIMESTAMP);;
+SELECT dayofweek(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofweek('-infinity'::TIMESTAMP);;
+SELECT isodow('-infinity'::TIMESTAMP);;
+SELECT isodow('-infinity'::TIMESTAMP);;
+;
+SELECT isodow('-infinity'::TIMESTAMP);;
+SELECT isodow(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT isodow('-infinity'::TIMESTAMP);;
+SELECT dayofyear('-infinity'::TIMESTAMP);;
+SELECT dayofyear('-infinity'::TIMESTAMP);;
+;
+SELECT dayofyear('-infinity'::TIMESTAMP);;
+SELECT dayofyear(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofyear('-infinity'::TIMESTAMP);;
+SELECT week('-infinity'::TIMESTAMP);;
+SELECT week('-infinity'::TIMESTAMP);;
+;
+SELECT week('-infinity'::TIMESTAMP);;
+SELECT week(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT week('-infinity'::TIMESTAMP);;
+SELECT isoyear('-infinity'::TIMESTAMP);;
+SELECT isoyear('-infinity'::TIMESTAMP);;
+;
+SELECT isoyear('-infinity'::TIMESTAMP);;
+SELECT isoyear(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT isoyear('-infinity'::TIMESTAMP);;
+SELECT era('-infinity'::TIMESTAMP);;
+SELECT era('-infinity'::TIMESTAMP);;
+;
+SELECT era('-infinity'::TIMESTAMP);;
+SELECT era(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT era('-infinity'::TIMESTAMP);;
+SELECT timezone('-infinity'::TIMESTAMP);;
+SELECT timezone('-infinity'::TIMESTAMP);;
+;
+SELECT timezone('-infinity'::TIMESTAMP);;
+SELECT timezone(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone('-infinity'::TIMESTAMP);;
+SELECT timezone_hour('-infinity'::TIMESTAMP);;
+SELECT timezone_hour('-infinity'::TIMESTAMP);;
+;
+SELECT timezone_hour('-infinity'::TIMESTAMP);;
+SELECT timezone_hour(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone_hour('-infinity'::TIMESTAMP);;
+SELECT timezone_minute('-infinity'::TIMESTAMP);;
+SELECT timezone_minute('-infinity'::TIMESTAMP);;
+;
+SELECT timezone_minute('-infinity'::TIMESTAMP);;
+SELECT timezone_minute(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT timezone_minute('-infinity'::TIMESTAMP);;
+SELECT epoch('-infinity'::TIMESTAMP);;
+SELECT epoch('-infinity'::TIMESTAMP);;
+;
+SELECT epoch('-infinity'::TIMESTAMP);;
+SELECT epoch(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT epoch('-infinity'::TIMESTAMP);;
+SELECT microsecond('-infinity'::TIMESTAMP);;
+SELECT microsecond('-infinity'::TIMESTAMP);;
+;
+SELECT microsecond('-infinity'::TIMESTAMP);;
+SELECT microsecond(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT microsecond('-infinity'::TIMESTAMP);;
+SELECT millisecond('-infinity'::TIMESTAMP);;
+SELECT millisecond('-infinity'::TIMESTAMP);;
+;
+SELECT millisecond('-infinity'::TIMESTAMP);;
+SELECT millisecond(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT millisecond('-infinity'::TIMESTAMP);;
+SELECT second('-infinity'::TIMESTAMP);;
+SELECT second('-infinity'::TIMESTAMP);;
+;
+SELECT second('-infinity'::TIMESTAMP);;
+SELECT second(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT second('-infinity'::TIMESTAMP);;
+SELECT minute('-infinity'::TIMESTAMP);;
+SELECT minute('-infinity'::TIMESTAMP);;
+;
+SELECT minute('-infinity'::TIMESTAMP);;
+SELECT minute(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT minute('-infinity'::TIMESTAMP);;
+SELECT hour('-infinity'::TIMESTAMP);;
+SELECT hour('-infinity'::TIMESTAMP);;
+;
+SELECT hour('-infinity'::TIMESTAMP);;
+SELECT hour(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT hour('-infinity'::TIMESTAMP);;
+SELECT yearweek('-infinity'::TIMESTAMP);;
+SELECT yearweek('-infinity'::TIMESTAMP);;
+;
+SELECT yearweek('-infinity'::TIMESTAMP);;
+SELECT yearweek(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT yearweek('-infinity'::TIMESTAMP);;
+SELECT dayofmonth('-infinity'::TIMESTAMP);;
+SELECT dayofmonth('-infinity'::TIMESTAMP);;
+;
+SELECT dayofmonth('-infinity'::TIMESTAMP);;
+SELECT dayofmonth(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayofmonth('-infinity'::TIMESTAMP);;
+SELECT weekday('-infinity'::TIMESTAMP);;
+SELECT weekday('-infinity'::TIMESTAMP);;
+;
+SELECT weekday('-infinity'::TIMESTAMP);;
+SELECT weekday(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT weekday('-infinity'::TIMESTAMP);;
+SELECT weekofyear('-infinity'::TIMESTAMP);;
+SELECT weekofyear('-infinity'::TIMESTAMP);;
+;
+SELECT weekofyear('-infinity'::TIMESTAMP);;
+SELECT weekofyear(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT weekofyear('-infinity'::TIMESTAMP);;
+SELECT last_day('-infinity'::TIMESTAMP);;
+SELECT last_day('-infinity'::TIMESTAMP);;
+;
+SELECT last_day('-infinity'::TIMESTAMP);;
+SELECT last_day(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT last_day('-infinity'::TIMESTAMP);;
+SELECT monthname('-infinity'::TIMESTAMP);;
+SELECT monthname('-infinity'::TIMESTAMP);;
+;
+SELECT monthname('-infinity'::TIMESTAMP);;
+SELECT monthname(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT monthname('-infinity'::TIMESTAMP);;
+SELECT dayname('-infinity'::TIMESTAMP);;
+SELECT dayname('-infinity'::TIMESTAMP);;
+;
+SELECT dayname('-infinity'::TIMESTAMP);;
+SELECT dayname(CAST('-infinity' AS TIMESTAMP));
+;
+;
+;
+;
+SELECT dayname('-infinity'::TIMESTAMP);;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::TIMESTAMP) AS parts;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::TIMESTAMP) AS parts;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::TIMESTAMP) AS parts;
+SELECT date_part(main.list_value('year', 'month', 'day', 'epoch'), CAST('-infinity' AS TIMESTAMP)) AS parts;
+;
+;
+;
+;
+SELECT DATE_PART(['year', 'month', 'day', 'epoch'], '-infinity'::TIMESTAMP) AS parts;
+WITH cte AS (
+    SELECT NULL::VARCHAR part
+    FROM range(1)
+)
+SELECT date_part(part, TIMESTAMP '2019-01-06 04:03:02')
+FROM cte;
+WITH cte AS (
+    SELECT NULL::VARCHAR part
+    FROM range(1)
+)
+SELECT date_part(part, TIMESTAMP '2019-01-06 04:03:02')
+FROM cte;
+;
+WITH cte AS (
+    SELECT NULL::VARCHAR part
+    FROM range(1)
+)
+SELECT date_part(part, TIMESTAMP '2019-01-06 04:03:02')
+FROM cte;
+WITH cte AS (SELECT CAST(NULL AS VARCHAR) AS part FROM range(1))SELECT date_part(part, CAST('2019-01-06 04:03:02' AS TIMESTAMP)) FROM cte;
+;
+;
+;
+;
+WITH cte AS (
+    SELECT NULL::VARCHAR part
+    FROM range(1)
+)
+SELECT date_part(part, TIMESTAMP '2019-01-06 04:03:02')
+FROM cte;

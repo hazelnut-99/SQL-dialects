@@ -1,0 +1,1 @@
+SELECT * FROM parquet_file_metadata('data/parquet-testing/arrow/alltypes_dictionary.parquet');

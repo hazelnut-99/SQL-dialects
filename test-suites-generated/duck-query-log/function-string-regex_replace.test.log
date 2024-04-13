@@ -1,0 +1,138 @@
+PRAGMA enable_verification;
+SELECT regexp_replace('foobarbaz', 'b..', 'X');
+SELECT regexp_replace('foobarbaz', 'b..', 'X');
+;
+SELECT regexp_replace('foobarbaz', 'b..', 'X');
+SELECT regexp_replace('foobarbaz', 'b..', 'X');
+;
+;
+;
+;
+SELECT regexp_replace('foobarbaz', 'b..', 'X');
+SELECT regexp_replace('ana ana', 'ana', 'banana', 'g');
+SELECT regexp_replace('ana ana', 'ana', 'banana', 'g');
+;
+SELECT regexp_replace('ana ana', 'ana', 'banana', 'g');
+SELECT regexp_replace('ana ana', 'ana', 'banana', 'g');
+;
+;
+;
+;
+SELECT regexp_replace('ana ana', 'ana', 'banana', 'g');
+SELECT regexp_replace('ANA ana', 'ana', 'banana', 'gi');
+SELECT regexp_replace('ANA ana', 'ana', 'banana', 'gi');
+;
+SELECT regexp_replace('ANA ana', 'ana', 'banana', 'gi');
+SELECT regexp_replace('ANA ana', 'ana', 'banana', 'gi');
+;
+;
+;
+;
+SELECT regexp_replace('ANA ana', 'ana', 'banana', 'gi');
+SELECT regexp_replace('ana', 'ana', 'banana', 'c');
+SELECT regexp_replace('ana', 'ana', 'banana', 'c');
+;
+SELECT regexp_replace('ana', 'ana', 'banana', 'c');
+SELECT regexp_replace('ana', 'ana', 'banana', 'c');
+;
+;
+;
+;
+SELECT regexp_replace('ana', 'ana', 'banana', 'c');
+SELECT regexp_replace('ANA', 'ana', 'banana', 'i');
+SELECT regexp_replace('ANA', 'ana', 'banana', 'i');
+;
+SELECT regexp_replace('ANA', 'ana', 'banana', 'i');
+SELECT regexp_replace('ANA', 'ana', 'banana', 'i');
+;
+;
+;
+;
+SELECT regexp_replace('ANA', 'ana', 'banana', 'i');
+SELECT regexp_replace('as^/$df', '^/$', '', 'l');
+SELECT regexp_replace('as^/$df', '^/$', '', 'l');
+;
+SELECT regexp_replace('as^/$df', '^/$', '', 'l');
+SELECT regexp_replace('as^/$df', '^/$', '', 'l');
+;
+;
+;
+;
+SELECT regexp_replace('as^/$df', '^/$', '', 'l');
+SELECT regexp_replace('as^/$df', '^/$', '');
+SELECT regexp_replace('as^/$df', '^/$', '');
+;
+SELECT regexp_replace('as^/$df', '^/$', '');
+SELECT regexp_replace('as^/$df', '^/$', '');
+;
+;
+;
+;
+SELECT regexp_replace('as^/$df', '^/$', '');
+SELECT regexp_replace('hello
+world', '.*', 'x', 'sg');
+SELECT regexp_replace('hello
+world', '.*', 'x', 'sg');
+;
+SELECT regexp_replace('hello
+world', '.*', 'x', 'sg');
+SELECT regexp_replace('hello
+world', '.*', 'x', 'sg');
+;
+;
+;
+;
+SELECT regexp_replace('hello
+world', '.*', 'x', 'sg');
+SELECT COUNT(*) FROM (SELECT 'x
+x') t1(a) JOIN (SELECT regexp_replace('hello
+world', '.*', 'x', 'ng')) t2(a) USING (a);
+SELECT COUNT(*) FROM (SELECT 'x
+x') t1(a) JOIN (SELECT regexp_replace('hello
+world', '.*', 'x', 'ng')) t2(a) USING (a);
+;
+SELECT COUNT(*) FROM (SELECT 'x
+x') t1(a) JOIN (SELECT regexp_replace('hello
+world', '.*', 'x', 'ng')) t2(a) USING (a);
+SELECT count_star() FROM (SELECT 'x
+x') AS t1(a) INNER JOIN (SELECT regexp_replace('hello
+world', '.*', 'x', 'ng')) AS t2(a) USING (a);
+;
+;
+;
+;
+SELECT COUNT(*) FROM (SELECT 'x
+x') t1(a) JOIN (SELECT regexp_replace('hello
+world', '.*', 'x', 'ng')) t2(a) USING (a);
+CREATE TABLE test(v VARCHAR);;
+INSERT INTO test VALUES ('hello'), ('HELLO');;
+SELECT regexp_replace(v, 'h.*', 'world', 'i') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', 'i') FROM test ORDER BY v;
+;
+SELECT regexp_replace(v, 'h.*', 'world', 'i') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', 'i') FROM test ORDER BY v;
+;
+;
+;
+;
+SELECT regexp_replace(v, 'h.*', 'world', 'i') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', 'c') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', 'c') FROM test ORDER BY v;
+;
+SELECT regexp_replace(v, 'h.*', 'world', 'c') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', 'c') FROM test ORDER BY v;
+;
+;
+;
+;
+SELECT regexp_replace(v, 'h.*', 'world', 'c') FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', v) FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', v) FROM test ORDER BY v;
+;
+SELECT regexp_replace(v, 'h.*', 'world', v) FROM test ORDER BY v;
+SELECT regexp_replace(v, 'h.*', 'world', v) FROM test ORDER BY v;
+SELECT regexp_replace('asdf', '.*SD.*', 'a', 'q');
+SELECT regexp_replace('asdf', '.*SD.*', 'a', 'q');
+;
+SELECT regexp_replace('asdf', '.*SD.*', 'a', 'q');
+SELECT regexp_replace('asdf', '.*SD.*', 'a', 'q');

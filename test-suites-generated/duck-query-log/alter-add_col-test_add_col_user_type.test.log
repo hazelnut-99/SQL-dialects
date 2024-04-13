@@ -1,0 +1,8 @@
+CREATE SCHEMA test_schema;;
+CREATE TYPE main_int AS int32;;
+CREATE TYPE test_schema.test_int AS int32;;
+CREATE TABLE test_schema.test_t1 (i INT);;
+CREATE TABLE main_t1 (i INT);;
+ALTER TABLE main_t1 ADD COLUMN j test_int;;
+ALTER TABLE test_schema.test_t1 ADD COLUMN not_found main_int;;
+ALTER TABLE test_schema.test_t1 ADD COLUMN l test_int;;

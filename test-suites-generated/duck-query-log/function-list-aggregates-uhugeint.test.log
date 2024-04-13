@@ -1,0 +1,6 @@
+CREATE TABLE uhugeints(h UHUGEINT[]);
+INSERT INTO uhugeints VALUES ([NULL, 1, 2]), (NULL), ([]), ([NULL]), ([1, 2, 3]);
+SELECT list_first(h), list_last(h), list_sum(h) FROM uhugeints;
+DELETE FROM uhugeints;
+INSERT INTO uhugeints VALUES ([42.0, 1267650600228229401496703205376, 0, '1']);;
+SELECT list_min(h), list_max(h), list_sum(h), list_first(h), list_last(h) FROM uhugeints;;

@@ -1,0 +1,10 @@
+create table tbl(
+	a int,
+	b int,
+	c int
+);;
+create UNIQUE index "unique" on tbl(a, b);;
+create index non_unique on tbl(a, b);;
+insert or replace into tbl values (1,2,3);;
+insert or replace into tbl values (1,2,3);;
+select * from tbl;;

@@ -1,0 +1,3 @@
+select struct_extract("inner", 'f64_field') from parquet_scan('data/parquet-testing/struct.parquet');;
+select ("inner")."f64_field" from parquet_scan('data/parquet-testing/struct.parquet');;
+select "inner"['f64_field'] from parquet_scan('data/parquet-testing/struct.parquet');;

@@ -1,0 +1,28 @@
+CREATE TABLE left_table (a INTEGER, b INTEGER, c INTEGER);;
+INSERT INTO left_table VALUES (41, 1, 1), (42, 1, 1), (42, 1, 1), (43, 1, 1), (45, 2, 2), (46, 7, 7);;
+CREATE TABLE right_table (a INTEGER, b INTEGER);;
+INSERT INTO right_table select 41, range as b from range(100);;
+EXPLAIN ANALYZE SELECT * FROM left_table SEMI JOIN right_table ON left_table.a = right_table.a;;
+explain analyze SELECT * FROM left_table SEMI JOIN right_table ON left_table.a = right_table.a WHERE a > 5;;
+explain analyze SELECT * FROM left_table SEMI JOIN right_table ON ([left_table.a, left_table.b] = [right_table.a, right_table.b]);;
+explain analyze SELECT * FROM left_table SEMI JOIN (SELECT a as foo from right_table where b > 1) buzz ON left_table.a = buzz.foo;
+INSERT INTO left_table VALUES (43, 1, 5), (43, 1, 5), (43, 1, 5), (43, 1, 5);;
+CREATE TABLE other (a INTEGER, b INTEGER);;
+INSERT INTO other VALUES (42, 1), (43, 1);;
+EXPLAIN ANALYZE SELECT * FROM left_table
+SEMI JOIN (select right_table.a FROM right_table JOIN other ON (other.a = right_table.a)) joined_right_table
+ON left_table.a = joined_right_table.a;;
+DELETE FROM left_table where c=5;;
+EXPLAIN ANALYZE SELECT * FROM left_table SEMI JOIN right_table USING (a);;
+explain analyze SELECT * FROM left_table NATURAL SEMI JOIN right_table;;
+EXPLAIN ANALYZE SELECT * FROM left_table
+NATURAL SEMI JOIN (select right_table.a FROM right_table JOIN other ON (other.a = right_table.a)) joined_right_table;;
+EXPLAIN ANALYZE SELECT * FROM left_table SEMI JOIN right_table ON (left_table.a <> right_table.a) ORDER BY a, c;;
+EXPLAIN ANALYZE SELECT * FROM left_table SEMI JOIN right_table ON (left_table.a > right_table.a);;
+explain analyze SELECT * FROM left_table SEMI JOIN right_table ON (left_table.a + right_table.a = 85 OR left_table.a + right_table.b = 84) order by left_table.a, left_table.c;;
+INSERT INTO right_table VALUES (1, 42), (1, 42);;
+INSERT INTO left_table VALUES (42, 1, 5), (42, 1, 5), (42, 1, 5), (2000, 20000, 200000);;
+explain analyze SELECT * FROM left_table SEMI JOIN right_table ON (left_table.a + right_table.a = 85 OR left_table.a + right_table.b = 84) order by left_table.a, left_table.c;;
+explain analyze SELECT a as outer_a, (SELECT right_table.b FROM right_table where right_table.a != outer_a) right_table_b FROM left_table SEMI JOIN right_table ON (left_table.a = right_table.a) Order by outer_a, right_table_b;;
+INSERT INTO right_table VALUES (1, 20);;
+explain analyze SELECT a as outer_a, (SELECT b FROM right_table where right_table.a != outer_a) right_table_b FROM left_table SEMI JOIN right_table ON (left_table.a = right_table.a) Order by outer_a, right_table_b;;

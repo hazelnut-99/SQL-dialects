@@ -1,0 +1,5 @@
+CREATE TABLE people(id INTEGER, name VARCHAR);;
+INSERT INTO people VALUES (1, 'Mark'), (2, 'Hannes');;
+COPY people TO 'duckdb_unittest_tempdir/54607/test.tsv' WITH (DELIMITER '\t');;
+SELECT * FROM 'duckdb_unittest_tempdir/54607/test.tsv';
+SELECT * FROM read_csv('duckdb_unittest_tempdir/54607/test.tsv', sep='\t', columns={'id': 'INTEGER', 'name': 'VARCHAR'});

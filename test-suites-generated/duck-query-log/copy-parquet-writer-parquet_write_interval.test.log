@@ -1,0 +1,20 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+CREATE TABLE IF NOT EXISTS intervals (i interval);;
+INSERT INTO intervals VALUES
+       (interval '1' day),
+       (interval '00:00:01'),
+       (NULL),
+       (interval '0' month),
+       (interval '1' month);
+COPY intervals TO 'duckdb_unittest_tempdir/54824/intervals.parquet';
+SELECT * FROM 'duckdb_unittest_tempdir/54824/intervals.parquet' ORDER BY 1;
+SELECT * FROM 'duckdb_unittest_tempdir/54824/intervals.parquet' ORDER BY 1;
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54824/intervals.parquet' ORDER BY 1;
+SELECT * FROM "duckdb_unittest_tempdir/54824/intervals.parquet" ORDER BY 1;
+;
+;
+;
+SELECT * FROM 'duckdb_unittest_tempdir/54824/intervals.parquet' ORDER BY 1;
+COPY (SELECT -interval '1 day') TO 'duckdb_unittest_tempdir/54824/intervals.parquet';

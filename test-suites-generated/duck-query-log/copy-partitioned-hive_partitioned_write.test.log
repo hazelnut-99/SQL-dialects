@@ -1,0 +1,34 @@
+CREATE TABLE test as SELECT i%2 as part_col, (i+1)%5 as value_col, i as value2_col from range(0,10) tbl(i);;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned1' (FORMAT PARQUET, PARTITION_BY (part_col));;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned1/part_col=0/*.parquet' ORDER BY value2_col;;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned1/part_col=1/*.parquet' ORDER BY value2_col;;
+COPY (SELECT * EXCLUDE (part_col), 'prefix-'::VARCHAR || part_col::VARCHAR as part_col FROM test) TO 'duckdb_unittest_tempdir/54695/partitioned2' (FORMAT PARQUET, PARTITION_BY (part_col));;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned2/part_col=prefix-0/*.parquet' ORDER BY value2_col;;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned2/part_col=prefix-1/*.parquet' ORDER BY value2_col;;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned3' (FORMAT PARQUET, PARTITION_BY '*');;
+SELECT min(value2_col) as min_val
+FROM parquet_scan('duckdb_unittest_tempdir/54695/partitioned3/part_col=*/value_col=*/value2_col=*/*.parquet', FILENAME=1)
+GROUP BY filename
+ORDER BY min_val;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned4' (FORMAT PARQUET, PARTITION_BY part_col);;
+SELECT part_col, value_col, value2_col FROM parquet_scan('duckdb_unittest_tempdir/54695/partitioned4/part_col=*/*.parquet', HIVE_PARTITIONING=1) WHERE part_col=0 ORDER BY value2_col;;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned4' (FORMAT PARQUET, PARTITION_BY part_col);;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned5/' (FORMAT PARQUET, PARTITION_BY part_col);;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned5/part_col=0/*.parquet' ORDER BY value2_col;;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned6' (FORMAT PARQUET, PARTITION_BY part_col, USE_TMP_FILE TRUE);;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned6' (FORMAT PARQUET, PARTITION_BY part_col, PER_THREAD_OUTPUT TRUE);;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned7' (FORMAT CSV, PARTITION_BY part_col);;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned7/part_col=0/*.csv' ORDER BY value2_col;;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned7/part_col=1/*.csv' ORDER BY value2_col;;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned8' (FORMAT PARQUET, PARTITION_BY pArt_cOl);;
+SELECT part_col, value_col, value2_col FROM 'duckdb_unittest_tempdir/54695/partitioned8/part_col=0/*.parquet' ORDER BY value2_cOl;;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned9' (FORMAT PARQUET, PARTITION_BY (part_col, value_col));;
+SELECT min(value2_col) as min_val
+FROM parquet_scan('duckdb_unittest_tempdir/54695/partitioned9/part_col=*/value_col=*/*.parquet', FILENAME=1)
+GROUP BY filename
+ORDER BY min_val;
+COPY test TO 'duckdb_unittest_tempdir/54695/partitioned10' (FORMAT PARQUET, PARTITION_BY (value_col, part_col));;
+SELECT min(value2_col) as min_val
+FROM parquet_scan('duckdb_unittest_tempdir/54695/partitioned10/value_col=*/part_col=*/*.parquet', FILENAME=1)
+GROUP BY filename
+ORDER BY min_val;

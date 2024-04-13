@@ -1,0 +1,12 @@
+PRAGMA enable_verification;
+CREATE TABLE t AS SELECT * FROM read_csv_auto('test/sql/copy/csv/data/manycolumns.csv');;
+SHOW t;
+SHOW t;
+;
+SHOW t;
+DESCRIBE "t";
+;
+;
+;
+;
+SHOW t;

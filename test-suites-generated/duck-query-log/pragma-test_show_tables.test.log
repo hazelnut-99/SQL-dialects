@@ -1,0 +1,40 @@
+CREATE TABLE integers(i INTEGER, j INTEGER);
+CREATE TABLE "select"(i INTEGER);;
+CREATE VIEW v1 AS SELECT DATE '1992-01-01' AS k;
+CREATE TABLE t2 (id INTEGER PRIMARY KEY, j VARCHAR UNIQUE);
+CREATE SCHEMA s1;;
+CREATE TABLE s1.tbl(i INTEGER UNIQUE);;
+CREATE INDEX my_index ON s1.tbl(i);;
+CREATE TABLE tbl(i INTEGER PRIMARY KEY);;
+CREATE INDEX not_a_table ON tbl(i);;
+DESCRIBE s1.tbl;;
+DESCRIBE my_index;;
+DESCRIBE tbl;;
+DESCRIBE t2;
+SELECT * FROM pragma_show('t2');;
+SHOW TABLES;
+DESCRIBE TABLES;
+
+	with "tables" as
+	(
+		SELECT table_name as "name"
+		FROM duckdb_tables
+		where in_search_path(database_name, schema_name)
+	), "views" as
+	(
+		SELECT view_name as "name"
+		FROM duckdb_views
+		where in_search_path(database_name, schema_name)
+	), db_objects as
+	(
+		SELECT "name" FROM "tables"
+		UNION ALL
+		SELECT "name" FROM "views"
+	)
+	SELECT "name"
+	FROM db_objects
+	ORDER BY "name";;
+SHOW integers;
+SHOW "select";;
+SELECT * FROM pragma_show('integers');;
+DESCRIBE v1;

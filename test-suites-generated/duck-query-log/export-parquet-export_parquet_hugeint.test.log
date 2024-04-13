@@ -1,0 +1,24 @@
+begin transaction;;
+create table tbl as select "hugeint" from test_all_types(), range(3);;
+select * from tbl;;
+EXPORT DATABASE 'duckdb_unittest_tempdir/54877/export_test' (FORMAT PARQUET);
+ROLLBACK;
+
+
+
+CREATE TABLE tbl(hugeint HUGEINT);
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54877/export_test/tbl.parquet' ( FORMAT parquet );;
+
+
+
+CREATE TABLE tbl(hugeint HUGEINT);
+
+
+
+
+COPY tbl FROM 'duckdb_unittest_tempdir/54877/export_test/tbl.parquet' ( FORMAT parquet );;
+select * from tbl;;

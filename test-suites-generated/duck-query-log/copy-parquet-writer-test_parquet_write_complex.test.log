@@ -1,0 +1,17 @@
+SELECT * FROM parquet_scan('data/parquet-testing/arrow/alltypes_dictionary.parquet');;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/arrow/alltypes_dictionary.parquet')) TO 'duckdb_unittest_tempdir/54807/alltypes_dictionary.parquet' (FORMAT 'PARQUET');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/alltypes_dictionary.parquet');;
+SELECT * FROM parquet_scan('data/parquet-testing/bug687_nulls.parquet') LIMIT 10;;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/bug687_nulls.parquet')) TO 'duckdb_unittest_tempdir/54807/bug687_nulls.parquet' (FORMAT 'PARQUET');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/bug687_nulls.parquet') LIMIT 10;;
+COPY (SELECT true as x UNION ALL SELECT true) TO 'duckdb_unittest_tempdir/54807/bug1637_booleans.parquet' (FORMAT 'PARQUET');;
+SELECT COUNT(*) FROM parquet_scan('duckdb_unittest_tempdir/54807/bug1637_booleans.parquet') WHERE x;;
+SELECT * FROM parquet_scan('data/parquet-testing/userdata1.parquet') ORDER BY 1 LIMIT 10;;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/userdata1.parquet')) TO 'duckdb_unittest_tempdir/54807/userdata1.parquet' (FORMAT 'PARQUET');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/userdata1.parquet') ORDER BY 1 LIMIT 10;;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/userdata1.parquet')) TO 'duckdb_unittest_tempdir/54807/userdata1-gzip.parquet' (FORMAT 'PARQUET', CODEC 'GZIP');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/userdata1-gzip.parquet') ORDER BY 1 LIMIT 10;;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/userdata1.parquet')) TO 'duckdb_unittest_tempdir/54807/userdata1-uncompressed.parquet' (FORMAT 'PARQUET', CODEC 'UNCOMPRESSED');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/userdata1-uncompressed.parquet') ORDER BY 1 LIMIT 10;;
+COPY (SELECT * FROM parquet_scan('data/parquet-testing/userdata1.parquet')) TO 'duckdb_unittest_tempdir/54807/userdata1-zstd.parquet' (FORMAT 'PARQUET', CODEC 'ZSTD');
+SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54807/userdata1-zstd.parquet') ORDER BY 1 LIMIT 10;;

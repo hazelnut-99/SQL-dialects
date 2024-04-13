@@ -1,0 +1,190 @@
+PRAGMA enable_verification;
+SELECT
+    count(*) as total_rows,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds
+FROM generate_series(1,11) tbl(i);
+SELECT
+    count(*) as total_rows,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds
+FROM generate_series(1,11) tbl(i);
+;
+SELECT
+    count(*) as total_rows,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds
+FROM generate_series(1,11) tbl(i);
+SELECT count_star() AS total_rows, count_star() FILTER (WHERE (i <= 5)) AS lte_five, count_star() FILTER (WHERE ((i % 2) = 1)) AS odds FROM generate_series(1, 11) AS tbl(i);
+;
+;
+;
+;
+SELECT
+    count(*) as total_rows,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds
+FROM generate_series(1,11) tbl(i);
+SELECT
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+SELECT
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+;
+SELECT
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+SELECT count_star() FILTER (WHERE ((i % 2) = 1)) AS odds, count_star() FILTER (WHERE (i <= 5)) AS lte_five, count_star() AS total_rows FROM generate_series(1, 11) AS tbl(i);
+;
+;
+;
+;
+SELECT
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+SELECT
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+SELECT
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+;
+SELECT
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+SELECT count_star() FILTER (WHERE (i <= 5)) AS lte_five, count_star() FILTER (WHERE ((i % 2) = 1)) AS odds, count_star() AS total_rows FROM generate_series(1, 11) AS tbl(i);
+;
+;
+;
+;
+SELECT
+    count(*) FILTER (WHERE i <= 5) as lte_five,
+    count(*) FILTER (WHERE i % 2 = 1) as odds,
+    count(*) as total_rows
+FROM generate_series(1,11) tbl(i);
+CREATE TABLE issue3105(gender VARCHAR, pay FLOAT);;
+INSERT INTO issue3105 VALUES
+	('male', 100),
+	('male', 200),
+	('male', 300),
+	('female', 150),
+	('female', 250);;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female'),
+	SUM(pay)
+FROM issue3105;;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female'),
+	SUM(pay)
+FROM issue3105;;
+;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female'),
+	SUM(pay)
+FROM issue3105;;
+SELECT sum(pay) FILTER (WHERE (gender = 'male')), sum(pay) FILTER (WHERE (gender = 'female')), sum(pay) FROM issue3105;
+;
+;
+;
+;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female'),
+	SUM(pay)
+FROM issue3105;;
+SELECT
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+;
+SELECT
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT sum(pay), sum(pay) FILTER (WHERE (gender = 'male')), sum(pay) FILTER (WHERE (gender = 'female')) FROM issue3105;
+;
+;
+;
+;
+SELECT
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT sum(pay) FILTER (WHERE (gender = 'male')), sum(pay), sum(pay) FILTER (WHERE (gender = 'female')) FROM issue3105;
+;
+;
+;
+;
+SELECT
+	SUM(pay) FILTER (WHERE gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (WHERE gender = 'female')
+FROM issue3105;;
+SELECT
+	SUM(pay) FILTER (gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (gender = 'female')
+FROM issue3105;;
+SELECT
+	SUM(pay) FILTER (gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (gender = 'female')
+FROM issue3105;;
+;
+SELECT
+	SUM(pay) FILTER (gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (gender = 'female')
+FROM issue3105;;
+SELECT sum(pay) FILTER (WHERE (gender = 'male')), sum(pay), sum(pay) FILTER (WHERE (gender = 'female')) FROM issue3105;
+;
+;
+;
+;
+SELECT
+	SUM(pay) FILTER (gender = 'male'),
+	SUM(pay),
+	SUM(pay) FILTER (gender = 'female')
+FROM issue3105;;

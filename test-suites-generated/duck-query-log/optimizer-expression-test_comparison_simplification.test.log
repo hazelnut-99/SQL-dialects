@@ -1,0 +1,63 @@
+PRAGMA enable_verification;
+WITH results AS (     
+	SELECT '2023-08-17T23:00:08.539Z' as timestamp 
+	) 
+SELECT * 
+FROM results 
+WHERE timestamp::TIME BETWEEN '22:00:00'::TIME AND '23:59:59'::TIME ;;
+WITH results AS (     
+	SELECT '2023-08-17T23:00:08.539Z' as timestamp 
+	) 
+SELECT * 
+FROM results 
+WHERE timestamp::TIME BETWEEN '22:00:00'::TIME AND '23:59:59'::TIME ;;
+;
+WITH results AS (     
+	SELECT '2023-08-17T23:00:08.539Z' as timestamp 
+	) 
+SELECT * 
+FROM results 
+WHERE timestamp::TIME BETWEEN '22:00:00'::TIME AND '23:59:59'::TIME ;;
+WITH results AS (SELECT '2023-08-17T23:00:08.539Z' AS "timestamp")SELECT * FROM results WHERE (CAST("timestamp" AS TIME) BETWEEN CAST('22:00:00' AS TIME) AND CAST('23:59:59' AS TIME));
+;
+;
+;
+;
+WITH results AS (     
+	SELECT '2023-08-17T23:00:08.539Z' as timestamp 
+	) 
+SELECT * 
+FROM results 
+WHERE timestamp::TIME BETWEEN '22:00:00'::TIME AND '23:59:59'::TIME ;;
+CREATE TABLE issue8316 (dt TIMESTAMP);;
+INSERT INTO issue8316 VALUES
+	('2016-02-14 18:00:05'),
+	('2016-02-15 10:04:25'),
+	('2016-02-16 10:04:25'),
+	('2016-02-16 23:59:55'),
+;;
+SELECT dt
+FROM issue8316
+WHERE CAST(dt as TIME) = CAST('10:04:25' as TIME)
+ORDER BY 1
+;;
+SELECT dt
+FROM issue8316
+WHERE CAST(dt as TIME) = CAST('10:04:25' as TIME)
+ORDER BY 1
+;;
+;
+SELECT dt
+FROM issue8316
+WHERE CAST(dt as TIME) = CAST('10:04:25' as TIME)
+ORDER BY 1
+;;
+SELECT dt FROM issue8316 WHERE (CAST(dt AS TIME) = CAST('10:04:25' AS TIME)) ORDER BY 1;
+;
+;
+;
+SELECT dt
+FROM issue8316
+WHERE CAST(dt as TIME) = CAST('10:04:25' as TIME)
+ORDER BY 1
+;;

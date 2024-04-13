@@ -1,156 +1,156 @@
-PRAGMA enable_verification
-CREATE TABLE integers(i integer);
-INSERT INTO integers VALUES (1), (2), (3), (NULL);
-SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE TABLE integers(i integer);;
+INSERT INTO integers VALUES (1), (2), (3), (NULL);;
+SET default_null_order='nulls_first';;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i;;
+;
+SELECT * FROM integers ORDER BY i;;
 SELECT * FROM integers ORDER BY i;
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT * FROM integers ORDER BY i DESC;;
+;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT * FROM integers ORDER BY i DESC;
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers;
+;
+;
+;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SET default_null_order='sqlite';;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i;;
+;
+SELECT * FROM integers ORDER BY i;;
 SELECT * FROM integers ORDER BY i;
-
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT * FROM integers ORDER BY i DESC;;
+;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT * FROM integers ORDER BY i DESC;
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers;
+;
+;
+;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SET default_null_order='postgres';;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i;;
+;
+SELECT * FROM integers ORDER BY i;;
 SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i
-
-
-
-
-SELECT * FROM integers ORDER BY i;
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i;;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT * FROM integers ORDER BY i DESC;;
+;
+SELECT * FROM integers ORDER BY i DESC;;
 SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC;
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC
-
-
-
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers
-
-
-
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SET default_null_order='sqlite';
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i;
-
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i
-
-
-
-
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC;
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC
-
-
-
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers
-
-
-
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SET default_null_order='postgres';
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i;
-
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i
-
-
-
-
-SELECT * FROM integers ORDER BY i;
-SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC;
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT * FROM integers ORDER BY i DESC
-
-
-
-
-SELECT * FROM integers ORDER BY i DESC;
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers
-
-
-
-
-SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
-SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers
-
-
-
-
-SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers
+;
+;
+;
+;
+SELECT * FROM integers ORDER BY i DESC;;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT first(i ORDER BY i), last(i ORDER BY i) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i), LAST(i ORDER BY i) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT first(i ORDER BY i DESC), last(i ORDER BY i DESC) FROM integers;
+;
+;
+;
+;
+SELECT FIRST(i ORDER BY i DESC), LAST(i ORDER BY i DESC) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;
+SELECT list_sort(list(i)), list_reverse_sort(list(i)) FROM integers;
+;
+;
+;
+;
+SELECT list_sort(LIST(i)), list_reverse_sort(LIST(i)) FROM integers;

@@ -1,0 +1,5 @@
+CREATE TABLE integers AS SELECT * FROM range(6) tbl(i);;
+COPY integers TO 'duckdb_unittest_tempdir/54726/integers.parquet';;
+SELECT SUM(i) FROM 'duckdb_unittest_tempdir/54726/integers.parquet';;
+COPY integers TO 'duckdb_unittest_tempdir/54726/integers.csv';;
+SELECT SUM(i) FROM 'duckdb_unittest_tempdir/54726/integers.csv' tbl(i);;

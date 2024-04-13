@@ -1,0 +1,3 @@
+CREATE TABLE collate_test(s VARCHAR COLLATE blabla);
+CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT.NOACCENT);
+PRAGMA default_collation='blabla';

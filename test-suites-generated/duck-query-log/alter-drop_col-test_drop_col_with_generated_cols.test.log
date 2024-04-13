@@ -1,0 +1,5 @@
+create table t(i int, j as (2), k int, m as (3), n int);;
+alter table t drop column n;;
+alter table t drop column m;;
+alter table t drop column k;;
+alter table t drop column j;;

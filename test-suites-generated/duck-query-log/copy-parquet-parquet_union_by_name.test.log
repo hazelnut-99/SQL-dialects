@@ -1,0 +1,304 @@
+SET default_null_order='nulls_first';;
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE ubn1(a BIGINT);;
+CREATE OR REPLACE TABLE ubn2(a INTEGER, b INTEGER);;
+CREATE OR REPLACE TABLE ubn3(a INTEGER, c INTEGER);;
+INSERT INTO ubn1 VALUES (1), (2), (9223372036854775807);;
+INSERT INTO ubn2 VALUES (3,4), (5, 6);;
+INSERT INTO ubn3 VALUES (100,101), (102, 103);;
+COPY ubn1 TO 'duckdb_unittest_tempdir/54742/ubn1.parquet' WITH (FORMAT PARQUET);;
+COPY ubn2 TO 'duckdb_unittest_tempdir/54742/ubn2.parquet' WITH (FORMAT PARQUET);;
+COPY ubn3 TO 'duckdb_unittest_tempdir/54742/ubn3.parquet' WITH (FORMAT PARQUET);;
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+;
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a, b, c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT b FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY b;
+;
+;
+;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c) FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) LIMIT 1;
+;
+;
+;
+;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+COPY (SELECT [42::INT] a, [43::INT] b) TO 'duckdb_unittest_tempdir/54742/listubn1.parquet' (FORMAT PARQUET);
+COPY (SELECT [44::BIGINT] b, [45::INT] c) TO 'duckdb_unittest_tempdir/54742/listubn2.parquet' (FORMAT PARQUET);
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT a, b, c FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', (union_by_name = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c) FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', (union_by_name = CAST('t' AS BOOLEAN))) LIMIT 1;
+;
+;
+;
+;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+PRAGMA threads=1;
+CREATE OR REPLACE TABLE ubn1(a BIGINT);;
+CREATE OR REPLACE TABLE ubn2(a INTEGER, b INTEGER);;
+CREATE OR REPLACE TABLE ubn3(a INTEGER, c INTEGER);;
+INSERT INTO ubn1 VALUES (1), (2), (9223372036854775807);;
+INSERT INTO ubn2 VALUES (3,4), (5, 6);;
+INSERT INTO ubn3 VALUES (100,101), (102, 103);;
+COPY ubn1 TO 'duckdb_unittest_tempdir/54742/ubn1.parquet' WITH (FORMAT PARQUET);;
+COPY ubn2 TO 'duckdb_unittest_tempdir/54742/ubn2.parquet' WITH (FORMAT PARQUET);;
+COPY ubn3 TO 'duckdb_unittest_tempdir/54742/ubn3.parquet' WITH (FORMAT PARQUET);;
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+;
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet');
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a, b, c FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan(['duckdb_unittest_tempdir/54742/ubn2.parquet', 'duckdb_unittest_tempdir/54742/ubn1.parquet', 'duckdb_unittest_tempdir/54742/ubn3.parquet']) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT a FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY a;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet') 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT b FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) ORDER BY b;
+;
+;
+;
+;
+SELECT b
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE) 
+ORDER BY b;;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c) FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', (UNION_BY_NAME = CAST('t' AS BOOLEAN))) LIMIT 1;
+;
+;
+;
+;
+SELECT typeof(a), typeof(b), typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/ubn*.parquet', UNION_BY_NAME=TRUE)
+LIMIT 1;;
+COPY (SELECT [42::INT] a, [43::INT] b) TO 'duckdb_unittest_tempdir/54742/listubn1.parquet' (FORMAT PARQUET);
+COPY (SELECT [44::BIGINT] b, [45::INT] c) TO 'duckdb_unittest_tempdir/54742/listubn2.parquet' (FORMAT PARQUET);
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT a, b, c FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', (union_by_name = CAST('t' AS BOOLEAN))) ORDER BY a;
+;
+;
+;
+;
+SELECT a,b,c 
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+ORDER BY a;;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+SELECT typeof(a), typeof(b), typeof(c) FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', (union_by_name = CAST('t' AS BOOLEAN))) LIMIT 1;
+;
+;
+;
+;
+SELECT typeof(a),typeof(b),typeof(c)
+FROM parquet_scan('duckdb_unittest_tempdir/54742/listubn[12].parquet', union_by_name=true)
+LIMIT 1;;
+PRAGMA threads=1;

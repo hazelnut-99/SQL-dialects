@@ -1,0 +1,9 @@
+CREATE TABLE lists(i INT[]);
+INSERT INTO lists SELECT [i, NULL, i+1] FROM range(10000) tbl(i);;
+DELETE FROM lists WHERE i[1] <= 9995;
+SELECT * FROM lists;
+DROP TABLE lists;
+CREATE TABLE lists(i INT[][]);
+INSERT INTO lists SELECT [[i], NULL, [i+1, 4], [NULL, 1, 2]] FROM range(10000) tbl(i);;
+DELETE FROM lists WHERE i[1][1] <= 9995;
+SELECT * FROM lists;

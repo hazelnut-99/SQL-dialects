@@ -1,0 +1,198 @@
+SELECT '0b'::INT;
+SELECT '0b2'::INT;
+SELECT '0b10105'::INT;
+SELECT '0b-1'::INT;
+SELECT '-0b1'::INT;
+SELECT '0b1'::INT;
+SELECT '0b10'::INT;
+SELECT '0b11'::INT;
+SELECT '0b0000000'::INT;
+SELECT '0b1_0'::INT;
+SELECT '0b1_0_0'::INT;
+SELECT '0b11110000_11110000'::INT;
+SELECT '0b_1'::INT;
+SELECT '0b1_'::INT;
+SELECT '0b1_0_'::INT;
+SELECT '0b_1_0'::INT;
+WITH binary_string as (select replace('1', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b1'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b01'::INT
+FROM binary_string;
+WITH binary_string as (select replace('00', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b00'::INT
+FROM binary_string;
+WITH binary_string as (select replace('0_0', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b0_0'::INT
+FROM binary_string;
+WITH binary_string as (select replace('10', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b10'::INT
+FROM binary_string;
+WITH binary_string as (select replace('10101', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b10101'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1001', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b1001'::INT
+FROM binary_string;
+WITH binary_string as (select replace('0001', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b0001'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b1111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1111_1111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b1111_1111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01111111111111111111111111111111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b01111111111111111111111111111111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01111111_11111111_11111111_11111111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0b01111111_11111111_11111111_11111111'::INT
+FROM binary_string;
+SELECT '0b0000000000000000000000000000000001111111'::TINYINT;
+SELECT '0b0000000000000000000000000000000011111111'::UINT8;
+SELECT '0b00000000000000000000000000000000111111111'::TINYINT;
+SELECT '0b1111111111111111111111111111111'::INT;
+SELECT '0b11111111111111111111111111111111'::INT;
+SELECT '0b01111111111111111111111111111111'::UINT32;
+SELECT '0b11111111111111111111111111111111'::UINT32;
+SELECT '0b11111111111111111111111111111111'::BIGINT;
+SELECT '0b111111111111111111111111111111111111111111111111111111111111111'::BIGINT;
+SELECT '0b1111111111111111111111111111111111111111111111111111111111111111'::BIGINT;
+SELECT '0b1111111111111111111111111111111111111111111111111111111111111111'::UINT64;
+SELECT '0B'::INT;
+SELECT '0B2'::INT;
+SELECT '0B10105'::INT;
+SELECT '0B-1'::INT;
+SELECT '-0B1'::INT;
+SELECT '0B1'::INT;
+SELECT '0B10'::INT;
+SELECT '0B11'::INT;
+SELECT '0B0000000'::INT;
+SELECT '0B1_0'::INT;
+SELECT '0B1_0_0'::INT;
+SELECT '0B11110000_11110000'::INT;
+SELECT '0B_1'::INT;
+SELECT '0B1_'::INT;
+SELECT '0B1_0_'::INT;
+SELECT '0B_1_0'::INT;
+WITH binary_string as (select replace('1', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B1'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B01'::INT
+FROM binary_string;
+WITH binary_string as (select replace('00', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B00'::INT
+FROM binary_string;
+WITH binary_string as (select replace('0_0', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B0_0'::INT
+FROM binary_string;
+WITH binary_string as (select replace('10', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B10'::INT
+FROM binary_string;
+WITH binary_string as (select replace('10101', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B10101'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1001', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B1001'::INT
+FROM binary_string;
+WITH binary_string as (select replace('0001', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B0001'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B1111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('1111_1111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B1111_1111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01111111111111111111111111111111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B01111111111111111111111111111111'::INT
+FROM binary_string;
+WITH binary_string as (select replace('01111111_11111111_11111111_11111111', '_', '') as str)
+SELECT 
+	list_sum([ (CASE WHEN str[i+1] = '0' THEN 0 ELSE 1 END) * (2 ** (len(str)-(i+1))) for i in range(len(str))])::INT
+	==
+	'0B01111111_11111111_11111111_11111111'::INT
+FROM binary_string;
+SELECT '0B0000000000000000000000000000000001111111'::TINYINT;
+SELECT '0B0000000000000000000000000000000011111111'::UINT8;
+SELECT '0B00000000000000000000000000000000111111111'::TINYINT;
+SELECT '0B1111111111111111111111111111111'::INT;
+SELECT '0B11111111111111111111111111111111'::INT;
+SELECT '0B01111111111111111111111111111111'::UINT32;
+SELECT '0B11111111111111111111111111111111'::UINT32;
+SELECT '0B11111111111111111111111111111111'::BIGINT;
+SELECT '0B111111111111111111111111111111111111111111111111111111111111111'::BIGINT;
+SELECT '0B1111111111111111111111111111111111111111111111111111111111111111'::BIGINT;
+SELECT '0B1111111111111111111111111111111111111111111111111111111111111111'::UINT64;

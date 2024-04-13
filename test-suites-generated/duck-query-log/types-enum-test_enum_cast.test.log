@@ -1,0 +1,119 @@
+PRAGMA enable_verification;
+CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');;
+CREATE TABLE person (
+    name text,
+    current_mood mood
+);;
+INSERT INTO person VALUES ('Pedro', 'ok'), ('Mark', 'sad'),('Moe', 'happy'), ('Diego', NULL);;
+select * from person;
+select * from person;
+;
+select * from person;
+SELECT * FROM person;
+;
+;
+;
+;
+select * from person;
+select current_mood::varchar from person;
+select current_mood::varchar from person;
+;
+select current_mood::varchar from person;
+SELECT CAST(current_mood AS VARCHAR) FROM person;
+;
+;
+;
+;
+select current_mood::varchar from person;
+CREATE TYPE years AS ENUM ('2001', '2006', '2012', '2018');;
+CREATE TABLE albums (
+    name text,
+    year_release years
+);;
+INSERT INTO albums VALUES ('Tenacious D', '2001'), ('The Pick of Destiny', '2006'),('Rize of the Fenix', '2012'), ('Post-Apocalypto', '2018'), ('Something Random', NULL);;
+select name, year_release::INT from albums;
+select name, year_release::INT from albums;
+;
+select name, year_release::INT from albums;
+SELECT "name", CAST(year_release AS INTEGER) FROM albums;
+;
+;
+;
+;
+select name, year_release::INT from albums;
+select name from albums where year_release::INT > 2010;
+select name from albums where year_release::INT > 2010;
+;
+select name from albums where year_release::INT > 2010;
+SELECT "name" FROM albums WHERE (CAST(year_release AS INTEGER) > 2010);
+;
+;
+;
+;
+select name from albums where year_release::INT > 2010;
+CREATE TYPE years_error AS ENUM ('2001', '2006', '2012', 'bla');;
+CREATE TABLE albums_error (
+    name text,
+    year_release years_error
+);;
+INSERT INTO albums_error VALUES ('Tenacious D', '2001'), ('The Pick of Destiny', 'bla');
+select name, year_release::INT from albums_error;
+select name, year_release::INT from albums_error;
+;
+select name, year_release::INT from albums_error;
+select name, year_release::INT from albums_error;
+select name, year_release::INT from albums_error where year_release = '2001';
+select name, year_release::INT from albums_error where year_release = '2001';
+;
+select name, year_release::INT from albums_error where year_release = '2001';
+SELECT "name", CAST(year_release AS INTEGER) FROM albums_error WHERE (year_release = '2001');
+;
+;
+;
+;
+select name, year_release::INT from albums_error where year_release = '2001';
+select name, TRY_CAST(year_release AS INT) from albums_error;
+select name, TRY_CAST(year_release AS INT) from albums_error;
+;
+select name, TRY_CAST(year_release AS INT) from albums_error;
+SELECT "name", TRY_CAST(year_release AS INTEGER) FROM albums_error;
+;
+;
+;
+;
+select name, TRY_CAST(year_release AS INT) from albums_error;
+select name, year_release::DOUBLE from albums;
+select name, year_release::DOUBLE from albums;
+;
+select name, year_release::DOUBLE from albums;
+SELECT "name", CAST(year_release AS DOUBLE) FROM albums;
+;
+;
+;
+;
+select name, year_release::DOUBLE from albums;
+CREATE TYPE dates AS ENUM ('2001-01-01');;
+CREATE TABLE dates_table (
+    year_release dates
+);;
+INSERT INTO dates_table VALUES ('2001-01-01');
+select year_release::DATE from dates_table;
+select year_release::DATE from dates_table;
+;
+select year_release::DATE from dates_table;
+SELECT CAST(year_release AS DATE) FROM dates_table;
+;
+;
+;
+;
+select year_release::DATE from dates_table;
+select year_release::TIMESTAMP from dates_table;
+select year_release::TIMESTAMP from dates_table;
+;
+select year_release::TIMESTAMP from dates_table;
+SELECT CAST(year_release AS TIMESTAMP) FROM dates_table;
+;
+;
+;
+;
+select year_release::TIMESTAMP from dates_table;

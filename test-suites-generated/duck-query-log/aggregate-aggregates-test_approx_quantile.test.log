@@ -1,0 +1,621 @@
+PRAGMA enable_verification;
+PRAGMA verify_external;
+SELECT SETSEED(0.8675309);;
+SELECT SETSEED(0.8675309);;
+;
+SELECT SETSEED(0.8675309);;
+SELECT SETSEED(0.8675309);;
+SELECT setseed(0.8675309);
+;
+;
+;
+;
+SELECT SETSEED(0.8675309);;
+create table quantile as select range r, random() from range(10000) union all values (NULL, 0.1), (NULL, 0.5), (NULL, 0.9) order by 2;;
+SELECT return_type, count(*) AS defined
+FROM duckdb_functions()
+WHERE function_name = 'reservoir_quantile'
+GROUP BY ALL
+HAVING defined <> 2
+ORDER BY ALL;;
+SELECT return_type, count(*) AS defined
+FROM duckdb_functions()
+WHERE function_name = 'reservoir_quantile'
+GROUP BY ALL
+HAVING defined <> 2
+ORDER BY ALL;;
+;
+SELECT return_type, count(*) AS defined
+FROM duckdb_functions()
+WHERE function_name = 'reservoir_quantile'
+GROUP BY ALL
+HAVING defined <> 2
+ORDER BY ALL;;
+SELECT return_type, count(*) AS defined
+FROM duckdb_functions()
+WHERE function_name = 'reservoir_quantile'
+GROUP BY ALL
+HAVING defined <> 2
+ORDER BY ALL;;
+SELECT return_type, count_star() AS defined FROM duckdb_functions() WHERE (function_name = 'reservoir_quantile') GROUP BY ALL HAVING (defined != 2) ORDER BY COLUMNS(*);
+;
+;
+;
+;
+SELECT return_type, count(*) AS defined
+FROM duckdb_functions()
+WHERE function_name = 'reservoir_quantile'
+GROUP BY ALL
+HAVING defined <> 2
+ORDER BY ALL;;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile ,quantile(r,0.5) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile ,quantile(r,0.5) as true_quantile FROM quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile ,quantile(r,0.5) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile ,quantile(r,0.5) as true_quantile FROM quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.5) AS approx_quantile, quantile(r, 0.5) AS true_quantile FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile ,quantile(r,0.5) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 1.0) as approx_quantile ,quantile(r, 1.0) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 1.0) as approx_quantile ,quantile(r, 1.0) as true_quantile FROM quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 1.0) as approx_quantile ,quantile(r, 1.0) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 1.0) as approx_quantile ,quantile(r, 1.0) as true_quantile FROM quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 1.0) AS approx_quantile, quantile(r, 1.0) AS true_quantile FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 1.0) as approx_quantile ,quantile(r, 1.0) as true_quantile FROM quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.0) as approx_quantile ,quantile(r, 0.0) as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.0) as approx_quantile ,quantile(r, 0.0) as true_quantile from quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.0) as approx_quantile ,quantile(r, 0.0) as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.0) as approx_quantile ,quantile(r, 0.0) as true_quantile from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.0) AS approx_quantile, quantile(r, 0.0) AS true_quantile FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.0) as approx_quantile ,quantile(r, 0.0) as true_quantile from quantile) AS T;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5) as true_quantile;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5) as true_quantile;
+;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5) as true_quantile;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5) as true_quantile;
+SELECT approx_quantile(NULL, 0.5) AS approx_quantile, quantile(NULL, 0.5) AS true_quantile;
+;
+;
+;
+;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5) as true_quantile;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(42, 0.5) AS approx_quantile, quantile(42, 0.5) AS true_quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5)  as true_quantile FROM quantile;
+;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(NULL, 0.5) AS approx_quantile, quantile(NULL, 0.5) AS true_quantile FROM quantile;
+;
+;
+;
+;
+SELECT approx_quantile(NULL, 0.5)  as approx_quantile ,quantile(NULL, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(1, 0.5)  as approx_quantile ,quantile(1, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(1, 0.5)  as approx_quantile ,quantile(1, 0.5)  as true_quantile FROM quantile;
+;
+SELECT approx_quantile(1, 0.5)  as approx_quantile ,quantile(1, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(1, 0.5)  as approx_quantile ,quantile(1, 0.5)  as true_quantile FROM quantile;
+SELECT approx_quantile(1, 0.5) AS approx_quantile, quantile(1, 0.5) AS true_quantile FROM quantile;
+;
+;
+;
+;
+SELECT approx_quantile(1, 0.5)  as approx_quantile ,quantile(1, 0.5)  as true_quantile FROM quantile;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(42, 0.5) AS approx_quantile, quantile(42, 0.5) AS true_quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(42, 0.5)  as approx_quantile ,quantile(42, 0.5)  as true_quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1)  as approx_quantile ,quantile(r, 0.1)  as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1)  as approx_quantile ,quantile(r, 0.1)  as true_quantile from quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1)  as approx_quantile ,quantile(r, 0.1)  as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1)  as approx_quantile ,quantile(r, 0.1)  as true_quantile from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.1) AS approx_quantile, quantile(r, 0.1) AS true_quantile FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1)  as approx_quantile ,quantile(r, 0.1)  as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9)  as approx_quantile ,quantile(r, 0.9)  as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9)  as approx_quantile ,quantile(r, 0.9)  as true_quantile from quantile) AS T;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9)  as approx_quantile ,quantile(r, 0.9)  as true_quantile from quantile) AS T;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9)  as approx_quantile ,quantile(r, 0.9)  as true_quantile from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - 100) AND (true_quantile + 100))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.9) AS approx_quantile, quantile(r, 0.9) AS true_quantile FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN ( approx_quantile between (true_quantile - 100) and (true_quantile + 100) )
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9)  as approx_quantile ,quantile(r, 0.9)  as true_quantile from quantile) AS T;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT approx_quantile(r, [0.25, 0.5, 0.75]) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT approx_quantile(r, [0.25, 0.5, 0.75]) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT approx_quantile(r, [0.25, 0.5, 0.75]) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT approx_quantile(r, [0.25, 0.5, 0.75]) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT main.list_value((a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)), (a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)), (a[3] BETWEEN (q[3] - 100) AND (q[3] + 100))) FROM (SELECT approx_quantile(r, main.list_value(0.25, 0.5, 0.75)) AS a, quantile(r, main.list_value(0.25, 0.5, 0.75)) AS q FROM quantile) AS tbl;
+;
+;
+;
+;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT approx_quantile(r, [0.25, 0.5, 0.75]) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT reservoir_quantile(r, [0.25, 0.5, 0.75], 4096) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT reservoir_quantile(r, [0.25, 0.5, 0.75], 4096) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT reservoir_quantile(r, [0.25, 0.5, 0.75], 4096) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT reservoir_quantile(r, [0.25, 0.5, 0.75], 4096) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT main.list_value((a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)), (a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)), (a[3] BETWEEN (q[3] - 100) AND (q[3] + 100))) FROM (SELECT reservoir_quantile(r, main.list_value(0.25, 0.5, 0.75), 4096) AS a, quantile(r, main.list_value(0.25, 0.5, 0.75)) AS q FROM quantile) AS tbl;
+;
+;
+;
+;
+SELECT [
+	(a[1] BETWEEN (q[1] - 100) AND (q[1] + 100)),
+	(a[2] BETWEEN (q[2] - 100) AND (q[2] + 100)),
+	(a[3] BETWEEN (q[3] - 100) AND (q[3] + 100)),
+	]
+FROM (
+	SELECT reservoir_quantile(r, [0.25, 0.5, 0.75], 4096) AS a,
+		   quantile(r, [0.25, 0.5, 0.75]) AS q,
+	FROM quantile
+) tbl;;
+SELECT approx_quantile(r, -0.1) FROM quantile;
+SELECT approx_quantile(r, -0.1) FROM quantile;
+;
+SELECT approx_quantile(r, -0.1) FROM quantile;
+SELECT approx_quantile(r, -0.1) FROM quantile;
+SELECT approx_quantile(r, -0.1) FROM quantile;
+SELECT approx_quantile(r, 1.1) FROM quantile;
+SELECT approx_quantile(r, 1.1) FROM quantile;
+;
+SELECT approx_quantile(r, 1.1) FROM quantile;
+SELECT approx_quantile(r, 1.1) FROM quantile;
+SELECT approx_quantile(r, 1.1) FROM quantile;
+SELECT approx_quantile(r, NULL) FROM quantile;
+SELECT approx_quantile(r, NULL) FROM quantile;
+;
+SELECT approx_quantile(r, NULL) FROM quantile;
+SELECT approx_quantile(r, NULL) FROM quantile;
+SELECT approx_quantile(r, NULL) FROM quantile;
+SELECT approx_quantile(r, r) FROM quantile;
+SELECT approx_quantile(r, r) FROM quantile;
+;
+SELECT approx_quantile(r, r) FROM quantile;
+SELECT approx_quantile(r, r) FROM quantile;
+SELECT approx_quantile(r, r) FROM quantile;
+SELECT approx_quantile(r::string, 0.5) FROM quantile;
+SELECT approx_quantile(r::string, 0.5) FROM quantile;
+;
+SELECT approx_quantile(r::string, 0.5) FROM quantile;
+SELECT approx_quantile(r::string, 0.5) FROM quantile;
+SELECT approx_quantile(r::string, 0.5) FROM quantile;
+SELECT approx_quantile(r) FROM quantile;
+SELECT approx_quantile(r) FROM quantile;
+;
+SELECT approx_quantile(r) FROM quantile;
+SELECT approx_quantile(r) FROM quantile;
+SELECT approx_quantile(r) FROM quantile;
+SELECT approx_quantile(r, 0.1, 0.2) FROM quantile;
+SELECT approx_quantile(r, 0.1, 0.2) FROM quantile;
+;
+SELECT approx_quantile(r, 0.1, 0.2) FROM quantile;
+SELECT approx_quantile(r, 0.1, 0.2) FROM quantile;
+SELECT approx_quantile(r, 0.1, 0.2) FROM quantile;
+pragma threads=4;
+PRAGMA verify_parallelism;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1) as approx_quantile, quantile(r, 0.1) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1) as approx_quantile, quantile(r, 0.1) as true_quantile, SUM(r) as sumr from quantile) AS T;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1) as approx_quantile, quantile(r, 0.1) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1) as approx_quantile, quantile(r, 0.1) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - (sumr * 0.01)) AND (true_quantile + (sumr * 0.01)))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.1) AS approx_quantile, quantile(r, 0.1) AS true_quantile, sum(r) AS sumr FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.1) as approx_quantile, quantile(r, 0.1) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9) as approx_quantile, quantile(r, 0.9) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9) as approx_quantile, quantile(r, 0.9) as true_quantile, SUM(r) as sumr from quantile) AS T;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9) as approx_quantile, quantile(r, 0.9) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9) as approx_quantile, quantile(r, 0.9) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - (sumr * 0.01)) AND (true_quantile + (sumr * 0.01)))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.9) AS approx_quantile, quantile(r, 0.9) AS true_quantile, sum(r) AS sumr FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.9) as approx_quantile, quantile(r, 0.9) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile, quantile(r, 0.5) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile, quantile(r, 0.5) as true_quantile, SUM(r) as sumr from quantile) AS T;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile, quantile(r, 0.5) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile, quantile(r, 0.5) as true_quantile, SUM(r) as sumr from quantile) AS T;
+SELECT CASE  WHEN ((approx_quantile BETWEEN (true_quantile - (sumr * 0.01)) AND (true_quantile + (sumr * 0.01)))) THEN (CAST('t' AS BOOLEAN)) ELSE CAST('f' AS BOOLEAN) END FROM (SELECT approx_quantile(r, 0.5) AS approx_quantile, quantile(r, 0.5) AS true_quantile, sum(r) AS sumr FROM quantile) AS T;
+;
+;
+;
+;
+SELECT CASE
+	  WHEN (approx_quantile between (true_quantile - (sumr * 0.01)) and (true_quantile + (sumr * 0.01)))
+		  THEN TRUE
+		  ELSE FALSE
+	  END
+	  FROM (SELECT approx_quantile(r, 0.5) as approx_quantile, quantile(r, 0.5) as true_quantile, SUM(r) as sumr from quantile) AS T;
+PRAGMA disable_verification;;
+PRAGMA disable_verify_external;;
+SELECT reservoir_quantile(r, 0.9)  from quantile;
+SELECT reservoir_quantile(r, 0.9,1000)  from quantile;
+SELECT reservoir_quantile(1, 0.5, 1) FROM quantile;
+SELECT RESERVOIR_QUANTILE(b, 0.5)
+FROM (SELECT 'a' AS a, 1.0 AS b) y
+GROUP BY a;
+SELECT APPROX_QUANTILE(b, 0.5)
+FROM (
+    SELECT 'a' AS a, 1.0 AS b
+    UNION ALL SELECT 'a' AS a, 1.0 AS b
+    UNION ALL SELECT 'b' AS a, 1.0 AS b
+    ) y
+GROUP BY a;
+SELECT reservoir_quantile(r, r)  from quantile;
+SELECT reservoir_quantile(r, NULL)  from quantile;
+SELECT reservoir_quantile(r, r, r)  from quantile;
+SELECT reservoir_quantile(r, 0.9, NULL)  from quantile;
+SELECT reservoir_quantile(r, 0.9, r)  from quantile;
+SELECT reservoir_quantile(r, random()::float)  from quantile;
+SELECT reservoir_quantile(r, 0.9, random()::float)  from quantile;

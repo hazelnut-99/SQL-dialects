@@ -1,0 +1,60 @@
+SET default_null_order='nulls_first';;
+pragma enable_verification;
+pragma verify_parallelism;
+CREATE TABLE strings(
+	g INTEGER,
+	x VARCHAR,
+	y VARCHAR
+);;
+INSERT INTO strings VALUES
+	(1,'a','/'),
+	(1,'b','-'),
+	(2,'i','/'),
+	(2,NULL,'-'),
+	(2,'j','+'),
+	(3,'p','/'),
+	(4,'x','/'),
+	(4,'y','-'),
+	(4,'z','+');;
+SELECT g, STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+SELECT g, STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+;
+SELECT g, STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+SELECT g, string_agg(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE (g < 4)) FROM strings GROUP BY g ORDER BY 1;
+;
+;
+;
+SELECT g, STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+SELECT g, count(y), STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4), sum(1)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+SELECT g, count(y), STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4), sum(1)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+;
+SELECT g, count(y), STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4), sum(1)
+FROM strings
+GROUP BY g
+ORDER BY 1;
+SELECT g, count(y), string_agg(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE (g < 4)), sum(1) FROM strings GROUP BY g ORDER BY 1;
+;
+;
+;
+SELECT g, count(y), STRING_AGG(DISTINCT y, ',' ORDER BY y DESC) FILTER (WHERE g < 4), sum(1)
+FROM strings
+GROUP BY g
+ORDER BY 1;

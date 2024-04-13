@@ -1,0 +1,238 @@
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER, j INTEGER, k INTEGER);;
+INSERT INTO integers VALUES (2, 3, 5), (4, 5, 6), (2, 7, 6);;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j DESC;;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j DESC;
+;
+;
+;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j;;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j;
+;
+;
+;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY i, j;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j DESC;;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j DESC;
+;
+;
+;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j DESC;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j;;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j;;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j;
+;
+;
+;
+;
+SELECT DISTINCT ON (i) i, j FROM integers ORDER BY j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j) AS k FROM integers ORDER BY i, j;;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON (i) j) AS k FROM integers ORDER BY i, j;
+;
+;
+;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, j DESC) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, j DESC) AS k FROM integers ORDER BY i, j;;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, j DESC) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON (i) j ORDER BY i, j DESC) AS k FROM integers ORDER BY i, j;
+;
+;
+;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, j DESC) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, k) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, k) AS k FROM integers ORDER BY i, j;;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, k) AS k FROM integers ORDER BY i, j;;
+SELECT i, j, (SELECT DISTINCT ON (i) j ORDER BY i, k) AS k FROM integers ORDER BY i, j;
+;
+;
+;
+;
+SELECT i, j, (SELECT DISTINCT ON(i) j ORDER BY i, k) AS k FROM integers ORDER BY i, j;;
+INSERT INTO integers VALUES (2, 3, 7), (4, 5, 11);;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k ASC;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k ASC;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k ASC;
+SELECT DISTINCT ON (i) i, j, k FROM integers ORDER BY i, j ASC, k ASC;
+;
+;
+;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k ASC;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k DESC;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k DESC;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k DESC;
+SELECT DISTINCT ON (i) i, j, k FROM integers ORDER BY i, j ASC, k DESC;
+;
+;
+;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j ASC, k DESC;
+INSERT INTO integers VALUES (2, NULL, 27), (4, 88, NULL);;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k DESC NULLS LAST;;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k DESC NULLS LAST;;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k DESC NULLS LAST;;
+SELECT DISTINCT ON (i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k DESC NULLS LAST;
+;
+;
+;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k DESC NULLS LAST;;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k NULLS FIRST;;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k NULLS FIRST;;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k NULLS FIRST;;
+SELECT DISTINCT ON (i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k NULLS FIRST;
+;
+;
+;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, j NULLS FIRST, k NULLS FIRST;;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, k NULLS FIRST, j NULLS FIRST;;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, k NULLS FIRST, j NULLS FIRST;;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, k NULLS FIRST, j NULLS FIRST;;
+SELECT DISTINCT ON (i) i, j, k FROM integers ORDER BY i, k NULLS FIRST, j NULLS FIRST;
+;
+;
+;
+;
+SELECT DISTINCT ON(i) i, j, k FROM integers ORDER BY i, k NULLS FIRST, j NULLS FIRST;;
+create table foo(a real, b real);;
+insert into foo values (1, 69), (1, 420), (2, 69), (2, 420);;
+select distinct on(a) a, b from foo order by b asc;;
+select distinct on(a) a, b from foo order by b asc;;
+;
+select distinct on(a) a, b from foo order by b asc;;
+SELECT DISTINCT ON (a) a, b FROM foo ORDER BY b ASC;
+;
+;
+;
+;
+select distinct on(a) a, b from foo order by b asc;;
+select distinct on(a) a, b from foo order by b desc;;
+select distinct on(a) a, b from foo order by b desc;;
+;
+select distinct on(a) a, b from foo order by b desc;;
+SELECT DISTINCT ON (a) a, b FROM foo ORDER BY b DESC;
+;
+;
+;
+;
+select distinct on(a) a, b from foo order by b desc;;
+CREATE TABLE example (
+    id               INT,
+    person_id        INT,
+    address_id       INT,
+    effective_date   DATE
+);;
+INSERT INTO
+    example (id, person_id, address_id, effective_date)
+VALUES
+    (1, 2, 1, '2000-01-01'),  -- Moved to first house
+    (5, 2, 2, '2004-08-19'),  -- Went to uni
+    (9, 2, 1, '2007-06-12'),  -- Moved back home
+    (2, 4, 3, '2007-05-18'),  -- Moved to first house
+    (3, 4, 4, '2016-02-09')   -- Moved to new house
+;;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date ASC
+;;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date ASC
+;;
+;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date ASC
+;;
+SELECT DISTINCT ON (person_id) * FROM example ORDER BY person_id, effective_date ASC;
+;
+;
+;
+;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date ASC
+;;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date DESC
+;;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date DESC
+;;
+;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date DESC
+;;
+SELECT DISTINCT ON (person_id) * FROM example ORDER BY person_id, effective_date DESC;
+;
+;
+;
+;
+SELECT DISTINCT ON (person_id)
+    *
+FROM
+    example
+ORDER BY
+    person_id,
+    effective_date DESC
+;;

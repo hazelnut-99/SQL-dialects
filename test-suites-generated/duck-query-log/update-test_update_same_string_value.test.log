@@ -1,0 +1,9 @@
+CREATE TABLE test (a VARCHAR);;
+INSERT INTO test VALUES ('hello'), ('world');
+BEGIN TRANSACTION;;
+UPDATE test SET a='test' WHERE a='hello';;
+SELECT * FROM test ORDER BY a;
+UPDATE test SET a='test2' WHERE a='world';;
+SELECT * FROM test ORDER BY a;
+COMMIT;;
+SELECT * FROM test ORDER BY a;

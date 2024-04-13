@@ -1,0 +1,15 @@
+PRAGMA enable_verification;
+select count(*)
+group by grouping sets ((), ());
+select count(*)
+group by grouping sets ((), ());
+;
+select count(*)
+group by grouping sets ((), ());
+SELECT count_star() GROUP BY GROUPING SETS ((),());
+;
+;
+;
+;
+select count(*)
+group by grouping sets ((), ());

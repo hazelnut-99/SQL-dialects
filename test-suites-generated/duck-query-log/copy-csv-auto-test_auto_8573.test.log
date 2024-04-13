@@ -1,0 +1,3 @@
+PRAGMA verify_parallelism;
+SELECT typeof(bignumber), typeof(bignumber::DECIMAL(25,3)) FROM read_csv('data/csv/big_number.csv', COLUMNS={'bignumber': 'DECIMAL(25,3)'}, QUOTE='"', DELIM=',');;
+SELECT typeof(bignumber), typeof(bignumber::DECIMAL(25,3)) FROM read_csv_auto('data/csv/big_number.csv', COLUMNS={'bignumber': 'DECIMAL(25,3)'}, QUOTE='"', DELIM=',');;

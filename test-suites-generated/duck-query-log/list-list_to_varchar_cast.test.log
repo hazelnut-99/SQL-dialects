@@ -1,1 +1,0 @@
-SELECT concat_ws('.', list_reverse(string_split('1.2..3', '.')));

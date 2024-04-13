@@ -1,0 +1,9 @@
+PRAGMA enable_verification;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;
+DROP TABLE integers;;

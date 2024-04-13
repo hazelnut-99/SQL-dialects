@@ -1,0 +1,45 @@
+PRAGMA enable_verification;
+create table t (i int);;
+insert into t values (1),(2),(3),(4),(4);;
+select
+  array(select distinct i from t order by i desc) as a,
+  array(select distinct i from t order by i desc) as b,
+  array(select distinct i from t order by i desc) as c;;
+select
+  array(select distinct i from t order by i desc) as a,
+  array(select distinct i from t order by i desc) as b,
+  array(select distinct i from t order by i desc) as c;;
+;
+select
+  array(select distinct i from t order by i desc) as a,
+  array(select distinct i from t order by i desc) as b,
+  array(select distinct i from t order by i desc) as c;;
+SELECT (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i DESC) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i DESC) END FROM (SELECT DISTINCT i FROM t ORDER BY i DESC)) AS a, (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i DESC) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i DESC) END FROM (SELECT DISTINCT i FROM t ORDER BY i DESC)) AS b, (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i DESC) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i DESC) END FROM (SELECT DISTINCT i FROM t ORDER BY i DESC)) AS c;
+;
+;
+;
+;
+select
+  array(select distinct i from t order by i desc) as a,
+  array(select distinct i from t order by i desc) as b,
+  array(select distinct i from t order by i desc) as c;;
+select array(select unnest(l) AS i order by i desc nulls last) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+select array(select unnest(l) AS i order by i desc nulls last) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+;
+select array(select unnest(l) AS i order by i desc nulls last) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+SELECT (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i DESC NULLS LAST) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i DESC NULLS LAST) END FROM (SELECT unnest(l) AS i ORDER BY i DESC NULLS LAST)) AS a FROM (SELECT * FROM (VALUES (main.list_value(NULL, 1, 2, 3, 4)), (main.list_value(5, 6, NULL, 7, 8)), (main.list_value()), (main.list_value(10, 11, 12))) AS valueslist) AS t(l);
+;
+;
+;
+;
+select array(select unnest(l) AS i order by i desc nulls last) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+select array(select unnest(l) AS i order by i desc nulls first) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+select array(select unnest(l) AS i order by i desc nulls first) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+;
+select array(select unnest(l) AS i order by i desc nulls first) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;
+SELECT (SELECT CASE  WHEN ((array_agg(COLUMNS(*) ORDER BY i DESC NULLS FIRST) IS NULL)) THEN (list_value()) ELSE array_agg(COLUMNS(*) ORDER BY i DESC NULLS FIRST) END FROM (SELECT unnest(l) AS i ORDER BY i DESC NULLS FIRST)) AS a FROM (SELECT * FROM (VALUES (main.list_value(NULL, 1, 2, 3, 4)), (main.list_value(5, 6, NULL, 7, 8)), (main.list_value()), (main.list_value(10, 11, 12))) AS valueslist) AS t(l);
+;
+;
+;
+;
+select array(select unnest(l) AS i order by i desc nulls first) as a from (values ([NULL, 1, 2, 3, 4]), ([5, 6, NULL, 7, 8]), ([]), ([10, 11, 12])) t(l);;

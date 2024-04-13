@@ -1,5 +1,5 @@
-PRAGMA enable_verification
-CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);;
 INSERT INTO monthly_sales VALUES
     (1, 10000, 'JAN'),
     (1, 400, 'JAN'),
@@ -16,75 +16,75 @@ INSERT INTO monthly_sales VALUES
     (1, 8000, 'APR'),
     (1, 10000, 'APR'),
     (2, 800, 'APR'),
-    (2, 4500, 'APR');
+    (2, 4500, 'APR');;
 CREATE TYPE unique_months AS ENUM (SELECT DISTINCT month FROM monthly_sales ORDER BY
-	CASE month WHEN 'JAN' THEN 1 WHEN 'FEB' THEN 2 WHEN 'MAR' THEN 3 ELSE 4 END);
+	CASE month WHEN 'JAN' THEN 1 WHEN 'FEB' THEN 2 WHEN 'MAR' THEN 3 ELSE 4 END);;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_months)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_months)
       AS p
-  ORDER BY EMPID;
-
+  ORDER BY EMPID;;
+;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_months)
       AS p
-  ORDER BY EMPID;
-SELECT * FROM monthly_sales PIVOT (sum(amount) FOR ("MONTH") IN unique_months) AS p ORDER BY EMPID
-
-
-
-
+  ORDER BY EMPID;;
+SELECT * FROM monthly_sales PIVOT (sum(amount) FOR ("MONTH") IN unique_months) AS p ORDER BY EMPID;
+;
+;
+;
+;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_months)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_monthsx)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_monthsx)
       AS p
-  ORDER BY EMPID;
-
+  ORDER BY EMPID;;
+;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_monthsx)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN unique_monthsx)
       AS p
-  ORDER BY EMPID;
-CREATE TYPE not_an_enum AS VARCHAR;
+  ORDER BY EMPID;;
+CREATE TYPE not_an_enum AS VARCHAR;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN not_an_enum)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN not_an_enum)
       AS p
-  ORDER BY EMPID;
-
+  ORDER BY EMPID;;
+;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN not_an_enum)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;
 SELECT *
   FROM monthly_sales
     PIVOT(SUM(amount) FOR MONTH IN not_an_enum)
       AS p
-  ORDER BY EMPID;
+  ORDER BY EMPID;;

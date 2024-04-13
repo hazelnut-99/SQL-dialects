@@ -1,0 +1,30 @@
+PRAGMA enable_verification;
+CREATE TABLE person (
+    name text
+);;
+insert into person values ('Pedro'), ('Mark'), ('Hannes'), ('Pedro'), ('Pedro'), ('Mark');
+CREATE TYPE name_enum AS ENUM ('Pedro', 'Mark');;
+ALTER TABLE person ALTER name TYPE name_enum;
+DROP TYPE name_enum;
+CREATE TYPE name_enum AS ENUM ('Pedro', 'Mark', 'Hannes');;
+ALTER TABLE person ALTER name TYPE name_enum;
+select * from person;
+select * from person;
+;
+select * from person;
+SELECT * FROM person;
+;
+;
+;
+;
+select * from person;
+select typeof(name) from person limit 1;
+select typeof(name) from person limit 1;
+;
+select typeof(name) from person limit 1;
+SELECT typeof("name") FROM person LIMIT 1;
+;
+;
+;
+;
+select typeof(name) from person limit 1;

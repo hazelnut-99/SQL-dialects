@@ -1,0 +1,52 @@
+PRAGMA enable_verification;
+CREATE TABLE test (
+    foo INTEGER,
+    bar INTEGER GENERATED ALWAYS AS (foo+1) VIRTUAL,
+    foobar INTEGER DEFAULT 5
+);;
+INSERT INTO test VALUES (5, DEFAULT);
+INSERT INTO test VALUES (10, 3);;
+SELECT * FROM test;;
+SELECT * FROM test;;
+;
+SELECT * FROM test;;
+SELECT * FROM test;
+;
+;
+;
+;
+SELECT * FROM test;;
+UPDATE test SET bar = 5;
+UPDATE test SET foo=3;;
+SELECT * FROM test;;
+SELECT * FROM test;;
+;
+SELECT * FROM test;;
+SELECT * FROM test;
+;
+;
+;
+;
+SELECT * FROM test;;
+UPDATE test SET foo=9001 WHERE (foobar == 3);;
+SELECT * FROM test;;
+SELECT * FROM test;;
+;
+SELECT * FROM test;;
+SELECT * FROM test;
+;
+;
+;
+;
+SELECT * FROM test;;
+UPDATE test SET foo=0 WHERE (bar < 9000);;
+SELECT * FROM test;;
+SELECT * FROM test;;
+;
+SELECT * FROM test;;
+SELECT * FROM test;
+;
+;
+;
+;
+SELECT * FROM test;;

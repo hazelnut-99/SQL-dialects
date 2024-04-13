@@ -1,32 +1,32 @@
-PRAGMA enable_verification
-CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
-INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
-INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
-INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
-INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
-INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
-
-
-
-
-
-SELECT * FROM cities PIVOT (avg(Population) FOR ((Country = 'NL')) IN __pivot_enum_0_0 GROUP BY name)
-
-
-
-
-
-pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
-pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
-
-pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
-SELECT * FROM cities PIVOT (avg(Population) FOR ((Country = 'NL')) IN (false, true) GROUP BY name)
-
-
-
-
-pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);;
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);;
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);;
+;
+;
+;
+;
+;
+SELECT * FROM cities PIVOT (avg(Population) FOR ((Country = 'NL')) IN __pivot_enum_0_0 GROUP BY name);
+;
+;
+;
+;
+;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;;
+;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;;
+SELECT * FROM cities PIVOT (avg(Population) FOR ((Country = 'NL')) IN (false, true) GROUP BY name);
+;
+;
+;
+;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;;

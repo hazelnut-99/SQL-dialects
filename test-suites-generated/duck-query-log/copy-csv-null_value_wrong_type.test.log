@@ -1,0 +1,11 @@
+PRAGMA enable_verification;
+describe from 'data/csv/null_mismatch.csv';
+describe from 'data/csv/null_mismatch.csv';
+;
+describe from 'data/csv/null_mismatch.csv';
+DESCRIBE (SELECT * FROM "data/csv/null_mismatch.csv");
+;
+;
+;
+;
+describe from 'data/csv/null_mismatch.csv';

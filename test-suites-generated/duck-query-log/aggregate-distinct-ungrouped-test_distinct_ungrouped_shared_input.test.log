@@ -1,0 +1,2 @@
+create table tbl as select i%50 as i from range(1000000) tbl(i);;
+select count(distinct i), min(distinct i), max(distinct i), sum(distinct i), product(distinct i) from tbl;;

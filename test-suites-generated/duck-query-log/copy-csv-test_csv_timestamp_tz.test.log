@@ -1,0 +1,14 @@
+pragma enable_verification;
+copy (
+select '2021-05-25 04:55:03.382494 UTC'::timestamp as ts, '2021-05-25 04:55:03.382494 UTC'::timestamptz as tstz
+) to 'duckdb_unittest_tempdir/54539/timestamps.csv' ( timestampformat '%A');;
+select * from read_csv_auto('duckdb_unittest_tempdir/54539/timestamps.csv');;
+select * from read_csv_auto('duckdb_unittest_tempdir/54539/timestamps.csv');;
+;
+select * from read_csv_auto('duckdb_unittest_tempdir/54539/timestamps.csv');;
+SELECT * FROM read_csv_auto('duckdb_unittest_tempdir/54539/timestamps.csv');
+;
+;
+;
+;
+select * from read_csv_auto('duckdb_unittest_tempdir/54539/timestamps.csv');;

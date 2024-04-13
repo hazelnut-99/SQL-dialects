@@ -1,0 +1,2 @@
+SET immediate_transaction_mode=true;
+PRAGMA enable_verification;

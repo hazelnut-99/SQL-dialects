@@ -1,1 +1,0 @@
-INSERT INTO t50 VALUES(10,10,'table t50 row 10');

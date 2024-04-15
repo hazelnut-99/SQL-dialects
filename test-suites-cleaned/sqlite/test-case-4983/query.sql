@@ -1,1 +1,5 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT d-e
+  FROM t1
+ WHERE (e>a AND e<b)
+   AND e+d BETWEEN a+b-10 AND c+130
+ ORDER BY 1;

@@ -1,1 +1,4 @@
-CREATE INDEX t3a3 ON t3(a3);
+SELECT a1+a1, b3
+  FROM t3, t1
+ WHERE a3 in (190,548,383,396,70,262,829)
+   AND a1 in (820,637,109);

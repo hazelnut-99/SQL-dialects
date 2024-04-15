@@ -1,1 +1,4 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT d7, c5
+  FROM t5, t7
+ WHERE (e7=455 OR 561=e7 OR e7=89)
+   AND 348=c5;

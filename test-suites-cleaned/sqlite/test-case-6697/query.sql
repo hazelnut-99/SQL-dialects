@@ -1,1 +1,4 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT b9, b7+142
+  FROM t7, t9
+ WHERE e7 in (254,826,301,282)
+   AND e9=e7;

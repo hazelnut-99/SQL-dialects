@@ -1,1 +1,0 @@
-INSERT INTO t43 VALUES(10,7,'table t43 row 10');

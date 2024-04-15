@@ -1,1 +1,6 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT b5*782, x1, a6+d6, b4+824
+  FROM t1, t6, t5, t4
+ WHERE b4 in (23,735,748,644,167,892,847)
+   AND 598=c5
+   AND a1=294
+   AND (d6=2 OR d6=366 OR d6=161 OR d6=991);

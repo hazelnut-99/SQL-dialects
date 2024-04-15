@@ -1,1 +1,4 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT d-e
+  FROM t1
+ WHERE c BETWEEN b-2 AND d+2
+   AND b>c;

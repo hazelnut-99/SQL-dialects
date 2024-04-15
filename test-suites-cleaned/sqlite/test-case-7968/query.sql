@@ -1,1 +1,4 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT a9+766+c9, e5+171
+  FROM t9, t5
+ WHERE c5 in (668,805,579)
+   AND 439=d9;

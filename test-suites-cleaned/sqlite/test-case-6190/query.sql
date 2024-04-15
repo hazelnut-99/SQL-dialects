@@ -1,1 +1,7 @@
-CREATE INDEX t1i4 ON t1(e1,x1);
+SELECT d9 FROM t9
+   WHERE (a9=559 OR e9=868)
+INTERSECT
+  SELECT b5 FROM t5
+   WHERE NOT ((b5=205)
+           OR (d5=537 AND b5=674 AND 975=e5)
+           OR (373=a5 AND b5=231 AND e5=549));

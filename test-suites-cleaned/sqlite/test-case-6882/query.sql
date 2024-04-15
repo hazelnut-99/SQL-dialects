@@ -1,1 +1,5 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT a7, e1, d3+966+e1
+  FROM t3, t7, t1
+ WHERE 296=a3
+   AND a1 in (862,521,88,380,477)
+   AND e7=156;

@@ -1,1 +1,12 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT c6 FROM t6
+   WHERE (a6=2)
+      OR (740=a6 OR 850=b6)
+      OR (132=a6 OR 915=b6 OR a6=238)
+UNION
+  SELECT b9 FROM t9
+   WHERE (d9=439)
+      OR e9 in (987,944,418,107,788)
+      OR (c9=923 OR c9=240)
+EXCEPT
+  SELECT c8 FROM t8
+   WHERE NOT ((493=b8));

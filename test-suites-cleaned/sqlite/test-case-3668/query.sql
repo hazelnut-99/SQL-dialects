@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT abs(a),
+       a+b*2,
+       c-d,
+       abs(b-c),
+       a+b*2+c*3,
+       a-b
+  FROM t1
+ WHERE b>c;

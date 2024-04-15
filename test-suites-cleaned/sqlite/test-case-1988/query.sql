@@ -1,1 +1,7 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a+b*2,
+       c,
+       e,
+       b
+  FROM t1
+ WHERE (e>a AND e<b)
+    OR coalesce(a,b,c,d,e)<>0;

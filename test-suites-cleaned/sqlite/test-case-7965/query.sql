@@ -1,1 +1,5 @@
-CREATE INDEX t3a3 ON t3(a3);
+SELECT d9, c4, b1
+  FROM t9, t1, t4
+ WHERE b4=551
+   AND a1=314
+   AND (258=a9 OR a9=474);

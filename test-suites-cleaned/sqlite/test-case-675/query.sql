@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a+b*2+c*3,
+       d-e,
+       a-b
+  FROM t1
+ WHERE (e>a AND e<b)
+    OR d>e
+    OR (e>c OR e<d)
+ ORDER BY 2,3,1;

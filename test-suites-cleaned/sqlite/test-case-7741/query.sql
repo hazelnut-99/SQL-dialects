@@ -1,1 +1,4 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT x1, c9+b1
+  FROM t9, t1
+ WHERE e9 in (968,195,801,944,245)
+   AND 746=a1;

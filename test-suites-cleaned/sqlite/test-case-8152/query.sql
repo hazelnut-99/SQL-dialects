@@ -1,1 +1,6 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT x29,x31,x51,x55
+  FROM t51,t29,t31,t55
+ WHERE a51=b31
+   AND a29=6
+   AND a29=b51
+   AND b55=a31;

@@ -1,1 +1,4 @@
-INSERT INTO t9 VALUES(907,251,60,164,245,'table tn9 row 98');
+SELECT x7, x6
+  FROM t7, t6
+ WHERE e7=506
+   AND 269=d6;

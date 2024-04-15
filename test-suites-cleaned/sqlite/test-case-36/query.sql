@@ -1,1 +1,7 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT abs(b-c),
+       a,
+       a+b*2,
+       CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+        WHEN a<b+3 THEN 333 ELSE 444 END
+  FROM t1
+ ORDER BY 1,4,3,2;

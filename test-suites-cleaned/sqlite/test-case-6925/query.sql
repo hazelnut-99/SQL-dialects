@@ -1,1 +1,4 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT b4+471, a8*599
+  FROM t4, t8
+ WHERE b4=635
+   AND e8=455;

@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a+b*2+c*3,
+       d,
+       a+b*2,
+       c-d,
+       e,
+       b-c
+  FROM t1
+ ORDER BY 4,2,5;

@@ -1,1 +1,35 @@
-CREATE INDEX t4b4 ON t4(b4);
+SELECT x30,x22,x3,x23,x47,x9,x16,x1,x34,x28,x8,x59,x12,x38,x54,x61,x20,x45,x4,x7,x41,x53,x46,x15,x64,x24,x17,x44,x21,x60,x35,x49,x19
+  FROM t4,t60,t12,t54,t61,t22,t35,t47,t23,t7,t41,t8,t9,t3,t17,t20,t53,t24,t21,t46,t19,t30,t15,t16,t45,t64,t59,t44,t38,t34,t49,t28,t1
+ WHERE a1=b9
+   AND b22=a30
+   AND a17=b53
+   AND a61=10
+   AND b34=a3
+   AND b15=a35
+   AND b28=a19
+   AND b23=a46
+   AND b8=a49
+   AND a23=b3
+   AND a12=b30
+   AND a8=b59
+   AND b49=a44
+   AND a34=b38
+   AND a53=b19
+   AND a20=b41
+   AND b47=a15
+   AND a24=b21
+   AND b17=a54
+   AND a9=b44
+   AND a4=b16
+   AND b12=a45
+   AND b7=a41
+   AND b20=a61
+   AND b54=a16
+   AND b24=a38
+   AND b46=a59
+   AND a60=b4
+   AND b64=a28
+   AND b1=a22
+   AND b60=a47
+   AND a7=b35
+   AND a64=b45;

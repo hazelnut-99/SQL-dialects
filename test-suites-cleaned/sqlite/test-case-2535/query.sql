@@ -1,1 +1,11 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT d-e,
+       e,
+       a+b*2,
+       a+b*2+c*3+d*4,
+       abs(a),
+       abs(b-c)
+  FROM t1
+ WHERE c>d
+    OR d NOT BETWEEN 110 AND 150
+    OR a>b
+ ORDER BY 1,3,6,4,2;

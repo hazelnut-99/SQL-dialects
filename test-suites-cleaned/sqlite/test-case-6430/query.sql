@@ -1,1 +1,5 @@
-INSERT INTO t9 VALUES(907,251,60,164,245,'table tn9 row 98');
+SELECT a2*628+b1, x1, c5
+  FROM t5, t1, t2
+ WHERE (696=c5 OR c5=799 OR c5=152)
+   AND a1 in (109,4,702,868,825,294)
+   AND 148=c2;

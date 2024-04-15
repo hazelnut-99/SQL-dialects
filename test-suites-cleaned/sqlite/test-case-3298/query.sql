@@ -1,1 +1,6 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT c,
+       a,
+       a+b*2+c*3
+  FROM t1
+ WHERE (c<=d-2 OR c>=d+2)
+   AND d NOT BETWEEN 110 AND 150;

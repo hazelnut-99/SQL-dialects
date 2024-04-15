@@ -1,1 +1,11 @@
-INSERT INTO t9 VALUES(907,251,60,164,245,'table tn9 row 98');
+SELECT a9 FROM t9
+   WHERE (295=a9 AND 525=d9)
+      OR (a9=349 OR 685=a9)
+      OR e9 in (35,418,19)
+EXCEPT
+  SELECT a7 FROM t7
+   WHERE NOT ((a7=350 AND 923=b7 AND 524=d7)
+           OR (c7=341))
+EXCEPT
+  SELECT a6 FROM t6
+   WHERE NOT ((e6=24 OR b6=974 OR b6=989));

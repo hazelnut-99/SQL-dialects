@@ -1,1 +1,0 @@
-INSERT INTO t32 VALUES(10,8,'table t32 row 10');

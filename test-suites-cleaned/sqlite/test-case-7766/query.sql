@@ -1,1 +1,5 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT x5, a8, b4*473
+  FROM t5, t8, t4
+ WHERE b4 in (387,271,33,608,40)
+   AND e8=41
+   AND 147=c5;

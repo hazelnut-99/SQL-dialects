@@ -1,1 +1,6 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT x2, e5+917+c2, d9, e7+e9
+  FROM t5, t7, t9, t2
+ WHERE (156=e7 OR 945=e7 OR 439=e7)
+   AND d2 in (772,405,525,847,249)
+   AND (c5=570 OR 44=c5)
+   AND e9 in (844,486,388,239,263,127);

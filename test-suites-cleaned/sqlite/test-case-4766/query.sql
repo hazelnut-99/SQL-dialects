@@ -1,1 +1,5 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT abs(a),
+       d-e
+  FROM t1
+ WHERE b>c
+   AND (a>b-2 AND a<b+2);

@@ -1,1 +1,7 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT c,
+       abs(b-c),
+       b,
+       (a+b+c+d+e)/5,
+       b-c
+  FROM t1
+ WHERE (e>c OR e<d);

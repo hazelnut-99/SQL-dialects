@@ -1,1 +1,6 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a-b
+  FROM t1
+ WHERE d NOT BETWEEN 110 AND 150
+   AND (e>c OR e<d)
+   AND a>b
+ ORDER BY 1;

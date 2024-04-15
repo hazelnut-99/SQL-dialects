@@ -1,1 +1,9 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a+b*2+c*3+d*4,
+       (a+b+c+d+e)/5,
+       abs(b-c),
+       CASE WHEN a<b-3 THEN 111 WHEN a<=b THEN 222
+        WHEN a<b+3 THEN 333 ELSE 444 END
+  FROM t1
+ WHERE e+d BETWEEN a+b-10 AND c+130
+    OR (e>c OR e<d)
+    OR (c<=d-2 OR c>=d+2);

@@ -1,1 +1,5 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT x6, a9, d2+a6
+  FROM t2, t9, t6
+ WHERE a2=651
+   AND 223=d6
+   AND (c9=975 OR c9=807 OR c9=39 OR c9=688);

@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
+       (SELECT count(*) FROM t1 AS x WHERE x.b<t1.b),
+       (SELECT count(*) FROM t1 AS x WHERE x.c>t1.c AND x.d<t1.d),
+       d
+  FROM t1
+ WHERE (e>c OR e<d)
+   AND c>d
+   AND b>c;

@@ -1,1 +1,4 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT a1+a1, b3
+  FROM t1, t3
+ WHERE a1 in (820,637,109)
+   AND a3 in (190,548,383,396,70,262,829);

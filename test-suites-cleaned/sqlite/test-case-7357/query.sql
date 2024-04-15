@@ -1,1 +1,4 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT x8, e9+131
+  FROM t9, t8
+ WHERE e9=383
+   AND 561=e8;

@@ -1,1 +1,4 @@
-CREATE INDEX t2e2 ON t2(e2);
+SELECT d7+e7, d6+b7
+  FROM t7, t6
+ WHERE d6 in (172,428,993,674,846,613,405)
+   AND e7=d6;

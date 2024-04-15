@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT c-d,
+       abs(b-c),
+       a+b*2+c*3+d*4,
+       a+b*2+c*3,
+       d-e
+  FROM t1
+ WHERE c BETWEEN b-2 AND d+2
+ ORDER BY 3,1,4,2,5;

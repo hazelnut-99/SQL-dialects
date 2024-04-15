@@ -1,1 +1,5 @@
-CREATE INDEX t3a3 ON t3(a3);
+SELECT b7, d5+18+d5, c2
+  FROM t5, t7, t2
+ WHERE c5=733
+   AND 460=e7
+   AND a2 in (336,268,304,574,980);

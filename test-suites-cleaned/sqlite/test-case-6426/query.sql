@@ -1,1 +1,5 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT c5, a1, e4*501
+  FROM t4, t1, t5
+ WHERE b4=267
+   AND a1 in (371,622,283)
+   AND c5 in (50,185,733,585);

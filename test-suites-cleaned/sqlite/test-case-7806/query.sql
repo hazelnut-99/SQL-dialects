@@ -1,1 +1,5 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT d3+d3, a4+990, e7+833
+  FROM t7, t3, t4
+ WHERE b4 in (721,826,407,634,589,644)
+   AND a3=608
+   AND 122=e7;

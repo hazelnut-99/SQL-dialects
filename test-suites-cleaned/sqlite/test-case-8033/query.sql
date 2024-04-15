@@ -1,1 +1,5 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT d8+606, b7, c2+418
+  FROM t2, t8, t7
+ WHERE (736=e8 OR e8=881 OR 349=e8)
+   AND e7 in (976,844,782)
+   AND e2 in (40,554,783);

@@ -1,1 +1,28 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT x57,x44,x27,x7,x37,x47,x23,x19,x60,x55,x24,x40,x17,x15,x30,x28,x33,x35,x5,x54,x45,x56,x25,x50,x26,x51
+  FROM t40,t55,t56,t27,t45,t7,t57,t51,t25,t26,t35,t17,t24,t54,t50,t30,t28,t44,t15,t19,t60,t33,t47,t5,t37,t23
+ WHERE a33=b35
+   AND a17=b54
+   AND b17=a23
+   AND a47=b51
+   AND a28=b57
+   AND a15=b50
+   AND a50=b25
+   AND a24=b60
+   AND a57=b30
+   AND a7=b56
+   AND a19=b44
+   AND a44=b24
+   AND a27=b19
+   AND a55=b37
+   AND b47=a56
+   AND a23=1
+   AND b40=a26
+   AND a45=b55
+   AND b33=a37
+   AND a51=b5
+   AND a54=b7
+   AND a25=b26
+   AND a5=b27
+   AND a35=b28
+   AND b45=a60
+   AND b15=a30;

@@ -1,1 +1,4 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT x1, d9
+  FROM t1, t9
+ WHERE 281=a1
+   AND c9=232;

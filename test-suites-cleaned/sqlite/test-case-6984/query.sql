@@ -1,1 +1,4 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT c4, d9*288+d4
+  FROM t9, t4
+ WHERE b4 in (921,603,68)
+   AND 818=b9;

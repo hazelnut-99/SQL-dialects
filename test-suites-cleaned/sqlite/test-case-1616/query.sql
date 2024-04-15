@@ -1,1 +1,5 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT abs(b-c),
+       d-e,
+       b,
+       c
+  FROM t1;

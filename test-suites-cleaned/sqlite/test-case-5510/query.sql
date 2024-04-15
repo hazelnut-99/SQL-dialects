@@ -1,1 +1,12 @@
-CREATE INDEX t2e2 ON t2(e2);
+SELECT e1 FROM t1
+   WHERE (776=a1 OR 139=e1 OR 382=a1)
+      OR (b1=283)
+      OR (885=d1 OR 636=c1)
+UNION ALL
+  SELECT c8 FROM t8
+   WHERE (c8=965 OR 297=c8)
+      OR (b8=725 OR b8=145)
+EXCEPT
+  SELECT e3 FROM t3
+   WHERE NOT ((d3=683 AND a3=396)
+           OR (317=b3));

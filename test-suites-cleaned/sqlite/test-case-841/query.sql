@@ -1,1 +1,7 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT c-d,
+       d,
+       e
+  FROM t1
+ WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+   AND d NOT BETWEEN 110 AND 150
+ ORDER BY 1,2,3;

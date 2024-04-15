@@ -1,1 +1,4 @@
-INSERT INTO t9 VALUES(907,251,60,164,245,'table tn9 row 98');
+SELECT e9, a5+37
+  FROM t5, t9
+ WHERE (e9=19 OR 845=e9 OR 278=e9)
+   AND c5=585;

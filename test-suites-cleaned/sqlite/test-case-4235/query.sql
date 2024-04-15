@@ -1,1 +1,8 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT d,
+       b-c,
+       (a+b+c+d+e)/5
+  FROM t1
+ WHERE d>e
+   AND (c<=d-2 OR c>=d+2)
+   AND (e>c OR e<d)
+ ORDER BY 1,3;

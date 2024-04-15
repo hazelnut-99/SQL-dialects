@@ -1,1 +1,7 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT b-c,
+       a-b,
+       d-e
+  FROM t1
+ WHERE b IS NOT NULL
+   AND (e>a AND e<b)
+   AND (c<=d-2 OR c>=d+2);

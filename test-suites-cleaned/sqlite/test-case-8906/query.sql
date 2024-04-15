@@ -1,1 +1,0 @@
-CREATE INDEX t3a3 ON t3(a3);

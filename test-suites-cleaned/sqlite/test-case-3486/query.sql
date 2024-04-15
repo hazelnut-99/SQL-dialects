@@ -1,1 +1,5 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a-b,
+       a+b*2+c*3
+  FROM t1
+ WHERE e+d BETWEEN a+b-10 AND c+130
+    OR (c<=d-2 OR c>=d+2);

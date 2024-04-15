@@ -1,1 +1,9 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT a+b*2,
+       a-b,
+       b,
+       c-d,
+       e,
+       b-c
+  FROM t1
+ WHERE EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
+    OR (e>a AND e<b);

@@ -1,1 +1,19 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT x3,x9,x54,x39,x7,x5,x21,x46,x51,x64,x4,x59,x41,x38,x14,x11,x29
+  FROM t59,t38,t7,t11,t46,t3,t21,t9,t5,t51,t64,t14,t41,t29,t39,t4,t54
+ WHERE b3=a59
+   AND b5=a29
+   AND a64=b14
+   AND b11=a38
+   AND b59=a46
+   AND a7=b41
+   AND a54=10
+   AND a21=b4
+   AND a5=b7
+   AND b29=a9
+   AND b39=a54
+   AND b9=a14
+   AND a39=b46
+   AND a51=b38
+   AND b51=a3
+   AND a11=b21
+   AND b64=a4;

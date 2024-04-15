@@ -1,1 +1,4 @@
-CREATE INDEX t8all ON t8(e8 DESC, d8 ASC, c8 DESC, b8 ASC, a8 DESC);
+SELECT b3*416, a7
+  FROM t3, t7
+ WHERE a3=727
+   AND 460=e7;

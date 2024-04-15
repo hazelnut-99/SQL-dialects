@@ -1,1 +1,0 @@
-CREATE INDEX t6d6 ON t6(d6);

@@ -1,1 +1,5 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT x6, a1*716, d8
+  FROM t1, t6, t8
+ WHERE 617=e8
+   AND d6=a8
+   AND a1 in (810,147,461,536,674,231,607,738);

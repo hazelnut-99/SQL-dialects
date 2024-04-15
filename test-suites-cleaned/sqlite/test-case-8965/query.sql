@@ -1,1 +1,0 @@
-CREATE INDEX t1i4 ON t1(e1,x1);

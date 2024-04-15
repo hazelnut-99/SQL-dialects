@@ -1,1 +1,25 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT x20,x8,x49,x36,x27,x38,x2,x14,x31,x53,x62,x63,x32,x57,x42,x46,x40,x39,x3,x56,x55,x15,x33
+  FROM t38,t56,t39,t46,t33,t36,t63,t20,t55,t3,t32,t42,t40,t27,t57,t15,t2,t62,t53,t8,t14,t31,t49
+ WHERE b49=a56
+   AND b20=a15
+   AND b57=a63
+   AND b55=a32
+   AND b39=a42
+   AND a8=b63
+   AND a20=b36
+   AND b2=a49
+   AND a31=10
+   AND b42=a40
+   AND a27=b14
+   AND a62=b33
+   AND a55=b3
+   AND a2=b53
+   AND b8=a31
+   AND a33=b38
+   AND a38=b40
+   AND b32=a57
+   AND b62=a46
+   AND b15=a53
+   AND b56=a39
+   AND a14=b46
+   AND a3=b27;

@@ -1,1 +1,19 @@
-CREATE INDEX t1i4 ON t1(e1,x1);
+SELECT x61,x25,x10,x4,x31,x6,x60,x7,x51,x24,x23,x27,x3,x44,x17,x12,x56
+  FROM t24,t56,t27,t44,t31,t23,t12,t6,t10,t17,t51,t7,t4,t3,t61,t60,t25
+ WHERE a27=b6
+   AND b4=a10
+   AND a56=b44
+   AND a4=b24
+   AND a6=b51
+   AND b61=a3
+   AND b17=a24
+   AND b7=a31
+   AND b60=a51
+   AND a25=b27
+   AND a60=b10
+   AND b25=a7
+   AND b12=a61
+   AND b3=a44
+   AND a17=b56
+   AND a31=4
+   AND a12=b23;

@@ -1,1 +1,9 @@
-CREATE INDEX t3a3 ON t3(a3);
+SELECT e3 FROM t3
+   WHERE (a3=129 AND e3=794)
+      OR (e3=818 OR d3=1 OR b3=505)
+      OR d3 in (538,168,102,967,866,368)
+INTERSECT
+  SELECT d1 FROM t1
+   WHERE NOT ((b1=42 OR c1=441 OR a1=371)
+           OR (a1=513 AND 885=d1 AND 736=c1 AND 284=e1 AND 211=b1)
+           OR (b1=310));

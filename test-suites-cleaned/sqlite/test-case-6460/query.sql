@@ -1,1 +1,6 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT e9*178, d2+e8, c8, b1
+  FROM t8, t1, t9, t2
+ WHERE e8 in (586,38,846,422,431,918,811,44)
+   AND a1 in (492,988,314)
+   AND (d2=844 OR d2=914 OR 760=d2 OR 743=d2)
+   AND b9=b2;

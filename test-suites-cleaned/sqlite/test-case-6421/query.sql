@@ -1,1 +1,4 @@
-CREATE INDEX t1i4 ON t1(e1,x1);
+SELECT e5, b2*474
+  FROM t2, t5
+ WHERE 428=e2
+   AND 147=c5;

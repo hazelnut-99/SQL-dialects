@@ -1,1 +1,4 @@
-CREATE INDEX t3a3 ON t3(a3);
+SELECT c7, a9+366
+  FROM t7, t9
+ WHERE c9 in (64,863,531)
+   AND e7=506;

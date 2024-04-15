@@ -1,1 +1,4 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT b1, e2*438
+  FROM t1, t2
+ WHERE 643=a1
+   AND c2=22;

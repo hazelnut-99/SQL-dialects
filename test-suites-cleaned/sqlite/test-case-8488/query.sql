@@ -1,1 +1,34 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT x20,x37,x55,x40,x31,x15,x28,x48,x64,x17,x1,x56,x4,x11,x5,x26,x52,x32,x35,x63,x60,x38,x36,x22,x24,x39,x13,x33,x61,x49,x58,x47
+  FROM t20,t15,t52,t56,t4,t48,t60,t28,t35,t5,t11,t33,t1,t26,t64,t31,t24,t32,t39,t22,t13,t63,t55,t40,t36,t47,t58,t49,t38,t61,t37,t17
+ WHERE b40=a5
+   AND b39=a63
+   AND a33=b60
+   AND a1=b52
+   AND b31=a64
+   AND b64=a28
+   AND b17=a24
+   AND a60=b4
+   AND b15=a35
+   AND a26=b33
+   AND b11=a40
+   AND b48=a22
+   AND b35=a47
+   AND a4=b37
+   AND a56=b5
+   AND a15=b13
+   AND b28=a48
+   AND b55=a49
+   AND b49=a11
+   AND b63=a61
+   AND a17=b20
+   AND a32=b22
+   AND a36=b24
+   AND a52=b32
+   AND b61=a37
+   AND b38=a31
+   AND b26=a55
+   AND a47=1
+   AND a13=b36
+   AND b1=a39
+   AND b56=a58
+   AND b58=a20;

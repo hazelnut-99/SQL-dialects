@@ -1,1 +1,12 @@
-CREATE INDEX t6d6 ON t6(d6);
+SELECT b5 FROM t5
+   WHERE (c5=101 OR a5=929)
+      OR d5 in (255,69,42,171,557)
+      OR (273=b5 OR 445=a5)
+EXCEPT
+  SELECT e7 FROM t7
+   WHERE NOT ((c7=377 OR b7=250)
+           OR (781=b7))
+EXCEPT
+  SELECT d4 FROM t4
+   WHERE NOT ((721=b4)
+           OR (e4=531 AND b4=966));

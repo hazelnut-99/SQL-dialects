@@ -1,1 +1,8 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT e2 FROM t2
+   WHERE c2 in (756,83,692,837,653,449)
+      OR (790=d2)
+EXCEPT
+  SELECT d8 FROM t8
+   WHERE NOT ((835=d8 AND 349=e8 AND a8=472 AND 397=b8 AND 375=c8)
+           OR (b8=459 AND 957=a8)
+           OR b8 in (975,656,370,8,244));

@@ -1,1 +1,4 @@
-CREATE INDEX t4b4 ON t4(b4);
+SELECT x9, x1
+  FROM t9, t1
+ WHERE 919=a9
+   AND a1 in (746,707,280,338,324);

@@ -1,1 +1,18 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT e6 FROM t6
+   WHERE (852=d6)
+      OR (e6=353 OR b6=606 OR d6=186)
+      OR (929=d6 AND 129=a6)
+EXCEPT
+  SELECT a1 FROM t1
+   WHERE NOT ((a1=992 AND 1=b1 AND d1=215 AND 346=c1 AND e1=763)
+           OR (602=d1 OR c1=772)
+           OR (d1=232 OR 589=b1))
+UNION ALL
+  SELECT d7 FROM t7
+   WHERE (c7=14 AND 717=b7 AND d7=885)
+      OR (12=c7)
+      OR (323=b7)
+UNION ALL
+  SELECT e5 FROM t5
+   WHERE (c5=734 OR 319=a5)
+      OR (a5=882 OR 897=b5);

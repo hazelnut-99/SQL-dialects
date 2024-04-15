@@ -1,1 +1,4 @@
-CREATE INDEX t7e7 ON t7(e7);
+SELECT c6, x8
+  FROM t8, t6
+ WHERE 981=e8
+   AND d6=750;

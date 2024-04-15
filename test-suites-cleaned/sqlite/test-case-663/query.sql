@@ -1,1 +1,6 @@
-INSERT INTO t1(e,d,c,b,a) VALUES(246,248,247,249,245);
+SELECT b-c,
+       (a+b+c+d+e)/5,
+       CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+  FROM t1
+ WHERE b>c
+ ORDER BY 1,2,3;

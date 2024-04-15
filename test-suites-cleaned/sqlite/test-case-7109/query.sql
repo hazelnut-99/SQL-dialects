@@ -1,1 +1,5 @@
-CREATE INDEX t5c5 ON t5(c5);
+SELECT x8, d9, b2
+  FROM t8, t2, t9
+ WHERE 93=b2
+   AND b9 in (170,214,496,103,821)
+   AND e8 in (180,423,864,455,487,14);

@@ -1,1 +1,4 @@
-CREATE INDEX t4b4 ON t4(b4);
+SELECT x6, a9+398+b6
+  FROM t9, t6
+ WHERE b9=804
+   AND d6=256;

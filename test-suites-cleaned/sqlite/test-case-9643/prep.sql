@@ -1,0 +1,15 @@
+CREATE TABLE t34(
+  a34 INTEGER PRIMARY KEY,
+  b34 INTEGER,
+  x34 VARCHAR(40)
+);
+INSERT INTO t34 VALUES(1,10,'table t34 row 1');
+INSERT INTO t34 VALUES(2,1,'table t34 row 2');
+INSERT INTO t34 VALUES(3,6,'table t34 row 3');
+INSERT INTO t34 VALUES(4,5,'table t34 row 4');
+INSERT INTO t34 VALUES(5,9,'table t34 row 5');
+INSERT INTO t34 VALUES(6,8,'table t34 row 6');
+INSERT INTO t34 VALUES(7,2,'table t34 row 7');
+INSERT INTO t34 VALUES(8,4,'table t34 row 8');
+INSERT INTO t34 VALUES(9,3,'table t34 row 9');
+INSERT INTO t34 VALUES(10,7,'table t34 row 10');

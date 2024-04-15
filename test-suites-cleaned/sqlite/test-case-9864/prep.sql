@@ -1,0 +1,15 @@
+CREATE TABLE t55(
+  a55 INTEGER PRIMARY KEY,
+  b55 INTEGER,
+  x55 VARCHAR(40)
+);
+INSERT INTO t55 VALUES(1,1,'table t55 row 1');
+INSERT INTO t55 VALUES(2,3,'table t55 row 2');
+INSERT INTO t55 VALUES(3,7,'table t55 row 3');
+INSERT INTO t55 VALUES(4,9,'table t55 row 4');
+INSERT INTO t55 VALUES(5,5,'table t55 row 5');
+INSERT INTO t55 VALUES(6,4,'table t55 row 6');
+INSERT INTO t55 VALUES(7,10,'table t55 row 7');
+INSERT INTO t55 VALUES(8,8,'table t55 row 8');
+INSERT INTO t55 VALUES(9,6,'table t55 row 9');
+INSERT INTO t55 VALUES(10,2,'table t55 row 10');

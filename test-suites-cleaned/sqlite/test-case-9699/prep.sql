@@ -1,0 +1,15 @@
+CREATE TABLE t40(
+  a40 INTEGER PRIMARY KEY,
+  b40 INTEGER,
+  x40 VARCHAR(40)
+);
+INSERT INTO t40 VALUES(1,4,'table t40 row 1');
+INSERT INTO t40 VALUES(2,3,'table t40 row 2');
+INSERT INTO t40 VALUES(3,10,'table t40 row 3');
+INSERT INTO t40 VALUES(4,7,'table t40 row 4');
+INSERT INTO t40 VALUES(5,8,'table t40 row 5');
+INSERT INTO t40 VALUES(6,5,'table t40 row 6');
+INSERT INTO t40 VALUES(7,6,'table t40 row 7');
+INSERT INTO t40 VALUES(8,2,'table t40 row 8');
+INSERT INTO t40 VALUES(9,9,'table t40 row 9');
+INSERT INTO t40 VALUES(10,1,'table t40 row 10');

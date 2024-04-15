@@ -1,0 +1,1 @@
+CREATE INDEX t7e7 ON t7(e7);

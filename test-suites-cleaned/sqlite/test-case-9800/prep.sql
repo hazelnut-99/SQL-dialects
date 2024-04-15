@@ -1,0 +1,15 @@
+CREATE TABLE t49(
+  a49 INTEGER PRIMARY KEY,
+  b49 INTEGER,
+  x49 VARCHAR(40)
+);
+INSERT INTO t49 VALUES(1,9,'table t49 row 1');
+INSERT INTO t49 VALUES(2,10,'table t49 row 2');
+INSERT INTO t49 VALUES(3,4,'table t49 row 3');
+INSERT INTO t49 VALUES(4,6,'table t49 row 4');
+INSERT INTO t49 VALUES(5,5,'table t49 row 5');
+INSERT INTO t49 VALUES(6,2,'table t49 row 6');
+INSERT INTO t49 VALUES(7,3,'table t49 row 7');
+INSERT INTO t49 VALUES(8,1,'table t49 row 8');
+INSERT INTO t49 VALUES(9,8,'table t49 row 9');
+INSERT INTO t49 VALUES(10,7,'table t49 row 10');

@@ -1,0 +1,15 @@
+CREATE TABLE t32(
+  a32 INTEGER PRIMARY KEY,
+  b32 INTEGER,
+  x32 VARCHAR(40)
+);
+INSERT INTO t32 VALUES(1,10,'table t32 row 1');
+INSERT INTO t32 VALUES(2,2,'table t32 row 2');
+INSERT INTO t32 VALUES(3,6,'table t32 row 3');
+INSERT INTO t32 VALUES(4,3,'table t32 row 4');
+INSERT INTO t32 VALUES(5,4,'table t32 row 5');
+INSERT INTO t32 VALUES(6,1,'table t32 row 6');
+INSERT INTO t32 VALUES(7,7,'table t32 row 7');
+INSERT INTO t32 VALUES(8,5,'table t32 row 8');
+INSERT INTO t32 VALUES(9,9,'table t32 row 9');
+INSERT INTO t32 VALUES(10,8,'table t32 row 10');

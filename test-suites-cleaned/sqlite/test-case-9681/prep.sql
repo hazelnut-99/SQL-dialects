@@ -1,0 +1,15 @@
+CREATE TABLE t38(
+  a38 INTEGER PRIMARY KEY,
+  b38 INTEGER,
+  x38 VARCHAR(40)
+);
+INSERT INTO t38 VALUES(1,2,'table t38 row 1');
+INSERT INTO t38 VALUES(2,10,'table t38 row 2');
+INSERT INTO t38 VALUES(3,5,'table t38 row 3');
+INSERT INTO t38 VALUES(4,6,'table t38 row 4');
+INSERT INTO t38 VALUES(5,4,'table t38 row 5');
+INSERT INTO t38 VALUES(6,1,'table t38 row 6');
+INSERT INTO t38 VALUES(7,7,'table t38 row 7');
+INSERT INTO t38 VALUES(8,8,'table t38 row 8');
+INSERT INTO t38 VALUES(9,9,'table t38 row 9');
+INSERT INTO t38 VALUES(10,3,'table t38 row 10');

@@ -1,0 +1,15 @@
+CREATE TABLE t45(
+  a45 INTEGER PRIMARY KEY,
+  b45 INTEGER,
+  x45 VARCHAR(40)
+);
+INSERT INTO t45 VALUES(1,2,'table t45 row 1');
+INSERT INTO t45 VALUES(2,4,'table t45 row 2');
+INSERT INTO t45 VALUES(3,10,'table t45 row 3');
+INSERT INTO t45 VALUES(4,9,'table t45 row 4');
+INSERT INTO t45 VALUES(5,8,'table t45 row 5');
+INSERT INTO t45 VALUES(6,7,'table t45 row 6');
+INSERT INTO t45 VALUES(7,3,'table t45 row 7');
+INSERT INTO t45 VALUES(8,5,'table t45 row 8');
+INSERT INTO t45 VALUES(9,1,'table t45 row 9');
+INSERT INTO t45 VALUES(10,6,'table t45 row 10');

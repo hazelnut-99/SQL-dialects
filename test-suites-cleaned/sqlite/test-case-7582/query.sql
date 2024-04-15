@@ -1,0 +1,1 @@
+CREATE INDEX t5c5 ON t5(c5);

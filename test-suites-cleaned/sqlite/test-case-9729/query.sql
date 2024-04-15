@@ -1,0 +1,1 @@
+INSERT INTO t42 VALUES(10,4,'table t42 row 10');

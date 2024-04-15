@@ -1,0 +1,15 @@
+CREATE TABLE t43(
+  a43 INTEGER PRIMARY KEY,
+  b43 INTEGER,
+  x43 VARCHAR(40)
+);
+INSERT INTO t43 VALUES(1,2,'table t43 row 1');
+INSERT INTO t43 VALUES(2,3,'table t43 row 2');
+INSERT INTO t43 VALUES(3,8,'table t43 row 3');
+INSERT INTO t43 VALUES(4,5,'table t43 row 4');
+INSERT INTO t43 VALUES(5,10,'table t43 row 5');
+INSERT INTO t43 VALUES(6,6,'table t43 row 6');
+INSERT INTO t43 VALUES(7,4,'table t43 row 7');
+INSERT INTO t43 VALUES(8,1,'table t43 row 8');
+INSERT INTO t43 VALUES(9,9,'table t43 row 9');
+INSERT INTO t43 VALUES(10,7,'table t43 row 10');

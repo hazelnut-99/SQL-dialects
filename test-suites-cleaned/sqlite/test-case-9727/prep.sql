@@ -1,0 +1,15 @@
+CREATE TABLE t42(
+  a42 INTEGER PRIMARY KEY,
+  b42 INTEGER,
+  x42 VARCHAR(40)
+);
+INSERT INTO t42 VALUES(1,10,'table t42 row 1');
+INSERT INTO t42 VALUES(2,3,'table t42 row 2');
+INSERT INTO t42 VALUES(3,7,'table t42 row 3');
+INSERT INTO t42 VALUES(4,6,'table t42 row 4');
+INSERT INTO t42 VALUES(5,8,'table t42 row 5');
+INSERT INTO t42 VALUES(6,2,'table t42 row 6');
+INSERT INTO t42 VALUES(7,5,'table t42 row 7');
+INSERT INTO t42 VALUES(8,9,'table t42 row 8');
+INSERT INTO t42 VALUES(9,1,'table t42 row 9');
+INSERT INTO t42 VALUES(10,4,'table t42 row 10');

@@ -1,0 +1,270 @@
+CREATE TABLE t6(
+  a6 INTEGER PRIMARY KEY,
+  b6 INTEGER,
+  x6 VARCHAR(40)
+);
+INSERT INTO t6 VALUES(1,2,'table t6 row 1');
+INSERT INTO t6 VALUES(2,5,'table t6 row 2');
+INSERT INTO t6 VALUES(3,9,'table t6 row 3');
+INSERT INTO t6 VALUES(4,3,'table t6 row 4');
+INSERT INTO t6 VALUES(5,1,'table t6 row 5');
+INSERT INTO t6 VALUES(6,8,'table t6 row 6');
+INSERT INTO t6 VALUES(7,10,'table t6 row 7');
+INSERT INTO t6 VALUES(8,6,'table t6 row 8');
+INSERT INTO t6 VALUES(9,4,'table t6 row 9');
+INSERT INTO t6 VALUES(10,7,'table t6 row 10');
+CREATE TABLE t9(
+  a9 INTEGER PRIMARY KEY,
+  b9 INTEGER,
+  x9 VARCHAR(40)
+);
+INSERT INTO t9 VALUES(1,3,'table t9 row 1');
+INSERT INTO t9 VALUES(2,4,'table t9 row 2');
+INSERT INTO t9 VALUES(3,6,'table t9 row 3');
+INSERT INTO t9 VALUES(4,5,'table t9 row 4');
+INSERT INTO t9 VALUES(5,9,'table t9 row 5');
+INSERT INTO t9 VALUES(6,7,'table t9 row 6');
+INSERT INTO t9 VALUES(7,2,'table t9 row 7');
+INSERT INTO t9 VALUES(8,1,'table t9 row 8');
+INSERT INTO t9 VALUES(9,10,'table t9 row 9');
+INSERT INTO t9 VALUES(10,8,'table t9 row 10');
+CREATE TABLE t10(
+  a10 INTEGER PRIMARY KEY,
+  b10 INTEGER,
+  x10 VARCHAR(40)
+);
+INSERT INTO t10 VALUES(1,8,'table t10 row 1');
+INSERT INTO t10 VALUES(2,10,'table t10 row 2');
+INSERT INTO t10 VALUES(3,7,'table t10 row 3');
+INSERT INTO t10 VALUES(4,1,'table t10 row 4');
+INSERT INTO t10 VALUES(5,5,'table t10 row 5');
+INSERT INTO t10 VALUES(6,4,'table t10 row 6');
+INSERT INTO t10 VALUES(7,3,'table t10 row 7');
+INSERT INTO t10 VALUES(8,9,'table t10 row 8');
+INSERT INTO t10 VALUES(9,6,'table t10 row 9');
+INSERT INTO t10 VALUES(10,2,'table t10 row 10');
+CREATE TABLE t12(
+  a12 INTEGER PRIMARY KEY,
+  b12 INTEGER,
+  x12 VARCHAR(40)
+);
+INSERT INTO t12 VALUES(1,4,'table t12 row 1');
+INSERT INTO t12 VALUES(2,2,'table t12 row 2');
+INSERT INTO t12 VALUES(3,5,'table t12 row 3');
+INSERT INTO t12 VALUES(4,6,'table t12 row 4');
+INSERT INTO t12 VALUES(5,9,'table t12 row 5');
+INSERT INTO t12 VALUES(6,7,'table t12 row 6');
+INSERT INTO t12 VALUES(7,10,'table t12 row 7');
+INSERT INTO t12 VALUES(8,1,'table t12 row 8');
+INSERT INTO t12 VALUES(9,8,'table t12 row 9');
+INSERT INTO t12 VALUES(10,3,'table t12 row 10');
+CREATE TABLE t19(
+  a19 INTEGER PRIMARY KEY,
+  b19 INTEGER,
+  x19 VARCHAR(40)
+);
+INSERT INTO t19 VALUES(1,4,'table t19 row 1');
+INSERT INTO t19 VALUES(2,7,'table t19 row 2');
+INSERT INTO t19 VALUES(3,2,'table t19 row 3');
+INSERT INTO t19 VALUES(4,6,'table t19 row 4');
+INSERT INTO t19 VALUES(5,9,'table t19 row 5');
+INSERT INTO t19 VALUES(6,10,'table t19 row 6');
+INSERT INTO t19 VALUES(7,1,'table t19 row 7');
+INSERT INTO t19 VALUES(8,5,'table t19 row 8');
+INSERT INTO t19 VALUES(9,8,'table t19 row 9');
+INSERT INTO t19 VALUES(10,3,'table t19 row 10');
+CREATE TABLE t20(
+  a20 INTEGER PRIMARY KEY,
+  b20 INTEGER,
+  x20 VARCHAR(40)
+);
+INSERT INTO t20 VALUES(1,10,'table t20 row 1');
+INSERT INTO t20 VALUES(2,9,'table t20 row 2');
+INSERT INTO t20 VALUES(3,3,'table t20 row 3');
+INSERT INTO t20 VALUES(4,7,'table t20 row 4');
+INSERT INTO t20 VALUES(5,6,'table t20 row 5');
+INSERT INTO t20 VALUES(6,2,'table t20 row 6');
+INSERT INTO t20 VALUES(7,1,'table t20 row 7');
+INSERT INTO t20 VALUES(8,4,'table t20 row 8');
+INSERT INTO t20 VALUES(9,5,'table t20 row 9');
+INSERT INTO t20 VALUES(10,8,'table t20 row 10');
+CREATE TABLE t22(
+  a22 INTEGER PRIMARY KEY,
+  b22 INTEGER,
+  x22 VARCHAR(40)
+);
+INSERT INTO t22 VALUES(1,7,'table t22 row 1');
+INSERT INTO t22 VALUES(2,3,'table t22 row 2');
+INSERT INTO t22 VALUES(3,6,'table t22 row 3');
+INSERT INTO t22 VALUES(4,4,'table t22 row 4');
+INSERT INTO t22 VALUES(5,2,'table t22 row 5');
+INSERT INTO t22 VALUES(6,8,'table t22 row 6');
+INSERT INTO t22 VALUES(7,9,'table t22 row 7');
+INSERT INTO t22 VALUES(8,10,'table t22 row 8');
+INSERT INTO t22 VALUES(9,5,'table t22 row 9');
+INSERT INTO t22 VALUES(10,1,'table t22 row 10');
+CREATE TABLE t24(
+  a24 INTEGER PRIMARY KEY,
+  b24 INTEGER,
+  x24 VARCHAR(40)
+);
+INSERT INTO t24 VALUES(1,10,'table t24 row 1');
+INSERT INTO t24 VALUES(2,3,'table t24 row 2');
+INSERT INTO t24 VALUES(3,8,'table t24 row 3');
+INSERT INTO t24 VALUES(4,2,'table t24 row 4');
+INSERT INTO t24 VALUES(5,5,'table t24 row 5');
+INSERT INTO t24 VALUES(6,4,'table t24 row 6');
+INSERT INTO t24 VALUES(7,6,'table t24 row 7');
+INSERT INTO t24 VALUES(8,9,'table t24 row 8');
+INSERT INTO t24 VALUES(9,1,'table t24 row 9');
+INSERT INTO t24 VALUES(10,7,'table t24 row 10');
+CREATE TABLE t26(
+  a26 INTEGER PRIMARY KEY,
+  b26 INTEGER,
+  x26 VARCHAR(40)
+);
+INSERT INTO t26 VALUES(1,2,'table t26 row 1');
+INSERT INTO t26 VALUES(2,7,'table t26 row 2');
+INSERT INTO t26 VALUES(3,5,'table t26 row 3');
+INSERT INTO t26 VALUES(4,1,'table t26 row 4');
+INSERT INTO t26 VALUES(5,8,'table t26 row 5');
+INSERT INTO t26 VALUES(6,6,'table t26 row 6');
+INSERT INTO t26 VALUES(7,4,'table t26 row 7');
+INSERT INTO t26 VALUES(8,9,'table t26 row 8');
+INSERT INTO t26 VALUES(9,3,'table t26 row 9');
+INSERT INTO t26 VALUES(10,10,'table t26 row 10');
+CREATE TABLE t30(
+  a30 INTEGER PRIMARY KEY,
+  b30 INTEGER,
+  x30 VARCHAR(40)
+);
+INSERT INTO t30 VALUES(1,5,'table t30 row 1');
+INSERT INTO t30 VALUES(2,6,'table t30 row 2');
+INSERT INTO t30 VALUES(3,10,'table t30 row 3');
+INSERT INTO t30 VALUES(4,3,'table t30 row 4');
+INSERT INTO t30 VALUES(5,7,'table t30 row 5');
+INSERT INTO t30 VALUES(6,4,'table t30 row 6');
+INSERT INTO t30 VALUES(7,9,'table t30 row 7');
+INSERT INTO t30 VALUES(8,8,'table t30 row 8');
+INSERT INTO t30 VALUES(9,2,'table t30 row 9');
+INSERT INTO t30 VALUES(10,1,'table t30 row 10');
+CREATE TABLE t36(
+  a36 INTEGER PRIMARY KEY,
+  b36 INTEGER,
+  x36 VARCHAR(40)
+);
+INSERT INTO t36 VALUES(1,7,'table t36 row 1');
+INSERT INTO t36 VALUES(2,8,'table t36 row 2');
+INSERT INTO t36 VALUES(3,6,'table t36 row 3');
+INSERT INTO t36 VALUES(4,4,'table t36 row 4');
+INSERT INTO t36 VALUES(5,9,'table t36 row 5');
+INSERT INTO t36 VALUES(6,1,'table t36 row 6');
+INSERT INTO t36 VALUES(7,2,'table t36 row 7');
+INSERT INTO t36 VALUES(8,3,'table t36 row 8');
+INSERT INTO t36 VALUES(9,5,'table t36 row 9');
+INSERT INTO t36 VALUES(10,10,'table t36 row 10');
+CREATE TABLE t43(
+  a43 INTEGER PRIMARY KEY,
+  b43 INTEGER,
+  x43 VARCHAR(40)
+);
+INSERT INTO t43 VALUES(1,2,'table t43 row 1');
+INSERT INTO t43 VALUES(2,3,'table t43 row 2');
+INSERT INTO t43 VALUES(3,8,'table t43 row 3');
+INSERT INTO t43 VALUES(4,5,'table t43 row 4');
+INSERT INTO t43 VALUES(5,10,'table t43 row 5');
+INSERT INTO t43 VALUES(6,6,'table t43 row 6');
+INSERT INTO t43 VALUES(7,4,'table t43 row 7');
+INSERT INTO t43 VALUES(8,1,'table t43 row 8');
+INSERT INTO t43 VALUES(9,9,'table t43 row 9');
+INSERT INTO t43 VALUES(10,7,'table t43 row 10');
+CREATE TABLE t44(
+  a44 INTEGER PRIMARY KEY,
+  b44 INTEGER,
+  x44 VARCHAR(40)
+);
+INSERT INTO t44 VALUES(1,8,'table t44 row 1');
+INSERT INTO t44 VALUES(2,10,'table t44 row 2');
+INSERT INTO t44 VALUES(3,5,'table t44 row 3');
+INSERT INTO t44 VALUES(4,3,'table t44 row 4');
+INSERT INTO t44 VALUES(5,9,'table t44 row 5');
+INSERT INTO t44 VALUES(6,6,'table t44 row 6');
+INSERT INTO t44 VALUES(7,2,'table t44 row 7');
+INSERT INTO t44 VALUES(8,7,'table t44 row 8');
+INSERT INTO t44 VALUES(9,1,'table t44 row 9');
+INSERT INTO t44 VALUES(10,4,'table t44 row 10');
+CREATE TABLE t46(
+  a46 INTEGER PRIMARY KEY,
+  b46 INTEGER,
+  x46 VARCHAR(40)
+);
+INSERT INTO t46 VALUES(1,1,'table t46 row 1');
+INSERT INTO t46 VALUES(2,8,'table t46 row 2');
+INSERT INTO t46 VALUES(3,7,'table t46 row 3');
+INSERT INTO t46 VALUES(4,5,'table t46 row 4');
+INSERT INTO t46 VALUES(5,9,'table t46 row 5');
+INSERT INTO t46 VALUES(6,4,'table t46 row 6');
+INSERT INTO t46 VALUES(7,2,'table t46 row 7');
+INSERT INTO t46 VALUES(8,10,'table t46 row 8');
+INSERT INTO t46 VALUES(9,6,'table t46 row 9');
+INSERT INTO t46 VALUES(10,3,'table t46 row 10');
+CREATE TABLE t49(
+  a49 INTEGER PRIMARY KEY,
+  b49 INTEGER,
+  x49 VARCHAR(40)
+);
+INSERT INTO t49 VALUES(1,9,'table t49 row 1');
+INSERT INTO t49 VALUES(2,10,'table t49 row 2');
+INSERT INTO t49 VALUES(3,4,'table t49 row 3');
+INSERT INTO t49 VALUES(4,6,'table t49 row 4');
+INSERT INTO t49 VALUES(5,5,'table t49 row 5');
+INSERT INTO t49 VALUES(6,2,'table t49 row 6');
+INSERT INTO t49 VALUES(7,3,'table t49 row 7');
+INSERT INTO t49 VALUES(8,1,'table t49 row 8');
+INSERT INTO t49 VALUES(9,8,'table t49 row 9');
+INSERT INTO t49 VALUES(10,7,'table t49 row 10');
+CREATE TABLE t51(
+  a51 INTEGER PRIMARY KEY,
+  b51 INTEGER,
+  x51 VARCHAR(40)
+);
+INSERT INTO t51 VALUES(1,5,'table t51 row 1');
+INSERT INTO t51 VALUES(2,3,'table t51 row 2');
+INSERT INTO t51 VALUES(3,10,'table t51 row 3');
+INSERT INTO t51 VALUES(4,7,'table t51 row 4');
+INSERT INTO t51 VALUES(5,6,'table t51 row 5');
+INSERT INTO t51 VALUES(6,2,'table t51 row 6');
+INSERT INTO t51 VALUES(7,9,'table t51 row 7');
+INSERT INTO t51 VALUES(8,4,'table t51 row 8');
+INSERT INTO t51 VALUES(9,8,'table t51 row 9');
+INSERT INTO t51 VALUES(10,1,'table t51 row 10');
+CREATE TABLE t54(
+  a54 INTEGER PRIMARY KEY,
+  b54 INTEGER,
+  x54 VARCHAR(40)
+);
+INSERT INTO t54 VALUES(1,6,'table t54 row 1');
+INSERT INTO t54 VALUES(2,7,'table t54 row 2');
+INSERT INTO t54 VALUES(3,2,'table t54 row 3');
+INSERT INTO t54 VALUES(4,9,'table t54 row 4');
+INSERT INTO t54 VALUES(5,8,'table t54 row 5');
+INSERT INTO t54 VALUES(6,5,'table t54 row 6');
+INSERT INTO t54 VALUES(7,4,'table t54 row 7');
+INSERT INTO t54 VALUES(8,1,'table t54 row 8');
+INSERT INTO t54 VALUES(9,10,'table t54 row 9');
+INSERT INTO t54 VALUES(10,3,'table t54 row 10');
+CREATE TABLE t55(
+  a55 INTEGER PRIMARY KEY,
+  b55 INTEGER,
+  x55 VARCHAR(40)
+);
+INSERT INTO t55 VALUES(1,1,'table t55 row 1');
+INSERT INTO t55 VALUES(2,3,'table t55 row 2');
+INSERT INTO t55 VALUES(3,7,'table t55 row 3');
+INSERT INTO t55 VALUES(4,9,'table t55 row 4');
+INSERT INTO t55 VALUES(5,5,'table t55 row 5');
+INSERT INTO t55 VALUES(6,4,'table t55 row 6');
+INSERT INTO t55 VALUES(7,10,'table t55 row 7');
+INSERT INTO t55 VALUES(8,8,'table t55 row 8');
+INSERT INTO t55 VALUES(9,6,'table t55 row 9');
+INSERT INTO t55 VALUES(10,2,'table t55 row 10');

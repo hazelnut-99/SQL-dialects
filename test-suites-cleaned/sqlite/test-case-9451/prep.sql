@@ -1,0 +1,15 @@
+CREATE TABLE t17(
+  a17 INTEGER PRIMARY KEY,
+  b17 INTEGER,
+  x17 VARCHAR(40)
+);
+INSERT INTO t17 VALUES(1,7,'table t17 row 1');
+INSERT INTO t17 VALUES(2,2,'table t17 row 2');
+INSERT INTO t17 VALUES(3,3,'table t17 row 3');
+INSERT INTO t17 VALUES(4,1,'table t17 row 4');
+INSERT INTO t17 VALUES(5,4,'table t17 row 5');
+INSERT INTO t17 VALUES(6,5,'table t17 row 6');
+INSERT INTO t17 VALUES(7,8,'table t17 row 7');
+INSERT INTO t17 VALUES(8,9,'table t17 row 8');
+INSERT INTO t17 VALUES(9,6,'table t17 row 9');
+INSERT INTO t17 VALUES(10,10,'table t17 row 10');

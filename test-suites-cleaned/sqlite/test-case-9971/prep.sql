@@ -1,0 +1,15 @@
+CREATE TABLE t64(
+  a64 INTEGER PRIMARY KEY,
+  b64 INTEGER,
+  x64 VARCHAR(40)
+);
+INSERT INTO t64 VALUES(1,4,'table t64 row 1');
+INSERT INTO t64 VALUES(2,2,'table t64 row 2');
+INSERT INTO t64 VALUES(3,6,'table t64 row 3');
+INSERT INTO t64 VALUES(4,10,'table t64 row 4');
+INSERT INTO t64 VALUES(5,9,'table t64 row 5');
+INSERT INTO t64 VALUES(6,1,'table t64 row 6');
+INSERT INTO t64 VALUES(7,5,'table t64 row 7');
+INSERT INTO t64 VALUES(8,7,'table t64 row 8');
+INSERT INTO t64 VALUES(9,8,'table t64 row 9');
+INSERT INTO t64 VALUES(10,3,'table t64 row 10');

@@ -1,0 +1,1 @@
+INSERT INTO t9 VALUES(907,251,60,164,245,'table tn9 row 98');

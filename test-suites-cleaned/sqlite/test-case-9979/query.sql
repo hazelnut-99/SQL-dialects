@@ -1,0 +1,1 @@
+INSERT INTO t54 VALUES(10,3,'table t54 row 10');

@@ -1,0 +1,15 @@
+CREATE TABLE t41(
+  a41 INTEGER PRIMARY KEY,
+  b41 INTEGER,
+  x41 VARCHAR(40)
+);
+INSERT INTO t41 VALUES(1,6,'table t41 row 1');
+INSERT INTO t41 VALUES(2,1,'table t41 row 2');
+INSERT INTO t41 VALUES(3,3,'table t41 row 3');
+INSERT INTO t41 VALUES(4,2,'table t41 row 4');
+INSERT INTO t41 VALUES(5,9,'table t41 row 5');
+INSERT INTO t41 VALUES(6,5,'table t41 row 6');
+INSERT INTO t41 VALUES(7,8,'table t41 row 7');
+INSERT INTO t41 VALUES(8,7,'table t41 row 8');
+INSERT INTO t41 VALUES(9,10,'table t41 row 9');
+INSERT INTO t41 VALUES(10,4,'table t41 row 10');

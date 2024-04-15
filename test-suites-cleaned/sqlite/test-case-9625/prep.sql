@@ -1,0 +1,15 @@
+CREATE TABLE t33(
+  a33 INTEGER PRIMARY KEY,
+  b33 INTEGER,
+  x33 VARCHAR(40)
+);
+INSERT INTO t33 VALUES(1,8,'table t33 row 1');
+INSERT INTO t33 VALUES(2,4,'table t33 row 2');
+INSERT INTO t33 VALUES(3,5,'table t33 row 3');
+INSERT INTO t33 VALUES(4,1,'table t33 row 4');
+INSERT INTO t33 VALUES(5,2,'table t33 row 5');
+INSERT INTO t33 VALUES(6,10,'table t33 row 6');
+INSERT INTO t33 VALUES(7,3,'table t33 row 7');
+INSERT INTO t33 VALUES(8,6,'table t33 row 8');
+INSERT INTO t33 VALUES(9,7,'table t33 row 9');
+INSERT INTO t33 VALUES(10,9,'table t33 row 10');

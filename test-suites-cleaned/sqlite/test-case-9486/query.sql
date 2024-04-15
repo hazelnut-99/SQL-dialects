@@ -1,0 +1,1 @@
+INSERT INTO t20 VALUES(10,8,'table t20 row 10');

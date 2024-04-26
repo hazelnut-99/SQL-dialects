@@ -1,4 +1,0 @@
-CREATE TABLE test (a INTEGER, b VARCHAR DEFAULT('hello'), c INTEGER DEFAULT(3+4));;
-COPY test (a) FROM 'test/sql/copy/csv/data/test/test_default.csv';;
-COPY test (c) FROM 'test/sql/copy/csv/data/test/test_default.csv';;
-SELECT COUNT(a), COUNT(b), COUNT(c), MIN(LENGTH(b)), MAX(LENGTH(b)), SUM(a), SUM(c) FROM test;;

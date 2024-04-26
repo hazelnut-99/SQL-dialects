@@ -1,6 +1,0 @@
-select count(*) from read_csv('test/sql/copy/csv/data/test/blob.csv',auto_type_candidates=['blob']);
-select count(*) from read_csv('test/sql/copy/csv/data/test/blob.csv',types=['blob'], header = 0);
-select count(*) from read_csv('test/sql/copy/csv/data/test/blob.csv',columns={'col1': 'BLOB'});
-create table t ( a blob);
-COPY t FROM 'test/sql/copy/csv/data/test/blob.csv';;
-select count(*) from read_csv('test/sql/copy/csv/data/test/blob.csv',columns={'col1': 'BLOB'});

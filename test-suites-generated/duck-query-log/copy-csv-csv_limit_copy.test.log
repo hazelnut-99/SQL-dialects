@@ -1,3 +1,0 @@
-CREATE TABLE integers AS FROM range(1000000) t(i);;
-COPY (FROM integers LIMIT 30000) TO 'duckdb_unittest_tempdir/54535/limit_copy.csv';
-SELECT COUNT(*) FROM 'duckdb_unittest_tempdir/54535/limit_copy.csv';

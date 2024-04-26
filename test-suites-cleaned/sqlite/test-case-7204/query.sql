@@ -1,5 +1,0 @@
-SELECT x4, x6, b3
-  FROM t4, t6, t3
- WHERE 5=a3
-   AND d6 in (405,271,846,885,647,66)
-   AND b4=407;

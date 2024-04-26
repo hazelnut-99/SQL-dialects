@@ -1,8 +1,0 @@
-SELECT c2 FROM t2
-   WHERE (a2=185)
-      OR (a2=279 OR 629=e2)
-      OR a2 in (279,594,131,775)
-UNION ALL
-  SELECT b7 FROM t7
-   WHERE (d7=507)
-      OR (e7=89);

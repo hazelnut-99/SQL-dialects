@@ -1,2 +1,0 @@
-SELECT * FROM pg_database;
-SELECT * FROM pg_catalog.pg_database;

@@ -1,7 +1,0 @@
-SELECT CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END,
-       e
-  FROM t1
- WHERE b>c
-   AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b)
-   AND c>d
- ORDER BY 1,2;

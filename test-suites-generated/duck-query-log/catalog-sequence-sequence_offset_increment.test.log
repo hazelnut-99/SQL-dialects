@@ -1,3 +1,0 @@
-create sequence xx start 100 increment by 2;;
-SELECT nextval('xx');
-SELECT nextval('xx');

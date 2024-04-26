@@ -1,7 +1,0 @@
-SELECT d2 FROM t2
-   WHERE (945=e2 AND b2=634)
-EXCEPT
-  SELECT d6 FROM t6
-   WHERE NOT ((974=d6 OR 534=c6 OR a6=35)
-           OR a6 in (293,300,877,610,238,971,564,366,1)
-           OR (367=d6 AND c6=522));

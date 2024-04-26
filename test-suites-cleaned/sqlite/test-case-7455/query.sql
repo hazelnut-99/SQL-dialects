@@ -1,5 +1,0 @@
-SELECT x5, x8, b4
-  FROM t5, t8, t4
- WHERE e8 in (7,933,811,105,635,776,497)
-   AND 802=b4
-   AND c5=d8;

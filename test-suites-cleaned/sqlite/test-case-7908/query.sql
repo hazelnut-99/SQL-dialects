@@ -1,5 +1,0 @@
-SELECT c5*354, c7, c1+848
-  FROM t5, t1, t7
- WHERE e7=a1
-   AND a1 in (544,862,879,936)
-   AND 689=c5;

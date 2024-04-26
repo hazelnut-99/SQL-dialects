@@ -1,4 +1,0 @@
-SELECT x1, d9
-  FROM t9, t1
- WHERE c9=232
-   AND 281=a1;

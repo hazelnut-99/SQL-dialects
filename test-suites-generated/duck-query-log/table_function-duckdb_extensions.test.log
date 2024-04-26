@@ -1,2 +1,0 @@
-SELECT * FROM duckdb_extensions();;
-SELECT aliases FROM duckdb_extensions() WHERE extension_name='postgres_scanner';;

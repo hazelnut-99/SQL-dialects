@@ -1,3 +1,0 @@
-SELECT a
-  FROM t1
- WHERE c>d;

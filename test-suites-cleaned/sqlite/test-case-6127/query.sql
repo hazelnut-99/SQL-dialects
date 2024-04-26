@@ -1,8 +1,0 @@
-SELECT e5 FROM t5
-   WHERE (d5=960)
-      OR b5 in (159,495,183,861)
-UNION ALL
-  SELECT c2 FROM t2
-   WHERE (a2=382)
-      OR b2 in (674,414,966)
-      OR (b2=812);

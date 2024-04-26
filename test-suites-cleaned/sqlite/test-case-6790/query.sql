@@ -1,6 +1,0 @@
-SELECT b3, a7+753, c2, x5
-  FROM t3, t7, t5, t2
- WHERE a2=863
-   AND c5=b7
-   AND (a3=863 OR 364=a3 OR 651=a3 OR 376=a3)
-   AND e7 in (689,282,144,290,979,815);

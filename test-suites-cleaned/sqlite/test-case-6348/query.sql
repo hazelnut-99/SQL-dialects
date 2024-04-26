@@ -1,4 +1,0 @@
-SELECT x7, x6
-  FROM t7, t6
- WHERE 269=d6
-   AND e7=506;

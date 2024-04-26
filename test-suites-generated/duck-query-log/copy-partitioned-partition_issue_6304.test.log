@@ -1,2 +1,0 @@
-copy (select NULL as i from range(100000)) to 'duckdb_unittest_tempdir/54699/issue6304_null' (format parquet, partition_by(i), overwrite_or_ignore);;
-copy (select 1 as i from range(100000)) to 'duckdb_unittest_tempdir/54699/issue6304_constant' (format parquet, partition_by(i), overwrite_or_ignore);;

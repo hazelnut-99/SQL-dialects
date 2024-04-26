@@ -1,8 +1,0 @@
-SELECT
-    MIN(sfc_key), MAX(sfc_key),
-    MIN(gps_time), MAX(gps_time),
-    MIN(intensity), MAX(intensity),
-    MIN(classification), MAX(classification),
-    MIN(return_number), MAX(return_number),
-    MIN(number_of_returns), MAX(number_of_returns)
-FROM parquet_scan('data/parquet-testing/sorted.zstd_18_131072_small.parquet');

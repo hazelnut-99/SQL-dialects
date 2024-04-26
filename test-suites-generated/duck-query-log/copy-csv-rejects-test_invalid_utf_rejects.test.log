@@ -1,3 +1,0 @@
-from read_csv('test/sql/copy/csv/data/test/invalid_utf_big.csv',columns = {'col1': 'VARCHAR','col2': 'VARCHAR','col3': 'VARCHAR'},
- auto_detect=false, header = 0, delim = ',', store_rejects=true);
-SELECT * EXCLUDE (scan_id) FROM reject_errors ORDER BY ALL;;

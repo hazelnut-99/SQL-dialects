@@ -1,5 +1,0 @@
-create table MY_TABLE (i integer);;
-insert into MY_TABLE values(42);;
-alter table MY_TABLE rename to my_table;;
-select * from my_table;;
-select * from MY_TABLE;;

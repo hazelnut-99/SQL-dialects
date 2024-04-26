@@ -1,4 +1,0 @@
-CREATE TABLE integers(i INTEGER, j INTEGER);;
-INSERT INTO integers VALUES (3, 4), (3, 4), (2, 4);;
-SELECT i, COUNT(*) FROM integers GROUP BY i ORDER BY i;
-SELECT i, COUNT() FROM integers GROUP BY i ORDER BY i;

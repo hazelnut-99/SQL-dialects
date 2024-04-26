@@ -1,6 +1,0 @@
-PRAGMA temp_directory='';
-PRAGMA memory_limit='2MB';
-CREATE TABLE t2 AS SELECT * FROM range(1000000);;
-PRAGMA temp_directory='duckdb_unittest_tempdir/53945/myfile.tmp';
-CREATE TABLE t2 AS SELECT * FROM range(1000000);;
-PRAGMA temp_directory='';

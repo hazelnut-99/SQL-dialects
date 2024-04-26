@@ -1,4 +1,0 @@
-SELECT b8+b8, d4
-  FROM t8, t4
- WHERE 802=b4
-   AND e8=463;

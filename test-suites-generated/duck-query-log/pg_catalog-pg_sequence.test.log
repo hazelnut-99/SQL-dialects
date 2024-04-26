@@ -1,4 +1,0 @@
-CREATE SEQUENCE seq;
-SELECT * FROM pg_sequence;
-SELECT * FROM pg_catalog.pg_sequence;
-SELECT seqstart, seqincrement, seqmax, seqmin, seqcycle FROM pg_sequence;

@@ -1,1 +1,0 @@
-EXPORT DATABASE 'duckdb_unittest_tempdir/54862/empty_export' (FORMAT CSV);

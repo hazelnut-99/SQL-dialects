@@ -1,1 +1,0 @@
-SELECT DISTINCT MAP { * : ? IN ( SELECT TRUE ) } ;;

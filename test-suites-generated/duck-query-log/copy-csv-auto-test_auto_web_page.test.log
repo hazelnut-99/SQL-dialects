@@ -1,8 +1,0 @@
-CREATE TABLE web_page AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/web_page.csv');;
-SELECT COUNT(*) FROM web_page;;
-SELECT * FROM web_page ORDER BY column00 LIMIT 3;;
-PRAGMA verify_parallelism;
-CREATE TABLE web_page2 AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/web_page.csv');;
-(SELECT * FROM web_page EXCEPT SELECT * FROM web_page2)
-UNION ALL
-(SELECT * FROM web_page2 EXCEPT SELECT * FROM web_page);

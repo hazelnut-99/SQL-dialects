@@ -1,5 +1,0 @@
-SELECT d9, d5, d8
-  FROM t5, t8, t9
- WHERE b9 in (301,77,446,127,19,136)
-   AND 175=e8
-   AND (c5=729 OR 805=c5 OR 570=c5 OR c5=437);

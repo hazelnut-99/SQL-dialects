@@ -1,6 +1,0 @@
-SELECT a1*461, b8*628, d6, c2
-  FROM t1, t8, t2, t6
- WHERE a1=189
-   AND c2 in (925,878,179,282,746,692)
-   AND 590=d6
-   AND e8=46;

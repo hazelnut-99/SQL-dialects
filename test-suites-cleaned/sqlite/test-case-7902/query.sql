@@ -1,5 +1,0 @@
-SELECT x3, b9+31, c2
-  FROM t9, t2, t3
- WHERE e9=307
-   AND e2 in (463,981,777,228,73,769)
-   AND a3 in (476,754,992);

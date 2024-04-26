@@ -1,2 +1,0 @@
-PRAGMA enable_verification;
-UPDATE uhugeints SET h=h+1 WHERE h=100;;

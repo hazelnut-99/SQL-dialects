@@ -1,6 +1,0 @@
-CREATE TABLE test (a VARCHAR);;
-INSERT INTO test VALUES ('aaaaaaaaaa');
-INSERT INTO test SELECT a||a||a||a||a||a||a||a||a||a FROM test WHERE LENGTH(a)=(SELECT MAX(LENGTH(a)) FROM test);
-INSERT INTO test SELECT a||a||a||a||a||a||a||a||a||a FROM test WHERE LENGTH(a)=(SELECT MAX(LENGTH(a)) FROM test);
-INSERT INTO test SELECT a||a||a||a||a||a||a||a||a||a FROM test WHERE LENGTH(a)=(SELECT MAX(LENGTH(a)) FROM test);
-SELECT LENGTH(a) FROM test ORDER BY 1;

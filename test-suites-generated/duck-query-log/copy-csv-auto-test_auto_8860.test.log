@@ -1,2 +1,0 @@
-PRAGMA verify_parallelism;
-SELECT count(*) FROM read_csv_auto("test/sql/copy/csv/data/auto/product_codes_HS17_V202301.csv.gz") ;;

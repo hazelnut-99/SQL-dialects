@@ -1,4 +1,0 @@
-SELECT b9+350, b5*550+e9
-  FROM t5, t9
- WHERE c5=545
-   AND b9=688;

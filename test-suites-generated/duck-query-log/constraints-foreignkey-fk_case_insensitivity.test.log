@@ -1,8 +1,0 @@
-PRAGMA enable_verification;
-create table a (a int not null, constraint pk_a primary key (A));;
-create table b (a int references a (a));;
-drop table b;;
-drop table a;;
-create table a (i int primary key);;
-create table b (i int references A (i));;
-create table c (i int primary key, j int references C (i));;

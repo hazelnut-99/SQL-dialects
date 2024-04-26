@@ -1,2 +1,0 @@
-PRAGMA verify_parallelism;
-SELECT count(*) FROM read_csv_auto ('test/sql/copy/csv/data/auto/titlebasicsdebug.tsv', nullstr='\N', sample_size = -1);;

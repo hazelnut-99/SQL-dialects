@@ -1,6 +1,0 @@
-SELECT c2*895, b4, b9+651, x3
-  FROM t4, t3, t9, t2
- WHERE a9 in (273,11,982,567,450,847,830,953)
-   AND b4=a9
-   AND d2=753
-   AND a3=c9;

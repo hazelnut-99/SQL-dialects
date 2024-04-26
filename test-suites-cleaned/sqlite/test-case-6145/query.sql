@@ -1,8 +1,0 @@
-SELECT d1 FROM t1
-   WHERE (465=c1 AND 247=e1)
-      OR (862=b1 OR 237=a1 OR b1=956)
-INTERSECT
-  SELECT b6 FROM t6
-   WHERE NOT ((e6=95 OR 617=e6 OR d6=196)
-           OR (355=a6 AND e6=754 AND d6=647)
-           OR c6 in (159,609,292,769,480));

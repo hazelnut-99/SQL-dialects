@@ -1,7 +1,0 @@
-SELECT d1 FROM t1
-   WHERE a1 in (492,231,460,479,195,895,862,314,981,222)
-EXCEPT
-  SELECT c3 FROM t3
-   WHERE NOT ((811=b3)
-           OR (600=c3 OR e3=914 OR 310=e3)
-           OR (e3=765 OR 467=c3 OR 321=b3));

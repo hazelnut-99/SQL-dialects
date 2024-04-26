@@ -1,4 +1,0 @@
-SELECT d9, e1+403
-  FROM t1, t9
- WHERE a1 in (736,551,445,868,579)
-   AND b9=5;

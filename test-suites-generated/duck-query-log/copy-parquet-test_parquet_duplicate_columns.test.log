@@ -1,6 +1,0 @@
-COPY (SELECT 1 as a, 2 as a, 3 as a) TO 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;
-SELECT a, "a_1", "a_2" FROM 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;
-COPY (SELECT 1 as a, 2 as a, 3 as "a_1") TO 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;
-SELECT a, "a_1", "a_1_1" FROM 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;
-COPY (SELECT 1 as a, 3 as "a_1", 2 as a) TO 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;
-SELECT a, "a_1", "a_2" FROM 'duckdb_unittest_tempdir/54783/dupe_cols.parquet';;

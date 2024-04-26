@@ -1,4 +1,0 @@
-CREATE TABLE test (a INTEGER, b VARCHAR, c INTEGER);;
-insert into test select * from read_csv_auto('test/sql/copy/csv/data/test/mixed_line_endings.csv');;
-SELECT LENGTH(b) FROM test ORDER BY a;;
-SELECT SUM(a), SUM(c) FROM test;;

@@ -1,5 +1,0 @@
-CREATE TABLE integers(i INTEGER, j BOOLEAN, PRIMARY KEY(i, j));
-INSERT INTO integers VALUES (1, false), (1, true), (2, false);
-INSERT INTO integers VALUES (1, false);
-INSERT INTO integers VALUES (2, true);
-SELECT * FROM integers ORDER BY 1, 2;

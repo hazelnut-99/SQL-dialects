@@ -1,6 +1,0 @@
-SELECT a5*540, d7, e9, b4
-  FROM t5, t4, t9, t7
- WHERE 578=b9
-   AND c5=756
-   AND e7=816
-   AND b4 in (587,966,678,288,713,961,175,551);

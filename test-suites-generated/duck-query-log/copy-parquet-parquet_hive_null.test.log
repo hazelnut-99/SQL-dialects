@@ -1,6 +1,0 @@
-create table test as select i%5 as a, i%2 as b from range(0,10) tbl(i);;
-copy test to 'duckdb_unittest_tempdir/54702/null-parquet' (FORMAT 'parquet', PARTITION_BY (a,b));;
-copy (select 'NULL' as a, 'NULL' as b) to 'duckdb_unittest_tempdir/54702/null-parquet' (PARTITION_BY (a,b), OVERWRITE_OR_IGNORE, FORMAT 'parquet');;
-select * 
-from parquet_scan('duckdb_unittest_tempdir/54702/null-parquet/**/*.parquet', hive_partitioning=1, hive_types={'a': INT})
-ORDER BY ALL;

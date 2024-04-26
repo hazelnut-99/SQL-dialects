@@ -1,6 +1,0 @@
-SELECT a5+549, c7, a4*623, a6*256
-  FROM t7, t6, t4, t5
- WHERE 634=b4
-   AND 462=e7
-   AND c5=819
-   AND d6 in (885,161,469,2,277,581,66);

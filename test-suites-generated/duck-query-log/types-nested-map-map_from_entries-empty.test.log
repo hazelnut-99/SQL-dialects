@@ -1,6 +1,0 @@
-PRAGMA enable_verification;
-SELECT map_from_entries();;
-SELECT map_from_entries();;
-;
-SELECT map_from_entries();;
-SELECT map_from_entries();;

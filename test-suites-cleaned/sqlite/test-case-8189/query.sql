@@ -1,9 +1,0 @@
-SELECT x2,x3,x52,x22,x14,x49,x59
-  FROM t49,t52,t59,t22,t14,t2,t3
- WHERE b22=a2
-   AND b2=a14
-   AND a3=9
-   AND b14=a49
-   AND a59=b52
-   AND a3=b59
-   AND b49=a52;

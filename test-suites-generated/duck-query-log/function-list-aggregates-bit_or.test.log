@@ -1,9 +1,0 @@
-CREATE SEQUENCE seq;;
-SELECT list_bit_or([nextval('seq')]);
-SELECT list_bit_or([nextval('seq')]);
-CREATE TABLE integers(i INTEGER[]);;
-INSERT INTO integers VALUES ([3, 7, 15, 31, 3, 15]);
-SELECT list_bit_or([]) FROM integers;
-INSERT INTO integers VALUES ([]), (NULL), ([NULL]), ([3, 7, NULL, 15, 31, 3, 15, NULL]);;
-SELECT list_bit_or(i), list_bit_or([1, 1, 1, 1, 1, 1]), list_bit_or(NULL) FROM integers;
-SELECT list_bit_or();

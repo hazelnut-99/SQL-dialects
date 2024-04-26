@@ -1,4 +1,0 @@
-PRAGMA verify_parallelism;
-select id, value, filename.replace('\', '/').split('/')[-2], filename.replace('\', '/').split('/')[-3] from read_csv_auto('data/csv/hive-partitioning/simple/*/*/test.csv', FILENAME=1) order by id;
-select id, value, part, date from read_csv_auto('data/csv/hive-partitioning/simple/*/*/test.csv', HIVE_PARTITIONING=1) order by id;
-select part, value, date from read_csv_auto('data/csv/hive-partitioning/simple/*/*/test.csv', HIVE_PARTITIONING=1) order by 1;

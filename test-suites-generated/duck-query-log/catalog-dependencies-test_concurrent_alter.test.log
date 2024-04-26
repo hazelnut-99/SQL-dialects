@@ -1,3 +1,0 @@
-CREATE TABLE t2 AS (SELECT 42);;
-create sequence seq;;
-alter sequence seq owned by t2;;

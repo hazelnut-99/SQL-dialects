@@ -1,3 +1,0 @@
-CREATE TABLE b(b blob);;
-INSERT INTO b VALUES (NULL);;
-UPDATE b SET b=blob'\x80abcdefghjijklmnopqrstuvwxyz';;

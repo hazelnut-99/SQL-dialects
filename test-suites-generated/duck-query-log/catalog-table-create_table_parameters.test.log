@@ -1,2 +1,0 @@
-CREATE TABLE t0 ( c1 INT DEFAULT ? );;
-CREATE TABLE t0 ( c1 INT CHECK (?) );;

@@ -1,5 +1,0 @@
-SELECT b2*965, d5+d2, c4+883
-  FROM t4, t2, t5
- WHERE b4=884
-   AND 12=c5
-   AND d2 in (345,209,498,306,404);

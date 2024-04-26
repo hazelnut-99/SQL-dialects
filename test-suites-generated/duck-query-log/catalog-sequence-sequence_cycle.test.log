@@ -1,2 +1,0 @@
-create sequence minseq INCREMENT BY -1 MINVALUE -5 MAXVALUE 5 CYCLE;;
-SELECT nextval('minseq') from generate_series(0,20);;

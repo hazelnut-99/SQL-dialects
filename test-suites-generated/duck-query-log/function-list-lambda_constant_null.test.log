@@ -1,1 +1,0 @@
-select quantile(NULL, filter(NULL, (c103 -> 'babea54a-2261-4b0c-b14b-1d0e9b794e1a')));;

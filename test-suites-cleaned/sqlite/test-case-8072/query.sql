@@ -1,4 +1,0 @@
-SELECT a5, d1*442
-  FROM t1, t5
- WHERE c5=923
-   AND a1 in (524,992,864,931,477,754);

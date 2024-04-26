@@ -1,4 +1,0 @@
-SELECT x5, e7
-  FROM t5, t7
- WHERE c5=856
-   AND e7=976;

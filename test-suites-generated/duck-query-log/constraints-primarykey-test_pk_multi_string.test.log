@@ -1,7 +1,0 @@
-CREATE TABLE tst(a varchar, b varchar,PRIMARY KEY(a,b));
-INSERT INTO tst VALUES ('hell', 'hello'), ('hell','hello');
-INSERT INTO tst VALUES ('hell', 'hello'), ('hello','hell'), ('hel','hell'), ('hell','hel');
-INSERT INTO tst VALUES ('hell', 'hello'),('hel', 'hello');;
-INSERT INTO tst VALUES ('hel', 'hello');;
-UPDATE tst SET b='hello' WHERE b='hel';
-UPDATE tst SET b='hell' WHERE b='hel';

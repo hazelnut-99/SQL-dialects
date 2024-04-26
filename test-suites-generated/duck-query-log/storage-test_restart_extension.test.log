@@ -1,1 +1,0 @@
-SELECT * FROM parquet_scan('data/parquet-testing/arrow/alltypes_plain.parquet');

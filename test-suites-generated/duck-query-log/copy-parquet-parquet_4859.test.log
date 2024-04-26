@@ -1,1 +1,0 @@
-select "repositoryTopics.edges" from "data/parquet-testing/bug4859.parquet";

@@ -1,4 +1,0 @@
-SELECT x7, a4
-  FROM t4, t7
- WHERE 877=b4
-   AND e7=503;

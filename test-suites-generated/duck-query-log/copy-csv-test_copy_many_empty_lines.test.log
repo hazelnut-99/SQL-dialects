@@ -1,3 +1,0 @@
-CREATE TABLE test (a INTEGER);;
-COPY test FROM 'test/sql/copy/csv/data/test/many_empty_lines.csv' (HEADER 0);;
-SELECT SUM(a) FROM test;;

@@ -1,4 +1,0 @@
-SELECT c6, x8
-  FROM t8, t6
- WHERE d6=750
-   AND 981=e8;

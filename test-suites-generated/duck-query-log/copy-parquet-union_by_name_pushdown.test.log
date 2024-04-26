@@ -1,8 +1,0 @@
-COPY (SELECT 42 AS i, 84 AS j) TO 'duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet';
-COPY (SELECT 128 AS j, 33 AS k) TO 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet';
-SELECT * FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True);
-SELECT k FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True);
-SELECT i FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True);
-SELECT * FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True) WHERE k>0;
-SELECT * FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True) WHERE k>0 OR k IS NULL;
-SELECT * FROM read_parquet(['duckdb_unittest_tempdir/54736/union_by_name_pushdown1.parquet', 'duckdb_unittest_tempdir/54736/union_by_name_pushdown2.parquet'], union_by_name=True) WHERE i>0;

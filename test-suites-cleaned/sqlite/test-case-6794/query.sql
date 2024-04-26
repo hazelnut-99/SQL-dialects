@@ -1,4 +1,0 @@
-SELECT e9+c9, a6*322
-  FROM t6, t9
- WHERE c9=800
-   AND 405=d6;

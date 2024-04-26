@@ -1,3 +1,0 @@
-CREATE TABLE dates(d DATE);;
-COPY dates FROM 'test/sql/copy/csv/data/glob/a?/*.csv' (AUTO_DETECT 1);;
-SELECT * FROM dates ORDER BY 1;

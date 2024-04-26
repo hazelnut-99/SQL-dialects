@@ -1,4 +1,0 @@
-SELECT d3, c2
-  FROM t3, t2
- WHERE a2=c3
-   AND a3 in (349,162,576,98,5,376,476,341);

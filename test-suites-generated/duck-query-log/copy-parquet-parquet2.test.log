@@ -1,7 +1,0 @@
-SELECT id FROM 'data/parquet-testing/p2.parquet' offset 4968;;
-SELECT id FROM 'data/parquet-testing/p2.parquet' limit 10;;
-SELECT id FROM 'data/parquet-testing/p2.parquet' limit 100;;
-SELECT id_with_null FROM 'data/parquet-testing/p2.parquet' limit 100;;
-select min(id), max(id), sum(id), count(id), min(id_with_null), max(id_with_null), sum(id_with_null), count(id_with_null) from 'data/parquet-testing/p2.parquet';
-select min(id_int), max(id_int), sum(id_int), count(id_int) from 'data/parquet-testing/p2.parquet';
-select * from 'data/parquet-testing/7-set.snappy.arrow2.parquet';;

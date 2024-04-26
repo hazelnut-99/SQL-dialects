@@ -1,9 +1,0 @@
-CREATE TABLE numbers(i varchar PRIMARY KEY, j INTEGER);
-INSERT INTO numbers VALUES ('1', 4), ('1', 5);
-INSERT INTO numbers VALUES ('1', 4), ('2', 5);
-SELECT * FROM numbers;
-INSERT INTO numbers VALUES ('6', 6), ('1', 4);;
-INSERT INTO numbers VALUES ('6', 6);;
-SELECT * FROM numbers;
-INSERT INTO numbers VALUES (NULL, 4);;
-UPDATE numbers SET i=NULL;;

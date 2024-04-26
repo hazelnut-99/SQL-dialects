@@ -1,6 +1,0 @@
-SELECT x29,x31,x51,x55
-  FROM t51,t31,t29,t55
- WHERE b55=a31
-   AND a29=6
-   AND a29=b51
-   AND a51=b31;

@@ -1,3 +1,0 @@
-SELECT "inner"['str_field'] FROM parquet_scan('data/parquet-testing/bug1618_struct_strings.parquet');
-SELECT "inner"['f64_field'] FROM parquet_scan('data/parquet-testing/bug1618_struct_strings.parquet');
-SELECT "inner" FROM parquet_scan('data/parquet-testing/bug1618_struct_strings.parquet');

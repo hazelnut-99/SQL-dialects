@@ -1,6 +1,0 @@
-CREATE TABLE hugeints(h HUGEINT[]);
-INSERT INTO hugeints VALUES ([NULL, 1, 2]), (NULL), ([]), ([NULL]), ([1, 2, 3]);
-SELECT list_first(h), list_last(h), list_sum(h) FROM hugeints;
-DELETE FROM hugeints;
-INSERT INTO hugeints VALUES ([42.0, 1267650600228229401496703205376, -439847238974238975238975, '-12']);;
-SELECT list_min(h), list_max(h), list_sum(h), list_first(h), list_last(h) FROM hugeints;;

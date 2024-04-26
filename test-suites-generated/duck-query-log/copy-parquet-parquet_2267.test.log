@@ -1,2 +1,0 @@
-SELECT * FROM parquet_scan('data/parquet-testing/bug2267.parquet');
-SELECT assignedLicenses[1] FROM parquet_scan('data/parquet-testing/bug2267.parquet');

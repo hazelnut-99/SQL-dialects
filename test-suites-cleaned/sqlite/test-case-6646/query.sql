@@ -1,4 +1,0 @@
-SELECT x3, e7+b3
-  FROM t7, t3
- WHERE 41=a3
-   AND e7=144;

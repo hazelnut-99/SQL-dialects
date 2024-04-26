@@ -1,2 +1,0 @@
-select * from parquet_scan('data/parquet-testing/timestamp.parquet') order by 1;
-select * from parquet_scan('data/parquet-testing/timestamp-ms.parquet') order by 1;

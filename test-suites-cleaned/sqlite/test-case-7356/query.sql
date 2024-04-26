@@ -1,4 +1,0 @@
-SELECT x8, e9+131
-  FROM t8, t9
- WHERE e9=383
-   AND 561=e8;

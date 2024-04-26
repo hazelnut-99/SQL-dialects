@@ -1,8 +1,0 @@
-SELECT strip_accents('hello'), strip_accents('héllo');
-SELECT strip_accents('mühleisen'), strip_accents('hannes mühleisen');
-CREATE TABLE collate_test(s VARCHAR, str VARCHAR);
-INSERT INTO collate_test VALUES ('äää', 'aaa');
-INSERT INTO collate_test VALUES ('hännës mühlëïsën', 'hannes muhleisen');
-INSERT INTO collate_test VALUES ('olá', 'ola');
-INSERT INTO collate_test VALUES ('ôâêóáëòõç', 'oaeoaeooc');
-SELECT strip_accents(s)=strip_accents(str) FROM collate_test;

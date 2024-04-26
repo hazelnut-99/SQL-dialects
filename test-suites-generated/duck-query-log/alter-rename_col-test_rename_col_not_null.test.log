@@ -1,6 +1,0 @@
-CREATE TABLE test(i INTEGER NOT NULL, j INTEGER);
-INSERT INTO test (i, j) VALUES (1, 2), (2, 3);
-INSERT INTO test (i, j) VALUES (NULL, 2);
-ALTER TABLE test RENAME COLUMN i TO k;
-INSERT INTO test (k, j) VALUES (1, 2), (2, 3);
-INSERT INTO test (k, j) VALUES (NULL, 2);

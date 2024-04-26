@@ -1,5 +1,0 @@
-COPY (SELECT 42) TO 'duckdb_unittest_tempdir/54818/scalar.parquet' (FORMAT 'parquet');;
-SELECT * FROM parquet_scan('duckdb_unittest_tempdir/54818/scalar.parquet');;
-CREATE TABLE empty(i INTEGER);
-COPY (SELECT * FROM empty) TO 'duckdb_unittest_tempdir/54818/empty.parquet' (FORMAT 'parquet');
-SELECT COUNT(*) FROM parquet_scan('duckdb_unittest_tempdir/54818/empty.parquet');

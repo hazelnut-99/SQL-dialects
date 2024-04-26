@@ -1,6 +1,0 @@
-SELECT a8+c8, x2, d4+45, d3
-  FROM t8, t2, t3, t4
- WHERE a3=c2
-   AND e8 in (947,469,586,919,608,635,63,874)
-   AND (b4=23 OR 532=b4 OR b4=167 OR 294=b4)
-   AND 851=a2;

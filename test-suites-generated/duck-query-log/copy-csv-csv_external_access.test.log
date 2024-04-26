@@ -1,8 +1,0 @@
-CREATE TABLE date_test(d date);;
-COPY date_test FROM 'test/sql/copy/csv/data/test/date.csv';;
-SET enable_external_access=false;;
-SELECT * FROM read_csv('test/sql/copy/csv/data/test/date.csv', columns = {'d': 'DATE'});;
-SELECT * FROM read_csv_auto('test/sql/copy/csv/data/test/date.csv');;
-COPY date_test FROM 'test/sql/copy/csv/data/test/date.csv';;
-COPY date_test TO 'duckdb_unittest_tempdir/54574/date.csv';
-SET enable_external_access=true;;

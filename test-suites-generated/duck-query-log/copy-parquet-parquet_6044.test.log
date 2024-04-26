@@ -1,2 +1,0 @@
-copy (select 0.9 AS a) to 'duckdb_unittest_tempdir/54740/tiny_decimal.parquet' (format 'parquet', codec 'zstd');;
-SELECT * FROM 'duckdb_unittest_tempdir/54740/tiny_decimal.parquet';

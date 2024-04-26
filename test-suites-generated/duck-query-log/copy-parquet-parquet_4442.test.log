@@ -1,1 +1,0 @@
-SELECT * FROM 'data/parquet-testing/bug4442.parquet';

@@ -1,6 +1,0 @@
-PRAGMA enable_verification;
-ATTACH DATABASE 'duckdb_unittest_tempdir/54313/temp.db';;
-CREATE TABLE temp_db.integers(i INTEGER);;
-DETACH temp_db;;
-ATTACH DATABASE ':memory:' AS temp;;
-ATTACH DATABASE ':memory:' AS main;;

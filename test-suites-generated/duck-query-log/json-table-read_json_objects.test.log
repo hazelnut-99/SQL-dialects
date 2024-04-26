@@ -1,1 +1,0 @@
-SELECT * FROM read_csv('data/json/example_n.ndjson', columns={'json': 'JSON'}, delim=NULL, header=0, quote=NULL, escape=NULL);

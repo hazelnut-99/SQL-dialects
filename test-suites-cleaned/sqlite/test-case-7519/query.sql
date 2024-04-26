@@ -1,4 +1,0 @@
-SELECT e2+a2, b8*208
-  FROM t8, t2
- WHERE e8=180
-   AND a2=d8;

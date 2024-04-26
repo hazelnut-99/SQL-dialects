@@ -1,5 +1,0 @@
-SELECT c1+563, b9, x8
-  FROM t8, t1, t9
- WHERE e8 in (859,487,305,320)
-   AND d9 in (399,646,821,161)
-   AND 579=a1;

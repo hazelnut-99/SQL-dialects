@@ -1,4 +1,0 @@
-select current_setting('threads');
-pragma threads=42;
-RESET threads;;
-select current_setting('threads');

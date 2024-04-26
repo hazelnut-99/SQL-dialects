@@ -1,7 +1,0 @@
-SELECT x16,x64,x45,x29,x40
-  FROM t40,t45,t16,t64,t29
- WHERE b16=a40
-   AND a29=10
-   AND a64=b40
-   AND b45=a16
-   AND b64=a29;

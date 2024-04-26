@@ -1,9 +1,0 @@
-SELECT b1 FROM t1
-   WHERE (d1=310 OR 276=a1)
-      OR a1 in (170,579,996,767,864,337,936,591,395,314,173,604,20)
-      OR (32=b1 AND d1=793)
-UNION
-  SELECT a2 FROM t2
-   WHERE (442=a2 OR d2=215)
-      OR (337=c2)
-      OR (b2=634);

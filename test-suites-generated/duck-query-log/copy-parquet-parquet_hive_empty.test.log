@@ -1,3 +1,0 @@
-select * 
-from parquet_scan('data/parquet-testing/hive-partitioning/empty_string/*/*.parquet', hive_partitioning=1)
-ORDER BY ALL;

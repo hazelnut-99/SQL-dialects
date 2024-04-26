@@ -1,4 +1,0 @@
-SELECT x3, a2
-  FROM t2, t3
- WHERE d2 in (14,953,306,838,153,897,198)
-   AND (a3=499 OR 777=a3);

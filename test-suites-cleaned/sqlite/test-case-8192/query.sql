@@ -1,9 +1,0 @@
-SELECT x54,x17,x21,x6,x34,x49,x2
-  FROM t21,t49,t54,t17,t2,t6,t34
- WHERE b34=a54
-   AND a34=b6
-   AND a21=b2
-   AND a21=4
-   AND a17=b49
-   AND a49=b54
-   AND b17=a2;

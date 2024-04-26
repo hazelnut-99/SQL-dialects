@@ -1,0 +1,1 @@
+working directory for running test cases on different DBMS and result comparison

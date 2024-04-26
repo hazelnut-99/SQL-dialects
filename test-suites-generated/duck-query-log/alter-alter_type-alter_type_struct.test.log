@@ -1,9 +1,0 @@
-CREATE TABLE test AS SELECT {'t': 42} t;
-SELECT * FROM test;
-ALTER TABLE test ALTER t TYPE ROW(t VARCHAR) USING {'t': concat('hello', (test.t.t + 42)::varchar)};
-SELECT * FROM test;
-DROP TABLE test;;
-CREATE TABLE test AS SELECT {'t': 42} t;
-SELECT * FROM test;
-ALTER TABLE test ALTER t TYPE ROW(t VARCHAR) USING {'t': concat('hello', (t.t + 42)::varchar)};
-SELECT * FROM test;

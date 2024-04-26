@@ -1,2 +1,0 @@
-create table tbl as select i%50::BIGINT as i, i%5::BIGINT as j from range(1000000) tbl(i);;
-select count(distinct i), min(distinct i), max(distinct i), sum(distinct i), product(distinct i) from tbl group by j order by all;;

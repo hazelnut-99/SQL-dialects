@@ -1,1 +1,0 @@
-SELECT data FROM parquet_scan('data/parquet-testing/fixed.parquet');

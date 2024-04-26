@@ -1,7 +1,0 @@
-create table foo(
-	bar text primary key,
-	baz bigint,
-);;
-insert or replace into foo(bar, baz) values ('baz', 1) returning bar;;
-insert or replace into foo(bar, baz) values ('baz', 2) returning bar;;
-insert or replace into foo(bar, baz) values ('baz', 1), ('bar', 2) returning bar;;

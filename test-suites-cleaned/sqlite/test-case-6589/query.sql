@@ -1,4 +1,0 @@
-SELECT e4, a5
-  FROM t5, t4
- WHERE 602=c5
-   AND 627=b4;

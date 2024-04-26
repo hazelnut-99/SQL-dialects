@@ -1,7 +1,0 @@
-SELECT x49,x11,x27,x47,x17
-  FROM t11,t49,t47,t17,t27
- WHERE a27=b49
-   AND b11=a49
-   AND a47=9
-   AND a11=b17
-   AND a47=b27;

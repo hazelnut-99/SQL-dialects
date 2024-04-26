@@ -1,4 +1,0 @@
-SELECT epoch_ms(0) as epoch1, epoch_ms(1574802684123) as epoch2, epoch_ms(-291044928000) as epoch3, epoch_ms(-291081600000) as epoch4,  epoch_ms(-291081600001) as epoch5, epoch_ms(-290995201000) as epoch6;
-SELECT to_timestamp(0), to_timestamp(1), to_timestamp(1574802684), to_timestamp(-1);
-SELECT to_timestamp(1284352323.5);;
-SELECT to_timestamp(1284352323::DOUBLE * 100000000);;

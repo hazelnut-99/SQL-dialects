@@ -1,6 +1,0 @@
-SELECT d3+58+b9, x2, a9, c4*588+c9
-  FROM t9, t4, t2, t3
- WHERE a3=d2
-   AND (495=d9 OR d9=129 OR d9=628)
-   AND b4 in (476,260,707,587,551,634)
-   AND e2 in (428,217,434,411);

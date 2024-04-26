@@ -1,6 +1,0 @@
-SELECT a6, x5, b2+a6, e4
-  FROM t5, t2, t4, t6
- WHERE d6 in (192,129,970,151)
-   AND b4 in (434,267,535,407,331,2,921,469)
-   AND (c2=728 OR 806=c2 OR 141=c2)
-   AND c5=819;

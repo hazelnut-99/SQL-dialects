@@ -1,8 +1,0 @@
-CREATE TABLE cranlogs AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/tmp2013-06-15.csv.gz');;
-SELECT COUNT(*) FROM cranlogs;;
-SELECT * FROM cranlogs LIMIT 5;;
-PRAGMA verify_parallelism;
-CREATE TABLE cranlogs2 AS SELECT * FROM read_csv_auto ('test/sql/copy/csv/data/real/tmp2013-06-15.csv.gz');;
-(SELECT * FROM cranlogs EXCEPT SELECT * FROM cranlogs2)
-UNION ALL
-(SELECT * FROM cranlogs2 EXCEPT SELECT * FROM cranlogs);

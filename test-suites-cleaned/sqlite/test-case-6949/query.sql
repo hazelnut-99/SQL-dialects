@@ -1,4 +1,0 @@
-SELECT d1*267, a7*670+e1
-  FROM t1, t7
- WHERE 154=e7
-   AND a1=b7;

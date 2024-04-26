@@ -1,9 +1,0 @@
-SELECT list_min(list_concat([1, 2], [-1]));
-SELECT list_min(list_aggr([1, 2], 'list'));
-CREATE TABLE lists (l1 INTEGER[], l2 INTEGER[]);
-INSERT INTO lists VALUES ([1, 2, 3], [4]), ([NULL, 1, -4, NULL], [NULL]), (NULL, NULL), ([NULL], [-4]), ([], []);
-SELECT list_last(list_concat(l1, l2)) FROM lists;
-SELECT list_concat(list(list_last(l1)), list(list_first(l2))) FROM lists;
-SELECT array_aggregate([1, 2], 'min');
-SELECT array_aggr([1, 2], 'min');
-SELECT list_aggregate([1, 2], 'min');

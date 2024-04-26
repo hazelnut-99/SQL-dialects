@@ -1,5 +1,0 @@
-SELECT x6, a1*716, d8
-  FROM t1, t8, t6
- WHERE d6=a8
-   AND a1 in (810,147,461,536,674,231,607,738)
-   AND 617=e8;

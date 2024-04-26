@@ -1,4 +1,0 @@
-SELECT x6, c1
-  FROM t6, t1
- WHERE d6=277
-   AND (a1=20 OR a1=215 OR 754=a1 OR a1=847);

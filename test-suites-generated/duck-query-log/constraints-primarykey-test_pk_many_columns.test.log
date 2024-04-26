@@ -1,6 +1,0 @@
-CREATE TABLE numbers(a integer, b integer, c integer, d integer, e integer, PRIMARY KEY(a,b,c,d,e));
-INSERT INTO numbers VALUES (1,1,1,1,1), (1,1,1,1,1);
-INSERT INTO numbers VALUES (1,1,1,1,1),(1,2,1,1,1),(1,1,2,1,1),(2,2,2,2,2);
-INSERT INTO numbers VALUES (1,1,1,1,1),(1,1,1,1,4);;
-INSERT INTO numbers VALUES (1,1,1,1,4);;
-UPDATE numbers SET c=1 WHERE c=2;

@@ -1,6 +1,0 @@
-CREATE TABLE test(i INTEGER CHECK(i < 10), j INTEGER);
-INSERT INTO test (i, j) VALUES (1, 2), (2, 3);
-INSERT INTO test (i, j) VALUES (100, 2);
-ALTER TABLE test RENAME COLUMN i TO k;
-INSERT INTO test (k, j) VALUES (1, 2), (2, 3);
-INSERT INTO test (k, j) VALUES (100, 2);

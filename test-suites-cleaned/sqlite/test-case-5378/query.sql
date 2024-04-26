@@ -1,6 +1,0 @@
-SELECT b8 FROM t8
-   WHERE (e8=423)
-UNION ALL
-  SELECT e6 FROM t6
-   WHERE (417=e6)
-      OR (214=b6 OR b6=905);

@@ -1,5 +1,0 @@
-SELECT c2, c4+b4, c8
-  FROM t8, t4, t2
- WHERE e8 in (561,485,463,578,46)
-   AND b4 in (407,184,372,907,86)
-   AND 418=b2;

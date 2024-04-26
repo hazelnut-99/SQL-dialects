@@ -1,3 +1,0 @@
-copy (select 42) to 'duckdb_unittest_tempdir/54585/file.csv' (prefix 'a');;
-copy (select 42) to 'duckdb_unittest_tempdir/54585/file.csv' (prefix 'a', suffix 'b', header);;
-copy (select 42) to 'duckdb_unittest_tempdir/54585/file.csv' (escape 'null', null 'null');;

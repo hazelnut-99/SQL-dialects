@@ -1,4 +1,0 @@
-SELECT c3+c3, a1+68
-  FROM t1, t3
- WHERE a3=b1
-   AND a1 in (895,668,179,32,237,622,779,521);

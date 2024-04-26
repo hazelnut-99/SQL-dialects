@@ -1,5 +1,0 @@
-SELECT d8, c1+d1, e7
-  FROM t8, t1, t7
- WHERE e8 in (296,510,792,579,980,199,310)
-   AND 455=e7
-   AND a1=637;

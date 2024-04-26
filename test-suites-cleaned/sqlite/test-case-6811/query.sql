@@ -1,5 +1,0 @@
-SELECT x6, d5, a7+486
-  FROM t7, t6, t5
- WHERE d6=d7
-   AND (27=e7 OR 988=e7 OR e7=976 OR 884=e7)
-   AND 155=c5;

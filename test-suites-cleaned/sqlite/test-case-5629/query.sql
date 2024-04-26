@@ -1,8 +1,0 @@
-SELECT c7 FROM t7
-   WHERE (e7=904 OR 508=e7)
-      OR (d7=79 OR 280=b7)
-EXCEPT
-  SELECT d8 FROM t8
-   WHERE NOT (d8 in (683,384,101,735,889)
-           OR (486=c8 OR a8=46)
-           OR a8 in (359,127,848,46,838,248,638));

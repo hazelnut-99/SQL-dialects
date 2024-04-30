@@ -1,0 +1,14 @@
+CREATE TABLE t1( x INTEGER PRIMARY KEY, y VARCHAR(16) );
+INSERT INTO t1 VALUES(1, 'true');
+INSERT INTO t1 VALUES(0, 'false');
+SELECT x, y FROM t1 WHERE x=2;
+INSERT INTO t1 VALUES(2, 'insert');
+SELECT x, y FROM t1 WHERE x=2;
+INSERT OR REPLACE INTO t1 VALUES(2, 'insert or replace');
+SELECT x, y FROM t1 WHERE x=2;
+REPLACE INTO t1 VALUES(2, 'replace');
+SELECT x, y FROM t1 WHERE x=2;
+INSERT OR REPLACE INTO t1 VALUES(3, 'insert or replace (new)');
+SELECT x, y FROM t1 WHERE x=3;
+REPLACE INTO t1 VALUES(4, 'replace (new)');
+SELECT x, y FROM t1 WHERE x=4;

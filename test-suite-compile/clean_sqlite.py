@@ -33,6 +33,15 @@ def flush_a_batch(queries, write_indices, read_indices):
     output_dir = sqlite_output_path + "/test_collection_" + utils.zfill_number(directory_number, 5)
     utils.create_directory_if_not_exists(output_dir)
     write_queries = [queries[index] for index in write_indices]
+    write_tables = set([])
+    for write_query in write_queries:
+        if write_query.startswith("CREATE"):
+            tables = sql_parser.get_tables_involved(write_query, 'sqlite')
+            for table in tables:
+                write_tables.add(table)
+    extra_queries = ["DROP TABLE IF EXISTS " + table for table in write_tables]
+    write_queries[:0] = extra_queries
+    
     utils.write_list_to_file(write_queries, output_dir + "/db.sql")
     for read_index in read_indices:
         query = queries[read_index]

@@ -1,0 +1,6 @@
+SELECT d9 FROM t9
+   WHERE (d9=439 AND b9=64 AND a9=115)
+EXCEPT
+  SELECT a8 FROM t8
+   WHERE NOT ((a8=474)
+           OR (314=a8 OR b8=98));

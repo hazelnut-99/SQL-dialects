@@ -1,0 +1,10 @@
+SELECT x22,x44,x30,x36,x48,x27,x2,x57
+  FROM t57,t44,t30,t22,t2,t36,t27,t48
+ WHERE a57=7
+   AND a48=b30
+   AND b48=a57
+   AND b27=a22
+   AND b22=a36
+   AND a27=b44
+   AND a30=b36
+   AND a44=b2;

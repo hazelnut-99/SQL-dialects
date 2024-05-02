@@ -1,0 +1,4 @@
+SELECT b9, e8*764
+  FROM t9, t8
+ WHERE c9=992
+   AND (761=e8 OR e8=431 OR e8=635 OR e8=864);

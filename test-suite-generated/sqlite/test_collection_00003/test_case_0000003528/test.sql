@@ -1,0 +1,5 @@
+SELECT a3+263, b2, d4*885
+  FROM t4, t3, t2
+ WHERE a3=380
+   AND b4 in (707,40,635,713)
+   AND d2 in (621,476,10);

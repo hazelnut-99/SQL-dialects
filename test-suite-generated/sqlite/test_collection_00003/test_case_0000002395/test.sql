@@ -1,0 +1,4 @@
+SELECT b1, e2*438
+  FROM t1, t2
+ WHERE c2=22
+   AND 643=a1;

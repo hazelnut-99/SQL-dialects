@@ -1,0 +1,7 @@
+SELECT b2 FROM t2
+   WHERE (564=a2 OR b2=329)
+      OR (a2=922 AND c2=318 AND 554=b2 AND e2=302)
+INTERSECT
+  SELECT d6 FROM t6
+   WHERE NOT ((825=a6 OR b6=463)
+           OR (504=c6 OR 664=d6));

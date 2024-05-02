@@ -1,0 +1,4 @@
+SELECT x7, x6
+  FROM t6, t7
+ WHERE 269=d6
+   AND e7=506;

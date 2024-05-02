@@ -1,0 +1,4 @@
+SELECT d7, c5
+  FROM t7, t5
+ WHERE (e7=455 OR 561=e7 OR e7=89)
+   AND 348=c5;

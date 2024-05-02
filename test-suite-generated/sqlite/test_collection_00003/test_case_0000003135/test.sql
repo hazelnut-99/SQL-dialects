@@ -1,0 +1,4 @@
+SELECT e1, d6+d1
+  FROM t6, t1
+ WHERE d6=321
+   AND (145=a1 OR a1=895 OR a1=460);

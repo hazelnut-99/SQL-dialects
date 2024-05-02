@@ -1,0 +1,4 @@
+SELECT e5, b2*474
+  FROM t5, t2
+ WHERE 147=c5
+   AND 428=e2;

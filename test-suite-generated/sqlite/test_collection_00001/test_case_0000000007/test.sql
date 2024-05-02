@@ -1,0 +1,6 @@
+SELECT x61,x29,x6,x36
+  FROM t61,t29,t6,t36
+ WHERE b36=a61
+   AND a6=b61
+   AND a36=b29
+   AND a6=6;

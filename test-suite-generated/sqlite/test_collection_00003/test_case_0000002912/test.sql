@@ -1,0 +1,4 @@
+SELECT d2, b9
+  FROM t2, t9
+ WHERE b9 in (783,118,759,803)
+   AND a2=651;

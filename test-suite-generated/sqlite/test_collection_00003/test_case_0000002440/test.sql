@@ -1,0 +1,4 @@
+SELECT c9, a8+471
+  FROM t9, t8
+ WHERE 662=a9
+   AND (632=e8 OR e8=179);

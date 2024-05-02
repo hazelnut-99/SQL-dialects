@@ -1,0 +1,4 @@
+SELECT c2+859, c4
+  FROM t4, t2
+ WHERE 700=b4
+   AND a2=691;

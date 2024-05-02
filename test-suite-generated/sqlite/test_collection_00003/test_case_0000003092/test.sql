@@ -1,0 +1,4 @@
+SELECT x9, d3+634
+  FROM t9, t3
+ WHERE 197=e9
+   AND a3=255;

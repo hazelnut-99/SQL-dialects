@@ -1,0 +1,4 @@
+SELECT x6, a2
+  FROM t2, t6
+ WHERE 441=e2
+   AND d6=405;

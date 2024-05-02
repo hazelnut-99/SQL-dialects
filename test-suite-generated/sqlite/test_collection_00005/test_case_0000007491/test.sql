@@ -1,0 +1,4 @@
+SELECT a-b
+  FROM t1
+ WHERE b IS NOT NULL
+   AND c>d;

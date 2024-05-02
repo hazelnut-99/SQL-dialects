@@ -1,0 +1,5 @@
+SELECT x5, x8, b4
+  FROM t8, t4, t5
+ WHERE e8 in (7,933,811,105,635,776,497)
+   AND c5=d8
+   AND 802=b4;

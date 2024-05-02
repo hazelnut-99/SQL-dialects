@@ -1,0 +1,4 @@
+SELECT b3*825, c7
+  FROM t3, t7
+ WHERE e7=503
+   AND a3=964;

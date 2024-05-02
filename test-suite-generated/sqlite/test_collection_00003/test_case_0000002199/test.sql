@@ -1,0 +1,4 @@
+SELECT x5, d8
+  FROM t8, t5
+ WHERE c5 in (12,774,149,657)
+   AND e8=295;

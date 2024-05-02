@@ -1,0 +1,9 @@
+SELECT a2 FROM t2
+   WHERE d2 in (772,843,14,723,317,887,351,663)
+      OR (222=a2 OR 389=d2)
+      OR (346=c2 OR 964=c2 OR c2=103)
+INTERSECT
+  SELECT c7 FROM t7
+   WHERE NOT ((b7=191)
+           OR (78=c7 AND a7=854 AND 939=d7)
+           OR (e7=553 OR c7=257 OR 638=e7));

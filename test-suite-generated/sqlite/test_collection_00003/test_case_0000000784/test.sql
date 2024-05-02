@@ -1,0 +1,12 @@
+SELECT d3 FROM t3
+   WHERE a3 in (265,499,777)
+      OR (c3=887 AND 333=e3 AND 584=b3)
+INTERSECT
+  SELECT b6 FROM t6
+   WHERE NOT ((d6=337)
+           OR (511=e6 AND 560=d6 AND 637=c6))
+UNION
+  SELECT a2 FROM t2
+   WHERE (902=c2 OR 476=d2)
+      OR (455=a2 AND b2=681)
+      OR (543=b2 OR a2=35 OR a2=916);

@@ -1,0 +1,7 @@
+SELECT c2 FROM t2
+   WHERE (688=c2 AND 983=e2 AND 113=b2)
+UNION ALL
+  SELECT a7 FROM t7
+   WHERE (e7=428)
+      OR (d7=131)
+      OR a7 in (165,267,433,699);

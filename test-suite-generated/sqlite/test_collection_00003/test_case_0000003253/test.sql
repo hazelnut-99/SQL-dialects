@@ -1,0 +1,5 @@
+SELECT a5, a9, e4+e9
+  FROM t5, t9, t4
+ WHERE c5=729
+   AND (319=b4 OR 563=b4 OR 579=b4)
+   AND e9 in (968,804,251,873,936,452,837);

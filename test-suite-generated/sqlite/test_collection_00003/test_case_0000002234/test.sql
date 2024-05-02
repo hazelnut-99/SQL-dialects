@@ -1,0 +1,4 @@
+SELECT a7, a8+214
+  FROM t7, t8
+ WHERE 975=e7
+   AND 383=e8;

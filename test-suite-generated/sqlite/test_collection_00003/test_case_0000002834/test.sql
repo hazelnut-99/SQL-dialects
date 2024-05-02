@@ -1,0 +1,5 @@
+SELECT e6, d4, x8
+  FROM t8, t6, t4
+ WHERE e8=956
+   AND d6 in (689,129,767,60,931,463,561)
+   AND b4=535;

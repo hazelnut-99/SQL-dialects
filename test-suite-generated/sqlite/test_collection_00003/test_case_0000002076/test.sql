@@ -1,0 +1,5 @@
+SELECT a8, e4+20, x2
+  FROM t2, t8, t4
+ WHERE e8=422
+   AND b4 in (961,608,644,563,829,938,68)
+   AND c2 in (346,179,46);

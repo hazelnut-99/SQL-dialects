@@ -1,0 +1,5 @@
+SELECT b7, x2, d9
+  FROM t9, t2, t7
+ WHERE e2 in (302,953,808,753,242,445)
+   AND d9=681
+   AND (e7=156 OR e7=979 OR 508=e7 OR e7=553);

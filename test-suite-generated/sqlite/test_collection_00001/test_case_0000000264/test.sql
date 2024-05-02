@@ -1,0 +1,27 @@
+SELECT x19,x33,x47,x46,x62,x35,x43,x39,x38,x55,x29,x9,x7,x17,x51,x18,x22,x26,x50,x8,x42,x12,x6,x59,x3
+  FROM t62,t8,t3,t9,t42,t22,t12,t47,t33,t39,t17,t43,t26,t46,t19,t38,t50,t51,t35,t29,t55,t7,t6,t18,t59
+ WHERE b47=a55
+   AND a22=b6
+   AND b17=a59
+   AND a39=3
+   AND a38=b51
+   AND b22=a43
+   AND b35=a39
+   AND b50=a9
+   AND a17=b3
+   AND b12=a6
+   AND a46=b26
+   AND b42=a3
+   AND a47=b29
+   AND b59=a12
+   AND a35=b55
+   AND b62=a18
+   AND b8=a7
+   AND b33=a62
+   AND b46=a19
+   AND a42=b9
+   AND a50=b18
+   AND a51=b19
+   AND a29=b38
+   AND b43=a8
+   AND b7=a26;

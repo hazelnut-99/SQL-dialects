@@ -1,0 +1,4 @@
+SELECT b8+b8, d4
+  FROM t4, t8
+ WHERE 802=b4
+   AND e8=463;

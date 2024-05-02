@@ -1,0 +1,5 @@
+SELECT a+b*2+c*3+d*4,
+       CASE WHEN c>(SELECT avg(c) FROM t1) THEN a*2 ELSE b*10 END
+  FROM t1
+ WHERE e+d BETWEEN a+b-10 AND c+130
+   AND EXISTS(SELECT 1 FROM t1 AS x WHERE x.b<t1.b);

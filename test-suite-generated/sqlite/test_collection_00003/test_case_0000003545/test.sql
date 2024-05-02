@@ -1,0 +1,4 @@
+SELECT d7*524, a1*755
+  FROM t7, t1
+ WHERE e7=975
+   AND a1 in (222,477,866,825);

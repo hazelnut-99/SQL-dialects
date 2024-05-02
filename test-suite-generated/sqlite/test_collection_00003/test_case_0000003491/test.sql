@@ -1,0 +1,4 @@
+SELECT x6, a9+398+b6
+  FROM t6, t9
+ WHERE b9=804
+   AND d6=256;

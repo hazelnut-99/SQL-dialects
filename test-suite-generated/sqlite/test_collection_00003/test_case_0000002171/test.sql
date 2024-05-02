@@ -1,0 +1,5 @@
+SELECT b7, c1, d4+c7
+  FROM t1, t4, t7
+ WHERE (e7=860 OR e7=553 OR 945=e7 OR e7=103)
+   AND 241=a1
+   AND (b4=114 OR b4=402 OR b4=748);

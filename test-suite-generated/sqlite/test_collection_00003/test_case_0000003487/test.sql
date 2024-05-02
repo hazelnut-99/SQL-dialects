@@ -1,0 +1,4 @@
+SELECT d8+a8, b5
+  FROM t8, t5
+ WHERE c5 in (147,158,915,941)
+   AND e8=487;

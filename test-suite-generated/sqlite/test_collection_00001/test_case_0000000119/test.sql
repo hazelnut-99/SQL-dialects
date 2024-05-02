@@ -1,0 +1,15 @@
+SELECT x6,x22,x23,x32,x20,x50,x55,x58,x59,x51,x8,x11,x35
+  FROM t6,t55,t35,t11,t51,t23,t20,t22,t32,t58,t8,t50,t59
+ WHERE a51=b50
+   AND a32=b20
+   AND b11=a22
+   AND a8=b32
+   AND a50=b23
+   AND a6=6
+   AND b55=a59
+   AND b58=a35
+   AND b35=a20
+   AND a55=b51
+   AND b59=a6
+   AND a23=b22
+   AND a11=b8;

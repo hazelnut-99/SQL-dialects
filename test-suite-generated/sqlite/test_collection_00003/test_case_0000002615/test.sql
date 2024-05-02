@@ -1,0 +1,5 @@
+SELECT x4, x6, b3
+  FROM t3, t6, t4
+ WHERE b4=407
+   AND 5=a3
+   AND d6 in (405,271,846,885,647,66);

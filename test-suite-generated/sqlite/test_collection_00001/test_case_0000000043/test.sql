@@ -1,0 +1,9 @@
+SELECT x30,x41,x60,x39,x16,x45,x58
+  FROM t39,t16,t45,t30,t41,t60,t58
+ WHERE a60=b39
+   AND b45=a41
+   AND b30=a39
+   AND a60=8
+   AND b58=a16
+   AND a58=b41
+   AND b16=a30;

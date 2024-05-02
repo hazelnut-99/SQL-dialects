@@ -1,0 +1,9 @@
+SELECT d,
+       a+b*2+c*3,
+       a,
+       e
+  FROM t1
+ WHERE c BETWEEN b-2 AND d+2
+    OR c>d
+    OR (e>a AND e<b)
+ ORDER BY 4,2,3,1;

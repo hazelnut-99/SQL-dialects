@@ -1,0 +1,4 @@
+SELECT a5, d1*442
+  FROM t5, t1
+ WHERE a1 in (524,992,864,931,477,754)
+   AND c5=923;

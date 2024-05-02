@@ -1,0 +1,4 @@
+SELECT b1+793, e6*990
+  FROM t6, t1
+ WHERE d6=689
+   AND 173=a1;

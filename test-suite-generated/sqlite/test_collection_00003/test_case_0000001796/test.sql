@@ -1,0 +1,7 @@
+SELECT e2+569, x6, c8, c7+737, d3
+  FROM t2, t7, t6, t8, t3
+ WHERE (a2=324 OR a2=680 OR 588=a2 OR a2=415)
+   AND (e8=349 OR e8=859 OR e8=944)
+   AND a3=729
+   AND e7 in (851,975,900,319,976)
+   AND d6=a3;

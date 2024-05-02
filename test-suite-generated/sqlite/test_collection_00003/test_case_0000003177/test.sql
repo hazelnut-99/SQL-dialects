@@ -1,0 +1,5 @@
+SELECT x5, a8, b4*473
+  FROM t8, t5, t4
+ WHERE e8=41
+   AND 147=c5
+   AND b4 in (387,271,33,608,40);

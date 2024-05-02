@@ -1,0 +1,11 @@
+SELECT d5 FROM t5
+   WHERE (822=b5 OR 9=a5 OR 758=e5)
+EXCEPT
+  SELECT a3 FROM t3
+   WHERE NOT ((a3=532 OR 617=b3 OR e3=765)
+           OR (874=b3))
+EXCEPT
+  SELECT c9 FROM t9
+   WHERE NOT ((468=a9)
+           OR (142=d9 OR 18=a9 OR 711=c9)
+           OR d9 in (665,909,737,681,345,678,922,720,549,489));

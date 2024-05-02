@@ -1,0 +1,8 @@
+SELECT x48,x28,x52,x57,x45,x50
+  FROM t48,t28,t57,t50,t45,t52
+ WHERE b57=a52
+   AND a45=b28
+   AND a57=b45
+   AND a48=3
+   AND a28=b50
+   AND a48=b52;

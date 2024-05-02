@@ -1,0 +1,7 @@
+SELECT d3+c5, x5, c2+88, c4+309, d1
+  FROM t3, t2, t5, t4, t1
+ WHERE a1=e5
+   AND c5 in (299,27,924,152,936)
+   AND b2 in (35,177,714,21,812,846,217)
+   AND (941=b4 OR b4=469)
+   AND (500=a3 OR a3=697 OR 457=a3 OR a3=992);

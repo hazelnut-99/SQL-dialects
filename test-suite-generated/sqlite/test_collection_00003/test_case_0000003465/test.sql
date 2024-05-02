@@ -1,0 +1,4 @@
+SELECT c1+d1, a6*559+e1
+  FROM t1, t6
+ WHERE 829=a1
+   AND 581=d6;

@@ -1,0 +1,5 @@
+SELECT d6+799, x4, c5*428
+  FROM t5, t4, t6
+ WHERE c5=894
+   AND d6 in (2,197,797,822,469)
+   AND 139=b4;

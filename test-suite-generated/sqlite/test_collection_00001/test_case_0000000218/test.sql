@@ -1,0 +1,24 @@
+SELECT x63,x53,x62,x52,x11,x5,x40,x64,x27,x28,x21,x41,x22,x30,x16,x14,x56,x32,x46,x50,x1,x34
+  FROM t56,t32,t41,t28,t52,t64,t1,t27,t63,t40,t5,t46,t11,t21,t16,t34,t14,t50,t53,t30,t22,t62
+ WHERE a52=b30
+   AND a14=3
+   AND a40=b27
+   AND b11=a30
+   AND a46=b21
+   AND b5=a21
+   AND a1=b50
+   AND a50=b63
+   AND a11=b64
+   AND b34=a16
+   AND a62=b46
+   AND a63=b28
+   AND a53=b22
+   AND b16=a27
+   AND b62=a64
+   AND a5=b41
+   AND a14=b53
+   AND b1=a34
+   AND b52=a28
+   AND a56=b40
+   AND a22=b56
+   AND b32=a41;

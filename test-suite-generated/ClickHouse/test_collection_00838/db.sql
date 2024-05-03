@@ -1,0 +1,6 @@
+DROP USER IF EXISTS test_user_01999;
+CREATE USER test_user_01999;
+SHOW CREATE USER test_user_01999;
+SHOW GRANTS FOR test_user_01999;
+GRANT SELECT ON db1.* TO test_user_01999;
+GRANT SHOW ON db2.tb2 TO test_user_01999;

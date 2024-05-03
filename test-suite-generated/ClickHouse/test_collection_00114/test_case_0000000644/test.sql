@@ -1,0 +1,1 @@
+SELECT age('second', materialize(toDateTime64('2015-08-18 00:00:00', 0, 'UTC')), materialize(toDateTime('2015-08-18 00:00:10', 'UTC')));

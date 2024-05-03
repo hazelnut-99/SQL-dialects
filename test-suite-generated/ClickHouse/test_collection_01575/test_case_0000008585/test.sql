@@ -1,0 +1,1 @@
+SELECT positionCaseInsensitiveUTF8(materialize(concat('      test a1ßAa test', arrayStringConcat(arrayMap(x -> ' ', range(20000))))), 'a1ẞaa') AS res;

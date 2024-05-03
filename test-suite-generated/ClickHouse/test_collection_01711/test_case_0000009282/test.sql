@@ -1,0 +1,1 @@
+SELECT [number][arrayJoin([-0x8000000000000000, -10000000000, 0, -1])] FROM numbers(2);

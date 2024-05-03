@@ -1,0 +1,1 @@
+select hasSubsequence(Null, Null);

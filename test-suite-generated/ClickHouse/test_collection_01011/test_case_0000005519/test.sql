@@ -1,0 +1,1 @@
+SELECT * FROM t WHERE toUInt64(x) = 1;

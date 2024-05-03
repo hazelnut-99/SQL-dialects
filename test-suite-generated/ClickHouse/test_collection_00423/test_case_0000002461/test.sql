@@ -1,0 +1,1 @@
+SELECT xxHash64('foo') = toUInt64(3728699739546630719);

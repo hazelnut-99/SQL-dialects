@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS im;
+CREATE TABLE im (id Int32, dd Int32) ENGINE = Memory();
+INSERT INTO im VALUES (1, 1);
+DROP TABLE IF EXISTS ts;
+CREATE TABLE ts (tid Int32, id Int32) ENGINE = Memory();
+INSERT INTO ts VALUES (1, 1);

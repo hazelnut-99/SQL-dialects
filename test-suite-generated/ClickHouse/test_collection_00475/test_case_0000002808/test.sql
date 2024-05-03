@@ -1,0 +1,1 @@
+WITH toDate('2000-01-01') + rand() % (30000) AS EventDate SELECT * FROM numbers(1000000) WHERE EventDate != toDate(concat(toString(toYear(EventDate)), '-', toString(toMonth(EventDate)), '-', toString(toDayOfMonth(EventDate))));

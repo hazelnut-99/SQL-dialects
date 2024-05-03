@@ -1,0 +1,4 @@
+SELECT
+  toTypeName(i)s
+FROM generateRandom('i Nullable(Enum16(\'h\' = 1, \'w\' = 5 , \'o\' = -200))')
+LIMIT 1;

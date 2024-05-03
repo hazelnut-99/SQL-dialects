@@ -1,0 +1,1 @@
+SELECT xxHash32(toUInt16(2)) = toUInt32(332955956);

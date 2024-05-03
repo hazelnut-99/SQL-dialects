@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS or_bug;
+CREATE TABLE or_bug (key UInt8) ENGINE=MergeTree ORDER BY key;
+INSERT INTO TABLE or_bug VALUES (0), (1);

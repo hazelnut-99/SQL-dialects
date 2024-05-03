@@ -1,0 +1,1 @@
+SELECT a FROM tt_m WHERE b = 12;

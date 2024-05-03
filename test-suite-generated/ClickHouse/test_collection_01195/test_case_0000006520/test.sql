@@ -1,0 +1,1 @@
+SELECT domainRFC('[2001db81]:80') FORMAT CSV;

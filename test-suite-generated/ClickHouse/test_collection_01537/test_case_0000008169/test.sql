@@ -1,0 +1,1 @@
+SELECT arrayReduce('maxOrDefault', ['hello']);

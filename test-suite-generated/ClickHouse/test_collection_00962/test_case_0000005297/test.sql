@@ -1,0 +1,1 @@
+SELECT extractTextFromHTML('<![CDATA[]]]]><![CDATA[>]]>');

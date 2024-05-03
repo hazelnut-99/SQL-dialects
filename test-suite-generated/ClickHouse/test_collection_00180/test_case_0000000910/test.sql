@@ -1,0 +1,1 @@
+SELECT h3HexAreaKm2(13);

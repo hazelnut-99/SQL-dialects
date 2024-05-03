@@ -1,0 +1,1 @@
+SELECT RiGhT('Привет', NULL);

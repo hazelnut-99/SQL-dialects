@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS geo;
+CREATE TABLE geo (s String, id Int) engine=Memory();
+INSERT INTO geo VALUES ('POINT(0 0)', 1);
+INSERT INTO geo VALUES ('POINT(1 0)', 2);
+INSERT INTO geo VALUES ('POINT(2 0)', 3);

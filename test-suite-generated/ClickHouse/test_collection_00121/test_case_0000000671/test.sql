@@ -1,0 +1,1 @@
+SELECT INTERVAL 2 minutes;

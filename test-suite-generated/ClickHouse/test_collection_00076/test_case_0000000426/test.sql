@@ -1,0 +1,1 @@
+SELECT 'mapPopulateSeries with map';

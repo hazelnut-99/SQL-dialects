@@ -1,0 +1,1 @@
+SELECT toDecimal64('123456789.123456789', 9) AS x, -x AS y, floor(x), floor(y), floor(x, 5), floor(y, 5), floor(x, -5), floor(y, -5);

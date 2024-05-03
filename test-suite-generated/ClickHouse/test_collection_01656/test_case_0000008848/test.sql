@@ -1,0 +1,1 @@
+SELECT (1 IN (0,2)) AS x GROUP BY x;

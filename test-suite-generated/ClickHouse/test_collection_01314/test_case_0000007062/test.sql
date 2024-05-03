@@ -1,0 +1,1 @@
+SELECT a, count(a) FROM lc GROUP BY a WITH CUBE ORDER BY a;

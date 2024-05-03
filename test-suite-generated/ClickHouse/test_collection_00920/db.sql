@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS log;
+CREATE TABLE log (s String) ENGINE = Log;
+DETACH TABLE log;
+ATTACH TABLE log;
+INSERT INTO log VALUES ('Hello'), ('World');
+DETACH TABLE log;
+ATTACH TABLE log;

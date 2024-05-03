@@ -1,0 +1,1 @@
+SELECT DATE_FORMAT(toDateTime('2000-12-31 00:33:44'), '%k'), DATE_FORMAT(toDate32('2000-12-31'), '%k');

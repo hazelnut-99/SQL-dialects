@@ -1,0 +1,1 @@
+SELECT formatQuery('SELECT NOT 0 + NOT 0');

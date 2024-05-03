@@ -1,0 +1,1 @@
+SELECT toWeek(toDate('2000-01-06'),0) AS w0, toWeek(toDate('2000-01-06'),1) AS w1, toWeek(toDate('2000-01-06'),2) AS w2, toWeek(toDate('2000-01-06'),3) AS w3, toWeek(toDate('2000-01-06'),4) AS w4, toWeek(toDate('2000-01-06'),5) AS w5, toWeek(toDate('2000-01-06'),6) AS w6, toWeek(toDate('2000-01-06'),7) AS w7;

@@ -1,0 +1,1 @@
+SELECT intDiv(materialize(1), CAST(materialize(NULL), 'Nullable(UInt32)'));

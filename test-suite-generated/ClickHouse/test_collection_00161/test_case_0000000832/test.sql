@@ -1,0 +1,1 @@
+SELECT number FROM (SELECT number, 1 AS k FROM numbers(100000) ORDER BY k ASC, number DESC LIMIT 1025, 1023) LIMIT 5;

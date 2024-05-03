@@ -1,0 +1,1 @@
+SELECT SUBSTRING('Hello, world' FROM 8);

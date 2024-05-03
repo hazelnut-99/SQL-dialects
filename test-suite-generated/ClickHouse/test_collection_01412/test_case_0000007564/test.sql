@@ -1,0 +1,4 @@
+SELECT
+  toTypeName(f32), toTypeName(f64)
+FROM generateRandom('f32 Float32, f64 Float64')
+LIMIT 1;

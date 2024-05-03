@@ -1,0 +1,1 @@
+select count() from (select * from test intersect (select * from test where toUInt8(name) < 4) union distinct (select * from test where name = '5' or name = '1') except select * from test where name = '3');

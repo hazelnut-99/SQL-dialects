@@ -1,0 +1,1 @@
+SELECT 'ArrayLast constant predicate';

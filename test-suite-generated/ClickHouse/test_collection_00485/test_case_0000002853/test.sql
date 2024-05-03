@@ -1,0 +1,1 @@
+SELECT materialize(toDate('2015-02-03')) > '2015-02-04';

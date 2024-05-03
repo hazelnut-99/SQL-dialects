@@ -1,0 +1,1 @@
+SELECT wyHash64(NULL);

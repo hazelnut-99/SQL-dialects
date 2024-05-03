@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS t10;
+CREATE TABLE t10 (`c0` Int32) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO t10 (c0) FORMAT Values (-1);

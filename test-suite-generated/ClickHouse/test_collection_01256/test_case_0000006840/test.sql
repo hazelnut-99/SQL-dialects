@@ -1,0 +1,1 @@
+select materialize(toDecimal32(1.2, 2)) as x group by x;

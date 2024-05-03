@@ -1,0 +1,1 @@
+SELECT materialize('Hello') LIKE '%%%';

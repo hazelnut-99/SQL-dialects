@@ -1,0 +1,1 @@
+SELECT * FROM 02417_test ORDER BY key;

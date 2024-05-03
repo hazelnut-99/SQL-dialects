@@ -1,0 +1,1 @@
+SELECT readWKTPolygon('POLYGON((1 0,10 0,10 10,0 10,1 0))');

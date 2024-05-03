@@ -1,0 +1,1 @@
+SELECT s, y FROM mergetree_00712 PREWHERE x AND y ORDER BY s;

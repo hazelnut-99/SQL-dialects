@@ -1,0 +1,1 @@
+SELECT round(abs(covarPop(x1,x2) - covarPopMatrix(x1,x2)[1][2]), 5), round(abs(covarPop(x1,x1) - covarPopMatrix(x1,x2)[1][1]), 5), round(abs(covarPop(x2,x2) - covarPopMatrix(x1,x2)[2][2]), 5) from (select randNormal(100, 1) as x1, randNormal(100,5) as x2 from numbers(100000));

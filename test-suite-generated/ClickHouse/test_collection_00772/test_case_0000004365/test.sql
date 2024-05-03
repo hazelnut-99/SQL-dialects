@@ -1,0 +1,4 @@
+SELECT isDecimalOverflow(toDecimal32(999999999, 0), 9),
+       isDecimalOverflow(toDecimal32(999999999, 0)),
+       isDecimalOverflow(toDecimal32(-999999999, 0), 9),
+       isDecimalOverflow(toDecimal32(-999999999, 0));

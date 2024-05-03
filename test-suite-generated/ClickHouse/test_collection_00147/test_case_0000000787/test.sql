@@ -1,0 +1,15 @@
+SELECT
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d'),
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d#e=f'),
+    extractURLParameterNames('http://bigmir.net/?a&c=d#e=f'),
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d#e=f&g=h'),
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d#e'),
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d#e&g=h'),
+    extractURLParameterNames('http://bigmir.net/?a=b&c=d#test?e=f&g=h'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d#e=f'),
+    extractURLParameterNames('//bigmir.net/?a&c=d#e=f'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d#e=f&g=h'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d#e'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d#e&g=h'),
+    extractURLParameterNames('//bigmir.net/?a=b&c=d#test?e=f&g=h');

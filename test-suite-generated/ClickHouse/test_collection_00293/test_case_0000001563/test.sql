@@ -1,0 +1,10 @@
+SELECT [((1, materialize('2')), [(3, [4])])] AS thing,
+    thing[1],
+    thing[1].1,
+    thing[1].2,
+    thing[1].1.1,
+    thing[1].1.2,
+    (thing[1].2)[1],
+    (thing[1].2)[1].1,
+    (thing[1].2)[1].2,
+    ((thing[1].2)[1].2)[1];

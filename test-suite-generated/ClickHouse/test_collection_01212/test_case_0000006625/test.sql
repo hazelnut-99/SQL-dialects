@@ -1,0 +1,1 @@
+SELECT isConstant(materialize(NULL));

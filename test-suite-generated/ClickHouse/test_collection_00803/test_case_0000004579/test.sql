@@ -1,0 +1,1 @@
+SELECT 'Range hashed dictionary';

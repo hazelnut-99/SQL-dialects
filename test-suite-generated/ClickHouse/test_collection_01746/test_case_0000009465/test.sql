@@ -1,0 +1,1 @@
+SELECT a FROM (SELECT DISTINCT randBernoulli(0.5) AS a FROM numbers(100000)) ORDER BY a;

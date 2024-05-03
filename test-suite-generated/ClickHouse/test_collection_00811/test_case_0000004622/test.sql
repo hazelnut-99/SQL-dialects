@@ -1,0 +1,1 @@
+SELECT '2' FROM numbers(10) EXCEPT DISTINCT SELECT '1' FROM numbers(5);;

@@ -1,0 +1,1 @@
+SELECT regexpQuoteMeta('\0\\|()^$.[?*+{');

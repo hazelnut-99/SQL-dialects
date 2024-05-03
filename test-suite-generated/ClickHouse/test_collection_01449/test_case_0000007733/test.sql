@@ -1,0 +1,1 @@
+SELECT parseDateTimeBestEffort('20220101T01:02', 'UTC');

@@ -1,0 +1,3 @@
+SELECT countDigits(materialize(toDecimal32(4.2, 1))),
+       countDigits(materialize(toDecimal64(4.2, 2))),
+       countDigits(materialize(toDecimal128(4.2, 3)));

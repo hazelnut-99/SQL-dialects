@@ -1,0 +1,1 @@
+select startsWith([1], []);

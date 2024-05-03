@@ -1,0 +1,1 @@
+SELECT rightPad(toFixedString('abc', 3), 0), rightPad('abc', CAST('0', 'Int32'));

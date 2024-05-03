@@ -1,0 +1,1 @@
+select countArray([NULL, NULL]);

@@ -1,0 +1,1 @@
+select (1 ? (toInt64(0) as i) : toInt32(1)) = i;

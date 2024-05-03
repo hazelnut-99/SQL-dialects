@@ -1,0 +1,1 @@
+SELECT date as period, 1 as having_check, min(date) as period_start, addDays(max(date), 1) as period_end, dateDiff('second', period_start, period_end) as total_duration, sum(metric) as metric_ FROM repro_hits GROUP BY period HAVING having_check != -1;

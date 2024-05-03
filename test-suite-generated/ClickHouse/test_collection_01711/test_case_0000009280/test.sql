@@ -1,0 +1,1 @@
+SELECT [materialize(1)][-0x8000000000000000];

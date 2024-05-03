@@ -1,0 +1,1 @@
+SELECT 'Direct dictionary';

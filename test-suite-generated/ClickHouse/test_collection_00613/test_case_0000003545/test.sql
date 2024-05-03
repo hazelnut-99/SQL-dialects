@@ -1,0 +1,1 @@
+SELECT * FROM new_mv ORDER BY x;

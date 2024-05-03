@@ -1,0 +1,12 @@
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', '');
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', 'C');;
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', 'house');
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', 'система');
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', 'Система');
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', 'ссубд');
+select hasSubsequence(materialize('ClickHouse - столбцовая система управления базами данных'), 'субд');
+select hasSubsequence(materialize('ClickHouse - столбцовая система управления базами данных'), 'суббд');
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', materialize('стул'));
+select hasSubsequence('ClickHouse - столбцовая система управления базами данных', materialize('два стула'));
+select hasSubsequence(materialize('ClickHouse - столбцовая система управления базами данных'), materialize('орех'));
+select hasSubsequence(materialize('ClickHouse - столбцовая система управления базами данных'), materialize('два ореха'));

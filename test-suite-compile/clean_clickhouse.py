@@ -113,35 +113,25 @@ def is_write(query):
     return False
 
 
-directory_number = 1
 test_case_number = 1
 
 
 def flush_a_batch(queries, write_indices, read_indices):
-    global directory_number
     global test_case_number
-    output_dir = (
-        click_house_output_path
-        + "/test_collection_"
-        + utils.zfill_number(directory_number, 5)
-    )
-    utils.create_directory_if_not_exists(output_dir)
-    write_queries = [queries[index] for index in write_indices]
-    if write_queries:
-        print("hello")
-        print(test_case_number)
-
-    utils.write_list_to_file(write_queries, output_dir + "/db.sql")
+    
     for read_index in read_indices:
-        query = queries[read_index]
-        test_case_dir = (
-            output_dir + "/test_case_" + utils.zfill_number(test_case_number, 10)
+        output_dir = (
+            click_house_output_path
+            + "/test_case_"
+            + utils.zfill_number(test_case_number, 10)
         )
-        utils.create_directory_if_not_exists(test_case_dir)
-        output_file = test_case_dir + "/test.sql"
-        utils.write_list_to_file([query], output_file)
+        utils.create_directory_if_not_exists(output_dir)
+        write_queries = [queries[index] for index in write_indices]
+        if write_queries:
+            utils.write_list_to_file(write_queries, output_dir + "/db.sql")
+        query = queries[read_index]
+        utils.write_list_to_file([query], output_dir + "/test.sql")
         test_case_number += 1
-    directory_number += 1
 
 
 def process_one_file(file_name):

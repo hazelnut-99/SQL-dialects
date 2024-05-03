@@ -1,0 +1,11 @@
+SELECT number, neighbor('ClickHouse', 0) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', 5) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', -5) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', 10) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', -10) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', 15) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', -15) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', 5, 'Hello') FROM numbers(10);
+SELECT number, neighbor('ClickHouse', -5, 'World') FROM numbers(10);
+SELECT number, neighbor('ClickHouse', 5, concat('Hello ', toString(number))) FROM numbers(10);
+SELECT number, neighbor('ClickHouse', -5, concat('World ', toString(number))) FROM numbers(10);

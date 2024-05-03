@@ -1,0 +1,1 @@
+SELECT decodeHTMLComponent('&amp;clickhouse');

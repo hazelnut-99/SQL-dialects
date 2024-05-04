@@ -29,25 +29,6 @@ def run_test(db_path, collection, test_case):
     db.close()
     return df
 
-
-# def run_test_case(rep, collection, test_case):
-#     with open(f"{collection}/db.sql", 'r') as sql_file:
-#         setup_script = sql_file.read()
-
-#     with open(f"{collection}/{test_case}/test.sql", 'r') as test_file:
-#         test_script = test_file.read()
-
-#     db = sqlite3.connect(f'/tmp/{test_case}_{rep}.db')
-#     cursor = db.cursor()
-#     cursor.executescript(setup_script)
-#     db.commit()
-
-#     df = pd.read_sql_query(test_script, db)
-
-#     db.close()
-#     os.remove(f'/tmp/{test_case}_{rep}.db')
-#     return df
-
 def write_result(case, N=3):
     try:
         db_path, collection, test_case = case

@@ -84,13 +84,18 @@ def main():
 
     with multiprocessing.Pool(24) as pool:
         cases = []
+        db_paths = []
         for db_path, collection in tqdm.tqdm(pool.imap_unordered(setup_db, collections), total=len(collections)):
+            db_paths.append(db_path)
             for test_path in glob.glob(f'{collection}/test_case_*'):
                 test_case = test_path.rsplit('/', 1)[-1]
                 cases.append((db_path, collection, test_case))
 
         for _ in tqdm.tqdm(pool.imap_unordered(write_result, cases), total=len(cases)):
             pass
+
+    for db_path in db_paths:
+        os.remove(db_path)
 
     print('done')
 

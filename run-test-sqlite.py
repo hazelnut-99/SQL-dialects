@@ -19,7 +19,7 @@ def setup_db(collection):
     db.close()
 
     return db_path, collection
-    
+
 def run_test(db_path, collection, test_case):
     with open(f"{collection}/{test_case}/test.sql", 'r') as test_file:
         test_script = test_file.read()
@@ -39,11 +39,11 @@ def write_result(case, N=3):
             if not df_ref.equals(df):
                 print(f"Test case {test_case} is not deterministic")
                 return
-            
+
         output_path = f"{collection}/{test_case}/".replace('sqlite', 'sqlite_command_sqlite_db_results')
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        csv = df_ref.to_csv(index=False)
+        csv = df_ref.to_csv(index=False, header=False)
 
         with open(output_path + 'result.csv', 'w') as result_file:
             result_file.write(csv)
@@ -52,7 +52,7 @@ def write_result(case, N=3):
         md5sum = hashlib.md5(csv.encode()).hexdigest()
         with open(output_path + 'result.md5', 'w') as md5_file:
             md5_file.write(md5sum)
-    
+
     except Exception as e:
         print(f"Error in test case {test_case}")
         print(e)

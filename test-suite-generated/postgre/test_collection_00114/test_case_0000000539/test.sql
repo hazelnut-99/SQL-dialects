@@ -1,1 +1,1 @@
-SELECT ts_lexize('hunspell_num', 'unbook');
+select to_tsvector('""'::json);

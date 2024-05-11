@@ -1,1 +1,1 @@
-SELECT -0x80000000;
+select to_jsonb(timestamp 'Infinity');

@@ -1,0 +1,4 @@
+gtest0,a,,NO,NEVER,
+gtest0,b,,YES,ALWAYS,55
+gtest1,a,,NO,NEVER,
+gtest1,b,,YES,ALWAYS,(a * 2)

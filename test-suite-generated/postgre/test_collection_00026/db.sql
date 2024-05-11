@@ -1,0 +1,14 @@
+CREATE TEMP TABLE combocidtest (foobar int);
+BEGIN;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest SELECT 1 LIMIT 0;
+INSERT INTO combocidtest VALUES (1);
+INSERT INTO combocidtest VALUES (2);

@@ -1,11 +1,6 @@
-CREATE TABLE test_missing_target (a int, b int, c char(8), d char);
-INSERT INTO test_missing_target VALUES (0, 1, 'XXXX', 'A');
-INSERT INTO test_missing_target VALUES (1, 2, 'ABAB', 'b');
-INSERT INTO test_missing_target VALUES (2, 2, 'ABAB', 'c');
-INSERT INTO test_missing_target VALUES (3, 3, 'BBBB', 'D');
-INSERT INTO test_missing_target VALUES (4, 3, 'BBBB', 'e');
-INSERT INTO test_missing_target VALUES (5, 3, 'bbbb', 'F');
-INSERT INTO test_missing_target VALUES (6, 4, 'cccc', 'g');
-INSERT INTO test_missing_target VALUES (7, 4, 'cccc', 'h');
-INSERT INTO test_missing_target VALUES (8, 4, 'CCCC', 'I');
-INSERT INTO test_missing_target VALUES (9, 4, 'CCCC', 'j');
+create table t(a integer, b integer);
+insert into t(a, b) select i/100 + 1, i + 1 from generate_series(0, 999) n(i);
+analyze t;
+delete from t;
+insert into t(a, b) select i/50 + 1, i + 1 from generate_series(0, 999) n(i);
+analyze t;

@@ -1,1 +1,1 @@
-SELECT ts_lexize('hunspell_num', 'ballyklubber');
+select json_to_tsvector('""'::json, '"all"');

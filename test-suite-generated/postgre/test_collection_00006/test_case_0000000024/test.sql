@@ -1,1 +1,1 @@
-SELECT count(*) FROM test_tsvector WHERE a @@ any ('{wr,qh}');
+select string_agg(v, NULL) from bytea_test_table;

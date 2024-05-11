@@ -1,1 +1,1 @@
-SELECT -0o20000000000;
+select to_jsonb(date 'Infinity');

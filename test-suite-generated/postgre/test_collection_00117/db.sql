@@ -1,10 +1,13 @@
-CREATE TABLE ctv_data (v, h, c, i, d) AS
-VALUES
-   ('v1','h2','foo', 3, '2015-04-01'::date),
-   ('v2','h1','bar', 3, '2015-01-02'),
-   ('v1','h0','baz', NULL, '2015-07-12'),
-   ('v0','h4','qux', 4, '2015-07-15'),
-   ('v0','h4','dbl', -3, '2014-12-15'),
-   ('v0',NULL,'qux', 5, '2014-07-15'),
-   ('v1','h2','quux',7, '2015-04-04');
-ANALYZE ctv_data;
+COMMIT;
+CREATE TEMP TABLE test_jsonb (
+       json_type text,
+       test_json jsonb
+);
+INSERT INTO test_jsonb VALUES
+('scalar','"a scalar"'),
+('array','["zero", "one","two",null,"four","five", [1,2,3],{"f1":9}]'),
+('object','{"field1":"val1","field2":"val2","field3":null, "field4": 4, "field5": [1,2,3], "field6": {"f1":9}}');
+CREATE TEMP TABLE foo (serial_num int, name text, type text);
+INSERT INTO foo VALUES (847001,'t15','GE1043');
+INSERT INTO foo VALUES (847002,'t16','GE1043');
+INSERT INTO foo VALUES (847003,'sub-alpha','GESS90');

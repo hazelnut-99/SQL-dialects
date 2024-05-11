@@ -122,12 +122,6 @@ def cleanup_db(db_name):
 def split_sql_file(file_path):
     with open(file_path, 'r') as sql_file:
         sql_statements = sql_file.read()
-        if "COMMIT" in sql_statements:
-            return []
-        if "BEGIN" in sql_statements:
-            return []
-        if "ROLLBACK" in sql_statements:
-            return []
     parsed_sql = sqlparse.split(sql_statements)
     parsed_sql = [query.strip() for query in parsed_sql]
     parsed_sql = [query for query in parsed_sql if query]
@@ -151,20 +145,25 @@ def flush_a_batch(queries, write_indices, read_indices):
         for query in write_queries:
             cursor.execute(query)
     except:
+        conn.close()
+        cleanup_db(file.split("/")[-1])
         return
     
     utils.write_list_to_file(write_queries, output_dir + "/db.sql")
     for read_index in read_indices:
         query = queries[read_index]
-        cursor.execute(query)
-        result = cursor.fetchall()
-        df_ref = pd.DataFrame(result)
-        cursor.execute(query)
-        result = cursor.fetchall()
-        df = pd.DataFrame(result)
-        if not df_ref.equals(df):
-            print("non-deter")
-            non_deter_cnt += 1
+        try:
+            cursor.execute(query)
+            result = cursor.fetchall()
+            df_ref = pd.DataFrame(result)
+            cursor.execute(query)
+            result = cursor.fetchall()
+            df = pd.DataFrame(result)
+            if not df_ref.equals(df):
+                print("non-deter")
+                non_deter_cnt += 1
+                break
+        except:
             break
         test_case_dir = output_dir + "/test_case_" + utils.zfill_number(test_case_number, 10)
         utils.create_directory_if_not_exists(test_case_dir)
@@ -188,8 +187,8 @@ def flush_a_batch(queries, write_indices, read_indices):
 
 
 
-all_files = utils.list_files_under_directory(postgre_test_suite_path)
-for file in all_files:
+all_files = sorted(utils.list_files_under_directory(postgre_test_suite_path))
+for ind, file in enumerate(all_files):
     print(file)
     success_list = []
     conn = setup_db(file.split("/")[-1])
@@ -203,7 +202,7 @@ for file in all_files:
         try:
             if any(table for table in postgresql_system_catalog_tables if table in query):
                 continue 
-            if "explain" in query or "EXPLAIN" in query:
+            if "explain" in query or "EXPLAIN" in query or "ANALYZE" in query:
                 continue
             if "set" in query or "SET" in query:
                 continue
@@ -236,3 +235,5 @@ for file in all_files:
     
     if len(read_indices) > 0:
         flush_a_batch(success_list, write_indices, read_indices)
+        
+    print("%d file finished " % (ind))

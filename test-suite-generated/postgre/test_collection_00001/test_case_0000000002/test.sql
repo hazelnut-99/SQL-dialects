@@ -1,3 +1,1 @@
-SELECT *
-   FROM b_star* x
-   WHERE x.b = text 'bumble' or x.a < 3;
+select distinct min(f1), max(f1) from minmaxtest;

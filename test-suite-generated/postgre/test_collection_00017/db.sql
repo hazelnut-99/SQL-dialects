@@ -1,15 +1,18 @@
-/*
- * 1.1. test CREATE INDEX with buffered build
- */
-
-CREATE TABLE tbl_gist (c1 int, c2 int, c3 int, c4 box);
-INSERT INTO tbl_gist SELECT x, 2*x, 3*x, box(point(x,x+1),point(2*x,2*x+1)) FROM generate_series(1,8000) AS x;
-CREATE INDEX tbl_gist_idx ON tbl_gist using gist (c4) INCLUDE (c1,c2,c3);
-DROP TABLE tbl_gist;
-/*
- * 1.2. test CREATE INDEX with inserts
- */
-
-CREATE TABLE tbl_gist (c1 int, c2 int, c3 int, c4 box);
-CREATE INDEX tbl_gist_idx ON tbl_gist using gist (c4) INCLUDE (c1,c2,c3);
-INSERT INTO tbl_gist SELECT x, 2*x, 3*x, box(point(x,x+1),point(2*x,2*x+1)) FROM generate_series(1,8000) AS x;
+CREATE TABLE CASE_TBL (
+  i integer,
+  f double precision
+);
+CREATE TABLE CASE2_TBL (
+  i integer,
+  j integer
+);
+INSERT INTO CASE_TBL VALUES (1, 10.1);
+INSERT INTO CASE_TBL VALUES (2, 20.2);
+INSERT INTO CASE_TBL VALUES (3, -30.3);
+INSERT INTO CASE_TBL VALUES (4, NULL);
+INSERT INTO CASE2_TBL VALUES (1, -1);
+INSERT INTO CASE2_TBL VALUES (2, -2);
+INSERT INTO CASE2_TBL VALUES (3, -3);
+INSERT INTO CASE2_TBL VALUES (2, -4);
+INSERT INTO CASE2_TBL VALUES (1, NULL);
+INSERT INTO CASE2_TBL VALUES (NULL, -6);

@@ -1,36 +1,51 @@
-CREATE TABLE pagg_tab (a int, b int, c text, d int) PARTITION BY LIST(c);
-CREATE TABLE pagg_tab_p1 PARTITION OF pagg_tab FOR VALUES IN ('0000', '0001', '0002', '0003', '0004');
-CREATE TABLE pagg_tab_p2 PARTITION OF pagg_tab FOR VALUES IN ('0005', '0006', '0007', '0008');
-CREATE TABLE pagg_tab_p3 PARTITION OF pagg_tab FOR VALUES IN ('0009', '0010', '0011');
-INSERT INTO pagg_tab SELECT i % 20, i % 30, to_char(i % 12, 'FM0000'), i % 30 FROM generate_series(0, 2999) i;
-ANALYZE pagg_tab;
-CREATE TABLE pagg_tab1(x int, y int) PARTITION BY RANGE(x);
-CREATE TABLE pagg_tab1_p1 PARTITION OF pagg_tab1 FOR VALUES FROM (0) TO (10);
-CREATE TABLE pagg_tab1_p2 PARTITION OF pagg_tab1 FOR VALUES FROM (10) TO (20);
-CREATE TABLE pagg_tab1_p3 PARTITION OF pagg_tab1 FOR VALUES FROM (20) TO (30);
-CREATE TABLE pagg_tab2(x int, y int) PARTITION BY RANGE(y);
-CREATE TABLE pagg_tab2_p1 PARTITION OF pagg_tab2 FOR VALUES FROM (0) TO (10);
-CREATE TABLE pagg_tab2_p2 PARTITION OF pagg_tab2 FOR VALUES FROM (10) TO (20);
-CREATE TABLE pagg_tab2_p3 PARTITION OF pagg_tab2 FOR VALUES FROM (20) TO (30);
-INSERT INTO pagg_tab1 SELECT i % 30, i % 20 FROM generate_series(0, 299, 2) i;
-INSERT INTO pagg_tab2 SELECT i % 20, i % 30 FROM generate_series(0, 299, 3) i;
-ANALYZE pagg_tab1;
-ANALYZE pagg_tab2;
-CREATE TABLE pagg_tab_m (a int, b int, c int) PARTITION BY RANGE(a, ((a+b)/2));
-CREATE TABLE pagg_tab_m_p1 PARTITION OF pagg_tab_m FOR VALUES FROM (0, 0) TO (12, 12);
-CREATE TABLE pagg_tab_m_p2 PARTITION OF pagg_tab_m FOR VALUES FROM (12, 12) TO (22, 22);
-CREATE TABLE pagg_tab_m_p3 PARTITION OF pagg_tab_m FOR VALUES FROM (22, 22) TO (30, 30);
-INSERT INTO pagg_tab_m SELECT i % 30, i % 40, i % 50 FROM generate_series(0, 2999) i;
-ANALYZE pagg_tab_m;
-CREATE TABLE pagg_tab_ml (a int, b int, c text) PARTITION BY RANGE(a);
-CREATE TABLE pagg_tab_ml_p1 PARTITION OF pagg_tab_ml FOR VALUES FROM (0) TO (12);
-CREATE TABLE pagg_tab_ml_p2 PARTITION OF pagg_tab_ml FOR VALUES FROM (12) TO (20) PARTITION BY LIST (c);
-CREATE TABLE pagg_tab_ml_p2_s1 PARTITION OF pagg_tab_ml_p2 FOR VALUES IN ('0000', '0001', '0002');
-CREATE TABLE pagg_tab_ml_p2_s2 PARTITION OF pagg_tab_ml_p2 FOR VALUES IN ('0003');
-CREATE TABLE pagg_tab_ml_p3(b int, c text, a int) PARTITION BY RANGE (b);
-CREATE TABLE pagg_tab_ml_p3_s1(c text, a int, b int);
-CREATE TABLE pagg_tab_ml_p3_s2 PARTITION OF pagg_tab_ml_p3 FOR VALUES FROM (7) TO (10);
-ALTER TABLE pagg_tab_ml_p3 ATTACH PARTITION pagg_tab_ml_p3_s1 FOR VALUES FROM (0) TO (7);
-ALTER TABLE pagg_tab_ml ATTACH PARTITION pagg_tab_ml_p3 FOR VALUES FROM (20) TO (30);
-INSERT INTO pagg_tab_ml SELECT i % 30, i % 10, to_char(i % 4, 'FM0000') FROM generate_series(0, 29999) i;
-ANALYZE pagg_tab_ml;
+COMMIT;
+CREATE TEMP TABLE test_jsonb (
+       json_type text,
+       test_json jsonb
+);
+INSERT INTO test_jsonb VALUES
+('scalar','"a scalar"'),
+('array','["zero", "one","two",null,"four","five", [1,2,3],{"f1":9}]'),
+('object','{"field1":"val1","field2":"val2","field3":null, "field4": 4, "field5": [1,2,3], "field6": {"f1":9}}');
+CREATE TEMP TABLE foo (serial_num int, name text, type text);
+INSERT INTO foo VALUES (847001,'t15','GE1043');
+INSERT INTO foo VALUES (847002,'t16','GE1043');
+INSERT INTO foo VALUES (847003,'sub-alpha','GESS90');
+INSERT INTO foo VALUES (999999, NULL, 'bar');
+CREATE TYPE jbpop AS (a text, b int, c timestamp);
+CREATE DOMAIN jsb_int_not_null  AS int     NOT NULL;
+CREATE DOMAIN jsb_int_array_1d  AS int[]   CHECK(array_length(VALUE, 1) = 3);
+CREATE DOMAIN jsb_int_array_2d  AS int[][] CHECK(array_length(VALUE, 2) = 3);
+create type jb_unordered_pair as (x int, y int);
+create domain jb_ordered_pair as jb_unordered_pair check((value).x <= (value).y);
+CREATE TYPE jsbrec AS (
+	i	int,
+	ia	_int4,
+	ia1	int[],
+	ia2	int[][],
+	ia3	int[][][],
+	ia1d	jsb_int_array_1d,
+	ia2d	jsb_int_array_2d,
+	t	text,
+	ta	text[],
+	c	char(10),
+	ca	char(10)[],
+	ts	timestamp,
+	js	json,
+	jsb	jsonb,
+	jsa	json[],
+	rec	jbpop,
+	reca	jbpop[]
+);
+CREATE TYPE jsbrec_i_not_null AS (
+	i	jsb_int_not_null
+);
+create type jsb_char2 as (a char(2));
+create type jsb_ia as (a int[]);
+create type jsb_ia2 as (a int[][]);
+create domain jsb_i_not_null as int not null;
+create domain jsb_i_gt_1 as int check (value > 1);
+create type jsb_i_not_null_rec as (a jsb_i_not_null);
+create type jsb_i_gt_1_rec as (a jsb_i_gt_1);
+drop type jsb_ia, jsb_ia2, jsb_char2, jsb_i_not_null_rec, jsb_i_gt_1_rec;
+drop domain jsb_i_not_null, jsb_i_gt_1;

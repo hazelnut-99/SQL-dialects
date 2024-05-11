@@ -1,70 +1,101 @@
-CREATE TABLE J1_TBL (
-  i integer,
-  j integer,
-  t text
+CREATE TABLE a_star (
+	class		char,
+	a 			int4
 );
-CREATE TABLE J2_TBL (
-  i integer,
-  k integer
-);
-INSERT INTO J1_TBL VALUES (1, 4, 'one');
-INSERT INTO J1_TBL VALUES (2, 3, 'two');
-INSERT INTO J1_TBL VALUES (3, 2, 'three');
-INSERT INTO J1_TBL VALUES (4, 1, 'four');
-INSERT INTO J1_TBL VALUES (5, 0, 'five');
-INSERT INTO J1_TBL VALUES (6, 6, 'six');
-INSERT INTO J1_TBL VALUES (7, 7, 'seven');
-INSERT INTO J1_TBL VALUES (8, 8, 'eight');
-INSERT INTO J1_TBL VALUES (0, NULL, 'zero');
-INSERT INTO J1_TBL VALUES (NULL, NULL, 'null');
-INSERT INTO J1_TBL VALUES (NULL, 0, 'zero');
-INSERT INTO J2_TBL VALUES (1, -1);
-INSERT INTO J2_TBL VALUES (2, 2);
-INSERT INTO J2_TBL VALUES (3, -3);
-INSERT INTO J2_TBL VALUES (2, 4);
-INSERT INTO J2_TBL VALUES (5, -5);
-INSERT INTO J2_TBL VALUES (5, -5);
-INSERT INTO J2_TBL VALUES (0, NULL);
-INSERT INTO J2_TBL VALUES (NULL, NULL);
-INSERT INTO J2_TBL VALUES (NULL, 0);
-create temp table onerow();
-insert into onerow default values;
-analyze onerow;
-rollback;
-CREATE TEMP TABLE t1 (a int, b int);
-CREATE TEMP TABLE t2 (a int, b int);
-CREATE TEMP TABLE t3 (x int, y int);
-INSERT INTO t1 VALUES (5, 10);
-INSERT INTO t1 VALUES (15, 20);
-INSERT INTO t1 VALUES (100, 100);
-INSERT INTO t1 VALUES (200, 1000);
-INSERT INTO t2 VALUES (200, 2000);
-INSERT INTO t3 VALUES (5, 20);
-INSERT INTO t3 VALUES (6, 7);
-INSERT INTO t3 VALUES (7, 8);
-INSERT INTO t3 VALUES (500, 100);
-DELETE FROM t3 USING t1 table1 WHERE t3.x = table1.a;
-DELETE FROM t3 USING t1 JOIN t2 USING (a) WHERE t3.x > t1.a;
-DELETE FROM t3 USING t3 t3_other WHERE t3.x = t3_other.x AND t3.y = t3_other.y;
-create temp table t2a () inherits (t2);
-insert into t2a values (200, 2001);
-CREATE TEMP TABLE tt1 ( tt1_id int4, joincol int4 );
-INSERT INTO tt1 VALUES (1, 11);
-INSERT INTO tt1 VALUES (2, NULL);
-CREATE TEMP TABLE tt2 ( tt2_id int4, joincol int4 );
-INSERT INTO tt2 VALUES (21, 11);
-INSERT INTO tt2 VALUES (22, 11);
-create temp table tt3(f1 int, f2 text);
-insert into tt3 select x, repeat('xyzzy', 100) from generate_series(1,10000) x;
-analyze tt3;
-create temp table tt4(f1 int);
-insert into tt4 values (0),(1),(9999);
-analyze tt4;
-create temp table tt4x(c1 int, c2 int, c3 int);
-create temp table tt5(f1 int, f2 int);
-create temp table tt6(f1 int, f2 int);
-insert into tt5 values(1, 10);
-insert into tt5 values(1, 11);
-insert into tt6 values(1, 9);
-insert into tt6 values(1, 2);
-insert into tt6 values(2, 9);
+CREATE TABLE b_star (
+	b 			text
+) INHERITS (a_star);
+CREATE TABLE c_star (
+	c 			name
+) INHERITS (a_star);
+CREATE TABLE d_star (
+	d 			float8
+) INHERITS (b_star, c_star);
+CREATE TABLE e_star (
+	e 			int2
+) INHERITS (c_star);
+CREATE TABLE f_star (
+	f 			polygon
+) INHERITS (e_star);
+INSERT INTO a_star (class, a) VALUES ('a', 1);
+INSERT INTO a_star (class, a) VALUES ('a', 2);
+INSERT INTO a_star (class) VALUES ('a');
+INSERT INTO b_star (class, a, b) VALUES ('b', 3, 'mumble'::text);
+INSERT INTO b_star (class, a) VALUES ('b', 4);
+INSERT INTO b_star (class, b) VALUES ('b', 'bumble'::text);
+INSERT INTO b_star (class) VALUES ('b');
+INSERT INTO c_star (class, a, c) VALUES ('c', 5, 'hi mom'::name);
+INSERT INTO c_star (class, a) VALUES ('c', 6);
+INSERT INTO c_star (class, c) VALUES ('c', 'hi paul'::name);
+INSERT INTO c_star (class) VALUES ('c');
+INSERT INTO d_star (class, a, b, c, d)
+   VALUES ('d', 7, 'grumble'::text, 'hi sunita'::name, '0.0'::float8);
+INSERT INTO d_star (class, a, b, c)
+   VALUES ('d', 8, 'stumble'::text, 'hi koko'::name);
+INSERT INTO d_star (class, a, b, d)
+   VALUES ('d', 9, 'rumble'::text, '1.1'::float8);
+INSERT INTO d_star (class, a, c, d)
+   VALUES ('d', 10, 'hi kristin'::name, '10.01'::float8);
+INSERT INTO d_star (class, b, c, d)
+   VALUES ('d', 'crumble'::text, 'hi boris'::name, '100.001'::float8);
+INSERT INTO d_star (class, a, b)
+   VALUES ('d', 11, 'fumble'::text);
+INSERT INTO d_star (class, a, c)
+   VALUES ('d', 12, 'hi avi'::name);
+INSERT INTO d_star (class, a, d)
+   VALUES ('d', 13, '1000.0001'::float8);
+INSERT INTO d_star (class, b, c)
+   VALUES ('d', 'tumble'::text, 'hi andrew'::name);
+INSERT INTO d_star (class, b, d)
+   VALUES ('d', 'humble'::text, '10000.00001'::float8);
+INSERT INTO d_star (class, c, d)
+   VALUES ('d', 'hi ginger'::name, '100000.000001'::float8);
+INSERT INTO d_star (class, a) VALUES ('d', 14);
+INSERT INTO d_star (class, b) VALUES ('d', 'jumble'::text);
+INSERT INTO d_star (class, c) VALUES ('d', 'hi jolly'::name);
+INSERT INTO d_star (class, d) VALUES ('d', '1000000.0000001'::float8);
+INSERT INTO d_star (class) VALUES ('d');
+INSERT INTO e_star (class, a, c, e)
+   VALUES ('e', 15, 'hi carol'::name, '-1'::int2);
+INSERT INTO e_star (class, a, c)
+   VALUES ('e', 16, 'hi bob'::name);
+INSERT INTO e_star (class, a, e)
+   VALUES ('e', 17, '-2'::int2);
+INSERT INTO e_star (class, c, e)
+   VALUES ('e', 'hi michelle'::name, '-3'::int2);
+INSERT INTO e_star (class, a)
+   VALUES ('e', 18);
+INSERT INTO e_star (class, c)
+   VALUES ('e', 'hi elisa'::name);
+INSERT INTO e_star (class, e)
+   VALUES ('e', '-4'::int2);
+INSERT INTO f_star (class, a, c, e, f)
+   VALUES ('f', 19, 'hi claire'::name, '-5'::int2, '(1,3),(2,4)'::polygon);
+INSERT INTO f_star (class, a, c, e)
+   VALUES ('f', 20, 'hi mike'::name, '-6'::int2);
+INSERT INTO f_star (class, a, c, f)
+   VALUES ('f', 21, 'hi marcel'::name, '(11,44),(22,55),(33,66)'::polygon);
+INSERT INTO f_star (class, a, e, f)
+   VALUES ('f', 22, '-7'::int2, '(111,555),(222,666),(333,777),(444,888)'::polygon);
+INSERT INTO f_star (class, c, e, f)
+   VALUES ('f', 'hi keith'::name, '-8'::int2,
+	   '(1111,3333),(2222,4444)'::polygon);
+INSERT INTO f_star (class, a, c)
+   VALUES ('f', 24, 'hi marc'::name);
+INSERT INTO f_star (class, a, e)
+   VALUES ('f', 25, '-9'::int2);
+INSERT INTO f_star (class, a, f)
+   VALUES ('f', 26, '(11111,33333),(22222,44444)'::polygon);
+INSERT INTO f_star (class, c, e)
+   VALUES ('f', 'hi allison'::name, '-10'::int2);
+INSERT INTO f_star (class, c, f)
+   VALUES ('f', 'hi jeff'::name,
+           '(111111,333333),(222222,444444)'::polygon);
+INSERT INTO f_star (class, e, f)
+   VALUES ('f', '-11'::int2, '(1111111,3333333),(2222222,4444444)'::polygon);
+INSERT INTO f_star (class, a) VALUES ('f', 27);
+INSERT INTO f_star (class, c) VALUES ('f', 'hi carl'::name);
+INSERT INTO f_star (class, e) VALUES ('f', '-12'::int2);
+INSERT INTO f_star (class, f)
+   VALUES ('f', '(11111111,33333333),(22222222,44444444)'::polygon);
+INSERT INTO f_star (class) VALUES ('f');

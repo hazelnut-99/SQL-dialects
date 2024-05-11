@@ -1,1 +1,1 @@
-SELECT count(*) FROM test_tsvector WHERE a @@ 'no_such_lexeme';
+select string_agg(v, decode('ee', 'hex')) from bytea_test_table;

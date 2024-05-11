@@ -1,1 +1,1 @@
-SELECT * FROM a_star*;
+select min(f1), max(f1) from minmaxtest;

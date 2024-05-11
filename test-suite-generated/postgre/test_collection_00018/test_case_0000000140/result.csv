@@ -1,0 +1,15 @@
+"<test1 xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <a>1</a>
+  <b>one</b>
+</test1>
+
+<test1 xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <a>2</a>
+  <b>two</b>
+</test1>
+
+<test1 xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <a>-1</a>
+</test1>
+
+"

@@ -1,0 +1,27 @@
+"<xsd:schema
+    xmlns:xsd=""http://www.w3.org/2001/XMLSchema""
+    targetNamespace=""foo""
+    elementFormDefault=""qualified"">
+
+<xsd:simpleType name=""INTEGER"">
+  <xsd:restriction base=""xsd:int"">
+    <xsd:maxInclusive value=""2147483647""/>
+    <xsd:minInclusive value=""-2147483648""/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name=""UDT.my_database.pg_catalog.text"">
+  <xsd:restriction base=""xsd:string"">
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name=""RowType.my_database.testxmlschema.test1"">
+  <xsd:sequence>
+    <xsd:element name=""a"" type=""INTEGER"" minOccurs=""0""></xsd:element>
+    <xsd:element name=""b"" type=""UDT.my_database.pg_catalog.text"" minOccurs=""0""></xsd:element>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name=""test1"" type=""RowType.my_database.testxmlschema.test1""/>
+
+</xsd:schema>"

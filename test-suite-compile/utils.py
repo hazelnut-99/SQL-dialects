@@ -35,4 +35,4 @@ def zfill_number(number, digits):
 
 def write_list_to_file(items, file_path):
     with open(file_path, 'w') as file:
-        file.writelines(f"{item};\n" for item in items)
+        file.writelines(f"{item}\n" for item in items)

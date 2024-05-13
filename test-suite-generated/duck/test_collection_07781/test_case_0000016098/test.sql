@@ -1,0 +1,1 @@
+SELECT four, ten//4 as two, sum(ten//4) OVER w st, last_value(ten//4) OVER w lt FROM tenk1d WINDOW w AS (partition by four order by ten//4 range between unbounded preceding and current row) order by four, ten//4;

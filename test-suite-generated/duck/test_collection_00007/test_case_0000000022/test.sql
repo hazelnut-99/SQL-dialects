@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT NULL) tbl(i), (SELECT NULL) tbl2(j);

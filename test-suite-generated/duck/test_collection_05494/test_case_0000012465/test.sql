@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM integers WHERE i=CAST(38+1 AS tinyint);

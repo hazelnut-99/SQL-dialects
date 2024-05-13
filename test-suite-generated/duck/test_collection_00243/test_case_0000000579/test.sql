@@ -1,0 +1,1 @@
+SELECT "COL""UMN" FROM "SCH""EMA"."TA""BLE";

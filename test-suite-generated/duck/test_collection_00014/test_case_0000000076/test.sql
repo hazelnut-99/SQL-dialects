@@ -1,0 +1,1 @@
+SELECT typeof(1::TINYINT + 10000);

@@ -1,0 +1,7 @@
+SELECT i, COUNT(*) OVER (ORDER BY i ROWS BETWEEN 3 PRECEDING AND 3 FOLLOWING EXCLUDE TIES) 
+FROM (
+	SELECT *  FROM generate_series(1,5) 
+	UNION ALL 
+	SELECT *  FROM generate_series(1,5)) 
+	AS _(i) 
+ORDER BY i;

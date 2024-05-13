@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT * FROM vunion EXCEPT SELECT * FROM vunion) tbl;

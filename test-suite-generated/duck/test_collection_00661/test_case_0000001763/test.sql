@@ -1,0 +1,1 @@
+SELECT '1_2.1_2E1_0'::DOUBLE;

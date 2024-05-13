@@ -1,0 +1,1 @@
+SELECT a FROM exprtest WHERE a BETWEEN b AND 44;

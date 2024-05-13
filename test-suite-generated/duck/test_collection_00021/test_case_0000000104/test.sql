@@ -1,0 +1,1 @@
+SELECT 1 AS i, COUNT(*) FROM integers GROUP BY i HAVING i=2;

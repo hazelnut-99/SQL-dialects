@@ -1,0 +1,235 @@
+CREATE TABLE v0 ( c1 INT ); ;
+INSERT INTO v0 VALUES (1), (2), (3), (4) RETURNING * EXCLUDE c1;
+SELECT * FROM v0;
+INSERT INTO v0 VALUES (1), (2), (3), (4), (0);
+DELETE from v0 WHERE c1 = 0 RETURNING * EXCLUDE c1;
+select * from v0 where c1 = 0;
+UPDATE v0 SET c1 = 0 WHERE true RETURNING * EXCLUDE c1;
+Select * from v0 order by all;
+INSERT INTO v0 BY POSITION ( SELECT TRUE ) OFFSET 1 ROWS RETURNING v0 . * EXCLUDE c1 ;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+UPDATE table1
+SET a=-10
+WHERE a = 1 RETURNING a, b, c;
+UPDATE table1
+SET a=a*-2, b=b*2, c=c*2
+WHERE a = 2 RETURNING a, b, c;
+UPDATE table1
+SET a=a*-2, b=b*2, c=c*2
+WHERE a = 3 RETURNING a;
+UPDATE table1
+SET a=a*-2, b=b*2, c=c*2
+WHERE a = 4 RETURNING *;
+UPDATE table1
+SET a=-5, b=2, c=1
+WHERE a=5 AND b=-2 AND c=-3 RETURNING *, c, b, a;
+UPDATE table1
+SET c=1, b=2, a=3
+WHERE a=6 AND b=-2 AND c=-3 RETURNING c, b, a;
+UPDATE table1
+SET c=1, b=2, a=3
+WHERE a=7 AND b=-2 AND c=-3 RETURNING c as aliasc, a as aliasa, b as aliasb;
+UPDATE table1 SET c=1, b=5, a=7 WHERE a > 5 RETURNING SUM(a);
+UPDATE table1
+SET c=15
+WHERE a=8 RETURNING *;
+UPDATE table1
+SET a=-9, b=b+7
+WHERE a=9
+RETURNING a + b + c;
+UPDATE table1
+SET a=-10
+WHERE a=10
+RETURNING 'duckdb';
+CREATE TABLE table2 (a2 INTEGER, b2 INTEGER, c2 INTEGER);
+CREATE TABLE table3 (a3 INTEGER, b3 INTEGER, c3 INTEGER);
+INSERT INTO table2 VALUES (1, 1, 1), (2, 2, 2), (3, 3, 3), (100, 100, 100), (200, 200, 200);
+INSERT INTO table3 VALUES (1, 4, 4), (2, 6, 7), (8, 8, 8);
+UPDATE table3
+SET c3 = t2.c2
+FROM table2 AS t2
+RETURNING *;
+SELECT a3, b3, c3 IN (1, 200) FROM table3;
+UPDATE table3
+SET b3 = t2.b2
+FROM table2 AS t2
+WHERE table3.a3 = t2.a2 RETURNING a3, b3, c3 IN (1, 200);
+CREATE TABLE table4 (a4 INTEGER, b4 INTEGER, c4 INTEGER);
+CREATE TABLE table5 (a5 INTEGER, b5 INTEGER, c5 INTEGER);
+INSERT INTO table4 VALUES (1, 0, 2), (2, 0, 1), (3, 0, 0);
+INSERT INTO table5 VALUES (1, 0, 0), (2, 0, 0), (3, 0, 1), (4, 0, 1), (5, 0, 2), (6, 0, 2);
+UPDATE table4
+SET b4 = temp_table.sum_a
+FROM (SELECT sum(a5) as sum_a, c5 FROM table5 GROUP BY c5 ORDER BY sum_a) as temp_table
+WHERE table4.c4 = temp_table.c5
+RETURNING *;
+UPDATE table4
+SET b4 = temp_table.row_num
+FROM (SELECT row_number() OVER (ORDER BY a4) as row_num, c4 from table4) as temp_table
+WHERE table4.a4=temp_table.row_num
+RETURNING *;
+UPDATE table1 SET a = 0, b = 0, c = 0 WHERE a = 10 RETURNING a IN (SELECT a FROM table1);
+UPDATE table3 SET a3 = 0, b3 = 0, c3 = 0 FROM table3 t3 WHERE t3.a3 = 0 returning *;
+UPDATE table3 SET a3 = 0 WHERE a3 = 1 RETURNING CASE WHEN b3=1 THEN a3 ELSE b3 END;
+UPDATE table3 SET a3 = -1 WHERE a3 = 0 RETURNING CASE WHEN b3=2 THEN a3 ELSE b3 END;
+DROP TABLE table2;
+DROP TABLE table3;
+DROP TABLE table4;
+DROP TABLE table5;
+CREATE TABLE table2 (a VARCHAR DEFAULT 'hello world', b INT);
+INSERT INTO table2 VALUES ('duckdb', 1);
+UPDATE table2
+SET a='hello world'
+WHERE b = 1
+RETURNING a, b;
+UPDATE table2
+SET b=100
+WHERE b = 1
+RETURNING b::VARCHAR;
+UPDATE table2
+SET a='Mr.Duck', b=99
+WHERE b=100
+RETURNING {'a': a, 'b': b};
+UPDATE table2
+SET b=98
+WHERE b=99
+RETURNING [a, b::VARCHAR];
+CREATE SEQUENCE seq;
+CREATE TABLE table3 (a INTEGER DEFAULT nextval('seq'), b INTEGER);
+INSERT INTO table3(b) VALUES (4), (5) RETURNING a, b;
+UPDATE table3
+SET b=b+1
+RETURNING *;
+CREATE TABLE table4 (a INTEGER, b INTEGER, c INTEGER);
+CREATE INDEX b_index ON table4(b);
+INSERT INTO table4 VALUES (1, 2, 3), (4, 5, 6), (7, 8, 9);
+UPDATE table4
+SET b = 10
+WHERE b = 2
+RETURNING *;
+SELECT * FROM table4;
+SELECT count(*) FROM table1;
+UPDATE table1 SET a=5 returning a;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+INSERT INTO table1 VALUES (1, 2, 3);
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING a;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING *;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING COLUMNS('a|c');
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING COLUMNS('a|c') + 42;
+INSERT INTO table1 VALUES (10, 20, 30), (40, 50, 60), (70, 80, 90) RETURNING *, c, b, a;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING c, a, b;
+INSERT INTO table1 (c, b, a) VALUES (3, 2, 1) RETURNING a, b, c;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING a AS alias1, b AS alias2;
+INSERT INTO table1 VALUES (1, 1, 1), (2, 2, 2), (3, 3, 3) RETURNING SUM(a);
+INSERT INTO table1(a) VALUES (10) RETURNING *;
+INSERT INTO table1 (a, b, c) SELECT * from table1 WHERE a = 10 and b=-2 and c=-3 RETURNING *;
+INSERT INTO table1 (SELECT row_number() OVER (ORDER BY a) as row_number, b, c FROM table1 LIMIT 1) RETURNING *;
+INSERT INTO table1 (a, b, c) SELECT * from table1 WHERE a = 100000 and b = 10000 and c=100000 RETURNING a, b, c;
+INSERT INTO table1 (a, b, c) VALUES (10, 1000, 1000) RETURNING a IN (SELECT a from table1 where b = -2);
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING CASE WHEN b=2 THEN a ELSE b END;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING CASE WHEN b=3 THEN a ELSE b END;
+INSERT INTO table1 VALUES (1, 1, -3) RETURNING a + b + c;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING 'hello';
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING [a, b, c];
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING {'a':a, 'b':b, 'c':c};
+INSERT INTO table1(a) (SELECT 42) RETURNING a, b;
+INSERT INTO table1(a) VALUES (SELECT 42) RETURNING a, b, (select 10);
+INSERT INTO table1 VALUES (1,2,3) RETURNING d, e, f;
+INSERT INTO table1 SELECT * from table1 RETURNING row_number() OVER (ORDER BY a) as row_number, a, b FROM table1;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING [1, 2] IN (SELECT [a, b] from table1);
+INSERT INTO table1(a, b) VALUES (42, 43) RETURNING (SELECT a), (SELECT b), NULL;
+INSERT INTO table1 VALUES (-10, -20, -30)
+    RETURNING '-10.-20' IN (SELECT group_concat(a) OVER (ORDER BY b) as GC FROM table1);
+CREATE TABLE table2 (a VARCHAR DEFAULT 'hello world', b INT);
+INSERT INTO table2(a,b) VALUES ('hello duckdb', 1) RETURNING b, a;
+INSERT INTO table2(b) VALUES (97) RETURNING b::VARCHAR;
+INSERT INTO table2(a, b) VALUES ('duckdb', 97) RETURNING {'a': a, 'b': b};
+CREATE SEQUENCE seq;
+CREATE TABLE table3 (a INTEGER DEFAULT nextval('seq'), b INTEGER);
+INSERT INTO table3(b) VALUES (4), (5) RETURNING a, b;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+SELECT count(*) FROM table1;
+INSERT INTO table1(a, b, c) SELECT a, b, c FROM table1  RETURNING a;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+DELETE FROM table1
+WHERE a < 5 RETURNING a, b, c;
+DELETE FROM table1
+WHERE a = 6 RETURNING a;
+DELETE FROM table1
+WHERE a = 7 RETURNING *;
+DELETE FROM table1
+WHERE a=8 AND b=-2 AND c=-3 RETURNING *, c, b, a;
+DELETE FROM table1
+WHERE a=9 RETURNING c, b, a;
+DELETE FROM table1
+WHERE a>=10 AND a <=13  RETURNING c as aliasc, a as aliasa, b as aliasb;
+DELETE FROM table1 WHERE a >= 13 AND a <= 15 RETURNING SUM(a);
+DELETE FROM table1
+WHERE a=14
+RETURNING a + b + c;
+DELETE FROM table1
+WHERE a=10
+RETURNING 'duckdb';
+DELETE FROM table1
+WHERE a=15
+RETURNING 'duckdb';
+CREATE TABLE table2 (a2 INTEGER, b2 INTEGER, c2 INTEGER);
+CREATE TABLE table3 (a3 INTEGER, b3 INTEGER, c3 INTEGER);
+INSERT INTO table2 VALUES (1, 1, 1), (2, 2, 2), (3, 3, 3), (100, 100, 100), (200, 200, 200);
+INSERT INTO table3 VALUES (1, 4, 4), (2, 6, 7), (8, 8, 8);
+DELETE FROM table3
+WHERE a3 IN (
+	SELECT a2 from table2
+) RETURNING *;
+CREATE TABLE table4 (a4 INTEGER, b4 INTEGER, c4 INTEGER);
+CREATE TABLE table5 (a5 INTEGER, b5 INTEGER, c5 INTEGER);
+INSERT INTO table4 VALUES (1, 0, 2), (2, 0, 1), (3, 0, 0);
+INSERT INTO table5 VALUES (1, 0, 0), (2, 0, 0), (3, 0, 1), (4, 0, 1), (5, 0, 2), (6, 0, 2);
+DELETE FROM table4
+WHERE a4 IN (SELECT sum(a5) FROM table5 GROUP BY c5)
+RETURNING *;
+DELETE FROM table1 WHERE a = 14 RETURNING a IN (SELECT a FROM table1);
+DELETE FROM table4 WHERE a4 = 1 RETURNING CASE WHEN b4=0 THEN a4 ELSE b4 END;
+DELETE FROM table4 WHERE a4 = 2 RETURNING CASE WHEN b4=1 THEN a4 ELSE b4 END;
+DROP TABLE table2;
+DROP TABLE table3;
+DROP TABLE table4;
+DROP TABLE table5;
+CREATE TABLE table2 (a VARCHAR DEFAULT 'hello world', b INT);
+INSERT INTO table2 VALUES ('duckdb', 1), ('postgres', 2), ('sqlite', 3), ('mysql', 4), ('mongo', 5);
+DELETE FROM table2
+WHERE b = 1
+RETURNING a, b;
+DELETE FROM table2
+WHERE b = 2
+RETURNING b::VARCHAR;
+DELETE FROM table2
+WHERE b=3
+RETURNING {'a': a, 'b': b};
+DELETE FROM table2
+WHERE b=4
+RETURNING [a, b::VARCHAR];
+CREATE SEQUENCE seq;
+CREATE TABLE table3 (a INTEGER DEFAULT nextval('seq'), b INTEGER);
+INSERT INTO table3(b) VALUES (4), (5) RETURNING a, b;
+DELETE FROM table3
+WHERE b = 4
+RETURNING *;
+DROP TABLE table1;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+SELECT count(*) FROM table1;
+DELETE FROM table1 RETURNING a;
+CREATE TABLE all_types("varchar" VARCHAR, nested_int_array INTEGER[][]);;
+INSERT INTO all_types VALUES('🦆🦆🦆🦆🦆🦆',[]);
+INSERT INTO all_types VALUES('goo'||chr(0) || 'se' ,[[], [42, 999, NULL, NULL, -42], NULL, [], [42, 999, NULL, NULL, -42]]);
+INSERT INTO all_types VALUES(NULL,NULL);
+DELETE
+FROM all_types
+WHERE EXISTS
+    (SELECT all_types."varchar" AS c2
+     FROM all_types AS ref_0)
+RETURNING all_types.nested_int_array;

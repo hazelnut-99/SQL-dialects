@@ -1,0 +1,1 @@
+SELECT MIN(i) OVER (PARTITION BY i ORDER BY i) FROM integers;

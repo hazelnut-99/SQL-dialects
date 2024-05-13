@@ -1,0 +1,1 @@
+SELECT MIN(v), MAX(v), COUNT(*), COUNT(v), COUNT(DISTINCT v) FROM varchars;

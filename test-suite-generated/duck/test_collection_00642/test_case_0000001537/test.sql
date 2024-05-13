@@ -1,0 +1,1 @@
+SELECT SUM(i) FROM (VALUES (1e308), (1e308)) tbl(i);

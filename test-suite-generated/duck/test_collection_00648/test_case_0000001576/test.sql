@@ -1,0 +1,1 @@
+SELECT * FROM tbl WHERE COLUMNS(['col1', 'col2']) >= 2 ORDER BY ALL;

@@ -1,0 +1,1 @@
+SELECT column_name FROM (DESCRIBE ( DESCRIBE SELECT * FROM (SELECT 32 as a)));

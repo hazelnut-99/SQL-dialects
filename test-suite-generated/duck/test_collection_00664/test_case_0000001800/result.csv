@@ -1,0 +1,2 @@
+name,VARCHAR
+value,STRUCT(n INTEGER)

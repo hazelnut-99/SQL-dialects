@@ -1,0 +1,1 @@
+SELECT * FROM range(10) UNION ALL SELECT * FROM range(10, 20) LIMIT 10%;

@@ -1,0 +1,1 @@
+SELECT * FROM integers ORDER BY * DESC NULLS LAST;

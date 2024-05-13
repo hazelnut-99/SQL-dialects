@@ -1,0 +1,1 @@
+SELECT * FROM test0 ORDER BY job DESC, name DESC;

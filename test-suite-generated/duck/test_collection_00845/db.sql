@@ -1,0 +1,10 @@
+create table null_table (i "null");
+insert into null_table values (null);
+create table null_list (i "null"[]);
+insert into null_list values (null), ([null]);
+create table null_struct (i struct(n "null"));
+insert into null_struct values (null), ({n:null});
+create table null_map (i map("null", "null"));
+CREATE TABLE all_types AS SELECT * FROM test_all_types();
+CREATE TABLE df (x VARCHAR, y BIGINT);
+INSERT INTO df VALUES ('2021-01-01 12:00:00', 1);

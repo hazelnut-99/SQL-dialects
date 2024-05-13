@@ -1,0 +1,1 @@
+SELECT plus42(42);

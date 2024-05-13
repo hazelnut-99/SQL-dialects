@@ -1,0 +1,1 @@
+SELECT typeof(100 + 1::TINYINT) == 'TINYINT';

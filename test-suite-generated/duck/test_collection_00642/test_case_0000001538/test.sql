@@ -1,0 +1,1 @@
+SELECT AVG(i) FROM (VALUES (1e308), (1e308)) tbl(i);

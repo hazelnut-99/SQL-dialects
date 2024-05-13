@@ -1,0 +1,1 @@
+SELECT j, i FROM integers ORDER BY j, i NULLS FIRST LIMIT 5;

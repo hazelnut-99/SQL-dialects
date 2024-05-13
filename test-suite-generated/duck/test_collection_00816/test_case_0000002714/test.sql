@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM (SELECT 1 UNION ALL SELECT * FROM integers) tbl(i);

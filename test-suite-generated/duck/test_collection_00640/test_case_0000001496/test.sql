@@ -1,0 +1,1 @@
+SELECT b, AVG(a) FROM test GROUP BY b ORDER BY b;

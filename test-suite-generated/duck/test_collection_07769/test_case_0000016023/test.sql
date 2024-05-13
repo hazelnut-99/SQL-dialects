@@ -1,0 +1,11 @@
+SELECT *, 
+	first(data IGNORE NULLS) OVER w, 
+	last(data IGNORE NULLS) OVER w,
+	nth_value(data, 1 IGNORE NULLS) OVER w
+FROM issue6635
+WINDOW w AS (
+	ORDER BY index 
+	ROWS BETWEEN 1 FOLLOWING 
+	 AND UNBOUNDED FOLLOWING
+)
+;

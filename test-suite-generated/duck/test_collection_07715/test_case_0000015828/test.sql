@@ -1,0 +1,1 @@
+SELECT COUNT(*) FILTER (WHERE j = 10) FROM integers;

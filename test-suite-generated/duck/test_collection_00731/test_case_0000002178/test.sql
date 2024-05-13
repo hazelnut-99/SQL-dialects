@@ -1,0 +1,1 @@
+SELECT rowid BETWEEN -1 AND 1, 0 BETWEEN rowid AND 1, 1 BETWEEN -3 AND rowid FROM a;

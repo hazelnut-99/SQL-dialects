@@ -1,0 +1,1 @@
+SELECT a-10 AS k FROM test UNION SELECT a-10 AS l FROM test ORDER BY a-10;

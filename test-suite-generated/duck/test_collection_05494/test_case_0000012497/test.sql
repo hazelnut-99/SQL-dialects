@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM integers WHERE i=CAST(70+1 AS tinyint);

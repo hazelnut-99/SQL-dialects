@@ -1,0 +1,5 @@
+SELECT * FROM (
+	SELECT 1
+	UNION ALL
+	SELECT 1
+) tbl(i);

@@ -1,0 +1,5 @@
+SELECT
+	mpg,
+	SUM(mpg) OVER (ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS mpg_roll
+FROM
+	mtcars;

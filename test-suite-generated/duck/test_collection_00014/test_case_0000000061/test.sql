@@ -1,0 +1,1 @@
+SELECT typeof(100::USMALLINT + 1) == 'USMALLINT';

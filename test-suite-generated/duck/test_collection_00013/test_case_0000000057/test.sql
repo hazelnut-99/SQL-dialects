@@ -1,0 +1,1 @@
+SELECT HasCustomAddress,count(*) AS total_records FROM model WHERE     1 = 1     AND CreatedAt >= '2023-12-01'     AND CreatedAt < '2023-12-13' GROUP BY     HasCustomAddress ORDER BY     true,     total_records DESC NULLS LAST LIMIT 250 OFFSET 0;

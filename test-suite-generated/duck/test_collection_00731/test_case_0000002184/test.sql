@@ -1,0 +1,1 @@
+SELECT SUM(i) FROM a GROUP BY rowid;

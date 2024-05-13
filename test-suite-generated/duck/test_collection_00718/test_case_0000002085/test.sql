@@ -1,0 +1,1 @@
+SELECT * FROM exprtest WHERE b=1 OR COALESCE(a, b)=42 ORDER BY 1;

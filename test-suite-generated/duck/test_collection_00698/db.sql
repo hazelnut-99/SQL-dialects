@@ -1,0 +1,4 @@
+CREATE TABLE integers(i INTEGER, j INTEGER, k INTEGER);
+INSERT INTO integers VALUES (1, 2, 3);
+CREATE TABLE exprtest (a INTEGER, b INTEGER);
+INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, -1);

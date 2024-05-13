@@ -1,0 +1,1 @@
+SELECT * FROM varchars ORDER BY 1;

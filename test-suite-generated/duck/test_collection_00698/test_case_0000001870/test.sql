@@ -1,0 +1,1 @@
+SELECT ABS(1), ABS(-1), ABS(NULL);

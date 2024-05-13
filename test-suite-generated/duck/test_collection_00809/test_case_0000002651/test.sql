@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM v1 JOIN v2 USING (i);

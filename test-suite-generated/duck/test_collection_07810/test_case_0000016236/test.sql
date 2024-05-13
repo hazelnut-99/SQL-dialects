@@ -1,0 +1,1 @@
+SELECT * FROM i2 ORDER BY 1;

@@ -1,0 +1,510 @@
+PRAGMA explain_output = PHYSICAL_ONLY;
+create temporary table t as select range a, length(range::varchar) b, mod(range,10000) c, 5 d, 10000 e from range(100000);
+explain select count(*) from t where b in (1,2,3) ;
+explain select count(*) from t where b <=3 and b>=0;
+SELECT * FROM (VALUES ([1, 2, 3]), ([4, 5])) t(i), (SELECT UNNEST(i)) t2(j) ORDER BY 1, 2;
+SELECT * FROM (VALUES (3, [1, 2, 3], 'hi'), (8, [4, 5], 'hi')) t(a, i, k), (SELECT UNNEST(i)) t2(j) ORDER BY 1, 2, 3, 4;
+SELECT UNNEST(j) FROM (VALUES ([[1, 2, 3]]), ([[4, 5]])) t(i), (SELECT UNNEST(i)) t2(j);
+with stage1 as (
+  SELECT r, md5(r::varchar) as h, gen_random_uuid() as id
+  FROM (SELECT UNNEST(GENERATE_SERIES(1,10,1)) r ))
+, stage2 as (
+  SELECT a.*, list({r:b.r, h:b.h, id: gen_random_uuid()}) as sub
+  FROM stage1 as a, stage1 as b
+  GROUP BY ALL)
+, stage3 as (
+  SELECT a.r, a.h, list({r:b.r, h:b.h, sub:b.sub, id: gen_random_uuid()}) as sub
+  FROM stage1 as a, stage2 as b
+  GROUP BY ALL)
+SELECT count(*) as r
+FROM stage3,
+  (SELECT UNNEST(stage3.sub) sub) as s1(sub),
+  (SELECT UNNEST(s1.sub.sub) sub) as s2(sub);
+SELECT hits_0.access.page."pageTitle" as "pageTitle",
+COUNT(DISTINCT CONCAT(ga_sessions."__distinct_key", 'x', hits_0.__row_id)) as "hits_count",
+COUNT(DISTINCT CASE WHEN product_0.access."productQuantity">0 THEN CONCAT(ga_sessions."__distinct_key", 'x', hits_0."__row_id") END) as "sold_count"
+FROM (SELECT GEN_RANDOM_UUID() as __distinct_key, * FROM 'data/parquet-testing/test_unnest_rewriter.parquet' as x) as ga_sessions,
+(SELECT GEN_RANDOM_UUID() as __row_id, x.access FROM (SELECT UNNEST(ga_sessions.hits)) as x(access)) as hits_0,
+(SELECT GEN_RANDOM_UUID() as __row_id, x.access FROM (SELECT UNNEST(hits_0.access.product)) as x(access)) as product_0
+GROUP BY 1 ORDER BY 1, 2, 3 LIMIT 2;
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT * FROM (VALUES ([1, 2, 3]), ([4, 5])) t(i), (SELECT UNNEST(i)) t2(j) ORDER BY 1, 2;
+EXPLAIN SELECT * FROM (VALUES (3, [1, 2, 3], 'hi'), (8, [4, 5], 'hi')) t(a, i, k), (SELECT UNNEST(i)) t2(j) ORDER BY 1, 2, 3, 4;
+EXPLAIN SELECT UNNEST(j) FROM (VALUES ([[1, 2, 3]]), ([[4, 5]])) t(i), (SELECT UNNEST(i)) t2(j);
+EXPLAIN SELECT hits_0.access.page."pageTitle" as "pageTitle",
+COUNT(DISTINCT CONCAT(ga_sessions."__distinct_key", 'x', hits_0.__row_id)) as "hits_count",
+COUNT(DISTINCT CASE WHEN product_0.access."productQuantity">0 THEN CONCAT(ga_sessions."__distinct_key", 'x', hits_0."__row_id") END) as "sold_count"
+FROM (SELECT GEN_RANDOM_UUID() as __distinct_key, * FROM 'data/parquet-testing/test_unnest_rewriter.parquet' as x) as ga_sessions,
+(SELECT GEN_RANDOM_UUID() as __row_id, x.access FROM (SELECT UNNEST(ga_sessions.hits)) as x(access)) as hits_0,
+(SELECT GEN_RANDOM_UUID() as __row_id, x.access FROM (SELECT UNNEST(hits_0.access.product)) as x(access)) as product_0
+GROUP BY 1 LIMIT 2;
+EXPLAIN with stage1 as (
+  SELECT r, md5(r::VARCHAR) as h, gen_random_uuid() as id
+  FROM (SELECT UNNEST(GENERATE_SERIES(1,10,1)) r ))
+, stage2 as (
+  SELECT a.*, list({r:b.r, h:b.h, id: gen_random_uuid()}) as sub
+  FROM stage1 as a, stage1 as b
+  GROUP BY ALL)
+, stage3 as (
+  SELECT a.r, a.h, list({r:b.r, h:b.h, sub:b.sub, id: gen_random_uuid()}) as sub
+  FROM stage1 as a, stage2 as b
+  GROUP BY ALL)
+SELECT count(*) as r
+FROM stage3,
+  (SELECT UNNEST(stage3.sub) sub) as s1(sub),
+  (SELECT UNNEST(s1.sub.sub) sub) as s2(sub);
+EXPLAIN SELECT (SELECT UNNEST(i)) FROM (VALUES ([])) tbl(i);
+EXPLAIN select * from (select [42, 43, 44]) t(a), (select unnest(t.a)) t2(b) where b=43;
+CREATE TABLE with_array(foo INT, arr DOUBLE[]);
+INSERT INTO with_array VALUES(1, [1,2,3]), (2, [4,5,6]);
+SELECT foo, arr, u1, u2 FROM with_array,
+(SELECT UNNEST(with_array.arr) AS u1,
+UNNEST(generate_series(1, len(with_array.arr), 1)) AS u2)
+ORDER BY foo, u2;
+CREATE TABLE tbl_ints AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY[6] AS col_b;
+INSERT INTO tbl_ints VALUES (ARRAY[4, 5], ARRAY[7, 8]);
+SELECT new_a, new_b
+FROM tbl_ints, LATERAL (SELECT UNNEST(col_a) new_a, UNNEST(col_b) new_b FROM tbl_ints) g
+ORDER BY 1, 2;
+SELECT new_a, new_b
+FROM tbl_ints, LATERAL (SELECT UNNEST(col_a) new_a, UNNEST(col_b) new_b) g
+ORDER BY 1;
+CREATE TABLE tbl_mix AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY['a'] AS col_b;
+INSERT INTO tbl_mix VALUES (ARRAY[4, 5], ARRAY['b', 'c']);
+SELECT * FROM tbl_mix, LATERAL (SELECT UNNEST(tbl_mix.col_a) new_a, UNNEST(tbl_mix.col_b) new_b) g
+ORDER BY new_a;
+WITH tbl AS (SELECT [{'a': 1, 'b': 'oh no!'}] AS c)
+SELECT a, b, c FROM tbl, (SELECT UNNEST(c, recursive := TRUE));
+WITH tbl AS (SELECT [{'a': 1, 'b': 2}] as c)
+SELECT a, b, c FROM tbl, (SELECT UNNEST(c, recursive := TRUE));
+CREATE TABLE test(s VARCHAR);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+INSERT INTO test VALUES ('aaa');
+EXPLAIN SELECT regexp_matches(s, 'aa') FROM test;
+EXPLAIN SELECT contains(s, 'aa') FROM test;
+EXPLAIN SELECT regexp_matches(s, 'a') FROM test;
+EXPLAIN SELECT contains(s, 'a') FROM test;
+SELECT regexp_matches(s, '[a]') FROM test;
+SELECT regexp_matches(s, 'a') FROM test;
+SELECT contains(s, 'aaa') FROM test;
+SELECT regexp_matches(s, '^a') FROM TEST;
+SELECT regexp_matches(s, '^aa') FROM TEST;
+DELETE FROM test;
+INSERT INTO test VALUES ('aaa'), ('a.a'), ('baba'), ('abba'), ('a\.a'), ('a_a');
+explain analyze select regexp_matches(s, 'a.a', 's'), s from test;
+select s from test where regexp_matches(s, 'a.a', 's');
+explain analyze SELECT regexp_matches(s, 'a.*a', 's'), s FROM TEST;
+SELECT s FROM TEST where regexp_matches(s, 'a.*a', 's');
+explain analyze SELECT regexp_matches(s, '^a.*b$', 's'), s FROM TEST;
+SELECT s FROM TEST where regexp_matches(s, '^a.*b$', 's');
+explain analyze select regexp_matches(s, 'a_a'), s from test;
+explain analyze select regexp_matches(s, 'a%a'), s from test;
+explain analyze select regexp_matches(s, 'a\\a'), s from test;
+select s from test where regexp_matches(s, 'a_a');
+explain analyze select regexp_matches(s, 'a\.a'), s from test;
+select s from test where regexp_matches(s, 'a\.a');
+explain analyze SELECT regexp_matches(s, '^a'), s FROM TEST;
+SELECT s FROM TEST where regexp_matches(s, '^a');
+explain analyze SELECT regexp_matches(s, 'a$'), s FROM TEST;
+SELECT s FROM TEST where regexp_matches(s, 'a$');
+explain analyze SELECT regexp_matches(s, 'aaa.'), s FROM TEST;
+explain analyze SELECT regexp_matches(s, 'aaa.', 's'), s FROM TEST;
+explain analyze SELECT regexp_matches(s, '.aaa', 's'), s FROM TEST;
+explain analyze SELECT regexp_matches(s, '^.aaa', 's'), s FROM TEST;
+explain analyze SELECT regexp_matches(s, '.aaa$', 's'), s FROM TEST;
+explain analyze select regexp_matches(s, '.*green.*', 's'), s, from test;
+explain analyze select regexp_matches(s, '.*special.*requests.*', 's'), s from test;
+DELETE from test;
+insert into test values (concat('aaa', chr(10), 'aaa'));
+select count(s) from test where regexp_matches(s, 'aaa');
+select count(s) from test where regexp_matches(s, 'aaa.');
+select count(s) from test where regexp_matches(s, 'aaa.', 's');
+select count(s) from test where regexp_matches(s);
+select count(s) from test where regexp_matches('aaa');
+CREATE TABLE test(X BOOLEAN);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT 1+1;
+EXPLAIN SELECT 2;
+EXPLAIN SELECT (1+1+1)*2;
+EXPLAIN SELECT 6;
+EXPLAIN SELECT CASE WHEN 1 IN (1, 2, 3, 4) THEN 3 ELSE 5 END;
+EXPLAIN SELECT 3;
+EXPLAIN SELECT CASE WHEN 1 IN (1+1, 2, 3, 4) THEN 3 ELSE 5 END;
+EXPLAIN SELECT 5;
+EXPLAIN SELECT 1 IN (1+1, 2, 3, 4, NULL);
+EXPLAIN SELECT NULL;
+EXPLAIN SELECT CASE WHEN 1 IN (1+1, 2, 3, 4, NULL, 1) THEN (3+4) ELSE 2+2+2 END;
+EXPLAIN SELECT 7;
+PRAGMA explain_output='optimized_only';
+create table a as select 42 as i, 80 as j;
+create table b as select 43 as i, 84 as k;
+create table c as select 44 as i, 84 as l;
+explain select i from a inner join b using (i);
+explain select a.i from a, b where a.i=b.i;
+explain select a.i from a natural join b;
+explain select i from a left outer join b using (i);
+explain select a.i from a left outer join b using (i);
+explain select a.i from a left outer join b on (a.i=b.i);
+explain select i from a right outer join b using (i);
+explain select b.i from a right outer join b using (i);
+explain select b.i from a right outer join b on (a.i=b.i);
+select i from a left outer join b using (i) inner join c using (i);
+select a.i from a left outer join b on (a.i=b.i) inner join c on (a.i=c.i);
+explain select i from a left outer join b using (i) inner join c using (i);
+explain select a.i from a left outer join b on (a.i=b.i) inner join c on (a.i=c.i);
+select i from a left outer join b using (i) left outer join c using (i);
+select a.i from a left outer join b on (a.i=b.i) left outer join c on (a.i=c.i);
+explain select i from a left outer join b using (i) left outer join c using (i);
+explain select a.i from a left outer join b on (a.i=b.i) left outer join c on (a.i=c.i);
+select i from a left outer join b using (i) right join c using (i);
+select c.i from a left outer join b on (a.i=b.i) right join c on (a.i=c.i);
+explain select i from a left outer join b using (i) right join c using (i);
+explain select c.i from a left outer join b on (a.i=b.i) right join c on (a.i=c.i);
+select i from a full outer join b using (i) order by all;
+select coalesce(a.i, b.i) from a full outer join b on (a.i=b.i) order by all;
+explain select i from a full outer join b using (i);
+explain select coalesce(b.i, a.i) from a full outer join b on (a.i=b.i);
+CREATE TABLE test(X BOOLEAN);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT X AND TRUE FROM test;
+EXPLAIN SELECT X FROM test;
+EXPLAIN SELECT X OR FALSE FROM test;
+EXPLAIN SELECT X FROM test;
+SELECT l_returnflag FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'DECIMAL(15,2)','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'VARCHAR','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'});
+explain SELECT l_returnflag FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'DECIMAL(15,2)','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'VARCHAR','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'});
+SELECT l_shipinstruct FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'DECIMAL(15,2)','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'});
+SELECT l_returnflag FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'DECIMAL(15,2)','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'}, header = 0);
+SELECT l_shipinstruct FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'DECIMAL(15,2)','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'}, ignore_errors=true);
+SELECT l_orderkey, l_partkey, l_extendedprice FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'SMALLINT','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'});
+SELECT l_orderkey, l_partkey, l_extendedprice FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'SMALLINT','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'}, ignore_errors=true, header = 0);
+SELECT l_orderkey, l_partkey, l_extendedprice FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'USMALLINT','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'});
+SELECT l_orderkey, l_partkey, l_extendedprice FROM read_csv('test/sql/copy/csv/data/real/lineitem_sample.csv', delim='|', columns={'l_orderkey': 'INTEGER','l_partkey': 'INTEGER','l_suppkey': 'INTEGER','l_linenumber': 'INTEGER','l_quantity': 'INTEGER','l_extendedprice': 'USMALLINT','l_discount': 'DECIMAL(15,2)','l_tax': 'DECIMAL(15,2)','l_returnflag': 'VARCHAR','l_linestatus': 'VARCHAR','l_shipdate': 'DATE','l_commitdate': 'DATE','l_receiptdate': 'DATE','l_shipinstruct': 'DATE','l_shipmode': 'VARCHAR','l_comment': 'VARCHAR'}, ignore_errors=true, header = 0);
+CREATE TABLE test(X INTEGER);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT CASE WHEN 1=1 THEN X+1 ELSE X+2 END FROM test;
+EXPLAIN SELECT X+1 FROM test;
+EXPLAIN SELECT CASE WHEN 1=0 THEN X+1 ELSE X+2 END FROM test;
+EXPLAIN SELECT X+2 FROM test;
+EXPLAIN SELECT CASE WHEN NULL>3 THEN X+1 ELSE X+2 END FROM test;
+EXPLAIN SELECT X+2 FROM test;
+CREATE TABLE test(word VARCHAR);
+INSERT INTO test VALUES ('FLASH'), ('TOAST'), ('BELL');
+PRAGMA explain_output = OPTIMIZED_ONLY;
+select contains(word, 'AS') from test;
+select regexp_matches(word, '[A]') from test;
+select regexp_matches(word, 'A') from test;
+select regexp_matches(word, 'AS') from test;
+select regexp_matches(word, '[AS]') from test;
+select regexp_matches(word, '[S]') from test;
+select regexp_matches(word, '[A][S]') from test;
+select regexp_matches(word, '[AAAA]') from test;
+select regexp_matches(word, '[A-A]') from test;
+select regexp_matches(word, '(?i)[A-A]') from test;
+select regexp_matches(word, '(?s)[A-A]') from test;
+select regexp_matches(word, '(?m)[A-A]') from test;
+CREATE TABLE test(A BOOLEAN, B BOOLEAN, C BOOLEAN, D BOOLEAN, X BOOLEAN, Y BOOLEAN, Z BOOLEAN);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT (X AND A AND B) OR (A AND X AND C) OR (X AND B AND D) FROM test;
+EXPLAIN SELECT X AND ((A AND B) OR (A AND C) OR (B AND D)) FROM test;
+EXPLAIN SELECT (X AND B) OR (X AND C) FROM test;
+EXPLAIN SELECT X AND (B OR C) FROM test;
+EXPLAIN SELECT X OR X FROM test;
+EXPLAIN SELECT X OR X OR X OR X FROM test;
+EXPLAIN SELECT X OR (X OR (X OR X)) FROM test;
+EXPLAIN SELECT X OR (X AND A) FROM test;
+EXPLAIN SELECT X OR X FROM test;
+CREATE TABLE test2(X INTEGER, Y INTEGER, Z INTEGER);
+EXPLAIN SELECT (X=1 AND Y=1) OR (X=1 AND Z=1) FROM test2;
+EXPLAIN SELECT X=1 AND (Y=1 OR Z=1) FROM test2;
+create table test as select range i, range j from range(5);
+explain select i from test where j=0;
+copy test TO 'duckdb_unittest_tempdir/83994/test.parquet' (FORMAT 'parquet');
+explain select i from 'duckdb_unittest_tempdir/83994/test.parquet' where j=0;
+PRAGMA explain_output = OPTIMIZED_ONLY;
+CREATE TABLE integers(i INTEGER, j INTEGER);
+insert into integers values (1,1), (2,2), (3,3);
+create index i_index on integers(i);
+EXPLAIN SELECT i FROM integers  where i = 1;
+drop index i_index;
+create index i_index on integers using art((i+j));
+EXPLAIN SELECT i FROM integers  where i+j = 2;
+SELECT i FROM integers  where i+j = 2;
+drop index i_index;
+CREATE TABLE test(X INTEGER);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT X+1=10 FROM test;
+EXPLAIN SELECT 1+X=10 FROM test;
+EXPLAIN SELECT X=9 FROM test;
+EXPLAIN SELECT 10=X+1 FROM test;
+EXPLAIN SELECT 10=1+X FROM test;
+EXPLAIN SELECT 9=X FROM test;
+EXPLAIN SELECT X-1=10 FROM test;
+EXPLAIN SELECT X=11 FROM test;
+EXPLAIN SELECT 10-X=5 FROM test;
+EXPLAIN SELECT X=5 FROM test;
+EXPLAIN SELECT 10-X<5 FROM test;
+EXPLAIN SELECT X>5 FROM test;
+EXPLAIN SELECT 10-X>=5 FROM test;
+EXPLAIN SELECT X<=5 FROM test;
+EXPLAIN SELECT X*3=6 FROM test;
+EXPLAIN SELECT 3*X=6 FROM test;
+EXPLAIN SELECT X=2 FROM test;
+EXPLAIN SELECT X*3>3 FROM test;
+EXPLAIN SELECT X>1 FROM test;
+EXPLAIN SELECT -1*X=-5 FROM test;
+EXPLAIN SELECT X=5 FROM test;
+EXPLAIN SELECT -1*X<-5 FROM test;
+EXPLAIN SELECT X>5 FROM test;
+CREATE TABLE test_df_a(number BIGINT, date VARCHAR, rn BIGINT);
+INSERT INTO test_df_a VALUES(7058,'2015-07-31',1);
+INSERT INTO test_df_a VALUES(7058,'2015-07-31',2);
+INSERT INTO test_df_a VALUES(7075,'2016-07-31',1);
+INSERT INTO test_df_a VALUES(7076,'2017-07-31',1);
+INSERT INTO test_df_a VALUES(7076,'2017-07-31',2);
+CREATE TABLE test_df_b(number BIGINT, date VARCHAR, rn BIGINT);;
+INSERT INTO test_df_b VALUES(7058,'2015-07-31',1);
+INSERT INTO test_df_b VALUES(7058,'2015-07-31',2);
+INSERT INTO test_df_b VALUES(7012,'2015-07-31',1);
+INSERT INTO test_df_b VALUES(7075,'2016-07-31',1);
+INSERT INTO test_df_b VALUES(7076,'2017-07-31',1);
+with t as (select * from test_df_a UNION select * from test_df_b) select * exclude rn from t order by all;
+create table t1 as select 1 a, range b from range(100);
+create table t2 as select 1 a, range b from range(100);
+select count(a) from (select * from t1 union select * from t2) t_union;
+select count(a) from (select * from t1 union all select * from t2) t_union;
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE TABLE integers(grp INTEGER, i INTEGER);
+INSERT INTO integers VALUES (1, 10), (2, 15), (1, 30), (2, 20);
+EXPLAIN SELECT FIRST(i ORDER BY i) FROM integers;
+EXPLAIN SELECT FIRST(i ORDER BY i, i, i) FROM integers;
+EXPLAIN SELECT FIRST(i ORDER BY i, i DESC, i DESC NULLS FIRST) FROM integers;
+EXPLAIN SELECT grp, FIRST(i ORDER BY i) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT grp, FIRST(i ORDER BY grp, i) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT grp, FIRST(i ORDER BY grp, i, grp DESC, i DESC) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT grp, FIRST(i) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT grp, FIRST(i ORDER BY grp) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT grp, FIRST(i ORDER BY grp, grp DESC, grp DESC NULLS FIRST) FROM integers GROUP BY grp ORDER BY grp;
+EXPLAIN SELECT MIN(i) FROM integers;
+EXPLAIN SELECT MIN(i ORDER BY i) FROM integers;
+EXPLAIN SELECT MAX(i) FROM integers;
+EXPLAIN SELECT MAX(i ORDER BY i) FROM integers;
+EXPLAIN SELECT MEDIAN(i) FROM integers;
+EXPLAIN SELECT MEDIAN(i ORDER BY i) FROM integers;
+EXPLAIN SELECT SUM(i) FROM integers;
+EXPLAIN SELECT SUM(i ORDER BY i) FROM integers;
+PRAGMA explain_output = 'PHYSICAL_ONLY';
+CREATE TABLE vals1 AS SELECT i AS i, i AS j FROM range(0, 11, 1) t1(i);
+CREATE TABLE vals2(k BIGINT, l BIGINT);
+INSERT INTO vals2 SELECT * FROM vals1;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2 WHERE i=5) tbl1, (SELECT * FROM vals1, vals2) tbl2 WHERE tbl1.i=tbl2.i;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2) tbl1, (SELECT * FROM vals1, vals2 WHERE i=5) tbl2 WHERE tbl1.i=tbl2.i;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2 WHERE i=5 AND k=3) tbl1, (SELECT * FROM vals1, vals2) tbl2 WHERE tbl1.i=tbl2.i AND tbl1.k=tbl2.k;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2) tbl1, (SELECT * FROM vals1, vals2 WHERE i=5 AND k=3) tbl2 WHERE tbl1.i=tbl2.i AND tbl1.k=tbl2.k;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1 WHERE i=5) tbl1 LEFT JOIN (SELECT * FROM vals1) AS tbl2 ON tbl1.i=tbl2.i;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1) tbl1 LEFT JOIN (SELECT * FROM vals1 WHERE i=5) AS tbl2 ON tbl1.i=tbl2.i;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2 WHERE i=5 AND k=10) tbl1 LEFT OUTER JOIN (SELECT * FROM vals1, vals2) tbl2 ON tbl1.i=tbl2.i AND tbl1.k=tbl2.k;
+EXPLAIN SELECT COUNT(*) FROM (SELECT * FROM vals1, vals2 WHERE i=5) tbl1, (SELECT * FROM vals1, vals2) tbl2 WHERE tbl1.i=tbl1.k AND tbl1.i=tbl2.k AND tbl1.i=tbl2.i;
+EXPLAIN SELECT COUNT(*) FROM (SELECT * FROM vals1, vals2) tbl1, (SELECT * FROM vals1, vals2 WHERE i=5) tbl2 WHERE tbl1.i=tbl1.k AND tbl1.i=tbl2.k AND tbl1.i=tbl2.i;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2 WHERE i=3 AND k=5 INTERSECT SELECT * FROM vals1, vals2) tbl1;
+EXPLAIN SELECT * FROM (SELECT * FROM vals1, vals2 INTERSECT SELECT * FROM vals1, vals2 WHERE i=3 AND k=5) tbl1;
+CREATE TABLE test(word VARCHAR);
+INSERT INTO test VALUES ('BIGSmall'), ('bIGSmall'), ('BIGsmall'), ('bigsmall');
+select word, regexp_matches(word, '(?i)b.*(?-i)[S]') from test; ;
+select word, regexp_matches(word, '(?i)[b].*(?-i)[s]') from test;
+PRAGMA explain_output='optimized_only';
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0=5 AND col1 >= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0>5 AND col1 >= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0>=5 AND col1 >= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0=5 AND col1 > col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0>5 AND col1 > col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0>=5 AND col1 > col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0=5 AND col1 <= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0<5 AND col1 <= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0<=5 AND col1 <= col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0=5 AND col1 < col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0<5 AND col1 < col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col0<=5 AND col1 < col0;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 >= col0 AND col0=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 >= col0 AND col0>5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 >= col0 AND col0>=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 > col0 AND col0=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 > col0 AND col0>5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 > col0 AND col0>=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 <= col0 AND col0=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 <= col0 AND col0<5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 <= col0 AND col0<=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 < col0 AND col0=5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 < col0 AND col0<5;
+EXPLAIN SELECT * FROM (VALUES(5,5)) tbl(col0, col1) WHERE col1 < col0 AND col0<=5;
+CREATE TABLE test(t timestamp);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT COUNT(*) FROM test GROUP BY EXTRACT(year from t);
+EXPLAIN SELECT COUNT(*) FROM test GROUP BY YEAR(t);
+CREATE TABLE test(S VARCHAR);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT PREFIX(S, '') FROM test;
+EXPLAIN SELECT CONTAINS(S, '') FROM test;
+CREATE TABLE test(X INTEGER);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT X FROM test;
+EXPLAIN SELECT X+0 FROM test;
+EXPLAIN SELECT 0+X FROM test;
+EXPLAIN SELECT X-0 FROM test;
+EXPLAIN SELECT X*1 FROM test;
+EXPLAIN SELECT 1*X FROM test;
+EXPLAIN SELECT X//1 FROM test;
+EXPLAIN SELECT NULL FROM test;
+EXPLAIN SELECT X//0 FROM test;
+PRAGMA enable_verification;
+CREATE TABLE timeseries(year INTEGER, val INTEGER);
+INSERT INTO timeseries VALUES (1996, 10), (1997, 12), (1996, 20), (2001, 30), (NULL, 1), (1996, NULL);
+EXPLAIN SELECT year, SUM(val), COUNT(val), COUNT(*) FROM timeseries GROUP BY year ORDER BY year;
+PRAGMA perfect_ht_threshold=0;
+EXPLAIN SELECT year, SUM(val), COUNT(val), COUNT(*) FROM timeseries GROUP BY year ORDER BY year;
+PRAGMA perfect_ht_threshold=1;
+EXPLAIN SELECT year, SUM(val), COUNT(val), COUNT(*) FROM timeseries GROUP BY year ORDER BY year;
+create table manycolumns as select i a, i b, i c, i d, i e, i f, i g, i h, i, i j from range(0,2) tbl(i);
+PRAGMA perfect_ht_threshold=30;
+explain select a, b, c, d, e, f, g, h, i, j FROM manycolumns GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+PRAGMA perfect_ht_threshold=-1;
+PRAGMA perfect_ht_threshold=100;
+PRAGMA explain_output = 'OPTIMIZED_ONLY';
+create table t0 as (select 42 a);
+create table t1 as (select 42 b);
+explain select a from t0 semi join (select * from t1 where 1 = 0) on a = b;
+explain select * from t0 SEMI JOIN (select * from t1 where 1=0) tmp on a = b;
+explain select * from (select * from t0 where 1=0) tmp0 SEMI JOIN (select * from t1) tmp1 on (a = b);
+explain select * from (select 42 where 1=0) tmp0(a) ANTI JOIN (select 42) tmp1(b) on (a=b);
+explain select * from t0 ANTI JOIN (select * from t1 where 1=0) on (a=b);
+explain select * from ((select 42) tbl(a) SEMI JOIN t1 on (a=b)) where a=42;
+explain select * from ((select 42) tbl(a) SEMI JOIN t1 on (a=b)) where a=43;
+explain select * from ((select 43) tbl(i) SEMI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+explain select * from ((select 42) tbl(i) ANTI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+explain select * from ((select 42) tbl(i) ANTI JOIN (select 43) tbl2(u) on (i=u)) tbl(i) where i=42;
+explain select * from ((select 43) tbl(i) ANTI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select 42) tbl(a) SEMI JOIN (select 43) tbl2(b) on (a=b) where a = 42;
+select * from (select 42) tbl(a) SEMI JOIN (select 42 where 1=0) tbl2(b) on (a=b);
+select * from (select 42 where 1=0) tbl(a) SEMI JOIN (select 42) tbl2(b) on (a=b);
+select * from (select 42 where 1=0) tbl(a) ANTI JOIN (select 42) tbl2(b) on (a=b);
+select * from (select 42) tbl(a) ANTI JOIN (select 42 where 1=0) tbl2(b) on (a=b);
+select * from (select * from (select 42) tbl(i) SEMI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select * from (select 42) tbl(i) SEMI JOIN (select 43) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select * from (select 43) tbl(i) SEMI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select * from (select 42) tbl(i) ANTI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select * from (select 42) tbl(i) ANTI JOIN (select 43) tbl2(u) on (i=u)) tbl(i) where i=42;
+select * from (select * from (select 43) tbl(i) ANTI JOIN (select 42) tbl2(u) on (i=u)) tbl(i) where i=42;
+create table t2 as select range a, range+8 b from range(11);
+create table t3 as select range a, range+8 b from range(11);
+create table t4 as select range a, range+8 b from range(11);
+create table t5 as select range a, range+8 b from range(11);
+explain select a from (select * from t2 semi join (select * from t3 where 1 = 0) tt0 on (t2.a = tt0.b)) tmp1 ANTI JOIN (select * from t3 semi join (select * from t4) tt1 on (t3.a = tt1.b)) tmp2 on (tmp1.a=tmp2.a);
+select * from t2 semi join t3 on (t2.a + 70 + t3.b = t2.b**t3.a);
+select * from t2 semi join t3 on (t2.a + 70 + t3.b = t2.b**t3.a) where a < 10;
+create table left_table as (select * from VALUES (1, 9), (1, 10) t(a, b));
+create table right_table as (select * from VALUES (1, 4) t(a, b));
+select * from left_table anti join right_table on (left_table.b-5 = right_table.b) where b > 5;
+PRAGMA explain_output = 'OPTIMIZED_ONLY';
+explain select 42 intersect select 42;
+explain select 42 intersect select 42 where 1=0;
+explain select 42 where 1=0 intersect select 42;
+explain select 42 where 1=0 except select 42;
+explain select 42 except all select 42 where 1=0;
+explain select * from (select 42 intersect select 42) tbl(i) where i=42;
+explain select * from (select 42 intersect all select 43) tbl(i) where i=42;
+explain select * from (select 43 intersect all select 42) tbl(i) where i=42;
+explain select * from (select 42 except select 42) tbl(i) where i=42;
+explain select * from (select 42 except all select 43) tbl(i) where i=42;
+explain select * from (select 43 except all select 42) tbl(i) where i=42;
+select 42 intersect select 42;
+select 42 intersect select 42 where 1=0;
+select 42 where 1=0 intersect select 42;
+select 42 where 1=0 except select 42;
+select 42 except select 42 where 1=0;
+select * from (select 42 intersect select 42) tbl(i) where i=42;
+select * from (select 42 intersect select 43) tbl(i) where i=42;
+select * from (select 43 intersect select 42) tbl(i) where i=42;
+select * from (select 42 except select 42) tbl(i) where i=42;
+select * from (select 42 except select 43) tbl(i) where i=42;
+select * from (select 43 except select 42) tbl(i) where i=42;
+CREATE TABLE test(S VARCHAR);
+INSERT INTO test VALUES ('aaa');
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT S LIKE 'aaa' FROM test;
+EXPLAIN SELECT S='aaa' FROM test;
+EXPLAIN SELECT S LIKE 'aaa%' FROM test;
+EXPLAIN SELECT prefix(S, 'aaa') FROM test;
+EXPLAIN SELECT S LIKE 'aaa%%%%' FROM test;
+EXPLAIN SELECT S LIKE '%aaa' FROM test;
+EXPLAIN SELECT suffix(S, 'aaa') FROM test;
+EXPLAIN SELECT S LIKE '%%%%aaa' FROM test;
+EXPLAIN SELECT S LIKE '%aaa%' FROM test;
+EXPLAIN SELECT contains(S, 'aaa') FROM test;
+EXPLAIN SELECT S LIKE '%%%%aaa%%' FROM test;
+EXPLAIN SELECT S NOT LIKE 'aaa' FROM test;
+EXPLAIN SELECT S<>'aaa' FROM test;
+EXPLAIN SELECT S NOT LIKE 'aaa%' FROM test;
+EXPLAIN SELECT NOT(prefix(S, 'aaa')) FROM test;
+EXPLAIN SELECT S NOT LIKE 'aaa%%%%' FROM test;
+EXPLAIN SELECT S NOT LIKE '%aaa' FROM test;
+EXPLAIN SELECT NOT(suffix(S, 'aaa')) FROM test;
+EXPLAIN SELECT S NOT LIKE '%%%%aaa' FROM test;
+EXPLAIN SELECT S NOT LIKE '%aaa%' FROM test;
+EXPLAIN SELECT NOT(contains(S, 'aaa')) FROM test;
+EXPLAIN SELECT S NOT LIKE '%%%%aaa%%' FROM test;
+CREATE TABLE t1(c1 int, c2 int, c3 int, c4 int);
+INSERT INTO t1 VALUES (1, 1, 1, 1);
+INSERT INTO t1 VALUES (1, 1, 1, 1);
+CREATE TABLE t2 AS SELECT * FROM t1;
+INSERT INTO t2 VALUES (1, 1, 1, 1);
+CREATE TABLE t3 AS SELECT * FROM t2;
+INSERT INTO t2 VALUES (1, 1, 1, 1);
+CREATE TABLE t4 AS SELECT * FROM t3;
+INSERT INTO t2 VALUES (1, 1, 1, 1);
+PRAGMA debug_force_no_cross_product=true;
+EXPLAIN 
+SELECT 
+  COUNT(*) 
+FROM 
+  t1, t2, t3, t4 
+WHERE 
+  t1.c1 = t2.c1 AND 
+  t2.c2 = t3.c2 AND 
+  t3.c3 = t4.c3;
+EXPLAIN 
+SELECT 
+  COUNT(*) 
+FROM 
+  t1, t2, t3, t4 
+WHERE 
+  t1.c1 = t2.c1 AND 
+  t2.c2 = t3.c2 AND 
+  t3.c3 = t4.c3 AND 
+  t4.c4 = t1.c4;
+EXPLAIN 
+SELECT 
+  COUNT(*) 
+FROM 
+  t1, t2, t3, t4 
+WHERE 
+  t1.c1 = t2.c1 AND 
+  t2.c2 = t3.c2 AND 
+  t1.c1 + t2.c2 + t3.c3= 3 * t4.c4;
+CREATE TABLE test(X INTEGER);
+PRAGMA explain_output = OPTIMIZED_ONLY;
+EXPLAIN SELECT NULL FROM test;
+EXPLAIN SELECT X=NULL FROM test;
+EXPLAIN SELECT X>NULL FROM test;
+EXPLAIN SELECT NULL>X FROM test;
+EXPLAIN SELECT * FROM test WHERE 1=0;
+EXPLAIN SELECT * FROM test WHERE X=NULL;
+EXPLAIN SELECT X=1::BIGINT FROM test;
+EXPLAIN SELECT X::BIGINT=1::INTEGER FROM test;
+EXPLAIN SELECT X='1' FROM test;
+EXPLAIN SELECT X::BIGINT='1' FROM test;
+create table t (i integer);
+insert into t values (1);
+insert into t values (2);
+select * from t where i in ('1','2','y');
+SELECT x::VARCHAR IN ('1', y::VARCHAR) FROM (VALUES (1, 2), (2, 3)) tbl(x, y);
+SELECT x::BIGINT IN (1::BIGINT, y) FROM (VALUES (1::INTEGER, 2::BIGINT), (2::INTEGER, 3::BIGINT)) tbl(x, y);

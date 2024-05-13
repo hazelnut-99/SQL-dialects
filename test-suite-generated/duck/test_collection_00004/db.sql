@@ -1,0 +1,17 @@
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (NULL);
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;
+INSERT INTO integers SELECT * FROM integers;

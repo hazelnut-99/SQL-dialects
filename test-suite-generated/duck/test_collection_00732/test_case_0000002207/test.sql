@@ -1,0 +1,1 @@
+SELECT rowid FROM b ORDER BY 1;

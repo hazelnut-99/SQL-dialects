@@ -1,0 +1,1 @@
+SELECT * FROM intest WHERE a IN (43, b) ORDER BY 1;

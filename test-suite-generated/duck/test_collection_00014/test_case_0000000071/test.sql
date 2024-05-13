@@ -1,0 +1,1 @@
+SELECT typeof(100::INTEGER + 1) == 'INTEGER';

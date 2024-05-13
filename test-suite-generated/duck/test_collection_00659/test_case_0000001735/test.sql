@@ -1,0 +1,1 @@
+SELECT﻿strlen('﻿')>=2;

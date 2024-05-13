@@ -1,0 +1,1 @@
+SELECT CAST([('ghj', [('klm', [16, 17])]), ('nop', [('rst', [18])])], 'Map(String, Map(String, Array(UInt8)))');

@@ -1,0 +1,1 @@
+SELECT '------numbers_mt_0-argument-----';

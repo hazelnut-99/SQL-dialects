@@ -1,0 +1,1 @@
+SELECT splitByWhitespace('It is quite a wonderful day, isn\'t it?');

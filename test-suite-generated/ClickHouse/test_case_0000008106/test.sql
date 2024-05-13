@@ -1,2 +1,0 @@
-SELECT INTERVAL '2' hour; 
-SELECT INTERVAL '2 hour';

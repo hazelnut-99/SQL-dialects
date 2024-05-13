@@ -1,0 +1,1 @@
+select 'Char' as mysql_type, cast(44 as char) as result, toTypeName(result) as native_type;

@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLog();
+INSERT INTO check_system_tables VALUES (1);
+DROP TABLE check_system_tables;
+CREATE TABLE check_system_tables (key UInt8) ENGINE = Log();
+INSERT INTO check_system_tables VALUES (1);
+DROP TABLE check_system_tables;
+CREATE TABLE check_system_tables (key UInt8) ENGINE = StripeLog();
+INSERT INTO check_system_tables VALUES (1);
+DROP TABLE check_system_tables;
+CREATE TABLE check_system_tables (key UInt16) ENGINE = Memory();
+INSERT INTO check_system_tables VALUES (1);
+DROP TABLE check_system_tables;

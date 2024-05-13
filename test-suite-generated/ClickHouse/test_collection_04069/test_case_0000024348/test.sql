@@ -1,0 +1,1 @@
+SELECT (1::Float32, 2::Float32, 3::Float32) AS x, (4::Float32, 5::Float32, 6::Float32) AS y, dotProduct(x, y) AS res, toTypeName(res);

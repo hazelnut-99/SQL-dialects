@@ -1,0 +1,1 @@
+SELECT arrayFold( acc,x -> x%2 ? (arrayPushBack(acc.1, x), acc.2): (acc.1, arrayPushBack(acc.2, x)),  [1, 2, 3, 4, 5, 6], (emptyArrayInt64(), emptyArrayInt64()));

@@ -1,0 +1,1 @@
+SELECT 'can not detach permanently the table which is already detached (temporary)';

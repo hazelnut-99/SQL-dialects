@@ -1,0 +1,1 @@
+SELECT * FROM t1 FULL JOIN t2 ON NULL ORDER BY t1.id, t2.id;

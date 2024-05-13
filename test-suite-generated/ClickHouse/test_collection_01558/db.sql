@@ -1,0 +1,10 @@
+drop table if exists t1;
+show tables;
+create or replace table t1 (n UInt64, s String) engine=MergeTree order by n;
+show tables;
+show create table t1;
+insert into t1 values (1, 'test');
+create or replace table t1 (n UInt64, s Nullable(String)) engine=MergeTree order by n;
+insert into t1 values (2, null);
+show tables;
+show create table t1;

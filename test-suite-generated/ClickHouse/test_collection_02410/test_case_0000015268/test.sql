@@ -1,0 +1,1 @@
+SELECT reinterpretAsFixedString(49);

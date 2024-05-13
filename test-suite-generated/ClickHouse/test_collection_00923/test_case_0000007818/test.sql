@@ -1,0 +1,1 @@
+SELECT * FROM t64 WHERE u64 != t_u64;

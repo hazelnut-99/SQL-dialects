@@ -1,0 +1,1 @@
+SELECT 'All tests above must return 1, all tests below return something.';

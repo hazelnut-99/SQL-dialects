@@ -1,0 +1,1 @@
+select 'cluster() ORDER BY';

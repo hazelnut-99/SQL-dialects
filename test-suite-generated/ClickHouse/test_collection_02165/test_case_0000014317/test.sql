@@ -1,0 +1,1 @@
+SELECT 'Replacing Merge Tree';

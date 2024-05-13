@@ -1,0 +1,1 @@
+SELECT * FROM strings_00469 ORDER BY x;

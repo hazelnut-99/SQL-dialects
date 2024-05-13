@@ -1,0 +1,1 @@
+SELECT 'deduplication works';

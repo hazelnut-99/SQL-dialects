@@ -1,0 +1,1 @@
+SELECT 'Check asan bug';

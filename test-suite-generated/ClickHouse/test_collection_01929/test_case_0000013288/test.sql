@@ -1,0 +1,1 @@
+SELECT bitShiftLeft(toInt256(1), number) x, bitShiftRight(x, number) y, toTypeName(x), toTypeName(y) FROM numbers(255) ORDER BY number;

@@ -1,0 +1,1 @@
+SELECT 'optimize_skip_unused_shards lack of WHERE (optimize_distributed_group_by_sharding_key=0)';

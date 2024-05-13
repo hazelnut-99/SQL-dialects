@@ -1,0 +1,1 @@
+select toDate('2020-01-01'), byteSize(toDate('2020-01-01')), toDateTime('2020-01-01 01:02:03'), byteSize(toDateTime('2020-01-01 01:02:03')), toDateTime64('2020-01-01 01:02:03',3), byteSize(toDateTime64('2020-01-01 01:02:03',3));

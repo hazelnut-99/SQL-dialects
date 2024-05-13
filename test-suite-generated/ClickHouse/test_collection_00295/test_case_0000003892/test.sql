@@ -1,0 +1,1 @@
+SELECT '---------- constant_null ----------';

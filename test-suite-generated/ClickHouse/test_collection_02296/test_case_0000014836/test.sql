@@ -1,0 +1,1 @@
+select 'constants:', [toDecimal32(1.1,4),toDecimal32(1.1,4)], byteSize([toDecimal32(1.1,4),toDecimal32(1.1,4)]), [toDate('2020-01-01'),toDate('2020-01-01')], byteSize([toDate('2020-01-01'),toDate('2020-01-01')]);

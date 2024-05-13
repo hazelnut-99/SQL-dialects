@@ -1,0 +1,1 @@
+SELECT x FROM (SELECT toNullable(1) AS x) WHERE x;

@@ -1,0 +1,27 @@
+CREATE TABLE argmaxstate_hex_small
+(
+    `v` String,
+    `state` String
+)
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_small VALUES ('22.8.5.29','0B0000003031323334353637383900010000000000000000'), ('22.8.6.71','0A00000030313233343536373839010000000000000000');
+CREATE TABLE argmaxstate_hex_large
+(
+    `v` String,
+    `state` String
+)
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_large VALUES ('22.8.5.29','350000004142434445464748494A4B4C4D4E4F505152535455565758595A6162636465666768696A6B6C6D6E6F707172737475767778797A00010000000000000000'), ('22.8.6.71','340000004142434445464748494A4B4C4D4E4F505152535455565758595A6162636465666768696A6B6C6D6E6F707172737475767778797A010000000000000000');
+CREATE TABLE argmaxstate_hex_empty
+(
+    `v` String,
+    `state` String
+)
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_empty VALUES ('22.8.5.29','0100000000010000000000000000'), ('22.8.6.71','00000000010000000000000000');
+drop table if exists aggr;
+create table aggr (n int, s AggregateFunction(max, String)) engine=MergeTree order by n;
+insert into aggr select 1, maxState('');
+insert into aggr select 2, maxState('\0');
+insert into aggr select 3, maxState('\0\0\0\0');
+insert into aggr select 4, maxState('abrac\0dabra\0');

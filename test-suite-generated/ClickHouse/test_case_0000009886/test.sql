@@ -1,1 +1,0 @@
-SELECT $doc$'VALUE'$doc$;

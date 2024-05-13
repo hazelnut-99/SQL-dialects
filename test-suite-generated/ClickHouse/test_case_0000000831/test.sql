@@ -1,1 +1,0 @@
-SELECT * FROM (SELECT * FROM (SELECT 0 a, toNullable(number) b, toString(number) c FROM numbers(1e6)) ORDER BY a DESC, b DESC, c LIMIT 1500) limit 10;

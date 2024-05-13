@@ -1,1 +1,0 @@
-select runningDifference(x) from (select arrayJoin([Null, Null, toDateTime('1970-06-28 23:48:12', 'Asia/Istanbul'), toDateTime('2070-04-12 21:16:41', 'Asia/Istanbul'), Null, Null, toDateTime('2106-02-03 06:38:52', 'Asia/Istanbul')]) as x);

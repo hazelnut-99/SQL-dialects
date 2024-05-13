@@ -1,1 +1,0 @@
-select arrayCompact([2]);

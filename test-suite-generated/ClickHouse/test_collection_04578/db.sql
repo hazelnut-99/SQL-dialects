@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS t_nullable_keys_1;
+CREATE TABLE t_nullable_keys_1 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_1 VALUES (1), (1), (NULL);
+DROP TABLE t_nullable_keys_1;
+DROP TABLE IF EXISTS t_nullable_keys_2;
+CREATE TABLE t_nullable_keys_2 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_2 VALUES (NULL), (1), (1);
+DROP TABLE t_nullable_keys_2;
+DROP TABLE IF EXISTS t_nullable_keys_3;
+CREATE TABLE t_nullable_keys_3 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_3 VALUES (NULL), (NULL), (NULL);

@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS test;
+CREATE TABLE test(number UInt64, num2 UInt64) ENGINE = Log;

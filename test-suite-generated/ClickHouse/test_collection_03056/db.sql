@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS foo;
+CREATE TABLE foo (ts DateTime, x UInt64)
+ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
+ORDER BY (ts);
+ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);
+ALTER TABLE foo UPDATE x = 1 WHERE x IN (SELECT x FROM foo WHERE x != 0);
+DROP TABLE IF EXISTS bar;
+CREATE TABLE bar (ts DateTime, x UInt64)
+ENGINE = Memory;
+ALTER TABLE bar UPDATE x = 1 WHERE x = (SELECT x from bar WHERE x = 4);
+ALTER TABLE bar UPDATE x = 1 WHERE x IN (SELECT x FROM bar WHERE x != 0);

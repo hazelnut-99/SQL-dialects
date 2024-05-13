@@ -1,0 +1,1 @@
+SELECT SVG(p, s) FROM geo ORDER BY id;

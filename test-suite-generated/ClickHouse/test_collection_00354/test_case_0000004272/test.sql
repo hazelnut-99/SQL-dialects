@@ -1,0 +1,1 @@
+select 'arrayPopFront(arr1)';

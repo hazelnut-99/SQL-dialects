@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS mt_with_pk;
+DROP TABLE IF EXISTS mt_with_pk;

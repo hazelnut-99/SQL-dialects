@@ -1,0 +1,1 @@
+SELECT arrayFold( acc,x -> arrayPushBack(acc, x),  [1, 2, 3, 4], emptyArrayInt64());

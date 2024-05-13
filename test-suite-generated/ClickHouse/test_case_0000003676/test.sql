@@ -1,1 +1,0 @@
-SELECT DATE_FORMAT(toDateTime('2018-01-01 00:33:44'), '%j'), DATE_FORMAT(toDate32('2018-01-01'), '%j');

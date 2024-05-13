@@ -1,0 +1,1 @@
+SELECT 'After detach:';

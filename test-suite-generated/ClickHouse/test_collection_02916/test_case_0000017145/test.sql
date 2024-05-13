@@ -1,0 +1,1 @@
+SELECT * FROM test WHERE d >= '2019-07-08';

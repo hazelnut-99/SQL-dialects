@@ -1,0 +1,1 @@
+SELECT arrayMap(x -> range(x), [4,1,2,3]) AS arr, 2 AS lim, arrayResize(arrayPartialSort(lim, arr), lim), arrayResize(arrayPartialReverseSort(lim, arr), lim), arrayResize(arrayPartialSort(x -> -length(x), lim, arr), lim);

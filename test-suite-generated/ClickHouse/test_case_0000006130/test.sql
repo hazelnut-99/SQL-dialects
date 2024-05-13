@@ -1,7 +1,0 @@
-SELECT
-    1 AND 2,
-    2 AND 4,
-    1 AND 2 AND 4,
-    1 OR 2,
-    2 OR 4,
-    1 OR 2 OR 4;

@@ -1,0 +1,1 @@
+SELECT timeSlots(toDateTime64('2000-01-02 03:04:05.233', 3, 'UTC'), toDecimal64(10000.12, 2), toDecimal64(634.1, 1));

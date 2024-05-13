@@ -1,0 +1,1 @@
+select 'The same issue in a much smaller repro happens also in Debug builds';

@@ -1,0 +1,5 @@
+SELECT
+    sum(n),
+    __unused_group_by_column 
+FROM t
+GROUP BY __unused_group_by_column ORDER BY __unused_group_by_column;

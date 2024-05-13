@@ -1,0 +1,1 @@
+SELECT 'Alias conflict with identifier inside expression';

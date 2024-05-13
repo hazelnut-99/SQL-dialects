@@ -1,0 +1,1 @@
+SELECT '~~~~parts after drop 3_1_1_0~~~~~';

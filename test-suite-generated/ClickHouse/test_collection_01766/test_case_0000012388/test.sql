@@ -1,0 +1,1 @@
+SELECT 'aes-128-gcm' as mode, hex(encrypt(mode, input, key16, iv)) FROM encryption_test;

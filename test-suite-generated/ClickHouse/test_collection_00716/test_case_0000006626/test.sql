@@ -1,0 +1,2 @@
+SELECT formatDateTime(toDateTime('2018-01-01 22:33:44'), '%u'), formatDateTime(toDateTime('2018-01-07 22:33:44'), '%u'),
+       formatDateTime(toDate32('2018-01-01'), '%u'), formatDateTime(toDate32('2018-01-07'), '%u');

@@ -1,0 +1,1 @@
+SELECT h3GetDestinationIndexFromUnidirectionalEdge(599686042433355773);

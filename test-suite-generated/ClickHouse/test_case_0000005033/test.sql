@@ -1,1 +1,0 @@
-SELECT metroHash64(123456);

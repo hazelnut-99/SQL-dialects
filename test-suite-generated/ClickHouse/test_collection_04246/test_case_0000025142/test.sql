@@ -1,0 +1,1 @@
+SELECT '-- 2 shards, 3 replicas each';

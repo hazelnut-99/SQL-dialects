@@ -1,0 +1,1 @@
+SELECT Num FROM limit_by ORDER BY Num LIMIT 2 BY Num;

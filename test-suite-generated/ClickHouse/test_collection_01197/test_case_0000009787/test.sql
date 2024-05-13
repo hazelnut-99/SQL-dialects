@@ -1,0 +1,1 @@
+SELECT 'Rewrite with alias';

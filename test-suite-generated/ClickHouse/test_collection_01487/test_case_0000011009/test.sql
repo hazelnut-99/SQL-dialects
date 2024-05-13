@@ -1,0 +1,1 @@
+SELECT 'not optimized (smoke)';

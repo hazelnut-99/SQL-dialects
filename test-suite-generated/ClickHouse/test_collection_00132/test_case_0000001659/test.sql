@@ -1,0 +1,1 @@
+SELECT 'uniqCombined(round(float))';

@@ -1,0 +1,1 @@
+SELECT arrayReverseFill(x -> 1, [1, 2, 3, 11, 12, 13, 4, 5, 6, 14, 15, 16]);

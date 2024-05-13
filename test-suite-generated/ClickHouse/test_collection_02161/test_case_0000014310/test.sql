@@ -1,0 +1,1 @@
+SELECT SUMOrNullIf(1, 1);

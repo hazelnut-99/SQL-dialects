@@ -1,0 +1,1 @@
+SELECT arrayPartialShuffle([], 0);

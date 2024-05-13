@@ -1,0 +1,1 @@
+SELECT * FROM 01686_test WHERE key IN (123, 456, -123) ORDER BY key;

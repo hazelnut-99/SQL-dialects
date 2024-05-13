@@ -1,0 +1,6 @@
+SELECT
+    number,
+    leadInFrame(number) OVER w AS W
+FROM numbers(10)
+WINDOW w AS (ORDER BY number ASC Rows BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+LIMIT 3;

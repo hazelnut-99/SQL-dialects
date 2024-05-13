@@ -1,0 +1,1 @@
+SELECT subDate('2022-05-07'::Date32, INTERVAL 5 MINUTE);

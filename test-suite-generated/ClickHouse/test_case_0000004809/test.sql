@@ -1,1 +1,0 @@
-select 'two arguments';

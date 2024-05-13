@@ -1,0 +1,1 @@
+select 'two inserts with exact data, one inserted, one deduplicated by data digest';

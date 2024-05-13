@@ -1,0 +1,1 @@
+SELECT h3ToChildren(599405990164561919, arrayJoin([6,5]));

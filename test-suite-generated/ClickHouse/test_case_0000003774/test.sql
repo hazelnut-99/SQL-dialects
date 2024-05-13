@@ -1,1 +1,0 @@
-SELECT * FROM decimal ORDER BY a FORMAT JSONEachRow;

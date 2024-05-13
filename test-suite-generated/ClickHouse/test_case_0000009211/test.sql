@@ -1,1 +1,0 @@
-SELECT left('Привет', NULL);

@@ -1,1 +1,0 @@
-desc format(CSV, '"[\'abc\\\'\']"');

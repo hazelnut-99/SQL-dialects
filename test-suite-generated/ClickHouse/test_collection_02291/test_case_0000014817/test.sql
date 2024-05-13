@@ -1,0 +1,1 @@
+select key, toTypeName(u8), byteSize(u8), toTypeName(u16), byteSize(u16), toTypeName(u32), byteSize(u32), toTypeName(u64), byteSize(u64), toTypeName(u256), byteSize(u256) from test_byte_size_number0 order by key;

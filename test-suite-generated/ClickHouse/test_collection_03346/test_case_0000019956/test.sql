@@ -1,0 +1,1 @@
+SELECT cast('1234' lhs AS UInt32), lhs;

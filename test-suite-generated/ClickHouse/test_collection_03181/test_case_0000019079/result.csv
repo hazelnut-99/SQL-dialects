@@ -1,0 +1,1 @@
+SYSTEM RELOAD DICTIONARIES ON CLUSTER test_shard_localhost

@@ -1,0 +1,1 @@
+SELECT 'masked flush only';

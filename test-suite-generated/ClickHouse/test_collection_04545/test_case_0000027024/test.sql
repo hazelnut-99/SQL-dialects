@@ -1,0 +1,1 @@
+SELECT arrayFold((acc, x) -> (acc + (x * 2)), [1, 2, 3, 4], materialize(toInt64(toNullable(3))));

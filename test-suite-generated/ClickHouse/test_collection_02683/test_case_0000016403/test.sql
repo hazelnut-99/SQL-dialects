@@ -1,0 +1,1 @@
+select s2CapUnion(1157339245694594829, toFloat64(toUInt64(-1)), 1157339245694594829, toFloat64(toUInt64(-1)));

@@ -1,0 +1,1 @@
+SELECT '# Mismatching IP versions is not an error.';

@@ -1,0 +1,2 @@
+"SELECT any(number) RESPECT NULLS
+FROM numbers(1)"

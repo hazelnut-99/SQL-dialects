@@ -1,1 +1,0 @@
-SELECT 'executable_pool_complex_implicit_key';

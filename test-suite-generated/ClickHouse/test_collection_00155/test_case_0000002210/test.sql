@@ -1,0 +1,1 @@
+select '-- array join whole nested table, aliasing with original name';

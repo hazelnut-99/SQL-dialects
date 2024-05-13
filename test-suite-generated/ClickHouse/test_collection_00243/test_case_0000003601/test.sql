@@ -1,0 +1,1 @@
+SELECT '----- Insert with expression -----';

@@ -1,1 +1,0 @@
-SELECT '**** single-column sort ****';;

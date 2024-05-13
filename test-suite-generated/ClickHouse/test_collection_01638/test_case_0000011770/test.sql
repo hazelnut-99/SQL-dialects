@@ -1,0 +1,1 @@
+SELECT 'other operators';

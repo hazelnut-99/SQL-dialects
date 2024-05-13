@@ -1,0 +1,12 @@
+drop table if exists tab1;
+drop table if exists tab2;
+drop table if exists tab3;
+drop table if exists tab1_copy;
+create table tab1 (a1 Int32, b1 Int32) engine = MergeTree order by a1;
+create table tab2 (a2 Int32, b2 Int32) engine = MergeTree order by a2;
+create table tab3 (a3 Int32, b3 Int32) engine = MergeTree order by a3;
+create table tab1_copy (a1 Int32, b1 Int32) engine = MergeTree order by a1;
+insert into tab1 values (1, 2);
+insert into tab2 values (2, 3);
+insert into tab3 values (2, 3);
+insert into tab1_copy values (2, 3);

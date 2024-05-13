@@ -1,0 +1,1 @@
+SELECT * FROM t1_00826, t2_00826 where t1_00826.b = t2_00826.b;

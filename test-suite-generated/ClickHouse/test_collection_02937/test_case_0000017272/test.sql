@@ -1,0 +1,1 @@
+SELECT * FROM t1 LEFT JOIN t2 ON NULL ORDER BY t1.id, t2.id;

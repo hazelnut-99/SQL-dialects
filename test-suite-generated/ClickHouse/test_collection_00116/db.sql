@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS data_00184;
+CREATE TABLE data_00184 Engine=Memory() AS SELECT * FROM numbers(2);

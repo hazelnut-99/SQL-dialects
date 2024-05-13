@@ -1,0 +1,1 @@
+SELECT 'Trivial case';

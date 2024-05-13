@@ -1,1 +1,0 @@
-SELECT * FROM mv ORDER BY a;

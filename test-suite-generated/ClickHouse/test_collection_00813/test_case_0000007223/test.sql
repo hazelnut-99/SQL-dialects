@@ -1,0 +1,1 @@
+select ltrim('') || rtrim('') || trim('');

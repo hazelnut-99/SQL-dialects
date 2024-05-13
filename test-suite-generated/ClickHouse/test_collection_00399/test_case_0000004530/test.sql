@@ -1,0 +1,1 @@
+SELECT '*** Partitioned by String ***';

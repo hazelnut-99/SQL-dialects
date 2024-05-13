@@ -1,1 +1,0 @@
-SELECT 'With max key';

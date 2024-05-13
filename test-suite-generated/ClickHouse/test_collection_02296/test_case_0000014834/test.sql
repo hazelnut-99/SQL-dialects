@@ -1,0 +1,1 @@
+select key, byteSize(*), uints8, byteSize(uints8), ints8, byteSize(ints8), ints32, byteSize(ints32), floats32, byteSize(floats32), decs32, byteSize(decs32), dates, byteSize(dates), uuids, byteSize(uuids) from test_byte_size_array order by key;

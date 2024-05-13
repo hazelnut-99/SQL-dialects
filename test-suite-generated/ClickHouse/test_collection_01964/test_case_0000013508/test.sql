@@ -1,0 +1,1 @@
+SELECT toInt256(123) AS k GROUP BY k;

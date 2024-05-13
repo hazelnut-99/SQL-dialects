@@ -1,0 +1,1 @@
+SELECT * FROM using1 ALL LEFT JOIN (SELECT * FROM using2) js2 USING (a, b) ORDER BY a;

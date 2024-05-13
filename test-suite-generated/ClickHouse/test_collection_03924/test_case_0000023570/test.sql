@@ -1,0 +1,1 @@
+SELECT 'Check bug with hashing of const integer values';

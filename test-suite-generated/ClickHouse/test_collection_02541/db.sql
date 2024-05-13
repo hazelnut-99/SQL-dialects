@@ -1,0 +1,13 @@
+drop table if exists dist_01756;
+drop table if exists dist_01756_str;
+drop table if exists dist_01756_column;
+drop table if exists data_01756_str;
+drop table if exists data_01756_signed;
+system flush logs;
+system flush logs;
+system flush logs;
+system flush logs;
+create table data_01756_signed (key Int) engine=Null;
+system flush logs;
+create table data_01756_str (key String) engine=Memory();
+insert into data_01756_str values (0)(1);

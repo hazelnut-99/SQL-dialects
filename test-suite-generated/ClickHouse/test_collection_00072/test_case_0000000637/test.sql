@@ -1,0 +1,1 @@
+SELECT 'Türk (tr)';

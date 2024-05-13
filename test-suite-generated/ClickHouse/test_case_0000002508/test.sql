@@ -1,1 +1,0 @@
-SELECT 'ArrayFirst constant predicate';

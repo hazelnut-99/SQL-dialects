@@ -1,0 +1,1 @@
+select 'table with 2 blocks final';

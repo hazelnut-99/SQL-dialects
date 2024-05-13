@@ -1,0 +1,1 @@
+SELECT * FROM t0 RIGHT JOIN t1 ON t1.x = t0.x;

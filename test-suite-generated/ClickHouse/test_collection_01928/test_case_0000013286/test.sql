@@ -1,0 +1,3 @@
+SELECT  least(toUInt64('18446744073709551615'), toUInt256(0)) x, least(toUInt64('18446744073709551615'), toUInt256('18446744073709551616')) x2,
+        greatest(toUInt64('18446744073709551615'), toUInt256(0)) y, greatest(toUInt64('18446744073709551615'), toUInt256('18446744073709551616')) y2,
+        toTypeName(x), toTypeName(y);

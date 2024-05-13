@@ -1,0 +1,1 @@
+SELECT 'Sum before DROP PARTITION:';

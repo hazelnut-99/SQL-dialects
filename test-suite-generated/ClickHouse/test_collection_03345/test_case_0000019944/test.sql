@@ -1,0 +1,1 @@
+SELECT * FROM ( SELECT 2 AS x ) as t1 RIGHT JOIN ( SELECT count('x') :: Nullable(Int32), count('y'), 0 AS x ) AS t2 ON t1.x = t2.x;

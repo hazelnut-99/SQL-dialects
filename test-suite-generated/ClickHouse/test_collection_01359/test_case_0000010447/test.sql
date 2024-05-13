@@ -1,0 +1,1 @@
+SELECT * FROM memory_01069.mt ORDER BY n;

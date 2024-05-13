@@ -1,0 +1,13 @@
+SHOW TABLES FROM information_schema;
+SHOW TABLES FROM INFORMATION_SCHEMA;
+DROP VIEW IF EXISTS v;
+DROP TABLE IF EXISTS t;
+DROP VIEW IF EXISTS mv;
+DROP TABLE IF EXISTS tmp;
+DROP TABLE IF EXISTS kcu1;
+DROP TABLE IF EXISTS kcu2;
+CREATE TABLE t (n UInt64, f Float32, s String, fs FixedString(42), d Decimal(9, 6)) ENGINE = Memory;
+CREATE VIEW v (n Nullable(Int32), f Float64) AS SELECT n, f FROM t;
+CREATE TEMPORARY TABLE tmp (d Date, dt DateTime, dtms DateTime64(3));
+CREATE TABLE kcu1 (i UInt32, s String) ENGINE MergeTree ORDER BY i;
+CREATE TABLE kcu2 (i UInt32, d Date, u UUID) ENGINE MergeTree ORDER BY (u, d);

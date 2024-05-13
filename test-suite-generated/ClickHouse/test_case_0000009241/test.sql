@@ -1,1 +1,0 @@
-SELECT RiGhT('Привет', NULL);

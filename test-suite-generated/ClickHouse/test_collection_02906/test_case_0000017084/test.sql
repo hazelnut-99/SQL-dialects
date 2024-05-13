@@ -1,0 +1,1 @@
+select 'alias1';

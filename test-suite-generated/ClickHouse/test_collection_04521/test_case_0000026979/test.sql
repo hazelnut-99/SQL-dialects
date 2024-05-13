@@ -1,0 +1,6 @@
+SELECT
+    hex(rightPad(toFixedString('abc34324' as s, 8), number)) as result,
+    hex(rightPad(s, number)) = result,
+    hex(rightPadUTF8(toFixedString(s, 8), number)) = result,
+    hex(rightPadUTF8(s, number)) = result
+FROM numbers(20);

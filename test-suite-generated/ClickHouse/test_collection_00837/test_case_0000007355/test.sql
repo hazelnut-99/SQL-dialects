@@ -1,0 +1,1 @@
+SELECT globalNotIn(['"wh'], [NULL]);

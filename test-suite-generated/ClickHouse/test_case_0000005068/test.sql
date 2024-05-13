@@ -1,4 +1,0 @@
-SELECT id
-FROM (SELECT item_id AS id FROM t GROUP BY id WITH TOTALS) l
-FULL JOIN (SELECT item_id AS id FROM t GROUP BY id WITH TOTALS ORDER BY item_id) r
-USING (id);

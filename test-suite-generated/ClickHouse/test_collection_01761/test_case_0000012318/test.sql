@@ -1,0 +1,1 @@
+SELECT toDateTimeOrZero('<Empty>', 'UTC');

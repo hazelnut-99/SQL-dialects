@@ -1,1 +1,0 @@
-SELECT count() FROM b1_01361;

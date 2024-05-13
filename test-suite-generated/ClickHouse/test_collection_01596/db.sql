@@ -1,0 +1,16 @@
+create database if not exists shard_0;
+create database if not exists shard_1;
+drop table if exists shard_0.num_01232;
+drop table if exists shard_0.num2_01232;
+drop table if exists shard_1.num_01232;
+drop table if exists shard_1.num2_01232;
+drop table if exists distr;
+drop table if exists distr2;
+create table shard_0.num_01232 (number UInt64) engine = MergeTree order by number;
+create table shard_1.num_01232 (number UInt64) engine = MergeTree order by number;
+insert into shard_0.num_01232 select number from numbers(2);
+insert into shard_1.num_01232 select number from numbers(3);
+create table shard_0.num2_01232 (number UInt64) engine = MergeTree order by number;
+create table shard_1.num2_01232 (number UInt64) engine = MergeTree order by number;
+insert into shard_0.num2_01232 select number from numbers(3);
+insert into shard_1.num2_01232 select number from numbers(2);

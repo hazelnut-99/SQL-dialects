@@ -1,0 +1,1 @@
+SELECT 'Africa/El_Aaiun', toDateTime('2020-01-02 03:04:05', 'Africa/El_Aaiun') AS x, toStartOfDay(x), toHour(x);

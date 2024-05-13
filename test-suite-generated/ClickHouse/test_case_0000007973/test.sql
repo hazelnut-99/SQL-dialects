@@ -1,1 +1,0 @@
-SELECT CAST(NULL AS Nullable(UUID));

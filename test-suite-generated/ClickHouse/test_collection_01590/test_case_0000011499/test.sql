@@ -1,0 +1,1 @@
+select 'GROUP BY ORDER BY distributed_aggregation_memory_efficient/group_by_two_level_threshold';

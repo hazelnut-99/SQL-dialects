@@ -1,0 +1,1 @@
+SELECT 'Nullable(UInt64), nullable array';

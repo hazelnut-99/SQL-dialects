@@ -1,0 +1,1 @@
+SELECT 'uniqCombined(17)(round(toFloat32()))';

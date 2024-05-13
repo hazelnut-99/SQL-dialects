@@ -1,0 +1,1 @@
+SELECT 'after old OPTIMIZE DEDUPLICATE';

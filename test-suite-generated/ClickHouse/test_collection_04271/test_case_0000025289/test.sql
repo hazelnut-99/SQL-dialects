@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT key AS a FROM t1 ) t1 INNER JOIN (SELECT key AS c FROM t1 ) t2 ON c = a WHERE a;

@@ -1,0 +1,1 @@
+SELECT toDateTime('2020-04-05 00:00:00', 'Australia/Lord_Howe') + INTERVAL 15 * number MINUTE AS src, toStartOfInterval(src, INTERVAL 2 HOUR) AS rounded, toUnixTimestamp(src) AS t FROM numbers(20);

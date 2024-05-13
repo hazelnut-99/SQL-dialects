@@ -1,0 +1,4 @@
+1,Array(UInt64),"Tuple(Nullable(UInt64), Nullable(Int64), Nullable(Float64), Nullable(String), Array(Int64))","Array(Tuple(Nullable(UInt64), Array(UInt64)))"
+2,Array(Int64),"Tuple(Nullable(UInt64), Nullable(Int64), Nullable(UInt64), Nullable(String), Array(UInt64))","Array(Tuple(Nullable(UInt64), Array(Nothing)))"
+3,Array(UInt64),"Tuple(Nullable(UInt64), Nullable(Int64), Nullable(Float64), Nullable(String), Array(Int64))","Array(Tuple(Nullable(UInt64), Array(UInt64)))"
+4,Array(Int64),"Tuple(Nullable(UInt64), Nullable(Int64), Nullable(UInt64), Nullable(String), Array(UInt64))","Array(Tuple(Nullable(UInt64), Array(Nothing)))"

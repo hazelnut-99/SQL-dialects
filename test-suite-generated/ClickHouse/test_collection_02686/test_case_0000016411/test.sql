@@ -1,0 +1,1 @@
+SELECT 'ComparisionOperator column with alias on same column';

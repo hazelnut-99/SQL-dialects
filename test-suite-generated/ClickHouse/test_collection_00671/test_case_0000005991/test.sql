@@ -1,0 +1,1 @@
+SELECT toUInt64('9223372036854775807') AS x, toDecimal64(x, 0);

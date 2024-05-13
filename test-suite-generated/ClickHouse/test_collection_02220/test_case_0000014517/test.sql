@@ -1,0 +1,1 @@
+select * from (select * from numbers(5) order by rand()) group by number order by sum(any(number + 1)) over (order by min(number) desc rows unbounded preceding) desc;

@@ -1,0 +1,1 @@
+SELECT '-- insert after rename --';

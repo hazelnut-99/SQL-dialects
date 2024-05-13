@@ -1,1 +1,0 @@
-select tuple(toNullable(number), materialize('a'), materialize(toUInt64OrNull(''))) = tuple(number, materialize('a'), number + 1) from numbers(1);

@@ -1,0 +1,1 @@
+select multiIf(0, 1, intDiv(number % 2, 1), 2, 0, 3, 1, number + 10, 2) from numbers(10);

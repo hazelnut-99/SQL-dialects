@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS table_01;
+CREATE TABLE table_01 (
+    date Date,
+    n Int32
+) ENGINE = MergeTree()
+PARTITION BY date
+ORDER BY date;
+ALTER TABLE table_01 DETACH PARTITION ID '20191001';

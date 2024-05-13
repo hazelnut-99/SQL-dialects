@@ -1,0 +1,1 @@
+SELECT 'wordShingleSimHashUTF8';

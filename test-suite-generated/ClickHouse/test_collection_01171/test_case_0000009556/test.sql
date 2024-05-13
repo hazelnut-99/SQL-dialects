@@ -1,0 +1,1 @@
+SELECT hex(toDecimal128(number, 9)) FROM numbers(120, 2);

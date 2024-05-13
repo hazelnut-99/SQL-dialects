@@ -1,0 +1,1 @@
+SELECT sparkbar(128)(toUInt64(9223372036854775806), number % 65535) FROM numbers(100);

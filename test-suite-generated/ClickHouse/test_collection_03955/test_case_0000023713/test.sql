@@ -1,0 +1,1 @@
+SELECT DATE_FORMAT(toDateTime('2018-01-02 00:33:44'), '%p'), DATE_FORMAT(toDate32('2018-01-02'), '%p');

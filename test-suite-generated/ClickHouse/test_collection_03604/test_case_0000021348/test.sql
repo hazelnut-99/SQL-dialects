@@ -1,0 +1,1 @@
+SELECT materialize([['Hello'], [toNullable('world')]])[-9223372036854775808];

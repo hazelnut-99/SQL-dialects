@@ -1,0 +1,1 @@
+SELECT 'ALTER TABLE queries';

@@ -1,0 +1,2 @@
+1,"[IPv4Address('1.2.3.4'), IPv4Address('2.3.4.5')]","[37, 13]","[IPv6Address('::1'), IPv6Address('::2')]","[41, 14]","[UUID('00000000-0cd4-4c3d-84c4-cc421eff480f'), UUID('00130949-0cd4-4c3d-84c4-cc421eff480f')]","[39, 21]"
+2,"[IPv4Address('1.2.3.4'), IPv4Address('2.3.4.5')]","[26, 16]","[IPv6Address('::1'), IPv6Address('::2')]","[25, 20]",[UUID('00130949-0cd4-4c3d-84c4-cc421eff480f')],[48]

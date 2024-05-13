@@ -1,5 +1,0 @@
-SELECT extractTextFromHTML('
-<img src="pictures/power.png" style="margin-bottom: -30px;" />
-<br><span style="padding-right: 10px; font-size: 10px;">xkcd.com</span>
-</div>
-');

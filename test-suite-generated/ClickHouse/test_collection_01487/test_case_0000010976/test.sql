@@ -1,0 +1,1 @@
+SELECT 'flat: left on';

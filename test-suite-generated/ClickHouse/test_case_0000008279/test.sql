@@ -1,1 +1,0 @@
-SELECT d4, f2, d4 / f2 FROM t ORDER BY f2;

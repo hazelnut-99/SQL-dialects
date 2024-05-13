@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS log;
-CREATE TABLE log (x UInt8) ENGINE = StripeLog;

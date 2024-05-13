@@ -1,0 +1,6 @@
+"{'t1.a': [1, 2], 't1.s': ['a', 'b'], 'b': 3, 't2.k': 'c', 't2.v': 4}","Tuple(
+    `t1.a` Array(UInt32),
+    `t1.s` Array(String),
+    b UInt32,
+    `t2.k` String,
+    `t2.v` UInt32)"

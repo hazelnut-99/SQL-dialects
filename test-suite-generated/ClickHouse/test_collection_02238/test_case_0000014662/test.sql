@@ -1,0 +1,1 @@
+SELECT 'database atomic tests';

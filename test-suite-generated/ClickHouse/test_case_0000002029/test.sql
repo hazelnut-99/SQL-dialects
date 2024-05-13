@@ -1,1 +1,0 @@
-select arrayPopFront([1]);

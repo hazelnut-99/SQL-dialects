@@ -1,0 +1,1 @@
+SELECT x FROM (SELECT 1 AS x, 2 AS y) LIMIT 1 BY y;

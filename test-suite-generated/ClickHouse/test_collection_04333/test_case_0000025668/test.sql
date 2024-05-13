@@ -1,0 +1,1 @@
+SELECT byteSwap(-2147483649::Int64);

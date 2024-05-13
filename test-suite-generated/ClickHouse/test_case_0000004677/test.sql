@@ -1,1 +1,0 @@
-SELECT '...string keys...';

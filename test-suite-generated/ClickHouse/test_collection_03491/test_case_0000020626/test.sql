@@ -1,0 +1,1 @@
+SELECT 'Scalar subqueries';

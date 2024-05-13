@@ -1,1 +1,0 @@
-SELECT 'aaaabb ' == trim(leading 'b ' FROM 'b aaaabb ') x;

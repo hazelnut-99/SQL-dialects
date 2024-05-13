@@ -1,0 +1,10 @@
+select key, s1.value, s2.value
+from (
+    select 'key1' as key, 'value1' as value
+) s1
+all left join (
+    select 'key1' as key, '' as value
+    union all
+    select 'key2' as key, toNullable('') as value
+) s2
+using key;

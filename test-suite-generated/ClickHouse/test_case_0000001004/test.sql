@@ -1,1 +1,0 @@
-SELECT murmurHash2_32(CAST(-154477 AS Int64));

@@ -1,0 +1,3 @@
+#!
+SELECT # hello
+1;

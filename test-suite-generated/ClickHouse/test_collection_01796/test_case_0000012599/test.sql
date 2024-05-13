@@ -1,0 +1,1 @@
+select * from numbers(1) t1 anti left join numbers(1) t2 using number;

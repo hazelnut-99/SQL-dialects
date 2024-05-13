@@ -1,0 +1,1 @@
+SELECT DATEDIFF(microsecond, '1969-12-31 23:59:59.999950'::DateTime64(6, 'UTC'), '1970-01-01 00:00:00.000010'::DateTime64(6, 'UTC'));

@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS Dates;
+CREATE TABLE Dates (date DateTime('UTC')) ENGINE = MergeTree() ORDER BY date;
+INSERT INTO Dates VALUES ('2023-08-25 15:30:00');

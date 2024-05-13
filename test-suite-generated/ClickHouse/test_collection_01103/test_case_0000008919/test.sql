@@ -1,0 +1,1 @@
+SELECT 'arbitrary values in all 4 quarters';

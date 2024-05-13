@@ -1,1 +1,0 @@
-SELECT INTERVAL '2 months';

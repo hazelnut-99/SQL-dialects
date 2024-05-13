@@ -1,0 +1,1 @@
+select * from (select 0 as k, toInt256('340282366920938463463374607431768211457') as v) t1 asof join (select 0 as k, toInt256('340282366920938463463374607431768211456') as v) t2 using(k, v);

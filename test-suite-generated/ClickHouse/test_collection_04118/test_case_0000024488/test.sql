@@ -1,0 +1,1 @@
+SELECT DISTINCT c1, c2, c3 FROM test;

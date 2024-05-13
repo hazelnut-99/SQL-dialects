@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS pk;
+DROP TABLE IF EXISTS merge_tree;

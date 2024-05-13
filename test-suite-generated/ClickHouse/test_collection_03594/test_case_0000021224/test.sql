@@ -1,0 +1,1 @@
+SELECT 'Window functions';

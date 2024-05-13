@@ -1,0 +1,1 @@
+select 'table with 5 blocks optimized';

@@ -1,0 +1,2 @@
+"(['a'], [2])","Tuple(Array(Enum16('a' = 1, 'b' = 2)), Array(Int64))"
+"(['b'], [2])","Tuple(Array(Enum16('a' = 1, 'b' = 2)), Array(Int64))"

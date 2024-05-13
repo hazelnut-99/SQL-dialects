@@ -1,0 +1,1 @@
+SELECT 'GROUP BY w/ ALIAS';

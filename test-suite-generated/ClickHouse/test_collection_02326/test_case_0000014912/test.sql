@@ -1,0 +1,1 @@
+select 'compact fsync_after_insert';

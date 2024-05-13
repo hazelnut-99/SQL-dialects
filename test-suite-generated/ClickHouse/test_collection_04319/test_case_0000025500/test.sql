@@ -1,0 +1,1 @@
+SELECT toTypeName(YYYYMMDDToDate(19910824));

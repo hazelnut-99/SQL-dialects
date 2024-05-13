@@ -1,1 +1,0 @@
-SELECT id as shift_right_bit,fixedStr as arg,bin(bitShiftLeft(fixedStr, id)) as fixed_string_res FROM test_bit_shift_left_string_integer WHERE (str='Hello' AND (id=23 OR id=24 OR id=25)) OR (str='Hel' AND (id=7 OR id=8 OR id=9));

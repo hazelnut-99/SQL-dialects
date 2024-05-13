@@ -1,1 +1,0 @@
-SELECT DISTINCT if (a >= toFloat64(0), 'Ok', 'Fail') FROM (SELECT randChiSquared(3) AS a FROM numbers(100000));

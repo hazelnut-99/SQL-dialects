@@ -1,0 +1,12 @@
+SELECT toTypeName(sumCount(v)), sumCount(v) FROM
+(
+    SELECT v FROM
+    (
+        SELECT '9007199254740992'::Nullable(Float64) AS v
+        UNION ALL
+        SELECT '1'::Nullable(Float64) AS v
+        UNION ALL
+        SELECT '1'::Nullable(Float64) AS v
+    )
+    ORDER BY v
+);

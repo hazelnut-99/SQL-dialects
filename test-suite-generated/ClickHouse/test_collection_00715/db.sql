@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS test_local_1;
+DROP TABLE IF EXISTS test_local_2;
+DROP TABLE IF EXISTS test_distributed_1;
+DROP TABLE IF EXISTS test_distributed_2;
+DROP TABLE IF EXISTS test_local_1;
+DROP TABLE IF EXISTS test_local_2;
+DROP TABLE IF EXISTS test_distributed_1;
+DROP TABLE IF EXISTS test_distributed_2;
+DROP TABLE IF EXISTS test_u64_local;
+DROP TABLE IF EXISTS test_s64_local;
+DROP TABLE IF EXISTS test_u64_distributed;
+DROP TABLE IF EXISTS test_s64_distributed;

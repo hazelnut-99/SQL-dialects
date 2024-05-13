@@ -1,1 +1,0 @@
-SELECT errorCodeToName(1);

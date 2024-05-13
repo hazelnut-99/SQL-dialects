@@ -1,0 +1,1 @@
+select 'optimize_skip_unused_shards';

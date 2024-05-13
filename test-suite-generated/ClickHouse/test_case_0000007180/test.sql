@@ -1,1 +1,0 @@
-SELECT div `MOD` FROM (SELECT 1 `div`) FORMAT TSVWithNames;

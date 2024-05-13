@@ -1,0 +1,1 @@
+SELECT '*** disable the feature';

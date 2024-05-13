@@ -1,0 +1,1 @@
+SELECT '-- syntax test';

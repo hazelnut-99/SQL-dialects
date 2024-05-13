@@ -1,1 +1,0 @@
-SELECT x = 0x1.f7ced916872b0p-4 FROM t;

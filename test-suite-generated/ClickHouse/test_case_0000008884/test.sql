@@ -1,1 +1,0 @@
-select tuple(tuple(Null), tuple(1)) in tuple(tuple(Null), tuple(1));

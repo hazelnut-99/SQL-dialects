@@ -1,1 +1,0 @@
-SELECT 'ArrayLast with Null';

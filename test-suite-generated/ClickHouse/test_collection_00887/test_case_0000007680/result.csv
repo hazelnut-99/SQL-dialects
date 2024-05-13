@@ -1,0 +1,3 @@
+bar,bar,1,2,String,Nullable(String)
+,test,0,1,String,Nullable(String)
+,,0,1,String,Nullable(String)

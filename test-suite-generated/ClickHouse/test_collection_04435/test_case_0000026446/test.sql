@@ -1,0 +1,1 @@
+SELECT '---- Non-const values with invalid values sprinkled in';

@@ -1,0 +1,1 @@
+SELECT 'toLastDayOfWeek (Monday)';

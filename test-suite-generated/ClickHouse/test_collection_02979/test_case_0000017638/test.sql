@@ -1,0 +1,1 @@
+SELECT LpNorm(tuple(-1), 3);

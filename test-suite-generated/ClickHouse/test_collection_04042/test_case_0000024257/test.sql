@@ -1,0 +1,1 @@
+SELECT 'Policy for table `*` does not affect other tables in the database';

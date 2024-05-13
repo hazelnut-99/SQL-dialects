@@ -1,1 +1,0 @@
-SELECT * FROM mergetree_00712 ORDER BY x;

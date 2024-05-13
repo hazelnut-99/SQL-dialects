@@ -1,1 +1,0 @@
-SELECT d2, f2, least(d2, f2) FROM t ORDER BY f2;

@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS index;
-CREATE TABLE index (d Date) ENGINE = MergeTree ORDER BY d;
-INSERT INTO index VALUES ('2020-04-07');

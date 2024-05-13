@@ -1,0 +1,1 @@
+SELECT 'test_cluster_1_shard_3_replicas_1_unavailable with storageCluster';

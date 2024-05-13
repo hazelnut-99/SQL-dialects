@@ -1,0 +1,1 @@
+SELECT '----- Array functions -----';

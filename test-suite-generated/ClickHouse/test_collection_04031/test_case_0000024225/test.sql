@@ -1,0 +1,1 @@
+SELECT arrayJoin(sumMap(x)) FROM (SELECT [('Hello', 1.2::Decimal256(30)), ('World', 3.4::Decimal256(30))]::Map(String, Decimal256(30)) AS x UNION ALL SELECT [('World', 5.6::Decimal256(30)), ('GoodBye', -111.222::Decimal256(30))]::Map(String, Decimal256(30))) ORDER BY 1;

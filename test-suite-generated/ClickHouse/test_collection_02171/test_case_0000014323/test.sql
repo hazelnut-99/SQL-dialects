@@ -1,0 +1,1 @@
+SELECT 'Summing Merge Tree';

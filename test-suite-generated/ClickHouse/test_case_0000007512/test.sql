@@ -1,1 +1,0 @@
-SELECT 3.5 MOD 0;

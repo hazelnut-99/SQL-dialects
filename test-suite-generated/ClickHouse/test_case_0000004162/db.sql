@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS mt;
-CREATE TABLE mt (x UInt8, y Date) ENGINE = MergeTree ORDER BY x;

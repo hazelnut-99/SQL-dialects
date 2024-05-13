@@ -1,0 +1,1 @@
+select countMatchesCaseInsensitive('oooo', 'Oo');

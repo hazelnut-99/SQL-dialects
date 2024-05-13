@@ -1,0 +1,1 @@
+SELECT 'Decimal(M, D)' AS mysql_type, CAST(47.21 AS DECIMAL(4, 2)) AS result, toTypeName(result) AS native_type;

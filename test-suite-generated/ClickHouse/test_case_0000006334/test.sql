@@ -1,1 +1,0 @@
-SELECT * FROM t64 WHERE i16 != t_i16;

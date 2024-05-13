@@ -1,0 +1,1 @@
+SELECT arrayMap((x, y) -> x + y, [tuple(1, 2)]);

@@ -1,1 +1,0 @@
-SELECT cityHash64(1, materialize(2), materialize('')) AS x1, cityHash64((1, materialize(2)), materialize('')) AS x2, cityHash64(1, (materialize(2), materialize(''))) AS x3, cityHash64((1, materialize(2), materialize(''))) AS x4;

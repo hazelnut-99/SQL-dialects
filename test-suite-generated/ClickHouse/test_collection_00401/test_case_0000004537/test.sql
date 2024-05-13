@@ -1,0 +1,1 @@
+SELECT 'Before DROP PARTITION:';

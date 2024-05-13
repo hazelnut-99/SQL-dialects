@@ -1,0 +1,1 @@
+SELECT 'polygon with holes';

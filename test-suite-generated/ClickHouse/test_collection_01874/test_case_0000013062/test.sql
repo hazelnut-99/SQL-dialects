@@ -1,0 +1,1 @@
+SELECT FROM_UNIXTIME(toDateTime('2018-01-02 22:33:44'), '%t'), FROM_UNIXTIME(toDate32('2018-01-02'), '%t');

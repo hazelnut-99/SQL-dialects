@@ -1,0 +1,1 @@
+SELECT 'Русский (default)';

@@ -1,1 +1,0 @@
-WITH * APPLY lambda(e);;

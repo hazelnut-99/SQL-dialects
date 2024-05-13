@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT 1 AS x, 2 AS y) ORDER BY x;

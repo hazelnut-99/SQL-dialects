@@ -1,3 +1,0 @@
-DROP FUNCTION IF EXISTS 02148_test_function;
-CREATE FUNCTION 02148_test_function AS () -> (SELECT 1);
-CREATE OR REPLACE FUNCTION 02148_test_function AS () -> (SELECT 2);

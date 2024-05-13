@@ -1,0 +1,1 @@
+SELECT 'hashed: anti left';

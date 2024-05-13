@@ -1,0 +1,1 @@
+SELECT toDecimal128('9223372036854775807', 6) AS x, toInt64(x), toInt64(-x);

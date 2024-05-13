@@ -1,0 +1,1 @@
+SELECT arrayEnumerateUniqRanked([['a'], [], ['a']]);

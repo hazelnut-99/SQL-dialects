@@ -1,0 +1,1 @@
+SELECT 'sign(Float32)';

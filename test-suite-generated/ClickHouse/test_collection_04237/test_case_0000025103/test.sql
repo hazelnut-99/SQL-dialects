@@ -1,0 +1,1 @@
+SELECT addDate('2022-05-07'::Date, INTERVAL 5 MINUTE);

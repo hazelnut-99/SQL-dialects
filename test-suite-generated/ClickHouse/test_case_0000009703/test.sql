@@ -1,1 +1,0 @@
-select toString('aaaa', NULL);

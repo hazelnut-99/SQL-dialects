@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS foo;
+CREATE TABLE foo (ts DateTime, x UInt64)
+ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
+ORDER BY (ts);
+ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);

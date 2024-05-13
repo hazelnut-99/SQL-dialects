@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+DROP TABLE IF EXISTS t4;
+CREATE TABLE t1 (a UInt32, b Nullable(Int32)) ENGINE = Memory;
+CREATE TABLE t2 (a UInt32, b Nullable(Int32)) ENGINE = Memory;
+CREATE TABLE t3 (a UInt32, b Nullable(Int32)) ENGINE = Memory;
+CREATE TABLE t4 (a UInt32, b Nullable(Int32)) ENGINE = Memory;
+INSERT INTO t1 values (1,1), (2,2), (3,3), (4,4);
+INSERT INTO t2 values (1,1), (1, Null);
+INSERT INTO t3 values (1,1), (1, Null);
+INSERT INTO t4 values (1,1), (1, Null);

@@ -1,0 +1,1 @@
+CREATE FUNCTION IF NOT EXISTS 02102_test_function AS x -> x + 1;

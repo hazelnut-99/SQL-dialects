@@ -1,1 +1,0 @@
-SELECT SumOrNull(1);

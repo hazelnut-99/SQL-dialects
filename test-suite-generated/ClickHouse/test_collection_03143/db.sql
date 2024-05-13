@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS t_02156_mt1;
+DROP TABLE IF EXISTS t_02156_mt2;
+DROP TABLE IF EXISTS t_02156_log;
+DROP TABLE IF EXISTS t_02156_dist;
+DROP TABLE IF EXISTS t_02156_merge1;
+DROP TABLE IF EXISTS t_02156_merge2;
+DROP TABLE IF EXISTS t_02156_merge3;
+CREATE TABLE t_02156_log (k UInt32, v String) ENGINE = Log;
+CREATE TABLE t_02156_merge1 (k UInt32, v String) ENGINE = Merge(currentDatabase(), 't_02156_mt1|t_02156_mt2');
+CREATE TABLE t_02156_merge2 (k UInt32, v String) ENGINE = Merge(currentDatabase(), 't_02156_mt1|t_02156_log');
+CREATE TABLE t_02156_merge3 (k UInt32, v String) ENGINE = Merge(currentDatabase(), 't_02156_mt2|t_02156_dist');
+INSERT INTO t_02156_log SELECT number, toString(number) FROM numbers(10000);

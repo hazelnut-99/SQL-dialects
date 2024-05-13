@@ -1,0 +1,1 @@
+SELECT toFixedString('::1', 5) as value, cast(value, 'IPv6'), toIPv6(value);

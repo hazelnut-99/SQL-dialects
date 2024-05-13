@@ -1,0 +1,4 @@
+SELECT * FROM (SELECT 1 as a) t
+JOIN (SELECT 2 as a) `89467d35-77c2-4f82-ae7a-f093ff40f4cd`
+ON t.a = `89467d35-77c2-4f82-ae7a-f093ff40f4cd`.a
+;

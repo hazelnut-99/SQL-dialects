@@ -1,0 +1,1 @@
+SELECT toDateTimeOrNull('<Empty>');

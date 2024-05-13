@@ -1,1 +1,0 @@
-SELECT avg(toNullable(-8000000000000000000)) FROM numbers(65535 * 2);

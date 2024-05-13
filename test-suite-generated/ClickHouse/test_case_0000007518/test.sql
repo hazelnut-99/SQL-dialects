@@ -1,3 +1,0 @@
-SELECT CAST(ALow, 'String') AS AStr
-FROM testView
-GROUP BY AStr ORDER BY AStr;

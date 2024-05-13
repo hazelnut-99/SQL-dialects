@@ -1,0 +1,1 @@
+SELECT '--- comma and or ---';

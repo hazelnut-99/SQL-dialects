@@ -1,1 +1,0 @@
-select number as char_code,  extract( char(char_code) || ' key="v" ' as haystack, 'key="(.*?)"') as needle from numbers(256);

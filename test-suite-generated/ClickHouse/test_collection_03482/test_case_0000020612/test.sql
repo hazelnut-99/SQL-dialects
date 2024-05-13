@@ -1,0 +1,1 @@
+SELECT 'Lambda carrying';

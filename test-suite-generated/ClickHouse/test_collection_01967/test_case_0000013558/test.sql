@@ -1,0 +1,4 @@
+SELECT countDigits(toInt8(42)), countDigits(toInt8(-42)), countDigits(toUInt8(42)),
+       countDigits(toInt16(42)), countDigits(toInt16(-42)), countDigits(toUInt16(42)),
+       countDigits(toInt32(42)), countDigits(toInt32(-42)), countDigits(toUInt32(42)),
+       countDigits(toInt64(42)), countDigits(toInt64(-42)), countDigits(toUInt64(42));

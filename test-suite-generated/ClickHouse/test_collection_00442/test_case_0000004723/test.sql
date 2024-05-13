@@ -1,0 +1,1 @@
+SELECT toDate('2017-01-01') + INTERVAL 1 YEAR AS x;

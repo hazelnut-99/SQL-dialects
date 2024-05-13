@@ -1,9 +1,0 @@
-SELECT
-    materialize([1]) < materialize([1000]),
-    materialize(['abc']) = materialize([NULL]),
-    materialize(['abc']) = materialize([toNullable('abc')]),
-    materialize([[]]) = materialize([[]]),
-    materialize([[], [1]]) > materialize([[], []]),
-    materialize([[1]]) < materialize([[], []]),
-    materialize([[], []]) > materialize([[]]),
-    materialize([([], ([], []))]) < materialize([([], ([], ['hello']))]);

@@ -1,0 +1,1 @@
+SELECT '4 days test in batch comparing with manually computation result for Asia/Istanbul whose timezone epoc is of whole hour:';

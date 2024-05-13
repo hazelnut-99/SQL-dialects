@@ -1,0 +1,1 @@
+SELECT 'ARRAY vectors, 12 rows, index_granularity = 3, GRANULARITY = 2 --> 4 granules, 2 indexed block';

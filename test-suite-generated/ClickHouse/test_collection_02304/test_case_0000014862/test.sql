@@ -1,0 +1,1 @@
+SELECT 'TTL GROUP BY';

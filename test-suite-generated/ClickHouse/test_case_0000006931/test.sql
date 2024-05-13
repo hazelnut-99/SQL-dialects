@@ -1,1 +1,0 @@
-SELECT toYYYYMMDDhhmmss(toDateTime64('1969-12-31 23:59:59.900', 3));

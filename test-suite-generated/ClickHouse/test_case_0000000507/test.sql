@@ -1,1 +1,0 @@
-SELECT (SELECT count() FROM t_uuid WHERE cityHash64(reinterpretAsString(x)) = cityHash64(x) and length(reinterpretAsString(x)) = 16) = (SELECT count() AS c2 FROM t_uuid WHERE length(reinterpretAsString(x)) = 16);

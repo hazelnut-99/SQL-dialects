@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS lwd_test;

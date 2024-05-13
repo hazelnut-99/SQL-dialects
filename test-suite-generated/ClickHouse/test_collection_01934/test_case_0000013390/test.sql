@@ -1,0 +1,1 @@
+SELECT length(h3kRing(111111111111, 1000));

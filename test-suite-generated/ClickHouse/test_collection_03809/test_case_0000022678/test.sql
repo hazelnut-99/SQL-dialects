@@ -1,0 +1,1 @@
+SELECT 'Check behavior of query_cache_system_table_handling = save';

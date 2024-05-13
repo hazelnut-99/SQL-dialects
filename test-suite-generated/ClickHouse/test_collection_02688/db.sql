@@ -1,0 +1,1 @@
+CREATE FUNCTION 01856_test_function_0 AS (a, b, c) -> a * b * c;

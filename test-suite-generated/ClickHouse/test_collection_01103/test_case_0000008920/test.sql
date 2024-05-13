@@ -1,0 +1,1 @@
+SELECT arraySort(geohashesInBox(98.36, 7.88, 98.37, 7.89, 6));

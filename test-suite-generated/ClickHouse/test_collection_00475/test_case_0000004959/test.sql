@@ -1,0 +1,1 @@
+select hasSubstr(['a'], ['a']);

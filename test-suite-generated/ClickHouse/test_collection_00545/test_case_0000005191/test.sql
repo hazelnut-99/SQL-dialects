@@ -1,0 +1,1 @@
+SELECT count(*) FROM tab_00612 PREWHERE id1 IN (1);

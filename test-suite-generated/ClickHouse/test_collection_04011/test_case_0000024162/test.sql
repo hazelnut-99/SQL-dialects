@@ -1,0 +1,1 @@
+SELECT kafkaMurmurHash('lkjh234lh9fiuh90y23oiuhsafujhadof229phr9h19h89h8');

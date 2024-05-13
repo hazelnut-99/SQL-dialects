@@ -1,6 +1,0 @@
-SELECT
-    categoricalInformationValue(x.1, x.2)
-FROM (
-    SELECT
-        arrayJoin([(0, 0)]) as x
-);

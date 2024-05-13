@@ -1,1 +1,0 @@
-SELECT quantilesTDigestArray(0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99)(arrayResize(arrayResize([0], 500000, inf), 1000000, -inf));

@@ -1,1 +1,0 @@
-select toTypeName(randCanonical(Null));

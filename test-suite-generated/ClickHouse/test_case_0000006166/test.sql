@@ -1,1 +1,0 @@
-select toString(x)::Decimal(15, 9) from generateRandom('x Decimal(15, 9)', 42) limit 5;

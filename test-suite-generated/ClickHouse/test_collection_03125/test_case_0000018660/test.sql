@@ -1,0 +1,1 @@
+SELECT CAST('disabled', 'Bool');

@@ -1,0 +1,1 @@
+SELECT COLUMNS('b') + COLUMNS('b') FROM (SELECT 1 AS a, 2 AS b);

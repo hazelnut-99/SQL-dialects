@@ -1,1 +1,0 @@
-SELECT 'Nullable(UInt64), non-null array';

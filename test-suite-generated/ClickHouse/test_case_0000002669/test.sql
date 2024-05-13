@@ -1,8 +1,0 @@
-WITH
-    toDateTime64('1959-09-16 19:20:12.999999998', 9, 'UTC') AS dt1,
-    toDateTime64('1959-09-16 19:20:12.999999999', 9, 'UTC') AS dt2
-SELECT
-        dt1 < dt2,
-        (dt1 + INTERVAL 1 NANOSECOND) = dt2,
-        (dt1 + INTERVAL 2 NANOSECOND) > dt2,
-        (dt1 + INTERVAL 3 NANOSECOND) > dt2;

@@ -1,1 +1,0 @@
-SELECT t2.`1b1` FROM t1 JOIN t2 ON a1 = b1;

@@ -1,0 +1,1 @@
+select '01231_log_queries_min_type/EXCEPTION_BEFORE_START';

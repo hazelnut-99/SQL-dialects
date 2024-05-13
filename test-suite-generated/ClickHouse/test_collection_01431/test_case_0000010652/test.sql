@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM (SELECT * FROM test_table LIMIT 100);

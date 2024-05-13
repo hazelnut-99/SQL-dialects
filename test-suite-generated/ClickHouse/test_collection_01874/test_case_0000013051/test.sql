@@ -1,0 +1,1 @@
+SELECT FROM_UNIXTIME(toDateTime('2000-12-31 00:33:44'), '%j'), FROM_UNIXTIME(toDate32('2000-12-31'), '%j');

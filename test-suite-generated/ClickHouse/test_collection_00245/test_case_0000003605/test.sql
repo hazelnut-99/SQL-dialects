@@ -1,0 +1,1 @@
+SELECT '----- Apply functions and aggregate functions on columns that may contain null values -----';

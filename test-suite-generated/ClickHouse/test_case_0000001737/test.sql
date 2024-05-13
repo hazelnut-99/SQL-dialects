@@ -1,1 +1,0 @@
-SELECT sign(-1);

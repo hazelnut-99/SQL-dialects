@@ -1,0 +1,4 @@
+SELECT if(number % 10 = 0, 1, 0) AS dummy,
+sum(dummy) OVER w
+FROM numbers(10)
+WINDOW w AS (ORDER BY number ASC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW);

@@ -1,1 +1,0 @@
-SELECT * FROM view_table_00942 ORDER BY x;

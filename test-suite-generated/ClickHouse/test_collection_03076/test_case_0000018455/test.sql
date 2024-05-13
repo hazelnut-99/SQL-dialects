@@ -1,0 +1,12 @@
+SELECT toTypeName(sumCount(v)), sumCount(v) FROM
+(
+    SELECT v FROM
+    (
+        SELECT '16777216'::Float32 AS v
+        UNION ALL
+        SELECT '1'::Float32 AS v
+        UNION ALL
+        SELECT '1'::Float32 AS v
+    )
+    ORDER BY v
+);

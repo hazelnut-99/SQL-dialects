@@ -1,0 +1,1 @@
+SELECT 'distributed_foreground_insert=0';

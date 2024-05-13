@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+DROP TABLE IF EXISTS view1;
+CREATE TABLE t1 (id UInt32, value1 String) ENGINE MergeTree() ORDER BY id;
+CREATE TABLE t2 (id UInt32, value2 String) ENGINE MergeTree() ORDER BY id;
+CREATE TABLE t3 (id UInt32, value3 String) ENGINE MergeTree() ORDER BY id;
+INSERT INTO t1 (id, value1) VALUES (1, 'val11');
+INSERT INTO t2 (id, value2) VALUES (1, 'val21');
+INSERT INTO t3 (id, value3) VALUES (1, 'val31');

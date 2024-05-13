@@ -1,0 +1,1 @@
+SELECT '=DICTIONARY in Lazy DB';

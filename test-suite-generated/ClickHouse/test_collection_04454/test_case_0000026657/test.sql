@@ -1,0 +1,1 @@
+SELECT b, a FROM order_by_all ORDER BY ALL NULLS FIRST;

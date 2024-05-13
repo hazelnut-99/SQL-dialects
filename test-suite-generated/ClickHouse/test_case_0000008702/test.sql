@@ -1,1 +1,0 @@
-SELECT * FROM t_filter WHERE f LIMIT 5;

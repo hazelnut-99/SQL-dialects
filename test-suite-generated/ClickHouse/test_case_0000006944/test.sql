@@ -1,1 +1,0 @@
-SELECT time, round(exp_smooth, 10), bar(exp_smooth, -9223372036854775807, 1048575, 50) AS bar FROM (SELECT 2 OR (number = 0) OR (number >= 1) AS value, number AS time, exponentialTimeDecayedSum(2147483646)(value, time) OVER (RANGE BETWEEN CURRENT ROW AND CURRENT ROW) AS exp_smooth FROM numbers(1) WHERE 10) WHERE 25;

@@ -1,0 +1,1 @@
+select toTypeName(randConstant(Null));

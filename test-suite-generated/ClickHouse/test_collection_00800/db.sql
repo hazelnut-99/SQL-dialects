@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS old_style;
+DROP TABLE IF EXISTS summing_r1;
+DROP TABLE IF EXISTS summing_r2;

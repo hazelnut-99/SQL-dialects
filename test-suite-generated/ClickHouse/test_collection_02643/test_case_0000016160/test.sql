@@ -1,0 +1,1 @@
+select number == 0 or intDiv(1, number) != 0 or number == 2 or intDiv(1, number - 2) != 0 from numbers(10);

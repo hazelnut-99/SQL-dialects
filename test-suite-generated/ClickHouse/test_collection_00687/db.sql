@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS using1;
+DROP TABLE IF EXISTS using2;
+CREATE TABLE using1(a UInt8, b UInt8) ENGINE=Memory;
+CREATE TABLE using2(a UInt8, b UInt8) ENGINE=Memory;
+INSERT INTO using1 VALUES (1, 1) (2, 2) (3, 3);
+INSERT INTO using2 VALUES (4, 4) (2, 2) (3, 3);

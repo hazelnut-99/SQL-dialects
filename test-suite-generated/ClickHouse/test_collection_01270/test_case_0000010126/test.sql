@@ -1,0 +1,1 @@
+SELECT b FROM test PREWHERE c = 1;

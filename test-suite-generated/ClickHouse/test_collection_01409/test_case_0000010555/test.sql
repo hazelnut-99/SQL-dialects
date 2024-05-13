@@ -1,0 +1,1 @@
+SELECT '--simple 1';

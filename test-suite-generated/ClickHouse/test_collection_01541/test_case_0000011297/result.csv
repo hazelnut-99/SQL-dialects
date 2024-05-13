@@ -1,0 +1,4 @@
+01161_information_schema,01161_information_schema,kcu1,BASE TABLE,0,0,utf8mb4_0900_ai_ci,,01161_information_schema,01161_information_schema,kcu1,BASE TABLE,0,0,utf8mb4_0900_ai_ci,
+01161_information_schema,01161_information_schema,kcu2,BASE TABLE,0,0,utf8mb4_0900_ai_ci,,01161_information_schema,01161_information_schema,kcu2,BASE TABLE,0,0,utf8mb4_0900_ai_ci,
+01161_information_schema,01161_information_schema,t,FOREIGN TABLE,0,0,utf8mb4_0900_ai_ci,,01161_information_schema,01161_information_schema,t,FOREIGN TABLE,0,0,utf8mb4_0900_ai_ci,
+01161_information_schema,01161_information_schema,v,VIEW,,,utf8mb4_0900_ai_ci,,01161_information_schema,01161_information_schema,v,VIEW,,,utf8mb4_0900_ai_ci,

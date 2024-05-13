@@ -1,0 +1,2 @@
+select count(), count(a), max(a), min(a), avg(a), sum(a), any(a)
+from (select cast(Null,'Nullable(Float64)') a);

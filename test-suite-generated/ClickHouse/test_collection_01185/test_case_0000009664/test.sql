@@ -1,0 +1,1 @@
+SELECT 'ngramMinHashUTF8';

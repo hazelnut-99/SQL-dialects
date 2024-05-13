@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS tab_annoy;
+DROP TABLE IF EXISTS tab_usearch;

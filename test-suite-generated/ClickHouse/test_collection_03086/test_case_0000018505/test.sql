@@ -1,0 +1,1 @@
+select 'deduplicate_blocks_in_dependent_materialized_views=1, insert_deduplication_token = yes, results consitent';

@@ -1,0 +1,1 @@
+SELECT '====== remove column TTL ======';

@@ -1,0 +1,1 @@
+SELECT LpNorm(materialize((13, -84.4, 91, 63.1)), 1) = L1Norm(tuple(13, -84.4, 91, 63.1));

@@ -1,1 +1,0 @@
-SELECT corr(NULL, NULL);

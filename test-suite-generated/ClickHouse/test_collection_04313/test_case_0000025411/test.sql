@@ -1,0 +1,1 @@
+SELECT 'Invalid parameters';

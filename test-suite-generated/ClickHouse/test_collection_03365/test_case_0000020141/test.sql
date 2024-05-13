@@ -1,0 +1,1 @@
+SELECT h3GetIndexesFromUnidirectionalEdge(599686042433355775);

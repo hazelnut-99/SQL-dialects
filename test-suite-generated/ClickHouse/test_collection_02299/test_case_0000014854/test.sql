@@ -1,0 +1,1 @@
+select 'constants:', byteSize([tuple(NULL, []), tuple(toNullable(toFixedString('a',4)), []), tuple(toNullable(toFixedString('a',4)), [tuple(NULL, 'a')]), tuple(toNullable(toFixedString('a',4)), [tuple(NULL, 'a'), tuple(NULL, 'a')])]);

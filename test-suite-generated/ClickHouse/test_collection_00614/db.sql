@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS 00662_has_nullable;

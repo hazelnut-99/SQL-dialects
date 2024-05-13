@@ -1,0 +1,4 @@
+SELECT
+  i
+FROM generateRandom('i Tuple(Int32, Int64)', 1, 10, 10)
+LIMIT 10;

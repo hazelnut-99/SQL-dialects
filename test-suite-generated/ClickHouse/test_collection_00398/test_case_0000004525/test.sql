@@ -1,0 +1,1 @@
+SELECT '*** Partitioned by a (Date, UInt8) tuple ***';

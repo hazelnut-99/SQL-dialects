@@ -1,1 +1,0 @@
-select splitByString('ab', 'abcdeabcdeab');

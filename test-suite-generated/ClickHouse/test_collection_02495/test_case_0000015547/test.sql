@@ -1,0 +1,1 @@
+SELECT 'Map(Int32, UInt16)';

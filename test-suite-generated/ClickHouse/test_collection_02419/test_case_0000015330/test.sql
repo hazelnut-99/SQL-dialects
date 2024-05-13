@@ -1,0 +1,1 @@
+SELECT 'Dictionary cache_dictionary_simple_key_complex_attributes';

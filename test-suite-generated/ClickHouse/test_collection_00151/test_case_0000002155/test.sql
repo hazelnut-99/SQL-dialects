@@ -1,0 +1,1 @@
+SELECT count() WITH TOTALS;

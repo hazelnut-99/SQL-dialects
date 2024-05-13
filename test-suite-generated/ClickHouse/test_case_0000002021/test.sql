@@ -1,1 +1,0 @@
-select arrayPopBack(emptyArrayUInt8());

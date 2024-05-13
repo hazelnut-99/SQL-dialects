@@ -1,0 +1,1 @@
+SELECT 'atomic after rename:';

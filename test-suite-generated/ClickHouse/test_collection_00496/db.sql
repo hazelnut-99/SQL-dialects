@@ -1,0 +1,12 @@
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;
+drop table if exists mult_tab;

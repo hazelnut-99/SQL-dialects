@@ -1,0 +1,1 @@
+SELECT * FROM t_uuid ORDER BY x ASC;

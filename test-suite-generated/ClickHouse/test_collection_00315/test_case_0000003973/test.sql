@@ -1,0 +1,1 @@
+SELECT x FROM merge_32_64 WHERE x = 1;

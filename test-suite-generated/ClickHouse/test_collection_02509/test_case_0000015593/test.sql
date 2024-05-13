@@ -1,0 +1,1 @@
+SELECT CAST(1111111111.222 AS DateTime64(3, 'Asia/Istanbul'));

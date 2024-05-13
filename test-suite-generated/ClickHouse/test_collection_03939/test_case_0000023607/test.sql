@@ -1,0 +1,1 @@
+SELECT * FROM test_02559 ORDER BY x;

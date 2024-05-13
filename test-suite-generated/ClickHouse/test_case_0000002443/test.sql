@@ -1,1 +1,0 @@
-SELECT hex(upperUTF8('\xFF'));

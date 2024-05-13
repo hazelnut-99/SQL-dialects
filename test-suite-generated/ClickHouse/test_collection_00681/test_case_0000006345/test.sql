@@ -1,0 +1,1 @@
+SELECT toDecimal128('12345678901234567890123456789.123456789', 9) AS x, -x AS y, round(x), round(y), round(x, 3), round(y, 3);

@@ -1,0 +1,1 @@
+SELECT k1, k2, k3, val_t1, val_t2 FROM t1_00203 ANY RIGHT JOIN t2_00203 USING (k3, k1, k2) ORDER BY k1, k2, k3;

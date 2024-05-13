@@ -1,1 +1,0 @@
-SELECT (1, 3) IN (SELECT 1, 2);

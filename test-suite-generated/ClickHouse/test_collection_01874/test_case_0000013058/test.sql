@@ -1,0 +1,1 @@
+SELECT FROM_UNIXTIME(toDateTime('2018-01-02 12:33:44'), '%p');

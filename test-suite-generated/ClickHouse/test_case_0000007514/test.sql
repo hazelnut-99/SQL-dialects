@@ -1,1 +1,0 @@
-SELECT * FROM format(CSVWithNamesAndTypes, 'ip,port\nIPv6,UInt16\n::1,42\n');

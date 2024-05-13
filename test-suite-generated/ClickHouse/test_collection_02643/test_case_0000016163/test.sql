@@ -1,0 +1,1 @@
+select if(number % 5 == 0, toInt8OrZero(toString(number)), Null) from numbers(20);

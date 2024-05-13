@@ -1,0 +1,1 @@
+SELECT '-- Lowercase tests';

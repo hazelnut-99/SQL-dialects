@@ -1,0 +1,1 @@
+SELECT 'Equals with non existing key and default value';

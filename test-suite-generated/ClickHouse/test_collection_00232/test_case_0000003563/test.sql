@@ -1,0 +1,1 @@
+SELECT hasColumnInTable('system', 'one', '');

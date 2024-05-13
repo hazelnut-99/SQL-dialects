@@ -1,0 +1,1 @@
+select accurateCast('false', 'Bool');

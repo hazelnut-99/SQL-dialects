@@ -1,0 +1,1 @@
+SELECT arrayDifference([65536, -9223372036854775808]);

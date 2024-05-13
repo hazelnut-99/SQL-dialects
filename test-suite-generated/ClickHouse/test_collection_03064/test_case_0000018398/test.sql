@@ -1,0 +1,1 @@
+SELECT 'The results of query: SELECT id, mapExtractKeyLike(map, \'5-K1\') FROM map_extractKeyLike_test ORDER BY id;';

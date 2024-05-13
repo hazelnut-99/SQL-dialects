@@ -1,1 +1,0 @@
-DESC TABLE add_materialized_column_after;

@@ -1,0 +1,3 @@
+CREATE TEMPORARY TABLE times (t DateTime);
+INSERT INTO times SELECT now();
+INSERT INTO times SELECT now();

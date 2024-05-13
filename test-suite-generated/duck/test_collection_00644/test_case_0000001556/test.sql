@@ -1,0 +1,1 @@
+SELECT i*10000::SMALLINT FROM smallints WHERE i=1;

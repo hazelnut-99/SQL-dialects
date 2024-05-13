@@ -1,0 +1,1 @@
+SELECT * FROM range(10) LIMIT 50% OFFSET 2;

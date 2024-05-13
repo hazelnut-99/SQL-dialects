@@ -1,0 +1,1 @@
+SELECT bool_and(i) FROM (SELECT * FROM (SELECT NULL) tbl(i) UNION ALL SELECT CAST(1 as BOOLEAN)) tbl(i);

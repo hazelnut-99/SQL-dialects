@@ -1,0 +1,1 @@
+SELECT a FROM test LIMIT 80.1%;

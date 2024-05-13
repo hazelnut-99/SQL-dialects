@@ -1,0 +1,869 @@
+PRAGMA enable_verification;
+pragma verify_external;
+CREATE TABLE test1 (i INT, s1 VARCHAR, s2 VARCHAR);
+INSERT INTO test1 VALUES (1, 'thisisareallylongstring', 'thisisareallylongstringtoo');
+CREATE TABLE test2 (i INT, s1 VARCHAR, s2 VARCHAR);
+INSERT INTO test2 VALUES (1, 'longstringsarecool', 'coolerthanshortstrings');
+SELECT t1.i, t1.s1, t1.s2, t2.s1, t2.s2 FROM test1 t1, test2 t2 WHERE t1.i = t2.i;
+PRAGMA enable_verification;
+WITH lhs(i, j, k) AS (VALUES
+	(100, 10, 1),
+	(200, 20, 2)
+),
+rhs(p, q, r) AS (VALUES
+	(100, 10, 1),
+	(200, 20, 2)
+)
+SELECT lhs.*, rhs.*
+FROM lhs, rhs
+WHERE i <= p AND j <> q AND k IS DISTINCT FROM r;
+WITH lhs(i, j, k) AS (VALUES
+	(100, 10, 1),
+	(200, 20, 2)
+),
+rhs(p, q, r) AS (VALUES
+	(100, 10, 1),
+	(200, 20, 2)
+)
+SELECT lhs.*, rhs.*
+FROM lhs, rhs
+WHERE i <= p AND k >= r AND j <= q
+ORDER BY i;
+CREATE TABLE wide AS (
+	SELECT
+		i,
+		10 * (i + 0) AS c0,
+		10 * (i + 1) AS c1,
+		10 * (i + 2) AS c2,
+		10 * (i + 3) AS c3,
+		10 * (i + 4) AS c4,
+		10 * (i + 5) AS c5,
+		10 * (i + 6) AS c6,
+		10 * (i + 7) AS c7,
+		10 * (i + 8) AS c8,
+		10 * (i + 9) AS c9
+	FROM range(1, 10) tbl(i)
+);
+SELECT * FROM wide;
+CREATE TABLE limits AS (
+	SELECT 100 + (i * 17 % 100) AS z
+	FROM range(1, 10) tbl(i)
+);
+SELECT z FROM limits;
+SELECT i, z
+FROM wide, limits
+WHERE c0 < z
+  AND c1 < z
+  AND c2 < z
+  AND c3 < z
+  AND c4 < z
+  AND c5 < z
+  AND c6 < z
+  AND c7 < z
+  AND c8 < z
+  AND c9 < z
+ORDER BY 1, 2;
+CREATE TABLE wide_nulls AS (
+	SELECT i, c0, c1, c2,
+		CASE WHEN i % 7 = 0 THEN NULL ELSE c3 END AS c3,
+		c4, c5, c6, c7,
+		CASE WHEN i % 5 = 0 THEN NULL ELSE c8 END AS c8,
+		c9
+	FROM wide
+);
+SELECT * FROM wide_nulls;
+CREATE TABLE limits_nulls AS (
+	SELECT CASE WHEN z % 9 = 0 THEN NULL ELSE z END AS z
+	FROM limits
+);
+SELECT * FROM limits_nulls;
+SELECT i, z
+FROM wide_nulls, limits_nulls
+WHERE c0 < z
+  AND c1 < z
+  AND c2 < z
+  AND c3 < z
+  AND c4 < z
+  AND c5 < z
+  AND c6 < z
+  AND c7 < z
+  AND c8 < z
+  AND c9 < z
+ORDER BY 1, 2;
+SELECT i, z
+FROM wide, limits
+WHERE z BETWEEN c8 AND c9
+ORDER BY 1, 2;
+SELECT i, z
+FROM wide_nulls, limits_nulls
+WHERE z BETWEEN c8 AND c9
+ORDER BY 1, 2;
+SELECT i, z
+FROM wide, limits
+WHERE z NOT BETWEEN c8 AND c9
+ORDER BY 1, 2;
+SELECT i, z
+FROM wide_nulls, limits_nulls
+WHERE z NOT BETWEEN c8 AND c9
+ORDER BY 1, 2;
+SELECT lhs.i, rhs.i
+FROM wide_nulls lhs, wide_nulls rhs
+WHERE lhs.c3 < rhs.c0
+  AND lhs.c8 IS DISTINCT FROM rhs.c3
+ORDER BY 1, 2;
+EXPLAIN
+SELECT lhs.i, rhs.i
+FROM wide_nulls lhs, wide_nulls rhs
+WHERE lhs.c3 < rhs.c0
+  AND lhs.c8 IS DISTINCT FROM rhs.c3
+ORDER BY 1, 2;
+CREATE TABLE many_bounds AS (
+	SELECT * FROM (VALUES (2000, 4000)) tbl(lo, hi)
+);
+CREATE TABLE many_values AS (
+	SELECT * from range(10 * 1024) tbl(val)
+);
+SELECT COUNT(*)
+FROM many_values, many_bounds
+WHERE val BETWEEN lo AND hi;
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (NULL);
+SELECT * FROM (SELECT SUM(i) AS x FROM integers) a, (SELECT SUM(i) AS x FROM integers) b WHERE a.x=b.x;
+CREATE TABLE groups(i INTEGER, j INTEGER);
+INSERT INTO groups VALUES (1, 1), (2, 1), (3, 2), (NULL, 2);
+SELECT a.j,a.x,a.y,b.y FROM (SELECT j, MIN(i) AS y, SUM(i) AS x FROM groups GROUP BY j) a, (SELECT j, MIN(i) AS y, SUM(i) AS x FROM groups GROUP BY j) b WHERE a.j=b.j AND a.x=b.x ORDER BY a.j;
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+PRAGMA verify_external;
+CREATE TABLE integers(fk INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (5), (NULL);
+CREATE VIEW intlists AS SELECT * FROM (VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(5, [9,10,11]),
+	(NULL::INTEGER, [13])
+	) lv(pk, p);
+SELECT DISTINCT * FROM intlists ORDER BY ALL;
+SELECT pk, p FROM intlists ORDER BY pk;
+SELECT fk, pk, p FROM integers, intlists WHERE fk = pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers LEFT OUTER JOIN intlists ON integers.fk=intlists.pk ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN intlists ON integers.fk=intlists.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY ALL;
+SELECT fk, pk, p FROM intlists RIGHT OUTER JOIN integers ON integers.fk=intlists.pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers FULL OUTER JOIN intlists ON integers.fk=intlists.pk ORDER BY ALL;
+CREATE VIEW strlists AS SELECT * FROM (VALUES
+	(1, ['a']),
+	(2, [NULL]),
+	(3, []),
+	(4, ['Branta Canadensis', 'c']),
+	(5, ['i','j','k']),
+	(NULL::INTEGER, ['Somateria mollissima'])
+	) lv(pk, p);
+SELECT DISTINCT * FROM strlists ORDER BY ALL;
+SELECT fk, pk, p FROM integers, strlists WHERE fk = pk ORDER BY fk;
+SELECT fk, pk, p FROM integers LEFT OUTER JOIN strlists ON integers.fk=strlists.pk ORDER BY fk;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN strlists ON integers.fk=strlists.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY fk;
+SELECT fk, pk, p FROM strlists RIGHT OUTER JOIN integers ON integers.fk=strlists.pk ORDER BY fk;
+SELECT fk, pk, p FROM integers FULL OUTER JOIN strlists ON integers.fk=strlists.pk ORDER BY ALL;
+CREATE VIEW structs AS SELECT * FROM (VALUES
+	(1, {'x': 1, 'y': 'a'}),
+	(2, {'x': NULL, 'y': NULL}),
+	(3, {'x': 0, 'y': ''}),
+	(4, {'x': 2, 'y': 'c'}),
+	(5, {'x': 9, 'y': 'i'}),
+	(NULL::INTEGER, {'x': 13, 'y': 'Somateria mollissima'})
+	) sv(pk, p);
+SELECT DISTINCT * FROM structs ORDER BY ALL;
+SELECT pk, p FROM structs ORDER BY pk;
+SELECT fk, pk, p FROM integers, structs WHERE fk = pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers LEFT OUTER JOIN structs ON integers.fk=structs.pk ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN structs ON integers.fk=structs.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY ALL;
+SELECT fk, pk, p FROM structs RIGHT OUTER JOIN integers ON integers.fk=structs.pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers FULL OUTER JOIN structs ON integers.fk=structs.pk ORDER BY ALL;
+CREATE VIEW struct_lint_lstr AS SELECT * FROM (VALUES
+	(1, {'x': [1], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [2, 3], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [9,10,11], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [13], 'y': ['Somateria mollissima']})
+	) lv(pk, p);
+SELECT DISTINCT * FROM struct_lint_lstr ORDER BY ALL;
+SELECT fk, pk, p FROM integers, struct_lint_lstr WHERE fk = pk ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN struct_lint_lstr ON integers.fk=struct_lint_lstr.pk
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN struct_lint_lstr ON integers.fk=struct_lint_lstr.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM struct_lint_lstr RIGHT OUTER JOIN integers ON integers.fk=struct_lint_lstr.pk
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers FULL OUTER JOIN struct_lint_lstr ON integers.fk=struct_lint_lstr.pk
+ORDER BY ALL;
+CREATE VIEW r2l3r4l5i4i2l3v AS SELECT * FROM (VALUES
+	(1, {'x': [{'l4': [51], 'i4': 41}], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [{'l4': [52, 53], 'i4': 42}, {'l4': [54, 55], 'i4': 43}], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [{'l4': [56], 'i4': 44}, {'l4': [57, 58], 'i4': 45}, {'l4': [59, 60, 61], 'i4': 46}], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [{'l4': [62], 'i4': 47}], 'y': ['Somateria mollissima']})
+	) lv(pk, p);
+SELECT DISTINCT * FROM r2l3r4l5i4i2l3v ORDER BY ALL;
+SELECT fk, pk, p FROM integers, r2l3r4l5i4i2l3v WHERE fk = pk ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN r2l3r4l5i4i2l3v ON integers.fk=r2l3r4l5i4i2l3v.pk
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN r2l3r4l5i4i2l3v ON integers.fk=r2l3r4l5i4i2l3v.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM r2l3r4l5i4i2l3v RIGHT OUTER JOIN integers ON integers.fk=r2l3r4l5i4i2l3v.pk
+ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers FULL OUTER JOIN r2l3r4l5i4i2l3v ON integers.fk=r2l3r4l5i4i2l3v.pk
+ORDER BY ALL;
+CREATE VIEW longlists AS
+SELECT *
+FROM ((VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(NULL::INTEGER, [13])
+	)
+UNION ALL
+	select 5 as pk, list(i) as p from range(2000) tbl(i)
+) lv(pk, p);
+SELECT DISTINCT * FROM longlists ORDER BY ALL;
+SELECT pk, p FROM longlists ORDER BY pk;
+SELECT fk, pk, p FROM integers, longlists WHERE fk = pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers LEFT OUTER JOIN longlists ON integers.fk=longlists.pk ORDER BY ALL;
+SELECT fk, pk, p
+FROM integers LEFT OUTER JOIN longlists ON integers.fk=longlists.pk
+WHERE pk < 5 AND fk > 1
+ORDER BY ALL;
+SELECT fk, pk, p FROM longlists RIGHT OUTER JOIN integers ON integers.fk=longlists.pk ORDER BY ALL;
+SELECT fk, pk, p FROM integers FULL OUTER JOIN longlists ON integers.fk=longlists.pk ORDER BY ALL;
+CREATE TABLE all_types("varchar" VARCHAR, nested_int_array INTEGER[][]);;
+INSERT INTO all_types VALUES('b',[[], NULL, [], [NULL]]);
+SELECT ref_1.nested_int_array AS c0
+FROM all_types AS ref_1
+INNER JOIN (SELECT NULL AS c8 FROM range(3)) AS subq_1 ON (ref_1."varchar" = ref_1."varchar")
+INNER JOIN range(3) AS ref_4(time_tz) ON (subq_1.c8 = ref_4.time_tz);
+CREATE TABLE nested(nested_int_array INTEGER[][]);
+INSERT INTO nested VALUES([[42, 999]]);
+SELECT (
+	SELECT ref_1.nested_int_array
+) AS c0
+FROM range(3), nested AS ref_1;
+PRAGMA enable_verification;
+CREATE VIEW list_int AS
+SELECT i, i%2 as i2, [i, i + 1, i + 2] as l3
+FROM range(10) tbl(i);
+select lhs.*, rhs.*
+from list_int lhs, list_int rhs
+where lhs.i2 = rhs.i2 and lhs.l3 <> rhs.l3
+order by lhs.i, rhs.i;
+select lhs.*, rhs.*
+from list_int lhs, list_int rhs
+where lhs.i2 = rhs.i2 and lhs.l3 <= rhs.l3
+order by lhs.i, rhs.i;
+select lhs.*, rhs.*
+from list_int lhs, list_int rhs
+where lhs.i2 = rhs.i2 and lhs.l3 < rhs.l3
+order by lhs.i, rhs.i;
+select lhs.*, rhs.*
+from list_int lhs, list_int rhs
+where lhs.i2 = rhs.i2 and lhs.l3 >= rhs.l3
+order by lhs.i, rhs.i;
+select lhs.*, rhs.*
+from list_int lhs, list_int rhs
+where lhs.i2 = rhs.i2 and lhs.l3 > rhs.l3
+order by lhs.i, rhs.i;
+IMPORT DATABASE 'data/parquet-testing/malloy-smaller';
+SELECT count(DISTINCT [[p.v2ProductName for p in h.product] for h in hits]) FROM tbl2;
+SELECT count(DISTINCT [[p.customDimensions for p in h.product] for h in hits]) FROM tbl2;
+SELECT
+   hits_0.page."pageTitle" as "pageTitle",
+   COUNT(DISTINCT CONCAT(ga_sessions."__distinct_key", 'x', hits_0_outer.__row_id)) as "hits_count",
+   COUNT(DISTINCT CASE WHEN product_0."productQuantity">0
+   THEN CONCAT(ga_sessions."__distinct_key", 'x', hits_0_outer.__row_id) END) as "sold_count"
+FROM (SELECT GEN_RANDOM_UUID() as __distinct_key, * FROM tbl2) as ga_sessions
+LEFT JOIN LATERAL (SELECT UNNEST(GENERATE_SERIES(1, length(ga_sessions."hits"),1)) as __row_id,
+	UNNEST(ga_sessions."hits"), 1 as ignoreme) as hits_0_outer(__row_id, hits_0,ignoreme) ON  hits_0_outer.ignoreme=1
+LEFT JOIN LATERAL (SELECT UNNEST(hits_0."product"), 1 as ignoreme) as product_0_outer(product_0,ignoreme)
+	ON product_0_outer.ignoreme=1
+WHERE ga_sessions.totals."transactionRevenue">0
+GROUP BY 1
+ORDER BY 2 DESC NULLS LAST, 1;
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+create table tbl_1 (a tinyint, b tinyint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b tinyint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a smallint, b smallint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b smallint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a integer, b integer);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b integer);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a bigint, b bigint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b bigint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a hugeint, b hugeint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b hugeint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a utinyint, b utinyint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b utinyint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a usmallint, b usmallint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b usmallint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a uinteger, b uinteger);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b uinteger);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a ubigint, b ubigint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b ubigint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a uhugeint, b uhugeint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b uhugeint);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a float, b float);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b float);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a double, b double);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b double);
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a decimal(4,1), b decimal(4,1));
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b decimal(4,1));
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a decimal(8,1), b decimal(8,1));
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b decimal(8,1));
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a decimal(12,1), b decimal(12,1));
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b decimal(12,1));
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+create table tbl_1 (a decimal(18,1), b decimal(18,1));
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b decimal(18,1));
+insert into tbl_2 values (1),(2),(NULL);
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;
+SELECT a from tbl_1 WHERE a IS NOT DISTINCT FROM b;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) ORDER BY 1;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b AND a <> tbl_2.b) ORDER BY 1;
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b);
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS DISTINCT FROM tbl_2.b AND a <> tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (a <> tbl_2.b AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+select a,tbl_2.b from tbl_1 inner join tbl_2 on (tbl_2.b > a AND a IS DISTINCT FROM tbl_2.b) order by a,tbl_2.b;
+DROP TABLE tbl_1;
+DROP TABLE tbl_2;
+select a.a, b.b, a.a IS NOT DISTINCT FROM b.b AS "Is Not Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a), (VALUES (1), (2), (NULL)) AS b (b) ORDER BY 1, 2;
+select a.a, b.b, a.a IS DISTINCT FROM b.b AS "Is Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a), (VALUES (1), (2), (NULL)) AS b (b) ORDER BY 1, 2;
+select null is not distinct from null;
+select null is distinct from null;
+select a.a, a.a IS NOT DISTINCT FROM 1 AS "Is Not Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a);
+select a.a, a.a IS DISTINCT FROM 1 AS "Is Not Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a);
+select a.a, a.a IS NOT DISTINCT FROM NULL AS "Is Not Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a);
+select a.a, a.a IS DISTINCT FROM NULL AS "Is Not Distinct From" FROM (VALUES (1), (2), (NULL)) AS a (a);
+CREATE TABLE test_types(a tinyint, b smallint, c integer, d bigint, e double, f real, g varchar);
+INSERT INTO test_types values (NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1,1,1,1,1,1,'1'),(10,10,10,10,10,10,'10');
+select count(*) FROM test_types where a IS DISTINCT FROM NULL;
+select count(*) FROM test_types where b IS DISTINCT FROM NULL;
+select count(*) FROM test_types where c IS DISTINCT FROM NULL;
+select count(*) FROM test_types where d IS DISTINCT FROM NULL;
+select count(*) FROM test_types where e IS DISTINCT FROM NULL;
+select count(*) FROM test_types where f IS DISTINCT FROM NULL;
+select count(*) FROM test_types where g IS DISTINCT FROM NULL;
+select count(*) FROM test_types where a IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where b IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where c IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where d IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where e IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where f IS NOT DISTINCT FROM NULL;
+select count(*) FROM test_types where g IS NOT DISTINCT FROM NULL;
+SELECT INTERVAL '30' DAY is distinct from NULL;
+SELECT INTERVAL '30' DAY is not distinct from NULL;
+create table tbl_1 (a integer, b integer);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b integer);
+insert into tbl_2 values (1),(2),(NULL);
+CREATE table big as select range a from range(10000);
+insert into big values (NULL);
+select count(*) from big  inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);
+select count(*) from big  inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b) where a >1  and a < 5000;
+select count(*) from big inner join tbl_2 on (big.rowid IS NOT DISTINCT FROM tbl_2.b);
+SELECT a, (select count(*) from tbl_1 where tbl_1.a is distinct from t.b) from tbl_1 as t ORDER BY 1;
+PRAGMA enable_verification;
+CREATE TABLE integers AS SELECT i FROM range(10) tbl(i);
+CREATE TABLE integers2 AS SELECT i FROM range(10) tbl(i);
+CREATE VIEW integers_empty AS SELECT * FROM integers WHERE rowid>100;
+CREATE VIEW integers2_empty AS SELECT * FROM integers WHERE rowid>100;
+CREATE VIEW empty_join AS SELECT * FROM integers JOIN integers2_empty USING (i);
+SELECT COUNT(*) FROM integers_empty JOIN integers2 USING (i);
+SELECT COUNT(*) FROM integers_empty JOIN integers2 ON (integers_empty.i>integers2.i);
+SELECT COUNT(*) FROM integers_empty JOIN integers2 ON (integers_empty.i<>integers2.i);
+SELECT COUNT(*) FROM integers_empty JOIN integers2 ON (integers_empty.i<>integers2.i OR integers_empty.i+1<>integers2.i);
+SELECT * FROM integers_empty JOIN integers2 USING (i);
+SELECT COUNT(*) FROM integers_empty LEFT JOIN integers2 USING (i);
+SELECT * FROM integers_empty LEFT JOIN integers2 USING (i);
+SELECT COUNT(*) FROM integers_empty RIGHT JOIN integers2 USING (i);
+SELECT COUNT(*) FROM integers_empty FULL OUTER JOIN integers2 USING (i);
+SELECT COUNT(*) FROM integers JOIN integers2_empty USING (i);
+SELECT * FROM integers JOIN integers2_empty USING (i);
+SELECT COUNT(*) FROM integers LEFT JOIN integers2_empty USING (i);
+SELECT COUNT(*) FROM integers RIGHT JOIN integers2_empty USING (i);
+SELECT * FROM integers RIGHT JOIN integers2_empty USING (i);
+SELECT COUNT(*) FROM integers FULL OUTER JOIN integers2_empty USING (i);
+SELECT integers.*, integers2_empty.* FROM integers FULL OUTER JOIN integers2_empty USING (i);
+SELECT COUNT(*) FROM integers JOIN empty_join USING (i);
+SELECT COUNT(*) FROM integers LEFT JOIN empty_join USING (i);
+SELECT COUNT(*) FROM integers RIGHT JOIN empty_join USING (i);
+SELECT COUNT(*) FROM integers FULL OUTER JOIN empty_join USING (i);
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE VIEW intlistdim AS SELECT * FROM (VALUES
+	([1]),
+	([NULL]),
+	([]),
+	([9,10,11]),
+	(NULL)
+	) lv(pk);
+CREATE VIEW intlists AS SELECT * FROM (VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(5, [9,10,11]),
+	(NULL::INTEGER, [13])
+	) lv(i, fk);
+SELECT i, pk, fk FROM intlistdim, intlists WHERE pk = fk ORDER BY i;
+SELECT i, pk, fk FROM intlistdim LEFT OUTER JOIN intlists ON intlistdim.pk=intlists.fk ORDER BY i;
+SELECT i, pk, fk FROM intlists RIGHT OUTER JOIN intlistdim ON intlistdim.pk=intlists.fk ORDER BY i;
+SELECT i, pk, fk FROM intlistdim FULL OUTER JOIN intlists ON intlistdim.pk=intlists.fk ORDER BY ALL;
+CREATE VIEW strlistdim AS SELECT * FROM (VALUES
+	(['a']),
+	([NULL]),
+	([]),
+	(['i','j','k']),
+	(NULL)
+	) lv(pk);
+CREATE VIEW strlists AS SELECT * FROM (VALUES
+	(1, ['a']),
+	(2, [NULL]),
+	(3, []),
+	(4, ['Branta Canadensis', 'c']),
+	(5, ['i','j','k']),
+	(NULL::INTEGER, ['Somateria mollissima'])
+	) lv(i, fk);
+SELECT i, pk, fk FROM strlistdim, strlists WHERE pk = fk ORDER BY i;
+SELECT i, pk, fk FROM strlistdim LEFT OUTER JOIN strlists ON strlistdim.pk=strlists.fk ORDER BY i;
+SELECT i, pk, fk FROM strlists RIGHT OUTER JOIN strlistdim ON strlistdim.pk=strlists.fk ORDER BY i;
+SELECT i, pk, fk FROM strlistdim FULL OUTER JOIN strlists ON strlistdim.pk=strlists.fk ORDER BY ALL;
+CREATE VIEW structdim AS SELECT * FROM (VALUES
+	({'x': 1, 'y': 'a'}),
+	({'x': NULL, 'y': NULL}),
+	({'x': 0, 'y': ''}),
+	({'x': 9, 'y': 'i'}),
+	(NULL)
+	) sd(pk);
+CREATE VIEW structs AS SELECT * FROM (VALUES
+	(1, {'x': 1, 'y': 'a'}),
+	(2, {'x': NULL, 'y': NULL}),
+	(3, {'x': 0, 'y': ''}),
+	(4, {'x': 2, 'y': 'c'}),
+	(5, {'x': 9, 'y': 'i'}),
+	(NULL::INTEGER, {'x': 13, 'y': 'Somateria mollissima'})
+	) sv(i, fk);
+SELECT i, pk, fk FROM structdim, structs WHERE pk = fk ORDER BY i;
+SELECT i, pk, fk FROM structdim LEFT OUTER JOIN structs ON structdim.pk=structs.fk ORDER BY i;
+SELECT i, pk, fk FROM structs RIGHT OUTER JOIN structdim ON structdim.pk=structs.fk ORDER BY i;
+SELECT i, pk, fk FROM structdim FULL OUTER JOIN structs ON structdim.pk=structs.fk ORDER BY ALL;
+CREATE VIEW struct_lint_lstr_dim AS SELECT * FROM (VALUES
+	({'x': [1], 'y': ['a']}),
+	({'x': [NULL], 'y': [NULL]}),
+	({'x': [], 'y': []}),
+	({'x': [2, 3], 'y': ['Branta Canadensis', 'c']}),
+	(NULL)
+	) dim(pk);
+CREATE VIEW struct_lint_lstr AS SELECT * FROM (VALUES
+	(1, {'x': [1], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [2, 3], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [9,10,11], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [13], 'y': ['Somateria mollissima']})
+	) fact(i, fk);
+SELECT i, pk, fk
+FROM struct_lint_lstr_dim, struct_lint_lstr
+WHERE pk = fk
+ORDER BY i;
+SELECT i, pk, fk
+FROM struct_lint_lstr_dim
+LEFT OUTER JOIN struct_lint_lstr
+ON struct_lint_lstr_dim.pk = struct_lint_lstr.fk
+ORDER BY i;
+SELECT i, pk, fk
+FROM struct_lint_lstr
+RIGHT OUTER JOIN struct_lint_lstr_dim
+ON struct_lint_lstr_dim.pk = struct_lint_lstr.fk
+ORDER BY i;
+SELECT i, pk, fk
+FROM struct_lint_lstr_dim
+FULL OUTER JOIN struct_lint_lstr
+ON struct_lint_lstr_dim.pk=struct_lint_lstr.fk
+ORDER BY ALL;
+CREATE VIEW r2l3r4l5i4i2l3v AS SELECT * FROM (VALUES
+	(1, {'x': [{'l4': [51], 'i4': 41}], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [{'l4': [52, 53], 'i4': 42}, {'l4': [54, 55], 'i4': 43}], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [{'l4': [56], 'i4': 44}, {'l4': [57, 58], 'i4': 45}, {'l4': [59, 60, 61], 'i4': 46}], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [{'l4': [62], 'i4': 47}], 'y': ['Somateria mollissima']})
+	) fact(i, fk);
+CREATE VIEW r2l3r4l5i4i2l3v_dim AS SELECT * FROM (VALUES
+	({'x': [{'l4': [51], 'i4': 41}], 'y': ['a']}),
+	({'x': [NULL], 'y': [NULL]}),
+	({'x': [], 'y': []}),
+	({'x': [{'l4': [52, 53], 'i4': 42}, {'l4': [54, 55], 'i4': 43}], 'y': ['Branta Canadensis', 'c']}),
+	(NULL)
+	) dim(pk);
+SELECT i, pk, fk
+FROM r2l3r4l5i4i2l3v_dim, r2l3r4l5i4i2l3v
+WHERE fk = pk
+ORDER BY i;
+SELECT i, pk, fk
+FROM r2l3r4l5i4i2l3v_dim
+LEFT OUTER JOIN r2l3r4l5i4i2l3v
+ON r2l3r4l5i4i2l3v_dim.pk = r2l3r4l5i4i2l3v.fk
+ORDER BY i;
+SELECT i, pk, fk
+FROM r2l3r4l5i4i2l3v_dim
+RIGHT OUTER JOIN r2l3r4l5i4i2l3v
+ON r2l3r4l5i4i2l3v_dim.pk = r2l3r4l5i4i2l3v.fk
+ORDER BY i;
+SELECT i, pk, fk
+FROM r2l3r4l5i4i2l3v_dim
+FULL OUTER JOIN r2l3r4l5i4i2l3v
+ON r2l3r4l5i4i2l3v_dim.pk = r2l3r4l5i4i2l3v.fk
+ORDER BY ALL;
+CREATE VIEW longlists AS
+SELECT *
+FROM ((VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(NULL::INTEGER, [13])
+	)
+UNION ALL
+	select 5 as i, list(r) as pk from range(2000) tbl(r)
+) lv(i, fk);
+CREATE VIEW longlists_dim AS
+SELECT *
+FROM ((VALUES
+	([1]),
+	([NULL]),
+	([]),
+	([2, 3]),
+	(NULL)
+	)
+UNION ALL
+	select list(r) as pk from range(2000) tbl(r)
+UNION ALL
+	select list(r) as pk from range(1050) tbl(r)
+) dim(pk);
+SELECT i, pk, fk
+FROM longlists_dim, longlists
+WHERE fk = pk
+ORDER BY 1, 2, 3;
+SELECT i, pk, fk
+FROM longlists_dim
+LEFT OUTER JOIN longlists
+ON longlists.fk = longlists_dim.pk
+ORDER BY 1, 2, 3;
+SELECT i, pk, fk
+FROM longlists_dim
+RIGHT OUTER JOIN longlists
+ON longlists.fk = longlists_dim.pk
+ORDER BY 1, 2, 3;
+SELECT i, pk, fk
+FROM longlists_dim
+FULL OUTER JOIN longlists
+ON longlists.fk = longlists_dim.pk
+ORDER BY 1, 2, 3;
+select * from (
+	(select [1,2,3] a from range(3))) tbl(i)
+	join
+	((select [1,2,3] a from range(3))) tbl2(j)
+	on (i=j);
+select * from (
+	(select {'x': 1, 'y': 2, 'z': 3} a from range(3))) tbl(i)
+	join
+	((select {'x': 1, 'y': 2, 'z': 3} a from range(3))) tbl2(j)
+	on (i=j);
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (4, 1), (2, 2);
+CREATE TABLE test2 (b INTEGER, c INTEGER);
+INSERT INTO test2 VALUES (1, 2), (3, 0);
+SELECT * FROM test JOIN test2 ON test.a+test2.c=test.b+test2.b;
+SELECT * FROM test LEFT JOIN test2 ON test.a+test2.c=test.b+test2.b ORDER BY 1;
+SELECT * FROM test RIGHT JOIN test2 ON test.a+test2.c=test.b+test2.b ORDER BY 1;
+SELECT * FROM test FULL OUTER JOIN test2 ON test.a+test2.c=test.b+test2.b ORDER BY 1;
+PRAGMA enable_verification;
+CREATE TABLE structs AS SELECT i id, {'i': i} s, i%3 j FROM generate_series(0,99,1) tbl(i), generate_series(0,1,1);
+CREATE TABLE other_table AS SELECT i id, i%3 j FROM generate_series(0,99,1) tbl(i) WHERE i%2=0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs WHERE id%2<>0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs JOIN other_table USING (id);
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs LEFT JOIN other_table USING (id);
+SELECT structs.j, COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id)
+FROM structs
+LEFT JOIN other_table o1 USING (id)
+CROSS JOIN other_table
+WHERE ((structs.j IN (0, 1) AND (structs.id=other_table.id)) OR (structs.j=2 AND structs.id+1=other_table.id))
+GROUP BY ALL
+ORDER BY ALL;
+DROP TABLE structs;
+DROP TABLE other_table;
+CREATE TABLE structs AS SELECT i id, {'i': [i, i + 1, i + 2], 'j': CASE WHEN i%4=1 THEN NULL ELSE [i, i] END} s, i%3 j FROM generate_series(0,99,1) tbl(i), generate_series(0,1,1);
+CREATE TABLE other_table AS SELECT i id, i%3 j FROM generate_series(0,99,1) tbl(i) WHERE i%2=0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs WHERE id%2<>0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs JOIN other_table USING (id);
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs LEFT JOIN other_table USING (id);
+SELECT structs.j, COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id)
+FROM structs
+LEFT JOIN other_table o1 USING (id)
+CROSS JOIN other_table
+WHERE ((structs.j IN (0, 1) AND (structs.id=other_table.id)) OR (structs.j=2 AND structs.id+1=other_table.id))
+GROUP BY ALL
+ORDER BY ALL;
+DROP TABLE structs;
+DROP TABLE other_table;
+CREATE TABLE structs AS SELECT i id, {'i': {'j': [i + 1, i + 2, i + 3], 'k': i}, 'l': NULL} s, i%3 j FROM generate_series(0,99,1) tbl(i), generate_series(0,1,1);
+CREATE TABLE other_table AS SELECT i id, i%3 j FROM generate_series(0,99,1) tbl(i) WHERE i%2=0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs WHERE id%2<>0;
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs JOIN other_table USING (id);
+SELECT COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id) FROM structs LEFT JOIN other_table USING (id);
+SELECT structs.j, COUNT(*), COUNT(s), COUNT(DISTINCT s), COUNT(DISTINCT structs.id)
+FROM structs
+LEFT JOIN other_table o1 USING (id)
+CROSS JOIN other_table
+WHERE ((structs.j IN (0, 1) AND (structs.id=other_table.id)) OR (structs.j=2 AND structs.id+1=other_table.id))
+GROUP BY ALL
+ORDER BY ALL;

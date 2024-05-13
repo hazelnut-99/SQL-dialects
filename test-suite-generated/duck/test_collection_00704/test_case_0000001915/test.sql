@@ -1,0 +1,1 @@
+SELECT COALESCE(1, 'hello'::INT);

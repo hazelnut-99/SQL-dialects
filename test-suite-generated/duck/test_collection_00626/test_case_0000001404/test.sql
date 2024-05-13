@@ -1,0 +1,1 @@
+SELECT b FROM test ORDER BY a DESC;

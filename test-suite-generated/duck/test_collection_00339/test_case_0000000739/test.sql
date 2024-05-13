@@ -1,0 +1,1 @@
+SELECT i, UNNEST(s1), UNNEST(s2) FROM tbl_structs ORDER BY 5 DESC;

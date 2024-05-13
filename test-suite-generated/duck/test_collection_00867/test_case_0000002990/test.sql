@@ -1,0 +1,1 @@
+SELECT j FROM integers WHERE j <= 2::SMALLINT ORDER BY j;

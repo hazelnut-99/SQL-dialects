@@ -1,0 +1,1 @@
+SELECT -120::TINYINT-i FROM tinyints WHERE i=1 ORDER BY 1;

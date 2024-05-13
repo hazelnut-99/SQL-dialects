@@ -1,0 +1,1 @@
+select COUNT(*) from (SELECT * FROM a WHERE 1=0 UNION ALL SELECT * FROM b) t1;

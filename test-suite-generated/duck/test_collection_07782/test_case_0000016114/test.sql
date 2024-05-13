@@ -1,0 +1,8 @@
+SELECT i, mode(i) OVER  w
+FROM (
+	SELECT * FROM generate_series(1,5)
+    UNION ALL
+    SELECT * FROM generate_series(1,5) 
+) AS _(i)
+WINDOW w AS (ORDER BY i ROWS BETWEEN 1 PRECEDING AND 2 FOLLOWING EXCLUDE CURRENT ROW)
+ORDER BY i;

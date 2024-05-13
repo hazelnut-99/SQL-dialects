@@ -1,0 +1,1 @@
+SELECT t FROM interval WHERE t >= INTERVAL '1' DAY ORDER BY 1;

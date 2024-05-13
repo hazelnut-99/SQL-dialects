@@ -1,0 +1,1 @@
+SELECT * FROM intest WHERE a NOT IN (86, 103, 162) ORDER BY 1;

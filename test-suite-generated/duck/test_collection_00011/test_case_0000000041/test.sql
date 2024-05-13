@@ -1,0 +1,1 @@
+SELECT alias(CASE WHEN i=1 THEN 19 ELSE 0 END) AS k, alias(i::VARCHAR) AS l FROM integers WHERE i=1 ORDER BY 1;

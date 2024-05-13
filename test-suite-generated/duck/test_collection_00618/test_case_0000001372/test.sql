@@ -1,0 +1,1 @@
+SELECT a FROM test LIMIT 50% OFFSET (((SELECT MIN(b) FROM test)-1)/10);

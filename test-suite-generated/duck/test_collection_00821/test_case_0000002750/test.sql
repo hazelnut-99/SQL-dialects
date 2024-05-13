@@ -1,0 +1,1 @@
+SELECT t.column_name FROM (DESCRIBE SELECT 42 AS a) t;

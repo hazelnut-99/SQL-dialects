@@ -1,0 +1,1 @@
+SELECT * FROM tbl ORDER BY COLUMNS('col1|col3');

@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT rowid FROM a);

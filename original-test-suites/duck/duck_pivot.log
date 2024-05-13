@@ -1,0 +1,904 @@
+PRAGMA enable_verification;
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select 42) on columns(*));
+SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));
+PRAGMA enable_verification;
+CREATE TABLE Product(DaysToManufacture int, StandardCost int);
+INSERT INTO Product VALUES (0, 5.0885), (1, 223.88), (2, 359.1082), (4, 949.4105);
+SELECT DaysToManufacture, AVG(StandardCost) AS AverageCost
+FROM Product
+GROUP BY DaysToManufacture;
+SELECT 'AverageCost' AS Cost_Sorted_By_Production_Days,
+  "0", "1", "2", "3", "4"
+FROM
+(
+  SELECT DaysToManufacture, StandardCost
+  FROM Product
+) AS SourceTable
+PIVOT
+(
+  AVG(StandardCost)
+  FOR DaysToManufacture IN (0, 1, 2, 3, 4)
+) AS PivotTable;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, 'JAN'),
+    (1, 400, 'JAN'),
+    (2, 4500, 'JAN'),
+    (2, 35000, 'JAN'),
+    (1, 5000, 'FEB'),
+    (1, 3000, 'FEB'),
+    (2, 200, 'FEB'),
+    (2, 90500, 'FEB'),
+    (1, 6000, 'MAR'),
+    (1, 5000, 'MAR'),
+    (2, 2500, 'MAR'),
+    (2, 9500, 'MAR'),
+    (1, 8000, 'APR'),
+    (1, 10000, 'APR'),
+    (2, 800, 'APR'),
+    (2, 4500, 'APR');
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount+1) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'DEC'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(COUNT(*) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'DEC') GROUP BY empid)
+      AS p
+  ORDER BY EMPID;
+SELECT empid, January, February, March, April
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('JAN' AS January, 'FEB' AS February, 'MAR' AS March, 'APR' AS April))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'DEC'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+FROM monthly_sales
+PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+  AS p (EMP_ID_renamed, JAN, FEB, MAR, APR)
+ORDER BY EMP_ID_renamed;
+INSERT INTO monthly_sales VALUES (1, 250, NULL);
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN (NULL, 'JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN (NULL, 'JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+    UNPIVOT INCLUDE NULLS(amount FOR MONTH IN ("NULL", JAN, FEB, MAR, APR))
+  ORDER BY ALL;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN (NULL, 'JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+    UNPIVOT EXCLUDE NULLS(amount FOR MONTH IN ("NULL", JAN, FEB, MAR, APR))
+  ORDER BY ALL;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN (NULL, 'JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+    UNPIVOT EXCLUDE NULLS(amount FOR MONTH IN ("NULL", JAN, FEB, MAR, APR))
+  ORDER BY EMPID;
+SELECT *
+FROM monthly_sales
+PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'JAN'))
+  AS p
+ORDER BY EMPID;
+SELECT *
+FROM monthly_sales
+PIVOT(COS(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+  AS p (EMP_ID_renamed, JAN, FEB, MAR, APR)
+ORDER BY EMP_ID_renamed;
+SELECT *
+FROM monthly_sales
+PIVOT(SUM(amount + (SELECT 42)) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+  AS p (EMP_ID_renamed, JAN, FEB, MAR, APR)
+ORDER BY EMP_ID_renamed;
+SELECT *
+FROM monthly_sales
+PIVOT(SUM(amount + row_number() over ()) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+  AS p (EMP_ID_renamed, JAN, FEB, MAR, APR)
+ORDER BY EMP_ID_renamed;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTHx IN ('JAN', 'FEB', 'MAR', 'DEC'))
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ())
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN (*))
+      AS p
+  ORDER BY EMPID;
+FROM
+(
+  SELECT DaysToManufacture, StandardCost
+  FROM Product
+) AS SourceTable
+PIVOT
+(
+  AVG(StandardCost)
+  FOR DaysToManufacture IN ('zz')
+) AS PivotTable;
+PRAGMA enable_verification;
+CREATE TABLE Product(DaysToManufacture int, StandardCost int GENERATED ALWAYS AS (DaysToManufacture * 5));
+INSERT INTO Product VALUES (0), (1), (2), (4);
+SELECT 'AverageCost' AS Cost_Sorted_By_Production_Days,
+  "0", "1", "2", "3", "4"
+FROM
+(
+  SELECT DaysToManufacture, StandardCost
+  FROM Product
+) AS SourceTable
+PIVOT
+(
+  AVG(StandardCost)
+  FOR DaysToManufacture IN (0, 1, 2, 3, 4)
+) AS PivotTable;
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+SET pivot_filter_threshold=99;
+PIVOT Cities ON Country, Name IN ('xx') USING SUM(Population);
+PIVOT Cities ON Year USING SUM(Population);
+SELECT Country, Name, "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (PIVOT Cities ON Year USING SUM(Population) as total_pop);
+PIVOT_WIDER Cities ON Year USING SUM(Population);
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
+PIVOT Cities ON Year USING SUM(Population) GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population)
+UNION ALL BY NAME
+PIVOT Cities ON Name USING SUM(Population);
+FROM
+	(PIVOT Cities ON Year USING SUM(Population) GROUP BY Country)
+JOIN
+	(PIVOT Cities ON Name USING SUM(Population) GROUP BY Country)
+USING (Country);
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
+PIVOT (SELECT Country, Population, Year FROM Cities) ON Year USING SUM(Population) as sum_pop, count(population) as count_pop,;
+PIVOT Cities ON Year USING SUM(Population) as sum_pop, count(population) as count_pop, GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population), count(population) GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country desc;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country desc LIMIT 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country LIMIT 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country LIMIT 1 OFFSET 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY ALL;
+SET pivot_filter_threshold=0;
+PIVOT Cities ON Country, Name IN ('xx') USING SUM(Population);
+PIVOT Cities ON Year USING SUM(Population);
+SELECT Country, Name, "2000_total_pop", "2010_total_pop", "2020_total_pop" FROM (PIVOT Cities ON Year USING SUM(Population) as total_pop);
+PIVOT_WIDER Cities ON Year USING SUM(Population);
+FROM Cities PIVOT (SUM(Population) FOR Year IN (2000, 2010, 2020));
+PIVOT Cities ON Year IN (2000, 2020) USING SUM(Population);
+PIVOT Cities ON Year USING SUM(Population) GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population)
+UNION ALL BY NAME
+PIVOT Cities ON Name USING SUM(Population);
+FROM
+	(PIVOT Cities ON Year USING SUM(Population) GROUP BY Country)
+JOIN
+	(PIVOT Cities ON Name USING SUM(Population) GROUP BY Country)
+USING (Country);
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
+PIVOT (SELECT Country, Population, Year FROM Cities) ON Year USING SUM(Population) as sum_pop, count(population) as count_pop,;
+PIVOT Cities ON Year USING SUM(Population) as sum_pop, count(population) as count_pop, GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population), count(population) GROUP BY Country;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country desc;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country desc LIMIT 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country LIMIT 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY country LIMIT 1 OFFSET 1;
+PIVOT Cities ON Year USING SUM(Population) GROUP BY country ORDER BY ALL;
+SET pivot_filter_threshold=0;
+CREATE TABLE PivotedCities AS PIVOT Cities ON Year USING SUM(Population);
+UNPIVOT PivotedCities ON 2000, 2010, 2020 INTO NAME Year VALUE Population;
+FROM PivotedCities UNPIVOT(Population FOR Year IN (2000, 2010, 2020));
+UNPIVOT PivotedCities ON 2000, 2010, 2020;
+UNPIVOT PivotedCities ON COLUMNS('\d+');
+UNPIVOT PivotedCities ON * EXCLUDE (Country, Name);
+PIVOT_LONGER PivotedCities ON 2000, 2010, 2020;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL DESC LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY ALL LIMIT 1;
+UNPIVOT PivotedCities ON 2000, 2010, 2020 ORDER BY 1 LIMIT 1 OFFSET 1;
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+PIVOT Cities ON Country || '_' || Name USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON (CASE WHEN Country='NL' THEN NULL ELSE Country END) USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON min(Country) over () USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON min(Country) USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON NULL USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON 'hello world' USING SUM(Population) GROUP BY Year;
+PIVOT Cities ON (SELECT COUNTRY) USING SUM(Population) GROUP BY Year;
+PRAGMA enable_verification;
+unpivot (select cast(columns(*) as varchar) from (select 42 as col1, 'woot' as col2))
+    on columns(*);
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE sales(empid INT, amount INT, month TEXT, year INT);
+INSERT INTO sales VALUES
+    (1, 10000, 'JAN', 2020),
+    (1, 400, 'JAN', 2021),
+    (2, 4500, 'JAN', 2021),
+    (2, 35000, 'JAN', 2020),
+    (1, 5000, 'FEB', 2020),
+    (1, 3000, 'FEB', 2021),
+    (2, 200, 'FEB', 2021),
+    (2, 90500, 'FEB', 2020),
+    (1, 6000, 'MAR', 2021),
+    (1, 5000, 'MAR', 2021),
+    (2, 2500, 'MAR', 2021),
+    (2, 9500, 'MAR', 2021),
+    (1, 8000, 'APR', 2020),
+    (1, 10000, 'APR', 2020),
+    (2, 800, 'APR', 2021),
+    (2, 4500, 'APR', 2020);
+SELECT *
+  FROM sales
+    PIVOT(
+        SUM(amount)
+        FOR YEAR IN (2020, 2021)
+            MONTH IN ('JAN', 'FEB', 'MAR', 'APR')
+    ) AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM sales
+    PIVOT(
+        SUM(amount + year)
+        FOR YEAR IN (2020, 2021)
+            MONTH IN ('JAN', 'FEB', 'MAR', 'APR')
+    ) AS p
+  ORDER BY EMPID;
+SET pivot_limit=10000;
+SELECT *
+  FROM sales
+    PIVOT(
+    	SUM(amount)
+    	FOR YEAR IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+    		MONTH IN ('JAN', 'FEB', 'MAR', 'APR')
+    		amount IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+    		empid IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+    ) AS p
+  ORDER BY EMPID;
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+PIVOT Cities ON Year IN (SELECT Year FROM Cities ORDER BY Year DESC) USING SUM(Population);
+PIVOT Cities ON Year IN (SELECT YEAR FROM (SELECT Year, SUM(POPULATION) AS popsum FROM Cities GROUP BY Year ORDER BY popsum DESC)) USING SUM(Population);
+PIVOT Cities ON Year IN (SELECT '2010' UNION ALL SELECT '2000' UNION ALL SELECT '2020') USING SUM(Population);
+PIVOT Cities ON Year IN (SELECT xx FROM Cities) USING SUM(Population);
+PRAGMA enable_verification;
+CREATE TABLE t1(id BIGINT, "Sales (05/19/2020)" BIGINT, "Sales (06/03/2020)" BIGINT, "Sales (10/23/2020)" BIGINT);
+INSERT INTO t1 VALUES(10629465, 23, 47, 99);
+INSERT INTO t1 VALUES(98765432, 10, 99, 33);
+SELECT id, regexp_replace(date, 'Sales [(]([0-9]+)/([0-9]+)/([0-9]+)[)]', '\3-\1-\2')::DATE AS date, sales
+FROM t1
+    UNPIVOT (sales FOR date IN ("Sales (05/19/2020)", "Sales (06/03/2020)", "Sales (10/23/2020)"))
+ ORDER BY ALL;
+SELECT id, regexp_replace(date, 'Sales [(]([0-9]+)/([0-9]+)/([0-9]+)[)]', '\3-\1-\2')::DATE AS date, sales
+FROM
+    (UNPIVOT t1 ON "Sales (05/19/2020)", "Sales (06/03/2020)", "Sales (10/23/2020)" INTO NAME date VALUE sales)
+ ORDER BY ALL;
+SELECT *
+FROM
+	(UNPIVOT t1 ON "Sales (05/19/2020)" AS "2020-05-19", "Sales (06/03/2020)" AS "2020-06-03", "Sales (10/23/2020)" AS "2020-10-23" INTO NAME date VALUE sales)
+ORDER BY ALL;
+SELECT id, regexp_replace(date, 'Sales [(]([0-9]+)/([0-9]+)/([0-9]+)[)]', '\3-\1-\2')::DATE AS date, sales FROM t1
+    UNPIVOT (Sales FOR Date IN (COLUMNS('Sales.*')))
+ ORDER BY ALL;
+SELECT id, regexp_replace(date, 'Sales [(]([0-9]+)/([0-9]+)/([0-9]+)[)]', '\3-\1-\2')::DATE AS date, sales
+FROM
+	(UNPIVOT t1 ON COLUMNS('Sales.*') INTO NAME date VALUE sales)
+ORDER BY ALL;
+SELECT id, regexp_replace(date, 'Sales [(]([0-9]+)/([0-9]+)/([0-9]+)[)]', '\3-\1-\2')::DATE AS date, sales
+FROM
+	(UNPIVOT t1 ON * EXCLUDE (id) INTO NAME date VALUE sales)
+ORDER BY ALL;
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE sales(empid INT, amount INT, d DATE);
+INSERT INTO sales VALUES
+    (1, 10000, DATE '2000-01-01'),
+    (1, 400, DATE '2000-01-07'),
+    (2, 4500, DATE '2001-01-21'),
+    (2, 35000, DATE '2001-01-21'),
+    (1, 5000, DATE '2000-02-03'),
+    (1, 3000, DATE '2000-02-07'),
+    (2, 200, DATE '2001-02-05'),
+    (2, 90500, DATE '2001-02-19'),
+    (1, 6000, DATE '2000-03-01'),
+    (1, 5000, DATE '2000-03-09'),
+    (2, 2500, DATE '2001-03-03'),
+    (2, 9500, DATE '2001-03-08');
+PIVOT (SELECT YEAR(d) AS year, MONTH(d) AS month, empid, amount FROM sales) ON YEAR, MONTH USING SUM(AMOUNT) ORDER BY ALL;
+PIVOT (PIVOT (SELECT YEAR(d) AS year, MONTH(d) AS month, empid, amount FROM sales) ON YEAR, MONTH USING SUM(AMOUNT))
+ON empid USING SUM(COALESCE("2000_1",0) + COALESCE("2000_2",0) + COALESCE("2000_3",0) + COALESCE("2001_1",0) + COALESCE("2001_2",0) + COALESCE("2001_3",0));
+CREATE VIEW pivot_view AS PIVOT (SELECT YEAR(d) AS year, MONTH(d) AS month, empid, amount FROM sales) ON YEAR, MONTH USING SUM(AMOUNT);
+CREATE MACRO xt2(a) as TABLE PIVOT sales ON d USING SUM(amount);
+CREATE MACRO xt2(a) as (PIVOT sales ON d USING SUM(amount));
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, '1-JAN'),
+    (1, 400, '1-JAN'),
+    (2, 4500, '1-JAN'),
+    (2, 35000, '1-JAN'),
+    (1, 5000, '2-FEB'),
+    (1, 3000, '2-FEB'),
+    (2, 200, '2-FEB'),
+    (2, 90500, '2-FEB'),
+    (1, 6000, '3-MAR'),
+    (1, 5000, '3-MAR'),
+    (2, 2500, '3-MAR'),
+    (2, 9500, '3-MAR'),
+    (1, 8000, '4-APR'),
+    (1, 10000, '4-APR'),
+    (2, 800, '4-APR'),
+    (2, 4500, '4-APR');
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT);
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT));
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR') USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH IN ('1-JAN', '2-FEB', '3-MAR') USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid;
+ALTER TABLE monthly_sales ADD COLUMN status VARCHAR;
+UPDATE monthly_sales SET status=CASE WHEN amount >= 10000 THEN 'important' ELSE 'regular' END;
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT)) ORDER BY ALL;
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid ORDER BY ALL;
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY status) ORDER BY ALL;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR') GROUP BY status)
+      AS p
+  ORDER BY 1;
+WITH pivoted_sales AS (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid)
+SELECT * FROM pivoted_sales ORDER BY empid DESC;
+WITH pivoted_sales AS MATERIALIZED (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid)
+SELECT * FROM pivoted_sales ORDER BY empid DESC;
+CREATE VIEW v1 AS PIVOT monthly_sales ON MONTH USING SUM(AMOUNT);
+CREATE VIEW v1 AS PIVOT monthly_sales ON MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR') USING SUM(AMOUNT) GROUP BY empid ORDER BY ALL;
+FROM v1;
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, 'JAN'),
+    (1, 400, 'JAN'),
+    (2, 4500, 'JAN'),
+    (2, 35000, 'JAN'),
+    (1, 5000, 'FEB'),
+    (1, 3000, 'FEB'),
+    (2, 200, 'FEB'),
+    (2, 90500, 'FEB'),
+    (1, 6000, 'MAR'),
+    (1, 5000, 'MAR'),
+    (2, 2500, 'MAR'),
+    (2, 9500, 'MAR'),
+    (1, 8000, 'APR'),
+    (1, 10000, 'APR'),
+    (2, 800, 'APR'),
+    (2, 4500, 'APR');
+CREATE TYPE unique_months AS ENUM (SELECT DISTINCT month FROM monthly_sales ORDER BY
+	CASE month WHEN 'JAN' THEN 1 WHEN 'FEB' THEN 2 WHEN 'MAR' THEN 3 ELSE 4 END);
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN unique_months)
+      AS p
+  ORDER BY EMPID;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN unique_monthsx)
+      AS p
+  ORDER BY EMPID;
+CREATE TYPE not_an_enum AS VARCHAR;
+SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN not_an_enum)
+      AS p
+  ORDER BY EMPID;
+PRAGMA enable_verification;
+CREATE TABLE test(i INT, j VARCHAR);
+PIVOT test ON j IN ('a', 'b') USING SUM(test.i);
+SET pivot_filter_threshold=0;
+PIVOT test ON j IN ('a', 'b') USING current_date();
+SET pivot_filter_threshold=100;
+PIVOT test ON j IN ('a', 'b') USING current_date();
+PIVOT test ON j IN ('a', 'b') USING sum(41) over ();
+PIVOT test ON j IN ('a', 'b') USING sum(sum(41) over ());
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, 'JAN'),
+    (1, 400, 'JAN'),
+    (2, 4500, 'JAN'),
+    (2, 35000, 'JAN'),
+    (1, 5000, 'FEB'),
+    (1, 3000, 'FEB'),
+    (2, 200, 'FEB'),
+    (2, 90500, 'FEB'),
+    (1, 6000, 'MAR'),
+    (1, 5000, 'MAR'),
+    (2, 2500, 'MAR'),
+    (2, 9500, 'MAR'),
+    (1, 8000, 'APR'),
+    (1, 10000, 'APR'),
+    (2, 800, 'APR'),
+    (2, 4500, 'APR');
+CREATE VIEW v1 AS SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+  ORDER BY EMPID;
+CREATE MACRO pivot_macro(val)
+as TABLE SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount + val) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+  ORDER BY EMPID;
+FROM v1;
+FROM pivot_macro(1);
+FROM v1;
+FROM pivot_macro(1);
+PRAGMA enable_verification;
+unpivot (select 42 as col1, 'woot' as col2)
+    on col1::VARCHAR, col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on COLUMNS(*)::VARCHAR;
+unpivot (select 42 as col1, 'woot' as col2)
+    on (col1 + 100)::VARCHAR, col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on (col1 + 100)::VARCHAR AS c, col2;
+select * from (select 42 as col1, 'woot' as col2) UNPIVOT ("value" FOR "name" IN (col1::VARCHAR, col2));
+unpivot (select 42 as col1, 'woot' as col2)
+    on (col1 + (SELECT col1))::VARCHAR, col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on random(), col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on col1 + col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on t.col1::VARCHAR, col2;
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+pivot cities on (Country='NL') using avg(Population) group by name;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
+PRAGMA enable_verification;
+CREATE TABLE test(id BIGINT, metric_1 VARCHAR, value_x VARCHAR, metric_2 VARCHAR, value_q VARCHAR, metric_3 VARCHAR, value_j VARCHAR);;
+INSERT INTO test VALUES(1,'a','a_value','b','b_value','c','c_value');
+INSERT INTO test VALUES(2,'d','d_value','e','e_value','f','f_value');
+UNPIVOT test ON (metric_1, value_x), metric_2, metric_3;
+UNPIVOT test ON (metric_1, value_x), (metric_2, value_q), (metric_3, value_j) INTO NAME metric VALUE metric_value;
+UNPIVOT test ON (metric_1, value_x), (metric_2, value_q), (metric_3, value_j) INTO NAME metric VALUES metric_value, metric_type;
+PRAGMA enable_verification;
+CREATE TABLE Produce AS
+  SELECT 'Kale' as product, 51 as sales, 'Q1' as quarter, 2020 as year UNION ALL
+  SELECT 'Kale', 23, 'Q2', 2020 UNION ALL
+  SELECT 'Kale', 45, 'Q3', 2020 UNION ALL
+  SELECT 'Kale', 3, 'Q4', 2020 UNION ALL
+  SELECT 'Kale', 70, 'Q1', 2021 UNION ALL
+  SELECT 'Kale', 85, 'Q2', 2021 UNION ALL
+  SELECT 'Apple', 77, 'Q1', 2020 UNION ALL
+  SELECT 'Apple', 0, 'Q2', 2020 UNION ALL
+  SELECT 'Apple', 1, 'Q1', 2021;
+SELECT * FROM Produce
+PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2', 'Q3', 'Q4'))
+ORDER BY ALL;
+SELECT * FROM
+  (SELECT product, sales, quarter FROM Produce)
+  PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2', 'Q3', 'Q4'))
+ORDER BY ALL;
+SELECT * FROM
+  (SELECT product, sales, quarter FROM Produce)
+  PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2', 'Q3'))
+  ORDER BY ALL;
+SELECT * FROM
+  (SELECT sales, quarter FROM Produce)
+  PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2', 'Q3'))
+  ORDER BY ALL;
+SELECT * FROM
+  (SELECT product, sales, quarter FROM Produce)
+  PIVOT(SUM(sales) total_sales, COUNT(*) num_records FOR quarter IN ('Q1', 'Q2'))
+ORDER BY ALL;
+CREATE OR REPLACE TABLE Produce AS
+  SELECT 'Kale' as product, 51 as Q1, 23 as Q2, 45 as Q3, 3 as Q4 UNION ALL
+  SELECT 'Apple', 77, 0, 25, 2;
+SELECT * FROM Produce
+UNPIVOT(sales FOR quarter IN (Q1, Q2, Q3, Q4))
+ORDER BY ALL;
+SELECT product, first_half_sales, second_half_sales, semesters FROM Produce
+UNPIVOT(
+  (first_half_sales, second_half_sales)
+  FOR semesters
+  IN ((Q1, Q2) AS 'semester_1', (Q3, Q4) AS 'semester_2'));
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+PIVOT Cities USING SUM(Population);
+PIVOT Cities USING SUM(Population) GROUP BY Country;
+PIVOT Cities GROUP BY Country;
+PIVOT Cities ON Year GROUP BY Country;
+PIVOT (SELECT Country, Year FROM Cities) ON Year;
+PRAGMA enable_verification;
+CREATE TEMP VIEW sales(year, quarter, region, sales) AS
+   VALUES (2018, 1, 'east', 100),
+          (2018, 2, 'east',  20),
+          (2018, 3, 'east',  40),
+          (2018, 4, 'east',  40),
+          (2019, 1, 'east', 120),
+          (2019, 2, 'east', 110),
+          (2019, 3, 'east',  80),
+          (2019, 4, 'east',  60),
+          (2018, 1, 'west', 105),
+          (2018, 2, 'west',  25),
+          (2018, 3, 'west',  45),
+          (2018, 4, 'west',  45),
+          (2019, 1, 'west', 125),
+          (2019, 2, 'west', 115),
+          (2019, 3, 'west',  85),
+          (2019, 4, 'west',  65);
+SELECT year, region, q1, q2, q3, q4
+  FROM sales
+  PIVOT (sum(sales)
+    FOR quarter
+    IN (1 AS q1, 2 AS q2, 3 AS q3, 4 AS q4));
+SELECT year, q1_east, q1_west, q2_east, q2_west, q3_east, q3_west, q4_east, q4_west
+    FROM sales
+    PIVOT (sum(sales)
+      FOR (quarter, region)
+      IN ((1, 'east') AS q1_east, (1, 'west') AS q1_west, (2, 'east') AS q2_east, (2, 'west') AS q2_west,
+          (3, 'east') AS q3_east, (3, 'west') AS q3_west, (4, 'east') AS q4_east, (4, 'west') AS q4_west));
+SELECT year, q1_east, q1_west, q2_east, q2_west, q3_east, q3_west, q4_east, q4_west
+    FROM sales
+    PIVOT (sum(sales)
+      FOR (quarter, region, too_many_names)
+      IN ((1, 'east') AS q1_east, (1, 'west') AS q1_west, (2, 'east') AS q2_east, (2, 'west') AS q2_west,
+          (3, 'east') AS q3_east, (3, 'west') AS q3_west, (4, 'east') AS q4_east, (4, 'west') AS q4_west));
+SELECT year, q1_east, q1_west, q2_east, q2_west, q3_east, q3_west, q4_east, q4_west
+    FROM sales
+    PIVOT (sum(sales)
+      FOR (quarter, region)
+      IN ((1, 'east', 'west') AS q1_east, (1, 'west') AS q1_west, (2, 'east') AS q2_east, (2, 'west') AS q2_west,
+          (3, 'east') AS q3_east, (3, 'west') AS q3_west, (4, 'east') AS q4_east, (4, 'west') AS q4_west));
+SELECT *
+    FROM sales
+    PIVOT (sum(sales)
+      FOR (quarter, region)
+      IN ((1, 'east') AS q1_east, (1, 'east') AS q1_east_2));
+SELECT year, q1, q2, q3, q4
+  FROM (SELECT year, quarter, sales FROM sales) AS s
+  PIVOT (sum(sales)
+    FOR quarter
+    IN (1 AS q1, 2 AS q2, 3 AS q3, 4 AS q4));
+SELECT year, q1_total, q1_avg, q2_total, q2_avg, q3_total, q3_avg, q4_total, q4_avg
+    FROM (SELECT year, quarter, sales FROM sales) AS s
+    PIVOT (sum(sales) AS total, avg(sales) AS avg
+      FOR quarter
+      IN (1 AS q1, 2 AS q2, 3 AS q3, 4 AS q4));
+SELECT *
+    FROM (SELECT year, quarter, sales FROM sales) AS s
+    PIVOT (sum(sales), avg(sales)
+      FOR quarter
+      IN (1 AS q1, 2 AS q2, 3 AS q3, 4 AS q4));
+CREATE OR REPLACE TEMPORARY VIEW sales(location, year, q1, q2, q3, q4) AS
+  VALUES ('Toronto'      , 2020, 100 , 80 , 70, 150),
+         ('San Francisco', 2020, NULL, 20 , 50,  60),
+         ('Toronto'      , 2021, 110 , 90 , 80, 170),
+         ('San Francisco', 2021, 70  , 120, 85, 105);
+SELECT *
+    FROM sales UNPIVOT INCLUDE NULLS
+    (sales FOR quarter IN (q1       AS "Jan-Mar",
+                           q2       AS "Apr-Jun",
+                           q3       AS "Jul-Sep",
+                           q4 AS "Oct-Dec"));
+CREATE OR REPLACE TEMPORARY VIEW oncall
+         (year, week, area      , name1   , email1              , phone1     , name2   , email2              , phone2) AS
+  VALUES (2022, 1   , 'frontend', 'Freddy', 'fred@alwaysup.org' , 15551234567, 'Fanny' , 'fanny@lwaysup.org' , 15552345678),
+         (2022, 1   , 'backend' , 'Boris' , 'boris@alwaysup.org', 15553456789, 'Boomer', 'boomer@lwaysup.org', 15554567890),
+         (2022, 2   , 'frontend', 'Franky', 'frank@lwaysup.org' , 15555678901, 'Fin'   , 'fin@alwaysup.org'  , 15556789012),
+         (2022, 2   , 'backend' , 'Bonny' , 'bonny@alwaysup.org', 15557890123, 'Bea'   , 'bea@alwaysup.org'  , 15558901234);
+SELECT *
+    FROM oncall UNPIVOT ((name, email, phone) FOR precedence IN ((name1, email1, phone1) AS primary,
+                                                                 (name2, email2, phone2) AS secondary));
+PRAGMA enable_verification;
+CREATE TABLE Cities(Country VARCHAR, Name VARCHAR, Year INT, Population INT);
+PIVOT Cities ON Country USING SUM(Population);
+PIVOT Cities ON Country, Name USING SUM(Population);
+PIVOT Cities ON Country IN ('xx') USING SUM(Population);
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
+PIVOT Cities ON Country IN ('xx', 'yy') USING SUM(Population);
+PRAGMA enable_verification;
+CREATE TABLE cpb_tbl AS
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+) FROM CPB;
+pivot cpb_tbl on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf IN (2010, 2017, 2018, 2022) using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+SELECT *
+FROM  (pivot CPB on nf using sum(jg)group by cpdh);
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+from CPB pivot (sum(jg) for nf in (2010, 2017, 2018, 2022) group by cpdh);
+WITH CPB AS (SELECT 42)
+SELECT *
+FROM  (
+	WITH CPB(CPDH,NF,JG) AS (
+		SELECT 'C1',2022,10
+		UNION ALL
+		SELECT 'C1',2018,20
+		UNION ALL
+		SELECT 'C1',2017,0
+		UNION ALL
+		SELECT 'C2',2022,10
+		UNION ALL
+		SELECT 'C2',2010,30
+		UNION ALL
+		SELECT 'C3',2010,80
+	)
+	pivot CPB on nf using sum(jg) group by cpdh);
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf IN (2010, 2017, 2018, 2022) using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+SELECT *
+FROM  (pivot CPB on nf using sum(jg)group by cpdh);
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+from CPB pivot (sum(jg) for nf in (2010, 2017, 2018, 2022) group by cpdh);
+WITH CPB AS (SELECT 42)
+SELECT *
+FROM  (
+	WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+		SELECT 'C1',2022,10
+		UNION ALL
+		SELECT 'C1',2018,20
+		UNION ALL
+		SELECT 'C1',2017,0
+		UNION ALL
+		SELECT 'C2',2022,10
+		UNION ALL
+		SELECT 'C2',2010,30
+		UNION ALL
+		SELECT 'C3',2010,80
+	)
+	pivot CPB on nf using sum(jg) group by cpdh);
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, '1-JAN'),
+    (1, 400, '1-JAN'),
+    (2, 4500, '1-JAN'),
+    (2, 35000, '1-JAN'),
+    (1, 5000, '2-FEB'),
+    (1, 3000, '2-FEB'),
+    (2, 200, '2-FEB'),
+    (2, 90500, '2-FEB'),
+    (1, 6000, '3-MAR'),
+    (1, 5000, '3-MAR'),
+    (2, 2500, '3-MAR'),
+    (2, 9500, '3-MAR'),
+    (1, 8000, '4-APR'),
+    (1, 10000, '4-APR'),
+    (2, 800, '4-APR'),
+    (2, 4500, '4-APR');
+PREPARE v1 AS SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount + ?) FOR MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR'))
+      AS p
+  ORDER BY EMPID;
+EXECUTE v1(0);
+EXECUTE v1(1);
+PREPARE v2 AS
+   PIVOT monthly_sales ON MONTH USING SUM(AMOUNT + ?);
+EXECUTE v2(1);
+PREPARE v3 AS
+   PIVOT (SELECT empid, amount + ? AS amount, month FROM monthly_sales) ON MONTH USING SUM(AMOUNT);
+PRAGMA enable_verification;
+CREATE OR REPLACE TABLE monthly_sales(empid INT, dept TEXT, Jan INT, Feb INT, Mar INT, April INT);
+INSERT INTO monthly_sales VALUES
+    (1, 'electronics', 100, 200, 300, 100),
+    (2, 'clothes', 100, 300, 150, 200),
+    (3, 'cars', 200, 400, 100, 50);
+SELECT * FROM monthly_sales
+    UNPIVOT(sales FOR month IN (jan, feb, mar, april))
+    ORDER BY empid;
+SELECT empid, dept, april, month, sales FROM monthly_sales
+    UNPIVOT(sales FOR month IN (jan, feb, mar))
+    ORDER BY empid;
+SELECT * FROM monthly_sales
+    UNPIVOT(sales FOR month IN (jan AS January, feb AS February, mar AS March, april))
+    ORDER BY empid;
+SELECT p.id, p.type, p.m, p.vals FROM monthly_sales
+    UNPIVOT(sales FOR month IN (jan, feb, mar, april)) AS p(id, type, m, vals);
+SELECT empid, dept, month, sales_jan_feb, sales_mar_apr FROM monthly_sales
+    UNPIVOT((sales_jan_feb, sales_mar_apr) FOR month IN ((jan, feb), (mar, april)));
+SELECT * FROM monthly_sales
+    UNPIVOT((sales_jan_feb, sales_mar_apr) FOR (month, month2) IN ((jan, feb), (mar, april)));
+SELECT * FROM monthly_sales
+    UNPIVOT(sales_jan_feb FOR month IN ((jan, feb), (mar, april)));
+SELECT * FROM monthly_sales
+    UNPIVOT((a, b, c) FOR month IN ((jan, feb), (mar, april)));
+SELECT empid, dept, month, sales_jan_feb, sales_mar_apr FROM monthly_sales
+    UNPIVOT((sales_jan_feb, sales_mar_apr) FOR month IN ((jan, feb), mar));
+SELECT empid, dept, april, month, sales FROM monthly_sales
+    UNPIVOT(sales FOR month IN (jan, feb, mar, dec))
+    ORDER BY empid;
+SELECT * FROM monthly_sales
+    UNPIVOT(sales FOR month IN (empid, dept, jan, feb, mar, april));
+UNPIVOT (SELECT * FROM monthly_sales)
+    ON jan, feb, mar april
+    INTO
+        NAME month
+        VALUE sales;
+SELECT * FROM monthly_sales
+    UNPIVOT(sales FOR month IN ())
+    ORDER BY empid;
+SELECT * FROM monthly_sales
+    UNPIVOT(sales FOR month IN (''))
+    ORDER BY empid;
+SELECT * FROM monthly_sales
+    UNPIVOT(SUM(sales) FOR month IN (empid, dept, jan, feb, mar, april));

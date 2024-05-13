@@ -1,0 +1,1 @@
+SELECT pk FROM tab0 WHERE (col0 BETWEEN 67 AND 0 OR col0 > 17 AND (col0 > 3));

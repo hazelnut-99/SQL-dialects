@@ -1,0 +1,291 @@
+PRAGMA enable_verification;
+with test_data as (
+  select 'foo' as a
+)
+select test_data.foobar as new_column from test_data where new_column is not null;
+pragma enable_verification;
+create table test as select range i from range(3);
+select test from test;
+select test from main.test;
+select main.test from main.test;
+SELECT t FROM test AS t;
+select t from (SELECT * FROM test) AS t;
+select main.test from main.test t;
+select main.t from main.test t;
+WITH data AS (
+    SELECT 1 as a, 2 as b, 3 as c
+)
+SELECT d FROM data d;
+create table main as select 3 test;
+select main.test from main, test;
+select test from main, test;
+create table structs as select {test: 4} main;
+select main.test from structs, test;
+PRAGMA enable_verification;
+SELECT NULL;
+SELECT NULL UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT NULL UNION ALL SELECT NULL;
+SELECT NULL UNION ALL SELECT NULL UNION ALL SELECT NULL UNION ALL SELECT NULL UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT (SELECT NULL) UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT * FROM (SELECT NULL) tbl(i) UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT * FROM (SELECT (SELECT NULL) UNION ALL SELECT CAST(1 AS BOOLEAN)) tbl(i);
+SELECT * FROM (SELECT NULL) tbl(i) UNION ALL SELECT NULL;
+SELECT bool_and(i) FROM (SELECT * FROM (SELECT NULL) tbl(i) UNION ALL SELECT CAST(1 as BOOLEAN)) tbl(i);
+SELECT bool_and(i) FROM (SELECT * FROM (SELECT NULL::INTEGER) tbl(i) UNION ALL SELECT CAST(1 as BOOLEAN)) tbl(i);
+SELECT * FROM (SELECT NULL) tbl(i), (SELECT NULL) tbl2(j);
+SELECT bool_and(i), bool_and(j) FROM (SELECT NULL) tbl(i), (SELECT NULL) tbl2(j);
+SELECT NULL as a, NULL as b, 1 as id UNION SELECT CAST(1 AS BOOLEAN) as a, CAST(0 AS BOOLEAN) as b, 2 as id;
+SELECT CAST(1 AS BOOLEAN) as a, CAST(0 AS BOOLEAN) as b, 1 as id UNION SELECT NULL as a, NULL as b, 2 as id;
+SELECT NULL::INTEGER as a, NULL::INTEGER as b, 1 as id UNION SELECT CAST(1 AS BOOLEAN) as a, CAST(0 AS BOOLEAN) as b, 2 as id;
+SELECT CAST(1 AS BOOLEAN) as a, CAST(0 AS BOOLEAN) as b, 1 as id UNION SELECT NULL::INTEGER as a, NULL::INTEGER as b, 2 as id;
+CREATE TABLE tbl AS SELECT NULL UNION ALL SELECT NULL;
+SELECT * FROM tbl;
+SELECT typeof(#1) FROM tbl LIMIT 1;
+CREATE VIEW v1 AS SELECT NULL;
+SELECT * FROM v1;
+SELECT * FROM v1 UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT typeof(#1) FROM v1;
+CREATE VIEW v2 AS SELECT NULL UNION ALL SELECT NULL;
+SELECT * FROM v2;
+SELECT * FROM v2 UNION ALL SELECT CAST(1 AS BOOLEAN);
+SELECT typeof(#1) FROM v2 LIMIT 1;
+SELECT [NULL];
+SELECT [NULL] UNION ALL SELECT [True];
+SELECT {'x': NULL};
+SELECT {'x': NULL} UNION ALL SELECT {'x': True};
+WITH cte AS (SELECT NULL)
+SELECT * FROM cte;
+WITH cte AS (SELECT NULL)
+SELECT * FROM cte UNION ALL SELECT CAST(1 AS BOOLEAN);
+create table tbl (str varchar);
+insert into tbl values ('ABCDE'), ('aBcDe');
+insert into tbl values ('àbcdë');
+insert into tbl values ('ÀbCdÈ');
+select * from tbl where str in ('AbCdE');
+select * from tbl where str collate nocase in ('abcde');
+select * from tbl where str collate noaccent in ('abcde');
+select * from tbl where str collate nocase.noaccent in ('abcde');
+select * from tbl where str not in ('abcde');
+select * from tbl where str collate nocase not in ('abcde');
+select * from tbl where str collate noaccent not in ('abcde');
+select * from tbl where str collate nocase.noaccent not in ('abcde');
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (NULL);
+SELECT i % 2 AS p, SUM(i) AS sum_i FROM integers GROUP BY p ORDER BY 1;
+SELECT alias(i % 2) AS p, alias(SUM(i)) AS sum_i FROM integers GROUP BY p ORDER BY 1;
+SELECT i + 1 + 1 + 1 AS k, abs(i) AS l FROM integers WHERE i=1 ORDER BY 1;
+SELECT alias(i + 1 + 1 + 1) AS k, alias(abs(i)) AS l FROM integers WHERE i=1 ORDER BY 1;
+SELECT alias(i) AS k, alias(i IN (1)) AS l, alias(i >= 10) AS m, alias(1=0) AS n FROM integers WHERE i=1 ORDER BY 1;
+SELECT alias(CASE WHEN i=1 THEN 19 ELSE 0 END) AS k, alias(i::VARCHAR) AS l FROM integers WHERE i=1 ORDER BY 1;
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (42, 10), (43, 100);
+SELECT a, b, a * 2 AS c, b * (a * 2) AS d FROM test ORDER BY a;
+SELECT alias(a), alias(b), alias(a * 2) AS c, alias(b * (a * 2)) AS d FROM test ORDER BY a;
+select i as b, b as c, c as d, d as e from integers where e = 3;
+PRAGMA enable_verification;
+select '01'=1;
+SELECT cos('0');
+select date '1992-01-01'>'1991-01-01';
+select date '2023-12-11' < '2023-12-11 15:54:45.119';
+CREATE TABLE test (
+    "date" DATE,
+    value VARCHAR
+);
+INSERT INTO test VALUES ('2023-08-01', 1), ('2023-08-02', 2), ('2023-08-03', 3), ('2023-08-04', 4), ('2023-08-05', 5), ('2023-08-06', 6), ('2023-08-07', 7);
+SELECT * FROM test WHERE date >= '2023-08-05 00:00:00' AND date < '2023-08-06 00:00:00';
+SELECT '[hello]'[1];
+SELECT list('hello world');
+select 1 IN ('1', '2');
+SELECT COALESCE(1, '1');
+select i=1 from (values ('01')) t(i);
+select i IN (1) from (values ('01')) t(i);
+WITH cte AS (SELECT '01' AS s)
+SELECT 1=s AS in_res FROM cte;
+WITH cte AS (SELECT '01' AS s)
+SELECT 1 IN (s) AS in_res FROM cte;
+select i>1 from (values ('01')) t(i);
+select date '1992-01-01'>i from (values ('1991-01-01')) t(i);
+select d[1] from (values (date '1992-01-01')) t(d);
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);
+SELECT i AS 'hello world' FROM integers;
+SELECT i 'hello world' FROM integers;
+SELECT i "hello world" FROM integers;
+SELECT i AS "hello world" FROM integers;
+SELECT "hello world".i FROM integers AS 'hello world';
+SELECT "hello world".i FROM integers 'hello world';
+PRAGMA enable_verification;
+CREATE TABLE src("Name" VARCHAR, CreatedAt TIMESTAMP, userID VARCHAR, "Version" VARCHAR, Clients BIGINT, HasDocumentation BOOLEAN, HasCustomAddress BOOLEAN, HasHostname BOOLEAN, RunningContainers BIGINT, HasActions BOOLEAN);
+CREATE VIEW model AS SELECT DISTINCT on(userID,  date_trunc('day', CreatedAt))  date_trunc('day', CreatedAt) AS CreatedAt, "Version", Clients, HasCustomAddress, HasHostname, RunningContainers, HasDocumentation, HasActions  FROM src WHERE name = 'events' ORDER BY userID, CreatedAt DESC;
+SELECT HasCustomAddress,count(*) AS total_records FROM model WHERE     1 = 1     AND CreatedAt >= '2023-12-01'     AND CreatedAt < '2023-12-13' GROUP BY     HasCustomAddress ORDER BY     true,     total_records DESC NULLS LAST LIMIT 250 OFFSET 0;
+CREATE OR REPLACE TABLE tbl (example VARCHAR);
+INSERT INTO tbl VALUES ('hello');
+SELECT (WITH keys AS (
+    		SELECT example AS k
+    	), nonNull AS (
+    		SELECT keys.k, example AS v
+    		FROM keys
+    		WHERE v IS NOT NULL
+    	)
+    	SELECT nonNull.v
+    	FROM nonNull
+)
+FROM tbl;
+PRAGMA enable_verification;
+SELECT typeof(100::UTINYINT + 1) == 'UTINYINT';
+SELECT typeof(100 + 1::UTINYINT) == 'UTINYINT';
+SELECT typeof(100::USMALLINT + 1) == 'USMALLINT';
+SELECT typeof(100 + 1::USMALLINT) == 'USMALLINT';
+SELECT typeof(100::UINTEGER + 1) == 'UINTEGER';
+SELECT typeof(100 + 1::UINTEGER) == 'UINTEGER';
+SELECT typeof(100::UBIGINT + 1) == 'UBIGINT';
+SELECT typeof(100 + 1::UBIGINT) == 'UBIGINT';
+SELECT typeof(100::TINYINT + 1) == 'TINYINT';
+SELECT typeof(100 + 1::TINYINT) == 'TINYINT';
+SELECT typeof(100::SMALLINT + 1) == 'SMALLINT';
+SELECT typeof(100 + 1::SMALLINT) == 'SMALLINT';
+SELECT typeof(100::INTEGER + 1) == 'INTEGER';
+SELECT typeof(100 + 1::INTEGER) == 'INTEGER';
+SELECT typeof(100::BIGINT + 1) == 'BIGINT';
+SELECT typeof(100 + 1::BIGINT) == 'BIGINT';
+SELECT typeof(1::TINYINT + 100);
+SELECT typeof(1::TINYINT + 10000);
+SELECT typeof(1.05 + 1);
+SELECT typeof(1 + 1);
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3);
+SELECT i + 1 AS a, a + 1 AS b FROM integers ORDER BY b;
+SELECT i + 1 AS a, a + a AS b, b + b AS c, c + c AS d FROM integers ORDER BY b;
+SELECT i + 1 AS i, i + 1 AS b FROM integers ORDER BY b;
+SELECT a + 1 AS b, i + 1 AS a FROM integers;
+SELECT RANDOM() AS a, a + 1 AS b FROM integers;
+create table orders as
+select
+    cast(random()*100 as integer) + 1 as customer_id,
+    date '2020-01-01' + interval (cast(random()*365*10 as integer)) days as order_date,
+    cast(random()*1000 as integer) as order_amount,
+from range(0, 1000)
+order by order_date;
+select
+    (select distinct date_trunc('month', order_date) from orders) as month,
+    (select sum(order_amount) from orders where date_trunc('month', order_date) = month) as revenue;
+CREATE TABLE integers AS SELECT 42 AS i, '5' AS v;
+SELECT i >= v FROM integers;
+SELECT i[1] FROM integers;
+SELECT [i, v] FROM integers;
+SET old_implicit_casting=true;
+SELECT i[1] FROM integers;
+SELECT i >= v FROM integers;
+SELECT [i, v] FROM integers;
+PRAGMA enable_verification;
+select count(*) from (select random() as num from range(20) where num > 0.9) where num <= 0.9;
+PRAGMA enable_verification;
+CREATE TABLE test ("HeLlO" INTEGER);
+INSERT INTO test VALUES (1);
+SELECT HeLlO FROM test;
+SELECT hello FROM test;
+SELECT "HeLlO" FROM test;
+SELECT "HELLO" FROM test;
+SELECT "HELLo" FROM test;
+SELECT alias(HeLlO) FROM test;
+SELECT alias(hello) FROM test;
+SELECT alias(x) FROM (SELECT HeLlO as x FROM test) tbl;
+SELECT test.HeLlO FROM test;
+SELECT test.hello FROM test;
+SELECT test."HeLlO" FROM test;
+SELECT test."HELLO" FROM test;
+SELECT test."HELLo" FROM test;
+UPDATE test SET hello=3;
+UPDATE test SET HeLlO=3;
+DROP TABLE test;
+CREATE TABLE test("HeLlO" INTEGER, "HELLO" INTEGER);
+CREATE TABLE test1("HeLlO" INTEGER);
+CREATE TABLE test2("HELLO" INTEGER);
+SELECT HeLlO FROM test1, test2;
+SELECT hello FROM test1, test2;
+SELECT "HeLlO" FROM test1, test2;
+SELECT "HELLO" FROM test1, test2;
+SELECT "HELLo" FROM test1, test2;
+SELECT test1.HeLlO FROM test1, test2;
+SELECT test1.hello FROM test1, test2;
+SELECT test1."HeLlO" FROM test1, test2;
+SELECT test1."HELLO" FROM test1, test2;
+SELECT test1."HELLo" FROM test1, test2;
+SELECT test2.HeLlO FROM test1, test2;
+SELECT test2.hello FROM test1, test2;
+SELECT test2."HeLlO" FROM test1, test2;
+SELECT test2."HELLO" FROM test1, test2;
+SELECT test2."HELLo" FROM test1, test2;
+SELECT * FROM test1 JOIN test2 USING (hello);
+SELECT hello FROM (SELECT 42) tbl("HeLlO");
+PRAGMA enable_verification;
+create table my_functions as select 'my_name' as function_name;
+select
+    function_name as raw,
+    replace(raw, '_', ' ') as prettier
+from my_functions
+group by all;
+SET default_null_order='nulls_first';
+PRAGMA enable_verification;
+CREATE TABLE integers(i INTEGER);
+INSERT INTO integers VALUES (1), (2), (3), (NULL);
+SELECT t.k FROM integers AS 't'('k') ORDER BY ALL;
+SELECT t.k FROM integers t('k') ORDER BY ALL;
+PRAGMA enable_verification;
+SELECT 'test' || ' more testing' as added,
+        added.substr(5) as my_substr;
+CREATE TABLE varchars(v VARCHAR);
+INSERT INTO varchars VALUES ('>>%Test<<'), ('%FUNCTION%'), ('Chaining');
+SELECT v.lower() FROM varchars;
+SELECT  v.trim('><') as trim_inequality,
+        only_alphabet.lower() as lower
+        trim_inequality.replace('%', '') as only_alphabet,
+FROM varchars;
+SELECT  v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+SELECT  varchars.v.trim('><') as trim_inequality,
+        trim_inequality.replace('%', '') as only_alphabet,
+        only_alphabet.lower() as lower
+FROM varchars;
+DELETE FROM varchars;
+INSERT INTO varchars VALUES ('Test Function Chainging Alias');
+SELECT  v.split(' ')::VARCHAR strings,
+        strings.lower() lower,
+        lower.upper() upper
+FROM varchars;
+SELECT  v.split(' ') strings,
+        strings.apply(x -> x.lower()).filter(x -> x[1] == 't') lower,
+        strings.apply(x -> x.upper()).filter(x -> x[1] == 'T') upper,
+        lower + upper  as mix_case_srings
+FROM varchars;
+PREPARE v1 AS 
+SELECT (?.split(' ')::VARCHAR).lower() lstrings,
+       (?.split(' ')::VARCHAR).upper() ustrings,
+       list_concat(lstrings::VARCHAR[], ustrings::VARCHAR[]) as mix_case_srings;
+EXECUTE v1('Hello World', 'test function chainging');
+PRAGMA enable_verification;
+CREATE TABLE depdelay_minutes(depdelay_minutes INTEGER);
+SELECT * FROM depdelay;
+SELECT depdelay FROM depdelay_minutes;
+CREATE TABLE lineitem(i INTEGER);
+SELECT * FROM li;
+SELECT * FROM lineitem_long;
+PRAGMA enable_verification;
+CREATE TABLE integers AS SELECT * FROM range(5) tbl(i);
+SELECT i, COUNT(*) AS k FROM integers GROUP BY i HAVING k=1 ORDER BY i;
+SELECT i, COUNT(*) AS k FROM integers GROUP BY i HAVING integers.k=1 ORDER BY i;
+SELECT 1 AS i, COUNT(*) FROM integers GROUP BY i HAVING i=2;
+SELECT i AS j, COUNT(*) AS i FROM integers GROUP BY j HAVING integers.i=1 ORDER BY i;
+SELECT i AS j, COUNT(*) AS i FROM integers GROUP BY j HAVING j=1 ORDER BY i;
+SELECT COUNT(i) AS j FROM integers HAVING j=5;
+SELECT COUNT(i) AS i FROM integers HAVING i=5;
+SELECT COUNT(i) AS i FROM integers HAVING i=5 ORDER BY i;
+SELECT COUNT(i) AS j FROM integers HAVING j=j;
+SELECT COUNT(*) FROM (SELECT i, SUM(RANDOM()) AS k FROM integers GROUP BY i HAVING k=k) tbl(i, k);
+SELECT COUNT(i) AS i FROM integers HAVING integers.i=5 ORDER BY i;
+SELECT i + i AS i FROM integers HAVING i=5 ORDER BY i;

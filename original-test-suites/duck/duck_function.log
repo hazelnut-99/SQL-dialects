@@ -1,0 +1,555 @@
+PRAGMA enable_verification;
+CREATE TABLE integers (a INT);
+INSERT INTO integers VALUES (1);
+CREATE MACRO cte_sq(a,b) AS (WITH cte AS (SELECT a * 2 AS c) SELECT cte.c + sq.d FROM cte, (SELECT b * 3 AS d) AS sq);
+SELECT cte_sq(3,4);
+CREATE MACRO nested_cte(needle, haystack) AS needle IN (
+    SELECT i FROM (
+        WITH ints AS (
+            SELECT CAST(UNNEST(string_split(haystack,',')) AS INT) AS i
+        )
+        SELECT i FROM ints
+    ) AS sq
+);
+SELECT nested_cte(2, '2,2,2,2');
+CREATE MACRO IFELSE(a,b,c) AS CASE WHEN a THEN b ELSE c END;
+SELECT IFELSE(1, IFELSE(1,'a','b'), 'c');
+SELECT IFELSE(1, IFELSE(0,'a','b'), 'c');
+SELECT IFELSE(0, IFELSE(1,'a','b'), 'c');
+SELECT IFELSE(1, IFELSE(1,a,'b'), 'c') FROM integers;
+SELECT IFELSE(1,IFELSE(1,b,1),a) FROM integers;
+CREATE MACRO f1(x) AS (SELECT MIN(a) + x FROM integers);
+CREATE MACRO mod_two(k) AS k%2;
+SELECT mod_two(a), SUM(a) FROM integers GROUP BY mod_two(a);
+CREATE MACRO add_mac(a, b) AS a + b;
+CREATE MACRO double_add(a, b, c) AS add_mac(add_mac(a, b), c);
+SELECT double_add(1, 2, 3);
+CREATE MACRO triple_add1(a, b, c, d) AS add_mac(add_mac(a, b), add_mac(c, d));
+SELECT triple_add1(1, 2, 3, 4);
+CREATE MACRO triple_add2(a, b, c, d) as add_mac(add_mac(add_mac(a, b), c), d);
+SELECT triple_add2(1, 2, 3, 4);
+INSERT INTO integers VALUES (41);
+SELECT add((SELECT MIN(a) FROM integers), (SELECT MAX(a) FROM integers));
+SELECT (SELECT add(i1.a, a) FROM integers) FROM integers i1;
+CREATE MACRO prep(x) AS ?+1;
+CREATE MACRO add_one(a) AS a + 1;
+PREPARE v1 AS SELECT add_one(?::INTEGER);
+EXECUTE v1(1);
+CREATE MACRO my_square(a) AS a * a;
+PREPARE v2 AS SELECT my_square(?::INTEGER);
+EXECUTE v2(3);
+CREATE TABLE documents(id VARCHAR, body VARCHAR);
+INSERT INTO documents VALUES ('doc1', ' QUÁCK+QUÁCK+QUÁCK'), ('doc2', ' BÁRK+BÁRK+BÁRK+BÁRK'), ('doc3', ' MÉOW+MÉOW+MÉOW+MÉOW+MÉOW');
+CREATE SCHEMA fts_main_documents;
+CREATE TABLE fts_main_documents.docs AS (
+    SELECT
+        row_number() OVER () AS docid,
+        id AS name
+    FROM
+        main.documents
+);
+CREATE TABLE fts_main_documents.terms AS (
+    SELECT
+        term,
+        docid,
+        row_number() OVER (PARTITION BY docid) AS pos
+    FROM (
+        SELECT
+            unnest(string_split_regex(regexp_replace(lower(strip_accents(body)), '[^a-z]', ' ', 'g'), '\s+')) AS term,
+            row_number() OVER () AS docid
+        FROM main.documents
+    ) AS sq
+    WHERE
+        term != ''
+);
+ALTER TABLE fts_main_documents.docs ADD len INT;
+UPDATE fts_main_documents.docs d
+SET len = (
+    SELECT count(term)
+    FROM fts_main_documents.terms t
+    WHERE t.docid = d.docid
+);
+CREATE TABLE fts_main_documents.dict AS
+WITH distinct_terms AS (
+    SELECT DISTINCT term, docid
+    FROM fts_main_documents.terms
+    ORDER BY docid
+)
+SELECT
+    row_number() OVER () AS termid,
+    term
+FROM
+    distinct_terms;
+ALTER TABLE fts_main_documents.terms ADD termid INT;
+UPDATE fts_main_documents.terms t
+SET termid = (
+    SELECT termid
+    FROM fts_main_documents.dict d
+    WHERE t.term = d.term
+);
+ALTER TABLE fts_main_documents.terms DROP term;
+ALTER TABLE fts_main_documents.dict ADD df INT;
+UPDATE fts_main_documents.dict d
+SET df = (
+    SELECT count(distinct docid)
+    FROM fts_main_documents.terms t
+    WHERE d.termid = t.termid
+    GROUP BY termid
+);
+WITH ppterms AS (
+    SELECT unnest(string_split_regex(regexp_replace(lower(strip_accents('QUÁCK BÁRK')), '[^a-z]', ' ', 'g'), '\s+')) AS term
+), qtermids AS (
+    SELECT termid
+    FROM fts_main_documents.dict AS dict
+    JOIN ppterms
+    USING (term)
+), qterms AS (
+    SELECT termid,
+           docid
+    FROM fts_main_documents.terms AS terms
+    WHERE termid IN (
+        SELECT qtermids.termid FROM qtermids
+    )
+), subscores AS (
+    SELECT docs.docid,
+           len,
+           term_tf.termid,
+           tf,
+           df,
+           (log((3 - df + 0.5) / (df + 0.5))* ((tf * (1.2 + 1)/(tf + 1.2 * (1 - 0.75 + 0.75 * (len / 4)))))) AS subscore
+    FROM (
+        SELECT termid,
+               docid,
+               COUNT(*) AS tf
+        FROM qterms
+        GROUP BY docid,
+                 termid
+    ) AS term_tf
+    JOIN (
+        SELECT DISTINCT docid
+        FROM qterms
+    ) AS cdocs
+    ON term_tf.docid = cdocs.docid
+    JOIN fts_main_documents.docs AS docs
+    ON term_tf.docid = docs.docid
+    JOIN fts_main_documents.dict AS dict
+    ON term_tf.termid = dict.termid
+)
+SELECT name,
+       score
+FROM (
+    SELECT docid,
+           sum(subscore) AS score
+    FROM subscores
+    GROUP BY docid
+) AS scores
+JOIN fts_main_documents.docs AS docs
+ON scores.docid = docs.docid
+ORDER BY score DESC
+LIMIT 1000;
+CREATE MACRO fts_match(docname, query_string) AS docname IN (
+WITH ppterms AS (SELECT unnest(string_split_regex(regexp_replace(lower(strip_accents(query_string)), '[^a-z]', ' ', 'g'), '\s+')) AS term),
+qtermids AS (SELECT termid FROM fts_main_documents.dict AS dict, ppterms WHERE dict.term = ppterms.term),
+qterms AS (SELECT termid, docid FROM fts_main_documents.terms AS terms WHERE termid IN (SELECT qtermids.termid FROM qtermids)),
+subscores AS (
+SELECT docs.docid, len, term_tf.termid,
+        tf, df, (log((3 - df + 0.5) / (df + 0.5))* ((tf * (1.2 + 1)/(tf + 1.2 * (1 - 0.75 + 0.75 * (len / 4)))))) AS subscore
+FROM (SELECT termid, docid, COUNT(*) AS tf FROM qterms
+    GROUP BY docid, termid) AS term_tf
+    JOIN (SELECT docid FROM qterms
+        GROUP BY docid) -- HAVING COUNT(DISTINCT termid) = 3)
+        AS cdocs ON term_tf.docid = cdocs.docid
+    JOIN fts_main_documents.docs AS docs ON term_tf.docid = docs.docid
+    JOIN fts_main_documents.dict AS dict ON term_tf.termid = dict.termid)
+SELECT name FROM (SELECT docid, sum(subscore) AS score
+    FROM subscores GROUP BY docid) AS scores JOIN fts_main_documents.docs AS docs ON
+    scores.docid = docs.docid ORDER BY score DESC LIMIT 1000);
+SELECT * FROM documents WHERE fts_match(id, 'QUÁCK BÁRK');
+CREATE MACRO mywindow(k,v) AS SUM(v) OVER (PARTITION BY k);
+WITH grouped AS (SELECT mod(range, 3) AS grp, range AS val FROM RANGE(500))
+SELECT DISTINCT grp, mywindow(grp, val) FROM grouped ORDER BY grp;
+PRAGMA enable_verification;
+CREATE TABLE test_tbl (id INT, name string);
+CREATE TABLE test2_tbl (id INT, name string);
+CREATE TABLE greek_tbl (id INT, name string);
+INSERT INTO test_tbl VALUES (1,'tom'), (2,'dick'),(3,'harry'), (4,'mary'), (5,'mungo'), (6,'midge');  ;
+INSERT INTO test_tbl VALUES (20,'andrew'), (21,'boris'),(22,'Caleb'), (23,'david'), (24,'evan');
+INSERT INTO  greek_tbl VALUES (1, 'alpha'), (2, 'beta'), (3, 'gamma'), (4, 'delta'), (5, 'epsilon'),(6, 'zeta'), (7, 'eta') , (8, 'theta'), (9, 'iota') , (10, 'kappa'); ;
+CREATE  MACRO xt(a,_name) as TABLE SELECT * FROM test_tbl WHERE(id>=a or name=_name);
+CREATE  MACRO xt2(a,_name) as TABLE SELECT * FROM test_tbl WHERE(id>=a or name like _name);
+CREATE  MACRO sgreek(a,b,c) as TABLE SELECT a,b FROM greek_tbl WHERE(id >= c);
+( SELECT* FROM xt(1, 'tom') UNION SELECT* FROM  xt2(1, '%%%') ) INTERSECT SELECT* FROM xt(100,'midge');
+(SELECT* FROM xt(1, 'tom') EXCEPT SELECT* FROM xt(20,'tom' )) INTERSECT SELECT* FROM xt(100,'harry');
+SELECT	* FROM  xt(200,'andrew');
+SELECT * FROM xt2(100,'m%');
+CREATE  MACRO xtm(cmp_str) as TABLE SELECT id, name FROM test_tbl  WHERE( name similar to cmp_str);
+SELECT * FROM xtm('m.*');
+CREATE  MACRO  xt_reg(cmp) as TABLE SELECT * FROM test_tbl WHERE regexp_matches(name ,cmp );
+SELECT * FROM xt_reg('^m');
+CREATE MACRO   cmp(a,m) as regexp_matches(a,m) or a similar to m;
+CREATE  MACRO gm(m) as TABLE SELECT * FROM  greek_tbl WHERE cmp(name,m);
+SELECT * FROM  gm('^m');
+CREATE MACRO xt(a,b) as a+b;
+DROP MACRO TABLE xt;
+CREATE MACRO xt(id, imax) as TABLE SELECT id,name FROM test_tbl WHERE id<=imax;
+SELECT * FROM xt(id,1);
+CREATE  MACRO range(a,b) as TABLE select a,b from test_tbl;
+SELECT * FROM test_tbl where id>=(SELECT max(id) FROM xt(id,30));
+SELECT * FROM greek_tbl where id<=(SELECT min(id) FROM xt(id,30));
+SELECT schema_name, function_name, function_type, description, return_type, parameters, parameter_types, varargs, macro_definition FROM duckdb_functions() WHERE function_type = 'table_macro' AND
+ ( function_name = 'sgreek' or  function_name = 'xt') order by function_name;
+SET default_null_order='nulls_first';
+CREATE TABLE car_pool (
+  -- define columns (name / type / default value / nullable)
+  id           DECIMAL      ,
+  producer     VARCHAR(50)  ,
+  model        VARCHAR(50)  ,
+  yyyy         DECIMAL       CHECK (yyyy BETWEEN 1970 AND 2020),
+  counter      DECIMAL       CHECK (counter >= 0),
+  CONSTRAINT   car_pool_pk PRIMARY KEY (id)
+);
+INSERT INTO car_pool VALUES 
+ ( 1, 'VW',     'Golf',    2005, 5),
+ ( 2, 'VW',     'Golf',    2006, 2),
+ ( 3, 'VW',     'Golf',    2007, 3),
+ ( 4, 'VW',     'Golf',    2008, 3),
+ ( 5, 'VW',     'Passat',  2005, 5),
+ ( 6, 'VW',     'Passat',  2006, 1),
+ ( 7, 'VW',     'Beetle',  2005, 1),
+ ( 8, 'VW',     'Beetle',  2006, 2),
+ ( 9, 'VW',     'Beetle',  2008, 4),
+ (10, 'Toyota', 'Corolla', 2005, 4),
+ (11, 'Toyota', 'Corolla', 2006, 3),
+ (12, 'Toyota', 'Corolla', 2007, 2),
+ (13, 'Toyota', 'Corolla', 2008, 4),
+ (14, 'Toyota', 'Prius',   2005, 1),
+ (15, 'Toyota', 'Prius',   2006, 1),
+ (16, 'Toyota', 'Hilux',   2005, 1),
+ (17, 'Toyota', 'Hilux',   2006, 1),
+ (18, 'Toyota', 'Hilux',   2008, 1);
+CREATE MACRO car_pool_cube(g1, g2, hcnt:=1) AS
+TABLE SELECT g1, g2, sum(counter) AS cnt  FROM car_pool
+GROUP BY CUBE(g1, g2) HAVING cnt >= hcnt order by g1 NULLS LAST, g2 NULLS LAST;
+SELECT * FROM  car_pool_cube(producer, model, hcnt:=4.0);
+CREATE MACRO car_pool_rollup(g1, g2, hcnt:=1) AS
+TABLE SELECT g1, g2, sum(counter) AS cnt  FROM car_pool
+GROUP BY ROLLUP(g1, g2) HAVING cnt >= hcnt order by g1, g2;
+SELECT * FROM car_pool_rollup(model, yyyy, hcnt:=4);
+CREATE MACRO car_pool_groups(g1, g2, hcnt:=1) AS
+TABLE SELECT g1, g2, sum(counter) AS cnt  FROM car_pool  
+GROUP BY  (g1, g2) HAVING cnt >= hcnt order by g1, g2;
+SELECT * FROM car_pool_groups(model, yyyy, hcnt:=2);
+pragma enable_verification;
+CREATE MACRO f(x := NULL) AS (
+	x
+);
+select f(
+);
+select f(
+	x := 42
+);
+create table tbl as select 42 i;
+select f(
+	x := i
+) from tbl;
+select f(
+	x := j
+) from tbl;
+select f(
+	x := cast('42' as INT)
+);
+select f(
+	x := 42 IS NULL
+);
+select f(
+	x := 42 IS NOT NULL
+);
+pragma enable_verification;
+CREATE MACRO f(x := NULL) AS x+1;
+SELECT f();
+SELECT f(x := 41);
+SELECT f(x := (SELECT 41));
+select f(x:=(select 1 a));
+select f(x:=a) from (select 41) t(a);
+create table t as select 41 a;
+select f(x:=a) from t;
+create macro my_macro1(a, b := a) as a + b;
+create table integers (a integer);
+create macro my_macro2(a := i) as (
+	select min(a) from integers
+);
+insert into integers values (5), (10), (13);
+select my_macro2(can_not_be_empty);
+drop table integers;
+select my_macro2(5);
+Create table t1 (a int, b int);
+Create table t2 (c int, d int);
+CREATE OR REPLACE MACRO eq(x := NULL, y := NULL) AS x = y;
+INSERT INTO t1 VALUES (1, 1), (1, 2), (2, 2), (3, 4);
+INSERT INTO t2 VALUES (4, 1), (2, 10), (6, 2), (2, 6);
+SELECT * FROM t1 as t1_alias inner join (select * from t2) as t2_alias ON (eq(x := t1_alias.a, y := t2_alias.c));
+SELECT * FROM t1 as t1_alias inner join (select * from t2) as t2_alias ON (eq(a := t1_alias.a, c := t2_alias.c));
+CREATE TABLE cards_tbl  (val int, name string, suit string);
+INSERT INTO cards_tbl values (1, 'ace', 'clubs'),    (11,'jack', 'clubs' ),
+(12, 'queen', 'clubs' ),     (13, 'king', 'clubs');
+INSERT INTO cards_tbl values (1, 'ace', 'diamonds'), (11,'jack', 'diamonds' ),
+(12, 'queen', 'diamonds' ),  (13, 'king', 'diamonds');
+INSERT INTO cards_tbl values (1, 'ace', 'hearts'),   (11,'jack', 'hearts' ),
+(12, 'queen', 'hearts' ),    (13, 'king', 'hearts');
+INSERT INTO cards_tbl values (1, 'ace', 'spades'),   (11,'jack', 'spades' ),
+(12, 'queen', 'spades' ),    (13, 'king', 'spades');
+CREATE MACRO card_select(_val_min:=1, _val_max:=1,  _name:='%', _suit:='%')
+as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;
+SELECT DISTINCT val from card_select();
+SELECT  * FROM  card_select(_suit:='clubs');
+SELECT * FROM  card_select(_name:='king', _val_max:=13) ORDER BY suit;
+SELECT count(suit) FROM  card_select() GROUP BY ALL;
+SELECT * FROM card_select(_name:='king', _val_max:=13, _suit:='hearts', _val_min:=10);
+CREATE MACRO card_select_args(_val_min, _val_max,  _name:='%', _suit:='%')
+as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;
+SELECT * FROM  card_select_args(_name:='king',1, 13);
+SELECT suit FROM card_select_args(1, 13, _name:='king' ) ORDER BY suit;
+CREATE MACRO card_dfl() as TABLE SELECT DISTINCT suit FROM cards_tbl where suit='hearts';
+SELECT * FROM card_dfl();
+CREATE MACRO  sc(aorder, border, nlimit) AS TABLE SELECT * FROM cards_tbl ORDER BY aorder,border LIMIT nlimit;
+SELECT * FROM sc(name, suit, 4);
+CREATE MACRO sc2(dlimit, noffset) AS TABLE SELECT DISTINCT  suit from cards_tbl order by all limit dlimit% offset noffset;
+SELECT * FROM sc2(50.0, 2);
+CREATE MACRO sc3(col) AS TABLE SELECT DISTINCT ON (col) col FROM cards_tbl ORDER BY col;
+SELECT * FROM sc3(name);
+SELECT * FROM sc3(suit);
+CREATE MACRO card_no_tbl() as TABLE SELECT * FROM suit_tbl;
+SELECT * FROM card_no_tbl();
+CREATE MACRO card_select_args(_val_min, _name:='%', _suit:='%', _val_max)
+as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;
+CREATE MACRO card_select_val(_val_min, _val_min) as TABLE SELECT * FROM cards_tbl WHERE val>=_val_min AND val<=_val_max;
+PRAGMA enable_verification;
+CREATE TABLE integers (a INT);
+INSERT INTO integers VALUES (1);
+CREATE MACRO parameterized_cte(a) AS (WITH cte AS (SELECT a AS answer) SELECT answer FROM cte);
+SELECT parameterized_cte(42);
+CREATE MACRO in_with_cte(i) AS i IN (WITH cte AS (SELECT a AS answer FROM integers) SELECT answer FROM cte);
+SELECT in_with_cte(1);
+SELECT in_with_cte(2);
+CREATE MACRO plus42(a) AS (WITH cte AS (SELECT 42 AS answer) SELECT answer + a FROM cte);
+SELECT plus42(42);
+SELECT plus42(a) FROM integers;
+SELECT plus42(3) + a FROM integers;
+SELECT plus42(42) + answer FROM cte;
+CREATE MACRO plus1(a) AS (WITH tbl AS (SELECT 1 AS one) SELECT one + a FROM tbl);
+SELECT plus1(3);
+SELECT plus42(a) + plus1(a) FROM integers;
+CREATE MACRO deep_cte(param) AS (
+    WITH cte1 AS (
+        WITH cte2 AS (
+            WITH cte3 AS (
+                WITH cte4 AS (
+                    SELECT param AS d
+                )
+                SELECT d AS c FROM cte4
+            )
+            SELECT c AS b FROM cte3
+        )
+        SELECT b AS a FROM cte2
+    )
+    SELECT a FROM cte1
+);
+SELECT deep_cte(42);
+PRAGMA enable_verification;
+CREATE TABLE integers (a INT);
+INSERT INTO integers VALUES (1);
+CREATE MACRO subquery(a) AS (SELECT a);
+SELECT subquery(1);
+SELECT subquery(NULL);
+SELECT subquery(3) + a FROM integers;
+SELECT subquery(a) FROM integers;
+CREATE MACRO a1(a) AS (SELECT a + a FROM integers);
+CREATE MACRO a1(b) AS (SELECT a + a FROM integers);
+SELECT a1(3);
+SELECT a1(3) + a FROM integers;
+CREATE MACRO a2(a) AS (SELECT i.a + a FROM integers i);
+CREATE MACRO a2(b) AS (SELECT i.a + b FROM integers i);
+SELECT a2(3);
+PRAGMA enable_verification;
+CREATE MACRO my_extract(x) AS x.a.b;
+SELECT my_extract({'a': {'b': 42}});
+PRAGMA disable_checkpoint_on_shutdown;
+PRAGMA wal_autocheckpoint='1TB';
+create macro test(a, b) as a + b;
+select test(4, 2);
+create or replace macro test(a, b) as a + a;
+select test(4, 2);
+create macro if not exists test(a, b) as a + b;
+select test(4, 2);
+drop macro test;
+create temporary macro test(a, b) as a + b;
+select test(4, 2);
+create or replace temporary macro test(a, b) as a + a;
+select test(4, 2);
+create temporary macro if not exists test(a, b) as a + b;
+select test(4, 2);
+select test(4, 2);
+CREATE MACRO "sum"(x) AS (CASE WHEN sum(x) IS NULL THEN 0 ELSE sum(x) END);
+SELECT sum(1);
+SELECT sum(1) WHERE 42=0;
+DROP MACRO sum;
+CREATE MACRO "sum"(x) AS (CASE WHEN system.main.sum(x) IS NULL THEN 0 ELSE system.main.sum(x) END);
+SELECT sum(1);
+SELECT sum(1) WHERE 42=0;
+create macro m1(a) as a+1;
+create macro m2(a) as m1(a)+1;
+create or replace macro m1(a) as m2(a)+1;
+select m2(42);
+create macro m3(a) as a+1;
+create macro m4(a) as table select m3(a);
+create or replace macro m3(a) as (from m4(42));
+select m3(42);
+CREATE TABLE integers (i INT);
+INSERT INTO integers VALUES (42), (42);
+CREATE SEQUENCE seq;
+CREATE MACRO in_next_n(x, s, n) AS x IN (
+    WITH RECURSIVE cte AS (
+            SELECT nextval(s) AS nxt, 1 AS iter
+        UNION ALL
+            SELECT nextval(s), iter + 1
+            FROM cte
+            WHERE iter < n
+    )
+    SELECT nxt
+    FROM cte
+);
+SELECT in_next_n(3, 'seq', 5);
+SELECT in_next_n(3, 'seq', 5);
+SELECT in_next_n(12, 'seq', 5);
+CREATE MACRO in_next_n2(x, s, n) AS x IN (
+    WITH RECURSIVE cte AS (
+            SELECT nextval(s) AS nxt, n AS n
+        UNION ALL
+            SELECT nextval(s), cte.n - 1
+            FROM cte
+            WHERE cte.n > 1
+    )
+    SELECT nxt
+    FROM cte
+);
+SELECT in_next_n2(17, 'seq', 5);
+DROP SEQUENCE seq;
+CREATE SEQUENCE seq1;
+CREATE SEQUENCE seq2 INCREMENT BY 2 START WITH 2;
+CREATE MACRO test(s1, s2, x) AS nextval(s1) + nextval(s2) + x;
+SELECT test('seq1', 'seq2', i) FROM integers;
+DROP SEQUENCE seq1;
+DROP SEQUENCE seq2;
+CREATE MACRO add_macro(a, b) AS a + b;
+CREATE SEQUENCE seqq;
+PRAGMA enable_verification;
+create macro information_schema.foo(a) as a;
+create table information_schema.integers(i int);
+select information_schema.foo(42);
+select * from information_schema.integers;
+PRAGMA enable_verification;
+CREATE TABLE integers (a INT);
+INSERT INTO integers VALUES (1);
+CREATE MACRO one() AS (SELECT 1);
+SELECT one();
+SELECT one(1);
+SELECT one(NULL);
+DROP MACRO one;
+CREATE MACRO having_macro(x) AS (SELECT * FROM integers GROUP BY a HAVING a = x);
+SELECT having_macro(1);
+SELECT having_macro(6);
+CREATE MACRO union_macro(x, y, z) AS (SELECT x IN (SELECT y UNION ALL SELECT z));
+SELECT union_macro(1, 2, 3);
+SELECT union_macro(1, 2, 1);
+SELECT union_macro(1, 1, 2);
+CREATE MACRO in_expression_list(x, y, z) AS (SELECT x IN (VALUES (y), (z)));
+SELECT in_expression_list(1, 2, 3);
+SELECT in_expression_list(1, 2, 1);
+SELECT in_expression_list(1, 1, 2);
+CREATE FUNCTION two() AS (SELECT 2);
+SELECT two();
+DROP FUNCTION two;
+CREATE MACRO add_macro(a) AS a + b;
+CREATE MACRO add_macro(a, b) AS a + b;
+SELECT add_macro(a,a) FROM integers;
+CREATE TABLE floats (b FLOAT);
+INSERT INTO floats VALUES (0.5);
+SELECT add_macro(a,2) + add_macro(3,b) FROM integers, floats;
+CREATE MACRO string_split(a,b) AS a + b;
+SELECT string_split(1, 2);
+CREATE MACRO IFELSE(a,b,c) AS CASE WHEN a THEN b ELSE c END;
+SELECT IFELSE(1,'true','false');
+SELECT ifelse(1,'true','false');
+SELECT IFELSE(0,'true','false');
+SELECT IFELSE(a = 1, 'true', 'false') FROM integers;
+SELECT IFELSE(a = 0, 'true', 'false') FROM integers;
+SELECT IFELSE();
+SELECT IFELSE(1);
+SELECT IFELSE(1, 2);
+SELECT IFELSE(1, 2, 3, 4);
+CREATE MACRO IFELSE(a,b) AS a+b;
+CREATE MACRO ifelse(a,b) AS a+b;
+SELECT IFELSE('1', 'random', RANDOM()::VARCHAR);
+CREATE SCHEMA macros;
+CREATE MACRO macros.add_macro(a, b) AS a + b;
+SELECT macros.add_macro(40,2);
+CREATE MACRO conflict(i, i) AS i + 1;
+CREATE MACRO myavg(x) AS SUM(x) / COUNT(x);
+INSERT INTO integers VALUES (21), (41);
+SELECT myavg(a) FROM integers;
+CREATE MACRO weird_avg(x) AS (MIN(x) + MAX(x)) / COUNT(x);
+SELECT weird_avg(a) FROM integers;
+CREATE MACRO star() AS *;
+CREATE MACRO conflict(a, a := 1) AS a + a;
+CREATE MACRO add_default5(a, b := 5) AS a + b;
+SELECT add_default5(3, 6);
+SELECT add_default5(3);
+SELECT add_default5(3, b := 6);
+SELECT add_default5(b := 6, 3);
+CREATE MACRO wrong_order(a, b := 3, c);
+CREATE MACRO wrong_order(a := 3, b);
+CREATE MACRO select_plus_floats(a, f := b) AS (SELECT a + f FROM floats);
+CREATE MACRO wrong_type(s='not a float') AS (SELECT b + s FROM floats);
+CREATE MACRO two_default_params(a := 4, a := 2) AS a + a;
+CREATE MACRO two_default_params(a := 4, b := 2) AS a + b;
+SELECT two_default_params();
+SELECT two_default_params(a := 5);
+SELECT two_default_params(b := 3);
+SELECT two_default_params(a := 5, a := 3);
+SELECT two_default_params(b := 5, b := 3);
+CREATE MACRO macros.add_macro(a, b) AS a + b;
+CREATE MACRO my_macro(a.b) AS 42;
+CREATE MACRO my_macro(a.b.c) AS 42;
+CREATE MACRO my_macro(a) AS 42;
+SELECT my_macro(x := 42);
+SELECT my_macro(a := 42, a := 42);
+create macro zz1(x) as (select 10+x);
+create macro zz2(x) as 20+x;
+select zz1(1),zz2(2);
+select function_name, parameters, macro_definition
+from duckdb_functions()
+where function_name like 'zz%'
+and macro_definition like '%macro_parameters%';
+CREATE MACRO my_values(m,s) as TABLE select * from (values  (1.0*m+s,'adam'), (2.0*m+s,'ben'),
+(3.0*m+s,'cris'), (4.0*m+s,'desmond'),(5.0*m+s, 'eric'));
+SELECT sum(col0) from my_values(10.0,5.0);
+CREATE MACRO my_values_union(m1,s1,m2,s2) as TABLE select * from my_values(m1,s1) UNION select * from my_values(m2,s2);
+select max(col0)  from my_values_union(1.0,2.0,3.0,20.0);
+CREATE MACRO dates_between(date_min, date_max, ilimit:=100) AS TABLE WITH dates(date) AS
+(SELECT * FROM range(date '0000-01-01', date '3000-01-01', interval '1' month))
+SELECT * FROM dates WHERE date between date_min AND date_max;
+select * from dates_between('2021-01-01', '2021-02-04');
+CREATE MACRO fibonacci(n0, n1, nlimit, noffset) AS TABLE
+WITH RECURSIVE fib AS (
+      SELECT 1 AS n,
+             n0::bigint AS "fibₙ",
+             n1::bigint AS "fibₙ₊₁"
+   UNION ALL
+      SELECT n+1,
+             "fibₙ₊₁",
+             "fibₙ" + "fibₙ₊₁"
+      FROM fib
+)
+SELECT n, "fibₙ" FROM fib
+LIMIT nlimit OFFSET noffset;
+SELECT * FROM fibonacci(1, 2, 5, 10);

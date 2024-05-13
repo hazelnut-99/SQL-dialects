@@ -1,0 +1,1 @@
+SELECT a FROM (SELECT * FROM test) bla UNION SELECT * FROM test2 ORDER BY bla.a;

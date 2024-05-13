@@ -1,0 +1,1 @@
+SELECT b FROM test LIMIT 0%;

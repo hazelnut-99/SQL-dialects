@@ -1,0 +1,1 @@
+SELECT a FROM unsigned WHERE a < 10 ORDER BY 1;

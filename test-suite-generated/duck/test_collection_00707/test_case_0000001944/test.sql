@@ -1,0 +1,1 @@
+SELECT * FROM exprtest WHERE (b=1 AND COALESCE(a, b)=1) OR (b=100 AND COALESCE(a, b)=43) ORDER BY 1;

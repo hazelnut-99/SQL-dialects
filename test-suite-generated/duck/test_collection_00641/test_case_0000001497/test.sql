@@ -1,0 +1,1 @@
+SELECT SUM(b) FROM test2;

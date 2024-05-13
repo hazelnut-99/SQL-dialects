@@ -1,0 +1,1 @@
+SELECT (SELECT rowid FROM a LIMIT 1);

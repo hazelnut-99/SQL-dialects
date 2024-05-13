@@ -1,0 +1,1 @@
+SELECT typeof(100::UTINYINT + 1) == 'UTINYINT';

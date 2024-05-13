@@ -1,0 +1,1 @@
+SELECT cast(a AS VARCHAR) FROM test;

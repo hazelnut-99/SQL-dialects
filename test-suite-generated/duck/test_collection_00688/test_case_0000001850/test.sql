@@ -1,0 +1,1 @@
+SELECT COUNT(*), MIN(i), MAX(i) FROM c;

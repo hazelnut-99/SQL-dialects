@@ -1,0 +1,1 @@
+SELECT * FROM (VALUES (3), ('42')) v1;

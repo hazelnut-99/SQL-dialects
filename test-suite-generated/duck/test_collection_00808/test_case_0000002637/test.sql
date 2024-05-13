@@ -1,0 +1,1 @@
+SELECT 1, 'a' UNION SELECT 2, 'b' UNION SELECT 3, 'c' UNION SELECT 1, 'a' order by 1;

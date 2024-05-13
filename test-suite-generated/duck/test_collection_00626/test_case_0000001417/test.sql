@@ -1,0 +1,1 @@
+SELECT b, a FROM test WHERE a < 13 ORDER BY b DESC;

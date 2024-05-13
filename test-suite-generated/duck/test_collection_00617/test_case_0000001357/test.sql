@@ -1,0 +1,1 @@
+SELECT * FROM range(5) UNION ALL SELECT * FROM range(5) LIMIT 7;

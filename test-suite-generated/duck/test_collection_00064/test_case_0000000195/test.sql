@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM a WHERE i >= 2000 AND i < 5000;

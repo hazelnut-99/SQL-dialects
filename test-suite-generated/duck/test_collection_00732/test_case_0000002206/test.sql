@@ -1,0 +1,1 @@
+SELECT * FROM b ORDER BY 1;

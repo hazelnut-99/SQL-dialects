@@ -1,0 +1,1 @@
+SELECT * FROM (VALUES (NULL, NULL), (3, 4)) v1;

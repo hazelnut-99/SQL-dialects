@@ -1,0 +1,1 @@
+SELECT i, j FROM (SELECT COLUMNS(*)::VARCHAR FROM integers);

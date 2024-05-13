@@ -1,0 +1,1 @@
+SELECT * FROM tbl ORDER BY j, i LIMIT 5;

@@ -1,0 +1,1 @@
+SELECT min(1 + n * 2), min(1 + 2 * n), min(1 + n / 2), min(1 + 1 / n) FROM (SELECT number n FROM numbers(10));

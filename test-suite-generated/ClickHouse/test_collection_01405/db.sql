@@ -1,6 +1,4 @@
-SHOW TABLES NOT LIKE '%';
-SHOW TABLES;
-CREATE TABLE test1 (x UInt8) ENGINE = Memory;
-CREATE TABLE test2 (x UInt8) ENGINE = Memory;
-SHOW TABLES;
-SHOW TABLES LIKE 'tes%';
+drop table if exists tsv;
+create table tsv(a int, b int default 7) engine File(TSV);
+insert into tsv(a) select number from numbers(10000000);
+insert into tsv(a) select number from numbers(10000000);

@@ -1,4 +1,11 @@
-USE system;
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested (nest Nested(a UInt8, b String)) ENGINE = Memory;
-INSERT INTO nested VALUES ([1, 2], ['hello', 'world']);
+DROP TABLE IF EXISTS src;
+DROP TABLE IF EXISTS dst;
+CREATE TABLE src (p UInt64, k String, d UInt64) ENGINE = MergeTree PARTITION BY p ORDER BY k;
+CREATE TABLE dst (p UInt64, k String, d UInt64) ENGINE = MergeTree PARTITION BY p ORDER BY k;
+INSERT INTO src VALUES (0, '0', 1);
+INSERT INTO src VALUES (1, '0', 1);
+INSERT INTO src VALUES (1, '1', 1);
+INSERT INTO src VALUES (2, '0', 1);
+INSERT INTO dst VALUES (0, '1', 2);
+INSERT INTO dst VALUES (1, '1', 2), (1, '2', 2);
+INSERT INTO dst VALUES (2, '1', 2);

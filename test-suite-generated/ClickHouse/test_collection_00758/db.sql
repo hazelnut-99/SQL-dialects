@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS time_table;
-CREATE TABLE time_table(timecol DateTime, value Int32) ENGINE = MergeTree order by tuple();
-INSERT INTO time_table VALUES (now() - 5, 5), (now() - 3, 3);
-INSERT INTO time_table VALUES (now(), 101);
+DROP TABLE IF EXISTS l;
+DROP TABLE IF EXISTS r;
+CREATE TABLE l (a String, b Tuple(String, String)) ENGINE = Memory();
+CREATE TABLE r (a String, c Tuple(String, String)) ENGINE = Memory();
+INSERT INTO l (a, b) VALUES ('a', ('b', 'c')), ('d', ('e', 'f'));
+INSERT INTO r (a, c) VALUES ('a', ('b', 'c')), ('x', ('y', 'z'));

@@ -171,3 +171,4 @@ CREATE  MACRO gm(m) as TABLE SELECT * FROM  greek_tbl WHERE cmp(name,m);
 CREATE MACRO xt(a,b) as a+b;
 DROP MACRO TABLE xt;
 CREATE MACRO xt(id, imax) as TABLE SELECT id,name FROM test_tbl WHERE id<=imax;
+CREATE  MACRO range(a,b) as TABLE select a,b from test_tbl;

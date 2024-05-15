@@ -1,0 +1,1 @@
+SELECT "SCH""EMA"."TA""BLE"."COL""UMN"."SO""ME"."I""N" FROM "SCH""EMA"."TA""BLE";

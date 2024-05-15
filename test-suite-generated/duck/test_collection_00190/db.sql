@@ -133,3 +133,7 @@ INSERT INTO nested VALUES([[42, 999]]);
 CREATE VIEW list_int AS
 SELECT i, i%2 as i2, [i, i + 1, i + 2] as l3
 FROM range(10) tbl(i);
+create table tbl_1 (a tinyint, b tinyint);
+insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
+create table tbl_2 (b tinyint);
+insert into tbl_2 values (1),(2),(NULL);

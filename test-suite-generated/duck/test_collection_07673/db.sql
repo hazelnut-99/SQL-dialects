@@ -138,3 +138,7 @@ ROLLBACK;
 begin transaction;
 create table integers as select * from generate_series(0, 10000000, 1) tbl(i);
 update integers set i=i+1;
+update integers set i=i+1;
+update integers set i=i+1;
+update integers set i=i+1;
+update integers set i=i+1;

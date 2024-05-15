@@ -1,2 +1,6 @@
-DROP TABLE IF EXISTS null_00549;
-CREATE TABLE null_00549 (k UInt64, a String, b Nullable(String)) ENGINE = Log;
+DROP TABLE IF EXISTS dt;
+DROP TABLE IF EXISTS testx;
+CREATE TABLE dt(tkey Int32) ENGINE = MergeTree order by tuple();
+INSERT INTO dt VALUES (300000);
+CREATE TABLE testx(t Int32, a UInt8) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO testx VALUES (100000, 0);

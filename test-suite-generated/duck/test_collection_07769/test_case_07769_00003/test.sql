@@ -1,0 +1,2 @@
+SELECT x, count(x) FILTER (WHERE x % 2 = 0) OVER (ORDER BY x ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING)
+FROM generate_series(0,10) tbl(x);

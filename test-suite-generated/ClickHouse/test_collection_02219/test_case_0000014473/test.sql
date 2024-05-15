@@ -1,1 +1,0 @@
-select countSubstringsCaseInsensitive('aaaa', 'AA');

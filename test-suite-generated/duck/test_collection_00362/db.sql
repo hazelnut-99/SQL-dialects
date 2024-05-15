@@ -414,3 +414,5 @@ create table test7 (p_brand VARCHAR, p_type VARCHAR, p_size INT, supplier_cnt BI
 insert into test7 values ('Brand#11', 'ECONOMY BRUSHED COPPER', 3, 4), ('Brand#11', 'ECONOMY BRUSHED COPPER', 9, 4), ('Brand#11', 'ECONOMY BRUSHED STEEL', 36, 4), ('Brand#11', 'ECONOMY BRUSHED STEEL', 9, 4), ('Brand#11', 'ECONOMY BURNISHED BRASS', 36, 4), ('Brand#11', 'ECONOMY BURNISHED COPPER', 49, 4), ('Brand#11', 'ECONOMY BURNISHED COPPER', 9, 4), ('Brand#11', 'ECONOMY BURNISHED NICKEL', 14, 4), ('Brand#11', 'ECONOMY BURNISHED NICKEL', 49, 4);
 create table test8 (i int, s varchar);
 insert into test8 values (3, 'aba'), (1, 'ccbcc'), (NULL, 'dbdbd'), (2, NULL);
+CREATE TABLE test9 AS (SELECT range % 4 i, range j FROM range(5000));
+INSERT INTO test9 VALUES (0, NULL), (1, NULL), (2, NULL), (3, NULL);

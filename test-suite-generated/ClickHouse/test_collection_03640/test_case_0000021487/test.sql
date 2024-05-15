@@ -1,1 +1,0 @@
-SELECT * FROM 02416_rocksdb ORDER BY key;

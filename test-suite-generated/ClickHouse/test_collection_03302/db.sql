@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS t_inter_02233;
-CREATE TABLE t_inter_02233 (n Int32) ENGINE = MergeTree ORDER BY n;
-INSERT INTO t_inter_02233 VALUES (1),(3),(3),(6),(6),(6);

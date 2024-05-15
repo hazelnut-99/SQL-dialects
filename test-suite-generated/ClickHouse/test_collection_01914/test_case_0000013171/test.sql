@@ -1,1 +1,0 @@
-select 'asof on';

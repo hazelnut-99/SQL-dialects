@@ -100,3 +100,81 @@ UPDATE table4
 SET b = 10
 WHERE b = 2
 RETURNING *;
+UPDATE table1 SET a=5 returning a;
+INSERT INTO table1 VALUES (1, 2, 3);
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING a;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING *;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING COLUMNS('a|c');
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING COLUMNS('a|c') + 42;
+INSERT INTO table1 VALUES (10, 20, 30), (40, 50, 60), (70, 80, 90) RETURNING *, c, b, a;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING c, a, b;
+INSERT INTO table1 (c, b, a) VALUES (3, 2, 1) RETURNING a, b, c;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING a AS alias1, b AS alias2;
+INSERT INTO table1(a) VALUES (10) RETURNING *;
+INSERT INTO table1 (a, b, c) SELECT * from table1 WHERE a = 10 and b=-2 and c=-3 RETURNING *;
+INSERT INTO table1 (SELECT row_number() OVER (ORDER BY a) as row_number, b, c FROM table1 LIMIT 1) RETURNING *;
+INSERT INTO table1 (a, b, c) SELECT * from table1 WHERE a = 100000 and b = 10000 and c=100000 RETURNING a, b, c;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING CASE WHEN b=2 THEN a ELSE b END;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING CASE WHEN b=3 THEN a ELSE b END;
+INSERT INTO table1 VALUES (1, 1, -3) RETURNING a + b + c;
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING 'hello';
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING [a, b, c];
+INSERT INTO table1 VALUES (1, 2, 3) RETURNING {'a':a, 'b':b, 'c':c};
+INSERT INTO table1(a) (SELECT 42) RETURNING a, b;
+INSERT INTO table2(a,b) VALUES ('hello duckdb', 1) RETURNING b, a;
+INSERT INTO table2(b) VALUES (97) RETURNING b::VARCHAR;
+INSERT INTO table2(a, b) VALUES ('duckdb', 97) RETURNING {'a': a, 'b': b};
+INSERT INTO table3(b) VALUES (4), (5) RETURNING a, b;
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+INSERT INTO table1(a, b, c) SELECT a, b, c FROM table1  RETURNING a;
+insert into table1(a) select * from range (0, 4000, 1) t1(a);
+DELETE FROM table1
+WHERE a < 5 RETURNING a, b, c;
+DELETE FROM table1
+WHERE a = 6 RETURNING a;
+DELETE FROM table1
+WHERE a = 7 RETURNING *;
+DELETE FROM table1
+WHERE a=8 AND b=-2 AND c=-3 RETURNING *, c, b, a;
+DELETE FROM table1
+WHERE a=9 RETURNING c, b, a;
+DELETE FROM table1
+WHERE a>=10 AND a <=13  RETURNING c as aliasc, a as aliasa, b as aliasb;
+DELETE FROM table1
+WHERE a=14
+RETURNING a + b + c;
+DELETE FROM table1
+WHERE a=10
+RETURNING 'duckdb';
+DELETE FROM table1
+WHERE a=15
+RETURNING 'duckdb';
+CREATE TABLE table5 (a5 INTEGER, b5 INTEGER, c5 INTEGER);
+INSERT INTO table4 VALUES (1, 0, 2), (2, 0, 1), (3, 0, 0);
+INSERT INTO table5 VALUES (1, 0, 0), (2, 0, 0), (3, 0, 1), (4, 0, 1), (5, 0, 2), (6, 0, 2);
+DROP TABLE table2;
+DROP TABLE table3;
+DROP TABLE table4;
+DROP TABLE table5;
+CREATE TABLE table2 (a VARCHAR DEFAULT 'hello world', b INT);
+INSERT INTO table2 VALUES ('duckdb', 1), ('postgres', 2), ('sqlite', 3), ('mysql', 4), ('mongo', 5);
+DELETE FROM table2
+WHERE b = 1
+RETURNING a, b;
+DELETE FROM table2
+WHERE b = 2
+RETURNING b::VARCHAR;
+DELETE FROM table2
+WHERE b=3
+RETURNING {'a': a, 'b': b};
+DELETE FROM table2
+WHERE b=4
+RETURNING [a, b::VARCHAR];
+CREATE TABLE table3 (a INTEGER DEFAULT nextval('seq'), b INTEGER);
+INSERT INTO table3(b) VALUES (4), (5) RETURNING a, b;
+DELETE FROM table3
+WHERE b = 4
+RETURNING *;
+DROP TABLE table1;
+CREATE TABLE table1 (a INTEGER DEFAULT -1, b INTEGER DEFAULT -2, c INTEGER DEFAULT -3);
+insert into table1(a) select * from range (0, 4000, 1) t1(a);

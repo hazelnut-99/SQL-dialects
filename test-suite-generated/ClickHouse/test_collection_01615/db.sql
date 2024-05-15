@@ -1,14 +1,12 @@
-DROP DATABASE IF EXISTS database_for_dict;
-CREATE DATABASE database_for_dict;
-DROP TABLE IF EXISTS database_for_dict.dict_source;
-CREATE TABLE database_for_dict.dict_source (id UInt64, parent_id UInt64, value String) ENGINE = Memory;
-INSERT INTO database_for_dict.dict_source VALUES (1, 0, 'hello'), (2, 1, 'world'), (3, 2, 'upyachka'), (11, 22, 'a'), (22, 11, 'b');
-DROP DICTIONARY IF EXISTS database_for_dict.dictionary_with_hierarchy;
-CREATE DICTIONARY database_for_dict.dictionary_with_hierarchy
-(
-    id UInt64, parent_id UInt64 HIERARCHICAL, value String
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(host 'localhost' port tcpPort() user 'default' db 'database_for_dict' table 'dict_source'))
-LAYOUT(HASHED())
-LIFETIME(MIN 1 MAX 1);
+drop table if exists tab1;
+drop table if exists tab2;
+drop table if exists tab3;
+create table tab1 (a1 Int32, b1 Int32) engine = MergeTree order by a1;
+create table tab2 (a2 Int32, b2 Int32) engine = MergeTree order by a2;
+create table tab3 (a3 Int32, b3 Int32) engine = MergeTree order by a3;
+insert into tab1 values (1, 2);
+insert into tab2 values (2, 3);
+insert into tab2 values (6, 4);
+insert into tab3 values (2, 3);
+insert into tab3 values (5, 4);
+insert into tab3 values (100, 4);

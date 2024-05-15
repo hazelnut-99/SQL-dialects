@@ -1,1 +1,0 @@
-select 'optimize_move_to_prewhere_if_final = 0';

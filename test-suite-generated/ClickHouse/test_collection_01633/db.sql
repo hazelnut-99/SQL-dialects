@@ -1,10 +1,6 @@
-DROP TABLE IF EXISTS LOG_T;
-CREATE TABLE LOG_T
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE defaults
 (
-    `fingerprint` UInt64, 
-    `fields` Nested(
-    name LowCardinality(String), 
-    value String)
-)
-ENGINE = MergeTree
-ORDER BY fingerprint;
+    stringColumn String
+) ENGINE = Memory();
+INSERT INTO defaults values ('<common tag>hello, world<tag>'), ('<script desc=content> some content </script>'), ('<![CDATA[hello, world]]>'), ('white space    collapse');

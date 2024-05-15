@@ -1,1 +1,0 @@
-SELECT '-------Need push down-------';

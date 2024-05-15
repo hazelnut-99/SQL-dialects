@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS A;
-DROP TABLE IF EXISTS B;
-CREATE TABLE A(a UInt32, t UInt32) ENGINE = Memory;
-CREATE TABLE B(b UInt32, t UInt32) ENGINE = Memory;
-INSERT INTO A (a,t) VALUES (1,1),(1,2),(1,3), (2,1),(2,2),(2,3), (3,1),(3,2),(3,3);
-INSERT INTO B (b,t) VALUES (1,2),(1,4),(2,3);
+WITH toDateTime64('2019-09-16 19:20:11', 3, 'Asia/Istanbul') AS dt64 SELECT toStartOfSecond(dt64, 'UTC') AS res, toTypeName(res);
+WITH toDateTime64('2019-09-16 19:20:11', 0, 'UTC') AS dt64 SELECT toStartOfSecond(dt64) AS res, toTypeName(res);
+WITH toDateTime64('2019-09-16 19:20:11.123', 3, 'UTC') AS dt64 SELECT toStartOfSecond(dt64) AS res, toTypeName(res);
+WITH toDateTime64('2019-09-16 19:20:11.123', 9, 'UTC') AS dt64 SELECT toStartOfSecond(dt64) AS res, toTypeName(res);

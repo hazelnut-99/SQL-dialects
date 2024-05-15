@@ -1,6 +1,0 @@
-SELECT round(quantileDD(0.01, 0.42)(number), 2)
-FROM
-(
-    SELECT arrayJoin([toFloat32(number), number - 3.4028235e+38, toFloat32(number + 3.4028235e+38)]) AS number
-    FROM numbers(0, 10)
-);

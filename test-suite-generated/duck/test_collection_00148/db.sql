@@ -271,3 +271,4 @@ CREATE MACRO a2(b) AS (SELECT i.a + b FROM integers i);
 CREATE MACRO my_extract(x) AS x.a.b;
 create macro test(a, b) as a + b;
 create or replace macro test(a, b) as a + a;
+create macro if not exists test(a, b) as a + b;

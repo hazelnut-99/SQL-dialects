@@ -1,1 +1,0 @@
-SELECT arr, element FROM (SELECT arrayMap(x -> nullIf(x, 2), arrayJoin([emptyArrayUInt8(), [1], [2, 3]])) AS arr) LEFT ARRAY JOIN arr AS element;

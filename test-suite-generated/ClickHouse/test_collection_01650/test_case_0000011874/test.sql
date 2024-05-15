@@ -1,1 +1,0 @@
-SELECT sum(1 + n * 2), sum(1 + 2 * n), sum(1 + n / 2), sum(1 + 1 / n) FROM (SELECT number n FROM numbers(10));

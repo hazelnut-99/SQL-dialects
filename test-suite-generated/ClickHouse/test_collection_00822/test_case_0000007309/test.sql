@@ -1,1 +1,0 @@
-SELECT xxHash32('\x02\0') = toUInt32(332955956);

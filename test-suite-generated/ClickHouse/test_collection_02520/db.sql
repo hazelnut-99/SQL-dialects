@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS report;
-CREATE TABLE report
+WITH x -> toString(x) AS lambda SELECT arrayMap(x -> lambda(x), [1,2,3]);
+WITH x -> toString(x) AS lambda SELECT arrayMap(x -> arrayMap(y -> concat(lambda(x), '_', lambda(y)), [1,2,3]), [1,2,3]);
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
 (
-    `product` Enum8('IU' = 1, 'WS' = 2),
-    `machine` String,
-    `branch` String,
-    `generated_time` DateTime
-)
-ENGINE = MergeTree
-PARTITION BY (product, toYYYYMM(generated_time))
-ORDER BY (product, machine, branch, generated_time);
-INSERT INTO report VALUES ('IU', 'lada', '2101', toDateTime('1970-04-19 15:00:00'));
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');
+WITH x -> toString(id) AS lambda SELECT arrayMap(x -> lambda(x), [1,2,3]) FROM test_table;
+WITH x -> toString(id) AS lambda SELECT arrayMap(x -> arrayMap(y -> lambda(y), [1,2,3]), [1,2,3]) FROM test_table;
+WITH x -> toString(id) AS lambda SELECT arrayMap(x -> arrayMap(y -> concat(lambda(x), '_', lambda(y)), [1,2,3]), [1,2,3]) FROM test_table;

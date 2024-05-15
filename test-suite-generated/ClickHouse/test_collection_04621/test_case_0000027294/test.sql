@@ -1,1 +1,0 @@
-SELECT val FROM 03040_test t GROUP BY val;

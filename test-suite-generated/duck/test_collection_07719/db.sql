@@ -133,3 +133,30 @@ insert into integers(i,j)
 on conflict do update set j = excluded.j where i % 2 = 0 AND excluded.j % 2 = 0;
 insert or ignore into tbl values (1,2), (2,1);
 insert or replace into tbl values (5,2), (10,1);
+create or replace table tbl (a integer unique, b integer unique);
+insert into tbl(b) VALUES (3), (5), (6);
+create table t (i int primary key, j int);
+insert into t values (1, 1) on conflict do nothing;
+insert into t values (1, 1) on conflict do nothing;
+insert into t values (1, 1) on conflict (i) do update set j = excluded.i;
+CREATE TABLE test_table_raw(id VARCHAR, name VARCHAR);
+INSERT INTO test_table_raw VALUES
+	('abc001','foo'),
+	('abc002','bar'),
+	('abc001','foo2'),
+	('abc002','bar2');
+CREATE TABLE test_table(id VARCHAR PRIMARY KEY, name VARCHAR);
+create or replace table tbl (a integer primary key, b integer);
+insert into tbl VALUES (1,3), (2,2), (3,10), (4,3);
+insert into tbl VALUES (3,8), (2,2) ON CONFLICT (a) DO UPDATE SET b = b*2 WHERE b == excluded.b;
+create or replace table tbl (a integer default 3);
+create or replace table tbl(
+	i integer PRIMARY KEY,
+	j integer UNIQUE,
+	k integer
+);
+insert into tbl VALUES
+	(1, 10, 1),
+	(2, 20, 1),
+	(3, 30, 2);
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 5;

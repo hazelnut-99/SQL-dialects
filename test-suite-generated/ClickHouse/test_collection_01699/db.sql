@@ -1,3 +1,18 @@
-DROP TABLE IF EXISTS date_datetime_key_condition;
-CREATE TABLE date_datetime_key_condition (dt DateTime) ENGINE = MergeTree() ORDER BY dt;
-INSERT INTO date_datetime_key_condition VALUES ('2020-01-01 00:00:00'), ('2020-01-01 10:00:00'), ('2020-01-02 00:00:00');
+DROP DATABASE IF EXISTS 01720_dictionary_db;
+CREATE DATABASE 01720_dictionary_db;
+CREATE TABLE 01720_dictionary_db.dictionary_source_table
+(
+	key UInt8,
+    value String
+)
+ENGINE = TinyLog;
+INSERT INTO 01720_dictionary_db.dictionary_source_table VALUES (1, 'First');
+CREATE DICTIONARY 01720_dictionary_db.dictionary
+(
+    key UInt64,
+    value String
+)
+PRIMARY KEY key
+SOURCE(CLICKHOUSE(DB '01720_dictionary_db' TABLE 'dictionary_source_table' HOST hostName() PORT tcpPort()))
+LIFETIME(0)
+LAYOUT(FLAT());

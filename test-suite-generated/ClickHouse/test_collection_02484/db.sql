@@ -1,11 +1,1 @@
-DROP TABLE IF EXISTS test_tuple;
-CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
-INSERT INTO test_tuple VALUES ((NULL, 1));
-DROP TABLE test_tuple;
-DROP TABLE IF EXISTS test_tuple_nested_in_array;
-CREATE TABLE test_tuple_nested_in_array (value Array(Tuple(UInt8, UInt8))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array VALUES ([(NULL, 2), (3, NULL), (NULL, 4)]);
-DROP TABLE test_tuple_nested_in_array;
-DROP TABLE IF EXISTS test_tuple_nested_in_array_nested_in_tuple;
-CREATE TABLE test_tuple_nested_in_array_nested_in_tuple (value Tuple(UInt8, Array(Tuple(UInt8, UInt8)))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array_nested_in_tuple VALUES ( (NULL, [(NULL, 2), (3, NULL), (NULL, 4)]) );
+CREATE TEMPORARY TABLE test_02327 (name String) AS SELECT * FROM VALUES(('Vasya'), ('Petya'));

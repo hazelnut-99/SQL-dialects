@@ -1,1 +1,0 @@
-SELECT LTRIM(' abcdef ');

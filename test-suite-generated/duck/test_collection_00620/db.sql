@@ -2699,3 +2699,4 @@ EXECUTE v1;
 CREATE VIEW v3 AS SELECT i % 5 g, LIST(CASE WHEN i=6 or i=8 then null else i end) l FROM RANGE(20) tbl(i) group by g;
 CREATE TABLE struct_data (g INTEGER, e INTEGER);
 INSERT INTO struct_data VALUES (1, 1), (1, 2), (2, 3), (2, 4), (2, 5), (3, 6), (5, NULL);
+INSERT INTO integers VALUES (1), (2), (3), (4), (5);

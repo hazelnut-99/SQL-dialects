@@ -1,3 +1,10 @@
-drop table if exists test_enum;
-create table test_enum (c Nullable(Enum16('A' = 1, 'B' = 2))) engine Log;
-insert into test_enum values (1), (NULL);
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');
+WITH cte_subquery AS (SELECT 1) SELECT * FROM cte_subquery;
+WITH cte_subquery AS (SELECT * FROM test_table) SELECT * FROM cte_subquery;
+WITH cte_subquery AS (SELECT 1 UNION DISTINCT SELECT 1) SELECT * FROM cte_subquery;

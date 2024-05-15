@@ -1,0 +1,4 @@
+SELECT d8, e1
+  FROM t8, t1
+ WHERE a1=20
+   AND e8=186;

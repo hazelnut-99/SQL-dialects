@@ -1,1 +1,0 @@
-SELECT DATE_ADD(hour, (SELECT 1), toDateTime(1234567890, 'UTC'));

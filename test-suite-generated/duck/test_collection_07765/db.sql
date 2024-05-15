@@ -436,3 +436,151 @@ create table patch AS
       AND y_pos >= 1 AND y_pos < i.height - 1;
 create temp table channel (channel char(1));
 insert into channel (channel) values ('R'), ('G'), ('B');
+CREATE or replace TABLE big_table AS
+    SELECT
+    (i % 500)::int16 AS "Pid",
+    (i % 5000)::int16 AS "Planid",
+    left(uuid()::VARCHAR, 10) AS "Claimid",
+    FROM range(2e7::int) tbl(i);
+WITH new_table as (SELECT
+        Pid,
+        Planid,
+        Claimid,
+        'CLAIM' || dense_rank() OVER(PARTITION BY Pid, Planid ORDER BY Claimid) AS Fake_Claimid
+    FROM big_table
+)
+SELECT MAX(Fake_Claimid), COUNT(*)
+FROM new_table;
+create table lineitem (
+    l_extendedprice decimal(15,2),
+    l_partkey integer,
+    l_orderkey integer
+);
+insert into lineitem (values 
+	(29733.00, 1, 2883),
+	(1802.00, 1, 5121),
+	(4505.00, 1, 6179),
+	(29733.00, 1, 6273),
+	(30634.00, 1, 8645),
+	(41446.00, 1, 12005),
+	(36040.00, 1, 16135),
+	(29733.00, 1, 16198),
+	(26129.00, 1, 20199),
+	(24327.00, 1, 22117),
+	(19822.00, 1, 24866),
+	(24327.00, 1, 26756),
+	(9010.00, 1, 27558),
+	(45050.00, 1, 29859),
+	(2703.00, 1, 34692),
+	(11713.00, 1, 36611),
+	(18020.00, 1, 38051),
+	(21624.00, 1, 42465),
+	(36040.00, 1, 42758),
+	(39644.00, 1, 47620),
+	(28832.00, 1, 50498),
+	(12614.00, 1, 51970),
+	(2703.00, 1, 53189),
+	(22525.00, 1, 53825),
+	(21624.00, 1, 54592),
+	(36941.00, 1, 59202),
+	(18942.00, 2, 548),
+	(17138.00, 2, 807),
+	(24354.00, 2, 2117),
+	(9020.00, 2, 2528),
+	(28864.00, 2, 4102),
+	(42394.00, 2, 4452),
+	(11726.00, 2, 7458),
+	(39688.00, 2, 27969),
+	(37884.00, 2, 28900),
+	(9922.00, 2, 30278),
+	(12628.00, 2, 30597),
+	(7216.00, 2, 33058),
+	(41492.00, 2, 37026),
+	(40590.00, 2, 37123),
+	(36982.00, 2, 39809),
+	(36080.00, 2, 41415),
+	(18942.00, 2, 42147),
+	(24354.00, 2, 42533),
+	(41492.00, 2, 43650),
+	(45100.00, 2, 44103),
+	(17138.00, 2, 46913),
+	(31570.00, 2, 50499),
+	(37884.00, 2, 54086),
+	(26158.00, 2, 54436),
+	(4510.00, 2, 54436),
+	(3608.00, 2, 54630),
+	(41492.00, 2, 55136),
+);
+CREATE TABLE issue7353 (
+    Season VARCHAR,
+    Medal VARCHAR,
+    Sex VARCHAR,
+    Ct INT,
+    Depth INT
+);
+INSERT INTO issue7353 (Season, Medal, Sex, Ct, Depth) VALUES
+    (NULL, NULL, NULL, 271116, 0),
+    ('Summer', NULL, NULL, 222552, 1),
+    ('Winter', NULL, NULL, 48564, 1),
+    ('Summer', 'NA', NULL, 188464, 2),
+    ('Summer', 'Gold', NULL, 11459, 2),
+    ('Winter', 'NA', NULL, 42869, 2),
+    ('Summer', 'Bronze', NULL, 11409, 2),
+    ('Winter', 'Bronze', NULL, 1886, 2),
+    ('Winter', 'Gold', NULL, 1913, 2),
+    ('Winter', 'Silver', NULL, 1896, 2),
+    ('Summer', 'Silver', NULL, 11220, 2),
+    ('Summer', 'NA', 'M', 138463, 3),
+    ('Summer', 'Gold', 'M', 8319, 3),
+    ('Winter', 'NA', 'F', 13268, 3),
+    ('Winter', 'NA', 'M', 29601, 3),
+    ('Summer', 'NA', 'F', 50001, 3),
+    ('Summer', 'Bronze', 'M', 8235, 3),
+    ('Winter', 'Bronze', 'M', 1289, 3),
+    ('Winter', 'Gold', 'M', 1306, 3),
+    ('Winter', 'Silver', 'M', 1289, 3),
+    ('Summer', 'Gold', 'F', 3140, 3),
+    ('Summer', 'Silver', 'M', 8092, 3),
+    ('Summer', 'Bronze', 'F', 3174, 3),
+    ('Summer', 'Silver', 'F', 3128, 3),
+    ('Winter', 'Bronze', 'F', 597, 3),
+    ('Winter', 'Gold', 'F', 607, 3),
+    ('Winter', 'Silver', 'F', 607, 3);
+CREATE TABLE issue2549 AS SELECT * FROM (VALUES
+	(0, 1, 614),
+	(1, 1, null),
+	(2, 1, null),
+	(3, 1, 639),
+	(4, 1, 2027)
+) tbl(id, user_id, order_id);
+CREATE TABLE IF NOT EXISTS issue6635(index INTEGER, data INTEGER);
+insert into issue6635 values 
+	(1,1),
+	(2,2),
+	(3,NULL),
+	(4,NULL),
+	(5,5),
+	(6,NULL),
+	(7,NULL)
+;
+WITH gen AS (
+    SELECT *,
+        ((id * 1327) % 9973) / 10000.0 AS rnd
+    FROM generate_series(1, 10000) tbl(id)
+),
+lvl AS (
+    SELECT id,
+        rnd,
+        CASE
+            WHEN rnd <= 0.1 THEN 'shallow'
+            WHEN rnd >= 0.9 THEN 'high'
+        END AS water_level
+    FROM gen
+)
+SELECT *,
+    LAST_VALUE(water_level IGNORE NULLS) OVER (
+        ORDER BY id
+    ) AS grade
+FROM lvl
+ORDER BY id;
+insert into tenk1 values (8800,0,0,0,0,0,0,800,800,3800,8800,0,1,'MAAAAA','AAAAAA','AAAAxx'), (1891,1,1,3,1,11,91,891,1891,1891,1891,182,183,'TUAAAA','BAAAAA','HHHHxx'), (3420,2,0,0,0,0,20,420,1420,3420,3420,40,41,'OBAAAA','CAAAAA','OOOOxx'), (9850,3,0,2,0,10,50,850,1850,4850,9850,100,101,'WOAAAA','DAAAAA','VVVVxx'), (7164,4,0,0,4,4,64,164,1164,2164,7164,128,129,'OPAAAA','EAAAAA','AAAAxx'), (8009,5,1,1,9,9,9,9,9,3009,8009,18,19,'BWAAAA','FAAAAA','HHHHxx'), (5057,6,1,1,7,17,57,57,1057,57,5057,114,115,'NMAAAA','GAAAAA','OOOOxx'), (6701,7,1,1,1,1,1,701,701,1701,6701,2,3,'TXAAAA','HAAAAA','VVVVxx'), (4321,8,1,1,1,1,21,321,321,4321,4321,42,43,'FKAAAA','IAAAAA','AAAAxx'), (3043,9,1,3,3,3,43,43,1043,3043,3043,86,87,'BNAAAA','JAAAAA','HHHHxx');

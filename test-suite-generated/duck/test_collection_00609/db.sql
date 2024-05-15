@@ -2199,3 +2199,14 @@ DROP TABLE test10;
 DROP TABLE test24;
 CREATE TABLE test0 (i BOOL[]);
 INSERT INTO test0 VALUES ([true]), ([false]), ([false, true]), ([]), ([true, true]), ([NULL]), (NULL), ([false, false]);
+CREATE TABLE test10 (s STRUCT(i BOOL, j BOOL));
+INSERT INTO test10 values
+({'i': true, 'j': NULL}),
+({'i': false, 'j': NULL}),
+({'i': true, 'j': true}),
+({'i': false, 'j': true}),
+({'i': NULL, 'j': false}),
+({'i': NULL, 'j': true}),
+({'i': NULL, 'j': NULL}),
+(NULL),
+({'i': false, 'j': false});

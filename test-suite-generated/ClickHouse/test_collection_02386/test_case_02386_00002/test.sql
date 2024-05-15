@@ -1,0 +1,1 @@
+select '-- distinct in order, sorting key contains function';

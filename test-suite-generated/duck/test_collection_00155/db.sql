@@ -309,3 +309,13 @@ CREATE MACRO in_next_n2(x, s, n) AS x IN (
     SELECT nxt
     FROM cte
 );
+DROP SEQUENCE seq;
+CREATE SEQUENCE seq1;
+CREATE SEQUENCE seq2 INCREMENT BY 2 START WITH 2;
+CREATE MACRO test(s1, s2, x) AS nextval(s1) + nextval(s2) + x;
+DROP SEQUENCE seq1;
+DROP SEQUENCE seq2;
+CREATE MACRO add_macro(a, b) AS a + b;
+CREATE SEQUENCE seqq;
+create macro information_schema.foo(a) as a;
+create table information_schema.integers(i int);

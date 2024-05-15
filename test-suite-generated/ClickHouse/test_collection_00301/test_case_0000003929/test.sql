@@ -1,1 +1,0 @@
-SELECT x FROM (SELECT toNullable(materialize(0)) AS x) WHERE x;

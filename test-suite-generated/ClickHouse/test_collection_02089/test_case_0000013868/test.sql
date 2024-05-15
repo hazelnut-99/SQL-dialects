@@ -1,1 +1,0 @@
-select ' ---- select without states ---- ';

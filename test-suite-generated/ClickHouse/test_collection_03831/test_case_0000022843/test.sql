@@ -1,1 +1,0 @@
-SELECT DISTINCT arrayReduce('quantile(0.5)', []::Array(Float64)) FROM numbers(1000) LIMIT 10;

@@ -1,0 +1,6 @@
+SELECT c9, d4+791, d8+c8, a5
+  FROM t8, t4, t5, t9
+ WHERE 634=c5
+   AND 635=e8
+   AND b9 in (171,50,900,211)
+   AND b4 in (700,608,708,816,319,882);

@@ -1,1 +1,0 @@
-select 'self inner nullable vs not nullable 2';

@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS arena;
-CREATE TABLE arena (k UInt8, d String) ENGINE = Memory;
-DROP TABLE IF EXISTS arena;
+DROP TABLE IF EXISTS nullable_00571;
+CREATE TABLE nullable_00571 (x String) ENGINE = MergeTree ORDER BY x;
+INSERT INTO nullable_00571 VALUES ('hello'), ('world');
+ALTER TABLE nullable_00571 ADD COLUMN n Nullable(UInt64);
+ALTER TABLE nullable_00571 DROP COLUMN n;
+ALTER TABLE nullable_00571 ADD COLUMN n Nullable(UInt64) DEFAULT NULL;

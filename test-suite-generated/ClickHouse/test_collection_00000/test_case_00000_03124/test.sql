@@ -1,0 +1,1 @@
+SELECT toDecimal128('18446744073709551615', 0) AS x, toUInt64(x);

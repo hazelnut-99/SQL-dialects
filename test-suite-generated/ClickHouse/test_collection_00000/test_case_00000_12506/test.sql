@@ -1,0 +1,1 @@
+select INSTR('hELlo', 'L');

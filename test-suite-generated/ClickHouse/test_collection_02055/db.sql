@@ -1,9 +1,7 @@
-DROP TABLE IF EXISTS buf_dest;
-DROP TABLE IF EXISTS buf;
-CREATE TABLE buf_dest (timestamp DateTime)
-ENGINE = MergeTree PARTITION BY toYYYYMMDD(timestamp)
-ORDER BY (timestamp);
-CREATE TABLE buf (timestamp DateTime) Engine = Buffer(currentDatabase(), buf_dest, 16, 3, 20, 2000000, 20000000, 100000000, 300000000);
-INSERT INTO buf (timestamp) VALUES (toDateTime('2020-01-01 00:05:00'));
-ALTER TABLE buf_dest ADD COLUMN s String;
-ALTER TABLE buf ADD COLUMN s String;
+drop table if exists test;
+drop table if exists test2;
+create table test(x1 Int, x2 Int, x3 Int) engine=Memory();
+insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);
+insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);
+create table test2(x1 Int, x2 Int, x3 Int) engine=Memory;
+insert into test2 values (1, 10, 100), (10, 1, 10), (100, 100, 1);

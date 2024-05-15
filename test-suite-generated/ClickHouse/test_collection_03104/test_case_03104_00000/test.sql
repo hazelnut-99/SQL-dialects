@@ -1,0 +1,1 @@
+SELECT 'Flat dictionary';

@@ -44,3 +44,11 @@ CREATE TABLE limits AS (
 	SELECT 100 + (i * 17 % 100) AS z
 	FROM range(1, 10) tbl(i)
 );
+CREATE TABLE wide_nulls AS (
+	SELECT i, c0, c1, c2,
+		CASE WHEN i % 7 = 0 THEN NULL ELSE c3 END AS c3,
+		c4, c5, c6, c7,
+		CASE WHEN i % 5 = 0 THEN NULL ELSE c8 END AS c8,
+		c9
+	FROM wide
+);

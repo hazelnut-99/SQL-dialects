@@ -1,28 +1,50 @@
-drop table if exists merge;
-create table merge
+CREATE TABLE test_block_mismatch
 (
-    dt Date,
-    colAlias0 Int32,
-    colAlias1 Int32,
-    col2 Int32,
-    colAlias2 UInt32,
-    col3 Int32,
-    colAlias3 UInt32
+    a UInt32,
+    b DateTime
 )
-engine = Merge(currentDatabase(), '^alias_');
-drop table if exists alias_1;
-drop table if exists alias_2;
-create table alias_1
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(b)
+ORDER BY (toDate(b), a);
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-02-02 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-02-02 12:12:12'));
+optimize table test_block_mismatch final;
+system stop merges test_block_mismatch;
+INSERT INTO test_block_mismatch VALUES (2, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (2, toDateTime('2023-01-01 12:12:12'));
+CREATE TABLE test_block_mismatch_sk1
 (
-    dt Date,
-    col Int32,
-    colAlias0 UInt32 alias col,
-    colAlias1 UInt32 alias col3 + colAlias0,
-    col2 Int32,
-    colAlias2 Int32 alias colAlias1 + col2 + 10,
-    col3 Int32,
-    colAlias3 Int32 alias colAlias2 + colAlias1 + col3
+    a UInt32,
+    b DateTime
 )
-engine = MergeTree()
-order by (dt);
-insert into alias_1 (dt, col, col2, col3) values ('2020-02-02', 1, 2, 3);
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(b)
+PRIMARY KEY (toDate(b))
+ORDER BY (toDate(b), a);
+INSERT INTO test_block_mismatch_sk1  VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk1 VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk1 VALUES (1, toDateTime('2023-02-02 12:12:12'));
+INSERT INTO test_block_mismatch_sk1 VALUES (1, toDateTime('2023-02-02 12:12:12'));
+optimize table test_block_mismatch_sk1 final;
+system stop merges test_block_mismatch_sk1;
+INSERT INTO test_block_mismatch_sk1 VALUES (2, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk1 VALUES (2, toDateTime('2023-01-01 12:12:12'));
+CREATE TABLE test_block_mismatch_sk2
+(
+    a UInt32,
+    b DateTime
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(b)
+PRIMARY KEY (a)
+ORDER BY (a, toDate(b));
+INSERT INTO test_block_mismatch_sk2  VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk2 VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk2 VALUES (1, toDateTime('2023-02-02 12:12:12'));
+INSERT INTO test_block_mismatch_sk2 VALUES (1, toDateTime('2023-02-02 12:12:12'));
+optimize table test_block_mismatch_sk2 final;
+system stop merges test_block_mismatch_sk2;
+INSERT INTO test_block_mismatch_sk2 VALUES (2, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch_sk2 VALUES (2, toDateTime('2023-01-01 12:12:12'));

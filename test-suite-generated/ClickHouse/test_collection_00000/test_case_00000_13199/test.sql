@@ -1,0 +1,1 @@
+SELECT 'Const argument';

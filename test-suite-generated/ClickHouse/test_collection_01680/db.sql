@@ -1,21 +1,3 @@
-WITH
-	toDateTime64('2019-09-16 19:20:12.345678910', 3) AS dt64
-SELECT
-	dt64,
-	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
-	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
-	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));
-WITH
-	toDateTime64('2019-09-16 19:20:12.345678910', 6) AS dt64
-SELECT
-	dt64,
-	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
-	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
-	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));
-WITH
-	toDateTime64('2019-09-16 19:20:12.345678910', 9) AS dt64
-SELECT
-	dt64,
-	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
-	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
-	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));
+DROP TABLE IF EXISTS t;
+CREATE TABLE t(a UInt32, b UInt32) ENGINE = MergeTree PARTITION BY a ORDER BY a;
+INSERT INTO t SELECT number % 10, number FROM numbers(10000);

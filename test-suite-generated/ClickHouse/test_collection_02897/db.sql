@@ -1,14 +1,15 @@
-DROP TABLE IF EXISTS distributed_tbl;
-DROP TABLE IF EXISTS merge_tree_table;
-CREATE TABLE merge_tree_table
+drop table if exists test;
+drop table if exists test1;
+CREATE TABLE test
 (
-    Date Date,
-    SomeType UInt8,
-    Alternative1 UInt64,
-    Alternative2 UInt64,
-    User UInt32,
-    CharID UInt64 ALIAS multiIf(SomeType IN (3, 4, 11), 0, SomeType IN (7, 8), Alternative1, Alternative2)
+    `pt` String,
+    `count_distinct_exposure_uv` AggregateFunction(uniqHLL12, Int64)
 )
-ENGINE = MergeTree()
-ORDER BY tuple();
-INSERT INTO merge_tree_table VALUES(toDate('2016-03-01'), 4, 0, 0, 1486392);
+ENGINE = AggregatingMergeTree
+ORDER BY pt;
+CREATE TABLE test1
+(
+    `pt` String,
+    `exposure_uv` Float64
+)
+ENGINE = Memory;

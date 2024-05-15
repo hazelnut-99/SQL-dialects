@@ -1,1 +1,0 @@
-SELECT sum(DISTINCT y) FROM (SELECT number % 5 AS x, number % 15 AS y FROM numbers(1000)) GROUP BY x ORDER BY x;

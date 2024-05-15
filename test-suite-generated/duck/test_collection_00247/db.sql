@@ -40,3 +40,5 @@ CREATE TABLE with_array(foo INT, arr DOUBLE[]);
 INSERT INTO with_array VALUES(1, [1,2,3]), (2, [4,5,6]);
 CREATE TABLE tbl_ints AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY[6] AS col_b;
 INSERT INTO tbl_ints VALUES (ARRAY[4, 5], ARRAY[7, 8]);
+CREATE TABLE tbl_mix AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY['a'] AS col_b;
+INSERT INTO tbl_mix VALUES (ARRAY[4, 5], ARRAY['b', 'c']);

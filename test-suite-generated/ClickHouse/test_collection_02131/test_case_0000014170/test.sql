@@ -1,1 +1,0 @@
-SELECT toModifiedJulianDayOrNull('unparsable');

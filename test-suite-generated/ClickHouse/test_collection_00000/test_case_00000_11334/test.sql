@@ -1,0 +1,1 @@
+SELECT cast(tuple('1'), 'Tuple(value String)') AS value, number FROM numbers(value.* APPLY x -> toUInt64(x));

@@ -1,1 +1,0 @@
-SELECT 'Tehran DST Years:';

@@ -1,0 +1,5 @@
+SELECT d8+606, b7, c2+418
+  FROM t8, t2, t7
+ WHERE e2 in (40,554,783)
+   AND e7 in (976,844,782)
+   AND (736=e8 OR e8=881 OR 349=e8);

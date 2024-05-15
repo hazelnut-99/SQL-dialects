@@ -1,0 +1,2 @@
+"SELECT sum(number) RESPECT NULLS
+FROM numbers(1)"

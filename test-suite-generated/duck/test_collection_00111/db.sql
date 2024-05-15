@@ -10,3 +10,4 @@ CREATE MACRO nested_cte(needle, haystack) AS needle IN (
     ) AS sq
 );
 CREATE MACRO IFELSE(a,b,c) AS CASE WHEN a THEN b ELSE c END;
+CREATE MACRO mod_two(k) AS k%2;

@@ -1,1 +1,0 @@
-SELECT * FROM test1 PASTE JOIN (SELECT * FROM test2);

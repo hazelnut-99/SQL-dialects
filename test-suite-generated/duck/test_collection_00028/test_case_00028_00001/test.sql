@@ -1,0 +1,1 @@
+SELECT s FROM collate_test ORDER BY s COLLATE NOCASE;

@@ -1,11 +1,2 @@
-drop table if exists test;
-drop table if exists file;
-drop table if exists mt;
-insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
-attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
-detach table file;
-attach table file;
-attach table mt from '01188_attach/file' (n UInt8, s String) engine=MergeTree order by n;
-insert into mt values (42, 'mt');
-detach table mt;
-attach table mt;
+drop table if exists enum;
+create table enum engine MergeTree order by enum as select cast(1, 'Enum8(\'zero\'=0, \'one\'=1)') AS enum;

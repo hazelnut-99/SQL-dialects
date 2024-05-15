@@ -1,1 +1,0 @@
-SELECT toDecimal128(1.555,3) IN (1.5551);

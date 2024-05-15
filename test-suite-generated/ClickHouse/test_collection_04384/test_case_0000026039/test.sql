@@ -1,1 +1,0 @@
-SELECT id FROM (SELECT * FROM (SELECT * FROM test_table));

@@ -1,1 +1,0 @@
-SELECT i FROM integers WHERE i <= 0::float AND j <= 0::utinyint ORDER BY i;

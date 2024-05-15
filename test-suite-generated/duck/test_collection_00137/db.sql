@@ -241,3 +241,8 @@ CREATE MACRO card_dfl() as TABLE SELECT DISTINCT suit FROM cards_tbl where suit=
 CREATE MACRO  sc(aorder, border, nlimit) AS TABLE SELECT * FROM cards_tbl ORDER BY aorder,border LIMIT nlimit;
 CREATE MACRO sc2(dlimit, noffset) AS TABLE SELECT DISTINCT  suit from cards_tbl order by all limit dlimit% offset noffset;
 CREATE MACRO sc3(col) AS TABLE SELECT DISTINCT ON (col) col FROM cards_tbl ORDER BY col;
+CREATE MACRO card_no_tbl() as TABLE SELECT * FROM suit_tbl;
+CREATE MACRO card_select_val(_val_min, _val_min) as TABLE SELECT * FROM cards_tbl WHERE val>=_val_min AND val<=_val_max;
+CREATE TABLE integers (a INT);
+INSERT INTO integers VALUES (1);
+CREATE MACRO parameterized_cte(a) AS (WITH cte AS (SELECT a AS answer) SELECT answer FROM cte);

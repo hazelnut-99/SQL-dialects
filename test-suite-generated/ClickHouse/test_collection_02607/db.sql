@@ -1,2 +1,2 @@
-CREATE TABLE foo_lc (n LowCardinality(String)) ENGINE = Memory;
-CREATE TABLE foo (n String) ENGINE = Memory;
+drop table if exists test;
+create table test (line String, _file String, _path String) engine=Memory;

@@ -1,19 +1,4 @@
-DROP TABLE IF EXISTS m;
-DROP TABLE IF EXISTS d;
-CREATE TABLE m
-(
-    `v` UInt8
-)
-ENGINE = MergeTree()
-PARTITION BY tuple()
-ORDER BY v;
-INSERT INTO m VALUES (123);
-DROP TABLE m;
-CREATE TABLE m
-(
-    `v` Enum8('a' = 1, 'b' = 2)
-)
-ENGINE = MergeTree()
-PARTITION BY tuple()
-ORDER BY v;
-INSERT INTO m VALUES ('a');
+DROP TABLE IF EXISTS t_filter;
+CREATE TABLE t_filter(s String, a Array(FixedString(3)), u UInt64, f UInt8)
+ENGINE = MergeTree ORDER BY u;
+INSERT INTO t_filter SELECT toString(number), ['foo', 'bar'], number, toUInt8(number) FROM numbers(1000);

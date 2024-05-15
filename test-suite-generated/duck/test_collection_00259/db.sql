@@ -98,3 +98,5 @@ explain select b.i from a right outer join b using (i);
 explain select b.i from a right outer join b on (a.i=b.i);
 explain select i from a left outer join b using (i) inner join c using (i);
 explain select a.i from a left outer join b on (a.i=b.i) inner join c on (a.i=c.i);
+explain select i from a left outer join b using (i) left outer join c using (i);
+explain select a.i from a left outer join b on (a.i=b.i) left outer join c on (a.i=c.i);

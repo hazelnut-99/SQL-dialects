@@ -1,4 +1,0 @@
-SELECT d-e
-  FROM t1
- WHERE c BETWEEN b-2 AND d+2
-    OR d>e;

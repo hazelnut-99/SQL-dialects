@@ -1,2 +1,3 @@
-with pow(2,2) as four select pow(four, 2), 2 as two, pow(two, 2);
-with (select pow(two,2)) as four select pow(four, 2), 2 as two, pow(two, 2);
+drop table if exists orin_test;
+create table orin_test (c1 Int32) engine=Memory;
+insert into orin_test values(1), (100);

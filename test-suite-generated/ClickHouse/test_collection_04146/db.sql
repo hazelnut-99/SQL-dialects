@@ -1,5 +1,0 @@
-DROP TABLE IF EXISTS t0;
-DROP TABLE IF EXISTS t1;
-CREATE TABLE t0 (vkey UInt32, pkey UInt32, c0 UInt32) engine = TinyLog;
-CREATE TABLE t1 (vkey UInt32) ENGINE = AggregatingMergeTree  ORDER BY vkey;
-INSERT INTO t0 VALUES (15, 25000, 58);

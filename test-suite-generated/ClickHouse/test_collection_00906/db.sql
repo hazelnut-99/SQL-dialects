@@ -1,15 +1,9 @@
-DROP TABLE IF EXISTS t64;
-CREATE TABLE t64
-(
-    i8 Int8,
-    t_i8 Int8 Codec(T64, LZ4),
-    i16 Int16,
-    t_i16 Int16 Codec(T64, LZ4),
-    i32 Int32,
-    t_i32 Int32 Codec(T64, LZ4),
-    i64 Int64,
-    t_i64 Int64 Codec(T64, LZ4)
-) ENGINE MergeTree() ORDER BY tuple();
-INSERT INTO t64 SELECT toInt32(number)-1 AS x, x, x, x, x, x, x, x FROM numbers(2);
-INSERT INTO t64 SELECT toInt32(number)-1 AS x, x, x, x, x, x, x, x FROM numbers(3);
-INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
+DROP TABLE IF EXISTS mv;
+DROP TABLE IF EXISTS mv_source;
+DROP TABLE IF EXISTS mv_target;
+CREATE TABLE mv_source (`a` UInt64) ENGINE = MergeTree ORDER BY tuple();
+CREATE TABLE mv_target (`a` UInt64) ENGINE = MergeTree ORDER BY tuple();
+CREATE MATERIALIZED VIEW mv TO mv_target AS SELECT * FROM mv_source;
+INSERT INTO mv_source VALUES (1);
+ALTER TABLE mv_target ADD COLUMN b UInt8 DEFAULT a + 1;
+INSERT INTO mv_source VALUES (1),(2),(3);

@@ -1,1 +1,0 @@
-SELECT 'toLastDayOfWeek (Sunday)';

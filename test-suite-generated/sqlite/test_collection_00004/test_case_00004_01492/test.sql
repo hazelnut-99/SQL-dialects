@@ -1,0 +1,2 @@
+SELECT d
+  FROM t1;

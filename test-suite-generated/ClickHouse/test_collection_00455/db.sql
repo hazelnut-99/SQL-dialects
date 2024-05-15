@@ -1,5 +1,7 @@
-CREATE TEMPORARY TABLE readonly00542 (
-    ID Int
-) Engine = Memory;
-INSERT INTO readonly00542 (ID)
-    VALUES (1), (2), (3), (4), (5);
+drop temporary table if exists wups;
+create temporary table wups (a Array(Nullable(String)));
+insert into wups (a) values(['foo']);
+insert into wups (a) values([]);
+drop temporary table wups;
+create temporary table wups (a Array(Nullable(String)));
+insert into wups (a) values([]);

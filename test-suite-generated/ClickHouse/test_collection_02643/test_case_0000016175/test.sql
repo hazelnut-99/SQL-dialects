@@ -1,1 +1,0 @@
-select if(number % 5 == 0, toUInt32OrZero(toString(number)), Null) from numbers(20);

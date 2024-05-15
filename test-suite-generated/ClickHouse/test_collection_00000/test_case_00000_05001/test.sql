@@ -1,0 +1,1 @@
+SELECT bitCount(-1);

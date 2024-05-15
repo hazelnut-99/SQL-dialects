@@ -1,4 +1,0 @@
-SELECT x9, b6
-  FROM t6, t9
- WHERE d6=446
-   AND 161=d9;

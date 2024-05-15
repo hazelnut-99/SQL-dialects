@@ -1,14 +1,7 @@
-DROP TABLE IF EXISTS test1;
-CREATE TABLE test1
-(
-    `year` String ,
-    `uv` AggregateFunction(uniqTheta, Int64)
-)
-ENGINE = AggregatingMergeTree()
-ORDER BY (year);
-INSERT INTO TABLE test1(year, uv) select '2021',uniqThetaState(toInt64(1));
-INSERT INTO TABLE test1(year, uv) select '2021',uniqThetaState(toInt64(2));
-INSERT INTO TABLE test1(year, uv) select '2021',uniqThetaState(toInt64(3));
-INSERT INTO TABLE test1(year, uv) select '2021',uniqThetaState(toInt64(4));
-INSERT INTO TABLE test1(year, uv) select '2022',uniqThetaState(toInt64(1));
-INSERT INTO TABLE test1(year, uv) select '2022',uniqThetaState(toInt64(3));
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table (
+    fingerprint UInt16,
+    fields Nested(name Array(UInt32), value String)
+) ENGINE = MergeTree
+ORDER BY fingerprint;
+INSERT INTO test_table VALUES (0, [[1]], ['1']);

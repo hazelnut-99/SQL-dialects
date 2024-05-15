@@ -1,5 +1,0 @@
-SELECT x5, a8, b4*473
-  FROM t8, t4, t5
- WHERE b4 in (387,271,33,608,40)
-   AND e8=41
-   AND 147=c5;

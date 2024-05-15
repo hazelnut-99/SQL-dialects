@@ -1,0 +1,1 @@
+SELECT j = 2, i FROM t PREWHERE j = 2;

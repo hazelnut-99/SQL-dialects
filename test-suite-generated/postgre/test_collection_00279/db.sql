@@ -885,3 +885,240 @@ begin
   return i;
 end;
 $$ LANGUAGE plpgsql;
+DROP FUNCTION nonsimple_expr_test();
+create function recurse(float8) returns float8 as
+$$
+begin
+  if ($1 > 0) then
+    return sql_recurse($1 - 1);
+  else
+    return $1;
+  end if;
+end;
+$$ language plpgsql;
+create function sql_recurse(float8) returns float8 as
+$$ select recurse($1) limit 1; $$ language sql;
+create function error2(p_name_table text) returns text language plpgsql as $$
+begin
+  return error1(p_name_table);
+end$$;
+BEGIN;
+create table public.stuffs (stuff text);
+SAVEPOINT a;
+ROLLBACK TO a;
+rollback;
+drop function error2(p_name_table text);
+create function sql_to_date(integer) returns date as $$
+select $1::text::date
+$$ language sql immutable strict;
+create cast (integer as date) with function sql_to_date(integer) as assignment;
+create function cast_invoker(integer) returns date as $$
+begin
+  return $1;
+end$$ language plpgsql;
+begin;
+savepoint s1;
+rollback to savepoint s1;
+commit;
+drop function cast_invoker(integer);
+drop function sql_to_date(integer) cascade;
+begin;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+end;
+create function fail() returns int language plpgsql as $$
+begin
+  return 1/0;
+end
+$$;
+drop function fail();
+create or replace function strtest() returns text as $$
+begin
+  raise notice 'foo\\bar\041baz';
+  return 'foo\\bar\041baz';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice E'foo\\bar\041baz';
+  return E'foo\\bar\041baz';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice 'foo\\bar\041baz\';
+  return 'foo\\bar\041baz\';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice E'foo\\bar\041baz';
+  return E'foo\\bar\041baz';
+end
+$$ language plpgsql;
+drop function strtest();
+do $outer$
+begin
+  for i in 1..10 loop
+   begin
+    execute $ex$
+      do $$
+      declare x int = 0;
+      begin
+        x := 1 / x;
+      end;
+      $$;
+    $ex$;
+  exception when division_by_zero then
+    raise notice 'caught division by zero';
+  end;
+  end loop;
+end;
+$outer$;
+do $$
+declare x int := 42;
+        y int := x + 1;
+begin
+  raise notice 'x = %, y = %', x, y;
+end;
+$$;
+do $$
+declare x int := 42;
+begin
+  declare y int := x + 1;
+          x int := x + 2;
+          z int := x * 10;
+  begin
+    raise notice 'x = %, y = %, z = %', x, y, z;
+  end;
+end;
+$$;
+create function unreserved_test() returns int as $$
+declare
+  forward int := 21;
+begin
+  forward := forward * 2;
+  return forward;
+end
+$$ language plpgsql;
+create or replace function unreserved_test() returns int as $$
+declare
+  return int := 42;
+begin
+  return := return + 1;
+  return return;
+end
+$$ language plpgsql;
+create or replace function unreserved_test() returns int as $$
+declare
+  comment int := 21;
+begin
+  comment := comment * 2;
+  comment on function unreserved_test() is 'this is a test';
+  return comment;
+end
+$$ language plpgsql;
+drop function unreserved_test();
+create function foreach_test(anyarray)
+returns void as $$
+declare x int;
+begin
+  foreach x in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int;
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int[];
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int[];
+begin
+  foreach x slice 2 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create type xy_tuple AS (x int, y int);
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare r record;
+begin
+  foreach r in array $1
+  loop
+    raise notice '%', r;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int; y int;
+begin
+  foreach x, y in array $1
+  loop
+    raise notice 'x = %, y = %', x, y;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x xy_tuple[];
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+drop function foreach_test(anyarray);
+drop type xy_tuple;
+create temp table rtype (id int, ar text[]);
+create function arrayassign1() returns text[] language plpgsql as $$
+declare
+ r record;
+begin
+  r := row(12, '{foo,bar,baz}')::rtype;
+  r.ar[2] := 'replace';
+  return r.ar;
+end$$;
+create domain orderedarray as int[2]
+  constraint sorted check (value[1] < value[2]);
+create function testoa(x1 int, x2 int, x3 int) returns orderedarray
+language plpgsql as $$
+declare res orderedarray;
+begin
+  res := array[x1, x2];
+  res[2] := x3;
+  return res;
+end$$;
+drop function arrayassign1();
+drop function testoa(x1 int, x2 int, x3 int);
+create function returns_rw_array(int) returns int[]
+language plpgsql as $$
+  declare r int[];
+  begin r := array[$1, $1]; return r; end;
+$$ stable;
+create function consumes_rw_array(int[]) returns int
+language plpgsql as $$
+  begin return $1[1]; end;
+$$ stable;

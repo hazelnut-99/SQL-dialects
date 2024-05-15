@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS multidimensional;
-CREATE TABLE multidimensional (x UInt64, arr Array(Array(String))) ENGINE = MergeTree ORDER BY x;
-INSERT INTO multidimensional VALUES (1, [['Hello', 'World'], ['Goodbye'], []]);
-ALTER TABLE multidimensional ADD COLUMN t Tuple(String, Array(Nullable(String)), Tuple(UInt32, Date));
-INSERT INTO multidimensional (t) VALUES (('Hello', ['World', NULL], (123, '2000-01-01')));
-OPTIMIZE TABLE multidimensional;
+DROP TABLE IF EXISTS ipv4_test;
+CREATE TABLE ipv4_test (ipv4_ IPv4) ENGINE = Memory;
+SHOW CREATE TABLE ipv4_test;
+INSERT INTO ipv4_test (ipv4_) VALUES ('0.0.0.0'), ('255.255.255.255'), ('192.168.0.91'), ('127.0.0.1'), ('8.8.8.8');
+DROP TABLE IF EXISTS ipv4_test;

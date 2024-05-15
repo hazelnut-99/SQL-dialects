@@ -1,3 +1,3 @@
-CREATE TABLE IF NOT EXISTS data (sketch Array(Int8)) ENGINE=Memory;
-INSERT INTO data VALUES ([-1,-1,-1]), ([4,-1,2]), ([0,25,-1]), ([-1,-1,7]), ([-1,-1,-1]);
-DROP TABLE data;
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders (OrderId UInt64, OrderName String, OrderDate DateTime) engine = Log;
+insert into Orders values (1,   'Jarlsberg Cheese',    toDateTime('2008-10-11 13:23:44'));

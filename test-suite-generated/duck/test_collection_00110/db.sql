@@ -9,3 +9,4 @@ CREATE MACRO nested_cte(needle, haystack) AS needle IN (
         SELECT i FROM ints
     ) AS sq
 );
+CREATE MACRO IFELSE(a,b,c) AS CASE WHEN a THEN b ELSE c END;

@@ -1,1 +1,0 @@
-SELECT 'Read the data after OPTIMIZE, all deleted rwos should be physically removed now';

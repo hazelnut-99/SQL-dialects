@@ -1,1 +1,0 @@
-SELECT COUNT(*) FROM integers WHERE i=CAST(55+1 AS tinyint);

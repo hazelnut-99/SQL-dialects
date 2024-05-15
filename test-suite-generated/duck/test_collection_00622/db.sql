@@ -2702,3 +2702,5 @@ INSERT INTO struct_data VALUES (1, 1), (1, 2), (2, 3), (2, 4), (2, 5), (3, 6), (
 INSERT INTO integers VALUES (1), (2), (3), (4), (5);
 drop table test;
 create table test as (select range i from range(100000));
+drop table test;
+create table test as (select range i from range(100000));

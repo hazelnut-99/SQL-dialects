@@ -1,1 +1,0 @@
-SELECT 'Multiple Joins USING';

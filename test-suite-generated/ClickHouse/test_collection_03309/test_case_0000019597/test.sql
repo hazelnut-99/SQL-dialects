@@ -1,1 +1,0 @@
-SELECT arrayFirstOrNull((x,f) -> f, [1,2,3,NULL], [0,0,0,1]);

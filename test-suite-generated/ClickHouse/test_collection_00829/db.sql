@@ -1,28 +1,18 @@
-DROP TABLE IF EXISTS alter_compression_codec;
-CREATE TABLE alter_compression_codec (
-    somedate Date CODEC(LZ4),
-    id UInt64 CODEC(NONE)
-) ENGINE = MergeTree() PARTITION BY somedate ORDER BY id;
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 1);
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 2);
-ALTER TABLE alter_compression_codec ADD COLUMN alter_column String DEFAULT 'default_value' CODEC(ZSTD);
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 3, '3');
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 4, '4');
-ALTER TABLE alter_compression_codec MODIFY COLUMN alter_column CODEC(NONE);
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 5, '5');
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 6, '6');
-OPTIMIZE TABLE alter_compression_codec FINAL;
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 7, '7');
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 8, '8');
-OPTIMIZE TABLE alter_compression_codec FINAL;
-ALTER TABLE alter_compression_codec MODIFY COLUMN alter_column FixedString(100);
-DROP TABLE IF EXISTS alter_compression_codec;
-DROP TABLE IF EXISTS alter_bad_codec;
-CREATE TABLE alter_bad_codec (
-    somedate Date CODEC(LZ4),
-    id UInt64 CODEC(NONE)
-) ENGINE = MergeTree() ORDER BY tuple();
-DROP TABLE IF EXISTS alter_bad_codec;
-DROP TABLE IF EXISTS large_alter_table_00804;
-DROP TABLE IF EXISTS store_of_hash_00804;
-CREATE TABLE store_of_hash_00804 (hash UInt64) ENGINE = Memory();
+DROP TABLE IF EXISTS test_table;
+DROP TABLE IF EXISTS test_table_2;
+CREATE TABLE test_table (value UInt8, name String) ENGINE = MergeTree() ORDER BY value;
+INSERT INTO test_table VALUES (1, 'a'), (2, 'b'), (3, 'c');
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table (v1 String, v2 UInt8, v3 DEFAULT v2 * 16, v4 UInt8 DEFAULT 8) ENGINE = MergeTree() ORDER BY v2;
+INSERT INTO test_table FORMAT JSONCompactEachRow ["first", 1, "2", null] ["second", 2, null, 6];
+TRUNCATE TABLE test_table;
+INSERT INTO test_table FORMAT JSONCompactEachRow ["first", 1, "2", null] ["second", 2, null, 6];
+TRUNCATE TABLE test_table;
+CREATE TABLE test_table_2 (v1 UInt8, n Nested(id UInt8, name String)) ENGINE = MergeTree() ORDER BY v1;
+INSERT INTO test_table_2 FORMAT JSONCompactEachRow [16, [15, 16, null], ["first", "second", "third"]];
+TRUNCATE TABLE test_table_2;
+INSERT INTO test_table FORMAT JSONCompactEachRowWithNamesAndTypes ["v1", "v2", "v3", "v4"]["String","UInt8","UInt16","UInt8"]["first", 1, "2", null]["second", 2, null, 6];
+INSERT INTO test_table FORMAT JSONCompactEachRowWithNames ["v1", "v2", "v3", "v4"]["first", 1, "2", null]["second", 2, null, 6];
+TRUNCATE TABLE test_table;
+INSERT INTO test_table FORMAT JSONCompactEachRowWithNamesAndTypes ["v1", "v2", "v3", "v4"]["String","UInt8","UInt16","UInt8"]["first", 1, "2", null] ["second", 2, null, 6];
+INSERT INTO test_table FORMAT JSONCompactEachRowWithNames ["v1", "v2", "v3", "v4"]["first", 1, "2", null] ["second", 2, null, 6];

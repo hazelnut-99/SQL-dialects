@@ -1,4 +1,10 @@
-DROP TABLE IF EXISTS where_qualified;
-CREATE TABLE where_qualified(a UInt32, b UInt8) ENGINE = Memory;
-INSERT INTO where_qualified VALUES(1, 1);
-INSERT INTO where_qualified VALUES(2, 0);
+DROP TABLE IF EXISTS src;
+DROP TABLE IF EXISTS dst;
+DROP TABLE IF EXISTS original_mv;
+DROP TABLE IF EXISTS new_mv;
+CREATE TABLE src (x UInt8) ENGINE = Null;
+CREATE TABLE dst (x UInt8) ENGINE = Memory;
+CREATE MATERIALIZED VIEW original_mv TO dst AS SELECT * FROM src;
+INSERT INTO src VALUES (1), (2);
+RENAME TABLE original_mv TO new_mv;
+INSERT INTO src VALUES (3);

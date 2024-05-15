@@ -1,26 +1,43 @@
-CREATE TABLE truncate_a (col1 integer primary key);
-INSERT INTO truncate_a VALUES (1);
-INSERT INTO truncate_a VALUES (2);
-BEGIN;
-TRUNCATE truncate_a;
-ROLLBACK;
-BEGIN;
+WITH q1(x,y) AS (SELECT 1,2)
+SELECT * FROM q1, q1 AS q2;
+WITH RECURSIVE t(n) AS (
+    VALUES (1)
+UNION ALL
+    SELECT n+1 FROM t WHERE n < 100
+)
+SELECT sum(n) FROM t;
+WITH RECURSIVE t(n) AS (
+    SELECT (VALUES(1))
+UNION ALL
+    SELECT n+1 FROM t WHERE n < 5
+)
+SELECT * FROM t;
 COMMIT;
-CREATE TABLE trunc_c (a serial PRIMARY KEY);
-CREATE TABLE trunc_d (a int REFERENCES trunc_c);
-TRUNCATE TABLE trunc_c,trunc_d;		-- fail
-INSERT INTO trunc_c VALUES (1);
-INSERT INTO trunc_d VALUES (1);
-INSERT INTO trunc_d VALUES (1);
-TRUNCATE TABLE trunc_c CASCADE;  -- ok
-CREATE TABLE trunc_f (col1 integer primary key);
-INSERT INTO trunc_f VALUES (1);
-INSERT INTO trunc_f VALUES (2);
-CREATE TABLE trunc_fa (col2a text) INHERITS (trunc_f);
-INSERT INTO trunc_fa VALUES (3, 'three');
-CREATE TABLE trunc_fb (col2b int) INHERITS (trunc_f);
-INSERT INTO trunc_fb VALUES (4, 444);
-CREATE TABLE trunc_faa (col3 text) INHERITS (trunc_fa);
-INSERT INTO trunc_faa VALUES (5, 'five', 'FIVE');
-BEGIN;
-TRUNCATE trunc_f;
+CREATE TABLE withz AS SELECT i AS k, (i || ' v')::text v FROM generate_series(1, 16, 3) i;
+ALTER TABLE withz ADD UNIQUE (k);
+DROP TABLE withz;
+CREATE TABLE m AS SELECT i AS k, (i || ' v')::text v FROM generate_series(1, 16, 3) i;
+ALTER TABLE m ADD UNIQUE (k);
+DROP TABLE m;
+CREATE TEMPORARY TABLE yy (a INTEGER);
+CREATE FUNCTION y_trigger() RETURNS trigger AS $$
+begin
+  raise notice 'y_trigger: a = %', new.a;
+  return new;
+end;
+$$ LANGUAGE plpgsql;
+CREATE OR REPLACE FUNCTION y_trigger() RETURNS trigger AS $$
+begin
+  raise notice 'y_trigger';
+  return null;
+end;
+$$ LANGUAGE plpgsql;
+DROP FUNCTION y_trigger();
+CREATE TEMP TABLE parent ( id int, val text );
+CREATE TEMP TABLE child1 ( ) INHERITS ( parent );
+CREATE TEMP TABLE child2 ( ) INHERITS ( parent );
+INSERT INTO parent VALUES ( 1, 'p1' );
+INSERT INTO child1 VALUES ( 11, 'c11' ),( 12, 'c12' );
+INSERT INTO child2 VALUES ( 23, 'c21' ),( 24, 'c22' );
+WITH rcte AS ( SELECT max(id) AS maxid FROM parent )
+DELETE FROM parent USING rcte WHERE id = maxid;

@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS test_alter_attach_01901S;
-DROP TABLE IF EXISTS test_alter_attach_01901D;
-CREATE TABLE test_alter_attach_01901S (A Int64, D date) ENGINE = MergeTree PARTITION BY D ORDER BY A;
-INSERT INTO test_alter_attach_01901S VALUES (1, '2020-01-01');
+drop table if exists dummy;
+CREATE TABLE dummy ( num1 Int32, num2 Enum8('foo' = 0, 'bar' = 1, 'tar' = 2) )
+ENGINE = MergeTree ORDER BY num1 as select 5, 'bar';

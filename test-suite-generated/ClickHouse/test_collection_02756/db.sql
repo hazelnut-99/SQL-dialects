@@ -1,11 +1,10 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
+DROP TABLE IF EXISTS m;
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+CREATE TABLE m
 (
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
+    a String,
+    date Date,
+    f UInt8
+)
+ENGINE = Merge(currentDatabase(), '^(t1|t2)$');

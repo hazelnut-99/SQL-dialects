@@ -1,0 +1,1 @@
+SELECT 0 == COUNT(1) FROM 01504_test;

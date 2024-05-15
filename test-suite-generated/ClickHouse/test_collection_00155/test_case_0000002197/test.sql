@@ -1,1 +1,0 @@
-select '-- Ensure ALIAS columns are not selected by asterisk';

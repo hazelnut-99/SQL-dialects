@@ -36,3 +36,11 @@ INSERT INTO combocidtest VALUES (444);
 SAVEPOINT s1;
 ROLLBACK TO s1;
 COMMIT;
+CREATE TABLE IF NOT EXISTS testcase(
+	id int PRIMARY KEY,
+	balance numeric
+);
+INSERT INTO testcase VALUES (1, 0);
+BEGIN;
+SAVEPOINT subxact;
+ROLLBACK TO SAVEPOINT subxact;

@@ -1,1 +1,0 @@
-SELECT NULL OR 0;

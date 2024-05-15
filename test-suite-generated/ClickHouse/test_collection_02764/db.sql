@@ -1,53 +1,9 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
+CREATE TABLE mytable
 (
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
-(
-    id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
-DROP TABLE IF EXISTS test_table_float_values;
-CREATE TABLE test_table_float_values
-(
-    id UInt64,
-
-    value1 Float32,
-    value2 Float64
-) ENGINE=TinyLog;
-DROP TABLE test_table_float_values;
-DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
-CREATE TABLE test_table_nullable_unsigned_values
-(
-    id UInt64,
-
-    value1 Nullable(UInt8),
-    value2 Nullable(UInt16),
-    value3 Nullable(UInt32),
-    value4 Nullable(UInt64)
-) ENGINE=TinyLog;
-DROP TABLE test_table_nullable_unsigned_values;
-DROP TABLE IF EXISTS test_table_nullable_signed_values;
-CREATE TABLE test_table_nullable_signed_values
-(
-    id UInt64,
-
-    value1 Nullable(Int8),
-    value2 Nullable(Int16),
-    value3 Nullable(Int32),
-    value4 Nullable(Int64)
-) ENGINE=TinyLog;
-DROP TABLE test_table_nullable_signed_values;
+    operand Float64,
+    low     Float64,
+    high     Float64,
+    count   UInt64,
+    PRIMARY KEY (operand, low, high, count)
+) ENGINE = MergeTree();
+INSERT INTO mytable VALUES (3, -100, 200, 10), (0, 0, 10, 4), (3, 0, 10, 3), (4.333, 1, 11, 3), (4.34, 1, 11, 3), (-7.6, -10, 0, 4), (-6, -5, -1, 2), (1, 3, 0, 1), (3, 2, 5, 0);

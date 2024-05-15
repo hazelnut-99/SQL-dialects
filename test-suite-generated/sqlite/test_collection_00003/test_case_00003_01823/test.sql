@@ -1,0 +1,4 @@
+SELECT b3*416, a7
+  FROM t7, t3
+ WHERE 460=e7
+   AND a3=727;

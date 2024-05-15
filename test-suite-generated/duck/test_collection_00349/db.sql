@@ -344,3 +344,21 @@ create table test8 (i int, s varchar);
 insert into test8 values (3, 'aba'), (1, 'ccbcc'), (NULL, 'dbdbd'), (2, NULL);
 CREATE TABLE test9 AS (SELECT range % 4 i, range j FROM range(5000));
 INSERT INTO test9 VALUES (0, NULL), (1, NULL), (2, NULL), (3, NULL);
+CREATE TABLE DirectReports
+(
+    EmployeeID smallint,
+    Name varchar NOT NULL,
+    Title varchar NOT NULL,
+    EmployeeLevel int NOT NULL,
+    Sort varchar NOT NULL
+);
+INSERT INTO DirectReports VALUES
+(1, 'Ken Sánchez', 'Chief Executive Officer', 1, 'Ken Sánchez'),
+(273, '>Brian Welcker', 'Vice President of Sales', 2, 'Ken Sánchez>Brian Welcker'),
+(274, '>>Stephen Jiang', 'North American Sales Manager', 3, 'Ken Sánchez>Brian Welcker>Stephen Jiang'),
+(285, '>>Syed Abbas', 'Pacific Sales Manager', 3, 'Ken Sánchez>Brian Welcker>Syed Abbas'),
+(16, '>>David Bradley', 'Marketing Manager', 3, 'Ken Sánchez>Brian Welcker>David Bradley'),
+(275, '>>>Michael Blythe', 'Sales Representative', 4, 'Ken Sánchez>Brian Welcker>Stephen Jiang>Michael Blythe'),
+(276, '>>>Linda Mitchell', 'Sales Representative', 4, 'Ken Sánchez>Brian Welcker>Stephen Jiang>Linda Mitchell'),
+(286, '>>>Lynn Tsoflias', 'Sales Representative', 4, 'Ken Sánchez>Brian Welcker>Syed Abbas>Lynn Tsoflias'),
+(23, '>>>Mary Gibson', 'Marketing Specialist', 4, 'Ken Sánchez>Brian Welcker>David Bradley>Mary Gibson');

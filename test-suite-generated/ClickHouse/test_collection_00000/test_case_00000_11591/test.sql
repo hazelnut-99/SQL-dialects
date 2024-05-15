@@ -1,0 +1,1 @@
+SELECT DISTINCT arrayReduce('quantiles(0.5)', materialize([]::Array(DateTime('UTC')))) FROM numbers(1000) LIMIT 10;

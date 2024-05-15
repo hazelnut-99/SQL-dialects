@@ -48,3 +48,96 @@ DELETE FROM t3 USING t1 JOIN t2 USING (a) WHERE t3.x > t1.a;
 DELETE FROM t3 USING t3 t3_other WHERE t3.x = t3_other.x AND t3.y = t3_other.y;
 create temp table t2a () inherits (t2);
 insert into t2a values (200, 2001);
+CREATE TEMP TABLE tt1 ( tt1_id int4, joincol int4 );
+INSERT INTO tt1 VALUES (1, 11);
+INSERT INTO tt1 VALUES (2, NULL);
+CREATE TEMP TABLE tt2 ( tt2_id int4, joincol int4 );
+INSERT INTO tt2 VALUES (21, 11);
+INSERT INTO tt2 VALUES (22, 11);
+create temp table tt3(f1 int, f2 text);
+insert into tt3 select x, repeat('xyzzy', 100) from generate_series(1,10000) x;
+analyze tt3;
+create temp table tt4(f1 int);
+insert into tt4 values (0),(1),(9999);
+analyze tt4;
+create temp table tt4x(c1 int, c2 int, c3 int);
+create temp table tt5(f1 int, f2 int);
+create temp table tt6(f1 int, f2 int);
+insert into tt5 values(1, 10);
+insert into tt5 values(1, 11);
+insert into tt6 values(1, 9);
+insert into tt6 values(1, 2);
+insert into tt6 values(2, 9);
+create temp table xx (pkxx int);
+create temp table yy (pkyy int, pkxx int);
+insert into xx values (1);
+insert into xx values (2);
+insert into xx values (3);
+insert into yy values (101, 1);
+insert into yy values (201, 2);
+insert into yy values (301, NULL);
+create temp table zt1 (f1 int primary key);
+create temp table zt2 (f2 int primary key);
+create temp table zt3 (f3 int primary key);
+insert into zt1 values(53);
+insert into zt2 values(53);
+create temp view zv1 as select *,'dummy'::text AS junk from zt1;
+begin;
+create temp table a (i integer);
+create temp table b (x integer, y integer);
+rollback;
+begin;
+create type mycomptype as (id int, v bigint);
+create temp table tidv (idv mycomptype);
+create index on tidv (idv);
+rollback;
+begin;
+create temp table a (
+     code char not null,
+     constraint a_pk primary key (code)
+);
+create temp table b (
+     a char not null,
+     num integer not null,
+     constraint b_pk primary key (a, num)
+);
+create temp table c (
+     name char not null,
+     a char,
+     constraint c_pk primary key (name)
+);
+insert into a (code) values ('p');
+insert into a (code) values ('q');
+insert into b (a, num) values ('p', 1);
+insert into b (a, num) values ('p', 2);
+insert into c (name, a) values ('A', 'p');
+insert into c (name, a) values ('B', 'q');
+insert into c (name, a) values ('C', null);
+rollback;
+create temp table nt1 (
+  id int primary key,
+  a1 boolean,
+  a2 boolean
+);
+create temp table nt2 (
+  id int primary key,
+  nt1_id int,
+  b1 boolean,
+  b2 boolean,
+  foreign key (nt1_id) references nt1(id)
+);
+create temp table nt3 (
+  id int primary key,
+  nt2_id int,
+  c1 boolean,
+  foreign key (nt2_id) references nt2(id)
+);
+insert into nt1 values (1,true,true);
+insert into nt1 values (2,true,false);
+insert into nt1 values (3,false,false);
+insert into nt2 values (1,1,true,true);
+insert into nt2 values (2,2,true,false);
+insert into nt2 values (3,3,false,false);
+insert into nt3 values (1,1,true);
+insert into nt3 values (2,2,false);
+insert into nt3 values (3,3,true);

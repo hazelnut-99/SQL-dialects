@@ -1,0 +1,1 @@
+SELECT 'INSERT INTO tmp_table_01818';

@@ -1,4 +1,0 @@
-SELECT arrayJoin(arrayMap(i -> (i + 1), range(2))) AS index, number
-FROM numbers(2)
-GROUP BY number
-ORDER BY index, number;

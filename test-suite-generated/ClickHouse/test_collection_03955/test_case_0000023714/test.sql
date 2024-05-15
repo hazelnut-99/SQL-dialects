@@ -1,1 +1,0 @@
-SELECT DATE_FORMAT(toDateTime('2018-01-02 11:33:44'), '%p');

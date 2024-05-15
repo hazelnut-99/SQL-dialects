@@ -1,4 +1,12 @@
-with generateUUIDv4() as uuid,
-    replace(toString(uuid), '-', '') as str1,
-    lower(hex(uuid)) as str2
-select str1 = str2;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (id Int64, dflt Int64 DEFAULT 54321) ENGINE MergeTree ORDER BY id;
+INSERT INTO tab (id, dflt) VALUES (1, 1);
+INSERT INTO tab (id) VALUES (2);
+ALTER TABLE tab MATERIALIZE COLUMN dflt;
+DROP TABLE tab;
+CREATE TABLE tab (id Int64, dflt Int64 DEFAULT 54321) ENGINE MergeTree ORDER BY id;
+INSERT INTO tab (id, dflt) VALUES (1, 1);
+INSERT INTO tab (id) VALUES (2);
+ALTER TABLE tab RENAME COLUMN dflt TO dflt2;
+ALTER TABLE tab MATERIALIZE COLUMN dflt2;
+DROP TABLE tab;

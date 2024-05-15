@@ -1,14 +1,12 @@
-DROP DATABASE IF EXISTS truncate_test;
-DROP TABLE IF EXISTS truncate_test_log;
-DROP TABLE IF EXISTS truncate_test_memory;
-DROP TABLE IF EXISTS truncate_test_tiny_log;
-DROP TABLE IF EXISTS truncate_test_stripe_log;
-DROP TABLE IF EXISTS truncate_test_merge_tree;
-DROP TABLE IF EXISTS truncate_test_materialized_view;
-DROP TABLE IF EXISTS truncate_test_materialized_depend;
-CREATE DATABASE truncate_test;
-CREATE TABLE truncate_test_log(id UInt64) ENGINE = Log;
-CREATE TABLE truncate_test_memory(id UInt64) ENGINE = Memory;
-CREATE TABLE truncate_test_tiny_log(id UInt64) ENGINE = TinyLog;
-CREATE TABLE truncate_test_stripe_log(id UInt64) ENGINE = StripeLog;
-CREATE TABLE truncate_test_materialized_depend(p Date, k UInt64) ENGINE = Null;
+DROP TABLE IF EXISTS test_00861;
+CREATE TABLE test_00861 (key UInt64, d32 Decimal32(2), d64 Decimal64(2), d128 Decimal128(2)) ENGINE = Memory;
+INSERT INTO test_00861 FORMAT CSV "1","1","1","1"
+;
+INSERT INTO test_00861 FORMAT CSV "2","-1","-1","-1"
+;
+INSERT INTO test_00861 FORMAT CSV "3","1.0","1.0","1.0"
+;
+INSERT INTO test_00861 FORMAT CSV "4","-0.1","-0.1","-0.1"
+;
+INSERT INTO test_00861 FORMAT CSV "5","0.010","0.010","0.010"
+;

@@ -1,0 +1,1 @@
+SELECT '**** vector-constant comparisons ****';

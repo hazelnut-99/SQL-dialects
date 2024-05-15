@@ -1,9 +1,6 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 DEFAULT x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
-DROP TABLE test;
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 MATERIALIZED x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
+DROP TABLE IF EXISTS t_create_as_tuple;
+CREATE TABLE t_create_as_tuple ENGINE = MergeTree()
+ORDER BY number AS
+SELECT number, [('string',number)] AS array FROM numbers(3);
+DETACH TABLE t_create_as_tuple;
+ATTACH TABLE t_create_as_tuple;

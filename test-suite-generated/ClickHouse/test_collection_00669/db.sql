@@ -1,57 +1,14 @@
-DROP TABLE IF EXISTS decimal;
-CREATE TABLE IF NOT EXISTS decimal
-(
-    a DECIMAL(9,0),
-    b DECIMAL(18,0),
-    c DECIMAL(38,0),
-    d DECIMAL(9, 9),
-    e DECIMAL(18, 18),
-    f DECIMAL(38, 38),
-    g Decimal(9, 5),
-    h decimal(18, 9),
-    i deciMAL(38, 18),
-    j DECIMAL(1,0)
-) ENGINE = Memory;
-INSERT INTO decimal (a) VALUES (0.1);
-INSERT INTO decimal (a) VALUES (-0.1);
-INSERT INTO decimal (b) VALUES (0.1);
-INSERT INTO decimal (b) VALUES (-0.1);
-INSERT INTO decimal (c) VALUES (0.1);
-INSERT INTO decimal (c) VALUES (-0.1);
-INSERT INTO decimal (d) VALUES (0.0000000001);
-INSERT INTO decimal (d) VALUES (-0.0000000001);
-INSERT INTO decimal (e) VALUES (0.0000000000000000001);
-INSERT INTO decimal (e) VALUES (-0.0000000000000000001);
-INSERT INTO decimal (f) VALUES (0.000000000000000000000000000000000000001);
-INSERT INTO decimal (f) VALUES (-0.000000000000000000000000000000000000001);
-INSERT INTO decimal (g) VALUES (0.000001);
-INSERT INTO decimal (g) VALUES (-0.000001);
-INSERT INTO decimal (h) VALUES (0.0000000001);
-INSERT INTO decimal (h) VALUES (-0.0000000001);
-INSERT INTO decimal (i) VALUES (0.0000000000000000001);
-INSERT INTO decimal (i) VALUES (-0.0000000000000000001);
-INSERT INTO decimal (j) VALUES (0.1);
-INSERT INTO decimal (j) VALUES (-0.1);
-INSERT INTO decimal (a, b, d, g) VALUES (999999999, 999999999999999999, 0.999999999, 9999.99999);
-INSERT INTO decimal (a, b, d, g) VALUES (-999999999, -999999999999999999, -0.999999999, -9999.99999);
-INSERT INTO decimal (c) VALUES (99999999999999999999999999999999999999);
-INSERT INTO decimal (c) VALUES (-99999999999999999999999999999999999999);
-INSERT INTO decimal (f) VALUES (0.99999999999999999999999999999999999999);
-INSERT INTO decimal (f) VALUES (-0.99999999999999999999999999999999999999);
-INSERT INTO decimal (e, h) VALUES (0.999999999999999999, 999999999.999999999);
-INSERT INTO decimal (e, h) VALUES (-0.999999999999999999, -999999999.999999999);
-INSERT INTO decimal (i) VALUES (99999999999999999999.999999999999999999);
-INSERT INTO decimal (i) VALUES (-99999999999999999999.999999999999999999);
-INSERT INTO decimal (a, b, c, d, g, j, h) VALUES (1, 1, 1, 0.000000001, 0.00001, 1, 0.000000001);
-INSERT INTO decimal (a, b, c, d, g, j, h) VALUES (-1, -1, -1, -0.000000001, -0.00001, -1, -0.000000001);
-INSERT INTO decimal (e, f) VALUES (0.000000000000000001, 0.00000000000000000000000000000000000001);
-INSERT INTO decimal (e, f) VALUES (-0.000000000000000001, -0.00000000000000000000000000000000000001);
-INSERT INTO decimal (i) VALUES (0.000000000000000001);
-INSERT INTO decimal (i) VALUES (-0.000000000000000001);
-INSERT INTO decimal (a, b, c, d, e, f, g, h, i, j) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-INSERT INTO decimal (a, b, c, d, e, f, g, h, i, j) VALUES (-0, -0, -0, -0, -0, -0, -0, -0, -0, -0);
-INSERT INTO decimal (a, b, c, d, e, f, g, h, i, j) VALUES (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-INSERT INTO decimal (a, b, c, d, e, f, g, h, i, j) VALUES (-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0);
-INSERT INTO decimal (a, b, g) VALUES ('42.00000', 42.0000000000000000000000000000000, '0.999990');
-INSERT INTO decimal (a, b, c, d, e, f) VALUES ('0.9e9', '0.9e18', '0.9e38', '9e-9', '9e-18', '9e-38');
-INSERT INTO decimal (a, b, c, d, e, f) VALUES ('-0.9e9', '-0.9e18', '-0.9e38', '-9e-9', '-9e-18', '-9e-38');
+drop table if exists ttl_00933_2;
+create table ttl_00933_2 (d DateTime, a Int default 111 ttl d + interval 1 DAY) engine = MergeTree order by tuple() partition by toDayOfMonth(d);
+insert into ttl_00933_2 values (toDateTime('2000-10-10 00:00:00'), 1);
+insert into ttl_00933_2 values (toDateTime('2000-10-10 00:00:00'), 2);
+insert into ttl_00933_2 values (toDateTime('2100-10-10 00:00:00'), 3);
+insert into ttl_00933_2 values (toDateTime('2100-10-10 00:00:00'), 4);
+optimize table ttl_00933_2 final;
+drop table if exists ttl_00933_2;
+create table ttl_00933_2 (d DateTime, a Int, b default a * 2 ttl d + interval 1 DAY) engine = MergeTree order by tuple() partition by toDayOfMonth(d);
+insert into ttl_00933_2 values (toDateTime('2000-10-10 00:00:00'), 1, 100);
+insert into ttl_00933_2 values (toDateTime('2000-10-10 00:00:00'), 2, 200);
+insert into ttl_00933_2 values (toDateTime('2100-10-10 00:00:00'), 3, 300);
+insert into ttl_00933_2 values (toDateTime('2100-10-10 00:00:00'), 4, 400);
+optimize table ttl_00933_2 final;

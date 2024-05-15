@@ -1,8 +1,17 @@
-DROP TABLE IF EXISTS min_max_with_nullable_string;
-CREATE TABLE min_max_with_nullable_string (
-  t DateTime,
-  nullable_str Nullable(String),
-  INDEX nullable_str_min_max nullable_str TYPE minmax GRANULARITY 1
-) ENGINE = MergeTree ORDER BY (t);
-INSERT INTO min_max_with_nullable_string(t) VALUES (now()) (now());
-INSERT INTO min_max_with_nullable_string(t, nullable_str) VALUES (now(), '.') (now(), '.');
+DROP DATABASE IF EXISTS test_01191;
+CREATE DATABASE test_01191 ENGINE=Atomic;
+CREATE TABLE test_01191._ (n UInt64, s String) ENGINE = Memory();
+CREATE TABLE test_01191.t (n UInt64, s String) ENGINE = Memory();
+CREATE DICTIONARY test_01191.dict (n UInt64, s String)
+PRIMARY KEY n
+LAYOUT(DIRECT())
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE '_' DB 'test_01191'));
+INSERT INTO test_01191._ VALUES (42, 'test');
+EXCHANGE TABLES test_01191.t AND test_01191.dict;
+EXCHANGE TABLES test_01191.dict AND test_01191.t;
+DROP TABLE test_01191.t;
+CREATE DATABASE dummy_db ENGINE=Atomic;
+RENAME DICTIONARY test_01191.dict TO dummy_db.dict1;
+RENAME DICTIONARY dummy_db.dict1 TO test_01191.dict;
+DROP DATABASE dummy_db;
+RENAME DICTIONARY test_01191.dict TO test_01191.dict1;

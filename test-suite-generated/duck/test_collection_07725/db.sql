@@ -162,3 +162,16 @@ insert into tbl VALUES
 insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 5;
 insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 1 + excluded.k;
 insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
+create or replace table tbl (
+	a integer primary key default 5,
+	b integer
+);
+insert into tbl(b) VALUES (10);
+insert into tbl(b) VALUES (10) ON CONFLICT (a) DO NOTHING;
+insert into tbl(b) VALUES (10) ON CONFLICT (a) DO UPDATE SET b = excluded.b * 2;
+create or replace table index_tbl (
+	i integer,
+	j integer
+);
+insert into index_tbl values (5, 3);
+create unique index other_index on index_tbl(i);

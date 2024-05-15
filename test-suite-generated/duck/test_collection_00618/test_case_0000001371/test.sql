@@ -1,1 +1,0 @@
-SELECT a FROM test LIMIT (SELECT COUNT(*) FROM test) % OFFSET 1;

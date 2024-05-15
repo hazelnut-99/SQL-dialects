@@ -53,3 +53,6 @@ insert into test values (10000), (2500), (7500), (5000);
 drop table test;
 create table test (i bigint);
 insert into test values (10000), (2500), (7500), (5000);
+drop table test;
+create table test (i ubigint);
+insert into test values (10000), (2500), (7500), (5000);

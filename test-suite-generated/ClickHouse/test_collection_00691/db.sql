@@ -1,6 +1,7 @@
-drop table IF EXISTS tab1;
-drop table IF EXISTS tab1_copy;
-create table tab1 (a1 Int32, b1 Int32) engine = MergeTree order by a1;
-create table tab1_copy (a1 Int32, b1 Int32) engine = MergeTree order by a1;
-insert into tab1 values (1, 2);
-insert into tab1_copy values (2, 3);
+DROP TABLE IF EXISTS min_max_with_nullable_string;
+CREATE TABLE min_max_with_nullable_string (
+  t DateTime,
+  nullable_str Nullable(String),
+  INDEX nullable_str_min_max nullable_str TYPE minmax GRANULARITY 1
+) ENGINE = MergeTree ORDER BY (t);
+INSERT INTO min_max_with_nullable_string(t) VALUES (now()) (now());

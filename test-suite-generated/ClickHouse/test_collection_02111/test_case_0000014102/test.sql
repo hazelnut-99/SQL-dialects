@@ -1,1 +1,0 @@
-SELECT '*** part_log';

@@ -1,16 +1,14 @@
-DROP DATABASE IF EXISTS `01945.db`;
-CREATE DATABASE `01945.db`;
-CREATE TABLE `01945.db`.test_dictionary_values
+DROP TABLE IF EXISTS t1;
+CREATE TABLE t1
 (
-	id UInt64,
-	value String
-) ENGINE=TinyLog;
-INSERT INTO `01945.db`.test_dictionary_values VALUES (0, 'Value');
-CREATE DICTIONARY `01945.db`.test_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(DB '01945.db' TABLE 'test_dictionary_values'));
+    c1 DateTime DEFAULT now() NOT NULL,
+    c2 DateTime DEFAULT now() NOT NULL,
+    c3 DateTime DEFAULT now() NOT NULL,
+    PRIMARY KEY(c1, c2, c3)
+) ENGINE = MergeTree()
+ORDER BY (c1, c2, c3);
+INSERT INTO t1 (c1,c2,c3) VALUES(now() + INTERVAL '1 day 1 hour 1 minute 1 second', now(), now());
+DROP TABLE t1;
+CREATE TABLE t1 (n int, dt DateTime) ENGINE=Memory;
+INSERT INTO t1 VALUES (1, toDateTime('2023-07-20 21:53:01') + INTERVAL '1 day 1 hour 1 minute 1 second'), (2, toDateTime('2023-07-20 21:53:01') + INTERVAL '1 day');
+INSERT INTO t1 VALUES (3, toDateTime('2023-07-20 21:53:01') + INTERVAL 1 DAY), (4, toDateTime('2023-07-20 21:53:01') + (toIntervalMinute(1), toIntervalSecond(1)));

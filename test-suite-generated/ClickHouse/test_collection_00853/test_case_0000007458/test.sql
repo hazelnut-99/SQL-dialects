@@ -1,1 +1,0 @@
-SELECT '--- comma and or ---';

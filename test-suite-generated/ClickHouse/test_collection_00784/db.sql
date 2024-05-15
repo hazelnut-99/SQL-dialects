@@ -1,3 +1,28 @@
-DROP TABLE IF EXISTS datetime;
-CREATE TABLE datetime (d DateTime('UTC')) ENGINE = Memory;
-INSERT INTO datetime(d) VALUES(toDateTime('2016-06-15 23:00:00', 'UTC'));
+DROP DATABASE IF EXISTS memory_db;
+DROP DATABASE IF EXISTS db_01018;
+DROP DATABASE IF EXISTS database_for_dict_01018;
+CREATE DATABASE database_for_dict_01018;
+CREATE TABLE database_for_dict_01018.table_for_dict
+(
+  key_column UInt64,
+  second_column UInt8,
+  third_column String
+)
+ENGINE = MergeTree()
+ORDER BY key_column;
+INSERT INTO database_for_dict_01018.table_for_dict VALUES (1, 100, 'Hello world');
+DROP DATABASE IF EXISTS db_01018;
+CREATE DATABASE db_01018;
+CREATE DICTIONARY db_01018.dict1
+(
+  key_column UInt64 DEFAULT 0,
+  second_column UInt8 DEFAULT 1,
+  third_column String DEFAULT 'qqq'
+)
+PRIMARY KEY key_column
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' PASSWORD '' DB 'database_for_dict_01018'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(FLAT());
+SHOW CREATE DICTIONARY db_01018.dict1;
+SHOW DICTIONARIES FROM db_01018 LIKE 'dict1';
+EXISTS DICTIONARY db_01018.dict1;

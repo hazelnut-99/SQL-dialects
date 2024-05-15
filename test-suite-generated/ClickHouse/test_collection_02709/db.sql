@@ -1,4 +1,2 @@
-DROP TABLE IF EXISTS t_create_as_tuple;
-CREATE TABLE t_create_as_tuple ENGINE = MergeTree()
-ORDER BY number AS
-SELECT number, [('string',number)] AS array FROM numbers(3);
+drop table if exists bug_delta_gorilla;
+drop table if exists bug_delta_gorilla;

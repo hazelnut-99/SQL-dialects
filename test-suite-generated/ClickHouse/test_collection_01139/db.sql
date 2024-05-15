@@ -1,3 +1,39 @@
-DROP TABLE IF EXISTS fill;
-CREATE TABLE fill (date Date, val Int, str String) ENGINE = Memory;
-INSERT INTO fill VALUES (toDate('2019-05-24'), 13, 'sd0')(toDate('2019-05-10'), 16, 'vp7')(toDate('2019-05-25'), 17, '0ei')(toDate('2019-05-30'), 18, '3kd')(toDate('2019-05-15'), 27, 'enb')(toDate('2019-06-04'), 5, '6az')(toDate('2019-05-23'), 15, '01v')(toDate('2019-05-08'), 28, 'otf')(toDate('2019-05-19'), 20, 'yfh')(toDate('2019-05-07'), 26, '2ke')(toDate('2019-05-07'), 18, 'prh')(toDate('2019-05-09'), 25, '798')(toDate('2019-05-10'), 1, 'myj')(toDate('2019-05-11'), 18, '3s2')(toDate('2019-05-23'), 29, '72y');
+WITH
+	CAST(1234567891011 AS Int64) AS i64,
+	'UTC' AS tz
+SELECT
+	tz,
+	i64,
+	fromUnixTimestamp64Milli(i64, tz),
+	fromUnixTimestamp64Micro(i64, tz),
+	fromUnixTimestamp64Nano(i64, tz) as dt64,
+	toTypeName(dt64);
+WITH
+	CAST(1234567891011 AS Int64) AS i64,
+	'Asia/Makassar' AS tz
+SELECT
+	tz,
+	i64,
+	fromUnixTimestamp64Milli(i64, tz),
+	fromUnixTimestamp64Micro(i64, tz),
+	fromUnixTimestamp64Nano(i64, tz) as dt64,
+	toTypeName(dt64);
+WITH
+	CAST(1234567891011 AS Int64) AS i64,
+	'UTC' AS tz
+SELECT
+	i64,
+	fromUnixTimestamp64Milli(i64, tz),
+	fromUnixTimestamp64Micro(i64, tz),
+	fromUnixTimestamp64Nano(i64, tz) as dt64;
+WITH
+    10413688942 AS timestamp,
+    CAST(10413688942123 AS Int64) AS milli,
+    CAST(10413688942123456 AS Int64) AS micro,
+    CAST(10413688942123456789 AS Int64) AS nano,
+    'UTC' AS tz
+SELECT
+    timestamp,
+    fromUnixTimestamp64Milli(milli, tz),
+    fromUnixTimestamp64Micro(micro, tz),
+    fromUnixTimestamp64Nano(nano, tz);

@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS time_table;
-CREATE TABLE time_table(timecol DateTime, value Int32) ENGINE = MergeTree order by tuple();
-INSERT INTO time_table VALUES (now() - 5, 5), (now() - 3, 3);
+drop table if exists X;
+drop table if exists Y;
+create table X (id Int64) Engine = Memory;
+create table Y (id Int64) Engine = Memory;
+insert into X (id) values (1);
+insert into Y (id) values (2);

@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS t;
-CREATE TABLE t (`item_id` UInt64, `price_sold` Float32, `date` Date) ENGINE = MergeTree ORDER BY item_id;
+drop table if exists test_02249;
+create table test_02249 (x UInt32, y String) engine=Memory();

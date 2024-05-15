@@ -49,3 +49,8 @@ INSERT INTO clstr_tst (b, c) VALUES (16, 'dieciseis');
 INSERT INTO clstr_tst (b, c) VALUES (8, 'ocho');
 INSERT INTO clstr_tst (b, c, d) VALUES (6, 'seis', repeat('xyzzy', 100000));
 CLUSTER clstr_tst_c ON clstr_tst;
+INSERT INTO clstr_tst_inh VALUES (0, 100, 'in child table');
+COMMIT;
+create temp table clstr_temp (col1 int primary key, col2 text);
+insert into clstr_temp values (2, 'two'), (1, 'one');
+cluster clstr_temp using clstr_temp_pkey;

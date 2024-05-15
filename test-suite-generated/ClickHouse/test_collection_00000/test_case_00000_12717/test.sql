@@ -1,0 +1,1 @@
+SELECT 'The reference time point is 2023-06-30 23:59:30';

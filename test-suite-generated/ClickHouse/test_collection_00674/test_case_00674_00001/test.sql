@@ -1,0 +1,1 @@
+SELECT IPv4CIDRToRange(toIPv4('255.255.255.255'), 8);

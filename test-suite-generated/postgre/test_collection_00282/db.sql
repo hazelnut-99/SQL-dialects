@@ -917,3 +917,473 @@ begin
   return $1;
 end$$ language plpgsql;
 begin;
+savepoint s1;
+rollback to savepoint s1;
+commit;
+drop function cast_invoker(integer);
+drop function sql_to_date(integer) cascade;
+begin;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+end;
+create function fail() returns int language plpgsql as $$
+begin
+  return 1/0;
+end
+$$;
+drop function fail();
+create or replace function strtest() returns text as $$
+begin
+  raise notice 'foo\\bar\041baz';
+  return 'foo\\bar\041baz';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice E'foo\\bar\041baz';
+  return E'foo\\bar\041baz';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice 'foo\\bar\041baz\';
+  return 'foo\\bar\041baz\';
+end
+$$ language plpgsql;
+create or replace function strtest() returns text as $$
+begin
+  raise notice E'foo\\bar\041baz';
+  return E'foo\\bar\041baz';
+end
+$$ language plpgsql;
+drop function strtest();
+do $outer$
+begin
+  for i in 1..10 loop
+   begin
+    execute $ex$
+      do $$
+      declare x int = 0;
+      begin
+        x := 1 / x;
+      end;
+      $$;
+    $ex$;
+  exception when division_by_zero then
+    raise notice 'caught division by zero';
+  end;
+  end loop;
+end;
+$outer$;
+do $$
+declare x int := 42;
+        y int := x + 1;
+begin
+  raise notice 'x = %, y = %', x, y;
+end;
+$$;
+do $$
+declare x int := 42;
+begin
+  declare y int := x + 1;
+          x int := x + 2;
+          z int := x * 10;
+  begin
+    raise notice 'x = %, y = %, z = %', x, y, z;
+  end;
+end;
+$$;
+create function unreserved_test() returns int as $$
+declare
+  forward int := 21;
+begin
+  forward := forward * 2;
+  return forward;
+end
+$$ language plpgsql;
+create or replace function unreserved_test() returns int as $$
+declare
+  return int := 42;
+begin
+  return := return + 1;
+  return return;
+end
+$$ language plpgsql;
+create or replace function unreserved_test() returns int as $$
+declare
+  comment int := 21;
+begin
+  comment := comment * 2;
+  comment on function unreserved_test() is 'this is a test';
+  return comment;
+end
+$$ language plpgsql;
+drop function unreserved_test();
+create function foreach_test(anyarray)
+returns void as $$
+declare x int;
+begin
+  foreach x in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int;
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int[];
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int[];
+begin
+  foreach x slice 2 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+create type xy_tuple AS (x int, y int);
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare r record;
+begin
+  foreach r in array $1
+  loop
+    raise notice '%', r;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x int; y int;
+begin
+  foreach x, y in array $1
+  loop
+    raise notice 'x = %, y = %', x, y;
+  end loop;
+  end;
+$$ language plpgsql;
+create or replace function foreach_test(anyarray)
+returns void as $$
+declare x xy_tuple[];
+begin
+  foreach x slice 1 in array $1
+  loop
+    raise notice '%', x;
+  end loop;
+  end;
+$$ language plpgsql;
+drop function foreach_test(anyarray);
+drop type xy_tuple;
+create temp table rtype (id int, ar text[]);
+create function arrayassign1() returns text[] language plpgsql as $$
+declare
+ r record;
+begin
+  r := row(12, '{foo,bar,baz}')::rtype;
+  r.ar[2] := 'replace';
+  return r.ar;
+end$$;
+create domain orderedarray as int[2]
+  constraint sorted check (value[1] < value[2]);
+create function testoa(x1 int, x2 int, x3 int) returns orderedarray
+language plpgsql as $$
+declare res orderedarray;
+begin
+  res := array[x1, x2];
+  res[2] := x3;
+  return res;
+end$$;
+drop function arrayassign1();
+drop function testoa(x1 int, x2 int, x3 int);
+create function returns_rw_array(int) returns int[]
+language plpgsql as $$
+  declare r int[];
+  begin r := array[$1, $1]; return r; end;
+$$ stable;
+create function consumes_rw_array(int[]) returns int
+language plpgsql as $$
+  begin return $1[1]; end;
+$$ stable;
+do $$
+declare a int[] := array[1,2];
+begin
+  a := a || 3;
+  raise notice 'a = %', a;
+end$$;
+create or replace function outer_func(int)
+returns int as $$
+declare
+  myresult int;
+begin
+  raise notice 'calling down into inner_func()';
+  myresult := inner_func($1);
+  raise notice 'inner_func() done';
+  return myresult;
+end;
+$$ language plpgsql;
+create or replace function outer_outer_func(int)
+returns int as $$
+declare
+  myresult int;
+begin
+  raise notice 'calling down into outer_func()';
+  myresult := outer_func($1);
+  raise notice 'outer_func() done';
+  return myresult;
+end;
+$$ language plpgsql;
+drop function outer_outer_func(int);
+drop function outer_func(int);
+create or replace function outer_func(int)
+returns int as $$
+declare
+  myresult int;
+begin
+  raise notice 'calling down into inner_func()';
+  myresult := inner_func($1);
+  raise notice 'inner_func() done';
+  return myresult;
+end;
+$$ language plpgsql;
+create or replace function outer_outer_func(int)
+returns int as $$
+declare
+  myresult int;
+begin
+  raise notice 'calling down into outer_func()';
+  myresult := outer_func($1);
+  raise notice 'outer_func() done';
+  return myresult;
+end;
+$$ language plpgsql;
+drop function outer_outer_func(int);
+drop function outer_func(int);
+do $$
+begin
+  assert 1=1;  -- should succeed
+end;
+$$;
+create function plpgsql_domain_check(val int) returns boolean as $$
+begin return val > 0; end
+$$ language plpgsql immutable;
+create domain plpgsql_domain as integer check(plpgsql_domain_check(value));
+do $$
+declare v_test plpgsql_domain;
+begin
+  v_test := 1;
+end;
+$$;
+create function plpgsql_arr_domain_check(val int[]) returns boolean as $$
+begin return val[1] > 0; end
+$$ language plpgsql immutable;
+create domain plpgsql_arr_domain as int[] check(plpgsql_arr_domain_check(value));
+do $$
+declare v_test plpgsql_arr_domain;
+begin
+  v_test := array[1];
+  v_test := v_test || 2;
+end;
+$$;
+CREATE TABLE transition_table_base (id int PRIMARY KEY, val text);
+INSERT INTO transition_table_base VALUES (1, 'One'), (2, 'Two');
+INSERT INTO transition_table_base VALUES (3, 'Three'), (4, 'Four');
+CREATE TABLE transition_table_level1
+(
+      level1_no serial NOT NULL ,
+      level1_node_name varchar(255),
+       PRIMARY KEY (level1_no)
+) WITHOUT OIDS;
+CREATE TABLE transition_table_level2
+(
+      level2_no serial NOT NULL ,
+      parent_no int NOT NULL,
+      level1_node_name varchar(255),
+       PRIMARY KEY (level2_no)
+) WITHOUT OIDS;
+CREATE TABLE transition_table_status
+(
+      level int NOT NULL,
+      node_no int NOT NULL,
+      status int,
+       PRIMARY KEY (level, node_no)
+) WITHOUT OIDS;
+CREATE FUNCTION transition_table_level1_ri_parent_del_func()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+AS $$
+  DECLARE n bigint;
+  BEGIN
+    PERFORM FROM p JOIN transition_table_level2 c ON c.parent_no = p.level1_no;
+    IF FOUND THEN
+      RAISE EXCEPTION 'RI error';
+    END IF;
+    RETURN NULL;
+  END;
+$$;
+CREATE TRIGGER transition_table_level1_ri_parent_del_trigger
+  AFTER DELETE ON transition_table_level1
+  REFERENCING OLD TABLE AS p
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    transition_table_level1_ri_parent_del_func();
+CREATE FUNCTION transition_table_level1_ri_parent_upd_func()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+AS $$
+  DECLARE
+    x int;
+  BEGIN
+    WITH p AS (SELECT level1_no, sum(delta) cnt
+                 FROM (SELECT level1_no, 1 AS delta FROM i
+                       UNION ALL
+                       SELECT level1_no, -1 AS delta FROM d) w
+                 GROUP BY level1_no
+                 HAVING sum(delta) < 0)
+    SELECT level1_no
+      FROM p JOIN transition_table_level2 c ON c.parent_no = p.level1_no
+      INTO x;
+    IF FOUND THEN
+      RAISE EXCEPTION 'RI error';
+    END IF;
+    RETURN NULL;
+  END;
+$$;
+CREATE TRIGGER transition_table_level1_ri_parent_upd_trigger
+  AFTER UPDATE ON transition_table_level1
+  REFERENCING OLD TABLE AS d NEW TABLE AS i
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    transition_table_level1_ri_parent_upd_func();
+CREATE FUNCTION transition_table_level2_ri_child_insupd_func()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+AS $$
+  BEGIN
+    PERFORM FROM i
+      LEFT JOIN transition_table_level1 p
+        ON p.level1_no IS NOT NULL AND p.level1_no = i.parent_no
+      WHERE p.level1_no IS NULL;
+    IF FOUND THEN
+      RAISE EXCEPTION 'RI error';
+    END IF;
+    RETURN NULL;
+  END;
+$$;
+CREATE TRIGGER transition_table_level2_ri_child_ins_trigger
+  AFTER INSERT ON transition_table_level2
+  REFERENCING NEW TABLE AS i
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    transition_table_level2_ri_child_insupd_func();
+CREATE TRIGGER transition_table_level2_ri_child_upd_trigger
+  AFTER UPDATE ON transition_table_level2
+  REFERENCING NEW TABLE AS i
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    transition_table_level2_ri_child_insupd_func();
+INSERT INTO transition_table_level1 (level1_no)
+  SELECT generate_series(1,200);
+INSERT INTO transition_table_level2 (level2_no, parent_no)
+  SELECT level2_no, level2_no / 50 + 1 AS parent_no
+    FROM generate_series(1,9999) level2_no;
+INSERT INTO transition_table_status (level, node_no, status)
+  SELECT 1, level1_no, 0 FROM transition_table_level1;
+INSERT INTO transition_table_status (level, node_no, status)
+  SELECT 2, level2_no, 0 FROM transition_table_level2;
+INSERT INTO transition_table_level1(level1_no)
+  SELECT generate_series(201,1000);
+CREATE FUNCTION transition_table_level2_bad_usage_func()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+AS $$
+  BEGIN
+    INSERT INTO dx VALUES (1000000, 1000000, 'x');
+    RETURN NULL;
+  END;
+$$;
+CREATE TRIGGER transition_table_level2_bad_usage_trigger
+  AFTER DELETE ON transition_table_level2
+  REFERENCING OLD TABLE AS dx
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    transition_table_level2_bad_usage_func();
+DROP TRIGGER transition_table_level2_bad_usage_trigger
+  ON transition_table_level2;
+DELETE FROM transition_table_level1
+  WHERE level1_no BETWEEN 201 AND 1000;
+DELETE FROM transition_table_level1
+  WHERE level1_no BETWEEN 100000000 AND 100000010;
+DELETE FROM transition_table_level2
+  WHERE level2_no BETWEEN 211 AND 220;
+CREATE TABLE alter_table_under_transition_tables
+(
+  id int PRIMARY KEY,
+  name text
+);
+CREATE FUNCTION alter_table_under_transition_tables_upd_func()
+  RETURNS TRIGGER
+  LANGUAGE plpgsql
+AS $$
+BEGIN
+  RAISE WARNING 'old table = %, new table = %',
+                  (SELECT string_agg(id || '=' || name, ',') FROM d),
+                  (SELECT string_agg(id || '=' || name, ',') FROM i);
+  RAISE NOTICE 'one = %', (SELECT 1 FROM alter_table_under_transition_tables LIMIT 1);
+  RETURN NULL;
+END;
+$$;
+CREATE TRIGGER alter_table_under_transition_tables_upd_trigger
+  AFTER UPDATE ON alter_table_under_transition_tables
+  REFERENCING OLD TABLE AS d NEW TABLE AS i
+  FOR EACH STATEMENT EXECUTE PROCEDURE
+    alter_table_under_transition_tables_upd_func();
+INSERT INTO alter_table_under_transition_tables
+  VALUES (1, '1'), (2, '2'), (3, '3');
+ALTER TABLE alter_table_under_transition_tables
+  ALTER COLUMN name TYPE int USING name::integer;
+ALTER TABLE alter_table_under_transition_tables
+  DROP column name;
+CREATE TABLE multi_test (i int);
+INSERT INTO multi_test VALUES (1);
+CREATE OR REPLACE FUNCTION multi_test_trig() RETURNS trigger
+LANGUAGE plpgsql AS $$
+BEGIN
+    RAISE NOTICE 'count = %', (SELECT COUNT(*) FROM new_test);
+    RAISE NOTICE 'count union = %',
+      (SELECT COUNT(*)
+       FROM (SELECT * FROM new_test UNION ALL SELECT * FROM new_test) ss);
+    RETURN NULL;
+END$$;
+CREATE TRIGGER my_trigger AFTER UPDATE ON multi_test
+  REFERENCING NEW TABLE AS new_test OLD TABLE as old_test
+  FOR EACH STATEMENT EXECUTE PROCEDURE multi_test_trig();
+DROP TABLE multi_test;
+DROP FUNCTION multi_test_trig();
+CREATE TABLE partitioned_table (a int, b text) PARTITION BY LIST (a);
+CREATE TABLE pt_part1 PARTITION OF partitioned_table FOR VALUES IN (1);
+CREATE TABLE pt_part2 PARTITION OF partitioned_table FOR VALUES IN (2);
+INSERT INTO partitioned_table VALUES (1, 'Row 1');
+INSERT INTO partitioned_table VALUES (2, 'Row 2');
+CREATE OR REPLACE FUNCTION get_from_partitioned_table(partitioned_table.a%type)
+RETURNS partitioned_table AS $$
+DECLARE
+    a_val partitioned_table.a%TYPE;
+    result partitioned_table%ROWTYPE;
+BEGIN
+    a_val := $1;
+    SELECT * INTO result FROM partitioned_table WHERE a = a_val;
+    RETURN result;
+END; $$ LANGUAGE plpgsql;

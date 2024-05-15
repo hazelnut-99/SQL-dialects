@@ -1,7 +1,6 @@
-drop table if exists ttl;
-create table ttl (d Date, a Int) engine = MergeTree order by a partition by toDayOfMonth(d);
-insert into ttl values (toDateTime('2000-10-10 00:00:00'), 1);
-insert into ttl values (toDateTime('2000-10-10 00:00:00'), 2);
-insert into ttl values (toDateTime('2100-10-10 00:00:00'), 3);
-insert into ttl values (toDateTime('2100-10-10 00:00:00'), 4);
-alter table ttl modify ttl d + interval 1 day;
+DROP TABLE IF EXISTS 01504_test;
+CREATE TABLE 01504_test (key Tuple(String, UInt32), value UInt64) Engine=EmbeddedRocksDB PRIMARY KEY(key);
+DROP TABLE IF EXISTS 01504_test;
+CREATE TABLE 01504_test (key String, value UInt32) Engine=EmbeddedRocksDB PRIMARY KEY(key);
+INSERT INTO 01504_test SELECT '1_1', number FROM numbers(10000);
+INSERT INTO 01504_test SELECT concat(toString(number), '_1'), number FROM numbers(10000);

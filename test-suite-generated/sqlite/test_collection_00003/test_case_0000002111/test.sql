@@ -1,4 +1,0 @@
-SELECT b9, b7+142
-  FROM t9, t7
- WHERE e9=e7
-   AND e7 in (254,826,301,282);

@@ -1,0 +1,11 @@
+SELECT x9,x64,x24,x18,x44,x27,x14,x5,x56
+  FROM t44,t14,t64,t27,t9,t5,t56,t24,t18
+ WHERE a14=b18
+   AND a24=b5
+   AND b24=a56
+   AND b14=a44
+   AND b64=a5
+   AND a18=b9
+   AND a27=3
+   AND b44=a64
+   AND b56=a27;

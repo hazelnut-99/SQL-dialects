@@ -1,1 +1,0 @@
-SELECT a, b FROM test WHERE a < 13 ORDER BY 2;

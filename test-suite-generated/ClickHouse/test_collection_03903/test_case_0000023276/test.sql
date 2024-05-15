@@ -1,1 +1,0 @@
-select 'For unclear reasons this happened only in Release builds, not in Debug builds.';

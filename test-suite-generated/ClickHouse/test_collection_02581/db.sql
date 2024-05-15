@@ -1,2 +1,24 @@
-WITH arrayJoin(['192.168.99.255', '192.168.100.1', '192.168.103.255', '192.168.104.0']) as addr, '192.168.100.0/22' as prefix SELECT addr, prefix, isIPAddressInRange(addr, prefix);
-WITH arrayJoin(['::192.168.99.255', '::192.168.100.1', '::192.168.103.255', '::192.168.104.0']) as addr, '::192.168.100.0/118' as prefix SELECT addr, prefix, isIPAddressInRange(addr, prefix);
+DROP TABLE IF EXISTS session;
+DROP TABLE IF EXISTS queue;
+DROP TABLE IF EXISTS forward;
+CREATE TABLE session
+(
+    `day` Date,
+    `uid` String,
+    `dummy` String DEFAULT ''
+)
+ENGINE = MergeTree
+ORDER BY (day, uid);
+CREATE TABLE queue
+(
+    `day` Date,
+    `uid` String
+)
+ENGINE = MergeTree
+ORDER BY (day, uid);
+CREATE MATERIALIZED VIEW IF NOT EXISTS forward TO session AS
+SELECT
+    day,
+    uid
+FROM queue;
+insert into queue values ('2019-05-01', 'test');

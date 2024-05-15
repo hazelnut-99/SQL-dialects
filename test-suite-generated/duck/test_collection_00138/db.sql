@@ -246,3 +246,4 @@ CREATE MACRO card_select_val(_val_min, _val_min) as TABLE SELECT * FROM cards_tb
 CREATE TABLE integers (a INT);
 INSERT INTO integers VALUES (1);
 CREATE MACRO parameterized_cte(a) AS (WITH cte AS (SELECT a AS answer) SELECT answer FROM cte);
+CREATE MACRO in_with_cte(i) AS i IN (WITH cte AS (SELECT a AS answer FROM integers) SELECT answer FROM cte);

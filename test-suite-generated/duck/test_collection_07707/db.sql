@@ -72,3 +72,14 @@ create or replace table tbl (
 );
 insert into tbl VALUES (1,2,3), (1,4,5);
 insert into tbl VALUES (1,4,7), (1,8,4) ON CONFLICT (a,b) DO UPDATE set c = 5;
+create or replace table tbl (
+	a integer unique,
+	b integer
+);
+insert into tbl VALUES (3,2), (1,3);
+insert into tbl(b) VALUES (5) ON CONFLICT (a) DO UPDATE SET b = 8;
+insert into tbl(b) VALUES (5) ON CONFLICT (a) DO UPDATE SET b = 8;
+BEGIN TRANSACTION;
+INSERT INTO tbl VALUES (1, 2) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
+INSERT INTO tbl VALUES (1, 3) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
+COMMIT;

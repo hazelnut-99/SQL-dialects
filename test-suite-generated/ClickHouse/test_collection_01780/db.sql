@@ -1,3 +1,30 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x Int8, y Int8, z Int8) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test VALUES (1, 3, 3), (1, 4, 3), (2, 5, 4), (2, 2, 4);
+DROP DATABASE IF EXISTS 01785_db;
+CREATE DATABASE 01785_db;
+DROP TABLE IF EXISTS 01785_db.simple_key_source_table;
+CREATE TABLE 01785_db.simple_key_source_table
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog();
+INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
+INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
+DROP DICTIONARY IF EXISTS 01785_db.simple_key_flat_dictionary;
+CREATE DICTIONARY 01785_db.simple_key_flat_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
+LAYOUT(FLAT())
+LIFETIME(MIN 0 MAX 1000);
+DROP DICTIONARY 01785_db.simple_key_flat_dictionary;
+CREATE DICTIONARY 01785_db.simple_key_hashed_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
+LAYOUT(HASHED())
+LIFETIME(MIN 0 MAX 1000);

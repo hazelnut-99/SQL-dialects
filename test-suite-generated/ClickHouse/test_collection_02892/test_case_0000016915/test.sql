@@ -1,1 +1,0 @@
-SELECT DISTINCT ON (a) * FROM t1;

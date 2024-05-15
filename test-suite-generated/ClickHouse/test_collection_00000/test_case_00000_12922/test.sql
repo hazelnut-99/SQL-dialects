@@ -1,0 +1,1 @@
+select * from format('RowBinaryWithDefaults', 'x Array(Tuple(UInt32, UInt32)) default [(42, 42)]', x'01');

@@ -1,6 +1,0 @@
-SELECT round(quantileDD(0.01, 0.5)(number), 2)
-FROM
-(
-    SELECT arrayJoin([toInt64(number), number - 9223372036854775808, toInt64(number + 9223372036854775798)]) AS number
-    FROM numbers(0, 10)
-);

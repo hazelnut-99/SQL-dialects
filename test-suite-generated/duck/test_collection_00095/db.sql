@@ -94,3 +94,5 @@ DELETE FROM test WHERE i=1;
 DELETE FROM test WHERE i=2;
 DELETE FROM test;
 DROP TABLE integers;
+CREATE TABLE integers AS SELECT * FROM generate_series(0,599999) t(i);
+DELETE FROM integers WHERE i%2=0;

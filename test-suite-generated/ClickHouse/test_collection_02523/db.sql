@@ -1,16 +1,61 @@
-DROP TABLE IF EXISTS report;
-CREATE TABLE report
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
 (
-    `product` Enum8('IU' = 1, 'WS' = 2),
-    `machine` String,
-    `branch` String,
-    `generated_time` DateTime
-)
-ENGINE = MergeTree
-PARTITION BY (product, toYYYYMM(generated_time))
-ORDER BY (product, machine, branch, generated_time);
-INSERT INTO report VALUES ('IU', 'lada', '2101', toDateTime('1970-04-19 15:00:00'));
-ALTER TABLE report MODIFY COLUMN product Enum8('IU' = 1, 'WS' = 2, 'PS' = 3);
-INSERT INTO report VALUES ('PS', 'jeep', 'Grand Cherokee', toDateTime('2005-10-03 15:00:00'));
-DETACH TABLE report;
-ATTACH TABLE report;
+    key UInt64,
+    value UInt16
+) ENGINE=Memory() AS SELECT number, number FROM numbers(1e5);
+DROP TABLE IF EXISTS test_table_nullable;
+CREATE TABLE test_table_nullable
+(
+    key UInt64,
+    value Nullable(UInt16)
+) ENGINE=Memory() AS SELECT number, number % 2 == 0 ? NULL : number FROM numbers(1e5);
+DROP TABLE IF EXISTS test_table_string;
+CREATE TABLE test_table_string
+(
+    key String,
+    value UInt16
+) ENGINE=Memory() AS SELECT 'foo' || number::String, number FROM numbers(1e5);
+DROP TABLE IF EXISTS test_table_complex;
+CREATE TABLE test_table_complex
+(
+    key_1 UInt64,
+    key_2 UInt64,
+    value UInt16
+) ENGINE=Memory() AS SELECT number, number, number FROM numbers(1e5);
+DROP DICTIONARY IF EXISTS test_dictionary_10_shards;
+CREATE DICTIONARY test_dictionary_10_shards
+(
+    key UInt64,
+    value UInt16
+) PRIMARY KEY key
+SOURCE(CLICKHOUSE(TABLE test_table))
+LAYOUT(SPARSE_HASHED(SHARDS 10))
+LIFETIME(0);
+SHOW CREATE test_dictionary_10_shards;
+SYSTEM RELOAD DICTIONARY test_dictionary_10_shards;
+DROP DICTIONARY test_dictionary_10_shards;
+DROP DICTIONARY IF EXISTS test_dictionary_10_shards_nullable;
+CREATE DICTIONARY test_dictionary_10_shards_nullable
+(
+    key UInt64,
+    value Nullable(UInt16)
+) PRIMARY KEY key
+SOURCE(CLICKHOUSE(TABLE test_table_nullable))
+LAYOUT(SPARSE_HASHED(SHARDS 10))
+LIFETIME(0);
+SHOW CREATE test_dictionary_10_shards_nullable;
+SYSTEM RELOAD DICTIONARY test_dictionary_10_shards_nullable;
+DROP DICTIONARY test_dictionary_10_shards_nullable;
+DROP DICTIONARY IF EXISTS test_complex_dictionary_10_shards;
+CREATE DICTIONARY test_complex_dictionary_10_shards
+(
+    key_1 UInt64,
+    key_2 UInt64,
+    value UInt16
+) PRIMARY KEY key_1, key_2
+SOURCE(CLICKHOUSE(TABLE test_table_complex))
+LAYOUT(COMPLEX_KEY_SPARSE_HASHED(SHARDS 10))
+LIFETIME(0);
+SYSTEM RELOAD DICTIONARY test_complex_dictionary_10_shards;
+SHOW CREATE test_complex_dictionary_10_shards;

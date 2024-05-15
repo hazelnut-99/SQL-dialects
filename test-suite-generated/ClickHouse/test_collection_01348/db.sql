@@ -1,7 +1,5 @@
-DROP TABLE IF EXISTS alter_bug;
-create table alter_bug (
-  epoch UInt64 CODEC(Delta,LZ4),
-  _time_dec Float64
-) Engine = MergeTree ORDER BY (epoch);
-ALTER TABLE alter_bug MODIFY COLUMN epoch DEFAULT toUInt64(_time_dec) CODEC(Delta,LZ4);
-INSERT INTO alter_bug(_time_dec) VALUES(1577351080);
+DROP TABLE IF EXISTS join;
+CREATE TABLE join (k UInt64, s String) ENGINE = Join(ANY, LEFT, k);
+INSERT INTO join VALUES (1,21);
+DETACH TABLE join;
+ATTACH TABLE join;

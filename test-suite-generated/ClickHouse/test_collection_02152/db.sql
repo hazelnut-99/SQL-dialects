@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS null_in_1;
-CREATE TABLE null_in_1 (u UInt32, n Nullable(UInt32)) ENGINE = Memory;
-INSERT INTO null_in_1 VALUES (1, NULL), (2, 2), (3, NULL), (4, 4), (5, NULL);
+CREATE TABLE main ( `id` String, `color` String, `section` String, `description` String) ENGINE = MergeTree ORDER BY tuple();
+CREATE TABLE destination_join ( `key` String, `id` String, `color` String, `section` String, `description` String) ENGINE = Join(ANY, LEFT, key);
+CREATE MATERIALIZED VIEW mv_to_join TO `destination_join` AS SELECT concat(id, '_', color) AS key, * FROM main;
+INSERT INTO main VALUES ('sku_0001','black','women','nice shirt');

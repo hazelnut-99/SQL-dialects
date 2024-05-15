@@ -1,1 +1,0 @@
-select hasSubstr(['a'], ['a']);

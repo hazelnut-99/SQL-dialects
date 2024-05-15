@@ -1,7 +1,9 @@
-DROP TABLE IF EXISTS tmp_01375;
-DROP TABLE IF EXISTS table_tsv_01375;
-CREATE TABLE tmp_01375 (n UInt32, s String) ENGINE = Memory;
-CREATE TABLE table_tsv_01375 AS tmp_01375 ENGINE = File(TSVWithNames);
-INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);
-INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);
-INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);
+CREATE TABLE dt64test
+(
+    `dt64_column` DateTime64(3),
+    `dt_column` DateTime DEFAULT toDateTime(dt64_column)
+)
+ENGINE = MergeTree
+PARTITION BY toYYYYMM(dt64_column)
+ORDER BY dt64_column;
+INSERT INTO dt64test (`dt64_column`) VALUES ('2020-01-13 13:37:00');

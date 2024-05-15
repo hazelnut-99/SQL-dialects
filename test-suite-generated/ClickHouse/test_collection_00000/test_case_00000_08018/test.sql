@@ -1,0 +1,28 @@
+SELECT
+    label,
+    number
+FROM
+(
+    SELECT
+        'a' AS label,
+        number
+    FROM
+    (
+        SELECT number
+        FROM numbers(10)
+    )
+    UNION ALL
+    SELECT
+        'b' AS label,
+        number
+    FROM
+    (
+        SELECT number
+        FROM numbers(10)
+    )
+)
+WHERE number IN
+(
+    SELECT number
+    FROM numbers(5)
+) order by label, number;

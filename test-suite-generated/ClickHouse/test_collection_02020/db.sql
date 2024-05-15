@@ -1,3 +1,8 @@
-drop table if exists test1;
-create table test1 (i Int64) engine MergeTree order by i;
-insert into test1 values (53), (1777), (53284);
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+
+    value UInt8,
+    value_nullable Nullable(UInt8)
+) ENGINE=TinyLog;

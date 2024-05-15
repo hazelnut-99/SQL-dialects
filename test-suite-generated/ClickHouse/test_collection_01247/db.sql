@@ -1,4 +1,9 @@
-DROP TABLE IF EXISTS tab;
-CREATE TABLE tab(e8 Enum8('hello' = -5, 'world' = 15), e16 Enum16('shark' = -999, 'eagle' = 9999)) ENGINE MergeTree ORDER BY tuple();
-INSERT INTO TABLE tab VALUES ('hello', 'shark'), ('world', 'eagle');
-DROP TABLE tab;
+DROP DATABASE IF EXISTS test_01392;
+CREATE DATABASE test_01392;
+CREATE TABLE test_01392.tableConversion (conversionId String, value Nullable(Double)) ENGINE = Log();
+CREATE TABLE test_01392.tableClick (clickId String, conversionId String, value Nullable(Double)) ENGINE = Log();
+CREATE TABLE test_01392.leftjoin (id String) ENGINE = Log();
+INSERT INTO test_01392.tableConversion(conversionId, value) VALUES ('Conversion 1', 1);
+INSERT INTO test_01392.tableClick(clickId, conversionId, value) VALUES ('Click 1', 'Conversion 1', 14);
+INSERT INTO test_01392.tableClick(clickId, conversionId, value) VALUES ('Click 2', 'Conversion 1', 15);
+INSERT INTO test_01392.tableClick(clickId, conversionId, value) VALUES ('Click 3', 'Conversion 1', 16);

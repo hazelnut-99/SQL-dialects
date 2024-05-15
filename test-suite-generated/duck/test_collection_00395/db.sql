@@ -636,3 +636,13 @@ INSERT INTO test20 VALUES
 ([{'i': NULL}, {'i': NULL}, {'i': 1}, {'i': NULL}, {'i': NULL}, {'i': 1}]),
 ([{'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': 0}]),
 ([{'i': NULL}, {'i': NULL}, {'i': 1}, {'i': NULL}, {'i': NULL}, {'i': NULL}]);
+CREATE TABLE test22 (s STRUCT(i integer[], j integer[]));
+INSERT INTO test22 VALUES
+({'i': [0, NULL], 'j': [NULL, 0]}),
+({'i': [0, NULL], 'j': [NULL, 1]}),
+({'i': [0, NULL], 'j': [1, 2]}),
+({'i': [1, NULL], 'j': [2, NULL]}),
+({'i': [0, 2], 'j': [2, NULL]}),
+({'i': NULL, 'j': [2, NULL]}),
+({'i': [0, 2], 'j': NULL}),
+({'i': NULL, 'j': [2, 3]});

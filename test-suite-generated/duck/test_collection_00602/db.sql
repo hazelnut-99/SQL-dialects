@@ -2134,3 +2134,8 @@ INSERT INTO test24 VALUES
 ([{'l1': [{'i': 1.1}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1.2}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1.2}]}, {'l1': [{'i': NULL}]}, {'l1': [{'i': NULL}]}]);
+DROP TABLE test2;
+DROP TABLE test10;
+DROP TABLE test24;
+CREATE TABLE test2 (i float[][]);
+INSERT INTO test2 VALUES ([[1.2]]), ([[1.1]]), ([NULL, []]), ([[1.1], [1.2]]), ([]), ([[]]), ([[1.2], [1.2]]), ([NULL]), (NULL), ([[1.2], [1.3]]);

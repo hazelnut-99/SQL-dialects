@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS stripelog;
-CREATE TABLE stripelog (x UInt8) ENGINE = StripeLog;
-INSERT INTO stripelog VALUES (1), (2);
+DROP TABLE IF EXISTS join;
+CREATE TABLE join (k UInt8, x String) ENGINE = Memory;
+INSERT INTO join VALUES (1, 'hello');
+DROP TABLE join;
+CREATE TABLE join (k UInt8, x String) ENGINE = Join(ANY, LEFT, k);
+INSERT INTO join VALUES (1, 'hello');

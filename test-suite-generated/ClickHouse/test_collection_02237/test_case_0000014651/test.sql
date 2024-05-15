@@ -1,1 +1,0 @@
-select accurateCast('true', 'Bool');

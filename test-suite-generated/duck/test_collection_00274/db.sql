@@ -14,3 +14,6 @@ insert into t0 values (1), (2), (3), (4), (5), (6), (7);
 drop table test;
 create table test (i smallint);
 insert into test values (100), (25), (75), (50);
+drop table test;
+create table test (i integer);
+insert into test values (100), (25), (75), (50);

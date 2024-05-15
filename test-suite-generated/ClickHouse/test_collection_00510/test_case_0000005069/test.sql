@@ -1,1 +1,0 @@
-SELECT '== (Replicas) Test optimize ==';

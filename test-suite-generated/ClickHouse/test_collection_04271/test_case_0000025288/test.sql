@@ -1,1 +1,0 @@
-SELECT * FROM ( SELECT 1 AS key GROUP BY NULL ) AS t1 INNER JOIN (SELECT 1 AS key) AS t2 ON t1.key = t2.key WHERE t1.key ORDER BY key;

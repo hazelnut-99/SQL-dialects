@@ -1,3 +1,4 @@
-CREATE FUNCTION 02103_test_function AS x -> x + 1;
-CREATE FUNCTION 02103_test_function_with_nested_function_empty_args AS () -> 02103_test_function(1);
-CREATE FUNCTION 02103_test_function_with_nested_function_arg AS (x) -> 02103_test_function(x);
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (idna String) ENGINE=MergeTree ORDER BY idna;
+INSERT INTO tab VALUES ('straße.münchen.de') ('') ('münchen');
+DROP TABLE tab;

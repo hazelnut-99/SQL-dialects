@@ -1,0 +1,1 @@
+SELECT dateDiff('month', toDate32('2015-08-18', 'UTC'), toDateTime('2015-09-18 00:00:00', 'UTC'), 'UTC');

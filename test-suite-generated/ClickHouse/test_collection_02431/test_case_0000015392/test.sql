@@ -1,1 +1,0 @@
-SELECT * FROM 01686_test WHERE key = 123 OR key = 4567 ORDER BY key;

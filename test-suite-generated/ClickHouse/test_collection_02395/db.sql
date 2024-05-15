@@ -1,9 +1,42 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test(
-	n1 Int32,
-	n2 UInt32,
-	n3 Float32,
-	n4 Float64,
-	n5 Decimal32(5)
-) ENGINE = Memory;
-INSERT INTO test VALUES (1, 2, -0.0001, 1.5, 0.5) (-2, 0, 2.5, -4, -5) (4, 5, 5, 0, 7);
+desc format(JSONEachRow, '{"x" : "2020-01-01"}');
+desc format(JSONEachRow, '{"x" : "2020-01-01 00:00:00.00000"}');
+desc format(JSONEachRow, '{"x" : "2020-01-01 00:00:00"}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01", "2020-01-02"]}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01", "2020-01-01 00:00:00"]}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01 00:00:00", "2020-01-01 00:00:00"]}');
+desc format(JSONEachRow, '{"x" : {"date1" : "2020-01-01 00:00:00", "date2" : "2020-01-01"}}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01 00:00:00", "2020-01-01"]}\n{"x" : ["2020-01-01"]}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01 00:00:00"]}\n{"x" : ["2020-01-01"]}');
+desc format(JSONEachRow, '{"x" : "2020-01-01 00:00:00"}\n{"x" : "2020-01-01"}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01 00:00:00", "Some string"]}');
+desc format(JSONEachRow, '{"x" : "2020-01-01 00:00:00"}\n{"x" : "Some string"}');
+desc format(JSONEachRow, '{"x" : ["2020-01-01 00:00:00", "2020-01-01"]}\n{"x" : ["2020-01-01", "Some string"]}');
+desc format(JSONEachRow, '{"x" : {"key1" : [["2020-01-01 00:00:00"]], "key2" : [["2020-01-01"]]}}\n{"x" : {"key1" : [["2020-01-01"]], "key2" : [["Some string"]]}}');
+desc format(CSV, '"2020-01-01"');
+desc format(CSV, '"2020-01-01 00:00:00.00000"');
+desc format(CSV, '"2020-01-01 00:00:00"');
+desc format(CSV, '"[\'2020-01-01\', \'2020-01-02\']"');
+desc format(CSV, '"[\'2020-01-01\', \'2020-01-01 00:00:00\']"');
+desc format(CSV, '"[\'2020-01-01 00:00:00\', \'2020-01-01 00:00:00\']"');
+desc format(CSV, '"{\'date1\' : \'2020-01-01 00:00:00\', \'date2\' : \'2020-01-01\'}"');
+desc format(CSV, '"[\'2020-01-01 00:00:00\', \'2020-01-01\']"\n"[\'2020-01-01\']"');
+desc format(CSV, '"[\'2020-01-01 00:00:00\']"\n"[\'2020-01-01\']"');
+desc format(CSV, '"2020-01-01 00:00:00"\n"2020-01-01"');
+desc format(CSV, '"[\'2020-01-01 00:00:00\', \'Some string\']"');
+desc format(CSV, '"2020-01-01 00:00:00"\n"Some string"');
+desc format(CSV, '"[\'2020-01-01 00:00:00\', \'2020-01-01\']"\n"[\'2020-01-01\', \'Some string\']"');
+desc format(CSV, '"{\'key1\' : [[\'2020-01-01 00:00:00\']], \'key2\' : [[\'2020-01-01\']]}"\n"{\'key1\' : [[\'2020-01-01\']], \'key2\' : [[\'Some string\']]}"');
+desc format(TSV, '2020-01-01');
+desc format(TSV, '2020-01-01 00:00:00.00000');
+desc format(TSV, '2020-01-01 00:00:00');
+desc format(TSV, '[\'2020-01-01\', \'2020-01-02\']');
+desc format(TSV, '[\'2020-01-01\', \'2020-01-01 00:00:00\']');
+desc format(TSV, '[\'2020-01-01 00:00:00\', \'2020-01-01 00:00:00\']');
+desc format(TSV, '{\'date1\' : \'2020-01-01 00:00:00\', \'date2\' : \'2020-01-01\'}');
+desc format(TSV, '[\'2020-01-01 00:00:00\', \'2020-01-01\']\n[\'2020-01-01\']');
+desc format(TSV, '[\'2020-01-01 00:00:00\']\n[\'2020-01-01\']');
+desc format(TSV, '2020-01-01 00:00:00\n2020-01-01');
+desc format(TSV, '[\'2020-01-01 00:00:00\', \'Some string\']');
+desc format(TSV, '2020-01-01 00:00:00\nSome string');
+desc format(TSV, '[\'2020-01-01 00:00:00\', \'2020-01-01\']\n[\'2020-01-01\', \'Some string\']');
+desc format(TSV, '{\'key1\' : [[\'2020-01-01 00:00:00\']], \'key2\' : [[\'2020-01-01\']]}\n{\'key1\' : [[\'2020-01-01\']], \'key2\' : [[\'Some string\']]}');

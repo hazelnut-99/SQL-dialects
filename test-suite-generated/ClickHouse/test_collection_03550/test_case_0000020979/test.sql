@@ -1,7 +1,0 @@
-select sumMerge(y) from 
-(
-  select cast(x, 'AggregateFunction(sum, Decimal(50, 10))') y from 
-   (
-     select arrayReduce('sumState', [toDecimal256('0.000001', 10), toDecimal256('1.1', 10)]) x
-   )
-);

@@ -239,3 +239,4 @@ CREATE MACRO card_select_args(_val_min, _val_max,  _name:='%', _suit:='%')
 as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;
 CREATE MACRO card_dfl() as TABLE SELECT DISTINCT suit FROM cards_tbl where suit='hearts';
 CREATE MACRO  sc(aorder, border, nlimit) AS TABLE SELECT * FROM cards_tbl ORDER BY aorder,border LIMIT nlimit;
+CREATE MACRO sc2(dlimit, noffset) AS TABLE SELECT DISTINCT  suit from cards_tbl order by all limit dlimit% offset noffset;

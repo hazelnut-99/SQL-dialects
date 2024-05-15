@@ -1,0 +1,1 @@
+select 'left asof on';

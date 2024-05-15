@@ -1,0 +1,1 @@
+select 'RIGHT JOIN';

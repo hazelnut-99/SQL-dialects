@@ -1,1 +1,0 @@
-select deltaSumTimestampMerge(state) from (select deltaSumTimestampState(value, timestamp) as state from (select toDate(number) as timestamp, [4, 5, 5, 5][number-4] as value from numbers(5, 4)) UNION ALL select deltaSumTimestampState(value, timestamp) as state from (select toDate(number) as timestamp, [0, 4, 8, 3][number] as value from numbers(1, 4)));

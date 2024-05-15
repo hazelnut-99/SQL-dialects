@@ -1,1 +1,0 @@
-SELECT toFloat64(9999999999.99999999)  as x, toDecimal128(x, 8), toDecimal128(-x, 8);

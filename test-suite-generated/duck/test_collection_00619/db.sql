@@ -2697,3 +2697,5 @@ INSERT INTO test2 VALUES ('first'), ('second'), ('third'), ('4th'), ('5th');
 PREPARE v1 AS SELECT * FROM test2 LIMIT 40%;
 EXECUTE v1;
 CREATE VIEW v3 AS SELECT i % 5 g, LIST(CASE WHEN i=6 or i=8 then null else i end) l FROM RANGE(20) tbl(i) group by g;
+CREATE TABLE struct_data (g INTEGER, e INTEGER);
+INSERT INTO struct_data VALUES (1, 1), (1, 2), (2, 3), (2, 4), (2, 5), (3, 6), (5, NULL);

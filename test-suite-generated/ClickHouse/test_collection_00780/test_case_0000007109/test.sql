@@ -1,1 +1,0 @@
-SELECT * FROM dst_00753 ORDER BY x;

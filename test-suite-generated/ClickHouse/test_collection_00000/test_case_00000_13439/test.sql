@@ -1,0 +1,1 @@
+SELECT ['ab', 'c', 'de', '', 'hi'] AS arr, 5 AS len, arrayShingles(arr, len), arrayShingles(materialize(arr), len);

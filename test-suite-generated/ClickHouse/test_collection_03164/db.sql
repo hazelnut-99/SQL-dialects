@@ -1,1 +1,4 @@
-insert into table function file('data.avro', 'Parquet', 'x UInt64') select * from numbers(10);
+drop table if exists rmt_master;
+drop table if exists rmt_slave;
+system stop replicated sends rmt_master;
+system flush logs;

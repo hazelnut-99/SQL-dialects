@@ -1,9 +1,24 @@
-drop table if exists t1;
-drop table if exists t2;
-drop table if exists t3;
-create table t1 (a UInt32, b String) engine = Memory;
-create table t2 (c UInt32, d String) engine = Memory;
-create table t3 (a UInt32) engine = Memory;
-insert into t1 values (1, 'x'), (2, 'y'), (3, 'z');
-insert into t2 values (2, 'w'), (4, 'y');
-insert into t3 values (3);
+DROP TABLE IF EXISTS ints;
+DROP TABLE IF EXISTS floats;
+DROP TABLE IF EXISTS strings;
+CREATE TABLE ints (
+    a TINYINT,
+    b TINYINT(8),
+    c SMALLINT,
+    d SMALLINT(16),
+    e INT,
+    f INT(32),
+    g BIGINT,
+    h BIGINT(64)
+) engine=Memory;
+INSERT INTO ints VALUES (1, 8, 11, 16, 21, 32, 41, 64);
+CREATE TABLE floats (
+    a FLOAT,
+    b FLOAT(12),
+    c FLOAT(15, 22),
+    d DOUBLE,
+    e DOUBLE(12),
+    f DOUBLE(4, 18)
+
+) engine=Memory;
+INSERT INTO floats VALUES (1.1, 1.2, 1.3, 41.1, 41.1, 42.1);

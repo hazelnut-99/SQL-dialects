@@ -1,0 +1,1 @@
+select toString(toNullable(true));

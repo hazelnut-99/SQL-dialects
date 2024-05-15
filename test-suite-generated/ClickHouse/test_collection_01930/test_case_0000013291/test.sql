@@ -1,1 +1,0 @@
-SELECT toDateTime(-1, 'Asia/Istanbul'), toDateTime(10000000000000, 'Asia/Istanbul'), toDateTime(1000, 'Asia/Istanbul');

@@ -1,0 +1,1 @@
+SELECT four, ten, sum(ten) over (partition by four order by ten range between unbounded preceding and current row) st, last_value(ten) over (partition by four order by ten range between unbounded preceding and current row) lt FROM tenk1d order by four, ten;

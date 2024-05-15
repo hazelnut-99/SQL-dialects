@@ -1,17 +1,8 @@
-drop table if exists t;
-drop table if exists dist;
-drop table if exists buf;
-drop table if exists join;
-create table t (n UInt64, s String default 's' || toString(n)) engine=Memory;
-create table buf (n int) engine=Buffer(currentDatabase(), dist, 1, 10, 100, 10, 100, 1000, 1000);
-system stop distributed sends dist;
-insert into buf values (1);
-system stop distributed sends buf;
-insert into buf values (2);
-replace table buf (n int) engine=Buffer(currentDatabase(), dist, 1, 10, 100, 10, 100, 1000, 1000);
-system stop distributed sends dist;
-insert into buf values (3);
-replace table buf (n int) engine=Null;
-create or replace table join engine=Join(ANY, INNER, n) as select * from t where throwIf(n); -- { serverError 395 }
-create or replace table join engine=Join(ANY, INNER, n) as select * from t;
-insert into t(n) values (4);
+DROP DATABASE IF EXISTS test1601_detach_permanently_atomic;
+CREATE DATABASE test1601_detach_permanently_atomic Engine=Atomic;
+create table test1601_detach_permanently_atomic.test_name_reuse (number UInt64) engine=MergeTree order by tuple();
+INSERT INTO test1601_detach_permanently_atomic.test_name_reuse SELECT * FROM numbers(100);
+DETACH table test1601_detach_permanently_atomic.test_name_reuse PERMANENTLY;
+create table test1601_detach_permanently_atomic.test_name_rename_attempt (number UInt64) engine=MergeTree order by tuple();
+SHOW CREATE TABLE test1601_detach_permanently_atomic.test_name_reuse FORMAT Vertical;
+ATTACH TABLE test1601_detach_permanently_atomic.test_name_reuse;

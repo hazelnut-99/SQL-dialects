@@ -93,3 +93,4 @@ INSERT INTO test SELECT 2 FROM generate_series(0, 4000);
 DELETE FROM test WHERE i=1;
 DELETE FROM test WHERE i=2;
 DELETE FROM test;
+DROP TABLE integers;

@@ -1,0 +1,1 @@
+SELECT '--revoke 2';

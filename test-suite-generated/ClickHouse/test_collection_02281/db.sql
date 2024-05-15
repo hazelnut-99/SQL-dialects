@@ -1,37 +1,49 @@
-DROP TABLE IF EXISTS table_with_lc_key;
-CREATE TABLE table_with_lc_key
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
 (
-    enum_key Enum8('x' = 2, 'y' = 1),
-    lc_key LowCardinality(String),
-    value String
+    value Map(Int64, Int64)
 )
-ENGINE MergeTree()
-ORDER BY (enum_key, lc_key);
-INSERT INTO table_with_lc_key VALUES(1, 'hello', 'world');
-ALTER TABLE table_with_lc_key MODIFY COLUMN lc_key String;
-SHOW CREATE TABLE table_with_lc_key;
-DETACH TABLE table_with_lc_key;
-ATTACH TABLE table_with_lc_key;
-ALTER TABLE table_with_lc_key MODIFY COLUMN enum_key Enum('x' = 2, 'y' = 1, 'z' = 3);
-SHOW CREATE TABLE table_with_lc_key;
-DETACH TABLE table_with_lc_key;
-ATTACH TABLE table_with_lc_key;
-ALTER TABLE table_with_lc_key MODIFY COLUMN enum_key Int8;
-SHOW CREATE TABLE table_with_lc_key;
-DETACH TABLE table_with_lc_key;
-ATTACH TABLE table_with_lc_key;
-DROP TABLE IF EXISTS table_with_lc_key;
-DROP TABLE IF EXISTS table_with_string_key;
-CREATE TABLE table_with_string_key
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+DROP TABLE 02005_test_table;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
 (
-    int_key Int8,
-    str_key String,
-    value String
+    key Array(Int64),
+    value Array(Int64)
 )
-ENGINE MergeTree()
-ORDER BY (int_key, str_key);
-INSERT INTO table_with_string_key VALUES(1, 'hello', 'world');
-ALTER TABLE table_with_string_key MODIFY COLUMN str_key LowCardinality(String);
-SHOW CREATE TABLE table_with_string_key;
-DETACH TABLE table_with_string_key;
-ATTACH TABLE table_with_string_key;
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0], [5]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0, 5], [5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5], [-5, 5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5, 10], [-5, 5, 10, 15]);
+TRUNCATE TABLE 02005_test_table;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0], [5]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0, 5], [5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5], [-5, 5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5, 10], [-5, 5, 10, 15]);

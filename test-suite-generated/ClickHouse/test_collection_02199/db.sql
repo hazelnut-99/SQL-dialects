@@ -1,35 +1,26 @@
-DROP TABLE IF EXISTS source_data;
-CREATE TABLE source_data (
-    pk Int32, sk Int32, val UInt32, partition_key UInt32 DEFAULT 1,
-    PRIMARY KEY (pk)
-) ENGINE=MergeTree
-ORDER BY (pk, sk);
-INSERT INTO source_data (pk, sk, val) VALUES (0, 0, 0), (0, 0, 0), (1, 1, 2), (1, 1, 3);
-DROP TABLE IF EXISTS full_duplicates;
-CREATE TABLE full_duplicates  (
-    pk Int32, sk Int32, val UInt32, partition_key UInt32, mat UInt32 MATERIALIZED 12345, alias UInt32 ALIAS 2,
-    PRIMARY KEY (pk)
-) ENGINE=MergeTree
-PARTITION BY (partition_key + 1) -- ensure that column in expression is properly handled when deduplicating. See [1] below.
-ORDER BY (pk, toString(sk * 10)); -- silly order key to ensure that key column is checked even when it is a part of expression. See [1] below.
-INSERT INTO full_duplicates SELECT * FROM source_data;
-OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE;
-TRUNCATE full_duplicates;
-INSERT INTO full_duplicates SELECT * FROM source_data;
-OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY *;
-TRUNCATE full_duplicates;
-INSERT INTO full_duplicates SELECT * FROM source_data;
-OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY * EXCEPT mat;
-TRUNCATE full_duplicates;
-INSERT INTO full_duplicates SELECT * FROM source_data;
-OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY pk,sk,val,mat,partition_key;
-TRUNCATE full_duplicates;
-DROP TABLE IF EXISTS partial_duplicates;
-CREATE TABLE partial_duplicates  (
-    pk Int32, sk Int32, val UInt32, partition_key UInt32 DEFAULT 1, mat UInt32 MATERIALIZED rand(), alias UInt32 ALIAS 2,
-    PRIMARY KEY (pk)
-) ENGINE=MergeTree
-ORDER BY (pk, sk);
-INSERT INTO partial_duplicates SELECT * FROM source_data;
-OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE;
-TRUNCATE partial_duplicates;
+DROP TABLE IF EXISTS test_degs_to_rads;
+CREATE TABLE test_degs_to_rads (degrees Float64) ENGINE = Memory;
+INSERT INTO test_degs_to_rads VALUES (-1);
+INSERT INTO test_degs_to_rads VALUES (-180);
+INSERT INTO test_degs_to_rads VALUES (-180.6);
+INSERT INTO test_degs_to_rads VALUES (-360);
+INSERT INTO test_degs_to_rads VALUES (0);
+INSERT INTO test_degs_to_rads VALUES (1);
+INSERT INTO test_degs_to_rads VALUES (180);
+INSERT INTO test_degs_to_rads VALUES (180.5);
+INSERT INTO test_degs_to_rads VALUES (360);
+DROP TABLE test_degs_to_rads;
+DROP TABLE IF EXISTS test_rads_to_degs;
+CREATE TABLE test_rads_to_degs (radians Float64) ENGINE = Memory;
+INSERT INTO test_rads_to_degs VALUES (-6.283185307179586);
+INSERT INTO test_rads_to_degs VALUES (-3.152064629101759);
+INSERT INTO test_rads_to_degs VALUES (-3.141592653589793);
+INSERT INTO test_rads_to_degs VALUES (-0.017453292519943295);
+INSERT INTO test_rads_to_degs VALUES(0);
+INSERT INTO test_rads_to_degs VALUES(1);
+INSERT INTO test_rads_to_degs VALUES(10);
+INSERT INTO test_rads_to_degs VALUES(-10);
+INSERT INTO test_rads_to_degs VALUES (0.017453292519943295);
+INSERT INTO test_rads_to_degs VALUES (3.141592653589793);
+INSERT INTO test_rads_to_degs VALUES (3.1503192998497647);
+INSERT INTO test_rads_to_degs VALUES (6.283185307179586);

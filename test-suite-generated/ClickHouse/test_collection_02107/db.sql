@@ -1,6 +1,9 @@
-DROP TABLE IF EXISTS test_collate;
-DROP TABLE IF EXISTS test_collate_null;
-CREATE TABLE test_collate (x UInt32, s LowCardinality(String)) ENGINE=Memory();
-CREATE TABLE test_collate_null (x UInt32, s LowCardinality(Nullable(String))) ENGINE=Memory();
-INSERT INTO test_collate VALUES (1, 'Ё'), (1, 'ё'), (1, 'а'), (2, 'А'), (2, 'я'), (2, 'Я');
-INSERT INTO test_collate_null VALUES (1, 'Ё'), (1, 'ё'), (1, 'а'), (2, 'А'), (2, 'я'), (2, 'Я'), (1, null), (2, null);
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+CREATE TABLE t1 ( `a1` Int64, `1a1` Int64 ) ENGINE = Memory;
+INSERT INTO t1 VALUES (1, 1);
+CREATE TABLE t2 ( `b1` Int64, `1b1` Int64 ) ENGINE = Memory;
+INSERT INTO t2 VALUES (1, 1);
+CREATE TABLE t3 ( `c1` Int64, `1c1` Int64 ) ENGINE = Memory;
+INSERT INTO t3 VALUES (1, 1);

@@ -1,9 +1,18 @@
-DROP TABLE IF EXISTS no_order;
-CREATE TABLE no_order(a UInt32, b UInt32) ENGINE = MergeTree ORDER BY tuple();
-DROP TABLE no_order;
-DROP TABLE IF EXISTS old_style;
-DROP TABLE IF EXISTS summing;
-CREATE TABLE summing(x UInt32, y UInt32, val UInt32) ENGINE SummingMergeTree ORDER BY (x, y);
-ALTER TABLE summing ADD COLUMN z UInt32 AFTER y, MODIFY ORDER BY (x, y, -z);
-INSERT INTO summing(x, y, z, val) values (1, 2, 0, 10), (1, 2, 1, 30), (1, 2, 2, 40);
-INSERT INTO summing(x, y, z, val) values (1, 2, 0, 20), (1, 2, 2, 50);
+DROP TABLE IF EXISTS mv_extra_columns_dst;
+DROP TABLE IF EXISTS mv_extra_columns_src;
+DROP TABLE IF EXISTS mv_extra_columns_view;
+CREATE TABLE mv_extra_columns_dst (
+    v UInt64
+) ENGINE = MergeTree()
+    PARTITION BY tuple()
+    ORDER BY v;
+CREATE TABLE mv_extra_columns_src (
+    v1 UInt64,
+    v2 UInt64
+) ENGINE = Null;
+CREATE MATERIALIZED VIEW mv_extra_columns_view TO mv_extra_columns_dst
+AS SELECT
+  v1 as v,
+  v2 as v2
+FROM mv_extra_columns_src;
+INSERT INTO mv_extra_columns_src VALUES (0, 0), (1, 1), (2, 2);

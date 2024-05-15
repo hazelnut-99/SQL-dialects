@@ -1,0 +1,1 @@
+SELECT '2nd argument (Annoy: number of trees, USearch: scalar kind) must be UInt64 (Annoy) / String (Usearch)';

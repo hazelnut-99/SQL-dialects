@@ -1,3 +1,12 @@
-DROP TABLE IF EXISTS sum_map;
-CREATE TABLE sum_map(date Date, timeslot DateTime, statusMap Nested(status UInt16, requests UInt64)) ENGINE = Log;
-INSERT INTO sum_map VALUES ('2000-01-01', '2000-01-01 00:00:00', [1, 2, 3], [10, 10, 10]), ('2000-01-01', '2000-01-01 00:00:00', [3, 4, 5], [10, 10, 10]), ('2000-01-01', '2000-01-01 00:01:00', [4, 5, 6], [10, 10, 10]), ('2000-01-01', '2000-01-01 00:01:00', [6, 7, 8], [10, 10, 10]);
+DROP TABLE IF EXISTS decimal;
+CREATE TABLE IF NOT EXISTS decimal
+(
+    a DECIMAL(9,4) DEFAULT 0,
+    b DECIMAL(18,4) DEFAULT a / 2,
+    c DECIMAL(38,4) DEFAULT b / 3,
+    d MATERIALIZED a + toDecimal32('0.2', 1),
+    e ALIAS b * 2,
+    f ALIAS c * 6
+) ENGINE = Memory;
+DESC TABLE decimal;
+INSERT INTO decimal (a) VALUES (0), (1), (2), (3);

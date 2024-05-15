@@ -1,3 +1,2 @@
-DROP TABLE IF EXISTS addresses;
-CREATE TABLE addresses(addr UInt32) ENGINE = Memory;
-INSERT INTO addresses(addr) VALUES (1297626935), (2130706433), (3254522122);
+DROP TABLE IF EXISTS data_00184;
+CREATE TABLE data_00184 Engine=Memory() AS SELECT * FROM numbers(2);

@@ -224,3 +224,14 @@ Create table t2 (c int, d int);
 CREATE OR REPLACE MACRO eq(x := NULL, y := NULL) AS x = y;
 INSERT INTO t1 VALUES (1, 1), (1, 2), (2, 2), (3, 4);
 INSERT INTO t2 VALUES (4, 1), (2, 10), (6, 2), (2, 6);
+CREATE TABLE cards_tbl  (val int, name string, suit string);
+INSERT INTO cards_tbl values (1, 'ace', 'clubs'),    (11,'jack', 'clubs' ),
+(12, 'queen', 'clubs' ),     (13, 'king', 'clubs');
+INSERT INTO cards_tbl values (1, 'ace', 'diamonds'), (11,'jack', 'diamonds' ),
+(12, 'queen', 'diamonds' ),  (13, 'king', 'diamonds');
+INSERT INTO cards_tbl values (1, 'ace', 'hearts'),   (11,'jack', 'hearts' ),
+(12, 'queen', 'hearts' ),    (13, 'king', 'hearts');
+INSERT INTO cards_tbl values (1, 'ace', 'spades'),   (11,'jack', 'spades' ),
+(12, 'queen', 'spades' ),    (13, 'king', 'spades');
+CREATE MACRO card_select(_val_min:=1, _val_max:=1,  _name:='%', _suit:='%')
+as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;

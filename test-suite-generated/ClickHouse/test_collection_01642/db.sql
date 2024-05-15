@@ -1,54 +1,33 @@
-DROP DATABASE IF EXISTS database_for_dict_01268;
-CREATE DATABASE database_for_dict_01268;
-DROP TABLE IF EXISTS database_for_dict_01268.table_for_dict1;
-DROP TABLE IF EXISTS database_for_dict_01268.table_for_dict2;
-DROP TABLE IF EXISTS database_for_dict_01268.table_for_dict3;
-CREATE TABLE database_for_dict_01268.table_for_dict1
+DROP DATABASE IF EXISTS 01681_database_for_cache_dictionary;
+CREATE DATABASE 01681_database_for_cache_dictionary;
+CREATE TABLE 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table
 (
-  key_column UInt64,
-  second_column UInt64,
-  third_column String
+   id UInt64,
+   value_first String,
+   value_second String
 )
-ENGINE = MergeTree()
-ORDER BY key_column;
-INSERT INTO database_for_dict_01268.table_for_dict1 VALUES (100500, 10000000, 'Hello world');
-CREATE TABLE database_for_dict_01268.table_for_dict2
+ENGINE = TinyLog;
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(1, 'value_1', 'value_second_1');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+DROP TABLE 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table;
+CREATE TABLE 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table
 (
-  region_id UInt64,
-  parent_region UInt64,
-  region_name String
+   id UInt64,
+   value_first String,
+   value_second Nullable(String)
 )
-ENGINE = MergeTree()
-ORDER BY region_id;
-INSERT INTO database_for_dict_01268.table_for_dict2 VALUES (1, 0, 'Russia');
-INSERT INTO database_for_dict_01268.table_for_dict2 VALUES (2, 1, 'Moscow');
-INSERT INTO database_for_dict_01268.table_for_dict2 VALUES (3, 2, 'Center');
-INSERT INTO database_for_dict_01268.table_for_dict2 VALUES (4, 0, 'Great Britain');
-INSERT INTO database_for_dict_01268.table_for_dict2 VALUES (5, 4, 'London');
-CREATE TABLE database_for_dict_01268.table_for_dict3
+ENGINE = TinyLog;
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(1, 'value_1', NULL);
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+CREATE DICTIONARY 01681_database_for_cache_dictionary.cache_dictionary_simple_key_complex_attributes
 (
-  region_id UInt64,
-  parent_region Float32,
-  region_name String
+   id UInt64,
+   value_first String DEFAULT 'value_first_default',
+   value_second Nullable(String) DEFAULT 'value_second_default'
 )
-ENGINE = MergeTree()
-ORDER BY region_id;
-INSERT INTO database_for_dict_01268.table_for_dict3 VALUES (1, 0.5, 'Russia');
-INSERT INTO database_for_dict_01268.table_for_dict3 VALUES (2, 1.6, 'Moscow');
-INSERT INTO database_for_dict_01268.table_for_dict3 VALUES (3, 2.3, 'Center');
-INSERT INTO database_for_dict_01268.table_for_dict3 VALUES (4, 0.2, 'Great Britain');
-INSERT INTO database_for_dict_01268.table_for_dict3 VALUES (5, 4.9, 'London');
-DROP DATABASE IF EXISTS db_01268;
-CREATE DATABASE db_01268;
-DROP DICTIONARY IF EXISTS db_01268.dict1;
-DROP DICTIONARY IF EXISTS db_01268.dict2;
-DROP DICTIONARY IF EXISTS db_01268.dict3;
-CREATE DICTIONARY db_01268.dict3
-(
-  region_id UInt64 DEFAULT 0,
-  parent_region Float32 DEFAULT 0,
-  region_name String DEFAULT ''
-)
-PRIMARY KEY region_id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict3' PASSWORD '' DB 'database_for_dict_01268'))
-LAYOUT(DIRECT());
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_complex_attributes_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(CACHE(SIZE_IN_CELLS 10));

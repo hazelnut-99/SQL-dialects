@@ -1,0 +1,6 @@
+SELECT b3*250+a7, x7, d8, d2*98
+  FROM t8, t7, t3, t2
+ WHERE e8=b3
+   AND a2 in (901,159,471,442,775,809,245)
+   AND (a3=393 OR 12=a3 OR a3=525 OR a3=164)
+   AND e7=d2;

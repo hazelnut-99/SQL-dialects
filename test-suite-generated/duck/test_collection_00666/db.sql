@@ -18,3 +18,14 @@ INSERT INTO monthly_sales VALUES
     (1, 10000, 'APR'),
     (2, 800, 'APR'),
     (2, 4500, 'APR');
+INSERT INTO monthly_sales VALUES (1, 250, NULL);
+FROM
+(
+  SELECT DaysToManufacture, StandardCost
+  FROM Product
+) AS SourceTable
+PIVOT
+(
+  AVG(StandardCost)
+  FOR DaysToManufacture IN ('zz')
+) AS PivotTable;

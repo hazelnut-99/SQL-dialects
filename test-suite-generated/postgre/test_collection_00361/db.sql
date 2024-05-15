@@ -1,3 +1,7 @@
-create type complex as (r float8, i float8);
-create temp table fullname (first text, last text);
-create type quad as (c1 complex, c2 complex);
+CREATE TABLE TIMESTAMPTZ_TBL (d1 timestamp(2) with time zone);
+BEGIN;
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('today');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('yesterday');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow EST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow zulu');

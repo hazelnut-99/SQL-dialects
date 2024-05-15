@@ -1,0 +1,1 @@
+select '-- optimize_trivial_count_query=0, optimize_use_implicit_projections=0';

@@ -1,1 +1,0 @@
-SELECT '-- read from cache';

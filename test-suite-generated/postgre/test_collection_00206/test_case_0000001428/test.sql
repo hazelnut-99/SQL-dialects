@@ -1,1 +1,0 @@
-select scale(NULL::numeric);

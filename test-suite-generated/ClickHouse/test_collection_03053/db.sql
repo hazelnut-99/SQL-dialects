@@ -1,5 +1,39 @@
-DROP TABLE IF EXISTS foo;
-CREATE TABLE foo (ts DateTime, x UInt64)
-ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
-ORDER BY (ts);
-ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);
+DROP TABLE IF EXISTS 02919_test_table_noarg;
+CREATE TABLE 02919_test_table_noarg(str String) ENGINE = FuzzJSON('{}');
+DROP TABLE IF EXISTS 02919_test_table_noarg;
+DROP TABLE IF EXISTS 02919_test_table_valid_args;
+CREATE TABLE 02919_test_table_valid_args(str String) ENGINE = FuzzJSON(
+    '{"pet":"rat"}', NULL);
+DROP TABLE IF EXISTS 02919_test_table_valid_args;
+DROP TABLE IF EXISTS 02919_test_table_reuse_args;
+CREATE TABLE 02919_test_table_reuse_args(str String) ENGINE = FuzzJSON(
+    '{
+      "name": "Jane Doe",
+      "age": 30,
+      "city": "New York",
+      "contacts": {
+        "email": "jane@example.com",
+        "phone": "+1234567890"
+      },
+      "skills": [
+        "JavaScript",
+        "Python",
+        {
+          "frameworks": ["React", "Django"]
+        }
+      ],
+      "projects": [
+        {"name": "Project A", "status": "completed"},
+        {"name": "Project B", "status": "in-progress"}
+      ]
+    }',
+    12345);
+DROP TABLE IF EXISTS 02919_test_table_reuse_args;
+DROP TABLE IF EXISTS 02919_test_table_invalid_col_type;
+DROP TABLE IF EXISTS 02919_test_table_invalid_col_type;
+DROP TABLE IF EXISTS 02919_test_multi_col;
+CREATE TABLE 02919_test_multi_col
+(
+    str1 String,
+    str2 String
+) ENGINE = FuzzJSON('{"pet":"rat"}', 999);

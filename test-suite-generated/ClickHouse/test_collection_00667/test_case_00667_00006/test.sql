@@ -1,0 +1,1 @@
+select 'default precision:';

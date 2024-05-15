@@ -43,3 +43,45 @@ CREATE TYPE jsbrec_i_not_null AS (
 create type jsb_char2 as (a char(2));
 create type jsb_ia as (a int[]);
 create type jsb_ia2 as (a int[][]);
+create domain jsb_i_not_null as int not null;
+create domain jsb_i_gt_1 as int check (value > 1);
+create type jsb_i_not_null_rec as (a jsb_i_not_null);
+create type jsb_i_gt_1_rec as (a jsb_i_gt_1);
+drop type jsb_ia, jsb_ia2, jsb_char2, jsb_i_not_null_rec, jsb_i_gt_1_rec;
+drop domain jsb_i_not_null, jsb_i_gt_1;
+CREATE TEMP TABLE jsbpoptest (js jsonb);
+INSERT INTO jsbpoptest
+SELECT '{
+	"jsa": [1, "2", null, 4],
+	"rec": {"a": "abc", "c": "01.02.2003", "x": 43.2},
+	"reca": [{"a": "abc", "b": 456}, null, {"c": "01.02.2003", "x": 43.2}]
+}'::jsonb
+FROM generate_series(1, 3);
+DROP TYPE jsbrec;
+DROP TYPE jsbrec_i_not_null;
+DROP DOMAIN jsb_int_not_null;
+DROP DOMAIN jsb_int_array_1d;
+DROP DOMAIN jsb_int_array_2d;
+DROP DOMAIN jb_ordered_pair;
+DROP TYPE jb_unordered_pair;
+create temp table nestjsonb (j jsonb);
+insert into nestjsonb (j) values ('{"a":[["b",{"x":1}],["b",{"x":2}]],"c":3}');
+insert into nestjsonb (j) values ('[[14,2,3]]');
+insert into nestjsonb (j) values ('[1,[14,2,3]]');
+create index on nestjsonb using gin(j jsonb_path_ops);
+create TEMP TABLE test_jsonb_subscript (
+       id int,
+       test_json jsonb
+);
+insert into test_jsonb_subscript values
+(1, '{}'), -- empty jsonb
+(2, '{"key": "value"}'); -- jsonb with data
+insert into test_jsonb_subscript values (3, NULL);
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[0]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');

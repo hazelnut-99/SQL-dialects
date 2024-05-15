@@ -1,1 +1,0 @@
-SELECT 'Range dictionary';

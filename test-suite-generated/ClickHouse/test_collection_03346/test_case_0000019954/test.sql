@@ -1,1 +1,0 @@
-SELECT cast('1234' AS UInt32);

@@ -1,1 +1,0 @@
-SELECT '-----lightweight mutation type-----';

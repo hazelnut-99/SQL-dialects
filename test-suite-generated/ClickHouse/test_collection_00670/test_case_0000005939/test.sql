@@ -1,1 +1,0 @@
-SELECT toInt64(999999999999999999) as x, toDecimal64(x, 0), toDecimal64(-x, 0);

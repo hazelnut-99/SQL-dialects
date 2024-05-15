@@ -1,0 +1,1 @@
+SELECT nuLL IS NOT NULL;

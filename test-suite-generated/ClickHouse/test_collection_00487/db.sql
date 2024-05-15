@@ -1,3 +1,4 @@
-drop table if exists mult_tab;
-drop table if exists mult_tab;
-drop table if exists mult_tab;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;

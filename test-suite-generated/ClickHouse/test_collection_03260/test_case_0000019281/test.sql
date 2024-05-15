@@ -1,1 +1,0 @@
-SELECT 'Without max key';

@@ -308,3 +308,5 @@ INSERT INTO tbl_structs VALUES (
 	{'a': 1.0, 'b': 'yay', 'c': [10, 20]},
 	42,
 	{'k': 2, 'j': 1});
+CREATE TABLE test0 (job VARCHAR, name VARCHAR);
+INSERT INTO test0 VALUES ('Shipping and Receiving Supervisor', 'Ackerman'), ('Shipping and Receiving Clerk', 'Berndt'), ('Shipping and Receiving Clerk', 'Kuppa'), ('Production Supervisor - WC60', 'Brown'), ('Production Supervisor - WC60', 'Campbell'), ('Production Supervisor - WC40', 'Dsa');

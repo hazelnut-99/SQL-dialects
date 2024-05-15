@@ -1,0 +1,1 @@
+SELECT * FROM intest WHERE a IN (86, 103, 162);

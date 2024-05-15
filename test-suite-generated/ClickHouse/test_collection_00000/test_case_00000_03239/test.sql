@@ -1,0 +1,1 @@
+SELECT toDecimal128(-12345.6789, 4) AS x, floor(x, -1), floor(x, -2), floor(x, -3), floor(x, -4), floor(x, -5);

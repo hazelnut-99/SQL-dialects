@@ -1,1 +1,0 @@
-select case 1::Nullable(Int32) when 1 then 123 else 0 end;

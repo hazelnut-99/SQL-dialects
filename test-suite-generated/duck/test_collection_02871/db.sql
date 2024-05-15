@@ -4075,3 +4075,28 @@ DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
 DROP TABLE temp_table;
 CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
 DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
+DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
+DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TABLE tbl (
+	u_2 UNION("string" VARCHAR, "bool" BOOLEAN),
+	u_1 UNION("string" VARCHAR),
+	i INTEGER,
+	u_list UNION("int" INTEGER, "list" INTEGER[], "bool" BOOLEAN));
+INSERT INTO tbl VALUES
+	('hello', 'world', 42, [1, 2, 3]),
+	(NULL, NULL, NULL, NULL),
+	(true, NULL, 44, 45),
+	(false, 'wazzup', false, [1]);
+CREATE INDEX idx_i ON tbl (i);
+DROP INDEX idx_i;
+CREATE UNIQUE INDEX idx_u_2_1 ON tbl ((u_2.string));
+CREATE UNIQUE INDEX idx_u_2_2 ON tbl ((u_2.bool));
+CREATE UNIQUE INDEX idx_u_1 ON tbl ((u_1.string));
+CREATE UNIQUE INDEX idx_list_1 ON tbl ((u_list.int));
+CREATE UNIQUE INDEX idx_list_3 ON tbl ((u_list.bool));
+INSERT INTO tbl VALUES ('helloo', 'worldd', 43, [1, 2, 3, 4]);

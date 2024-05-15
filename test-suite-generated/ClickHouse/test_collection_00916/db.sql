@@ -1,15 +1,11 @@
-DROP TABLE IF EXISTS t64;
-CREATE TABLE t64
-(
-    u8 UInt8,
-    t_u8 UInt8 Codec(T64('bit'), LZ4),
-    u16 UInt16,
-    t_u16 UInt16 Codec(T64('bit'), LZ4),
-    u32 UInt32,
-    t_u32 UInt32 Codec(T64('bit'), LZ4),
-    u64 UInt64,
-    t_u64 UInt64 Codec(T64('bit'), LZ4)
-) ENGINE MergeTree() ORDER BY tuple();
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
-INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
+drop table if exists ttl;
+create table ttl (d Date, a Int) engine = MergeTree order by a partition by toDayOfMonth(d);
+insert into ttl values (toDateTime('2000-10-10 00:00:00'), 1);
+insert into ttl values (toDateTime('2000-10-10 00:00:00'), 2);
+insert into ttl values (toDateTime('2100-10-10 00:00:00'), 3);
+insert into ttl values (toDateTime('2100-10-10 00:00:00'), 4);
+alter table ttl modify ttl d + interval 1 day;
+drop table if exists ttl;
+create table ttl (i Int, s String) engine = MergeTree order by i;
+insert into ttl values (1, 'a') (2, 'b') (3, 'c') (4, 'd');
+alter table ttl modify ttl i % 2 = 0 ? today() - 10 : toDate('2100-01-01');

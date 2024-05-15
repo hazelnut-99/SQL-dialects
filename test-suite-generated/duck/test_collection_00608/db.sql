@@ -2194,3 +2194,8 @@ INSERT INTO test24 VALUES
 ([{'l1': [{'i': 1.1}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1.2}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1.2}]}, {'l1': [{'i': NULL}]}, {'l1': [{'i': NULL}]}]);
+DROP TABLE test2;
+DROP TABLE test10;
+DROP TABLE test24;
+CREATE TABLE test0 (i BOOL[]);
+INSERT INTO test0 VALUES ([true]), ([false]), ([false, true]), ([]), ([true, true]), ([NULL]), (NULL), ([false, false]);

@@ -1,7 +1,10 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
 (
-  id   UInt32,
-  code LowCardinality(FixedString(2)) DEFAULT '--'
-) ENGINE = MergeTree() PARTITION BY id ORDER BY id;
-OPTIMIZE TABLE test;
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64
+) ENGINE=TinyLog;

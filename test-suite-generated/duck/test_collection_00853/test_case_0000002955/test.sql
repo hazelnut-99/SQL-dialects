@@ -1,1 +1,0 @@
-SELECT h FROM hugeints WHERE h < 10 ORDER BY 1;

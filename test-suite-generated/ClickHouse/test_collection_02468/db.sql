@@ -1,2 +1,12 @@
-drop table if exists proj;
-CREATE TABLE proj(date Date, PROJECTION maxdate( SELECT max(date) GROUP BY date )) ENGINE = MergeTree ORDER BY tuple() as select toDate('2012-10-24')-number%100 from numbers(1e2);
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers
+(    
+    FirstName Nullable(String),
+    LastName String, 
+    Occupation String,
+    Education String,
+    Age Nullable(UInt8)
+) ENGINE = Memory;
+INSERT INTO Customers VALUES  ('Theodore','Diaz','Skilled Manual','Bachelors',28),('Stephanie','Cox','Management abcd defg','Bachelors',33),('Peter','Nara','Skilled Manual','Graduate Degree',26),('Latoya','Shen','Professional','Graduate Degree',25),('Apple','','Skilled Manual','Bachelors',28),(NULL,'why','Professional','Partial College',38);
+Select '-- #1 --' ;
+Select '-- #2 --' ;

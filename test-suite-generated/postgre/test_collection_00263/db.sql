@@ -594,3 +594,347 @@ begin
   return;
 end;
 $$ language plpgsql;
+create temp table forc_test as
+  select n as i, n as j from generate_series(1,10) n;
+drop function forc01();
+create table tabwithcols(a int, b int, c int, d int);
+insert into tabwithcols values(10,20,30,40),(50,60,70,80);
+alter table tabwithcols drop column b;
+alter table tabwithcols drop column d;
+alter table tabwithcols add column d int;
+drop table tabwithcols;
+create type compostype as (x int, y varchar);
+create or replace function compos() returns compostype as $$
+declare
+  v compostype;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+declare
+  v record;
+begin
+  v := (1, 'hello'::varchar);
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello'::varchar);
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello');
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello')::compostype;
+end;
+$$ language plpgsql;
+drop function compos();
+create or replace function composrec() returns record as $$
+declare
+  v record;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function composrec() returns record as $$
+begin
+  return (1, 'hello');
+end;
+$$ language plpgsql;
+drop function composrec();
+create or replace function compos() returns compostype as $$
+begin
+  return 1 + 1;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+declare x int := 42;
+begin
+  return x;
+end;
+$$ language plpgsql;
+drop function compos();
+create or replace function compos() returns int as $$
+declare
+  v compostype;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns int as $$
+begin
+  return (1, 'hello')::compostype;
+end;
+$$ language plpgsql;
+drop function compos();
+drop type compostype;
+create or replace function raise_test() returns void as $$
+begin
+  raise notice '% % %', 1, 2, 3
+     using errcode = '55001', detail = 'some detail info', hint = 'some hint';
+  raise '% % %', 1, 2, 3
+     using errcode = 'division_by_zero', detail = 'some detail info';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = 'division_by_zero', detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = '1234F', detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = '1234F', detail = 'some detail info';
+  exception
+    when sqlstate '1234F' then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise sqlstate '1234F';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using message = 'custom' || ' message';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise notice 'some message' using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise;
+end;
+$$ language plpgsql;
+create function zero_divide() returns int as $$
+declare v int := 0;
+begin
+  return 10 / v;
+end;
+$$ language plpgsql parallel safe;
+create or replace function raise_test() returns void as $$
+begin
+  raise exception 'custom exception'
+     using detail = 'some detail of custom exception',
+           hint = 'some hint related to custom exception';
+end;
+$$ language plpgsql;
+create function error_trap_test() returns text as $$
+begin
+  perform zero_divide();
+  return 'no error detected!';
+exception when division_by_zero then
+  return 'division_by_zero detected';
+end;
+$$ language plpgsql parallel safe;
+drop function error_trap_test();
+drop function zero_divide();
+create or replace function raise_test() returns void as $$
+begin
+  perform 1/0;
+exception
+  when sqlstate '22012' then
+    raise notice using message = sqlstate;
+    raise sqlstate '22012' using message = 'substitute message';
+end;
+$$ language plpgsql;
+drop function raise_test();
+create or replace function vari(variadic int[])
+returns void as $$
+begin
+  for i in array_lower($1,1)..array_upper($1,1) loop
+    raise notice '%', $1[i];
+  end loop; end;
+$$ language plpgsql;
+drop function vari(int[]);
+create or replace function pleast(variadic numeric[])
+returns numeric as $$
+declare aux numeric = $1[array_lower($1,1)];
+begin
+  for i in array_lower($1,1)+1..array_upper($1,1) loop
+    if $1[i] < aux then aux := $1[i]; end if;
+  end loop;
+  return aux;
+end;
+$$ language plpgsql immutable strict;
+create or replace function pleast(numeric)
+returns numeric as $$
+begin
+  raise notice 'non-variadic function called';
+  return $1;
+end;
+$$ language plpgsql immutable strict;
+drop function pleast(numeric[]);
+drop function pleast(numeric);
+create function tftest(int) returns table(a int, b int) as $$
+begin
+  return query select $1, $1+i from generate_series(1,5) g(i);
+end;
+$$ language plpgsql immutable strict;
+create or replace function tftest(a1 int) returns table(a int, b int) as $$
+begin
+  a := a1; b := a1 + 1;
+  return next;
+  a := a1 * 10; b := a1 * 10 + 1;
+  return next;
+end;
+$$ language plpgsql immutable strict;
+drop function tftest(int);
+CREATE FUNCTION leaker_1(fail BOOL) RETURNS INTEGER AS $$
+DECLARE
+  v_var INTEGER;
+BEGIN
+  BEGIN
+    v_var := (leaker_2(fail)).error_code;
+  EXCEPTION
+    WHEN others THEN RETURN 0;
+  END;
+  RETURN 1;
+END;
+$$ LANGUAGE plpgsql;
+CREATE FUNCTION leaker_2(fail BOOL, OUT error_code INTEGER, OUT new_id INTEGER)
+  RETURNS RECORD AS $$
+BEGIN
+  IF fail THEN
+    RAISE EXCEPTION 'fail ...';
+  END IF;
+  error_code := 1;
+  new_id := 1;
+  RETURN;
+END;
+$$ LANGUAGE plpgsql;
+DROP FUNCTION leaker_1(bool);
+DROP FUNCTION leaker_2(bool);
+CREATE FUNCTION nonsimple_expr_test() RETURNS text[] AS $$
+DECLARE
+  arr text[];
+  lr text;
+  i integer;
+BEGIN
+  arr := array[array['foo','bar'], array['baz', 'quux']];
+  lr := 'fool';
+  i := 1;
+  arr[(SELECT i)][(SELECT i+1)] := (SELECT lr);
+  RETURN arr;
+END;
+$$ LANGUAGE plpgsql;
+DROP FUNCTION nonsimple_expr_test();
+CREATE FUNCTION nonsimple_expr_test() RETURNS integer AS $$
+declare
+   i integer NOT NULL := 0;
+begin
+  begin
+    i := (SELECT NULL::integer);  -- should throw error
+  exception
+    WHEN OTHERS THEN
+      i := (SELECT 1::integer);
+  end;
+  return i;
+end;
+$$ LANGUAGE plpgsql;
+DROP FUNCTION nonsimple_expr_test();
+create function recurse(float8) returns float8 as
+$$
+begin
+  if ($1 > 0) then
+    return sql_recurse($1 - 1);
+  else
+    return $1;
+  end if;
+end;
+$$ language plpgsql;
+create function sql_recurse(float8) returns float8 as
+$$ select recurse($1) limit 1; $$ language sql;
+create function error2(p_name_table text) returns text language plpgsql as $$
+begin
+  return error1(p_name_table);
+end$$;
+BEGIN;
+create table public.stuffs (stuff text);
+SAVEPOINT a;
+ROLLBACK TO a;
+rollback;
+drop function error2(p_name_table text);
+create function sql_to_date(integer) returns date as $$
+select $1::text::date
+$$ language sql immutable strict;
+create cast (integer as date) with function sql_to_date(integer) as assignment;
+create function cast_invoker(integer) returns date as $$
+begin
+  return $1;
+end$$ language plpgsql;
+begin;
+savepoint s1;
+rollback to savepoint s1;
+commit;
+drop function cast_invoker(integer);
+drop function sql_to_date(integer) cascade;
+begin;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+do $$ declare x text[]; begin x := '{1.23, 4.56}'::numeric[]; end $$;
+end;
+create function fail() returns int language plpgsql as $$
+begin
+  return 1/0;
+end
+$$;
+drop function fail();
+create or replace function strtest() returns text as $$
+begin
+  raise notice 'foo\\bar\041baz';
+  return 'foo\\bar\041baz';
+end
+$$ language plpgsql;

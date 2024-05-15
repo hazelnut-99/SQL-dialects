@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS tmp;
-CREATE TABLE tmp (x Int64) ENGINE = MergeTree() ORDER BY tuple() PARTITION BY tuple();
-ALTER TABLE tmp ADD COLUMN s String DEFAULT toString(x);
-ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+1);
+DROP TABLE IF EXISTS tnul SYNC;
+DROP TABLE IF EXISTS tlc SYNC;
+CREATE TABLE tnul (lc Nullable(String)) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO tnul VALUES (NULL), ('qwe');

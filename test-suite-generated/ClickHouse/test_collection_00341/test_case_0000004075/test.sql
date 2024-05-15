@@ -1,1 +1,0 @@
-SELECT * FROM null_00481;

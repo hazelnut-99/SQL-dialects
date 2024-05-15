@@ -1,6 +1,14 @@
-DROP TABLE IF EXISTS null_in_1;
-CREATE TABLE null_in_1 (u UInt32, n Nullable(UInt32)) ENGINE = Memory;
-INSERT INTO null_in_1 VALUES (1, NULL), (2, 2), (3, NULL), (4, 4), (5, NULL);
-DROP TABLE IF EXISTS null_in_1;
-CREATE TABLE null_in_1 (a Nullable(UInt32), b Nullable(UInt32)) ENGINE = Memory;
-INSERT INTO null_in_1 VALUES (1, NULL) (0, NULL) (NULL, NULL) (NULL, 1) (NULL, 0) (0, 0) (1, 1);
+CREATE TABLE source (a Int32) ENGINE=MergeTree() ORDER BY tuple();
+CREATE TABLE source_null AS source ENGINE=Null;
+CREATE TABLE dest_a (count UInt32, min Int32, max Int32, count_subquery Int32, min_subquery Int32, max_subquery Int32) ENGINE=MergeTree() ORDER BY tuple();
+CREATE MATERIALIZED VIEW mv_null TO source_null AS SELECT * FROM source;
+CREATE MATERIALIZED VIEW mv_a to dest_a AS
+SELECT
+    count() AS count,
+    min(a) AS min,
+    max(a) AS max,
+    (SELECT count() FROM source_null) AS count_subquery,
+    (SELECT min(a) FROM source_null) AS min_subquery,
+    (SELECT max(a) FROM source_null) AS max_subquery
+FROM source_null
+GROUP BY count_subquery, min_subquery, max_subquery;

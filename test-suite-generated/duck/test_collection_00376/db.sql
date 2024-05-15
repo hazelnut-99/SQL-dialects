@@ -525,3 +525,4 @@ DROP TABLE test22;
 DROP TABLE test24;
 CREATE TABLE test0 (i smallint[]);
 INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);
+INSERT INTO test0 VALUES (NULL);

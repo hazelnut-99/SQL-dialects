@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_table_2;
-CREATE TABLE test_table (value UInt8, name String) ENGINE = MergeTree() ORDER BY value;
-INSERT INTO test_table VALUES (1, 'a'), (2, 'b'), (3, 'c');
+WITH 8.5 AS a, 2.5 AS b SELECT a % b, -a % b, a % -b, -a % -b;
+WITH 10.125 AS a, 2.5 AS b SELECT a % b, -a % b, a % -b, -a % -b;
+WITH 8.5 AS a, 2.5 AS b SELECT mod(a, b), MOD(-a, b), modulo(a, -b), moduloOrZero(-a, -b);
+WITH 8.5 AS a, 2.5 AS b SELECT a MOD b, -a MOD b, a MOD -b, -a MOD -b;
+WITH 10.125 AS a, 2.5 AS b SELECT a MOD b, -a MOD b, a MOD -b, -a MOD -b;

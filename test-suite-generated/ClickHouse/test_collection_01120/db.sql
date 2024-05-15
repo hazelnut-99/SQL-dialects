@@ -1,6 +1,12 @@
-drop table if exists ttl;
-create table ttl (d Date, a Int) engine = MergeTree order by a partition by toDayOfMonth(d) ttl d + interval 1 day;
-system stop ttl merges ttl;
-optimize table ttl partition 10 final;
-system start ttl merges ttl;
-optimize table ttl partition 10 final;
+CREATE TABLE t
+(
+    `d` Date,
+    `s` LowCardinality(FixedString(3)),
+    `c` UInt32
+)
+ENGINE = SummingMergeTree()
+PARTITION BY d
+ORDER BY (d, s);
+INSERT INTO t (d, s, c) VALUES ('2020-01-01', 'ABC', 1);
+INSERT INTO t (d, s, c) VALUES ('2020-01-01', 'ABC', 2);
+OPTIMIZE TABLE t;

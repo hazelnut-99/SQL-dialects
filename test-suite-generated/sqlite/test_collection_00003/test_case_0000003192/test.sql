@@ -1,5 +1,0 @@
-SELECT d7+808, c8*220, c5
-  FROM t8, t5, t7
- WHERE e7=624
-   AND c5 in (809,721,31,489,56,601,924,625)
-   AND (e8=106 OR e8=497 OR e8=811 OR e8=7);

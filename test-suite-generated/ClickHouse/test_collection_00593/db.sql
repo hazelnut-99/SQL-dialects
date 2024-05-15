@@ -1,3 +1,13 @@
-DROP TABLE IF EXISTS startsWith_test;
-CREATE TABLE startsWith_test(S1 String, S2 String, S3 FixedString(2)) ENGINE=Memory;
-INSERT INTO startsWith_test values ('11', '22', '33'), ('a', 'a', 'bb'), ('abc', 'ab', '23');
+DROP TABLE IF EXISTS t64;
+CREATE TABLE t64
+(
+    date16 Date,
+    t_date16 Date Codec(T64, ZSTD),
+    date_32 Date32,
+    t_date32 Date32 Codec(T64, ZSTD)
+) ENGINE MergeTree() ORDER BY tuple();
+INSERT INTO t64 values ('1970-01-01', '1970-01-01', '1970-01-01', '1970-01-01');
+INSERT INTO t64 values ('2149-06-06', '2149-06-06', '2149-06-06', '2149-06-06');
+INSERT INTO t64 values ('2149-06-08', '2149-06-08', '2149-06-08', '2149-06-08');
+INSERT INTO t64 values ('1950-01-01', '1950-01-01', '1950-01-01', '1950-01-01');
+OPTIMIZE TABLE t64 FINAL;

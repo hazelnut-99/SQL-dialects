@@ -1,0 +1,1 @@
+SELECT kostikConsistentHash(16045690984833335023, 1), kostikConsistentHash(16045690984833335023, 2), kostikConsistentHash(16045690984833335023, 3), kostikConsistentHash(16045690984833335023, 4), kostikConsistentHash(16045690984833335023, 173), kostikConsistentHash(16045690984833335023, 255);

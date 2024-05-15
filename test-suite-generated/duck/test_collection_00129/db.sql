@@ -214,3 +214,7 @@ CREATE MACRO f(x := NULL) AS (
 );
 create table tbl as select 42 i;
 create table t as select 41 a;
+create macro my_macro2(a := i) as (
+	select min(a) from integers
+);
+insert into integers values (5), (10), (13);

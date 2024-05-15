@@ -1,0 +1,1 @@
+SELECT dateDiff('second', toDate32('1927-01-01'), toDate32('1927-01-02')) - timeDiff(toDate32('1927-01-01'), toDate32('1927-01-02')) <= 2;

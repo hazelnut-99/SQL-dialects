@@ -1,12 +1,3 @@
-DROP TABLE IF EXISTS data_01515;
-CREATE TABLE data_01515
-(
-    key Int,
-    d1 Int,
-    d1_null Nullable(Int),
-    INDEX d1_idx d1 TYPE minmax GRANULARITY 1,
-    INDEX d1_null_idx assumeNotNull(d1_null) TYPE minmax GRANULARITY 1
-)
-Engine=MergeTree()
-ORDER BY key;
-INSERT INTO data_01515 VALUES (1, 2, 3);
+DROP TABLE IF EXISTS test_bit_shift_right_string_integer;
+CREATE TABLE test_bit_shift_right_string_integer (str String, fixedStr FixedString(10), id Int64) engine=Log;
+INSERT INTO test_bit_shift_right_string_integer VALUES('Hello','Hello',-1)('Hello','Hello',0),('Hello','Hello',1),('Hello','Hello',7),('Hello','Hello',8),('Hello','Hello',9),('Hello','Hello',15),('Hello','Hello',16),('Hello','Hello',17),('Hello','Hello',23),('Hello','Hello',24),('Hello','Hello',25),('Hello','Hello',31),('Hello','Hello',32),('Hello','Hello',33),('Hello','Hello',39),('Hello','Hello',40),('Hello','Hello',41),('Hello','Hello',42),('Hel','Hel',7),('Hel','Hel',8),('Hel','Hel',9);

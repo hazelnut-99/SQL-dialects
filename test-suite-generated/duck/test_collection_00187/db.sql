@@ -125,3 +125,6 @@ FROM ((VALUES
 UNION ALL
 	select 5 as pk, list(i) as p from range(2000) tbl(i)
 ) lv(pk, p);
+CREATE TABLE all_types("varchar" VARCHAR, nested_int_array INTEGER[][]);
+;
+INSERT INTO all_types VALUES('b',[[], NULL, [], [NULL]]);

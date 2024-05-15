@@ -1,4 +1,0 @@
-DROP TABLE IF EXISTS t;
-CREATE TABLE t (x Decimal(18, 3)) ENGINE = MergeTree ORDER BY x;
-DROP TABLE t;
-CREATE TABLE t (x DateTime64(3)) ENGINE = MergeTree ORDER BY x;

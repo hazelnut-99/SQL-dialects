@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS t_filter;
-CREATE TABLE t_filter(s String, a Array(FixedString(3)), u UInt64, f UInt8)
-ENGINE = MergeTree ORDER BY u;
-INSERT INTO t_filter SELECT toString(number), ['foo', 'bar'], number, toUInt8(number) FROM numbers(1000);
+CREATE TABLE nested_name_tuples
+(
+    `a` Tuple(x String, y Tuple(i Int32, j String))
+)
+ENGINE = Memory;
+INSERT INTO nested_name_tuples VALUES(('asd', (12, 'ddd')));

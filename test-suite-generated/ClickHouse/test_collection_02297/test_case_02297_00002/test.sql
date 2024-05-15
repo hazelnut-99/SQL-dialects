@@ -1,0 +1,1 @@
+SELECT 'lc_ngram';

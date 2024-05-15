@@ -1,1 +1,0 @@
-SELECT bitHammingDistance('hello', 'hellow');

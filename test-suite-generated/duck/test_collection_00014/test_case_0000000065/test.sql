@@ -1,1 +1,0 @@
-SELECT typeof(100::UBIGINT + 1) == 'UBIGINT';

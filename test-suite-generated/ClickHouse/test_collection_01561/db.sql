@@ -1,5 +1,12 @@
-drop table if exists test;
-drop table if exists file;
-drop table if exists mt;
-insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
-attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
+DROP TABLE IF EXISTS runningConcurrency_test;
+CREATE TABLE runningConcurrency_test(begin Date, end Date) ENGINE = Memory;
+INSERT INTO runningConcurrency_test VALUES ('2020-12-01', '2020-12-10'), ('2020-12-02', '2020-12-10'), ('2020-12-03', '2020-12-12'), ('2020-12-10', '2020-12-12'), ('2020-12-13', '2020-12-20');
+DROP TABLE runningConcurrency_test;
+DROP TABLE IF EXISTS runningConcurrency_test;
+CREATE TABLE runningConcurrency_test(begin DateTime, end DateTime) ENGINE = Memory;
+INSERT INTO runningConcurrency_test VALUES ('2020-12-01 00:00:00', '2020-12-01 00:59:59'), ('2020-12-01 00:30:00', '2020-12-01 00:59:59'), ('2020-12-01 00:40:00', '2020-12-01 01:30:30'), ('2020-12-01 01:10:00', '2020-12-01 01:30:30'), ('2020-12-01 01:50:00', '2020-12-01 01:59:59');
+DROP TABLE runningConcurrency_test;
+DROP TABLE IF EXISTS runningConcurrency_test;
+CREATE TABLE runningConcurrency_test(begin DateTime64(3), end DateTime64(3)) ENGINE = Memory;
+INSERT INTO runningConcurrency_test VALUES ('2020-12-01 00:00:00.000', '2020-12-01 00:00:00.100'), ('2020-12-01 00:00:00.010', '2020-12-01 00:00:00.100'), ('2020-12-01 00:00:00.020', '2020-12-01 00:00:00.200'), ('2020-12-01 00:00:00.150', '2020-12-01 00:00:00.200'), ('2020-12-01 00:00:00.250', '2020-12-01 00:00:00.300');
+DROP TABLE runningConcurrency_test;

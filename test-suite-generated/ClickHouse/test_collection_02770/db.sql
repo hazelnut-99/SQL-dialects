@@ -1,11 +1,3 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
+drop table if exists test;
+create table test(`a` Nullable(Int32), `b` Nullable(Int32)) ENGINE = Memory;
+insert into test (a,b) values (1,null), (2,3), (4, 5), (6,null);

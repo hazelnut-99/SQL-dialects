@@ -1,3 +1,63 @@
-drop table if exists order_by_another;
-create table order_by_another (a Nullable(UInt64), b UInt64) Engine = MergeTree order by tuple();
-insert into order_by_another values (1, 8), (1, 7), (1, 6), (1, 5), (1, 4), (1, 3), (1, 2), (1, 1);
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64,
+
+    weight UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS test_table_signed_values;
+CREATE TABLE test_table_signed_values
+(
+    id UInt64,
+
+    value1 Int8,
+    value2 Int16,
+    value3 Int32,
+    value4 Int64,
+
+    weight UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_signed_values;
+DROP TABLE IF EXISTS test_table_float_values;
+CREATE TABLE test_table_float_values
+(
+    id UInt64,
+
+    value1 Float32,
+    value2 Float64,
+
+    weight UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_float_values;
+DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
+CREATE TABLE test_table_nullable_unsigned_values
+(
+    id UInt64,
+
+    value1 Nullable(UInt8),
+    value2 Nullable(UInt16),
+    value3 Nullable(UInt32),
+    value4 Nullable(UInt64),
+
+    weight UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_unsigned_values;
+DROP TABLE IF EXISTS test_table_nullable_signed_values;
+CREATE TABLE test_table_nullable_signed_values
+(
+    id UInt64,
+
+    value1 Nullable(Int8),
+    value2 Nullable(Int16),
+    value3 Nullable(Int32),
+    value4 Nullable(Int64),
+
+    weight UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_signed_values;

@@ -1,1 +1,0 @@
-SELECT addDate('2022-05-07'::DateTime64, INTERVAL 5 MINUTE);

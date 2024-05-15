@@ -1,0 +1,1 @@
+select mapAdd((key, val), (key, val)) as res, toTypeName(res) from values ('key Array(UUID), val Array(Int32)', (['00000000-89ab-cdef-0123-456789abcdef'], [1]), (['11111111-89ab-cdef-0123-456789abcdef'], [2]));

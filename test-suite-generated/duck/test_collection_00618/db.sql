@@ -2692,3 +2692,8 @@ EXECUTE v7(NULL, 4611686018427387904);
 EXECUTE v7(4611686018427387904, NULL);
 CREATE TABLE test (a INTEGER, b INTEGER);
 INSERT INTO test VALUES (11, 22), (12, 21), (13, 22), (14, 32), (15, 52);
+CREATE TABLE test2 (a STRING);
+INSERT INTO test2 VALUES ('first'), ('second'), ('third'), ('4th'), ('5th');
+PREPARE v1 AS SELECT * FROM test2 LIMIT 40%;
+EXECUTE v1;
+CREATE VIEW v3 AS SELECT i % 5 g, LIST(CASE WHEN i=6 or i=8 then null else i end) l FROM RANGE(20) tbl(i) group by g;

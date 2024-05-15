@@ -1,1 +1,0 @@
-select exp('nan'::numeric);

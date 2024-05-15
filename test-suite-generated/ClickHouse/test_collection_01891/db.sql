@@ -1,8 +1,21 @@
-DROP TABLE IF EXISTS t;
-CREATE TABLE t (k UInt64, s String) ENGINE = MergeTree ORDER BY k;
-INSERT INTO t VALUES (1, 'hello'), (2, 'world');
-ALTER TABLE t FREEZE;
-ALTER TABLE t UPDATE s = 'goodbye' WHERE k = 1;
-ALTER TABLE t MODIFY COLUMN s Enum('goodbye' = 1, 'world' = 2);
-ALTER TABLE t FREEZE;
-ALTER TABLE t MODIFY COLUMN s Enum('hello' = 1, 'world' = 2);
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS test_table_signed_values;
+CREATE TABLE test_table_signed_values
+(
+    id UInt64,
+
+    value1 Int8,
+    value2 Int16,
+    value3 Int32,
+    value4 Int64
+) ENGINE=TinyLog;

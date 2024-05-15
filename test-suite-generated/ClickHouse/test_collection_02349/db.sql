@@ -1,4 +1,40 @@
-SYSTEM FLUSH LOGS;
-DROP database IF EXISTS test_query_log_factories_info1;
-CREATE database test_query_log_factories_info1 ENGINE=Atomic;
-SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS test_hierarchy_source_table;
+CREATE TABLE test_hierarchy_source_table
+(
+    id UInt64,
+    parent_id UInt64
+) ENGINE=MergeTree ORDER BY id;
+INSERT INTO test_hierarchy_source_table VALUES (1, 0);
+DROP DICTIONARY IF EXISTS hierarchy_flat_dictionary_index;
+DROP DICTIONARY IF EXISTS hierarchy_flat_dictionary_index;
+CREATE DICTIONARY hierarchy_flat_dictionary_index
+(
+    id UInt64,
+    parent_id UInt64 HIERARCHICAL BIDIRECTIONAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE 'test_hierarchy_source_table'))
+LAYOUT(FLAT())
+LIFETIME(0);
+DROP DICTIONARY hierarchy_flat_dictionary_index;
+DROP DICTIONARY IF EXISTS hierarchy_hashed_dictionary_index;
+CREATE DICTIONARY hierarchy_hashed_dictionary_index
+(
+    id UInt64,
+    parent_id UInt64 HIERARCHICAL BIDIRECTIONAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE 'test_hierarchy_source_table'))
+LAYOUT(FLAT())
+LIFETIME(0);
+DROP DICTIONARY hierarchy_hashed_dictionary_index;
+DROP DICTIONARY IF EXISTS hierarchy_hashed_array_dictionary_index;
+CREATE DICTIONARY hierarchy_hashed_array_dictionary_index
+(
+    id UInt64,
+    parent_id UInt64 HIERARCHICAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE 'test_hierarchy_source_table'))
+LAYOUT(HASHED_ARRAY())
+LIFETIME(0);

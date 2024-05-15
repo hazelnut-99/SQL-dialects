@@ -1,0 +1,1 @@
+SELECT COALESCE(NULL, NULL, NULL, a, NULL, b) FROM exprtest;

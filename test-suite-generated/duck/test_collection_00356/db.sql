@@ -386,3 +386,5 @@ CREATE TABLE test2 AS (SELECT CAST(range AS VARCHAR) r, random() rand FROM range
 CREATE TABLE test2_1 AS (SELECT * FROM test2 ORDER BY r);
 CREATE TABLE test3 AS (SELECT CAST(range AS VARCHAR) r, random() rand FROM range(10000));
 CREATE TABLE test3_1 AS (SELECT * FROM test3 ORDER BY rand);
+CREATE TABLE test4 (i INT, j INT);
+INSERT INTO test4 VALUES (3, 3), (2, 3), (2, 2), (3, 2);

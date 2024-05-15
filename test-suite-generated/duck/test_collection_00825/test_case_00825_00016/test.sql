@@ -1,0 +1,1 @@
+SELECT i, j FROM integers ORDER BY i DESC NULLS LAST, j ASC LIMIT 5;

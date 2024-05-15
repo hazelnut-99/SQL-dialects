@@ -1,3 +1,18 @@
-drop table if exists data_02021;
-create table data_02021 (key Int) engine=MergeTree() order by key;
-insert into data_02021 values (1);
+DROP TABLE IF EXISTS test;
+CREATE TABLE test
+(
+  EventDate Date
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION (('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION '2023-10-09';
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));

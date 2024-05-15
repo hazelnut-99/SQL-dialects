@@ -1,0 +1,13 @@
+SELECT x32,x7,x37,x60,x29,x58,x62,x17,x4,x22,x53
+  FROM t17,t37,t4,t60,t7,t22,t32,t53,t58,t62,t29
+ WHERE a37=b22
+   AND a60=b4
+   AND a53=b60
+   AND b32=a4
+   AND b53=a62
+   AND b37=a32
+   AND a58=b7
+   AND a17=b62
+   AND a29=10
+   AND b17=a29
+   AND a22=b58;

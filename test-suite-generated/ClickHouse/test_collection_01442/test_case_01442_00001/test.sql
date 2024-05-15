@@ -1,0 +1,1 @@
+SELECT 'col1';

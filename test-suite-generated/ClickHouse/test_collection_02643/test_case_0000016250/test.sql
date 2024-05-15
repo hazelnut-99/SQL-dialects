@@ -1,1 +1,0 @@
-select sum(number) FROM numbers(10) WHERE number != 0 and 3 % number and number != 1 and intDiv(1, number - 1) > 0;

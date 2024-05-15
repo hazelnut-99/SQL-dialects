@@ -1,3 +1,3 @@
-DROP TABLE IF EXISTS prewhere_move_select_final;
-CREATE TABLE prewhere_move_select_final (x Int, y Int, z Int) ENGINE = ReplacingMergeTree() ORDER BY (x, y);
-INSERT INTO prewhere_move_select_final SELECT number, number * 2, number * 3 FROM numbers(1000);
+CREATE TEMPORARY TABLE test (`i` Int64, `d` DateTime);
+INSERT INTO test FORMAT JSONEachRow {"i": 123, "d": "2022-05-03"};
+INSERT INTO test FORMAT JSONEachRow {"i": 456, "d": "2022-05-03 01:02:03"};

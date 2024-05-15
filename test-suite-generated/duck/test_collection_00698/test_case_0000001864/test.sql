@@ -1,1 +1,0 @@
-SELECT a FROM exprtest WHERE a BETWEEN 43 AND 44;

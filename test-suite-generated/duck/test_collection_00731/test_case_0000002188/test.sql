@@ -1,1 +1,0 @@
-SELECT * FROM a ORDER BY rowid;

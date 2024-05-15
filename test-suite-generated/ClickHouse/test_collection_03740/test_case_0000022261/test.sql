@@ -1,1 +1,0 @@
-SELECT age('second', materialize(toDateTime('2015-08-18 00:00:00', 'UTC')), toDateTime64('2015-08-18 00:00:10', 3, 'UTC'));

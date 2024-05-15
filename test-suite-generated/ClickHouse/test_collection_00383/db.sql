@@ -1,12 +1,9 @@
-DROP TABLE IF EXISTS not_partitioned;
-CREATE TABLE not_partitioned(x UInt8) ENGINE MergeTree ORDER BY x;
-INSERT INTO not_partitioned VALUES (1), (2), (3);
-INSERT INTO not_partitioned VALUES (4), (5);
-OPTIMIZE TABLE not_partitioned PARTITION tuple() FINAL;
-ALTER TABLE not_partitioned DETACH PARTITION ID 'all';
-DROP TABLE not_partitioned;
-DROP TABLE IF EXISTS partitioned_by_week;
-CREATE TABLE partitioned_by_week(d Date, x UInt8) ENGINE = MergeTree PARTITION BY toMonday(d) ORDER BY x;
-INSERT INTO partitioned_by_week VALUES ('2000-01-01', 1), ('2000-01-02', 2), ('2000-01-03', 3);
-INSERT INTO partitioned_by_week VALUES ('2000-01-03', 4), ('2000-01-03', 5);
-OPTIMIZE TABLE partitioned_by_week PARTITION '2000-01-03' FINAL;
+CREATE TABLE IF NOT EXISTS uuid
+(
+    created_at DateTime,
+    id UUID
+)
+ENGINE = MergeTree
+PARTITION BY toDate(created_at)
+ORDER BY (created_at, id);
+INSERT INTO uuid (created_at, id) VALUES ('2018-01-01 01:02:03', '00000000-0000-03f8-9cb8-cb1b82fb3900');

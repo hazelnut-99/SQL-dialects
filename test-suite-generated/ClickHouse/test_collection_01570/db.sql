@@ -1,5 +1,7 @@
-DROP TABLE IF EXISTS summing;
-CREATE TABLE summing (k String, x UInt64, e Enum('hello' = 1, 'world' = 2)) ENGINE = SummingMergeTree ORDER BY k;
-INSERT INTO summing SELECT '', 1, e FROM generateRandom('e Enum(\'hello\' = 1, \'world\' = 2)', 1) LIMIT 1000;
-INSERT INTO summing SELECT '', 1, e FROM generateRandom('e Enum(\'hello\' = 1, \'world\' = 2)', 1) LIMIT 1000;
-OPTIMIZE TABLE summing;
+create database if not exists shard_0;
+create database if not exists shard_1;
+drop table if exists shard_0.tbl;
+drop table if exists shard_1.tbl;
+drop table if exists distr;
+create table shard_0.tbl (number UInt64) engine = MergeTree order by number;
+create table shard_1.tbl (number UInt64) engine = MergeTree order by number;

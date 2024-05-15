@@ -5,3 +5,5 @@ INSERT INTO test2 VALUES (200, 60), (12, 60), (14, 60);
 CREATE TABLE integers(x INTEGER);
 CREATE TABLE tinyints(i TINYINT);
 INSERT INTO tinyints VALUES (1), (10);
+CREATE TABLE smallints(i SMALLINT);
+INSERT INTO smallints VALUES (1), (10);

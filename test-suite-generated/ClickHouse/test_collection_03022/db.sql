@@ -1,26 +1,33 @@
-DROP DATABASE IF EXISTS 2025_test_db;
-CREATE DATABASE 2025_test_db;
-DROP TABLE IF EXISTS 2025_test_db.test_table;
-CREATE TABLE 2025_test_db.test_table
+DROP TABLE IF EXISTS test;
+CREATE TABLE test
 (
-    id UInt64,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 2025_test_db.test_table VALUES (0, 'Value');
-CREATE DICTIONARY 2025_test_db.test_dictionary
-(
-    id UInt64,
-    value String
+  EventDate Date
 )
-PRIMARY KEY id
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(TABLE 'test_table' DB '2025_test_db'));
-DROP TABLE IF EXISTS 2025_test_db.view_table;
-CREATE TABLE 2025_test_db.view_table
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION (('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION '2023-10-09';
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS test2;
+CREATE TABLE test2
 (
-    id UInt64,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 2025_test_db.view_table VALUES (0, 'ViewValue');
-DROP VIEW IF EXISTS test_view_different_db;
-CREATE VIEW test_view_different_db AS SELECT id, value, dictGet('2025_test_db.test_dictionary', 'value', id) FROM 2025_test_db.view_table;
+  a UInt32,
+  b Int64
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY (a * b, b * b);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION tuple(2, 4);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION (2, 4);
+INSERT INTO test2 VALUES(1, 2);

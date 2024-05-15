@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS test_02559;
-CREATE TABLE test_02559 (x UInt8, s String) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test_02559 VALUES (1, 'Hello, world!');
-ALTER TABLE test_02559 ADD COLUMN y UInt8 DEFAULT 0;
-INSERT INTO test_02559 VALUES (2, 'Goodbye.', 3);
-ALTER TABLE test_02559 ADD COLUMN z UInt8 DEFAULT 10;
-INSERT INTO test_02559 VALUES (3, 'So long, and thanks for all the fish.', 42, 0);

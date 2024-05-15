@@ -1,1 +1,0 @@
-SELECT '== Test SELECT ... FINAL - no is_deleted ==';

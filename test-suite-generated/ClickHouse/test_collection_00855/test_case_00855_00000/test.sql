@@ -1,0 +1,1 @@
+SELECT '||---DATA COLUMN ALIAS---';

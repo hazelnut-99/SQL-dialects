@@ -1,1 +1,0 @@
-SELECT toDecimal64('2147483640.99', 2) AS x, toInt32(x), toInt32(-x);

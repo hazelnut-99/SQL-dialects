@@ -1,4 +1,14 @@
-WITH '2020-02-05 14:34:12.333' as S, toDateTime64(S, 3) as DT64 SELECT DT64 = S;
-WITH '2020-02-05 14:34:12.333' as S, toDateTime64(S, 3) as DT64 SELECT S = DT64;
-WITH '2020-02-05 14:34:12.333' as S, toDateTime64(S, 3) as DT64 SELECT materialize(DT64) = S;
-WITH '2020-02-05 14:34:12.333' as S, toDateTime64(S, 3) as DT64 SELECT S = materialize(DT64);
+DROP DATABASE IF EXISTS database_for_range_dict;
+CREATE DATABASE database_for_range_dict;
+CREATE TABLE database_for_range_dict.date_table
+(
+  CountryID UInt64,
+  StartDate Date,
+  EndDate Date,
+  Tax Float64
+)
+ENGINE = MergeTree()
+ORDER BY CountryID;
+INSERT INTO database_for_range_dict.date_table VALUES(1, toDate('2019-05-05'), toDate('2019-05-20'), 0.33);
+INSERT INTO database_for_range_dict.date_table VALUES(1, toDate('2019-05-21'), toDate('2019-05-30'), 0.42);
+INSERT INTO database_for_range_dict.date_table VALUES(2, toDate('2019-05-21'), toDate('2019-05-30'), 0.46);

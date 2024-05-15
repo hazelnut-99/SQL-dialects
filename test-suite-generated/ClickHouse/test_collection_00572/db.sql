@@ -1,61 +1,15 @@
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested
+DROP TABLE IF EXISTS t64;
+CREATE TABLE t64
 (
-    column Nested
-    (
-        name String,
-        names Array(String),
-        types Array(Enum8('PU' = 1, 'US' = 2, 'OTHER' = 3))
-    )
-) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO nested VALUES (['Hello', 'World'], [['a'], ['b', 'c']], [['PU', 'US'], ['OTHER']]);
-DETACH TABLE nested;
-ATTACH TABLE nested;
-INSERT INTO nested VALUES (['GoodBye'], [['1', '2']], [['PU', 'US', 'OTHER']]);
-OPTIMIZE TABLE nested PARTITION tuple() FINAL;
-DETACH TABLE nested;
-ATTACH TABLE nested;
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested
-(
-    column Nested
-    (
-        name String,
-        names Array(String),
-        types Array(Enum8('PU' = 1, 'US' = 2, 'OTHER' = 3))
-    )
-) ENGINE = Log;
-INSERT INTO nested VALUES (['Hello', 'World'], [['a'], ['b', 'c']], [['PU', 'US'], ['OTHER']]);
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested
-(
-    column Nested
-    (
-        name String,
-        names Array(String),
-        types Array(Enum8('PU' = 1, 'US' = 2, 'OTHER' = 3))
-    )
-) ENGINE = TinyLog;
-INSERT INTO nested VALUES (['Hello', 'World'], [['a'], ['b', 'c']], [['PU', 'US'], ['OTHER']]);
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested
-(
-    column Nested
-    (
-        name String,
-        names Array(String),
-        types Array(Enum8('PU' = 1, 'US' = 2, 'OTHER' = 3))
-    )
-) ENGINE = StripeLog;
-INSERT INTO nested VALUES (['Hello', 'World'], [['a'], ['b', 'c']], [['PU', 'US'], ['OTHER']]);
-DROP TABLE IF EXISTS nested;
-CREATE TABLE nested
-(
-    column Nested
-    (
-        name String,
-        names Array(String),
-        types Array(Enum8('PU' = 1, 'US' = 2, 'OTHER' = 3))
-    )
-) ENGINE = Memory;
-INSERT INTO nested VALUES (['Hello', 'World'], [['a'], ['b', 'c']], [['PU', 'US'], ['OTHER']]);
+    i8 Int8,
+    t_i8 Int8 Codec(T64, LZ4),
+    i16 Int16,
+    t_i16 Int16 Codec(T64, LZ4),
+    i32 Int32,
+    t_i32 Int32 Codec(T64, LZ4),
+    i64 Int64,
+    t_i64 Int64 Codec(T64, LZ4)
+) ENGINE MergeTree() ORDER BY tuple();
+INSERT INTO t64 SELECT toInt32(number)-1 AS x, x, x, x, x, x, x, x FROM numbers(2);
+INSERT INTO t64 SELECT toInt32(number)-1 AS x, x, x, x, x, x, x, x FROM numbers(3);
+INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);

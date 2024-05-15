@@ -83,3 +83,27 @@ BEGIN TRANSACTION;
 INSERT INTO tbl VALUES (1, 2) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
 INSERT INTO tbl VALUES (1, 3) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
 COMMIT;
+BEGIN TRANSACTION;
+COMMIT;
+BEGIN TRANSACTION;
+INSERT INTO tbl VALUES
+	(5, 0);
+COMMIT;
+BEGIN TRANSACTION;
+INSERT INTO tbl VALUES (6,0);
+INSERT INTO tbl VALUES (5,0), (6,0), (7,0) ON CONFLICT (a) DO UPDATE set b = excluded.b;
+INSERT INTO tbl VALUES (-1, 0), (5,0), (6,0) ON CONFLICT (a) DO NOTHING;
+COMMIT;
+BEGIN TRANSACTION;
+CREATE OR REPLACE TABLE tbl (a SHORT PRIMARY KEY, b SHORT);
+INSERT INTO tbl (select i, 0 from range(2500) tbl(i));
+INSERT INTO tbl (select i, i from range(2500) tbl(i)) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
+COMMIT;
+CREATE TABLE integers(
+	i INTEGER unique,
+	j INTEGER DEFAULT 0,
+	k INTEGER DEFAULT 0
+);
+INSERT INTO integers(i) SELECT i from range(5000) tbl(i);
+INSERT INTO integers SELECT * FROM integers on conflict do nothing;
+INSERT INTO integers SELECT * FROM integers on conflict do update set j = 10;

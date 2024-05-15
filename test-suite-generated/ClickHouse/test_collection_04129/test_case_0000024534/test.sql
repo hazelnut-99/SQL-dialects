@@ -1,1 +1,0 @@
-SELECT [1, 1.1, 2.2] AS arr1, [2.2, 3.3, 444] AS arr2, round(arrayJaccardIndex(arr1, arr2), 2);

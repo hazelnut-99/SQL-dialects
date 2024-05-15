@@ -1,8 +1,4 @@
-drop table if exists xy;
-drop table if exists xy;
-drop table if exists xyz;
-drop table if exists xyz;
-drop table if exists test;
-create table test(d Date, k Int64, s String) Engine=MergeTree partition by (toYYYYMM(d),k) order by (d, k);
-insert into test values ('2020-01-01', 1, '');
-insert into test values ('2020-01-02', 1, '');
+DROP TABLE IF EXISTS bool_test;
+CREATE TABLE bool_test (value Bool,f String) ENGINE = Memory;
+SHOW CREATE TABLE bool_test;
+INSERT INTO bool_test (value,f) VALUES (false, 'test'), (true , 'test'), (0, 'test'), (1, 'test'), (FALSE, 'test'), (TRUE, 'test');

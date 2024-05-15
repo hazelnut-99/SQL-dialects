@@ -1,1 +1,0 @@
-SELECT today() = CURRENT_DATE();

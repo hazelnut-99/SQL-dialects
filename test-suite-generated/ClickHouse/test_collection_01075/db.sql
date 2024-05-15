@@ -1,3 +1,14 @@
-DROP TABLE IF EXISTS part_info;
-CREATE TABLE part_info (t DateTime) ENGINE = MergeTree PARTITION BY toDate(t) ORDER BY (t);
-INSERT INTO part_info VALUES (toDateTime('1970-10-01 00:00:01')), (toDateTime('1970-10-02 00:00:01')), (toDateTime('1970-10-03 00:00:01'));
+DROP TABLE IF EXISTS tt1;
+DROP TABLE IF EXISTS tt2;
+DROP TABLE IF EXISTS tt3;
+DROP TABLE IF EXISTS tt4;
+DROP TABLE IF EXISTS tt_m;
+CREATE TABLE tt1 (a UInt32, b UInt32 ALIAS a) ENGINE = Memory;
+CREATE TABLE tt2 (a UInt32, b UInt32 ALIAS a * 2) ENGINE = Memory;
+CREATE TABLE tt3 (a UInt32, b UInt32 ALIAS c, c UInt32) ENGINE = Memory;
+CREATE TABLE tt4 (a UInt32, b UInt32 ALIAS 12) ENGINE = Memory;
+CREATE TABLE tt_m (a UInt32, b UInt32) ENGINE = Merge(currentDatabase(), 'tt1|tt2|tt3|tt4');
+INSERT INTO tt1 VALUES (1);
+INSERT INTO tt2 VALUES (2);
+INSERT INTO tt3(a, c) VALUES (3, 4);
+INSERT INTO tt4 VALUES (5);

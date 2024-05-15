@@ -1,1 +1,0 @@
-SELECT toUInt16(1) IN (1, 1000, 3);

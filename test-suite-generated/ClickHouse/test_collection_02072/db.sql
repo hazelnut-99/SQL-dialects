@@ -1,10 +1,6 @@
-DROP TABLE IF EXISTS defaults_on_defaults;
-CREATE TABLE defaults_on_defaults (
-    key UInt64
-)
-ENGINE = MergeTree()
-ORDER BY tuple();
-INSERT INTO defaults_on_defaults values (1);
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C1` Array(UInt32) DEFAULT emptyArrayUInt32();
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C2` Array(UInt32) DEFAULT arrayResize(emptyArrayUInt32(), length(Arr.C1));
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C3` Array(UInt32) ALIAS arrayResize(emptyArrayUInt32(), length(Arr.C2));
+create table enum_alter_issue (a Enum8('one' = 1, 'two' = 2)) engine = MergeTree() ORDER BY a;
+insert into enum_alter_issue values ('one'), ('two');
+alter table enum_alter_issue modify column a Enum8('one' = 1, 'two' = 2, 'three' = 3);
+insert into enum_alter_issue values ('one'), ('two');
+alter table enum_alter_issue detach partition id 'all';
+alter table enum_alter_issue attach partition id 'all';

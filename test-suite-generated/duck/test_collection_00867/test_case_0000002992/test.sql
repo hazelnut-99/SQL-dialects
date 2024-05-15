@@ -1,1 +1,0 @@
-SELECT k FROM integers WHERE k >= 100000::INTEGER ORDER BY k;

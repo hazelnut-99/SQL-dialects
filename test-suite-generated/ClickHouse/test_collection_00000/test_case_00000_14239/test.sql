@@ -1,0 +1,1 @@
+SELECT CAST(1.1 AS Decimal(30, 20));

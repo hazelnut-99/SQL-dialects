@@ -1,1 +1,0 @@
-SELECT xxHash32(toUInt32(3)) = toUInt32(2158931063);

@@ -1,1 +1,0 @@
-SELECT 'Test max_rows_per_postings_list';

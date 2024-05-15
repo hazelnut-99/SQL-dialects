@@ -1,4 +1,0 @@
-SELECT
-dt64, dts64, dtms64
-FROM generateRandom('dt64 DateTime64(3, \'UTC\'), dts64 DateTime64(6, \'UTC\'), dtms64 DateTime64(6 ,\'UTC\')', 1, 10, 10)
-LIMIT 10;

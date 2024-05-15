@@ -1,18 +1,20 @@
-DROP TABLE IF EXISTS joint; -- the table name from the original issue.
-DROP TABLE IF EXISTS t;
-CREATE TABLE IF NOT EXISTS joint
-(
-    id    UUID,
-    value LowCardinality(String)
-)
-ENGINE = Join (ANY, LEFT, id);
-CREATE TABLE IF NOT EXISTS t
-(
-    id    UUID,
-    d     DateTime
-)
-ENGINE = MergeTree
-PARTITION BY toDate(d)
-ORDER BY id;
-insert into joint VALUES ('00000000-0000-0000-0000-000000000000', 'yo');
-insert into t VALUES ('00000000-0000-0000-0000-000000000000', now());
+CREATE TABLE table_02184 (x UInt8, PRIMARY KEY (x));
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE test_optimize_exception (date Date) PARTITION BY toYYYYMM(date) ORDER BY date;
+SHOW CREATE TABLE test_optimize_exception;
+DROP TABLE test_optimize_exception;
+CREATE TABLE table_02184 (x UInt8) ORDER BY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE table_02184 (x UInt8) PRIMARY KEY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE numbers2 ORDER BY intHash32(number) SAMPLE BY intHash32(number) AS SELECT number FROM numbers(10);
+SHOW CREATE TABLE numbers2;
+DROP TABLE numbers2;
+CREATE TABLE numbers3 ENGINE = Log AS SELECT number FROM numbers(10);
+SHOW CREATE TABLE numbers3;
+DROP TABLE numbers3;
+CREATE TABLE test_table (EventDate Date, CounterID UInt32,  UserID UInt64,  EventTime DateTime('America/Los_Angeles'), UTCEventTime DateTime('UTC')) PARTITION BY EventDate PRIMARY KEY CounterID;
+INSERT INTO test_table (EventDate, UTCEventTime) VALUES ('2014-01-02', '2014-01-02 03:04:06');

@@ -1,1 +1,0 @@
-SELECT * FROM (SELECT x FROM (SELECT 2 AS x, arrayJoin([1,2,3]))) ORDER BY x;

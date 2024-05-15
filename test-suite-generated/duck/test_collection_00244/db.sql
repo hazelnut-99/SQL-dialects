@@ -1,14 +1,3 @@
-CREATE SCHEMA "SCHEMA";
-CREATE TYPE E AS ENUM('ALL');
-CREATE TABLE "SCHEMA"."TABLE"("COLUMN" E);
-INSERT INTO "SCHEMA"."TABLE" VALUES ('ALL');
-DROP TABLE "SCHEMA"."TABLE";
-CREATE TABLE "SCHEMA"."TABLE"("COLUMN" ROW("SOME" ROW("IN" INTEGER)));
-INSERT INTO "SCHEMA"."TABLE" VALUES ({'some': {'in': 3}});
-CREATE SCHEMA "SCH""EMA";
-CREATE TYPE "EN""UM" AS ENUM('ALL');
-CREATE TABLE "SCH""EMA"."TA""BLE"("COL""UMN" "EN""UM");
-INSERT INTO "SCH""EMA"."TA""BLE" VALUES ('ALL');
-DROP TABLE "SCH""EMA"."TA""BLE";
-CREATE TABLE "SCH""EMA"."TA""BLE"("COL""UMN" ROW("SO""ME" ROW("I""N" INTEGER)));
-INSERT INTO "SCH""EMA"."TA""BLE" VALUES ({'so"me': {'i"n': 3}});
+create temporary table t as select range a, length(range::varchar) b, mod(range,10000) c, 5 d, 10000 e from range(100000);
+explain select count(*) from t where b in (1,2,3) ;
+explain select count(*) from t where b <=3 and b>=0;

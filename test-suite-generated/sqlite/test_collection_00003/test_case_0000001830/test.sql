@@ -1,4 +1,0 @@
-SELECT e9, a5+37
-  FROM t5, t9
- WHERE c5=585
-   AND (e9=19 OR 845=e9 OR 278=e9);

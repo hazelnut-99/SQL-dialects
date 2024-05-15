@@ -1,10 +1,6 @@
-DROP TABLE IF EXISTS globalin;
-CREATE TABLE globalin (CounterID UInt32, StartDate Date ) ENGINE = Memory;
-INSERT INTO globalin VALUES (34, toDate('2017-10-02')), (42, toDate('2017-10-02')), (55, toDate('2017-10-01'));
-DROP TABLE globalin;
-DROP TABLE IF EXISTS union_bug;
-CREATE TABLE union_bug (
-    Event String,
-    Datetime DateTime('Asia/Istanbul')
-) Engine = Memory;
-INSERT INTO union_bug VALUES ('A', 1), ('B', 2);
+DROP TABLE IF EXISTS using1;
+DROP TABLE IF EXISTS using2;
+CREATE TABLE using1(a UInt8, b UInt8) ENGINE=Memory;
+CREATE TABLE using2(a UInt8, b UInt8) ENGINE=Memory;
+INSERT INTO using1 VALUES (1, 1) (2, 2) (3, 3);
+INSERT INTO using2 VALUES (4, 4) (2, 2) (3, 3);

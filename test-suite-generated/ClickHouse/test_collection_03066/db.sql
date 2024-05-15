@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS with_fill_date;
-CREATE TABLE with_fill_date (d Date, d32 Date32) ENGINE = Memory;
-INSERT INTO with_fill_date VALUES (toDate('2020-02-05'), toDate32('2020-02-05'));
-INSERT INTO with_fill_date VALUES (toDate('2020-02-16'), toDate32('2020-02-16'));
-INSERT INTO with_fill_date VALUES (toDate('2020-03-03'), toDate32('2020-03-03'));
-INSERT INTO with_fill_date VALUES (toDate('2020-06-10'), toDate32('2020-06-10'));
+DROP TABLE IF EXISTS t_lwd_mutations;
+CREATE TABLE t_lwd_mutations(id UInt64, v UInt64) ENGINE = MergeTree ORDER BY id;
+INSERT INTO t_lwd_mutations SELECT number, 0 FROM numbers(1000);
+DELETE FROM t_lwd_mutations WHERE id % 10 = 0;
+ALTER TABLE t_lwd_mutations UPDATE v = 1 WHERE id % 4 = 0, DELETE WHERE id % 10 = 1;
+DELETE FROM t_lwd_mutations WHERE id % 10 = 2;

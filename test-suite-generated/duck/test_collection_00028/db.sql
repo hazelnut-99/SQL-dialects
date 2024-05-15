@@ -10,3 +10,4 @@ INSERT INTO collate_test VALUES ('Hällo'), ('Hallo'), ('Hello');
 DROP TABLE collate_test;
 CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT);
 INSERT INTO collate_test VALUES ('Hällo'), ('Hallo');
+INSERT INTO collate_test VALUES ('ã'),('B'),('a'),('A');

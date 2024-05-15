@@ -1048,3 +1048,5 @@ CREATE TABLE test2 (i ubigint[][]);
 INSERT INTO test2 VALUES ([[2]]), ([[1]]), ([NULL, []]), ([[1], [2]]), ([]), ([[]]), ([[2], [2]]), ([NULL]), (NULL), ([[2], [3]]);
 CREATE TABLE test3 (i ubigint[][]);
 INSERT INTO test3 VALUES ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], []]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, 1]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, NULL]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, 2]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [NULL]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], NULL]);
+CREATE TABLE test4 (i ubigint[][]);
+INSERT INTO test4 VALUES ([[NULL, NULL, 0], [1, NULL, 1]]), ([[NULL, NULL, 1]]), ([[NULL, NULL, 0], [1, NULL, 0]]), ([[0, NULL, NULL, 1]]), ([[0, NULL, NULL, 0]]);

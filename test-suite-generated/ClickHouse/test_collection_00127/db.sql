@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS t1_00203;
-DROP TABLE IF EXISTS t2_00203;
-CREATE TABLE t1_00203 (k1 UInt32, k2 UInt32, k3 UInt32, val_t1 String) ENGINE=TinyLog;
-CREATE TABLE t2_00203 (val_t2 String, k3 UInt32, k2 UInt32, k1 UInt32) ENGINE=TinyLog;
-INSERT INTO t1_00203 VALUES (1, 2, 3, 'aaa'), (2, 3, 4, 'bbb');
-INSERT INTO t2_00203 VALUES ('ccc', 4, 3, 2), ('ddd', 7, 6, 5);
+DROP TABLE IF EXISTS grop_uniq_array_date;
+CREATE TABLE grop_uniq_array_date (d Date, dt DateTime, id Integer) ENGINE = Memory;
+INSERT INTO grop_uniq_array_date VALUES (toDate('2016-12-16'), toDateTime('2016-12-16 12:00:00'), 1) (toDate('2016-12-16'), toDateTime('2016-12-16 12:00:00'), 1);

@@ -283,3 +283,181 @@ WITH RECURSIVE fib AS (
 )
 SELECT n, "fibₙ" FROM fib
 LIMIT 20;
+insert into a values (42);
+with cte1 as (Select i as j from a) select * from cte1;
+with cte1 as (with b as (Select i as j from a) Select j from b) select x from cte1 t1(x);
+with cte1(xxx) as (with ncte(yyy) as (Select i as j from a) Select yyy from ncte) select xxx from cte1;
+with cte1 as (with b as (Select i as j from a) select j from b), cte2 as (with c as (select ref.j+1 as k from cte1 as ref) select k from c) select * from cte1 , cte2;
+with cte1 as (Select i as j from a) select * from (with cte2 as (select max(j) as j from cte1) select * from cte2) f;
+with cte1 as (Select i as j from a) select * from cte1 where j = (with cte2 as (select max(j) as j from cte1) select j from cte2);
+with cte as (Select i as j from a) select * from cte where j = (with cte as (select max(j) as j from cte) select j from cte);
+create or replace table orders(ordered_at int);
+create or replace table stg_orders(ordered_at int);
+insert into orders values (1);
+insert into stg_orders values (1);
+with
+orders as (
+    select * from main.stg_orders
+    where ordered_at >= (select max(ordered_at) from main.orders)
+),
+some_more_logic as (
+    select *
+    from orders
+)
+select * from some_more_logic;
+create table series as select * from generate_series(-1,1) x(n);
+with recursive generation1(x,y) as (   --the initial board setup
+  select 2, 3
+  union
+  select 3, 3
+  union
+  select 4, 3
+),
+game(n, x, y) as (
+  select 1 AS n, x, y from generation1 -- generation 1 is initial board setup
+  union all
+  select n+1, new_x, new_y from   -- generation n+1
+  (
+    select n, x+offset_x new_x, y+offset_y new_y, max(self) over (partition by n+1, x+offset_x, y+offset_y) cell_was_already_alive
+    from game, (
+        select x.n offset_x, y.n offset_y, case when x.n = 0 and y.n = 0 then 1 else 0 end self
+        from series x(n), series y(n) --join 2 row generators to get 9 pairs
+      ) offsets_to_neighbours_and_self(offset_x, offset_y, self)
+    where n < 100
+  ) all_impacts
+  group by n+1, new_x, new_y, cell_was_already_alive -- from all impacts back to cells
+  having (cell_was_already_alive=1 and count(*) < 5 and count(*) > 2) or count(*) = 3 --decide if cell is alive
+)
+select * from game where n=4 order by n, x, y; --select generation 4;
+with recursive generation1(x,y) as (   --the initial board setup
+  select 2, 3
+  union
+  select 3, 3
+  union
+  select 4, 3
+),
+game(n, x, y) as (
+  select 1 AS n, x, y from generation1 -- generation 1 is initial board setup
+  union all
+  select n+1, new_x, new_y from   -- generation n+1
+  (
+    select n, x+offset_x new_x, y+offset_y new_y, max(self) over (partition by n+1, x+offset_x, y+offset_y) cell_was_already_alive
+    from game, (
+        select x.n offset_x, y.n offset_y, case when x.n = 0 and y.n = 0 then 1 else 0 end self
+        from generate_series(-1,1) x(n), generate_series(-1,1) y(n) --join 2 row generators to get 9 pairs
+      ) offsets_to_neighbours_and_self(offset_x, offset_y, self)
+    where n < 100
+  ) all_impacts
+  group by n+1, new_x, new_y, cell_was_already_alive -- from all impacts back to cells
+  having (cell_was_already_alive=1 and count(*) < 5 and count(*) > 2) or count(*) = 3 --decide if cell is alive
+)
+select * from game where n=4 order by n, x, y; --select generation 4;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT t1.x + t2.x + t3.x AS x
+	FROM t t1, t t2, t t3
+	WHERE t1.x < 100
+)
+SELECT * FROM t ORDER BY 1;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT (t1.x + t2.x + t3.x)::HUGEINT AS x
+	FROM t t1, t t2, t t3
+	WHERE t1.x < 100
+)
+SELECT * FROM t ORDER BY 1;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT SUM(x) AS x
+	FROM t, a
+	WHERE x < 1000000
+)
+SELECT * FROM t ORDER BY 1 NULLS LAST;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT SUM(x) AS x
+	FROM t, a
+	WHERE x < 1000000 AND t.x=a.i
+)
+SELECT * FROM t ORDER BY 1 NULLS LAST;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT SUM(x)
+	FROM
+		(SELECT SUM(x) FROM t) t1(x), a
+	WHERE x < 1000
+)
+SELECT * FROM t ORDER BY 1 NULLS LAST;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT (SELECT x + 1 FROM t) AS x
+	FROM t
+	WHERE x < 5
+)
+SELECT * FROM t ORDER BY 1 NULLS LAST;
+WITH RECURSIVE t AS
+(
+	SELECT 1 AS x
+UNION
+	SELECT (SELECT t.x+t2.x FROM t t2 LIMIT 1) AS x
+	FROM t
+	WHERE x < 10
+)
+SELECT * FROM t ORDER BY 1 NULLS LAST;
+WITH my_list(value) AS (VALUES (1), (2), (3))
+    SELECT * FROM my_list LIMIT 0 OFFSET 1;
+with RECURSIVE parents_tab (id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents_tab2(id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents as (
+    select * from parents_tab
+    union all
+    select id, value+2, parent from parents_tab2
+)
+select * from parents order by id, value, parent;
+with RECURSIVE parents_tab (id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents_tab2(id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+)
+select * from parents_tab
+union all
+select id, value+2, parent from parents_tab2 ORDER BY id, value, parent;
+with parents_tab (id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents_tab2(id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents as (
+    select * from parents_tab
+    union all
+    select id, value+2, parent from parents_tab2
+)
+select * from parents ORDER BY id, value, parent;
+create view vparents as
+with RECURSIVE parents_tab (id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+),
+parents_tab2(id , value , parent )
+as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7, 1, -1)
+)
+select * from parents_tab
+union all
+select id, value+2, parent from parents_tab2;

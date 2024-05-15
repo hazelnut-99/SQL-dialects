@@ -1,1 +1,0 @@
-SELECT * FROM test_table WHERE (((k IN toLowCardinality(toNullable(101))) = toLowCardinality(toNullable(0))) AND ((k NOT IN (toLowCardinality(100))) = toNullable(1))) = toNullable(toLowCardinality(0));

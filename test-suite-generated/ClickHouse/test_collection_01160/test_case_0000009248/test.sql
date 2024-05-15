@@ -1,1 +1,0 @@
-SELECT * FROM t0 LEFT JOIN t1 USING (x);

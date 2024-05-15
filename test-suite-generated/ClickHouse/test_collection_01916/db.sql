@@ -1,3 +1,11 @@
-DROP TABLE IF EXISTS modify_sample;
-CREATE TABLE modify_sample (d Date DEFAULT '2000-01-01', x UInt8) ENGINE = MergeTree PARTITION BY d ORDER BY x;
-ALTER TABLE modify_sample MODIFY SAMPLE BY x;
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;

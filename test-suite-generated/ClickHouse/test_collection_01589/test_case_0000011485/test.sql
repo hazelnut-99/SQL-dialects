@@ -1,1 +1,0 @@
-select 'DISTINCT ORDER BY';

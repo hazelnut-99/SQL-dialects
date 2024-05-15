@@ -105,3 +105,11 @@ CREATE VIEW struct_lint_lstr AS SELECT * FROM (VALUES
 	(5, {'x': [9,10,11], 'y': ['i','j','k']}),
 	(NULL::INTEGER, {'x': [13], 'y': ['Somateria mollissima']})
 	) lv(pk, p);
+CREATE VIEW r2l3r4l5i4i2l3v AS SELECT * FROM (VALUES
+	(1, {'x': [{'l4': [51], 'i4': 41}], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [{'l4': [52, 53], 'i4': 42}, {'l4': [54, 55], 'i4': 43}], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [{'l4': [56], 'i4': 44}, {'l4': [57, 58], 'i4': 45}, {'l4': [59, 60, 61], 'i4': 46}], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [{'l4': [62], 'i4': 47}], 'y': ['Somateria mollissima']})
+	) lv(pk, p);

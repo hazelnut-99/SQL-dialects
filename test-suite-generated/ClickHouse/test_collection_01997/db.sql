@@ -1,9 +1,19 @@
-DROP TABLE IF EXISTS null_subcolumns;
-CREATE TABLE null_subcolumns (id UInt32, n Nullable(String)) ENGINE = MergeTree ORDER BY id;
-INSERT INTO null_subcolumns VALUES (1, 'foo') (2, NULL) (3, NULL) (4, 'abc');
-DETACH TABLE null_subcolumns;
-ATTACH TABLE null_subcolumns;
-DROP TABLE null_subcolumns;
-DROP TABLE IF EXISTS map_subcolumns;
-CREATE TABLE map_subcolumns (id UInt32, m Map(String, UInt32)) ENGINE = MergeTree ORDER BY id;
-INSERT INTO map_subcolumns VALUES (1, map('a', 1, 'b', 2)) (2, map('a', 3, 'c', 4)), (3, map('b', 5, 'c', 6, 'd', 7));
+DROP TABLE IF EXISTS dictionary_source_en;
+DROP TABLE IF EXISTS dictionary_source_ru;
+DROP TABLE IF EXISTS dictionary_source_view;
+DROP DICTIONARY IF EXISTS flat_dictionary;
+CREATE TABLE dictionary_source_en
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog;
+INSERT INTO dictionary_source_en VALUES (1, 'One'), (2,'Two'), (3, 'Three');
+CREATE TABLE dictionary_source_ru
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog;
+INSERT INTO dictionary_source_ru VALUES (1, 'Один'), (2,'Два'), (3, 'Три');
+CREATE VIEW dictionary_source_view AS
+    SELECT id, dictionary_source_en.value as value_en, dictionary_source_ru.value as value_ru
+    FROM dictionary_source_en LEFT JOIN dictionary_source_ru USING (id);

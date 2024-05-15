@@ -1,20 +1,3 @@
-WITH
-	CAST(1234567891011 AS Int64) AS i64,
-	'UTC' AS tz
-SELECT
-	tz,
-	i64,
-	fromUnixTimestamp64Milli(i64, tz),
-	fromUnixTimestamp64Micro(i64, tz),
-	fromUnixTimestamp64Nano(i64, tz) as dt64,
-	toTypeName(dt64);
-WITH
-	CAST(1234567891011 AS Int64) AS i64,
-	'Asia/Makassar' AS tz
-SELECT
-	tz,
-	i64,
-	fromUnixTimestamp64Milli(i64, tz),
-	fromUnixTimestamp64Micro(i64, tz),
-	fromUnixTimestamp64Nano(i64, tz) as dt64,
-	toTypeName(dt64);
+drop table if exists x;
+create table x (pk int, arr Array(int), projection p (select arr order by pk)) engine MergeTree order by tuple();
+insert into x values (1, [2]);

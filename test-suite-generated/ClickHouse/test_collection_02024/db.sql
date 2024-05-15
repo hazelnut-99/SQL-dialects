@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE defaults
-(
-	n Int32,
-	s String
-)ENGINE = Memory();
-INSERT INTO defaults VALUES(1, '1') (2, '2') (3, '3') (4, '4') (5, '5');
+drop table if exists map_test;
+create table map_test engine=TinyLog() as (select (number + 1) as n, map(1, 1, number,2) as m from numbers(1, 5));
+drop table map_test;

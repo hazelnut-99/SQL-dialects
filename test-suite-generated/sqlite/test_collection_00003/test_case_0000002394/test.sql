@@ -1,4 +1,0 @@
-SELECT b1, e2*438
-  FROM t2, t1
- WHERE c2=22
-   AND 643=a1;

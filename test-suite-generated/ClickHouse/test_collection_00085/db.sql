@@ -1,6 +1,8 @@
-DROP TABLE IF EXISTS buffer_00126;
-DROP TABLE IF EXISTS null_sink_00126;
-CREATE TABLE null_sink_00126 (a UInt8, b String, c Array(UInt32)) ENGINE = Null;
-CREATE TABLE buffer_00126 (a UInt8, b String, c Array(UInt32)) ENGINE = Buffer(currentDatabase(), null_sink_00126, 1, 1000, 1000, 1000, 1000, 1000000, 1000000);
-INSERT INTO buffer_00126 VALUES (1, '2', [3]);
-INSERT INTO buffer_00126 (c, b, a) VALUES ([7], '8', 9);
+DROP TABLE IF EXISTS numbers_squashed;
+CREATE TABLE numbers_squashed (number UInt8) ENGINE = StripeLog;
+INSERT INTO numbers_squashed
+SELECT arrayJoin(range(10)) AS number
+UNION ALL
+SELECT arrayJoin(range(100))
+UNION ALL
+SELECT arrayJoin(range(10));

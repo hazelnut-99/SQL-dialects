@@ -1,0 +1,1 @@
+SELECT DISTINCT * FROM struct_lint_lstr ORDER BY ALL;

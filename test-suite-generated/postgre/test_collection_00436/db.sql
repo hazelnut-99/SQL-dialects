@@ -1,160 +1,87 @@
+CREATE TABLE truncate_a (col1 integer primary key);
+INSERT INTO truncate_a VALUES (1);
+INSERT INTO truncate_a VALUES (2);
 BEGIN;
-CREATE TABLE xacttest (a smallint, b real);
-INSERT INTO xacttest VALUES
-  (56, 7.8),
-  (100, 99.097),
-  (0, 0.09561),
-  (42, 324.78);
-INSERT INTO xacttest (a, b) VALUES (777, 777.777);
-END;
-BEGIN;
-CREATE TABLE disappear (a int4);
-DELETE FROM xacttest;
-ABORT;
-END;
-BEGIN TRANSACTION READ ONLY;
-END;
-BEGIN TRANSACTION DEFERRABLE;
-END;
-CREATE TABLE writetest (a int);
-CREATE TEMPORARY TABLE temptest (a int);
-BEGIN;
-COMMIT;
-BEGIN;
-SAVEPOINT x;
-COMMIT;
-BEGIN;
-SAVEPOINT x;
-COMMIT;
-BEGIN;
-SAVEPOINT x;
-ROLLBACK TO SAVEPOINT x;
-SHOW transaction_read_only;  -- off
-SAVEPOINT y;
-RELEASE SAVEPOINT y;
-SHOW transaction_read_only;  -- off
-COMMIT;
-DROP TABLE writetest; -- fail
-DELETE FROM temptest; -- ok
-START TRANSACTION READ WRITE;
-COMMIT;
-CREATE TABLE trans_foobar (a int);
-BEGIN;
-CREATE TABLE trans_foo (a int);
-SAVEPOINT one;
-DROP TABLE trans_foo;
-CREATE TABLE trans_bar (a int);
-ROLLBACK TO SAVEPOINT one;
-RELEASE SAVEPOINT one;
-SAVEPOINT two;
-CREATE TABLE trans_baz (a int);
-RELEASE SAVEPOINT two;
-drop TABLE trans_foobar;
-CREATE TABLE trans_barbaz (a int);
-COMMIT;
-BEGIN;
-INSERT INTO trans_foo VALUES (1);
-SAVEPOINT one;
-ROLLBACK TO one;
-RELEASE SAVEPOINT one;
-SAVEPOINT two;
-INSERT into trans_barbaz VALUES (1);
-RELEASE two;
-SAVEPOINT three;
-SAVEPOINT four;
-INSERT INTO trans_foo VALUES (2);
-RELEASE SAVEPOINT four;
-ROLLBACK TO SAVEPOINT three;
-RELEASE SAVEPOINT three;
-INSERT INTO trans_foo VALUES (3);
-COMMIT;
-BEGIN;
-SAVEPOINT one;
-ROLLBACK TO SAVEPOINT one;
-RELEASE SAVEPOINT one;
-SAVEPOINT two;
-CREATE TABLE savepoints (a int);
-SAVEPOINT three;
-INSERT INTO savepoints VALUES (1);
-SAVEPOINT four;
-INSERT INTO savepoints VALUES (2);
-SAVEPOINT five;
-INSERT INTO savepoints VALUES (3);
-ROLLBACK TO SAVEPOINT five;
-COMMIT;
-COMMIT;		-- should not be in a transaction block
-BEGIN;
-SAVEPOINT one;
-DELETE FROM savepoints WHERE a=1;
-RELEASE SAVEPOINT one;
-SAVEPOINT two;
-DELETE FROM savepoints WHERE a=1;
-SAVEPOINT three;
-DELETE FROM savepoints WHERE a=2;
+TRUNCATE truncate_a;
 ROLLBACK;
-COMMIT;		-- should not be in a transaction block
-BEGIN;
-INSERT INTO savepoints VALUES (4);
-SAVEPOINT one;
-INSERT INTO savepoints VALUES (5);
-COMMIT;
-BEGIN;
-INSERT INTO savepoints VALUES (6);
-SAVEPOINT one;
-INSERT INTO savepoints VALUES (7);
-RELEASE SAVEPOINT one;
-INSERT INTO savepoints VALUES (8);
-COMMIT;
-BEGIN;
-INSERT INTO savepoints VALUES (9);
-SAVEPOINT one;
-INSERT INTO savepoints VALUES (10);
-ROLLBACK TO SAVEPOINT one;
-INSERT INTO savepoints VALUES (11);
-COMMIT;
-BEGIN;
-INSERT INTO savepoints VALUES (12);
-SAVEPOINT one;
-INSERT INTO savepoints VALUES (13);
-SAVEPOINT two;
-INSERT INTO savepoints VALUES (14);
-ROLLBACK TO SAVEPOINT one;
-INSERT INTO savepoints VALUES (15);
-SAVEPOINT two;
-INSERT INTO savepoints VALUES (16);
-SAVEPOINT three;
-INSERT INTO savepoints VALUES (17);
-COMMIT;
-BEGIN;
-INSERT INTO savepoints VALUES (18);
-SAVEPOINT one;
-INSERT INTO savepoints VALUES (19);
-SAVEPOINT two;
-INSERT INTO savepoints VALUES (20);
-ROLLBACK TO SAVEPOINT one;
-INSERT INTO savepoints VALUES (21);
-ROLLBACK TO SAVEPOINT one;
-INSERT INTO savepoints VALUES (22);
-COMMIT;
-DROP TABLE savepoints;
-BEGIN;
-SAVEPOINT one;
-ROLLBACK TO SAVEPOINT one;
-COMMIT;
 BEGIN;
 COMMIT;
-create or replace function max_xacttest() returns smallint language sql as
-'select max(a) from xacttest' stable;
-begin;
-rollback;
-create or replace function max_xacttest() returns smallint language sql as
-'select max(a) from xacttest' volatile;
-begin;
-rollback;
-create or replace function max_xacttest() returns smallint language plpgsql as
-'begin return max(a) from xacttest; end' stable;
-begin;
-rollback;
-create or replace function max_xacttest() returns smallint language plpgsql as
-'begin return max(a) from xacttest; end' volatile;
-begin;
+CREATE TABLE trunc_c (a serial PRIMARY KEY);
+CREATE TABLE trunc_d (a int REFERENCES trunc_c);
+TRUNCATE TABLE trunc_c,trunc_d;		-- fail
+INSERT INTO trunc_c VALUES (1);
+INSERT INTO trunc_d VALUES (1);
+INSERT INTO trunc_d VALUES (1);
+TRUNCATE TABLE trunc_c CASCADE;  -- ok
+CREATE TABLE trunc_f (col1 integer primary key);
+INSERT INTO trunc_f VALUES (1);
+INSERT INTO trunc_f VALUES (2);
+CREATE TABLE trunc_fa (col2a text) INHERITS (trunc_f);
+INSERT INTO trunc_fa VALUES (3, 'three');
+CREATE TABLE trunc_fb (col2b int) INHERITS (trunc_f);
+INSERT INTO trunc_fb VALUES (4, 444);
+CREATE TABLE trunc_faa (col3 text) INHERITS (trunc_fa);
+INSERT INTO trunc_faa VALUES (5, 'five', 'FIVE');
+BEGIN;
+TRUNCATE trunc_f;
+ROLLBACK;
+BEGIN;
+TRUNCATE ONLY trunc_f;
+ROLLBACK;
+BEGIN;
+TRUNCATE ONLY trunc_fb, ONLY trunc_fa;
+ROLLBACK;
+BEGIN;
+TRUNCATE ONLY trunc_fb, trunc_fa;
+ROLLBACK;
+DROP TABLE trunc_f CASCADE;
+CREATE TABLE trunc_trigger_test (f1 int, f2 text, f3 text);
+CREATE TABLE trunc_trigger_log (tgop text, tglevel text, tgwhen text,
+        tgargv text, tgtable name, rowcount bigint);
+CREATE FUNCTION trunctrigger() RETURNS trigger as $$
+declare c bigint;
+begin
+    execute 'select count(*) from ' || quote_ident(tg_table_name) into c;
+    insert into trunc_trigger_log values
+      (TG_OP, TG_LEVEL, TG_WHEN, TG_ARGV[0], tg_table_name, c);
+    return null;
+end;
+$$ LANGUAGE plpgsql;
+INSERT INTO trunc_trigger_test VALUES(1, 'foo', 'bar'), (2, 'baz', 'quux');
+CREATE TRIGGER t
+BEFORE TRUNCATE ON trunc_trigger_test
+FOR EACH STATEMENT
+EXECUTE PROCEDURE trunctrigger('before trigger truncate');
+TRUNCATE trunc_trigger_test;
+DROP TRIGGER t ON trunc_trigger_test;
+truncate trunc_trigger_log;
+INSERT INTO trunc_trigger_test VALUES(1, 'foo', 'bar'), (2, 'baz', 'quux');
+CREATE TRIGGER tt
+AFTER TRUNCATE ON trunc_trigger_test
+FOR EACH STATEMENT
+EXECUTE PROCEDURE trunctrigger('after trigger truncate');
+TRUNCATE trunc_trigger_test;
+DROP TABLE trunc_trigger_test;
+DROP TABLE trunc_trigger_log;
+DROP FUNCTION trunctrigger();
+CREATE SEQUENCE truncate_a_id1 START WITH 33;
+CREATE TABLE truncate_a (id serial,
+                         id1 integer default nextval('truncate_a_id1'));
+ALTER SEQUENCE truncate_a_id1 OWNED BY truncate_a.id1;
+INSERT INTO truncate_a DEFAULT VALUES;
+INSERT INTO truncate_a DEFAULT VALUES;
+TRUNCATE truncate_a;
+INSERT INTO truncate_a DEFAULT VALUES;
+INSERT INTO truncate_a DEFAULT VALUES;
+TRUNCATE truncate_a RESTART IDENTITY;
+INSERT INTO truncate_a DEFAULT VALUES;
+INSERT INTO truncate_a DEFAULT VALUES;
+CREATE TABLE truncate_b (id int GENERATED ALWAYS AS IDENTITY (START WITH 44));
+INSERT INTO truncate_b DEFAULT VALUES;
+INSERT INTO truncate_b DEFAULT VALUES;
+TRUNCATE truncate_b;
+INSERT INTO truncate_b DEFAULT VALUES;
+INSERT INTO truncate_b DEFAULT VALUES;
+TRUNCATE truncate_b RESTART IDENTITY;
+INSERT INTO truncate_b DEFAULT VALUES;
+INSERT INTO truncate_b DEFAULT VALUES;

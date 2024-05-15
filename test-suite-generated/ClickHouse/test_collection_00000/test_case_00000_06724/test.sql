@@ -1,0 +1,1 @@
+SELECT toFloat64(toDecimal32(number, 1)), toFloat64(toDecimal64(number, 2)), toFloat64(toDecimal128(number, 3)) FROM numbers(13, 1);

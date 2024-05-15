@@ -1,25 +1,9 @@
-DROP TABLE IF EXISTS test1_00395;
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = Memory;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = TinyLog;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
+DROP TABLE IF EXISTS multidimensional;
+CREATE TABLE multidimensional (x UInt64, arr Array(Array(String))) ENGINE = MergeTree ORDER BY x;
+INSERT INTO multidimensional VALUES (1, [['Hello', 'World'], ['Goodbye'], []]);
+ALTER TABLE multidimensional ADD COLUMN t Tuple(String, Array(Nullable(String)), Tuple(UInt32, Date));
+INSERT INTO multidimensional (t) VALUES (('Hello', ['World', NULL], (123, '2000-01-01')));
+OPTIMIZE TABLE multidimensional;
+DROP TABLE multidimensional;
+CREATE TABLE multidimensional (x UInt64, arr Array(Array(String)), t Tuple(String, Array(Nullable(String)), Tuple(UInt32, Date))) ENGINE = Memory;
+INSERT INTO multidimensional VALUES (1, [['Hello', 'World'], ['Goodbye'], []], ('Hello', ['World', NULL], (123, '2000-01-01')));

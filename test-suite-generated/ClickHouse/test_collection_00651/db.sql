@@ -1,4 +1,7 @@
-drop table if exists cardinality;
-create table cardinality (x String) engine = MergeTree order by tuple();
-insert into cardinality (x) select concat('v', toString(number)) from numbers(10);
-alter table cardinality add column y LowCardinality(String);
+DROP TABLE IF EXISTS table1;
+CREATE TABLE table1 (lat Float64, lon Float64, resolution UInt8) ENGINE = Memory;
+INSERT INTO table1 VALUES(55.77922738, 37.63098076, 15);
+INSERT INTO table1 VALUES(55.76324100, 37.66018300, 15);
+INSERT INTO table1 VALUES(55.72076200, 37.59813500, 15);
+INSERT INTO table1 VALUES(55.72076201, 37.59813500, 15);
+INSERT INTO table1 VALUES(55.72076200, 37.59813500, 14);

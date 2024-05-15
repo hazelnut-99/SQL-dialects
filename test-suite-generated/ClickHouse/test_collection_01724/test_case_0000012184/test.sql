@@ -1,1 +1,0 @@
-SELECT '-- size suffix';

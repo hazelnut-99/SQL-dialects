@@ -1,21 +1,5 @@
-drop table if exists count_lc_test;
-CREATE TABLE count_lc_test
-(
-    `s` LowCardinality(String),
-    `arr` Array(LowCardinality(String)),
-    `num` UInt64
-)
-ENGINE = MergeTree
-ORDER BY (s, arr);
-INSERT INTO count_lc_test(num, arr) VALUES (1,[]),(2,['a']),(3,['a','b','c']),(4,['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']);
-DROP TABLE count_lc_test;
-drop table if exists count_lc_test;
-CREATE TABLE count_lc_test
-(
-    `s` LowCardinality(String),
-    `arr` Array(String),
-    `num` UInt64
-)
-ENGINE = MergeTree
-ORDER BY (s, arr);
-INSERT INTO count_lc_test(num, arr) VALUES (1,[]),(2,['a']),(3,['a','b','c']),(4,['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']);
+DROP TABLE IF EXISTS test;
+INSERT INTO TABLE FUNCTION file('01721_file/test/data.TSV', 'TSV', 'id UInt32') VALUES (1);
+ATTACH TABLE test FROM '01721_file/test' (id UInt8) ENGINE=File(TSV);
+INSERT INTO test VALUES (2), (3);
+INSERT INTO test VALUES (4);

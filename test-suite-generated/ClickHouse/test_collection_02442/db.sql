@@ -1,3 +1,15 @@
-drop table if exists t;
-create table t(i8 Int8, i16 Int16, i32 Int32, i64 Int64) engine Memory;
-insert into t values (-1, -1, -1, -1), (-2, -2, -2, -2), (-3, -3, -3, -3), (-4, -4, -4, -4), (-5, -5, -5, -5);
+DROP TABLE IF EXISTS tab;
+SYSTEM FLUSH LOGS;
+SYSTEM FLUSH LOGS;
+SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS tab_x;
+SYSTEM FLUSH LOGS;
+SYSTEM FLUSH LOGS;
+SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS tab;
+SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS tab;
+SYSTEM FLUSH LOGS;
+SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS tab;
+SYSTEM FLUSH LOGS;

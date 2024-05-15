@@ -1,1 +1,0 @@
-SELECT '-- same as default';

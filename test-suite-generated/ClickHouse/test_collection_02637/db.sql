@@ -1,3 +1,5 @@
-DROP TABLE IF EXISTS join_table_mutation;
-CREATE TABLE join_table_mutation(id Int32, name String) ENGINE = Join(ANY, LEFT, id);
-INSERT INTO join_table_mutation select number, toString(number) from numbers(100);
+SYSTEM DROP QUERY CACHE;
+DROP TABLE IF EXISTS t;
+CREATE TABLE t(c String) ENGINE=MergeTree ORDER BY c;
+SYSTEM STOP MERGES t; -- retain multiple parts to make the SELECT process multiple chunks
+SYSTEM DROP QUERY CACHE;

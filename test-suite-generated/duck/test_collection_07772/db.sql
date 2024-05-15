@@ -587,3 +587,92 @@ insert into tenk1 values (8800,0,0,0,0,0,0,800,800,3800,8800,0,1,'MAAAAA','AAAAA
 INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');
 CREATE TABLE tbl AS SELECT 42 AS i;
 INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');
+CREATE VIEW empno_nulls AS
+SELECT depname, case empno % 2 when 1 then empno else NULL end as empno, salary, enroll_date
+FROM empsalary;
+CREATE TABLE testing AS
+	SELECT
+		 x
+		,round(x * 0.333,0) % 3 AS y
+		,round(x * 0.333,0) % 3 AS z
+	FROM generate_series(0,10) tbl(x);
+drop table a;
+create table a as select range%2 j, range%3==0 AS i from range(1, 5, 1);
+create table quantiles as select range r from range(10) union all values (NULL), (NULL), (NULL);
+WITH t(i, p, f) AS (VALUES
+	(0, 1, 1),
+	(1, 1, 1),
+	(2, 1, 1),
+	(3, 3, 1),
+	(4, 1, 1),
+	(5, 3, 1)
+)
+SELECT i, MEDIAN(i) OVER (ORDER BY i ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, NULL, 1, 2),
+	(2, NULL, 1, 2),
+	(3, NULL, 1, 2),
+	(4, NULL, 1, 2),
+	(5, NULL, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;

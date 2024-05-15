@@ -1,5 +1,4 @@
-DROP QUOTA IF EXISTS q1_01297, q2_01297, q3_01297, q4_01297, q5_01297, q6_01297, q7_01297, q8_01297, q9_01297,
-q10_01297, q11_01297, q12_01297, q13_01297, q14_01297, q15_01297, q16_01297, q17_01297,q18_01297;
-DROP QUOTA IF EXISTS q2_01297_renamed;
-DROP USER IF EXISTS u1_01297;
-DROP ROLE IF EXISTS r1_01297;
+drop table if exists x;
+drop table if exists mt;
+create table mt (n UInt64) engine=MergeTree order by n partition by n % 10;
+insert into mt select * from numbers(100);

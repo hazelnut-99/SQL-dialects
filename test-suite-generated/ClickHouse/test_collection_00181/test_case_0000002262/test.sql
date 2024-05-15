@@ -1,1 +1,0 @@
-SELECT * FROM insert ORDER BY i;

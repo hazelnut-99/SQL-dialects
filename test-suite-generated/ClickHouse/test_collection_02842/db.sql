@@ -1,17 +1,6 @@
-DROP TABLE IF EXISTS dictionary_array_source_table;
-CREATE TABLE dictionary_array_source_table
-(
-    id UInt64,
-    array_value Array(Int64)
-) ENGINE=TinyLog;
-INSERT INTO dictionary_array_source_table VALUES (0, [0, 1, 2]);
-DROP DICTIONARY IF EXISTS flat_dictionary;
-CREATE DICTIONARY flat_dictionary
-(
-    id UInt64,
-    array_value Array(Int64) DEFAULT [1,2,3]
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'dictionary_array_source_table'))
-LIFETIME(MIN 1 MAX 1000)
-LAYOUT(FLAT());
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table (a UInt8, b UInt8) ENGINE = TinyLog;
+DROP TABLE test_table;
+DROP TABLE IF EXISTS test_table_nullable;
+CREATE TABLE test_table_nullable (a UInt8, b Nullable(UInt8)) ENGINE = TinyLog;
+INSERT INTO test_table_nullable VALUES (0, 0), (0, 1), (1, 0), (1, 1), (0, NULL), (1, NULL);

@@ -1,1 +1,0 @@
-SELECT 'uniqTheta many agrs';

@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS test_aggregation;
-CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4]), ([]), ([1,2,3]);
-DROP TABLE test_aggregation;
-CREATE TABLE test_aggregation (x Array(Decimal64(8))) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4]), ([]), ([1,2,3]);
-DROP TABLE test_aggregation;
+DROP TABLE IF EXISTS test_fixed_string_nested_json;
+CREATE TABLE test_fixed_string_nested_json (data String) ENGINE MergeTree ORDER BY data;
+INSERT INTO test_fixed_string_nested_json (data) VALUES ('{"a" : {"b" : {"c" : 1, "d" : "str"}}}');

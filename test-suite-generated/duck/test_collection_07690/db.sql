@@ -22,3 +22,11 @@ create or replace table tbl(
 );
 insert into tbl values (3,4,2), (5,3,1);
 insert into tbl(k, i) values (2,3), (4,4), (1,8) on conflict (k) do update set j = excluded.j;
+create or replace table tbl (
+	a integer primary key,
+	b integer
+);
+insert into tbl VALUES (1,2), (2,2);
+insert into tbl VALUES (1,3), (3,4) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
+insert into tbl VALUES (4,3), (3,8) ON CONFLICT (a) WHERE excluded.b >= 8 DO UPDATE SET b = 10;
+insert into tbl VALUES (3,8), (2,2), (7,2) ON CONFLICT (a) DO UPDATE SET b = b*2 WHERE b == excluded.b;

@@ -1,1 +1,0 @@
-SELECT LoCaTe('abcabc', 'ca');

@@ -1,0 +1,4 @@
+SELECT e1+794, e4+e1
+  FROM t4, t1
+ WHERE b4 in (323,700,849,23,888,86,551)
+   AND a1=c4;

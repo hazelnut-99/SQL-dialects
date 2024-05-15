@@ -1,17 +1,46 @@
-DROP TABLE IF EXISTS mutation_table;
-CREATE TABLE mutation_table (
-    id int,
-    price Nullable(Int32)
+DROP TABLE IF EXISTS dictionary_nullable_source_table;
+CREATE TABLE dictionary_nullable_source_table
+(
+    id UInt64,
+    value Nullable(Int64)
+) ENGINE=TinyLog;
+DROP TABLE IF EXISTS dictionary_nullable_default_source_table;
+CREATE TABLE dictionary_nullable_default_source_table
+(
+    id UInt64,
+    value Nullable(UInt64)
+) ENGINE=TinyLog;
+INSERT INTO dictionary_nullable_source_table VALUES (0, 0), (1, NULL);
+INSERT INTO dictionary_nullable_default_source_table VALUES (2, 2), (3, NULL);
+DROP DICTIONARY IF EXISTS flat_dictionary;
+CREATE DICTIONARY flat_dictionary
+(
+    id UInt64,
+    value Nullable(Int64) DEFAULT NULL
 )
-ENGINE = MergeTree()
-PARTITION BY id
-ORDER BY id;
-INSERT INTO mutation_table (id, price) VALUES (1, 100);
-DROP TABLE IF EXISTS mutation_table;
-create table mutation_table (  dt Nullable(Date), name Nullable(String))
-engine MergeTree order by tuple();
-insert into mutation_table (name, dt) values ('car', '2020-02-28');
-insert into mutation_table (name, dt) values ('dog', '2020-03-28');
-insert into mutation_table (name, dt) values ('car', Null);
-insert into mutation_table (name, dt) values ('cat', Null);
-insert into mutation_table (name, dt) values (Null, '2020-08-05');
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'dictionary_nullable_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(FLAT());
+DROP DICTIONARY flat_dictionary;
+DROP DICTIONARY IF EXISTS hashed_dictionary;
+CREATE DICTIONARY hashed_dictionary
+(
+    id UInt64,
+    value Nullable(Int64) DEFAULT NULL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'dictionary_nullable_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(HASHED());
+DROP DICTIONARY hashed_dictionary;
+DROP DICTIONARY IF EXISTS cache_dictionary;
+CREATE DICTIONARY cache_dictionary
+(
+    id UInt64,
+    value Nullable(Int64) DEFAULT NULL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'dictionary_nullable_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(CACHE(SIZE_IN_CELLS 10));

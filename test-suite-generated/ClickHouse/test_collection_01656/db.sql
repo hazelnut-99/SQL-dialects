@@ -1,13 +1,13 @@
-DROP TABLE IF EXISTS table_for_rename;
-CREATE TABLE table_for_rename
+DROP TABLE IF EXISTS agg_table;
+CREATE TABLE IF NOT EXISTS agg_table
 (
-  date Date,
-  key UInt64,
-  value1 String,
-  value2 String,
-  value3 String DEFAULT concat(value1, ' + ', value2) 
+    time DateTime CODEC(DoubleDelta, LZ4),
+    xxx String,
+    two_values Tuple(Array(UInt16), UInt32),
+    agg_simple SimpleAggregateFunction(sum, UInt64),
+    agg SimpleAggregateFunction(sumMap, Tuple(Array(Int16), Array(UInt64)))
 )
-ENGINE = MergeTree()
-PARTITION BY date
-ORDER BY key;
-INSERT INTO table_for_rename (date, key, value1, value2) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(9);
+ENGINE = AggregatingMergeTree()
+ORDER BY (xxx, time);
+INSERT INTO agg_table SELECT toDateTime('2020-10-01 19:20:30'), 'hello', ([any(number)], sum(number)), sum(number),
+    sumMap((arrayMap(i -> toString(i), range(13)), arrayMap(i -> (number + i), range(13)))) FROM numbers(10);

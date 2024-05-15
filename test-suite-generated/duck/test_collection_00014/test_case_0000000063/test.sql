@@ -1,1 +1,0 @@
-SELECT typeof(100::UINTEGER + 1) == 'UINTEGER';

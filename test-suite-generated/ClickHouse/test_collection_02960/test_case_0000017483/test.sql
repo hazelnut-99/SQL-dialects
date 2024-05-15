@@ -1,1 +1,0 @@
-SELECT CAST(toIPv4('127.0.0.1') as String) as v, toTypeName(v);

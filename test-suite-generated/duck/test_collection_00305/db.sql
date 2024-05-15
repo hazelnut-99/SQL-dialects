@@ -113,3 +113,5 @@ drop table sorted_integers;
 create table sorted_integers as select i from integers order by i;
 drop table sorted_integers;
 create table sorted_integers as select i from integers order by i;
+drop table sorted_integers;
+create table sorted_integers as select i from integers order by i;

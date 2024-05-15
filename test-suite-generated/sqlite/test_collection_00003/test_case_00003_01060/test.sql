@@ -1,0 +1,4 @@
+SELECT e5, d1+856
+  FROM t5, t1
+ WHERE c5 in (187,442,723)
+   AND 249=a1;

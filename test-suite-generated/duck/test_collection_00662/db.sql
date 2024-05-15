@@ -53,3 +53,5 @@ CREATE TABLE people(Name VARCHAR, STATE VARCHAR, Country VARCHAR);
 DESCRIBE people;
 CREATE TABLE varchars(v VARCHAR);
 INSERT INTO varchars VALUES ('Hello'), ('World');
+DELETE FROM varchars;
+INSERT INTO varchars VALUES ('Hello World');

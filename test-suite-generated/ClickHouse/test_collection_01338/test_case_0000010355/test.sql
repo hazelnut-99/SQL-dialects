@@ -1,1 +1,0 @@
-SELECT '---ORDER_BY---';

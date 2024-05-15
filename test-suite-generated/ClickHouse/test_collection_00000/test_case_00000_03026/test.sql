@@ -1,0 +1,1 @@
+SELECT '-1e-19' AS x, toDecimal64(x, 18);

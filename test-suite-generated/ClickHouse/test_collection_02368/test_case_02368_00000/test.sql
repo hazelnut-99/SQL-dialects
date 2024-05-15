@@ -1,0 +1,2 @@
+SELECT * FROM bug_36995
+PREWHERE (time IS NOT NULL) WHERE (product IN (SELECT '1'));

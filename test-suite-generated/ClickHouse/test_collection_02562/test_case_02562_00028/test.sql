@@ -1,0 +1,1 @@
+SELECT toDecimal64(1.555,3) IN (1.550,1.5);

@@ -1,11 +1,6 @@
-DROP TABLE IF EXISTS not_partitioned;
-CREATE TABLE not_partitioned(x UInt8) ENGINE MergeTree ORDER BY x;
-INSERT INTO not_partitioned VALUES (1), (2), (3);
-INSERT INTO not_partitioned VALUES (4), (5);
-OPTIMIZE TABLE not_partitioned PARTITION tuple() FINAL;
-ALTER TABLE not_partitioned DETACH PARTITION ID 'all';
-DROP TABLE not_partitioned;
-DROP TABLE IF EXISTS partitioned_by_week;
-CREATE TABLE partitioned_by_week(d Date, x UInt8) ENGINE = MergeTree PARTITION BY toMonday(d) ORDER BY x;
-INSERT INTO partitioned_by_week VALUES ('2000-01-01', 1), ('2000-01-02', 2), ('2000-01-03', 3);
-INSERT INTO partitioned_by_week VALUES ('2000-01-03', 4), ('2000-01-03', 5);
+DROP TABLE IF EXISTS remote_test;
+CREATE TABLE remote_test(a1 UInt8) ENGINE=Memory;
+INSERT INTO FUNCTION remote('127.0.0.1', currentDatabase(), remote_test) VALUES(1);
+INSERT INTO FUNCTION remote('127.0.0.1', currentDatabase(), remote_test) VALUES(2);
+INSERT INTO FUNCTION remote('127.0.0.1', currentDatabase(), remote_test) VALUES(3);
+INSERT INTO FUNCTION remote('127.0.0.1', currentDatabase(), remote_test) VALUES(4);

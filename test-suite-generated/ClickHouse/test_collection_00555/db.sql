@@ -1,7 +1,14 @@
-DROP DATABASE IF EXISTS truncate_test;
-CREATE DATABASE IF NOT EXISTS truncate_test;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_log(id UInt64) ENGINE = Log;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_memory(id UInt64) ENGINE = Memory;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_tiny_log(id UInt64) ENGINE = TinyLog;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_stripe_log(id UInt64) ENGINE = StripeLog;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_merge_tree(p Date, k UInt64) ENGINE = MergeTree ORDER BY p;
+DROP TABLE IF EXISTS table_a;
+DROP TABLE IF EXISTS table_b;
+CREATE TABLE table_a (
+    event_id UInt64,
+    something String,
+    other Nullable(String)
+) ENGINE = MergeTree ORDER BY (event_id);
+CREATE TABLE table_b (
+    event_id UInt64,
+    something Nullable(String),
+    other String
+) ENGINE = MergeTree ORDER BY (event_id);
+INSERT INTO table_a VALUES (1, 'foo', 'foo'), (2, 'foo', 'foo'), (3, 'bar', 'bar');
+INSERT INTO table_b VALUES (1, 'bar', 'bar'), (2, 'bar', 'bar'), (3, 'test', 'test'), (4, NULL, '');

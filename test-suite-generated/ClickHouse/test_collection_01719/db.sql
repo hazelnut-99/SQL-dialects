@@ -1,6 +1,13 @@
-DROP ROW POLICY IF EXISTS p1_01295, p2_01295, p3_01295, p4_01295, p5_01295, p6_01295, p7_01295, p8_01295, p9_01295, p10_01295 ON db.table;
-DROP ROW POLICY IF EXISTS p2_01295_renamed ON db.table;
-DROP ROW POLICY IF EXISTS p3_01295 ON db.table, db2.table2;
-DROP ROW POLICY IF EXISTS p4_01295 ON db.table, p5_01295 ON db2.table2;
-DROP USER IF EXISTS u1_01295;
-DROP ROLE IF EXISTS r1_01295;
+DROP TABLE IF EXISTS report;
+CREATE TABLE report
+(
+    `product` Enum8('IU' = 1, 'WS' = 2),
+    `machine` String,
+    `branch` String,
+    `generated_time` DateTime
+)
+ENGINE = MergeTree
+PARTITION BY (product, toYYYYMM(generated_time))
+ORDER BY (product, machine, branch, generated_time);
+INSERT INTO report VALUES ('IU', 'lada', '2101', toDateTime('1970-04-19 15:00:00'));
+ALTER TABLE report MODIFY COLUMN product Enum8('IU' = 1, 'WS' = 2, 'PS' = 3);

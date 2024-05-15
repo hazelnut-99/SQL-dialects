@@ -1,1 +1,0 @@
-SELECT sleep(1);

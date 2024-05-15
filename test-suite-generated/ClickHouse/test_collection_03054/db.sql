@@ -1,6 +1,19 @@
-DROP TABLE IF EXISTS foo;
-CREATE TABLE foo (ts DateTime, x UInt64)
-ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
-ORDER BY (ts);
-ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);
-ALTER TABLE foo UPDATE x = 1 WHERE x IN (SELECT x FROM foo WHERE x != 0);
+Select number, first_value (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, First_value (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, FIRST_VALUE (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, FIRST_VALUE (number) over (order by number) from numbers(1);
+Select number, first_value_respect_nulls (number) over (order by number) from numbers(1);
+Select number, any (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, any_value (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, last_value (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, Last_value (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, LAST_VALUE (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, LAST_VALUE (number) over (order by number) from numbers(1);
+Select number, last_value_respect_nulls (number) over (order by number) from numbers(1);
+Select number, anyLast (number) RESPECT NULLS over (order by number) from numbers(1);
+Select number, FIRST_VALUE (number) IGNORE NULLS over (order by number) from numbers(1);
+Select number, LAST_VALUE (number) IGNORE NULLS over (order by number) from numbers(1);
+Select first_value_respect_nulls (number) IGNORE NULLS from (SELECT if(number < 2, NULL, number) as number FROM numbers(10));
+Select FIRST_VALUE_respect_nulls (number) IGNORE NULLS from (SELECT if(number < 2, NULL, number) as number FROM numbers(10));
+Select last_value_respect_nulls (number) IGNORE NULLS from (SELECT if(number < 2, NULL, number) as number FROM numbers(10));
+Select LAST_VALUE_respect_nulls (number) IGNORE NULLS from (SELECT if(number < 2, NULL, number) as number FROM numbers(10));

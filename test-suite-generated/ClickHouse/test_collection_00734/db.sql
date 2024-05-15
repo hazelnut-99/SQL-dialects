@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS concat_saf_test;
-CREATE TABLE concat_saf_test(x SimpleAggregateFunction(max, Int32)) ENGINE=MergeTree ORDER BY tuple();
-INSERT INTO concat_saf_test VALUES (42);
-INSERT INTO concat_saf_test SELECT max(number) FROM numbers(5);
+drop table if exists ttl;
+create table ttl (d Date, a Int) engine = MergeTree order by a partition by toDayOfMonth(d) ttl d + interval 1 day;
+system stop ttl merges ttl;
+optimize table ttl partition 10 final;

@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS unsorted;
-DROP TABLE IF EXISTS unsorted_replacing;
-CREATE TABLE unsorted_replacing (x UInt32, s String, v UInt32) ENGINE ReplacingMergeTree(v) ORDER BY tuple();
-INSERT INTO unsorted_replacing VALUES (1, 'a', 5), (5, 'b', 4);
-INSERT INTO unsorted_replacing VALUES (2, 'c', 3), (4, 'd', 2);
-INSERT INTO unsorted_replacing VALUES (3, 'e', 1);
-OPTIMIZE TABLE unsorted_replacing PARTITION tuple() FINAL;
+DROP TABLE IF EXISTS test_00808;
+CREATE TABLE test_00808(date Date, id Int8, name String, value Int64, sign Int8) ENGINE = CollapsingMergeTree(sign) ORDER BY (id, date);
+INSERT INTO test_00808 VALUES('2000-01-01', 1, 'test string 1', 1, 1);
+INSERT INTO test_00808 VALUES('2000-01-01', 2, 'test string 2', 2, 1);

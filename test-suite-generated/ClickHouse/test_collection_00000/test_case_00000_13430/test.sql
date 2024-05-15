@@ -1,0 +1,1 @@
+SELECT '-- tuple() loses the column names (would be good to fix, see #36773)';

@@ -1,14 +1,2 @@
-CREATE TYPE rainbow AS ENUM ('red', 'orange', 'yellow', 'green', 'blue', 'purple');
-COMMIT;
-BEGIN;
-ROLLBACK;
-BEGIN;
-ROLLBACK;
-BEGIN;
-CREATE TYPE bogus AS ENUM('good','bad','ugly');
-ALTER TYPE bogus RENAME TO bogon;
-ROLLBACK;
-CREATE TYPE bogus AS ENUM('good');
-ALTER TYPE bogus RENAME TO bogon;
-ALTER TYPE bogon ADD VALUE 'bad';
-ALTER TYPE bogon ADD VALUE 'ugly';
+CREATE TABLE gtest0 (a int PRIMARY KEY, b int GENERATED ALWAYS AS (55) STORED);
+CREATE TABLE gtest1 (a int PRIMARY KEY, b int GENERATED ALWAYS AS (a * 2) STORED);

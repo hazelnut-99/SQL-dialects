@@ -1,1 +1,0 @@
-select '01231_log_queries_min_type/QUERY_START';

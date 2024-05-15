@@ -311,3 +311,38 @@ FROM dups
 WHERE n_spcmn > 1
 ORDER BY idx, dup;
 INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');
+CREATE TABLE filtering AS
+	SELECT
+		 x
+		,round(x * 0.333,0) % 3 AS y
+		,round(x * 0.333,0) % 3 AS z
+	FROM generate_series(0,10) tbl(x);
+CREATE TABLE figure1 AS 
+	SELECT * 
+	FROM VALUES 
+			(1, 'a'),
+			(2, 'b'),
+			(3, 'b'),
+			(4, 'c'),
+			(5, 'c'),
+			(6, 'b'),
+			(7, 'c'),
+			(8, 'a')
+		v(i, s);
+BEGIN TRANSACTION;
+create table wintest( item integer, return_ratio numeric, currency_ratio numeric);
+insert into wintest values  (7539  ,0.590000 , 0.590000), (3337  ,0.626506 , 0.626506), (15597 ,0.661972 , 0.661972), (2915  ,0.698630 , 0.698630), (11933 ,0.717172 , 0.717172), (483   ,0.800000 , 0.800000), (85    ,0.857143 , 0.857143), (97    ,0.903614 , 0.903614), (117   ,0.925000 , 0.925000), (5299  ,0.927083 , 0.927083), (10055 ,0.945652 , 0.945652), (4231  ,0.977778 , 0.977778), (5647  ,0.987805 , 0.987805), (8679  ,0.988764 , 0.988764), (10323 ,0.977778 , 1.111111), (3305  ,0.737500 , 1.293860);
+ROLLBACK;
+create table modes as select range r from range(10) union all values (NULL), (NULL), (NULL);
+WITH t(r) AS (VALUES (0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (NULL), (NULL), (NULL))
+SELECT r, r//3, mode(r//3) over (order by r rows between 1 preceding and 1 following) 
+FROM t 
+ORDER BY ALL;
+WITH t(r) AS (VALUES (0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (NULL), (NULL), (NULL))
+SELECT r, r//3, mode(r//3) over (order by r rows between 1 preceding and 1 following) 
+FROM t 
+ORDER BY ALL;
+WITH t(r) AS (VALUES (0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (NULL), (NULL), (NULL))
+SELECT r, r//3, mode(r//3) over (order by r rows between 1 preceding and 1 following) 
+FROM t 
+ORDER BY ALL;

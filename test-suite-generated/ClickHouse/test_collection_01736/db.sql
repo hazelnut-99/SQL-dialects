@@ -1,5 +1,11 @@
-DROP TABLE IF EXISTS geo;
-CREATE TABLE geo (p Tuple(Float64, Float64), s String, id Int) engine=Memory();
-INSERT INTO geo VALUES ((0., 0.), 'b', 1);
-INSERT INTO geo VALUES ((1., 0.), 'c', 2);
-INSERT INTO geo VALUES ((2., 0.), 'd', 3);
+drop table if exists dist_01756;
+drop table if exists dist_01756_str;
+drop table if exists dist_01756_column;
+drop table if exists data_01756_str;
+drop table if exists data_01756_signed;
+system flush logs;
+system flush logs;
+system flush logs;
+system flush logs;
+create table data_01756_signed (key Int) engine=Null;
+system flush logs;

@@ -1,1 +1,0 @@
-SELECT CAST('0.123456789', 'Decimal(9,8)');

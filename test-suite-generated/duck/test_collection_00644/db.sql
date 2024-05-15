@@ -7,3 +7,4 @@ CREATE TABLE tinyints(i TINYINT);
 INSERT INTO tinyints VALUES (1), (10);
 CREATE TABLE smallints(i SMALLINT);
 INSERT INTO smallints VALUES (1), (10);
+INSERT INTO smallints VALUES (1000);

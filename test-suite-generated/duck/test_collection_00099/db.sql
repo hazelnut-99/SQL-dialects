@@ -100,3 +100,5 @@ INSERT INTO integers VALUES (42);
 DELETE FROM integers WHERE i%3=0;
 INSERT INTO integers VALUES (84);
 checkpoint;
+INSERT INTO integers VALUES (84);
+checkpoint;

@@ -1,11 +1,8 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
+CREATE TABLE test_table (n Int32, s String) ENGINE MergeTree PARTITION BY n ORDER BY n;
+CREATE TABLE mview_backend (n Int32, n2 Int64) ENGINE MergeTree PARTITION BY n ORDER BY n;
+CREATE MATERIALIZED VIEW mview TO mview_backend AS SELECT n, n * n AS "n2" FROM test_table;
+DROP TABLE test_table;
+DETACH TABLE mview;
+ATTACH TABLE mview;
+CREATE TABLE test_table (n Int32, s String) ENGINE MergeTree PARTITION BY n ORDER BY n;
+INSERT INTO test_table VALUES (3,'some_val');

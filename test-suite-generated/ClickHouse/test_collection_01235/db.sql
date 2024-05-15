@@ -1,9 +1,7 @@
-drop table if exists tst;
-create table tst (timestamp DateTime, val Nullable(Int8)) engine SummingMergeTree partition by toYYYYMM(timestamp) ORDER by (timestamp);
-insert into tst values ('2018-02-01 00:00:00', 1), ('2018-02-02 00:00:00', 2);
-drop table if exists tst;
-create table tst (timestamp DateTime, val Nullable(Int8)) engine SummingMergeTree partition by toYYYYMM(timestamp) ORDER by (timestamp);
-insert into tst values ('2018-02-01 00:00:00', 1), ('2018-02-02 00:00:00', 2), ('2018-02-01 00:00:00', 3), ('2018-02-02 00:00:00', 4);
-drop table if exists tst;
-create table tst (timestamp DateTime, val Int8) engine SummingMergeTree partition by toYYYYMM(timestamp) ORDER by (timestamp);
-insert into tst values ('2018-02-01 00:00:00', 1), ('2018-02-02 00:00:00', 2);
+DROP TABLE IF EXISTS tmp_01375;
+DROP TABLE IF EXISTS table_tsv_01375;
+CREATE TABLE tmp_01375 (n UInt32, s String) ENGINE = Memory;
+CREATE TABLE table_tsv_01375 AS tmp_01375 ENGINE = File(TSVWithNames);
+INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);
+INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);
+INSERT INTO table_tsv_01375 SELECT number as n, toString(n) as s FROM numbers(10);

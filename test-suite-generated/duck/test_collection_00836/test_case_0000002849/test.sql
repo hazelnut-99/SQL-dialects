@@ -1,1 +1,0 @@
-SELECT b FROM test ORDER BY b OFFSET 10;

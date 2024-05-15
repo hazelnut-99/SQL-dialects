@@ -1,0 +1,1 @@
+SELECT '=============== OUTER QUERY (PARALLEL) ===============';

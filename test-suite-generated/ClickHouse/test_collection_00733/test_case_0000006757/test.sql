@@ -1,1 +1,0 @@
-SELECT concat('With ', materialize('2023-11-14 05:50:12.123' :: DateTime64(3, 'Europe/Amsterdam')));

@@ -1,0 +1,1 @@
+SELECT arrayDifference([toDecimal64(0.0,8), toDecimal64(1.0,8)]) x, toTypeName(x);

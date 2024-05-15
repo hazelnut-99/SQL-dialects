@@ -1,1 +1,0 @@
-SELECT intDiv(toDecimal32(4.4, 2), 2);

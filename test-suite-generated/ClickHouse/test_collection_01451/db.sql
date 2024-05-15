@@ -1,4 +1,2 @@
-DROP TABLE IF EXISTS local_01099_a;
-DROP TABLE IF EXISTS local_01099_b;
-DROP TABLE IF EXISTS distributed_01099_a;
-DROP TABLE IF EXISTS distributed_01099_b;
+/* gap in error codes */
+SELECT errorCodeToName(0);

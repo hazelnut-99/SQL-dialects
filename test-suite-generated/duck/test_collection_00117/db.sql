@@ -148,3 +148,19 @@ FROM (SELECT termid, docid, COUNT(*) AS tf FROM qterms
 SELECT name FROM (SELECT docid, sum(subscore) AS score
     FROM subscores GROUP BY docid) AS scores JOIN fts_main_documents.docs AS docs ON
     scores.docid = docs.docid ORDER BY score DESC LIMIT 1000);
+CREATE MACRO mywindow(k,v) AS SUM(v) OVER (PARTITION BY k);
+WITH grouped AS (SELECT mod(range, 3) AS grp, range AS val FROM RANGE(500))
+SELECT DISTINCT grp, mywindow(grp, val) FROM grouped ORDER BY grp;
+CREATE TABLE test_tbl (id INT, name string);
+CREATE TABLE test2_tbl (id INT, name string);
+CREATE TABLE greek_tbl (id INT, name string);
+INSERT INTO test_tbl VALUES (1,'tom'), (2,'dick'),(3,'harry'), (4,'mary'), (5,'mungo'), (6,'midge');
+;
+INSERT INTO test_tbl VALUES (20,'andrew'), (21,'boris'),(22,'Caleb'), (23,'david'), (24,'evan');
+INSERT INTO  greek_tbl VALUES (1, 'alpha'), (2, 'beta'), (3, 'gamma'), (4, 'delta'), (5, 'epsilon'),(6, 'zeta'), (7, 'eta') , (8, 'theta'), (9, 'iota') , (10, 'kappa');
+;
+CREATE  MACRO xt(a,_name) as TABLE SELECT * FROM test_tbl WHERE(id>=a or name=_name);
+CREATE  MACRO xt2(a,_name) as TABLE SELECT * FROM test_tbl WHERE(id>=a or name like _name);
+CREATE  MACRO sgreek(a,b,c) as TABLE SELECT a,b FROM greek_tbl WHERE(id >= c);
+( SELECT* FROM xt(1, 'tom') UNION SELECT* FROM  xt2(1, '%%%') ) INTERSECT SELECT* FROM xt(100,'midge');
+(SELECT* FROM xt(1, 'tom') EXCEPT SELECT* FROM xt(20,'tom' )) INTERSECT SELECT* FROM xt(100,'harry');

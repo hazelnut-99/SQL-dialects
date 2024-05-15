@@ -1,0 +1,1 @@
+SELECT avgWeighted(number, number + 1) t, toTypeName(t) FROM numbers(0);

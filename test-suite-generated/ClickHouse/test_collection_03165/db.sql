@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS table_map;
-CREATE TABLE table_map (id UInt32, col Map(String, UInt64)) engine = MergeTree() ORDER BY tuple();
-INSERT INTO table_map SELECT number, map('key1', number, 'key2', number * 2) FROM numbers(1111, 3);
-INSERT INTO table_map SELECT number, map('key3', number, 'key2', number + 1, 'key4', number + 2) FROM numbers(100, 4);
+drop table if exists rmt_master;
+drop table if exists rmt_slave;
+system stop replicated sends rmt_master;
+system flush logs;
+system start replicated sends rmt_master;
+system flush logs;

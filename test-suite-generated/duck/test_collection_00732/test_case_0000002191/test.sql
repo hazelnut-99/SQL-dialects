@@ -1,1 +1,0 @@
-SELECT * FROM a WHERE rowid=0;

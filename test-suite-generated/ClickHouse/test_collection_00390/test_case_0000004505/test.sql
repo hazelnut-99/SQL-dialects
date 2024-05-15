@@ -1,1 +1,0 @@
-SELECT 'Parts before OPTIMIZE:';

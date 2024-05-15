@@ -1,1 +1,0 @@
-SELECT 'mapPopulateSeries with map';

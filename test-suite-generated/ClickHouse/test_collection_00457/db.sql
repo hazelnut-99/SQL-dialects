@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test(number UInt64, num2 UInt64) ENGINE = Log;
+DROP TABLE IF EXISTS perf;
+CREATE TABLE perf (site String, user_id UInt64, z Float64) ENGINE = Log;

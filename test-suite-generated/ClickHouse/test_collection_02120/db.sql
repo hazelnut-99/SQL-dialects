@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS bug_13492;
-CREATE TABLE bug_13492 (`d` DateTime) ENGINE = MergeTree
-PARTITION BY toYYYYMMDD(d) ORDER BY tuple();
-INSERT INTO bug_13492 SELECT addDays(now(), number) FROM numbers(100);
+CREATE FUNCTION 02103_test_function AS x -> x + 1;
+CREATE FUNCTION 02103_test_function_with_nested_function_empty_args AS () -> 02103_test_function(1);
+CREATE FUNCTION 02103_test_function_with_nested_function_arg AS (x) -> 02103_test_function(x);

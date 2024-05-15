@@ -1,1 +1,0 @@
-SELECT toDecimal128('1234567890', 28) AS x, toDecimal128(x, 29), toDecimal128(toDecimal128('1234567890', 28), 29);

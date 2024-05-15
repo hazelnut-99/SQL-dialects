@@ -97,3 +97,11 @@ CREATE VIEW structs AS SELECT * FROM (VALUES
 	(5, {'x': 9, 'y': 'i'}),
 	(NULL::INTEGER, {'x': 13, 'y': 'Somateria mollissima'})
 	) sv(pk, p);
+CREATE VIEW struct_lint_lstr AS SELECT * FROM (VALUES
+	(1, {'x': [1], 'y': ['a']}),
+	(2, {'x': [NULL], 'y': [NULL]}),
+	(3, {'x': [], 'y': []}),
+	(4, {'x': [2, 3], 'y': ['Branta Canadensis', 'c']}),
+	(5, {'x': [9,10,11], 'y': ['i','j','k']}),
+	(NULL::INTEGER, {'x': [13], 'y': ['Somateria mollissima']})
+	) lv(pk, p);

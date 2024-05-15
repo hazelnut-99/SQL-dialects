@@ -1,10 +1,8 @@
-DROP TABLE IF EXISTS Issue_2231_Invalid_Nested_Columns_Size;
-CREATE TABLE Issue_2231_Invalid_Nested_Columns_Size (
-    Date Date,
-    NestedColumn Nested(
-        ID    Int32,
-        Count Int64
-    )
-) Engine = MergeTree 
-    PARTITION BY tuple()
-    ORDER BY Date;
+drop table if exists array_intersect;
+create table array_intersect (date Date, arr Array(UInt8)) engine=MergeTree partition by date order by date;
+insert into array_intersect values ('2019-01-01', [1,2,3]);
+insert into array_intersect values ('2019-01-01', [1,2]);
+insert into array_intersect values ('2019-01-01', [1]);
+insert into array_intersect values ('2019-01-01', []);
+optimize table array_intersect;
+drop table if exists array_intersect;

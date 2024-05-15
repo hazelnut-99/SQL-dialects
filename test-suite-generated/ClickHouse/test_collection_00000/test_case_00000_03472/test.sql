@@ -1,0 +1,1 @@
+SELECT 'value vs value';

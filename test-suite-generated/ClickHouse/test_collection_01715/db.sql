@@ -1,3 +1,3 @@
-DROP ROLE IF EXISTS r1_01293, r2_01293, r3_01293, r4_01293, r5_01293, r6_01293, r7_01293, r8_01293, r9_01293;
-DROP ROLE IF EXISTS r2_01293_renamed;
-DROP ROLE IF EXISTS r1_01293@'%', 'r2_01293@%.myhost.com';
+DROP TABLE IF EXISTS prewhere_move_select_final;
+CREATE TABLE prewhere_move_select_final (x Int, y Int, z Int) ENGINE = ReplacingMergeTree() ORDER BY (x, y);
+INSERT INTO prewhere_move_select_final SELECT number, number * 2, number * 3 FROM numbers(1000);

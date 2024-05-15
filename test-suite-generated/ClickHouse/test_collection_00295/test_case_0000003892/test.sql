@@ -1,1 +1,0 @@
-SELECT '---------- constant_null ----------';

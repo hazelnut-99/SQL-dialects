@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS merge_tree;
-CREATE TABLE merge_tree (d Date) ENGINE = MergeTree ORDER BY d PARTITION BY d;
-INSERT INTO merge_tree VALUES ('2020-01-01'), ('2020-01-02'), ('2020-01-03'), ('2020-01-04'), ('2020-01-05'), ('2020-01-06');
-ALTER TABLE merge_tree DROP PARTITION 20200103; -- unfortunately, this works, but not as user expected.
-ALTER TABLE merge_tree DROP PARTITION '20200104';
+DROP TABLE IF EXISTS defaults_on_defaults;
+CREATE TABLE defaults_on_defaults (
+    key UInt64
+)
+ENGINE = MergeTree()
+ORDER BY tuple();
+INSERT INTO defaults_on_defaults values (1);
+ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C1` Array(UInt32) DEFAULT emptyArrayUInt32();
+ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C2` Array(UInt32) DEFAULT arrayResize(emptyArrayUInt32(), length(Arr.C1));
+ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C3` Array(UInt32) ALIAS arrayResize(emptyArrayUInt32(), length(Arr.C2));

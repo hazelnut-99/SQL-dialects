@@ -1,0 +1,1 @@
+select b from (select 1 as a, 42 as c) js1 any left join (select 2 as b, 2 as b, 41 as c) js2 using c;

@@ -1,4 +1,0 @@
-SELECT
-  f32, f64
-FROM generateRandom('f32 Float32, f64 Float64', 1, 10, 10)
-LIMIT 10;

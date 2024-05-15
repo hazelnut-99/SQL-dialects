@@ -1,0 +1,1 @@
+select 'Date' as mysql_type, cast('2021-02-03' as date) as result, toTypeName(result) as native_type;

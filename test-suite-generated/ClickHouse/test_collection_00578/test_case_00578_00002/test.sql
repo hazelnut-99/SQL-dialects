@@ -1,0 +1,1 @@
+SELECT * FROM t64 WHERE i32 != t_i32;

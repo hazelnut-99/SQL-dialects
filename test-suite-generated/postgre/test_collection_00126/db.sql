@@ -69,3 +69,29 @@ insert into nestjsonb (j) values ('{"a":[["b",{"x":1}],["b",{"x":2}]],"c":3}');
 insert into nestjsonb (j) values ('[[14,2,3]]');
 insert into nestjsonb (j) values ('[1,[14,2,3]]');
 create index on nestjsonb using gin(j jsonb_path_ops);
+create TEMP TABLE test_jsonb_subscript (
+       id int,
+       test_json jsonb
+);
+insert into test_jsonb_subscript values
+(1, '{}'), -- empty jsonb
+(2, '{"key": "value"}'); -- jsonb with data
+insert into test_jsonb_subscript values (3, NULL);
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[0]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{"b": 1}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[]');

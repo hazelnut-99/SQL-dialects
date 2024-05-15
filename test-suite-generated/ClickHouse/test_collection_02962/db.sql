@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (i UInt32, a UInt32) ENGINE=Memory;

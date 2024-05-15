@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS join;
-CREATE TABLE join (k UInt64, s String) ENGINE = Join(ANY, LEFT, k);
-INSERT INTO join VALUES (1,21);
-DETACH TABLE join;
-ATTACH TABLE join;
-DROP TABLE join;
+drop table if exists t1;
+create table t1(x1 Date32) engine Memory;
+insert into t1 values ('1900-01-01'),('1899-01-01'),('2299-12-15'),('2300-12-31'),('2021-06-22');

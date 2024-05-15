@@ -1,3 +1,3 @@
-DROP TEMPORARY TABLE IF EXISTS test_00724;
-CREATE TEMPORARY TABLE test_00724 (d Date, dt DateTime);
-INSERT INTO test_00724 VALUES (toDateTime('2000-01-01 01:02:03'), toDate('2000-01-01'));
+DROP TABLE IF EXISTS ColumnsClauseTest;
+CREATE TABLE ColumnsClauseTest (product_price Int64, product_weight Int16, amount Int64) Engine=TinyLog;
+INSERT INTO ColumnsClauseTest VALUES (100, 10, 324), (120, 8, 23);

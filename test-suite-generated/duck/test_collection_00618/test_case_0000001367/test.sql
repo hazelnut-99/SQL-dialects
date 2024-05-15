@@ -1,1 +1,0 @@
-SELECT a FROM test LIMIT 50% OFFSET 2;

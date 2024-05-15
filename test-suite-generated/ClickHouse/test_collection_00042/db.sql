@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS addresses;
-CREATE TABLE addresses(addr UInt32) ENGINE = Memory;
-INSERT INTO addresses(addr) VALUES (1297626935), (2130706433), (3254522122);
-DROP TABLE IF EXISTS addresses;
-CREATE TABLE addresses(addr String) ENGINE = Memory;
-INSERT INTO addresses(addr) VALUES ('20010DB8AC10FE01FEEDBABECAFEF00D'), ('20010DB8AC10FE01DEADC0DECAFED00D'), ('20010DB8AC10FE01ABADBABEFACEB00C');
+DROP TABLE IF EXISTS parallel_replicas;
+DROP TABLE IF EXISTS parallel_replicas_backup;
+CREATE TABLE parallel_replicas_backup(d Date DEFAULT today(), x UInt32, u UInt64, s String) ENGINE = Memory;

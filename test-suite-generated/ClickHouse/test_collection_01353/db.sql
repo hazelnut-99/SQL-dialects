@@ -1,22 +1,11 @@
-DROP TABLE IF EXISTS target_table;
-DROP TABLE IF EXISTS logins;
-DROP TABLE IF EXISTS mv_logins2target;
-DROP TABLE IF EXISTS checkouts;
-DROP TABLE IF EXISTS mv_checkouts2target;
-CREATE TABLE logins (
-    id UInt64,
-    ts DateTime('UTC')
-) Engine=MergeTree ORDER BY id;
-CREATE TABLE checkouts (
-    id UInt64,
-    ts DateTime('UTC')
-) Engine=MergeTree ORDER BY id;
-SYSTEM STOP MERGES target_table;
-SYSTEM STOP MERGES checkouts;
-SYSTEM STOP MERGES logins;
-INSERT INTO logins SELECT number as id,    '2000-01-01 08:00:00' from numbers(50000);
-INSERT INTO checkouts SELECT number as id, '2000-01-01 10:00:00' from numbers(50000);
-INSERT INTO logins    SELECT number as id, '2000-01-01 11:00:00' from numbers(1000);
-INSERT INTO checkouts SELECT number as id, '2000-01-01 11:10:00' from numbers(1000);
-INSERT INTO logins    SELECT number+2 as id, '2001-01-01 11:10:01' from numbers(1);
-INSERT INTO checkouts SELECT number+2 as id, '2001-01-01 11:10:02' from numbers(1);
+DROP TABLE IF EXISTS test_new_col;
+CREATE TABLE test_new_col
+(
+  `_csv` String,
+  `csv_as_array` Array(String) ALIAS splitByChar(';',_csv),
+  `csv_col1` String DEFAULT csv_as_array[1],
+  `csv_col2` String DEFAULT csv_as_array[2]
+)
+ENGINE = MergeTree
+ORDER BY tuple();
+INSERT INTO test_new_col (_csv) VALUES ('a1;b1;c1;d1'), ('a2;b2;c2;d2'), ('a3;b3;c3;d3');

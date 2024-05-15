@@ -1,1 +1,0 @@
-SELECT CAST('disable', 'Bool');

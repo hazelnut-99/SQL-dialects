@@ -1,1 +1,0 @@
-SELECT '-- With const pattern';

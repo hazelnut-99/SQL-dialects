@@ -12,3 +12,10 @@ INSERT INTO a VALUES (42, 84);
 CREATE TABLE test (a INTEGER, b INTEGER);
 INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);
 INSERT INTO integers VALUES (1, 2, 3);
+CREATE TABLE vals AS SELECT * FROM (
+	VALUES (1, 'hello'), (NULL, '2'), (3, NULL)
+) tbl(a, b);
+CREATE TABLE b(i row(t int));
+DROP TABLE IF EXISTS exprtest;
+CREATE TABLE exprtest (a tinyint, b tinyint);
+INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);

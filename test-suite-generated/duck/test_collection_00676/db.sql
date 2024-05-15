@@ -276,3 +276,39 @@ CREATE TABLE Produce AS
 CREATE OR REPLACE TABLE Produce AS
   SELECT 'Kale' as product, 51 as Q1, 23 as Q2, 45 as Q3, 3 as Q4 UNION ALL
   SELECT 'Apple', 77, 0, 25, 2;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+PIVOT Cities USING SUM(Population);
+PIVOT Cities USING SUM(Population) GROUP BY Country;
+PIVOT Cities GROUP BY Country;
+PIVOT Cities ON Year GROUP BY Country;
+PIVOT (SELECT Country, Year FROM Cities) ON Year;
+CREATE TEMP VIEW sales(year, quarter, region, sales) AS
+   VALUES (2018, 1, 'east', 100),
+          (2018, 2, 'east',  20),
+          (2018, 3, 'east',  40),
+          (2018, 4, 'east',  40),
+          (2019, 1, 'east', 120),
+          (2019, 2, 'east', 110),
+          (2019, 3, 'east',  80),
+          (2019, 4, 'east',  60),
+          (2018, 1, 'west', 105),
+          (2018, 2, 'west',  25),
+          (2018, 3, 'west',  45),
+          (2018, 4, 'west',  45),
+          (2019, 1, 'west', 125),
+          (2019, 2, 'west', 115),
+          (2019, 3, 'west',  85),
+          (2019, 4, 'west',  65);
+CREATE OR REPLACE TEMPORARY VIEW sales(location, year, q1, q2, q3, q4) AS
+  VALUES ('Toronto'      , 2020, 100 , 80 , 70, 150),
+         ('San Francisco', 2020, NULL, 20 , 50,  60),
+         ('Toronto'      , 2021, 110 , 90 , 80, 170),
+         ('San Francisco', 2021, 70  , 120, 85, 105);

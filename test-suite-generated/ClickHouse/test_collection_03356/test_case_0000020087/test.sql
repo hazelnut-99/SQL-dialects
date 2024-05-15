@@ -1,1 +1,0 @@
-SELECT bin(toInt256(100000000000)) AS res;

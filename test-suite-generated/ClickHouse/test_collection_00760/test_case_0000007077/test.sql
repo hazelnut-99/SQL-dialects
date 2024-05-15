@@ -1,1 +1,0 @@
-SELECT halfMD5(123456);

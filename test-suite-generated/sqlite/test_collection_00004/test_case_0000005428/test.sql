@@ -1,6 +1,0 @@
-SELECT a
-  FROM t1
- WHERE d NOT BETWEEN 110 AND 150
-    OR (a>b-2 AND a<b+2)
-    OR e+d BETWEEN a+b-10 AND c+130
- ORDER BY 1;

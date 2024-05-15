@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS local_01099_a;
-DROP TABLE IF EXISTS local_01099_b;
-DROP TABLE IF EXISTS distributed_01099_a;
-DROP TABLE IF EXISTS distributed_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
+DROP TABLE IF EXISTS fromModifiedJulianDay_test;
+CREATE TABLE fromModifiedJulianDay_test (d Int32) ENGINE = Memory;
+INSERT INTO fromModifiedJulianDay_test VALUES (-1), (0), (59154);

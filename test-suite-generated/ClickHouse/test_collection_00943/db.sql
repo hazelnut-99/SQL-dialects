@@ -1,18 +1,4 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE IF NOT EXISTS defaults
-(
-    vals String
-) ENGINE = Memory;
-insert into defaults values ('ba'), ('aa'), ('ba'), ('b'), ('ba'), ('aa');
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE IF NOT EXISTS defaults
-(
-     vals UInt64
-) ENGINE = Memory;
-insert into defaults values (0), (0), (1), (0), (0), (0), (1), (2), (3), (5), (3), (1), (1), (4), (5), (2);
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE IF NOT EXISTS defaults
-(
-    vals UInt32
-) ENGINE = Memory;
-insert into defaults values (0), (0), (1), (0), (0), (0), (1), (2), (3), (5), (3), (1), (1), (4), (5), (2);
+DROP TABLE IF EXISTS bloom_filter_not_has;
+CREATE TABLE bloom_filter_not_has (ary Array(LowCardinality(Nullable(String))), d Date, INDEX idx_ary ary TYPE bloom_filter(0.01) GRANULARITY 1024) ENGINE = MergeTree() PARTITION BY d ORDER BY d;
+INSERT INTO bloom_filter_not_has VALUES ([], '2020-02-27') (['o','a'], '2020-02-27') (['e','a','b'], '2020-02-27');
+INSERT INTO bloom_filter_not_has VALUES (['o','a','b','c'], '2020-02-27') (['e','a','b','c','d'], '2020-02-27');

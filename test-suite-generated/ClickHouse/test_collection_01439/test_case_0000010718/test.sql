@@ -1,1 +1,0 @@
-SELECT DISTINCT bitXor(materialize(toFixedString('abcdef', 6)), toFixedString('\x00\x01\x02\x03\x04\x05', 6)) FROM numbers(10);

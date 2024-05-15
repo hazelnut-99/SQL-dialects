@@ -1,0 +1,1 @@
+SELECT '-- UBSAN bug';

@@ -1,1 +1,0 @@
-SELECT CAST('On', 'Bool');

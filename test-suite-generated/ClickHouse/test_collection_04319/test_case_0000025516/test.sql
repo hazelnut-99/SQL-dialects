@@ -1,1 +1,0 @@
-SELECT YYYYMMDDToDate(toDecimal64(19700101.1, 5));

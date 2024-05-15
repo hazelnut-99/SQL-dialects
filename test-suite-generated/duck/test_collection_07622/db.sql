@@ -8,3 +8,7 @@ BEGIN TRANSACTION;
 UPDATE test SET a=9 WHERE a=5;
 UPDATE test SET a=a+1;
 UPDATE test SET a=7 WHERE a=3;
+UPDATE test SET a=a+1;
+UPDATE test SET a=8 WHERE a=4;
+UPDATE test SET a=a+1;
+COMMIT;

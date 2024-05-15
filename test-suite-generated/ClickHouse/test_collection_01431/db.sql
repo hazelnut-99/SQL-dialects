@@ -1,2 +1,5 @@
-DROP TABLE IF EXISTS test_table;
-CREATE TABLE test_table(a Array(Int8), d Decimal32(4), c Tuple(DateTime64(3), UUID)) ENGINE = GenerateRandom();
+DROP TABLE IF EXISTS execute_on_single_replica_r1 SYNC;
+DROP TABLE IF EXISTS execute_on_single_replica_r2 SYNC;
+SYSTEM STOP REPLICATION QUEUES execute_on_single_replica_r2;
+SYSTEM START REPLICATION QUEUES execute_on_single_replica_r2;
+SYSTEM FLUSH LOGS;

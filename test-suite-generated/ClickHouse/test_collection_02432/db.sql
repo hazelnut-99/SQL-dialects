@@ -1,5 +1,7 @@
-DROP TABLE IF EXISTS 01686_test;
-CREATE TABLE 01686_test (key UInt64, value String) Engine=EmbeddedRocksDB PRIMARY KEY(key);
-INSERT INTO 01686_test SELECT number, format('Hello, world ({})', toString(number)) FROM numbers(10000);
-DETACH TABLE 01686_test SYNC;
-ATTACH TABLE 01686_test;
+CREATE TABLE landing (n Int64) engine=MergeTree order by n;
+CREATE TABLE target  (n Int64) engine=MergeTree order by n;
+CREATE MATERIALIZED VIEW landing_to_target TO target AS
+    SELECT n + throwIf(n == 3333)
+    FROM landing;
+TRUNCATE TABLE landing;
+TRUNCATE TABLE target;

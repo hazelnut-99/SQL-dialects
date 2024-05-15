@@ -1,1 +1,0 @@
-SELECT 'Dictionary cache_dictionary_complex_key_simple_attributes';

@@ -1,10 +1,4 @@
-DROP TABLE IF EXISTS view_no_nulls;
-DROP TABLE IF EXISTS view_nulls;
-CREATE OR REPLACE VIEW view_no_nulls AS
-SELECT * FROM ( SELECT number + 1 AS a, number + 11 AS b FROM numbers(2) ) AS t1
-FULL JOIN ( SELECT number + 2 AS a, number + 22 AS c FROM numbers(2) ) AS t2
-USING a ORDER BY a;
-CREATE OR REPLACE VIEW view_nulls AS
-SELECT * FROM ( SELECT number + 1 AS a, number + 11 AS b FROM numbers(2) ) AS t1
-FULL JOIN ( SELECT number + 2 AS a, number + 22 AS c FROM numbers(2) ) AS t2
-USING a ORDER BY a;
+DROP TABLE IF EXISTS ip_part_test;
+CREATE TABLE ip_part_test ( ipv4 IPv4, ipv6 IPv6 ) ENGINE = MergeTree PARTITION BY ipv4 ORDER BY ipv4 AS SELECT '1.2.3.4', '::ffff:1.2.3.4';
+DROP TABLE IF EXISTS ip_part_test;
+CREATE TABLE ip_part_test ( ipv4 IPv4, ipv6 IPv6 ) ENGINE = MergeTree PARTITION BY ipv6 ORDER BY ipv6 AS SELECT '1.2.3.4', '::ffff:1.2.3.4';

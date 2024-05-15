@@ -81,3 +81,11 @@ CREATE VIEW intlists AS SELECT * FROM (VALUES
 	(5, [9,10,11]),
 	(NULL::INTEGER, [13])
 	) lv(pk, p);
+CREATE VIEW strlists AS SELECT * FROM (VALUES
+	(1, ['a']),
+	(2, [NULL]),
+	(3, []),
+	(4, ['Branta Canadensis', 'c']),
+	(5, ['i','j','k']),
+	(NULL::INTEGER, ['Somateria mollissima'])
+	) lv(pk, p);

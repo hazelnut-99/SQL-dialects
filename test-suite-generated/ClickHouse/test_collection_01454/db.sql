@@ -1,12 +1,3 @@
-DROP TABLE IF EXISTS local_01099_a;
-DROP TABLE IF EXISTS local_01099_b;
-DROP TABLE IF EXISTS distributed_01099_a;
-DROP TABLE IF EXISTS distributed_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
+drop table if exists table_map;
+create table table_map (a Map(String, String)) engine = Memory;
+insert into table_map values ({'name':'zhangsan', 'gender':'male'}), ({'name':'lisi', 'gender':'female'});

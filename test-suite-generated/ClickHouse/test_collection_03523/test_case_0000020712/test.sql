@@ -1,1 +1,0 @@
-SELECT translate('Hello? world.', '.?', '!,');

@@ -1,20 +1,3 @@
-DROP TABLE IF EXISTS table_for_rename;
-CREATE TABLE table_for_rename
-(
-  date Date,
-  key UInt64,
-  value1 String,
-  value2 String,
-  value3 String MATERIALIZED concat(value1, ' + ', value2) 
-)
-ENGINE = MergeTree()
-PARTITION BY date
-ORDER BY key;
-INSERT INTO table_for_rename (date, key, value1, value2) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(9);
-ALTER TABLE table_for_rename RENAME COLUMN value1 TO value4;
-ALTER TABLE table_for_rename RENAME COLUMN value2 TO value5;
-SHOW CREATE TABLE table_for_rename;
-INSERT INTO table_for_rename (date, key, value4, value5) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(10, 10);
-ALTER TABLE table_for_rename RENAME COLUMN value4 TO value1;
-ALTER TABLE table_for_rename RENAME COLUMN value5 TO value2;
-SHOW CREATE TABLE table_for_rename;
+drop table if exists test;
+create table test(dim1 String, dim2 String, projection p1 (select dim1, dim2, count() group by dim1, dim2)) engine MergeTree order by dim1;
+insert into test values ('a', 'x') ('a', 'y') ('b', 'x') ('b', 'y');

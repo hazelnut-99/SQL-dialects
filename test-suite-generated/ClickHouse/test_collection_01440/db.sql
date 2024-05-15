@@ -1,13 +1,11 @@
-DROP TABLE IF EXISTS table_with_complex_default;
-CREATE TABLE table_with_complex_default (i Int8, n UInt8 DEFAULT 42, s String DEFAULT concat('test', CAST(n, 'String'))) ENGINE=TinyLog;
-DROP TABLE IF EXISTS table_with_complex_default;
-DROP TABLE IF EXISTS test_default_using_alias;
-CREATE TABLE test_default_using_alias
-(
-    what String,
-    a String DEFAULT concat(c, ' is great'),
-    b String DEFAULT concat(c, ' is fast'),
-    c String ALIAS concat(what, 'House')
+DROP TABLE IF EXISTS bug_14144;
+CREATE TABLE bug_14144
+( meta_source_req_uuid Nullable(UUID),
+  a Int64,
+  meta_source_type String
 )
-ENGINE = TinyLog;
-INSERT INTO test_default_using_alias(what) VALUES ('Click');
+ENGINE = MergeTree
+ORDER BY a;
+INSERT INTO bug_14144 SELECT cast(toUUID('442d3ff4-842a-45bb-8b02-b616122c0dc6'), 'Nullable(UUID)'), number, 'missing' FROM numbers(1000);
+INSERT INTO bug_14144 SELECT cast(toUUIDOrZero('2fc89389-4728-4b30-9e51-b5bc3ad215f6'), 'Nullable(UUID)'), number, 'missing' FROM numbers(1000);
+INSERT INTO bug_14144 SELECT cast(toUUIDOrNull('05fe40cb-1d0c-45b0-8e60-8e311c2463f1'), 'Nullable(UUID)'), number, 'missing' FROM numbers(1000);

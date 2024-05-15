@@ -1,0 +1,1 @@
+select 'key, arrayJoin(n.x) in (1, 1)';

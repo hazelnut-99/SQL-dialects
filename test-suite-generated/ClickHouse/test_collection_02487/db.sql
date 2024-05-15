@@ -1,16 +1,10 @@
-DROP TABLE IF EXISTS test_tuple;
-CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
-INSERT INTO test_tuple VALUES ((NULL, 1));
-DROP TABLE test_tuple;
-DROP TABLE IF EXISTS test_tuple_nested_in_array;
-CREATE TABLE test_tuple_nested_in_array (value Array(Tuple(UInt8, UInt8))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array VALUES ([(NULL, 2), (3, NULL), (NULL, 4)]);
-DROP TABLE test_tuple_nested_in_array;
-DROP TABLE IF EXISTS test_tuple_nested_in_array_nested_in_tuple;
-CREATE TABLE test_tuple_nested_in_array_nested_in_tuple (value Tuple(UInt8, Array(Tuple(UInt8, UInt8)))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array_nested_in_tuple VALUES ( (NULL, [(NULL, 2), (3, NULL), (NULL, 4)]) );
-DROP TABLE test_tuple_nested_in_array_nested_in_tuple;
-DROP TABLE IF EXISTS test_tuple_nested_in_map;
-CREATE TABLE test_tuple_nested_in_map (value Map(String, Tuple(UInt8, UInt8))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_map VALUES (map('test', (NULL, 1)));
-DROP TABLE test_tuple_nested_in_map;
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+    value String,
+    value_array Array(UInt64),
+    value_array_array Array(Array(UInt64))
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value', [1, 2, 3], [[1, 2, 3]]), (0, 'Value', [4, 5, 6], [[1, 2, 3], [4, 5, 6]]);
+WITH [1, 2, 3] AS constant_array SELECT id, value FROM test_table ARRAY JOIN constant_array AS value;

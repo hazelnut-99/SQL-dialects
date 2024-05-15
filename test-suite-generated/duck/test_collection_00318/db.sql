@@ -139,3 +139,11 @@ drop table sorted_integers;
 create table sorted_integers as select i from integers order by i;
 drop table sorted_integers;
 create table sorted_integers as select i from integers order by i;
+drop table sorted_integers;
+create table sorted_integers as
+with p1 as (
+    select i from integers order by i
+), p2 as (
+    select i + 100000 from integers order by i
+)
+select * from p1 union all select * from p2;

@@ -1,0 +1,1 @@
+select 'create table compression_codec_on_alias with CODEC on ALIAS type';

@@ -1,5 +1,0 @@
-SELECT
-    *
-FROM t1 AS t1
-INNER JOIN t2 AS t2 ON t1.a1 = t2.b1
-INNER JOIN t3 AS t3 ON t1.a1 = t3.c1;

@@ -812,3 +812,47 @@ create table mads as select range r from range(20) union all values (NULL), (NUL
 CREATE TABLE coverage AS SELECT * FROM (VALUES
 	(1), (2), (3), (1)
 	) tbl(r);
+create table tenk1d(ten int4, four int4);
+insert into tenk1d values (0,0), (1,1), (3,3), (2,2), (4,2), (9,1), (4,0), (7,3), (0,2), (2,0), (5,1), (1,3), (3,1), (6,0), (8,0), (9,3), (8,2), (6,2), (7,1), (5,3);
+INSERT INTO empsalary VALUES
+('develop', 10, 5200, '2007-08-01'),
+('sales', 1, 5000, '2006-10-01'),
+('personnel', 5, 3500, '2007-12-10'),
+('sales', 4, 4800, '2007-08-08'),
+('personnel', 2, 3900, '2006-12-23'),
+('develop', 7, 4200, '2008-01-01'),
+('develop', 9, 4500, '2008-01-01'),
+('sales', 3, 4800, '2007-08-01'),
+('develop', 8, 6000, '2006-10-01'),
+('develop', 11, 5200, '2007-08-15');
+WITH t1(x, y) AS (VALUES
+ ( 1, 3 ),
+ ( 2, 2 ),
+ ( 3, 1 )
+)
+SELECT x, y, QUANTILE_DISC(y, 0) OVER (
+	ORDER BY x 
+	ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+	EXCLUDE CURRENT ROW)
+FROM t1;
+WITH t1(x, y) AS (VALUES
+ ( 1, 3 ),
+ ( 2, 2 ),
+ ( 3, 1 )
+)
+SELECT x, y, QUANTILE_DISC(y, 0) OVER (
+	ORDER BY x 
+	ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+	EXCLUDE CURRENT ROW)
+FROM t1;
+explain select first_value(i IGNORE NULLS) over () from integers;
+EXPLAIN
+SELECT i, COUNT(*) OVER() FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER() FROM integers;
+EXPLAIN
+SELECT i, COUNT(*) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;

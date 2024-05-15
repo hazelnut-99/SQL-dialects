@@ -1,1 +1,0 @@
-SELECT arraySort(geohashesInBox(179.0,  -1.0, 180.0,  0.0, 3));

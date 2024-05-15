@@ -1,0 +1,1 @@
+select 'create table, column +type +NOT NULL +DEFAULT';

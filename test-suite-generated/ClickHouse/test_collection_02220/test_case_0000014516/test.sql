@@ -1,1 +1,0 @@
-select * from (select * from numbers(5) order by rand()) order by count() over (order by number desc rows unbounded preceding) desc;

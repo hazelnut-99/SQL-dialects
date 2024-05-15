@@ -1,1 +1,0 @@
-select (1 ? (toInt16(0) as i) : toInt16(1)) = i;

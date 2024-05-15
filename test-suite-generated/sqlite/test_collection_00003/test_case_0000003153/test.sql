@@ -1,4 +1,0 @@
-SELECT x1, c9+b1
-  FROM t1, t9
- WHERE e9 in (968,195,801,944,245)
-   AND 746=a1;

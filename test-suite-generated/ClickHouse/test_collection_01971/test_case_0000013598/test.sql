@@ -1,1 +1,0 @@
-SELECT '01461_query_thread_log_query_start_time_milliseconds_test';

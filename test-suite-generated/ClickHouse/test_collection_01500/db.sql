@@ -1,23 +1,23 @@
-DROP DATABASE IF EXISTS database_for_dict;
-CREATE DATABASE database_for_dict;
-use database_for_dict;
-CREATE TABLE date_table
-(
-  id UInt32,
-  val String,
-  start Date,
-  end Date
-) Engine = Memory();
-INSERT INTO date_table VALUES(1, '1', toDate('2019-01-05'), toDate('2020-01-10'));
-CREATE DICTIONARY somedict
-(
-  id UInt32,
-  val String,
-  start Date,
-  end Date
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'date_table' DB 'database_for_dict'))
-LAYOUT(RANGE_HASHED())
-RANGE (MIN start MAX end)
-LIFETIME(MIN 300 MAX 360);
+DROP TABLE IF EXISTS source_data;
+CREATE TABLE source_data (
+    pk Int32, sk Int32, val UInt32, partition_key UInt32 DEFAULT 1,
+    PRIMARY KEY (pk)
+) ENGINE=MergeTree
+ORDER BY (pk, sk);
+INSERT INTO source_data (pk, sk, val) VALUES (0, 0, 0), (0, 0, 0), (1, 1, 2), (1, 1, 3);
+DROP TABLE IF EXISTS full_duplicates;
+CREATE TABLE full_duplicates  (
+    pk Int32, sk Int32, val UInt32, partition_key UInt32, mat UInt32 MATERIALIZED 12345, alias UInt32 ALIAS 2,
+    PRIMARY KEY (pk)
+) ENGINE=MergeTree
+PARTITION BY (partition_key + 1) -- ensure that column in expression is properly handled when deduplicating. See [1] below.
+ORDER BY (pk, toString(sk * 10)); -- silly order key to ensure that key column is checked even when it is a part of expression. See [1] below.
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE;
+TRUNCATE full_duplicates;
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY *;
+TRUNCATE full_duplicates;
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY * EXCEPT mat;
+TRUNCATE full_duplicates;

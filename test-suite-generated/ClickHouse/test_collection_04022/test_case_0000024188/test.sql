@@ -1,1 +1,0 @@
-select 'test MergeTree undrop';

@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS replicated_with_sampling;
-DROP TABLE IF EXISTS replacing;
-CREATE TABLE replacing(d Date, x UInt32, s String) ENGINE = ReplacingMergeTree ORDER BY x PARTITION BY d;
-INSERT INTO replacing VALUES ('2017-10-23', 1, 'a');
-INSERT INTO replacing VALUES ('2017-10-23', 1, 'b');
-INSERT INTO replacing VALUES ('2017-10-23', 1, 'c');
-OPTIMIZE TABLE replacing PARTITION '2017-10-23' FINAL;
-DROP TABLE replacing;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test(a Array(Int64), b Array(Float64), c Array(UInt64)) ENGINE=Memory;
+INSERT INTO test VALUES ([1, -3, 0, 1], [1.0, 0.4, -0.1], [1, 3, 1]);

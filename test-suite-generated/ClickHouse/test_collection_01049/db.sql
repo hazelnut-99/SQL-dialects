@@ -1,5 +1,12 @@
-DROP TABLE IF EXISTS pk_order;
-CREATE TABLE pk_order(a UInt64, b UInt64, c UInt64, d UInt64) ENGINE=MergeTree() ORDER BY (a, b);
-INSERT INTO pk_order(a, b, c, d) VALUES (1, 1, 101, 1), (1, 2, 102, 1), (1, 3, 103, 1), (1, 4, 104, 1);
-INSERT INTO pk_order(a, b, c, d) VALUES (1, 5, 104, 1), (1, 6, 105, 1), (2, 1, 106, 2), (2, 1, 107, 2);
-INSERT INTO pk_order(a, b, c, d) VALUES (2, 2, 107, 2), (2, 3, 108, 2), (2, 4, 109, 2);
+DROP TABLE IF EXISTS test_table;
+DROP TABLE IF EXISTS numbers;
+DROP TABLE IF EXISTS test_mv;
+DROP TABLE IF EXISTS src;
+DROP TABLE IF EXISTS dst;
+DROP TABLE IF EXISTS mv;
+DROP TABLE IF EXISTS dist;
+CREATE TABLE test_table (key UInt32, value Decimal(16, 6)) ENGINE = SummingMergeTree() ORDER BY key;
+CREATE TABLE numbers (number UInt64) ENGINE=Memory;
+CREATE MATERIALIZED VIEW test_mv TO test_table (number UInt64, value Decimal(38, 6))
+AS SELECT number, sum(number) AS value FROM (SELECT *, toDecimal64(number, 6) AS val FROM numbers) GROUP BY number;
+INSERT INTO numbers SELECT * FROM numbers(100000);

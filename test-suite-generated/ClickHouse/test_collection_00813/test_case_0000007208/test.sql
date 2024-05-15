@@ -1,1 +1,0 @@
-select ucase('foo');

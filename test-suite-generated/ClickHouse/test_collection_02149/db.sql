@@ -1,4 +1,8 @@
-drop table if exists dist_01555;
-drop table if exists data_01555;
-create table data_01555 (key Int) Engine=Null();
-system stop distributed sends dist_01555;
+DROP TABLE IF EXISTS 02131_rqtable;
+CREATE TABLE 02131_rqtable (x UInt8) ENGINE = MergeTree ORDER BY x;
+INSERT INTO 02131_rqtable VALUES (1), (2), (3), (4);
+DROP ROW POLICY IF EXISTS 02131_filter_1 ON 02131_rqtable;
+DROP ROW POLICY IF EXISTS 02131_filter_2 ON 02131_rqtable;
+DROP ROW POLICY IF EXISTS 02131_filter_3 ON 02131_rqtable;
+DROP ROW POLICY IF EXISTS 02131_filter_4 ON 02131_rqtable;
+DROP ROW POLICY IF EXISTS 02131_filter_5 ON 02131_rqtable;

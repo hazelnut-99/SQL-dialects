@@ -257,3 +257,4 @@ create table tbl_1 (a decimal(18,1), b decimal(18,1));
 insert into tbl_1 values (1,NULL),(2,3),(NULL,NULL);
 create table tbl_2 (b decimal(18,1));
 insert into tbl_2 values (1),(2),(NULL);
+explain select a,tbl_2.b from tbl_1 inner join tbl_2 on (a IS NOT DISTINCT FROM tbl_2.b);

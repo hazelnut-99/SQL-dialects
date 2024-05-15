@@ -1,1 +1,0 @@
-SELECT '-- Inserted part --';

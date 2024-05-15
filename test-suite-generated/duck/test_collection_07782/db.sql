@@ -825,3 +825,50 @@ INSERT INTO empsalary VALUES
 ('sales', 3, 4800, '2007-08-01'),
 ('develop', 8, 6000, '2006-10-01'),
 ('develop', 11, 5200, '2007-08-15');
+WITH t1(x, y) AS (VALUES
+ ( 1, 3 ),
+ ( 2, 2 ),
+ ( 3, 1 )
+)
+SELECT x, y, QUANTILE_DISC(y, 0) OVER (
+	ORDER BY x 
+	ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+	EXCLUDE CURRENT ROW)
+FROM t1;
+WITH t1(x, y) AS (VALUES
+ ( 1, 3 ),
+ ( 2, 2 ),
+ ( 3, 1 )
+)
+SELECT x, y, QUANTILE_DISC(y, 0) OVER (
+	ORDER BY x 
+	ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+	EXCLUDE CURRENT ROW)
+FROM t1;
+explain select first_value(i IGNORE NULLS) over () from integers;
+EXPLAIN
+SELECT i, COUNT(*) OVER() FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER() FROM integers;
+EXPLAIN
+SELECT i, COUNT(*) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT SUM(s) FROM (
+	SELECT SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) s
+	FROM range(5000) tbl(i)
+);
+explain select first_value(i IGNORE NULLS) over () from integers;
+explain select first_value(i) over (), last_value(i) over () from integers;
+explain select last_value(i) over (), first_value(i) over () from integers;
+CREATE TABLE v1(id bigint);
+CREATE TABLE v2(id bigint);
+INSERT INTO v1 VALUES (11),  (12),  (13);
+INSERT INTO v2 VALUES (21),  (22);
+CREATE VIEW vertices_view AS
+  SELECT * FROM v1
+  UNION ALL
+  SELECT * FROM v2;

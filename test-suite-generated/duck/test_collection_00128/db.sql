@@ -213,3 +213,4 @@ CREATE MACRO f(x := NULL) AS (
 	x
 );
 create table tbl as select 42 i;
+create table t as select 41 a;

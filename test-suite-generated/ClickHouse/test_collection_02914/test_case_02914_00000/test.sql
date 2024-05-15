@@ -1,0 +1,1 @@
+SELECT DISTINCT x FROM tab_v ORDER BY x;

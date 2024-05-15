@@ -4072,3 +4072,25 @@ DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
 DROP TABLE temp_table;
 CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
 DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
+DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
+DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LIMIT 1;
+DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
+DROP TABLE temp_table;
+CREATE TABLE tbl (
+	u_2 UNION("string" VARCHAR, "bool" BOOLEAN),
+	u_1 UNION("string" VARCHAR),
+	i INTEGER,
+	u_list UNION("int" INTEGER, "list" INTEGER[], "bool" BOOLEAN));
+INSERT INTO tbl VALUES
+	('hello', 'world', 42, [1, 2, 3]),
+	(NULL, NULL, NULL, NULL),
+	(true, NULL, 44, 45),
+	(false, 'wazzup', false, [1]);
+CREATE INDEX idx_i ON tbl (i);
+DROP INDEX idx_i;

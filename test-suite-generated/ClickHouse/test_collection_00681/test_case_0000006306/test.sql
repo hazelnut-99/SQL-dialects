@@ -1,1 +1,0 @@
-SELECT toDecimal64(-12345.6789, 4) AS x, roundBankers(x), roundBankers(x, 1), roundBankers(x, 2), roundBankers(x, 3), roundBankers(x, 4), roundBankers(x, 5);

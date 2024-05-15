@@ -1,1 +1,0 @@
-select 'create replica 2 and check deduplication';

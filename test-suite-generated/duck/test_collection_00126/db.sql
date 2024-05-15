@@ -209,3 +209,6 @@ GROUP BY ROLLUP(g1, g2) HAVING cnt >= hcnt order by g1, g2;
 CREATE MACRO car_pool_groups(g1, g2, hcnt:=1) AS
 TABLE SELECT g1, g2, sum(counter) AS cnt  FROM car_pool  
 GROUP BY  (g1, g2) HAVING cnt >= hcnt order by g1, g2;
+CREATE MACRO f(x := NULL) AS (
+	x
+);

@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM (SELECT * FROM range(1000000) tbl(i) UNION ALL SELECT * FROM range(1000000) tbl(i)) tbl(i);

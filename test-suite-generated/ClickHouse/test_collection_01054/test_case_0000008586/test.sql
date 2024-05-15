@@ -1,7 +1,0 @@
-SELECT
-    toDate('2016-12-21') + number AS d, 
-	  toWeek(d, 8) AS week8,
-    toWeek(d, 9) AS week9, 
-    toYearWeek(d, 8) AS yearWeek8,
-    toYearWeek(d, 9) AS yearWeek9
-FROM numbers(21);

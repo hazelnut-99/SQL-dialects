@@ -32,3 +32,19 @@ CREATE TABLE df2 AS
     UNNEST(['K0', 'K2', 'K5']) AS key,
     UNNEST([2, 3, 5]) AS C;
 CREATE TABLE grouped_table AS SELECT  1 id, 42 index1, 84 index2 UNION ALL SELECT 2, 13, 14;
+create or replace table my_table as
+select 'test1' as column1, 1 as column2, 'quack' as column3
+union all
+select 'test2' as column1, 2 as column2, 'quacks' as column3
+union all
+select 'test3' as column1, 3 as column2, 'quacking' as column3;
+prepare v1 as
+select
+	COLUMNS(?)
+from my_table;
+EXECUTE v1('col.*1');
+EXECUTE v1('col.*2');
+EXECUTE v1('col.*3');
+EXECUTE v1(['column1', 'column2']);
+PREPARE v1 AS SELECT POSITION(? in ?);
+EXECUTE v1('e', 'hello world');

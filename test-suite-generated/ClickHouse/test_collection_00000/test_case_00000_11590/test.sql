@@ -1,0 +1,1 @@
+SELECT quantiles(0.5, 1.1754943508222875e-38, 0.0001, -0., 0.0001, -0., 0.0001, 0., 0.5)(now()::DateTime('UTC')) WHERE 0 WITH TOTALS;

@@ -1,8 +1,15 @@
-DROP TABLE IF EXISTS data_01285;
-CREATE TABLE data_01285 (
-    key   Int,
-    value SimpleAggregateFunction(max, Nullable(Int)),
-    INDEX value_idx assumeNotNull(value) TYPE minmax GRANULARITY 1
-)
-ENGINE=AggregatingMergeTree()
-ORDER BY key;
+DROP TABLE IF EXISTS test_tuple;
+CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
+INSERT INTO test_tuple VALUES ((NULL, 1));
+DROP TABLE test_tuple;
+DROP TABLE IF EXISTS test_tuple_nested_in_array;
+CREATE TABLE test_tuple_nested_in_array (value Array(Tuple(UInt8, UInt8))) ENGINE=TinyLog;
+INSERT INTO test_tuple_nested_in_array VALUES ([(NULL, 2), (3, NULL), (NULL, 4)]);
+DROP TABLE test_tuple_nested_in_array;
+DROP TABLE IF EXISTS test_tuple_nested_in_array_nested_in_tuple;
+CREATE TABLE test_tuple_nested_in_array_nested_in_tuple (value Tuple(UInt8, Array(Tuple(UInt8, UInt8)))) ENGINE=TinyLog;
+INSERT INTO test_tuple_nested_in_array_nested_in_tuple VALUES ( (NULL, [(NULL, 2), (3, NULL), (NULL, 4)]) );
+DROP TABLE test_tuple_nested_in_array_nested_in_tuple;
+DROP TABLE IF EXISTS test_tuple_nested_in_map;
+CREATE TABLE test_tuple_nested_in_map (value Map(String, Tuple(UInt8, UInt8))) ENGINE=TinyLog;
+INSERT INTO test_tuple_nested_in_map VALUES (map('test', (NULL, 1)));

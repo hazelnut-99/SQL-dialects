@@ -1,1 +1,0 @@
-select 'Constant column';

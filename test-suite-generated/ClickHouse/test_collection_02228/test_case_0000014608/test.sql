@@ -1,1 +1,0 @@
-select countMatchesCaseInsensitive('oooo', 'Oo');

@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS file;
-CREATE TABLE file (s String, n UInt32) ENGINE = File(CSVWithNames);
-INSERT INTO file VALUES ('hello', 1), ('world', 2);
+DROP TABLE IF EXISTS mt;
+CREATE TABLE mt(a Int32, timestamp DateTime) ENGINE=MergeTree ORDER BY tuple();
+DROP TABLE IF EXISTS wv SYNC;
+DROP TABLE IF EXISTS wv SYNC;

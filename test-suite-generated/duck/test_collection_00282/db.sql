@@ -41,3 +41,6 @@ insert into test values (100), (25), (75), (50);
 drop table test;
 create table test (i smallint);
 insert into test values (10000), (2500), (7500), (5000);
+drop table test;
+create table test (i usmallint);
+insert into test values (10000), (2500), (7500), (5000);

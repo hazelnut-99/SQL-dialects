@@ -1,3 +1,5 @@
-DROP TABLE IF EXISTS t_map_null;
-CREATE TABLE t_map_null (a Map(String, String), b String) engine = MergeTree() ORDER BY a;
-INSERT INTO t_map_null VALUES (map('a', 'b', 'c', 'd'), 'foo');
+SYSTEM DROP QUERY CACHE;
+DROP TABLE IF EXISTS t;
+CREATE TABLE t(c String) ENGINE=MergeTree ORDER BY c;
+OPTIMIZE TABLE t FINAL;
+SYSTEM DROP QUERY CACHE;

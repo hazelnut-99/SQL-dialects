@@ -1,1 +1,0 @@
-SELECT 'not optimized (smoke)';

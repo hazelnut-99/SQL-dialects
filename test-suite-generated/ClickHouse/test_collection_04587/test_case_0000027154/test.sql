@@ -1,1 +1,0 @@
-SELECT toDateTime('2024-04-25 01:02:03');

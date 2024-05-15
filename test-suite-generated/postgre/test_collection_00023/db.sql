@@ -79,3 +79,15 @@ INSERT INTO clstr_expression(a, b) SELECT g.i % 42, 'prefix'||g.i FROM generate_
 CREATE INDEX clstr_expression_minus_a ON clstr_expression ((-a), b);
 CREATE INDEX clstr_expression_upper_b ON clstr_expression ((upper(b)));
 BEGIN;
+COMMIT;
+CLUSTER clstr_expression USING clstr_expression_minus_a;
+WITH rows AS
+  (SELECT ctid, lag(a) OVER (ORDER BY ctid) AS la, a FROM clstr_expression)
+SELECT * FROM rows WHERE la < a;
+BEGIN;
+COMMIT;
+CLUSTER clstr_expression USING clstr_expression_upper_b;
+WITH rows AS
+  (SELECT ctid, lag(b) OVER (ORDER BY ctid) AS lb, b FROM clstr_expression)
+SELECT * FROM rows WHERE upper(lb) > upper(b);
+BEGIN;

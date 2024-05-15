@@ -1,5 +1,2 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test(timestamp DateTime) ENGINE = MergeTree ORDER BY timestamp;
-INSERT INTO test VALUES ('2020-10-15 00:00:00');
-INSERT INTO test VALUES ('2020-10-15 12:00:00');
-INSERT INTO test VALUES ('2020-10-16 00:00:00');
+DROP TABLE IF EXISTS test_map;
+CREATE TABLE test_map (value Map(String, String)) ENGINE=TinyLog;

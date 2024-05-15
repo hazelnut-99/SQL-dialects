@@ -434,3 +434,20 @@ INSERT INTO DirectReports VALUES
 (276, '>>>Linda Mitchell', 'Sales Representative', 4, 'Ken Sánchez>Brian Welcker>Stephen Jiang>Linda Mitchell'),
 (286, '>>>Lynn Tsoflias', 'Sales Representative', 4, 'Ken Sánchez>Brian Welcker>Syed Abbas>Lynn Tsoflias'),
 (23, '>>>Mary Gibson', 'Marketing Specialist', 4, 'Ken Sánchez>Brian Welcker>David Bradley>Mary Gibson');
+DROP TABLE t0;
+DROP TABLE test0;
+DROP TABLE test1;
+DROP TABLE test2;
+DROP TABLE test2_1;
+DROP TABLE test3;
+DROP TABLE test3_1;
+DROP TABLE test4;
+DROP TABLE tpch_q1_agg;
+DROP table test5;
+DROP TABLE test6;
+DROP table test7;
+DROP table test8;
+DROP TABLE test9;
+DROP TABLE DirectReports;
+CREATE TABLE test0 (i tinyint[]);
+INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);

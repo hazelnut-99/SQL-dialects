@@ -1,1 +1,0 @@
-select '----HORIZONTAL MERGE TESTS----';

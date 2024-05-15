@@ -66,3 +66,25 @@ CREATE TABLE exprtest (a DECIMAL(38,0), b DECIMAL(38,0));
 INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);
 CREATE TABLE strings(n VARCHAR, s VARCHAR);
 INSERT INTO strings (s) VALUES ('thisisalongstring'), ('thisisalsoalongstring'), ('hello'), ('world'), ('duckduckduckduckduck'), (NULL);
+CREATE TABLE multistrings AS SELECT * FROM
+	(
+		VALUES
+			(NULL, NULL, NULL, NULL, NULL, NULL),
+			('thisisalongstring', NULL, NULL, NULL, NULL, NULL),
+			(NULL, 'thisisalsoalongstring', NULL, NULL, NULL, NULL),
+			(NULL, NULL, 'hello', NULL, NULL, NULL),
+			(NULL, NULL, NULL, 'world', NULL, NULL),
+			(NULL, NULL, NULL, NULL, 'duckduckduckduckduck', NULL),
+			(NULL, NULL, NULL, NULL, NULL, NULL)
+	) tbl(s1, s2, s3, s4, s5);
+CREATE TABLE multilists AS SELECT * FROM
+	(
+		VALUES
+			(NULL, NULL, NULL, NULL, NULL, NULL),
+			([1, 2, 3], NULL, NULL, NULL, NULL, NULL),
+			(NULL, [4, 5, 6, 7, 8, 9], NULL, NULL, NULL, NULL),
+			(NULL, NULL, [], NULL, NULL, NULL),
+			(NULL, NULL, NULL, [10, 11, NULL, 13, 14, 15, 16], NULL, NULL),
+			(NULL, NULL, NULL, NULL, [NULL, 18, NULL, 20], NULL),
+			(NULL, NULL, NULL, NULL, NULL, NULL)
+	) tbl(s1, s2, s3, s4, s5);

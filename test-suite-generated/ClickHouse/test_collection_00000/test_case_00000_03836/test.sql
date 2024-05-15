@@ -1,0 +1,1 @@
+SELECT xxHash32(1, 2, 3) = toUInt32(441104368);

@@ -1,1 +1,0 @@
-SELECT 'IN function';

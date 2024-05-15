@@ -1,8 +1,14 @@
-DROP TABLE IF EXISTS test1;
-CREATE TABLE test1(i int, j int) ENGINE Log;
-INSERT INTO test1 VALUES (1, 2), (3, 4);
-WITH test1 AS (SELECT * FROM numbers(5)) SELECT * FROM test1;
-WITH test1 AS (SELECT i + 1, j + 1 FROM test1) SELECT * FROM test1;
-WITH test1 AS (SELECT i + 1, j + 1 FROM test1) SELECT * FROM (SELECT * FROM test1);
-WITH test1 AS (SELECT i + 1, j + 1 FROM test1) SELECT toInt64(4) i, toInt64(5) j FROM numbers(3) WHERE (i, j) IN test1;
-DROP TABLE IF EXISTS test1;
+DROP TABLE IF EXISTS distributed_tbl;
+DROP TABLE IF EXISTS merge_tree_table;
+CREATE TABLE merge_tree_table
+(
+    Date Date,
+    SomeType UInt8,
+    Alternative1 UInt64,
+    Alternative2 UInt64,
+    User UInt32,
+    CharID UInt64 ALIAS multiIf(SomeType IN (3, 4, 11), 0, SomeType IN (7, 8), Alternative1, Alternative2)
+)
+ENGINE = MergeTree()
+ORDER BY tuple();
+INSERT INTO merge_tree_table VALUES(toDate('2016-03-01'), 4, 0, 0, 1486392);

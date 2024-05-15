@@ -1,28 +1,32 @@
-CREATE TABLE rngfunc2(rngfuncid int, f2 int);
-INSERT INTO rngfunc2 VALUES(1, 11);
-INSERT INTO rngfunc2 VALUES(2, 22);
-INSERT INTO rngfunc2 VALUES(1, 111);
-commit;
-CREATE TABLE rngfunc (rngfuncid int, rngfuncsubid int, rngfuncname text, primary key(rngfuncid,rngfuncsubid));
-INSERT INTO rngfunc VALUES(1,1,'Joe');
-INSERT INTO rngfunc VALUES(1,2,'Ed');
-INSERT INTO rngfunc VALUES(2,1,'Mary');
-DROP TABLE rngfunc;
-CREATE TEMPORARY SEQUENCE rngfunc_rescan_seq1;
-CREATE TEMPORARY SEQUENCE rngfunc_rescan_seq2;
-CREATE TYPE rngfunc_rescan_t AS (i integer, s bigint);
-DROP SEQUENCE rngfunc_rescan_seq1;
-DROP SEQUENCE rngfunc_rescan_seq2;
-CREATE FUNCTION rngfunc(in f1 int, out f2 int)
-AS 'select $1+1' LANGUAGE sql;
-CREATE OR REPLACE FUNCTION rngfunc(in f1 int, out f2 int) RETURNS int
-AS 'select $1+1' LANGUAGE sql;
-CREATE OR REPLACE FUNCTION rngfuncr(in f1 int, out f2 int, out text)
-AS $$select $1-1, $1::text || 'z'$$ LANGUAGE sql;
-CREATE OR REPLACE FUNCTION rngfuncb(in f1 int, inout f2 int, out text)
-AS $$select $2-1, $1::text || 'z'$$ LANGUAGE sql;
-DROP FUNCTION rngfunc(int);
-DROP FUNCTION rngfuncr(in f2 int, out f1 int, out text);
-DROP FUNCTION rngfuncb(in f1 int, inout f2 int);
-CREATE FUNCTION dup (f1 anyelement, f2 out anyelement, f3 out anyarray)
-AS 'select $1, array[$1,$1]' LANGUAGE sql;
+create type complex as (r float8, i float8);
+create temp table fullname (first text, last text);
+create type quad as (c1 complex, c2 complex);
+rollback;
+create temp table compos (f1 int, f2 text);
+create function fcompos1(v compos) returns void as $$
+insert into compos values (v.*);
+$$ language sql;
+create function fcompos2(v compos) returns void as $$
+select fcompos1(v);
+$$ language sql;
+create function fcompos3(v compos) returns void as $$
+select fcompos1(fcompos3.v.*);
+$$ language sql;
+with r(a,b) as materialized
+  (values (1,row(1,2)), (1,row(null,null)), (1,null),
+          (null,row(1,2)), (null,row(null,null)), (null,null) )
+select r, r is null as isnull, r is not null as isnotnull from r;
+with cte(c) as materialized (select row(1, 2)),
+     cte2(c) as (select * from cte)
+select * from cte2 as t
+where (select * from (select c as c1) s
+       where (select (c1).f1 > 0)) is not null;
+create view composite_v as
+with cte(c) as materialized (select row(1, 2)),
+     cte2(c) as (select * from cte)
+select 1 as one from cte2 as t
+where (select * from (select c as c1) s
+       where (select (c1).f1 > 0)) is not null;
+drop view composite_v;
+CREATE TABLE compositetable(a text, b text);
+INSERT INTO compositetable(a, b) VALUES('fa', 'fb');

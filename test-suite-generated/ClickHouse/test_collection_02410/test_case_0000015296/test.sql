@@ -1,1 +1,0 @@
-SELECT reinterpret(toDecimal32(5, 2), 'Decimal32(2)'), reinterpret('1', 'Decimal32(2)');

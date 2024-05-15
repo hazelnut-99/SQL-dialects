@@ -1,1 +1,0 @@
-SELECT count(), sum(toUInt64(ns[1])), max(toUInt64(ns[1])), sum(toUInt64(ns[2]))/10 FROM (SELECT intDiv(number, 100) AS k, groupArray([toString(number), toString(number*10)]) AS ns FROM numbers_mt GROUP BY k) ARRAY JOIN ns;

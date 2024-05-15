@@ -1,0 +1,1 @@
+select toDateTime64('3000-01-01 12:00:00.12345', 0) + interval 0 microsecond;

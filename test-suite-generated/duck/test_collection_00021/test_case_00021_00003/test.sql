@@ -1,0 +1,1 @@
+SELECT i AS j, COUNT(*) AS i FROM integers GROUP BY j HAVING j=1 ORDER BY i;

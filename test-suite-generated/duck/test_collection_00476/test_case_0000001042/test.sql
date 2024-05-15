@@ -1,1 +1,0 @@
-SELECT * FROM test11 ORDER BY s DESC;

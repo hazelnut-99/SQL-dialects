@@ -1,0 +1,1 @@
+SELECT 'Numeric branches';

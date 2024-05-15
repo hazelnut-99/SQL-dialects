@@ -1,1 +1,0 @@
-SELECT * FROM exprtest WHERE b=1 AND COALESCE(a, b)=1 ORDER BY 1;

@@ -10210,3 +10210,11 @@ CREATE TEMPORARY TABLE temp_table AS SELECT i FROM integers ORDER BY RANDOM() LI
 DELETE FROM integers WHERE i=(SELECT * FROM temp_table);
 DROP TABLE temp_table;
 INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES ((select i from storage order by j limit 1));

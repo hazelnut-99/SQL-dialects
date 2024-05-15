@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS fact_cpc_clicks;
-DROP TABLE IF EXISTS dim_model;
-CREATE TABLE fact_cpc_clicks (model_id UInt8) ENGINE = Memory;
-CREATE TABLE dim_model (model_id UInt8) ENGINE = Memory;
-INSERT INTO fact_cpc_clicks VALUES (1);
-INSERT INTO dim_model VALUES (1);
+DROP TABLE IF EXISTS array_of_tuples;
+CREATE TABLE array_of_tuples 
+(
+    f Array(Tuple(Float64, Float64)), 
+    s Array(Tuple(UInt8, UInt16, UInt32))
+) ENGINE = Memory;
+INSERT INTO array_of_tuples values ([(1, 2), (2, 3), (3, 4)], array(tuple(1, 2, 3), tuple(2, 3, 4))), (array((1.0, 2.0)), [tuple(4, 3, 1)]);

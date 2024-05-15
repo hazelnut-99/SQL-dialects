@@ -1,0 +1,4 @@
+SELECT d-e
+  FROM t1
+ WHERE c>d
+   AND d NOT BETWEEN 110 AND 150;

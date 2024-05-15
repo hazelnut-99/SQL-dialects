@@ -1,1 +1,0 @@
-select multiFuzzyMatchAnyIndex(materialize('string'), 1, materialize(['zorro$', '^tring', 'ip$', 'how.*', 'it{2}', 'works']));

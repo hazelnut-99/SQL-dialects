@@ -1,3 +1,7 @@
-DROP TABLE IF EXISTS t;
-CREATE TABLE t (item_id UInt64, price_sold Float32, date Date) ENGINE MergeTree ORDER BY item_id;
-INSERT INTO t VALUES (1, 100, '1970-01-01'), (1, 200, '1970-01-02');
+DROP TABLE IF EXISTS replacing_merge_tree;
+CREATE TABLE replacing_merge_tree (key UInt32, date Datetime) ENGINE=ReplacingMergeTree() PARTITION BY date ORDER BY key;
+INSERT INTO replacing_merge_tree VALUES (1, '2020-01-01'), (2, '2020-01-02'), (1, '2020-01-01'), (2, '2020-01-02');
+DROP TABLE replacing_merge_tree;
+DROP TABLE IF EXISTS collapsing_merge_tree;
+CREATE TABLE collapsing_merge_tree (key UInt32, sign Int8, date Datetime) ENGINE=CollapsingMergeTree(sign) PARTITION BY date ORDER BY key;
+INSERT INTO collapsing_merge_tree VALUES (1, 1, '2020-01-01'), (2, 1, '2020-01-02'), (1, -1, '2020-01-01'), (2, -1, '2020-01-02'), (1, 1, '2020-01-01');

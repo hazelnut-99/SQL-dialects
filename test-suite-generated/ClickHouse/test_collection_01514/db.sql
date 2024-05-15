@@ -1,10 +1,50 @@
-DROP TABLE IF EXISTS t1;
-DROP TABLE IF EXISTS t2;
-DROP TABLE IF EXISTS t3;
-DROP TABLE IF EXISTS view1;
-CREATE TABLE t1 (id UInt32, value1 String) ENGINE MergeTree() ORDER BY id;
-CREATE TABLE t2 (id UInt32, value2 String) ENGINE MergeTree() ORDER BY id;
-CREATE TABLE t3 (id UInt32, value3 String) ENGINE MergeTree() ORDER BY id;
-INSERT INTO t1 (id, value1) VALUES (1, 'val11');
-INSERT INTO t2 (id, value2) VALUES (1, 'val21');
-INSERT INTO t3 (id, value3) VALUES (1, 'val31');
+DROP TABLE IF EXISTS source_data;
+CREATE TABLE source_data (
+    pk Int32, sk Int32, val UInt32, partition_key UInt32 DEFAULT 1,
+    PRIMARY KEY (pk)
+) ENGINE=MergeTree
+ORDER BY (pk, sk);
+INSERT INTO source_data (pk, sk, val) VALUES (0, 0, 0), (0, 0, 0), (1, 1, 2), (1, 1, 3);
+DROP TABLE IF EXISTS full_duplicates;
+CREATE TABLE full_duplicates  (
+    pk Int32, sk Int32, val UInt32, partition_key UInt32, mat UInt32 MATERIALIZED 12345, alias UInt32 ALIAS 2,
+    PRIMARY KEY (pk)
+) ENGINE=MergeTree
+PARTITION BY (partition_key + 1) -- ensure that column in expression is properly handled when deduplicating. See [1] below.
+ORDER BY (pk, toString(sk * 10)); -- silly order key to ensure that key column is checked even when it is a part of expression. See [1] below.
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE;
+TRUNCATE full_duplicates;
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY *;
+TRUNCATE full_duplicates;
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY * EXCEPT mat;
+TRUNCATE full_duplicates;
+INSERT INTO full_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE full_duplicates FINAL DEDUPLICATE BY pk,sk,val,mat,partition_key;
+TRUNCATE full_duplicates;
+DROP TABLE IF EXISTS partial_duplicates;
+CREATE TABLE partial_duplicates  (
+    pk Int32, sk Int32, val UInt32, partition_key UInt32 DEFAULT 1, mat UInt32 MATERIALIZED rand(), alias UInt32 ALIAS 2,
+    PRIMARY KEY (pk)
+) ENGINE=MergeTree
+ORDER BY (pk, sk);
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE;
+TRUNCATE partial_duplicates;
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE BY pk,sk,val,mat;
+TRUNCATE partial_duplicates;
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE BY *;
+TRUNCATE partial_duplicates;
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE BY * EXCEPT mat;
+TRUNCATE partial_duplicates;
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE BY COLUMNS('.*') EXCEPT mat;
+TRUNCATE partial_duplicates;
+INSERT INTO partial_duplicates SELECT * FROM source_data;
+OPTIMIZE TABLE partial_duplicates FINAL DEDUPLICATE BY pk,sk;
+TRUNCATE partial_duplicates;

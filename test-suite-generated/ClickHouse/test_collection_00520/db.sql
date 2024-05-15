@@ -1,14 +1,2 @@
-DROP TABLE IF EXISTS unsorted;
-DROP TABLE IF EXISTS unsorted_replacing;
-CREATE TABLE unsorted_replacing (x UInt32, s String, v UInt32) ENGINE ReplacingMergeTree(v) ORDER BY tuple();
-INSERT INTO unsorted_replacing VALUES (1, 'a', 5), (5, 'b', 4);
-INSERT INTO unsorted_replacing VALUES (2, 'c', 3), (4, 'd', 2);
-INSERT INTO unsorted_replacing VALUES (3, 'e', 1);
-OPTIMIZE TABLE unsorted_replacing PARTITION tuple() FINAL;
-DROP TABLE unsorted_replacing;
-DROP TABLE IF EXISTS unsorted_collapsing;
-CREATE TABLE unsorted_collapsing (x UInt32, s String, sign Int8) ENGINE CollapsingMergeTree(sign) ORDER BY tuple();
-INSERT INTO unsorted_collapsing VALUES (1, 'a', 1);
-INSERT INTO unsorted_collapsing VALUES (1, 'a', -1), (2, 'b', 1);
-INSERT INTO unsorted_collapsing VALUES (2, 'b', -1), (3, 'c', 1);
-OPTIMIZE TABLE unsorted_collapsing PARTITION tuple() FINAL;
+DROP TABLE IF EXISTS prewhere;
+CREATE TABLE prewhere (x Array(UInt64), y ALIAS x, s String) ENGINE = MergeTree ORDER BY tuple();

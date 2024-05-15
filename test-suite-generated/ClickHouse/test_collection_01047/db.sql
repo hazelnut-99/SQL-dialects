@@ -1,3 +1,14 @@
-DROP TABLE IF EXISTS nullt;
-CREATE TABLE nullt (c1 Nullable(UInt32), c2 Nullable(String))ENGINE = Log;
-INSERT INTO nullt VALUES (1, 'abc'), (2, NULL), (NULL, NULL);
+drop table if exists mt1;
+drop table if exists mt2;
+create table mt1 (n Int64) engine=MergeTree order by n;
+create table mt2 (n Int64) engine=MergeTree order by n;
+insert into mt1 values (1);
+insert into mt2 values (10);
+insert into mt1 values (2);
+insert into mt2 values (20);
+insert into mt1 values (3);
+insert into mt2 values (30);
+insert into mt1 values (4);
+insert into mt2 values (40);
+insert into mt1 values (6);
+insert into mt2 values (60);

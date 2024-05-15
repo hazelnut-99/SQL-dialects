@@ -1,0 +1,9 @@
+SELECT x2,x3,x52,x22,x14,x49,x59
+  FROM t52,t3,t22,t2,t49,t59,t14
+ WHERE a49=b14
+   AND a3=9
+   AND a3=b59
+   AND b52=a59
+   AND b22=a2
+   AND a52=b49
+   AND a14=b2;

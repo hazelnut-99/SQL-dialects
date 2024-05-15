@@ -1,8 +1,12 @@
-DROP TABLE IF EXISTS test_table;
-CREATE TABLE test_table
+CREATE TABLE test_block_mismatch
 (
-    id UInt64,
-
-    value UInt8,
-    value_nullable Nullable(UInt8)
-) ENGINE=TinyLog;
+    a UInt32,
+    b DateTime
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(b)
+ORDER BY (toDate(b), a);
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-01-01 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-02-02 12:12:12'));
+INSERT INTO test_block_mismatch VALUES (1, toDateTime('2023-02-02 12:12:12'));

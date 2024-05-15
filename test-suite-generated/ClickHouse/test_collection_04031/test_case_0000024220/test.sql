@@ -1,1 +1,0 @@
-SELECT 1.2::Decimal(2, 1) IN (1.2::Decimal(60, 30), 3.4::Decimal(60, 30));

@@ -1,1 +1,0 @@
-select c from tbl;

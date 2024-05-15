@@ -1,9 +1,18 @@
-DROP TABLE IF EXISTS a;
-DROP TABLE IF EXISTS j;
-CREATE TABLE a(`id` UInt32, `val` UInt32) ENGINE = Memory;
-CREATE TABLE j(`id` UInt32, `val` UInt8) ENGINE = Join(ANY, LEFT, id);
-INSERT INTO a VALUES (1,1)(2,2)(3,3);
-INSERT INTO j VALUES (2,2)(4,4);
-DROP TABLE a;
-DROP TABLE j;
-CREATE TABLE j (id UInt8, val UInt8) Engine = Join(ALL, INNER, id);
+DROP TABLE IF EXISTS test_log;
+CREATE TABLE test_log
+(
+    `crypto_name` String,
+    `trade_date` Date
+)
+ENGINE = Log;
+INSERT INTO test_log (crypto_name, trade_date) VALUES ('abc', '2021-01-01'), ('def', '2022-02-02');
+TRUNCATE TABLE test_log;
+DROP TABLE IF EXISTS test_log;
+CREATE TABLE test_log
+(
+    `crypto_name` String,
+    `trade_date` Date
+)
+ENGINE = StripeLog;
+INSERT INTO test_log (crypto_name, trade_date) VALUES ('abc', '2021-01-01'), ('def', '2022-02-02');
+TRUNCATE TABLE test_log;

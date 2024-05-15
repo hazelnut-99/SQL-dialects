@@ -1,1 +1,0 @@
-SELECT 1, a FROM test UNION SELECT b AS a, 1 FROM test2 ORDER BY a, 1;

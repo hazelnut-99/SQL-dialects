@@ -1,8 +1,22 @@
-drop table if exists test_in_tuple_1;
-drop table if exists test_in_tuple_2;
-drop table if exists test_in_tuple;
-create table test_in_tuple_1 (key Int32, key_2 Int32, x Array(Int32), y Array(Int32)) engine = MergeTree order by (key, key_2);
-create table test_in_tuple_2 (key Int32, key_2 Int32, x Array(Int32), y Array(Int32)) engine = MergeTree order by (key, key_2);
-create table test_in_tuple as test_in_tuple_1 engine = Merge(currentDatabase(), '^test_in_tuple_[0-9]+$');
-insert into test_in_tuple_1 values (1, 1, [1, 2], [1, 2]);
-insert into test_in_tuple_2 values (2, 1, [1, 2], [1, 2]);
+DROP TABLE IF EXISTS t64;
+CREATE TABLE t64
+(
+    u8 UInt8,
+    t_u8 UInt8 Codec(T64('bit'), LZ4),
+    u16 UInt16,
+    t_u16 UInt16 Codec(T64('bit'), LZ4),
+    u32 UInt32,
+    t_u32 UInt32 Codec(T64('bit'), LZ4),
+    u64 UInt64,
+    t_u64 UInt64 Codec(T64('bit'), LZ4)
+) ENGINE MergeTree() ORDER BY tuple();
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
+INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(8));
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(9));
+INSERT INTO t64 SELECT (intExp2(16) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(10);
+INSERT INTO t64 SELECT (intExp2(16) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(11);
+INSERT INTO t64 SELECT (intExp2(16) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(64);
+INSERT INTO t64 SELECT (intExp2(16) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(65);
+INSERT INTO t64 SELECT (intExp2(16) - 1 + number) AS x, x, x, x, x, x, x, x FROM numbers(65);

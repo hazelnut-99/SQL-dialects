@@ -1,1 +1,0 @@
-SELECT 'Rejects unsupported scalar kinds (only Usearch)';

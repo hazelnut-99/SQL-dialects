@@ -1,0 +1,1 @@
+SELECT translate('abc', '', '');

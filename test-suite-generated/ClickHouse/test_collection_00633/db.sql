@@ -1,5 +1,2 @@
-drop temporary table if exists test_00670;
-create temporary table test_00670(id int);
-insert into test_00670 values(0);
-truncate temporary table test_00670;
-insert into test_00670 values(0);
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS zero_rows_per_granule;

@@ -1,0 +1,1 @@
+SELECT g, 5=ANY(l) FROM v3 ORDER BY g LIMIT 80%;

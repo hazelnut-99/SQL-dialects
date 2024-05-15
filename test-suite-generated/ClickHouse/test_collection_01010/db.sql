@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS zero_rows_per_granule1;
-DROP TABLE IF EXISTS zero_rows_per_granule2;
+drop table if exists t;
+create table t engine Memory as select * from numbers(2);

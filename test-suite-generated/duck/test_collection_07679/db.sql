@@ -144,3 +144,7 @@ update integers set i=i+1;
 update integers set i=i+1;
 update integers set i=i+1;
 update integers set i=i+1;
+update integers set i=i+1;
+update integers set i=i+1;
+update integers set i=i+1;
+commit;

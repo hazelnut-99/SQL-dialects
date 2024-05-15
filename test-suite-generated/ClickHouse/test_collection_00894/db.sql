@@ -1,9 +1,32 @@
-drop table if exists test1_00863;
-drop table if exists test2_00863;
-drop table if exists test3_00863;
-create table test1_00863 (id UInt64, code String) engine = Memory;
-create table test3_00863 (id UInt64, code String) engine = Memory;
-create table test2_00863 (id UInt64, code String, test1_id UInt64, test3_id UInt64) engine = Memory;
-insert into test1_00863 (id, code) select number, toString(number) FROM numbers(100000);
-insert into test3_00863 (id, code) select number, toString(number) FROM numbers(100000);
-insert into test2_00863 (id, code, test1_id, test3_id) select number, toString(number), number, number FROM numbers(100000);
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+DROP TABLE IF EXISTS v;
+DROP TABLE IF EXISTS lv;
+CREATE TABLE t1 (key Int) Engine=Memory;
+CREATE TABLE t2 AS t1;
+DROP TABLE t2;
+CREATE TABLE t2 Engine=Memory AS t1;
+DROP TABLE t2;
+CREATE TABLE t2 AS t1 Engine=Memory;
+DROP TABLE t2;
+CREATE TABLE t3 AS numbers(10);
+DROP TABLE t3;
+CREATE VIEW v AS SELECT * FROM t1;
+DROP TABLE v;
+DROP DICTIONARY IF EXISTS dict;
+CREATE DICTIONARY dict
+(
+    `key` UInt64,
+    `value` UInt16
+)
+PRIMARY KEY key
+SOURCE(CLICKHOUSE(
+    HOST '127.0.0.1' PORT tcpPort()
+    TABLE 'dict_data' DB concat(currentDatabase(), '_1') USER 'default' PASSWORD ''))
+LIFETIME(MIN 0 MAX 0)
+LAYOUT(SPARSE_HASHED());
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t3;
+DROP DICTIONARY dict;
+CREATE TABLE t1 (x String) ENGINE = Memory AS SELECT 1;

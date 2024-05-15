@@ -1,2 +1,3 @@
-DROP TABLE IF EXISTS t_sparse_full;
-SYSTEM STOP MERGES t_sparse_full;
+DROP TABLE IF EXISTS fuse_tbl;
+CREATE TABLE fuse_tbl(a Nullable(Int32), b Int32) Engine = Log;
+INSERT INTO fuse_tbl SELECT number, number + 1 FROM numbers(1000);

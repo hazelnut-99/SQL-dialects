@@ -1,1 +1,0 @@
-SELECT toTypeName(YYYYMMDDToDate32(19910824));

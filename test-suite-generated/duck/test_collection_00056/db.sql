@@ -37,3 +37,4 @@ COMMIT;
 INSERT INTO a VALUES (1), (2), (3);
 DELETE FROM a USING (values (1)) tbl(i) WHERE a.i=tbl.i;
 DELETE FROM a USING (values (1)) tbl(i);
+INSERT INTO a VALUES (1), (2), (3);

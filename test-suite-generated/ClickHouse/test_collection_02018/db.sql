@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS test1;
-CREATE TABLE test1(i int, j int) ENGINE Log;
-INSERT INTO test1 VALUES (1, 2), (3, 4);
-WITH test1 AS (SELECT * FROM numbers(5)) SELECT * FROM test1;
-WITH test1 AS (SELECT i + 1, j + 1 FROM test1) SELECT * FROM test1;
-WITH test1 AS (SELECT i + 1, j + 1 FROM test1) SELECT * FROM (SELECT * FROM test1);
+DROP TABLE IF EXISTS t_array_index;
+CREATE TABLE t_array_index (n Nested(key String, value String))
+ENGINE = MergeTree ORDER BY n.key;
+INSERT INTO t_array_index VALUES (['a', 'b'], ['c', 'd']);

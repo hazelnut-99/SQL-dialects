@@ -1,1 +1,0 @@
-SELECT * FROM tmp_01683 ORDER BY n;

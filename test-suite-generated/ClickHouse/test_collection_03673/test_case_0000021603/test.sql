@@ -1,1 +1,0 @@
-SELECT quantiles(0.5, 0.9)(c1) FROM VALUES(0::Nullable(UInt8));

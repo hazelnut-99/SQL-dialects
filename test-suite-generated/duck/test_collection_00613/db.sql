@@ -2658,3 +2658,5 @@ INSERT INTO test25 VALUES([{'znGQGrPPR': 1,
     'AqCRjeBJfWwVjdwEEsqsZisL': NULL},
     'uRabSyccPe': 'oeL',
     'XvkQOurJWuaDiZK': []}]);
+drop table test;
+create table test as (select range i from range(100000));

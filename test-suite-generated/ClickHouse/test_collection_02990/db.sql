@@ -1,27 +1,11 @@
-DROP DATABASE IF EXISTS 02015_db;
-CREATE DATABASE 02015_db;
-CREATE TABLE 02015_db.test_table
-(
-    key_column UInt64,
-    data_column_1 UInt64,
-    data_column_2 UInt8
-)
-ENGINE = MergeTree
-ORDER BY key_column;
-INSERT INTO 02015_db.test_table VALUES (0, 0, 0);
-CREATE DICTIONARY 02015_db.test_dictionary
-(
-    key_column UInt64 DEFAULT 0,
-    data_column_1 UInt64 DEFAULT 1,
-    data_column_2 UInt8 DEFAULT 1
-)
-PRIMARY KEY key_column
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(DB '02015_db' TABLE 'test_table'));
-CREATE TABLE 02015_db.test_table_default
-(
-    data_1 DEFAULT dictGetUInt64('02015_db.test_dictionary', 'data_column_1', toUInt64(0)),
-    data_2 DEFAULT dictGet(02015_db.test_dictionary, 'data_column_2', toUInt64(0))
-)
-ENGINE=TinyLog;
-INSERT INTO 02015_db.test_table_default(data_1) VALUES (5);
+desc format(JSONEachRow, '{"obj" : {"a" : 42, "b" : "Hello", "c" : [1,2,3]}}');
+desc format(JSONEachRow, '{"obj" : {"a" : 42, "b" : "Hello", "c" : [1,2,3]}}, {"obj" : {"a" : 43, "b" : "World", "d" : "2020-01-01"}}');
+desc format(JSONEachRow, '{"obj" : {"a" : 42, "b" : "Hello", "c" : [1,2,3]}}, {"obj" : {"a" : 43, "b" : "World", "d" : "2020-01-01"}}, {"obj" : {}}');
+desc format(JSONEachRow, '{"obj" : {"a" : 42, "b" : "Hello", "c" : [1,2,3]}}, {"obj" : {"a" : 43, "b" : "World", "d" : "2020-01-01"}}, {"obj" : {}}, {"obj" : {"d" : "Hello", "b" : "2020-01-01"}}');
+desc format(JSONEachRow, '{"obj" : [{"a" : 42, "b" : "Hello", "c" : [1,2,3]}, {"a" : 43, "b" : "World", "d" : "2020-01-01"}]}, {"obj" : [{}]}');
+desc format(JSONEachRow, '{"obj" : {"nested_obj" : {"a" : 42, "b" : "Hello", "c" : [1,2,3]}}}, {"obj" : {"nested_obj" : {"a" : 43, "b" : "World", "d" : "2020-01-01"}}}, {"obj" : {"nested_obj" : {}}}');
+desc format(JSONEachRow, '{"obj" : {"a" : {"b" : 1}}}, {"obj" : {"a.b" : 2, "a.b.c" : "Hello"}}');
+desc format(JSONEachRow, '{"obj" : {"a" : {}}}, {"obj" : {"a" : {"b" : {"c" : 10}}}}');
+desc format(JSONEachRow, '{"obj" : {"a" : {}}}');
+desc format(JSONEachRow, '{"obj" : {}}');
+desc format(JSONEachRow, '{"obj" : {"a" : [{}, {"b" : null}, {"c" : {"d" : 10}}]}}, {"obj" : {"a" : [{"e" : "Hello", "b" : [1,2,3]}]}}');

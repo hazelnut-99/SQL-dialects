@@ -1,0 +1,1 @@
+SELECT '-- negative tests';

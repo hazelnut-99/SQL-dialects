@@ -1,3 +1,3 @@
-with pow(2,2) as four select pow(four, 2), 2 as two, pow(two, 2);
-with (select pow(two,2)) as four select pow(four, 2), 2 as two, pow(two, 2);
-with 'string' as str select str || '_abc';
+DROP TABLE IF EXISTS startsWith_test;
+CREATE TABLE startsWith_test(S1 String, S2 String, S3 FixedString(2)) ENGINE=Memory;
+INSERT INTO startsWith_test values ('11', '22', '33'), ('a', 'a', 'bb'), ('abc', 'ab', '23');

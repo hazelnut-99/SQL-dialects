@@ -1,1 +1,0 @@
-SELECT * FROM tab ORDER BY id;

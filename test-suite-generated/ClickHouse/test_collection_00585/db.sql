@@ -1,3 +1,27 @@
-drop table if exists funnel_test;
-create table funnel_test (timestamp UInt32, event UInt32) engine=Memory;
-insert into funnel_test values (0,1000),(1,1001),(2,1002),(3,1003),(4,1004),(5,1005),(6,1006),(7,1007),(8,1008);
+DROP TABLE IF EXISTS t64;
+CREATE TABLE t64
+(
+    u8 UInt8,
+    t_u8 UInt8 Codec(T64('bit'), LZ4),
+    u16 UInt16,
+    t_u16 UInt16 Codec(T64('bit'), LZ4),
+    u32 UInt32,
+    t_u32 UInt32 Codec(T64('bit'), LZ4),
+    u64 UInt64,
+    t_u64 UInt64 Codec(T64('bit'), LZ4)
+) ENGINE MergeTree() ORDER BY tuple();
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
+INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(8));
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(9));
+INSERT INTO t64 SELECT (intExp2(16) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(10);
+INSERT INTO t64 SELECT (intExp2(16) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(11);
+INSERT INTO t64 SELECT (intExp2(16) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(64);
+INSERT INTO t64 SELECT (intExp2(16) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(65);
+INSERT INTO t64 SELECT (intExp2(16) - 1 + number) AS x, x, x, x, x, x, x, x FROM numbers(65);
+INSERT INTO t64 SELECT (intExp2(24) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(10);
+INSERT INTO t64 SELECT (intExp2(24) - 10 + number) AS x, x, x, x, x, x, x, x FROM numbers(11);
+INSERT INTO t64 SELECT (intExp2(24) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(128);
+INSERT INTO t64 SELECT (intExp2(24) - 64 + number) AS x, x, x, x, x, x, x, x FROM numbers(129);
+INSERT INTO t64 SELECT (intExp2(24) - 1 + number) AS x, x, x, x, x, x, x, x FROM numbers(129);

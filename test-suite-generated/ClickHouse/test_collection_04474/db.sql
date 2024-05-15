@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS test_table;
-SYSTEM STOP MERGES test_table;

@@ -1,1 +1,0 @@
-SELECT sum(number * -3) + min(2 * number * -3) - max(-1 * -2 * number * -3) FROM numbers(100);

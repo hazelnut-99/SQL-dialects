@@ -1,1 +1,0 @@
-SELECT 'Subqueries FROM section';

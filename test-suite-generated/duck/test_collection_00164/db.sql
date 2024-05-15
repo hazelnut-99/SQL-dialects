@@ -330,3 +330,5 @@ DROP FUNCTION two;
 CREATE TABLE floats (b FLOAT);
 INSERT INTO floats VALUES (0.5);
 CREATE MACRO string_split(a,b) AS a + b;
+CREATE SCHEMA macros;
+CREATE MACRO macros.add_macro(a, b) AS a + b;

@@ -9,3 +9,5 @@ INSERT INTO integers VALUES (1), (2), (3), (4), (5);
 CREATE SEQUENCE seq START 3;
 CREATE SEQUENCE of_seq START 1;
 CREATE OR REPLACE TABLE t AS SELECT range x FROM range(10);
+create table t0(c0 int);
+insert into t0 values (1), (2), (3), (4), (5), (6), (7);

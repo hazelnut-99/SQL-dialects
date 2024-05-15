@@ -1,0 +1,1 @@
+SELECT '-- read from cache';

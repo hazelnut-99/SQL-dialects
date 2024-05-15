@@ -1,1 +1,0 @@
-select '-- distinct with primary key prefix only, order by sorted column';

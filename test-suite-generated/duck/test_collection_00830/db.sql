@@ -54,3 +54,11 @@ LEFT JOIN (
 ) AS Q3J ON (Q3J.Q3P = CTE.CUSTOMER_ID);
 DROP TABLE integers;
 CREATE TABLE integers AS SELECT NULL i, i j FROM range(1000000) tbl(i) UNION ALL SELECT range i, range j FROM range(1000000);
+DROP TABLE integers;
+CREATE TABLE integers AS SELECT NULL i, i j FROM range(1000000) tbl(i) UNION ALL SELECT range i, range j FROM range(1000000);
+DROP TABLE integers;
+CREATE TABLE integers AS SELECT NULL i, i j FROM range(100000) tbl(i) UNION ALL SELECT range i, range j FROM range(100000);
+DROP TABLE integers;
+CREATE TABLE integers AS SELECT NULL i, i j FROM range(100000) tbl(i) UNION ALL SELECT range i, range j FROM range(100000);
+DROP TABLE integers;
+CREATE TABLE integers AS SELECT NULL i, i j FROM range(1000) tbl(i) UNION ALL SELECT range i, range j FROM range(1000);

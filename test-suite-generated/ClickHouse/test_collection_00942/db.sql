@@ -1,12 +1,3 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE IF NOT EXISTS defaults
-(
-    vals String
-) ENGINE = Memory;
-insert into defaults values ('ba'), ('aa'), ('ba'), ('b'), ('ba'), ('aa');
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE IF NOT EXISTS defaults
-(
-     vals UInt64
-) ENGINE = Memory;
-insert into defaults values (0), (0), (1), (0), (0), (0), (1), (2), (3), (5), (3), (1), (1), (4), (5), (2);
+DROP TABLE IF EXISTS t;
+CREATE TABLE t (a Int, b Int, c Int) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO t SELECT number, number * 2, number * 3 FROM numbers(100);

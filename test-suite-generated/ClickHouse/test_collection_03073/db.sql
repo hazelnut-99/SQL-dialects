@@ -1,3 +1,7 @@
-DROP TABLE IF EXISTS t_map_contains;
-CREATE TABLE t_map_contains (m Map(String, UInt32)) ENGINE = Memory;
-INSERT INTO t_map_contains VALUES (map('a', 1, 'b', 2)), (map('c', 3, 'd', 4));
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (str String) ENGINE=MergeTree ORDER BY str;
+INSERT INTO tab VALUES ('abc') ('aäoöuü') ('München');
+DROP TABLE tab;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (puny String) ENGINE=MergeTree ORDER BY puny;
+INSERT INTO tab VALUES ('Also no punycode') ('London-') ('Mnchen-3ya') ('No punycode') ('Rtting-3ya') ('XYZ no punycode');

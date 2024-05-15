@@ -1,14 +1,23 @@
-DROP TABLE IF EXISTS testView;
-DROP TABLE IF EXISTS testTable;
-CREATE TABLE IF NOT EXISTS testTable (
- A LowCardinality(String), -- like voter
- B Int64
-) ENGINE MergeTree()
-ORDER BY (A);
-INSERT INTO testTable VALUES ('A', 1),('B',2),('C',3);
-CREATE VIEW testView AS 
-SELECT
- A as ALow, -- like account
- B
-FROM
-   testTable;
+CREATE DATABASE database_dictionary_test_key_expression;
+CREATE TABLE database_dictionary_test_key_expression.test_for_dictionary (value String) ENGINE=TinyLog;
+INSERT INTO database_dictionary_test_key_expression.test_for_dictionary VALUES ('Test1'), ('Test2'), ('Test3');
+CREATE DICTIONARY database_dictionary_test_key_expression.test_query_log_dictionary_simple
+(
+    `value_id` UInt64 EXPRESSION cityHash64(value),
+    `value` String
+)
+PRIMARY KEY value_id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'test_for_dictionary' DB 'database_dictionary_test_key_expression'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(HASHED());
+DROP DICTIONARY IF EXISTS database_dictionary_test_key_expression.test_query_log_dictionary_simple;
+CREATE DICTIONARY database_dictionary_test_key_expression.test_query_log_dictionary_complex
+(
+    `value_id` UInt64 EXPRESSION cityHash64(value),
+    `value_length` UInt64 EXPRESSION length(value),
+    `value` String
+)
+PRIMARY KEY value_id, value_length
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'test_for_dictionary' DB 'database_dictionary_test_key_expression'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(COMPLEX_KEY_HASHED());

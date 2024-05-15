@@ -1,5 +1,8 @@
-DROP TABLE IF EXISTS t1;
-DROP TABLE IF EXISTS t2;
-DROP TABLE IF EXISTS t3;
-DROP TABLE IF EXISTS t4;
-CREATE TABLE t3 AS remote('127.0.0.1', numbers(100));
+DROP TABLE IF EXISTS tztest;
+CREATE TABLE tztest
+(
+    timeBerlin DateTime('Europe/Berlin'), 
+    timeLA DateTime('America/Los_Angeles')
+)
+ENGINE = Memory;
+INSERT INTO tztest (timeBerlin, timeLA) VALUES ('2019-05-06 12:00:00', '2019-05-06 12:00:00');

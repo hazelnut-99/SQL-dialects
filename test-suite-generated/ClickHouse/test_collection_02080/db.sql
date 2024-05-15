@@ -1,5 +1,2 @@
-drop table if exists tsv;
-create table tsv(a int, b int default 7) engine File(TSV);
-insert into tsv(a) select number from numbers(10000000);
-insert into tsv(a) select number from numbers(10000000);
-insert into tsv(a) select number from numbers(10000000);
+DROP TABLE IF EXISTS spark_bar_test;
+WITH number DIV 50 AS k, toUInt32(number % 50) AS value SELECT k, sparkbar(50, 0, 99)(number, value) FROM numbers(100) GROUP BY k ORDER BY k;

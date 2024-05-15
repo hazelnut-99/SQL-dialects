@@ -1,1 +1,0 @@
-SELECT toYYYYMM(toDateTime('2017-07-21T11:22:33'));

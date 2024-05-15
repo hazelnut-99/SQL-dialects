@@ -1,4 +1,0 @@
-SELECT * FROM test25
-UNION ALL 
-SELECT * FROM test25
-ORDER BY hits;

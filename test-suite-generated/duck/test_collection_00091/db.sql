@@ -88,3 +88,6 @@ DELETE FROM test WHERE i%3=0;
 INSERT INTO test SELECT * FROM generate_series(1000, 1999);
 DELETE FROM test WHERE i%7=0;
 DELETE FROM test WHERE i%3=0;
+INSERT INTO test SELECT 1 FROM generate_series(0, 4000);
+INSERT INTO test SELECT 2 FROM generate_series(0, 4000);
+DELETE FROM test WHERE i=1;

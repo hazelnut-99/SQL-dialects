@@ -1,0 +1,1 @@
+SELECT '-------finalizeAggregation should not be stateful (issue #14847)-------';

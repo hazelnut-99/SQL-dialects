@@ -1,8 +1,3 @@
 DROP TABLE IF EXISTS foo;
-DROP TABLE IF EXISTS foo_merge;
-DROP TABLE IF EXISTS t2;
-CREATE TABLE foo(Id Int32, Val Int32) Engine=MergeTree PARTITION BY Val ORDER BY Id;
-INSERT INTO foo SELECT number, number%5 FROM numbers(100000);
-CREATE TABLE foo_merge as foo ENGINE=Merge(currentDatabase(), '^foo');
-CREATE TABLE t2 (Id Int32, Val Int32, X Int32) Engine=Memory;
-INSERT INTO t2 values (4, 3, 4);
+CREATE TABLE foo (key UInt32, a String, b Int64, c String) ENGINE = TinyLog;
+INSERT INTO foo VALUES (1, 'one', -1, 'een'), (2, 'two', -2, 'twee'), (3, 'three', -3, 'drie'), (4, 'four', -4, 'vier'), (5, 'five', -5, 'vijf');

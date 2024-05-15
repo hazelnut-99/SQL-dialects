@@ -213,3 +213,63 @@ INSERT INTO monthly_sales VALUES
     (2, 4500, 'APR');
 CREATE TYPE unique_months AS ENUM (SELECT DISTINCT month FROM monthly_sales ORDER BY
 	CASE month WHEN 'JAN' THEN 1 WHEN 'FEB' THEN 2 WHEN 'MAR' THEN 3 ELSE 4 END);
+CREATE TYPE not_an_enum AS VARCHAR;
+CREATE TABLE test(i INT, j VARCHAR);
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, 'JAN'),
+    (1, 400, 'JAN'),
+    (2, 4500, 'JAN'),
+    (2, 35000, 'JAN'),
+    (1, 5000, 'FEB'),
+    (1, 3000, 'FEB'),
+    (2, 200, 'FEB'),
+    (2, 90500, 'FEB'),
+    (1, 6000, 'MAR'),
+    (1, 5000, 'MAR'),
+    (2, 2500, 'MAR'),
+    (2, 9500, 'MAR'),
+    (1, 8000, 'APR'),
+    (1, 10000, 'APR'),
+    (2, 800, 'APR'),
+    (2, 4500, 'APR');
+CREATE MACRO pivot_macro(val)
+as TABLE SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount + val) FOR MONTH IN ('JAN', 'FEB', 'MAR', 'APR'))
+      AS p
+  ORDER BY EMPID;
+FROM v1;
+FROM pivot_macro(1);
+FROM v1;
+FROM pivot_macro(1);
+unpivot (select 42 as col1, 'woot' as col2)
+    on col1::VARCHAR, col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on COLUMNS(*)::VARCHAR;
+unpivot (select 42 as col1, 'woot' as col2)
+    on (col1 + 100)::VARCHAR, col2;
+unpivot (select 42 as col1, 'woot' as col2)
+    on (col1 + 100)::VARCHAR AS c, col2;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+pivot cities on (Country='NL') using avg(Population) group by name;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
+;
+CREATE TABLE Produce AS
+  SELECT 'Kale' as product, 51 as sales, 'Q1' as quarter, 2020 as year UNION ALL
+  SELECT 'Kale', 23, 'Q2', 2020 UNION ALL
+  SELECT 'Kale', 45, 'Q3', 2020 UNION ALL
+  SELECT 'Kale', 3, 'Q4', 2020 UNION ALL
+  SELECT 'Kale', 70, 'Q1', 2021 UNION ALL
+  SELECT 'Kale', 85, 'Q2', 2021 UNION ALL
+  SELECT 'Apple', 77, 'Q1', 2020 UNION ALL
+  SELECT 'Apple', 0, 'Q2', 2020 UNION ALL
+  SELECT 'Apple', 1, 'Q1', 2021;

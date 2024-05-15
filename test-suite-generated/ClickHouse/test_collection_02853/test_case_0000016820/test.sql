@@ -1,1 +1,0 @@
-SELECT _database, _table, n FROM merge('01902_db', '^t$') ORDER BY _database, _table, n;

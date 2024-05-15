@@ -1,5 +1,11 @@
-DROP TABLE IF EXISTS test_table;
-CREATE TABLE test_table(a Array(Int8), d Decimal32(4), c Tuple(DateTime64(3), UUID)) ENGINE = GenerateRandom();
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_table_2;
-CREATE TABLE test_table_2(a Array(Int8), d Decimal32(4), c Tuple(DateTime64(3, 'UTC'), UUID)) ENGINE = GenerateRandom(10, 5, 3);
+DROP TABLE IF EXISTS merge_tree_pk SYNC;
+CREATE TABLE merge_tree_pk
+(
+    key UInt64,
+    value String
+)
+ENGINE = ReplacingMergeTree()
+PRIMARY KEY key;
+SHOW CREATE TABLE merge_tree_pk;
+INSERT INTO merge_tree_pk VALUES (1, 'a');
+INSERT INTO merge_tree_pk VALUES (2, 'b');

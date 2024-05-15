@@ -113,3 +113,15 @@ CREATE VIEW r2l3r4l5i4i2l3v AS SELECT * FROM (VALUES
 	(5, {'x': [{'l4': [56], 'i4': 44}, {'l4': [57, 58], 'i4': 45}, {'l4': [59, 60, 61], 'i4': 46}], 'y': ['i','j','k']}),
 	(NULL::INTEGER, {'x': [{'l4': [62], 'i4': 47}], 'y': ['Somateria mollissima']})
 	) lv(pk, p);
+CREATE VIEW longlists AS
+SELECT *
+FROM ((VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(NULL::INTEGER, [13])
+	)
+UNION ALL
+	select 5 as pk, list(i) as p from range(2000) tbl(i)
+) lv(pk, p);

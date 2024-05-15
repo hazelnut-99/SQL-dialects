@@ -1,1 +1,0 @@
-SELECT formatDateTime(toDateTime('2018-01-02 00:33:44'), '%p'), formatDateTime(toDateTime('2018-01-02'), '%p');

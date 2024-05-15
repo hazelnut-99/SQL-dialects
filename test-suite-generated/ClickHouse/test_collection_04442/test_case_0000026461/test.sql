@@ -1,1 +1,0 @@
-SELECT sqidEncode(1::UInt8, 2::UInt16, 3::UInt32, 4::UInt64) AS sqid, sqidDecode(sqid);

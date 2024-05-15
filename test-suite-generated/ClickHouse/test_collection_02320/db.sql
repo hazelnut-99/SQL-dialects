@@ -1,4 +1,2 @@
-DROP TABLE IF EXISTS local;
-DROP TABLE IF EXISTS distributed;
-CREATE TABLE local (x UInt8) ENGINE = Memory;
-TRUNCATE TABLE local;
+drop table if exists test_02250;
+create table test_02250 (x Nullable(UInt32)) engine=Memory();

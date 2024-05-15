@@ -126,3 +126,64 @@ INSERT INTO sales VALUES
     (1, 10000, 'APR', 2020),
     (2, 800, 'APR', 2021),
     (2, 4500, 'APR', 2020);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+PIVOT Cities ON Year IN (SELECT Year FROM Cities ORDER BY Year DESC) USING SUM(Population);
+PIVOT Cities ON Year IN (SELECT YEAR FROM (SELECT Year, SUM(POPULATION) AS popsum FROM Cities GROUP BY Year ORDER BY popsum DESC)) USING SUM(Population);
+PIVOT Cities ON Year IN (SELECT '2010' UNION ALL SELECT '2000' UNION ALL SELECT '2020') USING SUM(Population);
+CREATE TABLE t1(id BIGINT, "Sales (05/19/2020)" BIGINT, "Sales (06/03/2020)" BIGINT, "Sales (10/23/2020)" BIGINT);
+INSERT INTO t1 VALUES(10629465, 23, 47, 99);
+INSERT INTO t1 VALUES(98765432, 10, 99, 33);
+CREATE OR REPLACE TABLE sales(empid INT, amount INT, d DATE);
+INSERT INTO sales VALUES
+    (1, 10000, DATE '2000-01-01'),
+    (1, 400, DATE '2000-01-07'),
+    (2, 4500, DATE '2001-01-21'),
+    (2, 35000, DATE '2001-01-21'),
+    (1, 5000, DATE '2000-02-03'),
+    (1, 3000, DATE '2000-02-07'),
+    (2, 200, DATE '2001-02-05'),
+    (2, 90500, DATE '2001-02-19'),
+    (1, 6000, DATE '2000-03-01'),
+    (1, 5000, DATE '2000-03-09'),
+    (2, 2500, DATE '2001-03-03'),
+    (2, 9500, DATE '2001-03-08');
+PIVOT (SELECT YEAR(d) AS year, MONTH(d) AS month, empid, amount FROM sales) ON YEAR, MONTH USING SUM(AMOUNT) ORDER BY ALL;
+PIVOT (PIVOT (SELECT YEAR(d) AS year, MONTH(d) AS month, empid, amount FROM sales) ON YEAR, MONTH USING SUM(AMOUNT))
+ON empid USING SUM(COALESCE("2000_1",0) + COALESCE("2000_2",0) + COALESCE("2000_3",0) + COALESCE("2001_1",0) + COALESCE("2001_2",0) + COALESCE("2001_3",0));
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, '1-JAN'),
+    (1, 400, '1-JAN'),
+    (2, 4500, '1-JAN'),
+    (2, 35000, '1-JAN'),
+    (1, 5000, '2-FEB'),
+    (1, 3000, '2-FEB'),
+    (2, 200, '2-FEB'),
+    (2, 90500, '2-FEB'),
+    (1, 6000, '3-MAR'),
+    (1, 5000, '3-MAR'),
+    (2, 2500, '3-MAR'),
+    (2, 9500, '3-MAR'),
+    (1, 8000, '4-APR'),
+    (1, 10000, '4-APR'),
+    (2, 800, '4-APR'),
+    (2, 4500, '4-APR');
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT);
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT));
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR') USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH IN ('1-JAN', '2-FEB', '3-MAR') USING SUM(AMOUNT) GROUP BY empid;
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid;
+ALTER TABLE monthly_sales ADD COLUMN status VARCHAR;
+UPDATE monthly_sales SET status=CASE WHEN amount >= 10000 THEN 'important' ELSE 'regular' END;
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT)) ORDER BY ALL;
+PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY empid ORDER BY ALL;
+FROM (PIVOT monthly_sales ON MONTH USING SUM(AMOUNT) GROUP BY status) ORDER BY ALL;

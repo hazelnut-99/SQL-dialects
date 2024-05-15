@@ -1,0 +1,1 @@
+SELECT CAST('1234' AS UInt8);

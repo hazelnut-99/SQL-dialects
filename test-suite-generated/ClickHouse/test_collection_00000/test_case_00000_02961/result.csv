@@ -1,0 +1,9 @@
+LowCardinality(String),123_a,2,
+LowCardinality(String),123_bb,3,123_
+LowCardinality(String),123_,1,123_a
+LowCardinality(String),123_a,2,123_bb
+LowCardinality(String),123_ccc,4,123_ccc
+LowCardinality(String),123_a,2,123_dddd
+LowCardinality(String),123_bb,3,
+LowCardinality(String),123_,1,
+LowCardinality(String),123_dddd,5,

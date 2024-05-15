@@ -21,3 +21,6 @@ DESCRIBE;
 DROP TABLE integers;
 create table t(plant text, dt date, mwh bigint);
 DESCRIBE;
+(DESCRIBE SELECT 42 AS a);
+FROM (SHOW databases) t;
+CREATE TABLE tbl AS SELECT 42 AS a;

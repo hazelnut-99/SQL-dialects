@@ -1,1 +1,0 @@
-SELECT toRelativeSecondNum(toDateTime(1412106600), 'Asia/Istanbul') - toRelativeSecondNum(toDateTime(0), 'Asia/Istanbul');

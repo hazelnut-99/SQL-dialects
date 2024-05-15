@@ -1,1 +1,0 @@
-SELECT 'check NaN or infinite point input';

@@ -1,1 +1,0 @@
-SELECT OCTET_LENGTH('你好，世界');

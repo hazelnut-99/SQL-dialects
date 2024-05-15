@@ -1,3 +1,9 @@
-DROP TABLE IF EXISTS mergetree_00712;
-CREATE TABLE mergetree_00712 (x UInt8, s String) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO mergetree_00712 VALUES (1, 'Hello, world!');
+DROP TABLE IF EXISTS codecTest;
+CREATE TABLE codecTest (
+    key      UInt64,
+    name     String,
+    ref_valueF64 Float64,
+    ref_valueF32 Float32,
+    valueF64 Float64  CODEC(Gorilla),
+    valueF32 Float32  CODEC(Gorilla)
+) Engine = MergeTree ORDER BY key;

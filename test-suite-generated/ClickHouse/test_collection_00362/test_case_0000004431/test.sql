@@ -1,1 +1,0 @@
-SELECT 'polygon with holes';

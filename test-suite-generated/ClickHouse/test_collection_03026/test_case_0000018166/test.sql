@@ -1,1 +1,0 @@
-select accurateCastOrDefault('truex', 'Bool');

@@ -1,24 +1,9 @@
-DROP TABLE IF EXISTS cast;
-CREATE TABLE cast
-(
-    x UInt8,
-    e Enum8
-    (
-        'hello' = 1,
-        'world' = 2
-    )
-    DEFAULT
-    CAST
-    (
-        x
-        AS
-        Enum8
-        (
-            'hello' = 1,
-            'world' = 2
-        )
-    )
-) ENGINE = MergeTree ORDER BY e;
-SHOW CREATE TABLE cast FORMAT TSVRaw;
-DESC TABLE cast;
-INSERT INTO cast (x) VALUES (1);
+DROP TABLE IF EXISTS t;
+DROP TABLE IF EXISTS nt;
+DROP TABLE IF EXISTS ntxy;
+CREATE TABLE t (x String) ENGINE = Log();
+CREATE TABLE nt (x Nullable(String)) ENGINE = Log();
+CREATE TABLE ntxy (x Nullable(String), y Nullable(String)) ENGINE = Log();
+INSERT INTO t (x) VALUES ('id'), ('1');
+INSERT INTO nt (x) VALUES ('id'), (NULL), ('1');
+INSERT INTO ntxy (x, y) VALUES ('id', 'id'), (NULL, NULL), ('1', '1');

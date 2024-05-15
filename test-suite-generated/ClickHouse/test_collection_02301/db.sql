@@ -1,3 +1,3 @@
-insert into table function file("data1622.json", "TSV", "value String") VALUES ('{"a":1}');
-drop table if exists json;
-create table json(a int, b int default 7, c default a + b) engine File(JSONEachRow, 'data1622.json');
+DROP TABLE IF EXISTS broken;
+CREATE TABLE broken (time UInt64) ENGINE = MergeTree PARTITION BY toYYYYMMDD(toDate(time / 1000)) ORDER BY time;
+INSERT INTO broken (time) VALUES (1647353101000), (1647353101001), (1647353101002), (1647353101003);

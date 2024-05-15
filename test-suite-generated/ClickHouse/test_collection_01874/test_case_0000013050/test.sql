@@ -1,1 +1,0 @@
-SELECT FROM_UNIXTIME(toDateTime('2018-01-01 00:33:44'), '%j'), FROM_UNIXTIME(toDate32('2018-01-01'), '%j');

@@ -1,0 +1,1 @@
+SELECT '-- Enum arguments';

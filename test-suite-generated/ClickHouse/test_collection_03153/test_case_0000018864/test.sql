@@ -1,1 +1,0 @@
-SELECT POSITION('Hello', 'll');

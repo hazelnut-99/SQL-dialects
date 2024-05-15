@@ -1,10 +1,62 @@
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_table_2;
-CREATE TABLE test_table (value UInt8, name String) ENGINE = MergeTree() ORDER BY value;
-INSERT INTO test_table VALUES (1, 'a'), (2, 'b'), (3, 'c');
-DROP TABLE IF EXISTS test_table;
-CREATE TABLE test_table (v1 String, v2 UInt8, v3 DEFAULT v2 * 16, v4 UInt8 DEFAULT 8) ENGINE = MergeTree() ORDER BY v2;
-INSERT INTO test_table FORMAT JSONCompactStringsEachRow ["first", "1", "2", "3"] ["second", "2", "3", "6"];
-TRUNCATE TABLE test_table;
-INSERT INTO test_table FORMAT JSONCompactStringsEachRow ["first", "1", "2", "ᴺᵁᴸᴸ"] ["second", "2", "null", "6"];
-TRUNCATE TABLE test_table;
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS test_table_signed_values;
+CREATE TABLE test_table_signed_values
+(
+    id UInt64,
+
+    value1 Int8,
+    value2 Int16,
+    value3 Int32,
+    value4 Int64
+) ENGINE=TinyLog;
+DROP TABLE test_table_signed_values;
+DROP TABLE IF EXISTS test_table_float_values;
+CREATE TABLE test_table_float_values
+(
+    id UInt64,
+
+    value1 Float32,
+    value2 Float64
+) ENGINE=TinyLog;
+DROP TABLE test_table_float_values;
+DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
+CREATE TABLE test_table_nullable_unsigned_values
+(
+    id UInt64,
+
+    value1 Nullable(UInt8),
+    value2 Nullable(UInt16),
+    value3 Nullable(UInt32),
+    value4 Nullable(UInt64)
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_unsigned_values;
+DROP TABLE IF EXISTS test_table_nullable_signed_values;
+CREATE TABLE test_table_nullable_signed_values
+(
+    id UInt64,
+
+    value1 Nullable(Int8),
+    value2 Nullable(Int16),
+    value3 Nullable(Int32),
+    value4 Nullable(Int64)
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_signed_values;
+DROP TABLE IF EXISTS test_table_nullable_float_values;
+CREATE TABLE test_table_nullable_float_values
+(
+    id UInt64,
+
+    value1 Nullable(Float32),
+    value2 Nullable(Float64)
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_float_values;

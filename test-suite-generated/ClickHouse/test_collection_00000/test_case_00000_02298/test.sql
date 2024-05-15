@@ -1,0 +1,1 @@
+SELECT 'eps for complex polygon in grid';

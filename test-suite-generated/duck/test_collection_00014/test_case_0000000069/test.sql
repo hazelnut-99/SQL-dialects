@@ -1,1 +1,0 @@
-SELECT typeof(100::SMALLINT + 1) == 'SMALLINT';

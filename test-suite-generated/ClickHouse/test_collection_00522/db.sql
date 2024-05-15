@@ -1,8 +1,6 @@
-DROP TABLE IF EXISTS partition_and_primary_keys_using_same_expression;
-CREATE TABLE partition_and_primary_keys_using_same_expression(dt DateTime)
-    ENGINE MergeTree PARTITION BY toDate(dt) ORDER BY toDayOfWeek(toDate(dt));
-INSERT INTO partition_and_primary_keys_using_same_expression
-    VALUES ('2018-02-19 12:00:00');
-INSERT INTO partition_and_primary_keys_using_same_expression
-    VALUES ('2018-02-20 12:00:00'), ('2018-02-21 12:00:00');
-ALTER TABLE partition_and_primary_keys_using_same_expression DROP PARTITION '2018-02-20';
+drop table if exists t1_00816;
+drop table if exists t2_00816;
+create table t1_00816 (a Int8, val Float32) engine=Memory();
+create table t2_00816 (a Int8, val Float32) engine=Memory();
+INSERT INTO t1_00816 VALUES (1, 123);
+INSERT INTO t2_00816 VALUES (1, 456);

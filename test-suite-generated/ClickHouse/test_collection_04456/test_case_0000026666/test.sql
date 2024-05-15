@@ -1,1 +1,0 @@
-SELECT '  -- ORDER BY ALL loses its special meaning when used in conjunction with other columns';

@@ -1,28 +1,6 @@
-drop table if exists merge;
-create table merge
-(
-    dt Date,
-    colAlias0 Int32,
-    colAlias1 Int32,
-    col2 Int32,
-    colAlias2 UInt32,
-    col3 Int32,
-    colAlias3 UInt32
-)
-engine = Merge(currentDatabase(), '^alias_');
-drop table if exists alias_1;
-drop table if exists alias_2;
-create table alias_1
-(
-    dt Date,
-    col Int32,
-    colAlias0 UInt32 alias col,
-    colAlias1 UInt32 alias col3 + colAlias0,
-    col2 Int32,
-    colAlias2 Int32 alias colAlias1 + col2 + 10,
-    col3 Int32,
-    colAlias3 Int32 alias colAlias2 + colAlias1 + col3
-)
-engine = MergeTree()
-order by (dt);
-insert into alias_1 (dt, col, col2, col3) values ('2020-02-02', 1, 2, 3);
+DROP TABLE IF EXISTS t_projections_lwd;
+CREATE TABLE t_projections_lwd (a UInt32, b UInt32, PROJECTION p (SELECT * ORDER BY b)) ENGINE = MergeTree ORDER BY a;
+INSERT INTO t_projections_lwd SELECT number, number FROM numbers(100);
+KILL MUTATION WHERE database = currentDatabase() AND table = 't_projections_lwd' SYNC FORMAT Null;
+ALTER TABLE t_projections_lwd DROP projection p;
+DELETE FROM t_projections_lwd WHERE a = 2;

@@ -1,3 +1,5 @@
-DROP TABLE IF EXISTS test_joinGet;
-CREATE TABLE test_joinGet(user_id Nullable(Int32), name String) Engine = Join(ANY, LEFT, user_id);
-INSERT INTO test_joinGet VALUES (2, 'a'), (6, 'b'), (10, 'c'), (null, 'd');
+DROP TABLE IF EXISTS test;
+CREATE TABLE test(timestamp DateTime) ENGINE = MergeTree ORDER BY timestamp;
+INSERT INTO test VALUES ('2020-10-15 00:00:00');
+INSERT INTO test VALUES ('2020-10-15 12:00:00');
+INSERT INTO test VALUES ('2020-10-16 00:00:00');

@@ -168,3 +168,6 @@ CREATE  MACRO xtm(cmp_str) as TABLE SELECT id, name FROM test_tbl  WHERE( name s
 CREATE  MACRO  xt_reg(cmp) as TABLE SELECT * FROM test_tbl WHERE regexp_matches(name ,cmp );
 CREATE MACRO   cmp(a,m) as regexp_matches(a,m) or a similar to m;
 CREATE  MACRO gm(m) as TABLE SELECT * FROM  greek_tbl WHERE cmp(name,m);
+CREATE MACRO xt(a,b) as a+b;
+DROP MACRO TABLE xt;
+CREATE MACRO xt(id, imax) as TABLE SELECT id,name FROM test_tbl WHERE id<=imax;

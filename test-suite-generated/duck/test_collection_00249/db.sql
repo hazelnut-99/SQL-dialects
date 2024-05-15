@@ -52,3 +52,6 @@ EXPLAIN SELECT regexp_matches(s, 'aa') FROM test;
 EXPLAIN SELECT contains(s, 'aa') FROM test;
 EXPLAIN SELECT regexp_matches(s, 'a') FROM test;
 EXPLAIN SELECT contains(s, 'a') FROM test;
+DELETE FROM test;
+INSERT INTO test VALUES ('aaa'), ('a.a'), ('baba'), ('abba'), ('a\.a'), ('a_a');
+explain analyze select regexp_matches(s, 'a.a', 's'), s from test;

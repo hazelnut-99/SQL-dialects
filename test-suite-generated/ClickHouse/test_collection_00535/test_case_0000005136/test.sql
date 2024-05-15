@@ -1,1 +1,0 @@
-SELECT '-------Forbid push down-------';

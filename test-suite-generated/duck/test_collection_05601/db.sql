@@ -10733,3 +10733,12 @@ INSERT INTO uint64_first SELECT range, range, range, 0.456 + range FROM range(50
 CREATE INDEX idx_3 ON uint64_first(id, id2, id3, id4);
 CREATE TABLE int128_point AS SELECT range::INT128 AS id FROM range(5000);
 CREATE INDEX idx_int128_point ON int128_point(id);
+CREATE TABLE uint64_point AS SELECT range::UINT64 AS id FROM range(5000);
+CREATE INDEX idx_uint64_point ON uint64_point(id);
+CREATE TABLE uint32_point AS SELECT range::UINT32 AS id FROM range(5000);
+CREATE INDEX idx_uint32_point ON uint32_point(id);
+CREATE TABLE uint8_point AS SELECT range::UINT8 AS id FROM range(128);
+CREATE INDEX idx_uint8_point ON uint8_point(id);
+CREATE TABLE t0(c0 BOOLEAN, c1 INT);
+CREATE INDEX i0 ON t0(c1, c0);
+INSERT INTO t0(c1) VALUES (0);

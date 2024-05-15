@@ -1,0 +1,1 @@
+SELECT '----- TinyLog engine -----';

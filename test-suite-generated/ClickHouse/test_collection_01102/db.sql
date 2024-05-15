@@ -1,3 +1,19 @@
-DROP TABLE IF EXISTS merge_tree;
-CREATE TABLE merge_tree (x UInt8) ENGINE = MergeTree ORDER BY x;
-INSERT INTO merge_tree SELECT 0 FROM numbers(1000000);
+DROP TABLE IF EXISTS m;
+DROP TABLE IF EXISTS d;
+CREATE TABLE m
+(
+    `v` UInt8
+)
+ENGINE = MergeTree()
+PARTITION BY tuple()
+ORDER BY v;
+INSERT INTO m VALUES (123);
+DROP TABLE m;
+CREATE TABLE m
+(
+    `v` Enum8('a' = 1, 'b' = 2)
+)
+ENGINE = MergeTree()
+PARTITION BY tuple()
+ORDER BY v;
+INSERT INTO m VALUES ('a');

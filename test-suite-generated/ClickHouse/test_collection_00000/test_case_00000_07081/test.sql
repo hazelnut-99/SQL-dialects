@@ -1,0 +1,1 @@
+select countMatches('foobarfoo', 'foo');

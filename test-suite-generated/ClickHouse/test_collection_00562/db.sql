@@ -1,28 +1,15 @@
-DROP DATABASE IF EXISTS truncate_test;
-DROP TABLE IF EXISTS truncate_test_log;
-DROP TABLE IF EXISTS truncate_test_memory;
-DROP TABLE IF EXISTS truncate_test_tiny_log;
-DROP TABLE IF EXISTS truncate_test_stripe_log;
-DROP TABLE IF EXISTS truncate_test_merge_tree;
-DROP TABLE IF EXISTS truncate_test_materialized_view;
-DROP TABLE IF EXISTS truncate_test_materialized_depend;
-CREATE DATABASE truncate_test;
-CREATE TABLE truncate_test_log(id UInt64) ENGINE = Log;
-CREATE TABLE truncate_test_memory(id UInt64) ENGINE = Memory;
-CREATE TABLE truncate_test_tiny_log(id UInt64) ENGINE = TinyLog;
-CREATE TABLE truncate_test_stripe_log(id UInt64) ENGINE = StripeLog;
-CREATE TABLE truncate_test_materialized_depend(p Date, k UInt64) ENGINE = Null;
-INSERT INTO truncate_test_log VALUES(1);
-INSERT INTO truncate_test_memory VALUES(1);
-INSERT INTO truncate_test_tiny_log VALUES(1);
-INSERT INTO truncate_test_stripe_log VALUES(1);
-INSERT INTO truncate_test_materialized_depend VALUES('2000-01-01', 1);
-TRUNCATE TABLE truncate_test_log;
-TRUNCATE TABLE truncate_test_memory;
-TRUNCATE TABLE truncate_test_tiny_log;
-TRUNCATE TABLE truncate_test_stripe_log;
-INSERT INTO truncate_test_log VALUES(1);
-INSERT INTO truncate_test_memory VALUES(1);
-INSERT INTO truncate_test_tiny_log VALUES(1);
-INSERT INTO truncate_test_stripe_log VALUES(1);
-INSERT INTO truncate_test_materialized_depend VALUES('2000-01-01', 1);
+DROP TABLE IF EXISTS t64;
+CREATE TABLE t64
+(
+    u8 UInt8,
+    t_u8 UInt8 Codec(T64, ZSTD),
+    u16 UInt16,
+    t_u16 UInt16 Codec(T64, ZSTD),
+    u32 UInt32,
+    t_u32 UInt32 Codec(T64, ZSTD),
+    u64 UInt64,
+    t_u64 UInt64 Codec(T64, ZSTD)
+) ENGINE MergeTree() ORDER BY tuple();
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
+INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
+INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);

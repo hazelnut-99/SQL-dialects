@@ -1,12 +1,4 @@
-DROP TABLE IF EXISTS data_01269;
-CREATE TABLE data_01269
-(
-    key     Int32,
-    value   Nullable(Int32),
-    alias   UInt8 ALIAS value>0
-)
-ENGINE = MergeTree()
-ORDER BY key;
-INSERT INTO data_01269 VALUES (1, 0);
-ALTER TABLE data_01269 DROP COLUMN alias;
-ALTER TABLE data_01269 ADD COLUMN alias UInt8 ALIAS value>0;
+DROP TABLE IF EXISTS encryption_test;
+CREATE TABLE encryption_test (i Int, s String Codec(AES_128_GCM_SIV)) ENGINE = MergeTree ORDER BY i;
+DROP TABLE encryption_test;
+CREATE TABLE encryption_test (i Int, s String Codec(AES_256_GCM_SIV)) ENGINE = MergeTree ORDER BY i;

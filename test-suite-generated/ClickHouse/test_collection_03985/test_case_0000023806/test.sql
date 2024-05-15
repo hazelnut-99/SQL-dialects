@@ -1,1 +1,0 @@
-SELECT WIDTH_BUCKET(-Inf, 0, 10, 10);

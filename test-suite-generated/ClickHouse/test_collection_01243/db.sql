@@ -1,8 +1,13 @@
-DROP TABLE IF EXISTS sometable;
-CREATE TABLE sometable (
-    date Date,
-    time Int64,
-    value UInt64
-) ENGINE=MergeTree()
-ORDER BY time;
-INSERT INTO sometable (date, time, value) VALUES ('2019-11-08', 1573185600, 100);
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (x UInt8, y UInt8 DEFAULT x + 1) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO test (x) VALUES (1), (2), (3);
+ALTER TABLE test CLEAR COLUMN x;
+DROP TABLE test;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (x UInt8, y UInt8 MATERIALIZED x + 1) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO test (x) VALUES (1), (2), (3);
+ALTER TABLE test CLEAR COLUMN x;
+DROP TABLE test;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (x UInt8, y UInt8 ALIAS x + 1, z String DEFAULT 'Hello') ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO test (x) VALUES (1), (2), (3);

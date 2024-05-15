@@ -212,3 +212,4 @@ GROUP BY  (g1, g2) HAVING cnt >= hcnt order by g1, g2;
 CREATE MACRO f(x := NULL) AS (
 	x
 );
+create table tbl as select 42 i;

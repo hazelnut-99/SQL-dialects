@@ -1,5 +1,0 @@
-SELECT e9, d4+d4, e7
-  FROM t9, t7, t4
- WHERE b9=214
-   AND 847=b4
-   AND (e7=89 OR e7=638 OR 280=e7 OR 234=e7);

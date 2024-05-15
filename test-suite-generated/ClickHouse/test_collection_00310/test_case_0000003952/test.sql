@@ -1,1 +1,0 @@
-SELECT emptyArrayToSingle(arrayMap(x -> nullIf(x, 2), arrayJoin([emptyArrayUInt8(), [1], [2, 3]]))) AS arr;

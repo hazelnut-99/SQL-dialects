@@ -1,12 +1,8 @@
-DROP TABLE IF EXISTS alter_drop_version;
-CREATE TABLE alter_drop_version
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
 (
-    `key` UInt64,
-    `value` String,
-    `ver` Int8
-)
-ENGINE = ReplacingMergeTree(ver)
-ORDER BY key;
-INSERT INTO alter_drop_version VALUES (1, '1', 1);
-DETACH TABLE alter_drop_version;
-ATTACH TABLE alter_drop_version;
+    id UInt64,
+    alias_value_1 ALIAS id + alias_value_2 + 1,
+    alias_value_2 ALIAS id + 5
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0);

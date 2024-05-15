@@ -1,0 +1,2 @@
+"SELECT first_value(number) IGNORE NULLS
+FROM numbers(1)"

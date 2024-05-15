@@ -1,9 +1,5 @@
-DROP TABLE IF EXISTS 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (1), (Null);
-DROP TABLE 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a UInt64) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (0), (1), (2);
-DROP TABLE 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (0), (Null), (1);
+DROP DATABASE IF EXISTS test_buffer;
+CREATE DATABASE test_buffer;
+CREATE TABLE test_buffer.mt (uid UInt64, ts DateTime, val Float64) ENGINE = MergeTree PARTITION BY toDate(ts) ORDER BY (uid, ts);
+CREATE TABLE test_buffer.buf as test_buffer.mt ENGINE = Buffer(test_buffer, mt, 2, 10, 60, 10000, 100000, 1000000, 10000000);
+INSERT INTO test_buffer.buf VALUES (1, '2019-03-01 10:00:00', 0.5), (2, '2019-03-02 10:00:00', 0.15), (1, '2019-03-03 10:00:00', 0.25);

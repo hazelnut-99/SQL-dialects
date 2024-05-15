@@ -1,1 +1,0 @@
-SELECT 'DROP queries and also a cleanup before the test';

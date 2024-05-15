@@ -1,1 +1,0 @@
-SELECT 'Check multiple keys as tuple from a table';

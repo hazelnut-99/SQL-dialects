@@ -1,1 +1,0 @@
-SELECT toDecimal32(12345.6789, 4) AS x, ceil(x), ceil(x, 1), ceil(x, 2), ceil(x, 3), ceil(x, 4), ceil(x, 5);

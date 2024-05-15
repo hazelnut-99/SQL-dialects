@@ -335,3 +335,4 @@ CREATE MACRO macros.add_macro(a, b) AS a + b;
 CREATE MACRO myavg(x) AS SUM(x) / COUNT(x);
 INSERT INTO integers VALUES (21), (41);
 CREATE MACRO weird_avg(x) AS (MIN(x) + MAX(x)) / COUNT(x);
+CREATE MACRO add_default5(a, b := 5) AS a + b;

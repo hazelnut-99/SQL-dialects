@@ -1,1 +1,0 @@
-SELECT 'Dependance of timezones';

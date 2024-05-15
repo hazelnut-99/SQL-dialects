@@ -1,36 +1,11 @@
-DROP TABLE IF EXISTS 02176_test_simple_key_table;
-CREATE TABLE 02176_test_simple_key_table
-(
-    id UInt64,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 02176_test_simple_key_table VALUES (0, 'Value');
-DROP DICTIONARY IF EXISTS 02176_test_simple_key_dictionary;
-CREATE DICTIONARY 02176_test_simple_key_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(TABLE '02176_test_simple_key_table'))
-LAYOUT(DIRECT());
-DROP DICTIONARY 02176_test_simple_key_dictionary;
-DROP TABLE 02176_test_simple_key_table;
-DROP TABLE IF EXISTS 02176_test_complex_key_table;
-CREATE TABLE 02176_test_complex_key_table
-(
-    id UInt64,
-    id_key String,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 02176_test_complex_key_table VALUES (0, '0', 'Value');
-DROP DICTIONARY IF EXISTS 02176_test_complex_key_dictionary;
-CREATE DICTIONARY 02176_test_complex_key_dictionary
-(
-    id UInt64,
-    id_key String,
-    value String
-)
-PRIMARY KEY id, id_key
-SOURCE(CLICKHOUSE(TABLE '02176_test_complex_key_table'))
-LAYOUT(COMPLEX_KEY_DIRECT());
+DROP TABLE IF EXISTS t_nullable_keys_1;
+CREATE TABLE t_nullable_keys_1 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_1 VALUES (1), (1), (NULL);
+DROP TABLE t_nullable_keys_1;
+DROP TABLE IF EXISTS t_nullable_keys_2;
+CREATE TABLE t_nullable_keys_2 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_2 VALUES (NULL), (1), (1);
+DROP TABLE t_nullable_keys_2;
+DROP TABLE IF EXISTS t_nullable_keys_3;
+CREATE TABLE t_nullable_keys_3 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_3 VALUES (NULL), (NULL), (NULL);

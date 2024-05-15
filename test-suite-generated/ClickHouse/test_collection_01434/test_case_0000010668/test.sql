@@ -1,4 +1,0 @@
-SELECT
-toTypeName(d), toTypeName(dt), toTypeName(dtm)
-FROM generateRandom('d Date, dt DateTime(\'UTC\'), dtm DateTime(\'UTC\')')
-LIMIT 1;

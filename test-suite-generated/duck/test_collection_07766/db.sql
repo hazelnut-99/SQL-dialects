@@ -511,3 +511,78 @@ insert into lineitem (values
 	(3608.00, 2, 54630),
 	(41492.00, 2, 55136),
 );
+CREATE TABLE issue7353 (
+    Season VARCHAR,
+    Medal VARCHAR,
+    Sex VARCHAR,
+    Ct INT,
+    Depth INT
+);
+INSERT INTO issue7353 (Season, Medal, Sex, Ct, Depth) VALUES
+    (NULL, NULL, NULL, 271116, 0),
+    ('Summer', NULL, NULL, 222552, 1),
+    ('Winter', NULL, NULL, 48564, 1),
+    ('Summer', 'NA', NULL, 188464, 2),
+    ('Summer', 'Gold', NULL, 11459, 2),
+    ('Winter', 'NA', NULL, 42869, 2),
+    ('Summer', 'Bronze', NULL, 11409, 2),
+    ('Winter', 'Bronze', NULL, 1886, 2),
+    ('Winter', 'Gold', NULL, 1913, 2),
+    ('Winter', 'Silver', NULL, 1896, 2),
+    ('Summer', 'Silver', NULL, 11220, 2),
+    ('Summer', 'NA', 'M', 138463, 3),
+    ('Summer', 'Gold', 'M', 8319, 3),
+    ('Winter', 'NA', 'F', 13268, 3),
+    ('Winter', 'NA', 'M', 29601, 3),
+    ('Summer', 'NA', 'F', 50001, 3),
+    ('Summer', 'Bronze', 'M', 8235, 3),
+    ('Winter', 'Bronze', 'M', 1289, 3),
+    ('Winter', 'Gold', 'M', 1306, 3),
+    ('Winter', 'Silver', 'M', 1289, 3),
+    ('Summer', 'Gold', 'F', 3140, 3),
+    ('Summer', 'Silver', 'M', 8092, 3),
+    ('Summer', 'Bronze', 'F', 3174, 3),
+    ('Summer', 'Silver', 'F', 3128, 3),
+    ('Winter', 'Bronze', 'F', 597, 3),
+    ('Winter', 'Gold', 'F', 607, 3),
+    ('Winter', 'Silver', 'F', 607, 3);
+CREATE TABLE issue2549 AS SELECT * FROM (VALUES
+	(0, 1, 614),
+	(1, 1, null),
+	(2, 1, null),
+	(3, 1, 639),
+	(4, 1, 2027)
+) tbl(id, user_id, order_id);
+CREATE TABLE IF NOT EXISTS issue6635(index INTEGER, data INTEGER);
+insert into issue6635 values 
+	(1,1),
+	(2,2),
+	(3,NULL),
+	(4,NULL),
+	(5,5),
+	(6,NULL),
+	(7,NULL)
+;
+WITH gen AS (
+    SELECT *,
+        ((id * 1327) % 9973) / 10000.0 AS rnd
+    FROM generate_series(1, 10000) tbl(id)
+),
+lvl AS (
+    SELECT id,
+        rnd,
+        CASE
+            WHEN rnd <= 0.1 THEN 'shallow'
+            WHEN rnd >= 0.9 THEN 'high'
+        END AS water_level
+    FROM gen
+)
+SELECT *,
+    LAST_VALUE(water_level IGNORE NULLS) OVER (
+        ORDER BY id
+    ) AS grade
+FROM lvl
+ORDER BY id;
+insert into tenk1 values (8800,0,0,0,0,0,0,800,800,3800,8800,0,1,'MAAAAA','AAAAAA','AAAAxx'), (1891,1,1,3,1,11,91,891,1891,1891,1891,182,183,'TUAAAA','BAAAAA','HHHHxx'), (3420,2,0,0,0,0,20,420,1420,3420,3420,40,41,'OBAAAA','CAAAAA','OOOOxx'), (9850,3,0,2,0,10,50,850,1850,4850,9850,100,101,'WOAAAA','DAAAAA','VVVVxx'), (7164,4,0,0,4,4,64,164,1164,2164,7164,128,129,'OPAAAA','EAAAAA','AAAAxx'), (8009,5,1,1,9,9,9,9,9,3009,8009,18,19,'BWAAAA','FAAAAA','HHHHxx'), (5057,6,1,1,7,17,57,57,1057,57,5057,114,115,'NMAAAA','GAAAAA','OOOOxx'), (6701,7,1,1,1,1,1,701,701,1701,6701,2,3,'TXAAAA','HAAAAA','VVVVxx'), (4321,8,1,1,1,1,21,321,321,4321,4321,42,43,'FKAAAA','IAAAAA','AAAAxx'), (3043,9,1,3,3,3,43,43,1043,3043,3043,86,87,'BNAAAA','JAAAAA','HHHHxx');
+INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');
+CREATE TABLE tbl AS SELECT 42 AS i;

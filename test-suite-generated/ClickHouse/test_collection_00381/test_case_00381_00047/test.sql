@@ -1,0 +1,1 @@
+select 'duplicate column names';

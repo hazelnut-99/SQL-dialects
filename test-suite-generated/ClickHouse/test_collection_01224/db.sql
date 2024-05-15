@@ -1,7 +1,2 @@
-CREATE TABLE test
-(
-    `x` Tuple(UInt64, UInt64)
-)
-ENGINE = MergeTree
-ORDER BY x;
-INSERT INTO test SELECT (number, number) FROM numbers(1000000);
+drop table if exists table_01356_view_threads;
+create view table_01356_view_threads as select number % 10 as g, sum(number) as s from numbers_mt(1000000) group by g;

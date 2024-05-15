@@ -1,4 +1,9 @@
-drop table if exists null_01293;
-drop table if exists dist_01293;
-create table null_01293 (key Int) engine=Null();
-system stop distributed sends dist_01293;
+drop table if exists lc_test;
+CREATE TABLE lc_test
+(
+    `id` LowCardinality(String)
+)
+ENGINE = MergeTree
+PARTITION BY tuple()
+ORDER BY id;
+insert into lc_test values (toString('a'));

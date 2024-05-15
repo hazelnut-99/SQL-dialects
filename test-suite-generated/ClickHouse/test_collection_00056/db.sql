@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS log;
+CREATE TABLE log (x UInt8) ENGINE = StripeLog;
+INSERT INTO log VALUES (0);

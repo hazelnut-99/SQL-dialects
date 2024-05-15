@@ -1,1 +1,0 @@
-SELECT '2010-10-10'::Date AS c;

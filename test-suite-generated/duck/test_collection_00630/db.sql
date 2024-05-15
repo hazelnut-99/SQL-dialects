@@ -2725,3 +2725,6 @@ insert into test values (NULL);
 drop table test;
 create table test as (select range i from range(100000));
 insert into test values (NULL);
+drop table test;
+create table test as (select range i from range(100000));
+insert into test values (NULL);

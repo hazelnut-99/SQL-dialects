@@ -1,0 +1,4 @@
+SELECT a
+  FROM t1
+ WHERE a IS NULL
+    OR b IS NOT NULL;

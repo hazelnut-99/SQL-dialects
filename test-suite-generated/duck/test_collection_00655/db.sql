@@ -20,3 +20,4 @@ FROM integers SELECT DISTINCT i%2 WHERE i>0 ORDER BY ALL;
 FROM integers SELECT i%2 AS g, SUM(i) sum GROUP BY g HAVING sum IS NOT NULL ORDER BY ALL;
 FROM integers JOIN integers i2 USING (i);
 FROM integers i1, integers i2 SELECT COUNT(*);
+INSERT INTO tbl VALUES (1, 200, 10), (2, 100, 20), (3, 200, 0);

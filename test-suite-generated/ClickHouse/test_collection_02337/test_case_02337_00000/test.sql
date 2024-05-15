@@ -1,0 +1,1 @@
+select 'create table, column +AUTO_INCREMENT -type';

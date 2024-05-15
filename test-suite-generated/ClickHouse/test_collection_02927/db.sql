@@ -1,4 +1,5 @@
-WITH toDateTime('2021-08-15 18:57:56', 'Asia/Shanghai') AS dt
-SELECT dt, dateTimeToSnowflake(dt), materialize(dateTimeToSnowflake(dt));
-WITH toDateTime64('2021-08-15 18:57:56.492', 3, 'Asia/Shanghai') AS dt64
-SELECT dt64, dateTime64ToSnowflake(dt64), materialize(dateTime64ToSnowflake(dt64));
+create view test_param_view as
+with {param_test_val:UInt8} as param_test_val
+select param_test_val,
+       arrayCount((a)->(a < param_test_val), t.arr) as cnt1
+from (select [1,2,3,4,5] as arr) t;

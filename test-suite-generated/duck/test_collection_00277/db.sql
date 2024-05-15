@@ -23,3 +23,6 @@ insert into test values (100), (25), (75), (50);
 drop table test;
 create table test (i hugeint);
 insert into test values (100), (25), (75), (50);
+drop table test;
+create table test (i utinyint);
+insert into test values (100), (25), (75), (50);

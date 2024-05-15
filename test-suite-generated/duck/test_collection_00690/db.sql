@@ -1097,3 +1097,175 @@ PREPARE s1 AS INSERT INTO b VALUES ($1);
 EXECUTE s1 (NULL);
 PREPARE s2 AS UPDATE b SET i=$1;
 EXECUTE s2 (NULL);
+PREPARE s3 AS DELETE FROM b WHERE i=$1;
+EXECUTE s3 (NULL);
+PREPARE s1 AS SELECT CAST(? AS INTEGER), CAST(? AS STRING);
+EXECUTE s1(42, 'dpfkg');
+DEALLOCATE s1;
+PREPARE s1 AS SELECT CAST(?1 AS INTEGER), CAST(?2 AS STRING);
+EXECUTE s1(42, 'dpfkg');
+DEALLOCATE s1;
+PREPARE s1 AS SELECT CAST(?2 AS INTEGER), CAST(?1 AS STRING);
+EXECUTE s1('dpfkg', 42);
+DEALLOCATE s1;
+PREPARE v1 AS SELECT * FROM (SELECT $1::INTEGER) sq1;
+EXECUTE v1(42);
+PREPARE v2 AS SELECT * FROM (SELECT $1::INTEGER WHERE 1=0) sq1;
+EXECUTE v2(42);
+PREPARE v3 AS SELECT (SELECT $1::INT+sq1.i) FROM (SELECT 42 AS i) sq1;
+EXECUTE v3(42);
+PREPARE v4 AS SELECT (SELECT (SELECT $1::INT+sq1.i)+$2::INT+sq1.i) FROM (SELECT 42 AS i) sq1;
+EXECUTE v4(20, 20);
+PREPARE v1 AS SELECT list_aggregate(?, 'min');
+EXECUTE v1([1, 2, 3]);
+EXECUTE v1(['hello', 'world']);
+EXECUTE v1(NULL::INT[]);
+PREPARE v2 AS SELECT array_slice(?, 1, 2);
+EXECUTE v2([1, 2, 3]);
+EXECUTE v2('123');
+PREPARE v3 AS SELECT flatten(?);
+EXECUTE v3([[1,2,3],[4,5]]);
+PREPARE v4 AS SELECT list_extract(?, 2);
+EXECUTE v4([1, 2, 3]);
+PREPARE S1 AS SELECT (? / 1) + 1;
+EXECUTE S1(42);
+CREATE table T1(A0 TIMESTAMP, A1 INTEGER, A2 VARCHAR, A3 VARCHAR, A4 INTEGER, A5 DOUBLE);
+PREPARE v1 AS SELECT (SUM(CASE WHEN ((T1.A2 = ($1)::text) AND (T1.A3 = ($1)::text)) THEN T1.A4 ELSE (0)::int END) / ((SUM(CASE WHEN ((T1.A2 = ($1)::text) AND (T1.A3 = ($1)::text)) THEN T1.A4 ELSE (0)::int END) + SUM(CASE WHEN ((T1.A2 = ($2)::text) AND (T1.A3 = ($1)::text)) THEN T1.A4 ELSE (0)::int END)))::float8) AS A00036933 FROM T1;
+PREPARE v1 AS SELECT SUM(?) OVER ();
+EXECUTE v1(2);
+EXECUTE v1(2::HUGEINT);
+EXECUTE v1(0.5);
+PREPARE v1 AS SELECT ?::VARCHAR::INT;
+EXECUTE v1('3');
+prepare v1 as select $2::int;
+prepare v2 as select $1::int;
+prepare v3 as select $1::int where 1=0;
+execute v3(1);
+PREPARE v1 AS SELECT ?;
+EXECUTE v1(27);
+EXECUTE v1('hello world');
+EXECUTE v1([1, 2, 3]);
+PREPARE v2 AS SELECT ?=?;
+EXECUTE v2(27, 27);
+EXECUTE v2('hello world', 'hello mars');
+EXECUTE v2(1, 1.0);
+EXECUTE v2([1, 2, 3], '[1, 2, 3]');
+PREPARE v3 AS SELECT (SELECT ?);
+EXECUTE v3(27);
+EXECUTE v3('hello world');
+EXECUTE v3([1, 2, 3]);
+PREPARE v4 AS SELECT ? IS NULL;
+EXECUTE v4(27);
+EXECUTE v4('hello world');
+EXECUTE v4(NULL);
+PREPARE v5 AS SELECT ? IN (?, ?);
+EXECUTE v5(27, 27, 28);
+EXECUTE v5('hello world', 'hello', 'world');
+EXECUTE v5(NULL, 27, 28);
+PREPARE v6 AS SELECT COUNT(?);
+EXECUTE v6(27);
+EXECUTE v6('hello world');
+EXECUTE v6(NULL);
+PREPARE v7 AS SELECT printf('%s: %d', ?, ?);
+EXECUTE v7('time', 27);
+PREPARE v8 AS SELECT [?];
+EXECUTE v8(27);
+EXECUTE v8('hello world');
+EXECUTE v8(NULL);
+PREPARE v9 AS SELECT [?, NULL];
+EXECUTE v9(27);
+EXECUTE v9('hello world');
+EXECUTE v9(NULL);
+PREPARE v10 AS SELECT {'x': ?};
+EXECUTE v10(27);
+EXECUTE v10('hello world');
+EXECUTE v10(NULL);
+PREPARE v11 AS SELECT {'x': ?, 'y': NULL};
+EXECUTE v11(27);
+EXECUTE v11('hello world');
+EXECUTE v11(NULL);
+PREPARE v12 AS SELECT * FROM (VALUES (?, ?), (?, ?)) tbl(i, j);
+EXECUTE v12(27, 28, 29, 30);
+EXECUTE v12('hello', 'world', 'a', NULL);
+PREPARE v13 AS SELECT CASE WHEN ? THEN ? ELSE ? END;
+EXECUTE v13(1=1, 1, 2);
+EXECUTE v13(1=0, 'hello', 'world');
+PREPARE v14 AS SELECT ?+NULL;
+EXECUTE v14(1);
+PREPARE v15 AS SELECT ?=NULL;
+EXECUTE v15(1);
+PREPARE v16 AS SELECT CASE WHEN (? = 1) AND (? = 2) AND (? = 3) AND ((? IS NULL)) THEN 1.5 ELSE 2.5 END AS a;
+EXECUTE v16(1, 2, 3, NULL);
+EXECUTE v16(1, 2, 4, NULL);
+PREPARE s1 AS SELECT ?::VARCHAR FROM (SELECT ?::INTEGER) tbl(i) WHERE i > ?::INTEGER;
+EXECUTE s1('hello', 2, 1);
+PREPARE s2 AS
+SELECT FIRST(?::VARCHAR)
+FROM (VALUES (?::INTEGER)) tbl(i)
+WHERE i > ?::INTEGER
+GROUP BY i % ?::INTEGER
+HAVING SUM(i)::VARCHAR <> ?::VARCHAR;
+EXECUTE s2('hello', 2, 1, 2, 'blabla');
+EXECUTE s2('hello', 2, 1, 2, '2');
+PREPARE s3 AS
+SELECT LENGTH(?::VARCHAR)
+UNION ALL
+SELECT ?::INTEGER
+ORDER BY 1;
+EXECUTE s3('hello', 3);
+PREPARE s4 AS SELECT ?::INTEGER IN (?::INTEGER, ?::INTEGER, ?::INTEGER);
+EXECUTE s4(1, 2, 3, 1);
+PREPARE s5 AS SELECT ?::INTEGER IN (SELECT i FROM (VALUES (?::INTEGER), (?::INTEGER), (?::INTEGER)) tbl(i));
+EXECUTE s5(1, 2, 3, 1);
+CREATE TABLE stringliterals AS SELECT 1 AS ID, 1::BIGINT AS a1,'value-1' AS a2,'value-1' AS a3,10::BIGINT AS a4;
+PREPARE v1 AS
+SELECT ((SUM(CASE
+             WHEN ((stringliterals.a2 = ($1)::text) AND (stringliterals.a3 = ($1)::text))
+	     THEN stringliterals.a4
+	     ELSE (0)::int
+	     END) +
+	 SUM(CASE
+	     WHEN ((stringliterals.a2 = ($2)::text) AND (stringliterals.a3 = ($2)::text))
+	     THEN stringliterals.a4
+	     ELSE (0)::int
+	     END)) / ((SUM(CASE
+	                   WHEN ((stringliterals.a2 = ($1)::text) AND (stringliterals.a3 = ($1)::text))
+			   THEN stringliterals.a4
+			   ELSE (0)::int
+			   END) +
+                       SUM(CASE
+		           WHEN ((stringliterals.a2 = ($2)::text) AND (stringliterals.a3 = ($2)::text))
+			   THEN stringliterals.a4
+			   ELSE (0)::int
+			   END)))::float8) AS A00000185
+FROM stringliterals;
+EXECUTE v1('value-1', 'value-2');
+CREATE TABLE "user" (name string);
+PREPARE s2965 AS
+WITH temp_first AS (
+    SELECT * FROM "user"
+    WHERE "name" = ?
+), temp_second AS (
+    SELECT * FROM "user"
+    WHERE "name" = ?
+)
+SELECT * FROM temp_second;
+EXECUTE s2965('val1', 'val2');
+DEALLOCATE s2965;
+prepare q123 as select $param, $other_name, $param;
+execute q123(param := 5, other_name := 3);
+prepare q01 as select $1, ?, $2;
+CREATE TABLE a (i TINYINT);
+INSERT INTO a VALUES (42);
+PREPARE s3 AS SELECT * FROM a WHERE i=$1;
+EXECUTE s3(10000);
+EXECUTE s3(42);
+EXECUTE s3(84);
+DEALLOCATE s3;
+PREPARE s1 AS SELECT to_years($1), CAST(list_value($1) AS BIGINT[]);
+EXECUTE s1(1);
+PREPARE s1 AS SELECT CAST($1 AS INTEGER), CAST($2 AS STRING);
+EXECUTE s1(42, 'dpfkg');
+EXECUTE s1(43, 'asdf');
+DEALLOCATE s1;
+DEALLOCATE s2;

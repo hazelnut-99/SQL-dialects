@@ -1,0 +1,14 @@
+SELECT x7,x3,x62,x57,x47,x25,x51,x55,x44,x49,x53,x32
+  FROM t53,t32,t51,t44,t57,t55,t3,t49,t62,t25,t47,t7
+ WHERE a55=b51
+   AND b25=a57
+   AND b7=a32
+   AND b3=a44
+   AND a49=7
+   AND a25=b55
+   AND b44=a7
+   AND a3=b57
+   AND a47=b32
+   AND b53=a51
+   AND b47=a62
+   AND a49=b62;

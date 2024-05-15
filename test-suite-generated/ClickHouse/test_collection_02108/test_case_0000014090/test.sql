@@ -1,1 +1,0 @@
-SELECT '*** emulate normal feature operation - merges are distributed between replicas';

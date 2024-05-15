@@ -1,5 +1,22 @@
-WITH 8.5 AS a, 2.5 AS b SELECT a % b, -a % b, a % -b, -a % -b;
-WITH 10.125 AS a, 2.5 AS b SELECT a % b, -a % b, a % -b, -a % -b;
-WITH 8.5 AS a, 2.5 AS b SELECT mod(a, b), MOD(-a, b), modulo(a, -b), moduloOrZero(-a, -b);
-WITH 8.5 AS a, 2.5 AS b SELECT a MOD b, -a MOD b, a MOD -b, -a MOD -b;
-WITH 10.125 AS a, 2.5 AS b SELECT a MOD b, -a MOD b, a MOD -b, -a MOD -b;
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS test_table_signed_values;
+CREATE TABLE test_table_signed_values
+(
+    id UInt64,
+
+    value1 Int8,
+    value2 Int16,
+    value3 Int32,
+    value4 Int64
+) ENGINE=TinyLog;
+DROP TABLE test_table_signed_values;

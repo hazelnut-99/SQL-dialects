@@ -56,3 +56,15 @@ CREATE TABLE limits_nulls AS (
 	SELECT CASE WHEN z % 9 = 0 THEN NULL ELSE z END AS z
 	FROM limits
 );
+EXPLAIN
+SELECT lhs.i, rhs.i
+FROM wide_nulls lhs, wide_nulls rhs
+WHERE lhs.c3 < rhs.c0
+  AND lhs.c8 IS DISTINCT FROM rhs.c3
+ORDER BY 1, 2;
+CREATE TABLE many_bounds AS (
+	SELECT * FROM (VALUES (2000, 4000)) tbl(lo, hi)
+);
+CREATE TABLE many_values AS (
+	SELECT * from range(10 * 1024) tbl(val)
+);

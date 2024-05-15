@@ -1,0 +1,1 @@
+SELECT 'Policy not applicable';

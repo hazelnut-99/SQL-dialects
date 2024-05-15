@@ -128,3 +128,5 @@ UNION ALL
 CREATE TABLE all_types("varchar" VARCHAR, nested_int_array INTEGER[][]);
 ;
 INSERT INTO all_types VALUES('b',[[], NULL, [], [NULL]]);
+CREATE TABLE nested(nested_int_array INTEGER[][]);
+INSERT INTO nested VALUES([[42, 999]]);

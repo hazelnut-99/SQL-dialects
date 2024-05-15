@@ -1,0 +1,1 @@
+SELECT nowInBlock(NULL) IS NULL;

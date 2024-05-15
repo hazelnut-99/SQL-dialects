@@ -9,3 +9,22 @@ create or replace table tbl (
 );
 insert into tbl VALUES (2,3), (4,5);
 insert into tbl VALUES (DEFAULT, 6) ON CONFLICT (a) DO UPDATE SET b = DEFAULT;
+create or replace table tbl (
+	a integer primary key DEFAULT 5,
+	b integer
+);
+insert into tbl DEFAULT VALUES;
+FROM tbl;
+create or replace table tbl(
+	i integer UNIQUE,
+	j integer,
+	k integer PRIMARY KEY
+);
+insert into tbl values (3,4,2), (5,3,1);
+insert into tbl(k, i) values (2,3), (4,4), (1,8) on conflict (k) do update set j = excluded.j;
+create or replace table tbl (
+	a integer primary key,
+	b integer
+);
+insert into tbl VALUES (1,2), (2,2);
+insert into tbl VALUES (1,3), (3,4) ON CONFLICT (a) DO UPDATE SET b = excluded.b;

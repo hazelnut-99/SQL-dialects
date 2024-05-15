@@ -1,1 +1,0 @@
-SELECT 'MySQL-compatitable mode, with key folding, no length checks, etc.';

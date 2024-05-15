@@ -1,2 +1,15 @@
-DROP TABLE IF EXISTS test_map;
-CREATE TABLE test_map (value Map(String, String)) ENGINE=TinyLog;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test
+(
+  EventDate Date
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION (('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION '2023-10-09';
+INSERT INTO test VALUES(toDate('2023-10-09'));

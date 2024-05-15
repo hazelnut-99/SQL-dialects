@@ -1,1 +1,0 @@
-SELECT col1 FROM test1_00395 ORDER BY col1 ASC;

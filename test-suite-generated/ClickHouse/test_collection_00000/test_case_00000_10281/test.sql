@@ -1,0 +1,1 @@
+SELECT isNullable(materialize(NULL));

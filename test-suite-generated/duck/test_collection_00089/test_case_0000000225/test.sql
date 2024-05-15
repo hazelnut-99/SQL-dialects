@@ -1,1 +1,0 @@
-SELECT COUNT(*) FROM test WHERE i%7=0;

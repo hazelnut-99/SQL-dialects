@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS to_uuid_test;
-CREATE TABLE to_uuid_test (value String) ENGINE = TinyLog();
-INSERT INTO to_uuid_test VALUES ('61f0c404-5cb3-11e7-907b-a6006ad3dba0');
+DROP TABLE IF EXISTS t_comp_subcolumns;
+CREATE TABLE t_comp_subcolumns (id UInt32, n Nullable(String), arr Array(Array(UInt32)))
+ENGINE = MergeTree ORDER BY id;
+INSERT INTO t_comp_subcolumns SELECT number, 'a', [range(number % 11), range(number % 13)] FROM numbers(20000);

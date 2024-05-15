@@ -264,3 +264,5 @@ CREATE MACRO deep_cte(param) AS (
     )
     SELECT a FROM cte1
 );
+INSERT INTO integers VALUES (1);
+CREATE MACRO subquery(a) AS (SELECT a);

@@ -1,13 +1,3 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 DEFAULT x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
-DROP TABLE test;
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 MATERIALIZED x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
-DROP TABLE test;
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 ALIAS x + 1, z String DEFAULT 'Hello') ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
+drop table if exists test_tbl;
+create table test_tbl (vend_nm String, ship_dt Date) engine MergeTree partition by toWeek(ship_dt) order by vend_nm;
+insert into test_tbl values('1', '2020-11-11'), ('1', '2021-01-01');

@@ -1,0 +1,1 @@
+SELECT sumKahan(-8000000000000000000) FROM numbers(11);

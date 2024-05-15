@@ -1,0 +1,1 @@
+SELECT 'ArrayFirst with Null';

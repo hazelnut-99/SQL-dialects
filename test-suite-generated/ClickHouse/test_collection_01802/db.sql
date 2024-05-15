@@ -1,4 +1,17 @@
-DROP TABLE IF EXISTS t_uuid;
-CREATE TABLE t_uuid (x UInt8, y UUID, z String) ENGINE = TinyLog;
-INSERT INTO t_uuid VALUES (1, '417ddc5de5564d2795dda34d84e46a50', 'Example 1');
-INSERT INTO t_uuid VALUES (2, '417ddc5d-e556-4d27-95dd-a34d84e46a51', 'Example 2');
+DROP TABLE IF EXISTS dictionary_primary_key_source_table;
+CREATE TABLE dictionary_primary_key_source_table
+(
+    identifier UInt64,
+    v UInt64
+) ENGINE = TinyLog;
+INSERT INTO dictionary_primary_key_source_table VALUES (20, 1);
+DROP DICTIONARY IF EXISTS flat_dictionary;
+CREATE DICTIONARY flat_dictionary
+(
+    identifier UInt64,
+    v UInt64
+)
+PRIMARY KEY v
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'dictionary_primary_key_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(FLAT());

@@ -10406,3 +10406,8 @@ DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 INSERT INTO integers VALUES ((select i from storage order by j limit 1));
 DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES ((select i from storage order by j limit 1));
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+INSERT INTO integers VALUES (1);
+UPDATE integers SET i=14 WHERE i=13;

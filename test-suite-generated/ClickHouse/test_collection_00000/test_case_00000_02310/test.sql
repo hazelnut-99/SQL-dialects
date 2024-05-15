@@ -1,0 +1,1 @@
+SELECT '*** Replicated with sampling ***';

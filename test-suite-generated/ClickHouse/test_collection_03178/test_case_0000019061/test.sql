@@ -1,1 +1,0 @@
-SELECT toBool('yes');

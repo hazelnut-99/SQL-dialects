@@ -1,8 +1,38 @@
-DROP TABLE IF EXISTS distinct_two_level;
-CREATE TABLE distinct_two_level (
-    time DateTime64(3),
-    domain String,
-    subdomain String
-) ENGINE = MergeTree ORDER BY time;
-INSERT INTO distinct_two_level SELECT 1546300800000, 'test.com', concat('foo', toString(number % 10000)) from numbers(10000);
-INSERT INTO distinct_two_level SELECT 1546300800000, concat('test.com', toString(number / 10000)) , concat('foo', toString(number % 10000)) from numbers(10000);
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    value Map(Int64, Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+DROP TABLE 02005_test_table;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    key Array(Int64),
+    value Array(Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0], [5]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0, 5], [5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5], [-5, 5, 10]);

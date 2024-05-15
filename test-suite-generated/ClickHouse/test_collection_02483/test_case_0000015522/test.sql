@@ -1,1 +1,0 @@
-SELECT 'Tuple nested in Array nested in Tuple';

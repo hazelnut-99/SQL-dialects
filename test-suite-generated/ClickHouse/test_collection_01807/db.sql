@@ -1,10 +1,7 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x Enum('hello' = 1, 'world' = 2), y String) ENGINE = MergeTree PARTITION BY x ORDER BY y;
-INSERT INTO test VALUES ('hello', 'test');
-ALTER TABLE test MODIFY COLUMN x Enum('hello' = 1, 'world' = 2, 'goodbye' = 3);
-INSERT INTO test VALUES ('goodbye', 'test');
-OPTIMIZE TABLE test FINAL;
-ALTER TABLE test MODIFY COLUMN x Enum('hello' = 1, 'world' = 2, 'test' = 3);
-ALTER TABLE test MODIFY COLUMN x Int8;
-INSERT INTO test VALUES (111, 'abc');
-OPTIMIZE TABLE test FINAL;
+DROP TABLE IF EXISTS join_table_mutation;
+CREATE TABLE join_table_mutation(id Int32, name String) ENGINE = Join(ANY, LEFT, id);
+INSERT INTO join_table_mutation select number, toString(number) from numbers(100);
+ALTER TABLE join_table_mutation DELETE WHERE id = 10;
+INSERT INTO join_table_mutation VALUES (10, 'm10');
+ALTER TABLE join_table_mutation DELETE WHERE id % 2 = 0;
+ALTER TABLE join_table_mutation DELETE WHERE name IN ('1', '2', '3', '4');

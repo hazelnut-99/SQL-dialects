@@ -1,1 +1,0 @@
-SELECT 'Table qualified matchers';

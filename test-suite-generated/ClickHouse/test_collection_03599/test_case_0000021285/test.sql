@@ -1,1 +1,0 @@
-SELECT 'parseDateTime64BestEffortUS';

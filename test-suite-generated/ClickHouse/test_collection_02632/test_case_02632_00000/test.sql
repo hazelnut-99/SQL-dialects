@@ -1,0 +1,1 @@
+SELECT '-- Run a query with query cache not enabled';

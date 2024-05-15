@@ -1,0 +1,1 @@
+SELECT h3GetUnidirectionalEdgeBoundary(599686042433355773);

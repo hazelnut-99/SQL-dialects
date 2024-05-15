@@ -1,4 +1,2 @@
-DROP TABLE IF EXISTS test_tuple;
-CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
-INSERT INTO test_tuple VALUES ((NULL, 1));
-DROP TABLE test_tuple;
+WITH 'CSV', '1,2,"[1,2,3]","[[\'abc\'], [], [\'d\', \'e\']]"' AS format_value SELECT c1, c2, c3, c4 FROM format('CSV', format_value);
+WITH concat('1,2,"[1,2,3]",','"[[\'abc\'], [], [\'d\', \'e\']]"') AS format_value SELECT c1, c2, c3, c4 FROM format('CSV', format_value);

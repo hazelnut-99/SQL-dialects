@@ -1,1 +1,0 @@
-SELECT 'Do UPDATE mutation';

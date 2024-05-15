@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS t_with_dots;
-CREATE TABLE t_with_dots (id UInt32, arr Array(UInt32), `b.id` UInt32, `b.arr` Array(UInt32)) ENGINE = Log;
-INSERT INTO t_with_dots VALUES (1, [0, 0], 2, [1, 1, 3]);
-DROP TABLE t_with_dots;
-CREATE TABLE t_with_dots (id UInt32, arr Array(UInt32), `b.id` UInt32, `b.arr` Array(UInt32))
-ENGINE = MergeTree ORDER BY id;
-INSERT INTO t_with_dots VALUES (1, [0, 0], 2, [1, 1, 3]);
+DROP TABLE IF EXISTS dist_tbl;
+DROP TABLE IF EXISTS local_tbl;
+CREATE TABLE local_tbl (`key` UInt32, `value` UInt32 DEFAULT 42) ENGINE = MergeTree ORDER BY key;

@@ -1,7 +1,5 @@
-DROP TABLE IF EXISTS alter_compression_codec;
-CREATE TABLE alter_compression_codec (
-    somedate Date CODEC(LZ4),
-    id UInt64 CODEC(NONE)
-) ENGINE = MergeTree() PARTITION BY somedate ORDER BY id;
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 1);
-INSERT INTO alter_compression_codec VALUES('2018-01-01', 2);
+DROP TABLE IF EXISTS test_table;
+DROP TABLE IF EXISTS test_table_2;
+CREATE TABLE test_table (value UInt8, name String) ENGINE = MergeTree() ORDER BY value;
+INSERT INTO test_table VALUES (1, 'a'), (2, 'b'), (3, 'c');
+DROP TABLE IF EXISTS test_table;

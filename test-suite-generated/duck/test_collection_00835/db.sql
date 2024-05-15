@@ -65,3 +65,12 @@ CREATE TABLE integers AS SELECT NULL i, i j FROM range(1000) tbl(i) UNION ALL SE
 DROP TABLE integers;
 CREATE TABLE integers AS SELECT NULL i, i j FROM range(1000) tbl(i) UNION ALL SELECT range i, range j FROM range(1000);
 CREATE TABLE tbl AS SELECT i, i % 1000 j FROM range(1000000) tbl(i);
+CREATE TABLE test (b INTEGER);
+INSERT INTO test VALUES (22), (2), (7);
+CREATE TABLE final(channel VARCHAR, i_brand_id INTEGER, i_class_id INTEGER, i_category_id INTEGER, sum_sales DECIMAL(38,2), number_sales HUGEINT);
+DROP TABLE tbl;
+CREATE TABLE tbl AS SELECT NULL l FROM range(3) UNION ALL SELECT [i] l FROM range(1000) tbl(i);
+DROP TABLE tbl;
+CREATE TABLE tbl AS SELECT NULL l FROM range(3) UNION ALL SELECT [i] l FROM range(1000) tbl(i);
+DROP TABLE tbl;
+CREATE TABLE tbl AS SELECT [i] l FROM range(1000) tbl(i) UNION ALL SELECT [NULL] l FROM range(3);

@@ -1,11 +1,4 @@
-CREATE TABLE test
-(
-    `x` Tuple(UInt64, UInt64)
-)
-ENGINE = MergeTree
-ORDER BY x;
-INSERT INTO test SELECT (number, number) FROM numbers(1000000);
-ALTER TABLE test DETACH PARTITION tuple();
-ALTER TABLE test ATTACH PARTITION tuple();
-DETACH TABLE test;
-ATTACH TABLE test;
+DROP TABLE IF EXISTS slow_log;
+DROP TABLE IF EXISTS expected_times;
+CREATE TABLE expected_times (QUERY_GROUP_ID String, max_query_duration_ms UInt64) Engine=Memory;
+INSERT INTO expected_times VALUES('main_dashboard_top_query', 500), ('main_dashboard_bottom_query', 500);

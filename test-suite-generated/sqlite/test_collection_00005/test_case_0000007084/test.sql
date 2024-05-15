@@ -1,2 +1,0 @@
-SELECT a
-  FROM t1;

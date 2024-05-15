@@ -1,0 +1,1 @@
+SELECT [NULL,2,3];

@@ -1,1 +1,0 @@
-SELECT s, y FROM test_02559 PREWHERE y AND x ORDER BY s;

@@ -1,1 +1,0 @@
-select 'create table compression_codec_on_alias with proper CODEC';

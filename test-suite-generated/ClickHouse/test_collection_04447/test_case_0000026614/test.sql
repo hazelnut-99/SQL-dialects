@@ -1,1 +1,0 @@
-select 'Dates and DateTimes';

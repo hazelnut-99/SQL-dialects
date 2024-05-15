@@ -1,1 +1,0 @@
-SELECT toDecimal32('42.42', 4) AS x, toDecimal32(log10(x), 4) AS y, round(exp10(y), 6);

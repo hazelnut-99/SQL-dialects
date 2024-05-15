@@ -1,0 +1,4 @@
+SELECT c7, e4*293
+  FROM t4, t7
+ WHERE b4 in (735,387,721,765,707)
+   AND e7=e4;

@@ -1,1 +1,0 @@
-select toString(toNullable(true));

@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS zero_rows_per_granule;
-DROP TABLE IF EXISTS zero_rows_per_granule;
-DROP TABLE IF EXISTS two_rows_per_granule;
-DROP TABLE IF EXISTS two_rows_per_granule;
-DROP TABLE IF EXISTS four_rows_per_granule;
-DROP TABLE IF EXISTS four_rows_per_granule;
+drop table if exists test;
+create table test (project LowCardinality(String)) engine=MergeTree() order by project;
+insert into test values ('val1'), ('val2'), ('val3');

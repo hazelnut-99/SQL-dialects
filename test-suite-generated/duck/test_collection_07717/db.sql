@@ -119,3 +119,30 @@ insert into integers(i,j)
 		i
 	from range(5000) tbl(i)
 on conflict do update set j = excluded.j;
+update integers set j = 0;
+insert into integers(i,j)
+	select
+		CASE WHEN i % 2 = 0
+			THEN
+				4999 - (i//2)
+			ELSE
+				i - ((i//2)+1)
+		END,
+		i
+	from range(5000) tbl(i)
+on conflict do update set j = excluded.j where i % 2 = 0 AND excluded.j % 2 = 0;
+insert or ignore into tbl values (1,2), (2,1);
+insert or replace into tbl values (5,2), (10,1);
+create or replace table tbl (a integer unique, b integer unique);
+insert into tbl(b) VALUES (3), (5), (6);
+create table t (i int primary key, j int);
+insert into t values (1, 1) on conflict do nothing;
+insert into t values (1, 1) on conflict do nothing;
+insert into t values (1, 1) on conflict (i) do update set j = excluded.i;
+CREATE TABLE test_table_raw(id VARCHAR, name VARCHAR);
+INSERT INTO test_table_raw VALUES
+	('abc001','foo'),
+	('abc002','bar'),
+	('abc001','foo2'),
+	('abc002','bar2');
+CREATE TABLE test_table(id VARCHAR PRIMARY KEY, name VARCHAR);

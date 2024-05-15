@@ -1,11 +1,10 @@
-DROP TABLE IF EXISTS test_aggregation;
-CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4,5,6]), ([]), ([1,2,3]);
-DROP TABLE test_aggregation;
-CREATE TABLE test_aggregation (x Array(Decimal64(8))) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4,5,6]), ([]), ([1,2,3]);
-DROP TABLE test_aggregation;
-WITH ['2023-04-05 00:25:23', '2023-04-05 00:25:24']::Array(DateTime) AS dt SELECT arrayMax(dt), arrayMin(dt), arrayDifference(dt);
-WITH ['2023-04-05 00:25:23.123', '2023-04-05 00:25:24.124']::Array(DateTime64(3)) AS dt SELECT arrayMax(dt), arrayMin(dt), arrayDifference(dt);
-WITH ['2023-04-05', '2023-04-06']::Array(Date) AS d SELECT arrayMax(d), arrayMin(d), arrayDifference(d);
-WITH ['2023-04-05', '2023-04-06']::Array(Date32) AS d SELECT arrayMax(d), arrayMin(d), arrayDifference(d);
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    value Map(Int64, Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));

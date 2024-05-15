@@ -1,2 +1,0 @@
-"(['a'], [2])","Tuple(Array(Enum8('a' = 1, 'b' = 2)), Array(Int64))"
-"(['b'], [2])","Tuple(Array(Enum8('a' = 1, 'b' = 2)), Array(Int64))"

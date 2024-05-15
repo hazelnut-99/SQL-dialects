@@ -1,1 +1,0 @@
-SELECT 'Check that the point is not in Mecca with multiple holes';

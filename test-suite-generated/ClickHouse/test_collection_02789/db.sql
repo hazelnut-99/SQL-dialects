@@ -1,41 +1,20 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
-(
-    id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
-DROP TABLE IF EXISTS test_table_float_values;
-CREATE TABLE test_table_float_values
-(
-    id UInt64,
-
-    value1 Float32,
-    value2 Float64
-) ENGINE=TinyLog;
-DROP TABLE test_table_float_values;
-DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
-CREATE TABLE test_table_nullable_unsigned_values
-(
-    id UInt64,
-
-    value1 Nullable(UInt8),
-    value2 Nullable(UInt16),
-    value3 Nullable(UInt32),
-    value4 Nullable(UInt64)
-) ENGINE=TinyLog;
+drop table if exists 02681_undrop_mergetree sync;
+create table 02681_undrop_mergetree (id Int32) Engine=MergeTree() order by id;
+insert into 02681_undrop_mergetree values (1),(2),(3);
+drop table 02681_undrop_mergetree;
+undrop table 02681_undrop_mergetree;
+drop table 02681_undrop_mergetree sync;
+drop table if exists 02681_undrop_detach sync;
+create table 02681_undrop_detach (id Int32, num Int32) Engine=MergeTree() order by id;
+insert into 02681_undrop_detach values (1, 1);
+detach table 02681_undrop_detach sync;
+attach table 02681_undrop_detach;
+alter table 02681_undrop_detach update num = 2 where id = 1;
+drop table 02681_undrop_detach sync;
+drop table if exists 02681_undrop_replicatedmergetree sync;
+drop table if exists 02681_undrop_log sync;
+create table 02681_undrop_log (id Int32) Engine=Log();
+insert into 02681_undrop_log values (1),(2),(3);
+drop table 02681_undrop_log;
+undrop table 02681_undrop_log;
+drop table 02681_undrop_log sync;

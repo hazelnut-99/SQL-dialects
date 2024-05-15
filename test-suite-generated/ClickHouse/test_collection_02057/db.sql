@@ -1,10 +1,11 @@
-DROP TABLE IF EXISTS buf_dest;
-DROP TABLE IF EXISTS buf;
-CREATE TABLE buf_dest (timestamp DateTime)
-ENGINE = MergeTree PARTITION BY toYYYYMMDD(timestamp)
-ORDER BY (timestamp);
-CREATE TABLE buf (timestamp DateTime) Engine = Buffer(currentDatabase(), buf_dest, 16, 86400, 86400, 2000000, 20000000, 100000000, 300000000);
-INSERT INTO buf (timestamp) VALUES (toDateTime('2020-01-01 00:05:00'));
-OPTIMIZE TABLE buf;
-ALTER TABLE buf_dest ADD COLUMN s String;
-ALTER TABLE buf ADD COLUMN s String;
+WITH 1 AS max_size
+SELECT groupArray(max_size)(col)
+FROM
+     (SELECT col FROM (
+         SELECT 1 as col
+         UNION ALL
+         SELECT 2
+     ) ORDER BY col);
+WITH 0.1 AS level
+SELECT quantile(level)(number)
+FROM numbers(1000);

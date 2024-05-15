@@ -1,1 +1,0 @@
-SELECT roundDuration(120);

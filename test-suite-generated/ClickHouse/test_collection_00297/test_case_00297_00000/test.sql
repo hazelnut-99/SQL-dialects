@@ -1,0 +1,1 @@
+SELECT '-------No need for predicate optimization, but still works-------';

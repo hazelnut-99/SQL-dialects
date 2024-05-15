@@ -172,3 +172,34 @@ CREATE MACRO xt(a,b) as a+b;
 DROP MACRO TABLE xt;
 CREATE MACRO xt(id, imax) as TABLE SELECT id,name FROM test_tbl WHERE id<=imax;
 CREATE  MACRO range(a,b) as TABLE select a,b from test_tbl;
+CREATE TABLE car_pool (
+  -- define columns (name / type / default value / nullable)
+  id           DECIMAL      ,
+  producer     VARCHAR(50)  ,
+  model        VARCHAR(50)  ,
+  yyyy         DECIMAL       CHECK (yyyy BETWEEN 1970 AND 2020),
+  counter      DECIMAL       CHECK (counter >= 0),
+  CONSTRAINT   car_pool_pk PRIMARY KEY (id)
+);
+INSERT INTO car_pool VALUES 
+ ( 1, 'VW',     'Golf',    2005, 5),
+ ( 2, 'VW',     'Golf',    2006, 2),
+ ( 3, 'VW',     'Golf',    2007, 3),
+ ( 4, 'VW',     'Golf',    2008, 3),
+ ( 5, 'VW',     'Passat',  2005, 5),
+ ( 6, 'VW',     'Passat',  2006, 1),
+ ( 7, 'VW',     'Beetle',  2005, 1),
+ ( 8, 'VW',     'Beetle',  2006, 2),
+ ( 9, 'VW',     'Beetle',  2008, 4),
+ (10, 'Toyota', 'Corolla', 2005, 4),
+ (11, 'Toyota', 'Corolla', 2006, 3),
+ (12, 'Toyota', 'Corolla', 2007, 2),
+ (13, 'Toyota', 'Corolla', 2008, 4),
+ (14, 'Toyota', 'Prius',   2005, 1),
+ (15, 'Toyota', 'Prius',   2006, 1),
+ (16, 'Toyota', 'Hilux',   2005, 1),
+ (17, 'Toyota', 'Hilux',   2006, 1),
+ (18, 'Toyota', 'Hilux',   2008, 1);
+CREATE MACRO car_pool_cube(g1, g2, hcnt:=1) AS
+TABLE SELECT g1, g2, sum(counter) AS cnt  FROM car_pool
+GROUP BY CUBE(g1, g2) HAVING cnt >= hcnt order by g1 NULLS LAST, g2 NULLS LAST;

@@ -1,0 +1,1 @@
+SELECT hex(bitRotateLeft(0x8000000000000001, 1));

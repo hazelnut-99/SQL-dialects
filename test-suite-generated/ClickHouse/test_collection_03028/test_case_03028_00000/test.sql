@@ -1,0 +1,1 @@
+SELECT 'Normal SELECT does not see deleted rows';

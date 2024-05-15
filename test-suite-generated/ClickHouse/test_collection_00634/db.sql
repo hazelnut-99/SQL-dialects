@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS test1_00671;
-DROP TABLE IF EXISTS test2_00671;
-CREATE TABLE test1_00671(start Integer, end Integer) engine = Memory;
-CREATE TABLE test2_00671(start Integer, end Integer) engine = Memory;
-INSERT INTO test1_00671(start,end) VALUES (1,3),(3,5);
-INSERT INTO test2_00671(start,end) VALUES (3,5),(1,3);
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;

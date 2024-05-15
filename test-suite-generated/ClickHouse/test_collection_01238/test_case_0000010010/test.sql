@@ -1,1 +1,0 @@
-SELECT 'any inner (rev)';

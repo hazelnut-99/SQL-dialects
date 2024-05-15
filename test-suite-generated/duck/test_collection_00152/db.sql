@@ -276,3 +276,6 @@ drop macro test;
 create temporary macro test(a, b) as a + b;
 create or replace temporary macro test(a, b) as a + a;
 create temporary macro if not exists test(a, b) as a + b;
+CREATE MACRO "sum"(x) AS (CASE WHEN sum(x) IS NULL THEN 0 ELSE sum(x) END);
+DROP MACRO sum;
+CREATE MACRO "sum"(x) AS (CASE WHEN system.main.sum(x) IS NULL THEN 0 ELSE system.main.sum(x) END);

@@ -1,1 +1,0 @@
-select arrayPopBack([1]);

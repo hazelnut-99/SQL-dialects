@@ -14,3 +14,4 @@ CREATE MACRO mod_two(k) AS k%2;
 CREATE MACRO add_mac(a, b) AS a + b;
 CREATE MACRO double_add(a, b, c) AS add_mac(add_mac(a, b), c);
 CREATE MACRO triple_add1(a, b, c, d) AS add_mac(add_mac(a, b), add_mac(c, d));
+CREATE MACRO triple_add2(a, b, c, d) as add_mac(add_mac(add_mac(a, b), c), d);

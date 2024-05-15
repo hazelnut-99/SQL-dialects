@@ -1,0 +1,1 @@
+select roundBankers(2, 4) round2, roundBankers(20, 4) round20, roundBankers(200, 4) round200, roundBankers(5, 4) round5, roundBankers(50, 4) round50, roundBankers(500, 4) round500, roundBankers(toInt32(5), 4) roundInt5, roundBankers(toInt32(50), 4) roundInt50, roundBankers(toInt32(500), 4) roundInt500;

@@ -1,5 +1,11 @@
-DROP TABLE IF EXISTS rollup;
-CREATE TABLE rollup(a String, b Int32, s Int32) ENGINE = Memory;
-INSERT INTO rollup VALUES ('a', 1, 10), ('a', 1, 15), ('a', 2, 20);
-INSERT INTO rollup VALUES ('a', 2, 25), ('b', 1, 10), ('b', 1, 5);
-INSERT INTO rollup VALUES ('b', 2, 20), ('b', 2, 15);
+drop table if exists tab;
+drop table if exists tab2;
+drop table if exists tab3;
+drop table if exists tab4;
+drop table if exists tab5;
+create table tab (a UInt32, b UInt32, c UInt32, d UInt32) engine = MergeTree order by ((a + b) * c, sin(a / b));
+insert into tab select number, number, number, number from numbers(5);
+insert into tab select number, number, number, number from numbers(5);
+create table tab2 (x DateTime, y UInt32, z UInt32) engine = MergeTree order by (x, y);
+insert into tab2 select toDate('2020-02-02') + number, number, number from numbers(4);
+insert into tab2 select toDate('2020-02-02') + number, number, number from numbers(4);

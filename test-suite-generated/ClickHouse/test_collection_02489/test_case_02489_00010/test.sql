@@ -1,0 +1,1 @@
+SELECT 'Union non constants';

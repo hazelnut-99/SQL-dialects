@@ -1,0 +1,5 @@
+SELECT x7, x2, a9+792
+  FROM t7, t9, t2
+ WHERE e7 in (89,587,851,168,503)
+   AND 643=c9
+   AND e2=692;

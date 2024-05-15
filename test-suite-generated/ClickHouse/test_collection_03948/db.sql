@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS nums;
-CREATE TABLE nums(n UInt32) ENGINE = Memory;
-INSERT INTO nums VALUES (4),(2),(1),(3);

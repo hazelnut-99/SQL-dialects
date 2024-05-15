@@ -1,0 +1,1 @@
+SELECT 'all full';

@@ -1,12 +1,53 @@
-DROP TABLE IF EXISTS dest_table_mv;
-DROP TABLE IF EXISTS left_table;
-DROP TABLE IF EXISTS right_table;
-DROP TABLE IF EXISTS dest_table;
-DROP TABLE IF EXISTS src_table;
-DROP VIEW IF EXISTS dst_mv;
-CREATE TABLE dest_table (`Date` Date, `Id` UInt64, `Units` Float32) ENGINE = Memory;
-create table left_table as dest_table;
-create table right_table as dest_table;
-insert into right_table select toDate('2020-01-01') + number, number, number / 2 from numbers(10);
-CREATE MATERIALIZED VIEW dest_table_mv TO dest_table as select * FROM (SELECT * FROM left_table) AS t1 INNER JOIN (WITH (SELECT DISTINCT Date FROM left_table LIMIT 1) AS dt SELECT * FROM right_table WHERE Date = dt) AS t2 USING (Date, Id);
-insert into left_table select toDate('2020-01-01'), 0, number * 2 from numbers(3);
+DROP DATABASE IF EXISTS 01681_database_for_cache_dictionary;
+CREATE DATABASE 01681_database_for_cache_dictionary;
+CREATE TABLE 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table
+(
+   id UInt64,
+   value_first String,
+   value_second String
+)
+ENGINE = TinyLog;
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(1, 'value_1', 'value_second_1');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+DROP TABLE 01681_database_for_cache_dictionary.simple_key_simple_attributes_source_table;
+CREATE TABLE 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table
+(
+   id UInt64,
+   value_first String,
+   value_second Nullable(String)
+)
+ENGINE = TinyLog;
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(1, 'value_1', NULL);
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+CREATE DICTIONARY 01681_database_for_cache_dictionary.cache_dictionary_simple_key_complex_attributes
+(
+   id UInt64,
+   value_first String DEFAULT 'value_first_default',
+   value_second Nullable(String) DEFAULT 'value_second_default'
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_complex_attributes_source_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(CACHE(SIZE_IN_CELLS 10));
+DROP DICTIONARY 01681_database_for_cache_dictionary.cache_dictionary_simple_key_complex_attributes;
+DROP TABLE 01681_database_for_cache_dictionary.simple_key_complex_attributes_source_table;
+CREATE TABLE 01681_database_for_cache_dictionary.simple_key_hierarchy_table
+(
+    id UInt64,
+    parent_id UInt64
+) ENGINE = TinyLog();
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_hierarchy_table VALUES (1, 0);
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_hierarchy_table VALUES (2, 1);
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_hierarchy_table VALUES (3, 1);
+INSERT INTO 01681_database_for_cache_dictionary.simple_key_hierarchy_table VALUES (4, 2);
+CREATE DICTIONARY 01681_database_for_cache_dictionary.cache_dictionary_simple_key_hierarchy
+(
+   id UInt64,
+   parent_id UInt64 HIERARCHICAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_hierarchy_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(CACHE(SIZE_IN_CELLS 10));

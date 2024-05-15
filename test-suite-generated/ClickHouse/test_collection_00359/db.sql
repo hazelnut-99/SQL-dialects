@@ -1,3 +1,3 @@
-DROP TABLE IF EXISTS json;
-CREATE TABLE json (x Enum8('browser' = 1, 'mobile' = 2), y String) ENGINE = Memory;
-INSERT INTO json (y) VALUES ('Hello');
+DROP TABLE IF EXISTS has_function;
+CREATE TABLE has_function(arr Array(Nullable(String))) ENGINE = Memory;
+INSERT INTO has_function(arr) values ([null, 'str1', 'str2']),(['str1', 'str2']), ([]), ([]);

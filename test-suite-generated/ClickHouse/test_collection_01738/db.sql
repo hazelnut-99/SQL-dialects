@@ -1,15 +1,18 @@
-DROP TABLE IF EXISTS geo;
-CREATE TABLE geo (p Tuple(Float64, Float64), s String, id Int) engine=Memory();
-INSERT INTO geo VALUES ((0., 0.), 'b', 1);
-INSERT INTO geo VALUES ((1., 0.), 'c', 2);
-INSERT INTO geo VALUES ((2., 0.), 'd', 3);
-DROP TABLE IF EXISTS geo;
-CREATE TABLE geo (p Array(Tuple(Float64, Float64)), s String, id Int) engine=Memory();
-INSERT INTO geo VALUES ([(0., 0.), (10, 0), (10, 10), (0, 10)], 'b', 1);
-INSERT INTO geo VALUES ([(1., 0.), (10, 0), (10, 10), (0, 10)], 'c', 2);
-INSERT INTO geo VALUES ([(2., 0.), (10, 0), (10, 10), (0, 10)], 'd', 3);
-DROP TABLE IF EXISTS geo;
-CREATE TABLE geo (p Array(Array(Tuple(Float64, Float64))), s String, id Int) engine=Memory();
-INSERT INTO geo VALUES ([[(0., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'b', 1);
-INSERT INTO geo VALUES ([[(1., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'c', 2);
-INSERT INTO geo VALUES ([[(2., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'd', 3);
+DROP TABLE IF EXISTS ddl_dictonary_test_source;
+CREATE TABLE ddl_dictonary_test_source
+(
+   id UInt64,
+   value UInt64
+)
+ENGINE = TinyLog;
+INSERT INTO ddl_dictonary_test_source VALUES (0, 0);
+INSERT INTO ddl_dictonary_test_source VALUES (1, 1);
+DROP DICTIONARY IF EXISTS ddl_dictionary_test;
+CREATE DICTIONARY ddl_dictionary_test
+(
+   id UInt64,
+   value UInt64 DEFAULT 0
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'ddl_dictonary_test_source'))
+LAYOUT(DIRECT());

@@ -1,1 +1,0 @@
-SELECT '-- Deduplicated part --';

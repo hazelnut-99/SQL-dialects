@@ -251,3 +251,28 @@ unpivot (select 42 as col1, 'woot' as col2)
     on (col1 + 100)::VARCHAR, col2;
 unpivot (select 42 as col1, 'woot' as col2)
     on (col1 + 100)::VARCHAR AS c, col2;
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2000, 1005);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2010, 1065);
+INSERT INTO Cities VALUES ('NL', 'Amsterdam', 2020, 1158);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2000, 564);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2010, 608);
+INSERT INTO Cities VALUES ('US', 'Seattle', 2020, 738);
+INSERT INTO Cities VALUES ('US', 'New York City', 2000, 8015);
+INSERT INTO Cities VALUES ('US', 'New York City', 2010, 8175);
+INSERT INTO Cities VALUES ('US', 'New York City', 2020, 8772);
+pivot cities on (Country='NL') using avg(Population) group by name;
+pivot cities on (Country='NL') in (false, true) using avg(Population) group by name;
+;
+CREATE TABLE Produce AS
+  SELECT 'Kale' as product, 51 as sales, 'Q1' as quarter, 2020 as year UNION ALL
+  SELECT 'Kale', 23, 'Q2', 2020 UNION ALL
+  SELECT 'Kale', 45, 'Q3', 2020 UNION ALL
+  SELECT 'Kale', 3, 'Q4', 2020 UNION ALL
+  SELECT 'Kale', 70, 'Q1', 2021 UNION ALL
+  SELECT 'Kale', 85, 'Q2', 2021 UNION ALL
+  SELECT 'Apple', 77, 'Q1', 2020 UNION ALL
+  SELECT 'Apple', 0, 'Q2', 2020 UNION ALL
+  SELECT 'Apple', 1, 'Q1', 2021;
+CREATE OR REPLACE TABLE Produce AS
+  SELECT 'Kale' as product, 51 as Q1, 23 as Q2, 45 as Q3, 3 as Q4 UNION ALL
+  SELECT 'Apple', 77, 0, 25, 2;

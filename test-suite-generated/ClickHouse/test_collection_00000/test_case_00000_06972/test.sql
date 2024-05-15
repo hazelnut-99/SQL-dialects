@@ -1,0 +1,1 @@
+select countSubstrings('.foobar.com.', '.');

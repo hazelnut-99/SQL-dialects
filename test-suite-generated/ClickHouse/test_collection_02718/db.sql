@@ -1,15 +1,18 @@
-drop table if exists tab;
-create table tab (t DateTime) engine = MergeTree order by toStartOfDay(t);
-insert into tab values ('2020-02-02 01:01:01');
-with t as s select t from tab where s > '2020-01-01 01:01:01';
-drop table if exists tab;
-create table tab (t DateTime) engine = MergeTree order by toStartOfDay(t + 1);
-insert into tab values ('2020-02-02 01:01:01');
-with t + 1 as s select t from tab where s > '2020-01-01 01:01:01';
-drop table if exists tab;
-create table tab (x Int32, y Int32) engine = MergeTree partition by x + y order by tuple();
-insert into tab values (1, 1), (2, 2);
-with x + y as s select x, y from tab where s = 2;
-drop table if exists tab;
-create table tab (x Int32, y Int32) engine = MergeTree partition by ((x + y) + 1) * 2 order by tuple();
-insert into tab values (1, 1), (2, 2);
+desc format(JSONEachRow, 
+$$
+{"a": "Hello", "b": 111}
+{"a": "World", "b": 123}
+{"a": "Hello", "b": 111}
+{"a": "World", "b": 123}
+$$);
+desc format(JSONEachRow, 'a String, b Int64',
+$$
+{"a": "Hello", "b": 111}
+{"a": "World", "b": 123}
+{"a": "Hello", "b": 111}
+{"a": "World", "b": 123}
+$$);
+desc format(CSV, '1,2,"[1,2,3]","[[\'abc\'], [], [\'d\', \'e\']]"');
+desc format(CSV, 'a1 Int32, a2 UInt64, a3 Array(Int32), a4 Array(Array(String))', '1,2,"[1,2,3]","[[\'abc\'], [], [\'d\', \'e\']]"');
+drop table if exists test;
+create table test as format(TSV, 'cust_id UInt128', '20210129005809043707\n123456789\n987654321');

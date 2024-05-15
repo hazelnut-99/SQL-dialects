@@ -100,3 +100,5 @@ explain select i from a left outer join b using (i) inner join c using (i);
 explain select a.i from a left outer join b on (a.i=b.i) inner join c on (a.i=c.i);
 explain select i from a left outer join b using (i) left outer join c using (i);
 explain select a.i from a left outer join b on (a.i=b.i) left outer join c on (a.i=c.i);
+explain select i from a left outer join b using (i) right join c using (i);
+explain select c.i from a left outer join b on (a.i=b.i) right join c on (a.i=c.i);

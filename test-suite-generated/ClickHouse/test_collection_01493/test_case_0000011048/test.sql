@@ -1,1 +1,0 @@
-SELECT LEAST(1, -1);

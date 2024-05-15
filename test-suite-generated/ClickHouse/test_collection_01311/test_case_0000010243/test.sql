@@ -1,1 +1,0 @@
-SELECT * FROM Alpha FULL JOIN Beta USING (foo) ORDER BY foo;

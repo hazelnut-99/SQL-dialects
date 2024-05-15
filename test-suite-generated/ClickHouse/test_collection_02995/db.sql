@@ -1,2 +1,6 @@
-DROP TABLE IF EXISTS spark_bar_test;
-WITH number DIV 50 AS k, toUInt32(number % 50) AS value SELECT k, sparkbar(50, 0, 99)(number, value) FROM numbers(100) GROUP BY k ORDER BY k;
+DROP TABLE IF EXISTS table1;
+DROP TABLE IF EXISTS table2;
+CREATE TABLE table1 (number UInt64) ENGINE=MergeTree ORDER BY tuple();
+CREATE TABLE table2 (number UInt64) ENGINE=MergeTree ORDER BY tuple();
+INSERT INTO table1 SELECT number FROM numbers_mt(1, 10);
+INSERT INTO table2 SELECT number FROM numbers_mt(11, 10);

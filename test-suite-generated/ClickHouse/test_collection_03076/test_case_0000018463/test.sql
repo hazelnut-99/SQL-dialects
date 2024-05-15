@@ -1,1 +1,0 @@
-SELECT toTypeName(sumCount(v)), sumCount(v) FROM (SELECT '1.001'::Decimal(3, 3) AS v FROM numbers(100));

@@ -95,3 +95,8 @@ insert into test values (1000000000), (250000000), (750000000), (500000000);
 drop table test;
 create table test (i hugeint);
 insert into test values (295147905179352825856), (73786976294838206464), (147573952589676412928), (36893488147419103232);
+drop table test;
+CREATE TABLE integers2(k INTEGER, l INTEGER);
+INSERT INTO integers2 VALUES (1, 10), (2, 20);
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);

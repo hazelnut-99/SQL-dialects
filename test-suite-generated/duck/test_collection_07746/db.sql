@@ -113,3 +113,30 @@ INSERT INTO mtcars VALUES ('19.7', '6', '145.0', '175', '3.62', '2.770', '15.50'
 INSERT INTO mtcars VALUES ('15.0', '8', '301.0', '335', '3.54', '3.570', '14.60', '0', '1', '5', '8');
 INSERT INTO mtcars VALUES ('21.4', '4', '121.0', '109', '4.11', '2.780', '18.60', '1', '1', '4', '2');
 create table a as select case when range%2==0 then interval '1 year' else interval '2 years' end j, range::integer AS i from range(1, 5, 1);
+create table df as 
+	select d, i v1 
+	from 
+		range(date '2017-01-01', date '2020-12-31', interval '1' day) t(d), 
+		range(3000) i
+	;
+CREATE TABLE db_city (name VARCHAR, city VARCHAR COLLATE NOCASE);
+INSERT INTO db_city VALUES
+	('DuckDB', 'Amsterdam'), 
+	('MonetDB','amsterdam'),
+	('VectorWise', 'Amstërdam');
+;
+CREATE TABLE empsalary (depname varchar, empno bigint, salary int, enroll_date date);
+INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');
+BEGIN TRANSACTION;
+CREATE TABLE item(i_category VARCHAR, i_brand VARCHAR, i_price INTEGER);
+INSERT INTO item VALUES ('toys', 'fisher-price', 100);
+ROLLBACK;
+BEGIN TRANSACTION;
+CREATE TABLE item(i_category VARCHAR, i_brand VARCHAR, i_item_sk INTEGER);
+CREATE TABLE store(s_store_name VARCHAR, s_company_name VARCHAR, s_store_sk INTEGER);
+CREATE TABLE date_dim(d_year INTEGER, d_moy INTEGER, d_date_sk INTEGER);
+CREATE TABLE store_sales(ss_sales_price DECIMAL, ss_item_sk INTEGER, ss_sold_date_sk INTEGER, ss_store_sk INTEGER);
+INSERT INTO item VALUES ('Music', 'exportischolar', 1);
+INSERT INTO store VALUES ('ought', 'Unknown', 1);
+INSERT INTO date_dim VALUES (1999, 1, 1);
+INSERT INTO store_sales VALUES (2.8, 1, 1, 1);

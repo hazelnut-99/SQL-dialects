@@ -1,13 +1,14 @@
-DROP TABLE IF EXISTS unsorted;
-DROP TABLE IF EXISTS unsorted_replacing;
-CREATE TABLE unsorted_replacing (x UInt32, s String, v UInt32) ENGINE ReplacingMergeTree(v) ORDER BY tuple();
-INSERT INTO unsorted_replacing VALUES (1, 'a', 5), (5, 'b', 4);
-INSERT INTO unsorted_replacing VALUES (2, 'c', 3), (4, 'd', 2);
-INSERT INTO unsorted_replacing VALUES (3, 'e', 1);
-OPTIMIZE TABLE unsorted_replacing PARTITION tuple() FINAL;
-DROP TABLE unsorted_replacing;
-DROP TABLE IF EXISTS unsorted_collapsing;
-CREATE TABLE unsorted_collapsing (x UInt32, s String, sign Int8) ENGINE CollapsingMergeTree(sign) ORDER BY tuple();
-INSERT INTO unsorted_collapsing VALUES (1, 'a', 1);
-INSERT INTO unsorted_collapsing VALUES (1, 'a', -1), (2, 'b', 1);
-INSERT INTO unsorted_collapsing VALUES (2, 'b', -1), (3, 'c', 1);
+DROP TABLE IF EXISTS test_00808;
+CREATE TABLE test_00808(date Date, id Int8, name String, value Int64, sign Int8) ENGINE = CollapsingMergeTree(sign) ORDER BY (id, date);
+INSERT INTO test_00808 VALUES('2000-01-01', 1, 'test string 1', 1, 1);
+INSERT INTO test_00808 VALUES('2000-01-01', 2, 'test string 2', 2, 1);
+DROP TABLE IF EXISTS test_00808;
+DROP TABLE IF EXISTS test_00808_push_down_with_finalizeAggregation;
+CREATE TABLE test_00808_push_down_with_finalizeAggregation ENGINE = AggregatingMergeTree
+ORDER BY n AS
+SELECT
+    intDiv(number, 25) AS n,
+    avgState(number) AS s
+FROM numbers(2500)
+GROUP BY n
+ORDER BY n;

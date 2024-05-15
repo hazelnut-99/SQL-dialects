@@ -1,1 +1,0 @@
-SELECT * FROM integers UNION SELECT * FROM integers ORDER BY ALL;

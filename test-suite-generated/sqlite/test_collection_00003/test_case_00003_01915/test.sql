@@ -1,0 +1,5 @@
+SELECT c9+b3, c3*151, d5+565
+  FROM t3, t5, t9
+ WHERE a9 in (905,879,553,694,356,548)
+   AND c5=d9
+   AND a3=234;

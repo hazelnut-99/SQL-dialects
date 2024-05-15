@@ -1,14 +1,18 @@
-DROP TABLE IF EXISTS src;
-DROP TABLE IF EXISTS mv;
-DROP TABLE IF EXISTS ".inner_id.e15f3ab5-6cae-4df3-b879-f40deafd82c2";
-CREATE TABLE src (n UInt64) ENGINE=MergeTree ORDER BY n;
-CREATE MATERIALIZED VIEW mv (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n AS SELECT n, n * n AS n2 FROM src;
-INSERT INTO src VALUES (1), (2);
-DETACH TABLE mv;
-ATTACH TABLE mv;
-INSERT INTO src VALUES (3), (4);
-DROP TABLE mv SYNC;
-CREATE TABLE ".inner_id.e15f3ab5-6cae-4df3-b879-f40deafd82c2" (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n;
-ATTACH MATERIALIZED VIEW mv UUID 'e15f3ab5-6cae-4df3-b879-f40deafd82c2' (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n AS SELECT n, n * n AS n2 FROM src;
-SHOW CREATE TABLE mv;
-INSERT INTO src VALUES (1), (2);
+DROP TABLE IF EXISTS joint; -- the table name from the original issue.
+DROP TABLE IF EXISTS t;
+CREATE TABLE IF NOT EXISTS joint
+(
+    id    UUID,
+    value LowCardinality(String)
+)
+ENGINE = Join (ANY, LEFT, id);
+CREATE TABLE IF NOT EXISTS t
+(
+    id    UUID,
+    d     DateTime
+)
+ENGINE = MergeTree
+PARTITION BY toDate(d)
+ORDER BY id;
+insert into joint VALUES ('00000000-0000-0000-0000-000000000000', 'yo');
+insert into t VALUES ('00000000-0000-0000-0000-000000000000', now());

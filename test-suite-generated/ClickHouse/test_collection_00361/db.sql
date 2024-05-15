@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS json;
-CREATE TABLE json (x Enum8('browser' = 1, 'mobile' = 2), y String) ENGINE = Memory;
-INSERT INTO json (y) VALUES ('Hello');
-INSERT INTO json (y) FORMAT JSONEachRow {"y": "World 1"};
-INSERT INTO json (x, y) FORMAT JSONEachRow {"y": "World 2"};
+DROP TABLE IF EXISTS 00662_has_nullable;
+CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
+INSERT INTO 00662_has_nullable VALUES (1), (Null);

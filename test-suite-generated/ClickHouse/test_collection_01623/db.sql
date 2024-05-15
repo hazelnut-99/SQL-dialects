@@ -1,3 +1,9 @@
-DROP TABLE IF EXISTS tutorial;
-create table tutorial ( inner_poly  Array(Tuple(Int32, Int32)), outer_poly  Array(Tuple(Int32, Int32)) ) engine = Log();
-INSERT INTO tutorial VALUES ([(123, 456), (789, 234)], [(567, 890)]), ([], [(11, 22), (33, 44), (55, 66)]);
+drop table if exists tab2;
+drop table if exists tab3;
+create table tab2 (a2 Int32, b2 Int32) engine = MergeTree order by a2;
+create table tab3 (a3 Int32, b3 Int32) engine = MergeTree order by a3;
+insert into tab2 values (2, 3);
+insert into tab2 values (6, 4);
+insert into tab3 values (2, 3);
+insert into tab3 values (5, 4);
+insert into tab3 values (100, 4);

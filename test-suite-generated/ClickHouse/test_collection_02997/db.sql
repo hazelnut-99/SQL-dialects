@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS test_bit_shift_right_string_integer;
-CREATE TABLE test_bit_shift_right_string_integer (str String, fixedStr FixedString(10), id Int64) engine=Log;
-INSERT INTO test_bit_shift_right_string_integer VALUES('Hello','Hello',-1)('Hello','Hello',0),('Hello','Hello',1),('Hello','Hello',7),('Hello','Hello',8),('Hello','Hello',9),('Hello','Hello',15),('Hello','Hello',16),('Hello','Hello',17),('Hello','Hello',23),('Hello','Hello',24),('Hello','Hello',25),('Hello','Hello',31),('Hello','Hello',32),('Hello','Hello',33),('Hello','Hello',39),('Hello','Hello',40),('Hello','Hello',41),('Hello','Hello',42),('Hel','Hel',7),('Hel','Hel',8),('Hel','Hel',9);
+DROP TABLE IF EXISTS all_valid;
+CREATE TABLE all_valid (id UInt64, query String) ENGINE=MergeTree ORDER BY id;
+INSERT INTO all_valid VALUES (1, 'SELECT 1') (2, 'SeLeCt 22') (3, 'InSerT into TAB values (\'\')');
+DROP TABLE IF EXISTS some_invalid;
+CREATE TABLE some_invalid (id UInt64, query String) ENGINE=MergeTree ORDER BY id;
+INSERT INTO some_invalid VALUES (1, 'SELECT 1') (2, 'SeLeCt 2') (3, 'bad 3') (4, 'select 4') (5, 'bad 5') (6, '') (7, 'SELECT 7');

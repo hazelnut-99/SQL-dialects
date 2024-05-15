@@ -1,0 +1,1 @@
+SELECT YYYYMMDDToDate32(toDecimal64(23000101.1, 5));

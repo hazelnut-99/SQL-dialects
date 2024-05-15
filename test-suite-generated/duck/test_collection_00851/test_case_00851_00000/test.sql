@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT t) FROM interval;

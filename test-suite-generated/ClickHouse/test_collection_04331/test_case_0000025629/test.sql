@@ -1,1 +1,0 @@
-SELECT 'local_tbl';

@@ -1,1 +1,0 @@
-SELECT list('hello world');

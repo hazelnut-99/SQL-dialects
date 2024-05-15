@@ -1,0 +1,1 @@
+select * from (select 'a' as a, number as c from numbers(2)) as t1 join (select 'a' as a, number as c from numbers(2)) as t2  on  t1.a = t2.a or t1.c = t2.c order by t1.c, t2.c;

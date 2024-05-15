@@ -1,1 +1,0 @@
-select 'NOT ILIKE';

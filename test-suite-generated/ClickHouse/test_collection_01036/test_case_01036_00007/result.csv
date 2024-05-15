@@ -1,0 +1,12 @@
+01161_information_schema,01161_information_schema,kcu1,i,1,,0,UInt32,,,32,2,0,,,,,,,,,,,,,UInt32,01161_information_schema,01161_information_schema,kcu1,i,1,,0,UInt32,,,32,2,0,,,,,,,,,,,,,UInt32
+01161_information_schema,01161_information_schema,kcu1,s,2,,0,String,,,,,,,,,,,,,,,,,,String,01161_information_schema,01161_information_schema,kcu1,s,2,,0,String,,,,,,,,,,,,,,,,,,String
+01161_information_schema,01161_information_schema,kcu2,d,2,,0,Date,,,,,,0,,,,,,,,,,,,Date,01161_information_schema,01161_information_schema,kcu2,d,2,,0,Date,,,,,,0,,,,,,,,,,,,Date
+01161_information_schema,01161_information_schema,kcu2,i,1,,0,UInt32,,,32,2,0,,,,,,,,,,,,,UInt32,01161_information_schema,01161_information_schema,kcu2,i,1,,0,UInt32,,,32,2,0,,,,,,,,,,,,,UInt32
+01161_information_schema,01161_information_schema,kcu2,u,3,,0,UUID,,,,,,,,,,,,,,,,,,UUID,01161_information_schema,01161_information_schema,kcu2,u,3,,0,UUID,,,,,,,,,,,,,,,,,,UUID
+01161_information_schema,01161_information_schema,t,d,5,,0,"Decimal(9, 6)",,,9,10,6,,,,,,,,,,,,,"Decimal(9, 6)",01161_information_schema,01161_information_schema,t,d,5,,0,"Decimal(9, 6)",,,9,10,6,,,,,,,,,,,,,"Decimal(9, 6)"
+01161_information_schema,01161_information_schema,t,f,2,,0,Float32,,,,,,,,,,,,,,,,,,Float32,01161_information_schema,01161_information_schema,t,f,2,,0,Float32,,,,,,,,,,,,,,,,,,Float32
+01161_information_schema,01161_information_schema,t,fs,4,,0,FixedString(42),42,42,,,,,,,,,,,,,,,,FixedString(42),01161_information_schema,01161_information_schema,t,fs,4,,0,FixedString(42),42,42,,,,,,,,,,,,,,,,FixedString(42)
+01161_information_schema,01161_information_schema,t,n,1,,0,UInt64,,,64,2,0,,,,,,,,,,,,,UInt64,01161_information_schema,01161_information_schema,t,n,1,,0,UInt64,,,64,2,0,,,,,,,,,,,,,UInt64
+01161_information_schema,01161_information_schema,t,s,3,,0,String,,,,,,,,,,,,,,,,,,String,01161_information_schema,01161_information_schema,t,s,3,,0,String,,,,,,,,,,,,,,,,,,String
+01161_information_schema,01161_information_schema,v,f,2,,0,Float64,,,,,,,,,,,,,,,,,,Float64,01161_information_schema,01161_information_schema,v,f,2,,0,Float64,,,,,,,,,,,,,,,,,,Float64
+01161_information_schema,01161_information_schema,v,n,1,,1,Nullable(Int32),,,32,2,0,,,,,,,,,,,,,Nullable(Int32),01161_information_schema,01161_information_schema,v,n,1,,1,Nullable(Int32),,,32,2,0,,,,,,,,,,,,,Nullable(Int32)

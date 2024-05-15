@@ -1,10 +1,7 @@
-DROP TABLE IF EXISTS numbers1;
-DROP TABLE IF EXISTS numbers2;
-DROP TABLE IF EXISTS numbers3;
-DROP TABLE IF EXISTS numbers4;
-DROP TABLE IF EXISTS numbers5;
-CREATE TABLE numbers1 ENGINE = StripeLog AS SELECT number FROM numbers(1000);
-CREATE TABLE numbers2 ENGINE = TinyLog AS SELECT number FROM numbers(1000);
-CREATE TABLE numbers3 ENGINE = Log AS SELECT number FROM numbers(1000);
-CREATE TABLE numbers4 ENGINE = Memory AS SELECT number FROM numbers(1000);
-CREATE TABLE numbers5 ENGINE = MergeTree ORDER BY number AS SELECT number FROM numbers(1000);
+DROP TABLE IF EXISTS alter_compression_codec;
+CREATE TABLE alter_compression_codec (
+    somedate Date CODEC(LZ4),
+    id UInt64 CODEC(NONE)
+) ENGINE = MergeTree() PARTITION BY somedate ORDER BY id;
+INSERT INTO alter_compression_codec VALUES('2018-01-01', 1);
+INSERT INTO alter_compression_codec VALUES('2018-01-01', 2);

@@ -1,0 +1,1 @@
+SELECT YYYYMMDDToDate(toDecimal64(21490607.1, 5));

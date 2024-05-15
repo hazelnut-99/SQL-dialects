@@ -1,1 +1,0 @@
-SELECT 'can not replace with the other table';

@@ -933,3 +933,62 @@ CREATE TABLE t2(a TEXT, b INTEGER);
 INSERT INTO t2 VALUES('A', NULL);
 INSERT INTO t2 VALUES('B', NULL);
 INSERT INTO t2 VALUES('C', 1);
+DROP TABLE IF EXISTS t2;
+CREATE TABLE t2(a INTEGER, b INTEGER);
+INSERT INTO t2 VALUES(1, 65);
+INSERT INTO t2 VALUES(2,	NULL);
+INSERT INTO t2 VALUES(3,	NULL);
+INSERT INTO t2 VALUES(4,	NULL);
+INSERT INTO t2 VALUES(5, 66);
+INSERT INTO t2 VALUES(6, 67);
+DROP TABLE IF EXISTS tx;
+CREATE TABLE tx(a INTEGER PRIMARY KEY);
+INSERT INTO tx VALUES(1), (2), (3), (4), (5), (6);
+DROP TABLE IF EXISTS map;
+CREATE TABLE map(v INTEGER PRIMARY KEY, t TEXT);
+INSERT INTO map VALUES
+    (1, 'odd'), (2, 'even'), (3, 'odd'),
+    (4, 'even'), (5, 'odd'), (6, 'even');
+WITH map2 AS (
+SELECT * FROM map
+  )
+SELECT sum(a) OVER (
+    PARTITION BY (
+SELECT t FROM map2 WHERE v=a
+    ) ORDER BY a
+  ) FROM tx ORDER BY ALL;
+WITH map2 AS (
+SELECT * FROM map
+  )
+SELECT sum(a) OVER win FROM tx
+  WINDOW win AS (
+    PARTITION BY (
+SELECT t FROM map2 WHERE v=a
+    ) ORDER BY a
+  ) ORDER BY ALL;
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+CREATE TABLE t1(a INTEGER);
+CREATE TABLE t2(y INTEGER);
+CREATE TABLE rides (
+	id INTEGER,
+	requested_date DATE,
+	city VARCHAR,
+	wait_time INTEGER
+);
+INSERT INTO rides VALUES
+	(0, '2023-01-05', 'San Francisco', 2925),
+	(1, '2023-01-03', 'San Francisco', 755),
+	(2, '2023-01-03', 'San Francisco', 2880),
+	(3, '2023-01-05', 'San Francisco', 1502),
+	(4, '2023-01-03', 'San Francisco', 2900),
+	(5, '2023-01-01', 'San Francisco', 1210),
+	(6, '2023-01-04', 'San Francisco', 200),
+	(7, '2023-01-02', 'San Francisco', 980),
+	(8, '2023-01-02', 'San Francisco', 430),
+	(9, '2023-01-05', 'San Francisco', 2999),
+	(10, '2023-01-01', 'San Francisco', 856),
+	(11, '2023-01-02', 'San Francisco', 490),
+	(12, '2023-01-02', 'San Francisco', 720),;
+drop table a;
+create table a as select range%3::smallint j, range::smallint AS i from range(1, 7, 1);

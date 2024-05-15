@@ -676,3 +676,152 @@ WITH t(r, i, p, f) AS (VALUES
 SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
 FROM t
 ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+create table mads as select range r from range(20) union all values (NULL), (NULL), (NULL);
+CREATE TABLE coverage AS SELECT * FROM (VALUES
+	(1), (2), (3), (1)
+	) tbl(r);
+create table tenk1d(ten int4, four int4);
+insert into tenk1d values (0,0), (1,1), (3,3), (2,2), (4,2), (9,1), (4,0), (7,3), (0,2), (2,0), (5,1), (1,3), (3,1), (6,0), (8,0), (9,3), (8,2), (6,2), (7,1), (5,3);
+INSERT INTO empsalary VALUES
+('develop', 10, 5200, '2007-08-01'),
+('sales', 1, 5000, '2006-10-01'),
+('personnel', 5, 3500, '2007-12-10'),
+('sales', 4, 4800, '2007-08-08'),
+('personnel', 2, 3900, '2006-12-23'),
+('develop', 7, 4200, '2008-01-01'),
+('develop', 9, 4500, '2008-01-01'),
+('sales', 3, 4800, '2007-08-01'),
+('develop', 8, 6000, '2006-10-01'),
+('develop', 11, 5200, '2007-08-15');

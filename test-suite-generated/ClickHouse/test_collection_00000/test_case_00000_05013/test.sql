@@ -1,0 +1,9 @@
+SELECT *
+FROM
+(
+    SELECT NULL AS x
+) js1
+INNER JOIN 
+(
+    SELECT NULL AS x
+) js2 USING (x);

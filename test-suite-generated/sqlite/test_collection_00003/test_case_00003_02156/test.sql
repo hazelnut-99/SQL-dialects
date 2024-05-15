@@ -1,0 +1,5 @@
+SELECT e2+d7, e7, d5*640
+  FROM t2, t5, t7
+ WHERE (a2=315 OR 268=a2 OR 863=a2 OR a2=324)
+   AND c5 in (989,86,261,3)
+   AND e7 in (280,183,432,851,156);

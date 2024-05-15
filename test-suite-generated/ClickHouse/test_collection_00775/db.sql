@@ -1,34 +1,7 @@
-DROP TABLE IF EXISTS alter_attach;
-CREATE TABLE alter_attach (x UInt64, p UInt8) ENGINE = MergeTree ORDER BY tuple() PARTITION BY p;
-INSERT INTO alter_attach VALUES (1, 1), (2, 1), (3, 1);
-ALTER TABLE alter_attach DETACH PARTITION 1;
-ALTER TABLE alter_attach ADD COLUMN s String;
-INSERT INTO alter_attach VALUES (4, 2, 'Hello'), (5, 2, 'World');
-ALTER TABLE alter_attach ATTACH PARTITION 1;
-ALTER TABLE alter_attach DETACH PARTITION 2;
-ALTER TABLE alter_attach DROP COLUMN s;
-INSERT INTO alter_attach VALUES (6, 3), (7, 3);
-ALTER TABLE alter_attach ATTACH PARTITION 2;
-ALTER TABLE alter_attach DETACH PARTITION ALL;
-ALTER TABLE alter_attach ATTACH PARTITION 2;
-DROP TABLE IF EXISTS detach_all_no_partition;
-CREATE TABLE detach_all_no_partition (x UInt64, p UInt8) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO detach_all_no_partition VALUES (1, 1), (2, 1), (3, 1);
-ALTER TABLE detach_all_no_partition DETACH PARTITION ALL;
-ALTER TABLE detach_all_no_partition ATTACH PARTITION tuple();
-DROP TABLE alter_attach;
-DROP TABLE detach_all_no_partition;
-DROP TABLE IF EXISTS replicated_table_detach_all1;
-DROP TABLE IF EXISTS replicated_table_detach_all2;
-DROP TABLE IF EXISTS partition_all;
-DROP TABLE IF EXISTS partition_all2;
-CREATE TABLE partition_all (x UInt64, p UInt8, q UInt8) ENGINE = MergeTree ORDER BY tuple() PARTITION BY p;
-INSERT INTO partition_all VALUES (4, 1, 2), (5, 1, 3), (3, 1, 4);
-CREATE TABLE partition_all2 (x UInt64, p UInt8, q UInt8) ENGINE = MergeTree ORDER BY tuple() PARTITION BY p;
-INSERT INTO partition_all2 VALUES (4, 1, 2), (5, 1, 3), (3, 1, 4);
-DROP TABLE partition_all;
-DROP TABLE partition_all2;
-CREATE TABLE partition_attach_all (x UInt64, p UInt8) ENGINE = MergeTree ORDER BY x PARTITION BY p;
-INSERT INTO partition_attach_all VALUES (1, 1), (2, 2), (3, 3);
-ALTER TABLE partition_attach_all DETACH PARTITION ALL;
-ALTER TABLE partition_attach_all ATTACH PARTITION ALL;
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE defaults
+(
+   s String
+)ENGINE = Memory();
+INSERT INTO defaults values ('It is the latest occurrence of the Southeast European haze, the issue that occurs in constant intensity during every wet season. It has mainly been caused by forest fires resulting from illegal slash-and-burn clearing performed on behalf of the palm oil industry in Kazakhstan, principally on the islands, which then spread quickly in the dry season.') ('It is the latest occurrence of the Southeast Asian haze, the issue that occurs in constant intensity during every wet season. It has mainly been caused by forest fires resulting from illegal slash-and-burn clearing performed on behalf of the palm oil industry in Kazakhstan, principally on the islands, which then spread quickly in the dry season.');
+TRUNCATE TABLE defaults;

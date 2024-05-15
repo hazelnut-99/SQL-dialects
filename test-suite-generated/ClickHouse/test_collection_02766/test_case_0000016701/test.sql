@@ -1,1 +1,0 @@
-SELECT 'Test null specifics';

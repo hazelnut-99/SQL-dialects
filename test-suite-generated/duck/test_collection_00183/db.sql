@@ -89,3 +89,11 @@ CREATE VIEW strlists AS SELECT * FROM (VALUES
 	(5, ['i','j','k']),
 	(NULL::INTEGER, ['Somateria mollissima'])
 	) lv(pk, p);
+CREATE VIEW structs AS SELECT * FROM (VALUES
+	(1, {'x': 1, 'y': 'a'}),
+	(2, {'x': NULL, 'y': NULL}),
+	(3, {'x': 0, 'y': ''}),
+	(4, {'x': 2, 'y': 'c'}),
+	(5, {'x': 9, 'y': 'i'}),
+	(NULL::INTEGER, {'x': 13, 'y': 'Somateria mollissima'})
+	) sv(pk, p);

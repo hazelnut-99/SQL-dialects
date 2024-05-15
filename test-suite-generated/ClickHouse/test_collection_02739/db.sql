@@ -1,10 +1,3 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
+drop table if exists test;
+create table test (x UInt64) engine=Memory();
+insert into test select number % 2 ? NULL : 42 as x from numbers(2);

@@ -164,3 +164,4 @@ CREATE  MACRO xt2(a,_name) as TABLE SELECT * FROM test_tbl WHERE(id>=a or name l
 CREATE  MACRO sgreek(a,b,c) as TABLE SELECT a,b FROM greek_tbl WHERE(id >= c);
 ( SELECT* FROM xt(1, 'tom') UNION SELECT* FROM  xt2(1, '%%%') ) INTERSECT SELECT* FROM xt(100,'midge');
 (SELECT* FROM xt(1, 'tom') EXCEPT SELECT* FROM xt(20,'tom' )) INTERSECT SELECT* FROM xt(100,'harry');
+CREATE  MACRO xtm(cmp_str) as TABLE SELECT id, name FROM test_tbl  WHERE( name similar to cmp_str);

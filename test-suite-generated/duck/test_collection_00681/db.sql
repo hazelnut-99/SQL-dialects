@@ -30,3 +30,14 @@ EXECUTE query(1);
 CREATE TABLE b (i TINYINT);
 INSERT INTO b VALUES (1), (2), (3), (4), (5);
 PREPARE s1 AS DELETE FROM b WHERE i=$1;
+EXECUTE s1(3);
+DROP TABLE b CASCADE;
+PREPARE q1 AS
+	COPY (
+		select $1 as 'col'
+	) to 'duckdb_unittest_tempdir/84215/res.csv' (
+		FORMAT csv
+	);
+CREATE TABLE b (i TINYINT);
+INSERT INTO b VALUES (1), (2), (3), (4), (5);
+PREPARE s1 AS DELETE FROM b WHERE i=$1;

@@ -1,1 +1,0 @@
-SELECT COLUMNS(*) FROM integers;

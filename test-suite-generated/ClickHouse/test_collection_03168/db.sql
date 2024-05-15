@@ -1,7 +1,3 @@
-CREATE TABLE t1 (i Int64, j Int64) ENGINE = Memory;
-CREATE TABLE t2 (k Int64, l Int64, m Int64, n Int64) ENGINE = Memory;
-SYSTEM FLUSH LOGS;
-truncate table t2;
-SYSTEM FLUSH LOGS;
-DROP TABLE mv1;
-CREATE TABLE t3 (z Int64) ENGINE = Memory;
+DROP TABLE IF EXISTS t_sample_factor;
+CREATE TABLE t_sample_factor(a UInt64, b UInt64) ENGINE = MergeTree ORDER BY (a, b) SAMPLE BY b;
+INSERT INTO t_sample_factor(a, b) VALUES (1, 2), (3, 4);

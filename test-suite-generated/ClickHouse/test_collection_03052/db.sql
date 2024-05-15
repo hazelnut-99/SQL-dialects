@@ -1,1 +1,30 @@
-CREATE FUNCTION 02099_lambda_function AS x -> arrayMap(array_element -> array_element * 2, x);
+DROP TABLE IF EXISTS 02919_test_table_noarg;
+CREATE TABLE 02919_test_table_noarg(str String) ENGINE = FuzzJSON('{}');
+DROP TABLE IF EXISTS 02919_test_table_noarg;
+DROP TABLE IF EXISTS 02919_test_table_valid_args;
+CREATE TABLE 02919_test_table_valid_args(str String) ENGINE = FuzzJSON(
+    '{"pet":"rat"}', NULL);
+DROP TABLE IF EXISTS 02919_test_table_valid_args;
+DROP TABLE IF EXISTS 02919_test_table_reuse_args;
+CREATE TABLE 02919_test_table_reuse_args(str String) ENGINE = FuzzJSON(
+    '{
+      "name": "Jane Doe",
+      "age": 30,
+      "city": "New York",
+      "contacts": {
+        "email": "jane@example.com",
+        "phone": "+1234567890"
+      },
+      "skills": [
+        "JavaScript",
+        "Python",
+        {
+          "frameworks": ["React", "Django"]
+        }
+      ],
+      "projects": [
+        {"name": "Project A", "status": "completed"},
+        {"name": "Project B", "status": "in-progress"}
+      ]
+    }',
+    12345);

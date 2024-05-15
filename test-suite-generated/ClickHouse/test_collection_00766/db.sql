@@ -1,3 +1,3 @@
-drop table if exists lc_perm;
-create table lc_perm (val UInt32, str LowCardinality(String)) engine = MergeTree order by val;
-insert into lc_perm values (1, 'w'), (10, 'x'), (3, 'y'), (8, 'z'), (4, 'w'), (6, 'y'), (11, 'x'), (0, 'z'), (12, 'a'), (13, 'b'), (14, 'c'), (15, 'd'), (16, 'e'), (17, 'f'), (18, 'g'), (19, 'h');
+DROP TABLE IF EXISTS ints;
+CREATE TABLE ints (i64 Int64, i32 Int32) ENGINE = Memory;
+INSERT INTO ints SELECT 1 AS i64, number AS i32 FROM numbers(2);

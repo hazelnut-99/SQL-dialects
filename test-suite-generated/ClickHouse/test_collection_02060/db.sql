@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE defaults
-(
-	n Int32
-)ENGINE = Memory();
-INSERT INTO defaults SELECT * FROM numbers(10);
-TRUNCATE defaults;
+DROP TABLE IF EXISTS tmp;
+CREATE TABLE tmp (x Int64) ENGINE = MergeTree() ORDER BY tuple() PARTITION BY tuple();
+ALTER TABLE tmp ADD COLUMN s String DEFAULT toString(x);

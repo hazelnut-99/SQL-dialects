@@ -1,1 +1,0 @@
-SELECT tryIdnaEncode('ﻱa');

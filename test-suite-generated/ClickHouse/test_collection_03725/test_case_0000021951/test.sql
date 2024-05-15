@@ -1,1 +1,0 @@
-SELECT dateDiff('second', toDateTime('2015-08-18 00:00:00'), toDate32('2015-08-19')) - timeDiff(toDateTime('2015-08-18 00:00:00'), toDate32('2015-08-19')) <= 2;

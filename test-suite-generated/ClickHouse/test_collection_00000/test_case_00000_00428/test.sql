@@ -1,0 +1,1 @@
+select round(2, 4) round2, round(20, 4) round20, round(200, 4) round200, round(5, 4) round5, round(50, 4) round50, round(500, 4) round500, round(toInt32(5), 4) roundInt5, round(toInt32(50), 4) roundInt50, round(toInt32(500), 4) roundInt500;

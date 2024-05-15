@@ -1,10 +1,18 @@
-DROP DATABASE IF EXISTS test_01191;
-CREATE DATABASE test_01191 ENGINE=Atomic;
-CREATE TABLE test_01191._ (n UInt64, s String) ENGINE = Memory();
-CREATE TABLE test_01191.t (n UInt64, s String) ENGINE = Memory();
-CREATE DICTIONARY test_01191.dict (n UInt64, s String)
-PRIMARY KEY n
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE '_' DB 'test_01191'));
-INSERT INTO test_01191._ VALUES (42, 'test');
-EXCHANGE TABLES test_01191.t AND test_01191.dict;
+DROP TABLE IF EXISTS table_with_lc_key;
+CREATE TABLE table_with_lc_key
+(
+    enum_key Enum8('x' = 2, 'y' = 1),
+    lc_key LowCardinality(String),
+    value String
+)
+ENGINE MergeTree()
+ORDER BY (enum_key, lc_key);
+INSERT INTO table_with_lc_key VALUES(1, 'hello', 'world');
+ALTER TABLE table_with_lc_key MODIFY COLUMN lc_key String;
+SHOW CREATE TABLE table_with_lc_key;
+DETACH TABLE table_with_lc_key;
+ATTACH TABLE table_with_lc_key;
+ALTER TABLE table_with_lc_key MODIFY COLUMN enum_key Enum('x' = 2, 'y' = 1, 'z' = 3);
+SHOW CREATE TABLE table_with_lc_key;
+DETACH TABLE table_with_lc_key;
+ATTACH TABLE table_with_lc_key;

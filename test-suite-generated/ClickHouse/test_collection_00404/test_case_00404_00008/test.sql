@@ -1,0 +1,1 @@
+SELECT * FROM decimal WHERE d1 IN(1, 3) ORDER BY d2;

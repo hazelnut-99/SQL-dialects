@@ -1,2 +1,8 @@
-DROP TABLE IF EXISTS r_prop_table1;
-DROP TABLE IF EXISTS r_prop_table2;
+DROP TABLE IF EXISTS abc;
+CREATE TABLE abc
+(
+    `f1` String,
+    `f2` String
+)
+ENGINE = MergeTree()
+ORDER BY f1;

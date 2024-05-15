@@ -1,5 +1,69 @@
-with number + 1 as x select intDiv(number, 3) as y, sum(x + y) over (partition by y order by x rows unbounded preceding) from numbers(7);
-drop table if exists window_mt;
-create table window_mt engine MergeTree order by number
-    as select number, mod(number, 3) p from numbers(100);
-drop table window_mt;
+DROP TABLE IF EXISTS 02183_dictionary_test_table;
+CREATE TABLE 02183_dictionary_test_table (id UInt64) ENGINE=TinyLog;
+INSERT INTO 02183_dictionary_test_table VALUES (0), (1);
+DROP DICTIONARY IF EXISTS 02183_flat_dictionary;
+CREATE DICTIONARY 02183_flat_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(FLAT())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_flat_dictionary;
+DROP DICTIONARY IF EXISTS 02183_hashed_dictionary;
+CREATE DICTIONARY 02183_hashed_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(HASHED())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_hashed_dictionary;
+DROP DICTIONARY IF EXISTS 02183_hashed_array_dictionary;
+CREATE DICTIONARY 02183_hashed_array_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(HASHED_ARRAY())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_hashed_array_dictionary;
+DROP DICTIONARY IF EXISTS 02183_cache_dictionary;
+CREATE DICTIONARY 02183_cache_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(CACHE(SIZE_IN_CELLS 10))
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_cache_dictionary;
+DROP DICTIONARY IF EXISTS 02183_direct_dictionary;
+CREATE DICTIONARY 02183_direct_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(HASHED())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_direct_dictionary;
+DROP TABLE 02183_dictionary_test_table;
+DROP TABLE IF EXISTS ip_trie_dictionary_source_table;
+CREATE TABLE ip_trie_dictionary_source_table
+(
+    prefix String
+) ENGINE = TinyLog;
+INSERT INTO ip_trie_dictionary_source_table VALUES ('127.0.0.0');
+DROP DICTIONARY IF EXISTS 02183_ip_trie_dictionary;
+CREATE DICTIONARY 02183_ip_trie_dictionary
+(
+    prefix String
+)
+PRIMARY KEY prefix
+SOURCE(CLICKHOUSE(TABLE 'ip_trie_dictionary_source_table'))
+LAYOUT(IP_TRIE())
+LIFETIME(0);

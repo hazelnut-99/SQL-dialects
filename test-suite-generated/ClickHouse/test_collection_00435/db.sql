@@ -1,3 +1,3 @@
-DROP TABLE IF EXISTS multidimensional;
-CREATE TABLE multidimensional (x UInt64, arr Array(Array(String))) ENGINE = MergeTree ORDER BY x;
-INSERT INTO multidimensional VALUES (1, [['Hello', 'World'], ['Goodbye'], []]);
+DROP TEMPORARY TABLE IF EXISTS test_00724;
+CREATE TEMPORARY TABLE test_00724 (d Date, dt DateTime);
+INSERT INTO test_00724 VALUES (toDateTime('2000-01-01 01:02:03'), toDate('2000-01-01'));

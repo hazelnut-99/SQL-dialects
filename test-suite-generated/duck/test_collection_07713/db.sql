@@ -98,3 +98,24 @@ BEGIN TRANSACTION;
 CREATE OR REPLACE TABLE tbl (a SHORT PRIMARY KEY, b SHORT);
 INSERT INTO tbl (select i, 0 from range(2500) tbl(i));
 INSERT INTO tbl (select i, i from range(2500) tbl(i)) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
+COMMIT;
+CREATE TABLE integers(
+	i INTEGER unique,
+	j INTEGER DEFAULT 0,
+	k INTEGER DEFAULT 0
+);
+INSERT INTO integers(i) SELECT i from range(5000) tbl(i);
+INSERT INTO integers SELECT * FROM integers on conflict do nothing;
+INSERT INTO integers SELECT * FROM integers on conflict do update set j = 10;
+INSERT INTO integers(i,j) select i%5,i from range(4995, 5000) tbl(i) on conflict do update set j = excluded.j, k = excluded.i;
+insert into integers(i,j)
+	select
+		CASE WHEN i % 2 = 0
+			THEN
+				4999 - (i//2)
+			ELSE
+				i - ((i//2)+1)
+		END,
+		i
+	from range(5000) tbl(i)
+on conflict do update set j = excluded.j;

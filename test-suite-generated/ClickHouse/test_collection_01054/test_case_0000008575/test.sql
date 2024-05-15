@@ -1,1 +1,0 @@
-SELECT toYearWeek(toDate('2000-01-06'),0) AS w2000, toYearWeek(toDate('2001-01-06'),0) AS w2001, toYearWeek(toDate('2002-01-06'),0) AS w2002,toYearWeek(toDate('2003-01-06'),0) AS w2003, toYearWeek(toDate('2004-01-06'),0) AS w2004, toYearWeek(toDate('2005-01-06'),0) AS w2005, toYearWeek(toDate('2006-01-06'),0) AS w2006;

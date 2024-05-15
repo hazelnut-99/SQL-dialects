@@ -1,6 +1,16 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE defaults
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
 (
-    stringColumn String
-) ENGINE = Memory();
-INSERT INTO defaults values ('<common tag>hello, world<tag>'), ('<script desc=content> some content </script>'), ('<![CDATA[hello, world]]>'), ('white space    collapse');
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');
+DROP DATABASE IF EXISTS 02339_db;
+CREATE DATABASE 02339_db;
+DROP TABLE IF EXISTS 02339_db.test_table;
+CREATE TABLE 02339_db.test_table
+(
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO 02339_db.test_table VALUES (0, 'Value');

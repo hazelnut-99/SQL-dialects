@@ -1,0 +1,1 @@
+SELECT '# Wrong argument types';

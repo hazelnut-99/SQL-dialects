@@ -2109,3 +2109,13 @@ DROP TABLE test10;
 DROP TABLE test24;
 CREATE TABLE test2 (i double[][]);
 INSERT INTO test2 VALUES ([[1.2]]), ([[1.1]]), ([NULL, []]), ([[1.1], [1.2]]), ([]), ([[]]), ([[1.2], [1.2]]), ([NULL]), (NULL), ([[1.2], [1.3]]);
+CREATE TABLE test10 (s STRUCT(i double, j double));
+INSERT INTO test10 values
+({'i': 1.2, 'j': NULL}),
+({'i': 1.1, 'j': NULL}),
+({'i': 1.2, 'j': 1.3}),
+({'i': 1.1, 'j': 1.2}),
+({'i': 1.2, 'j': 1.2}),
+({'i': NULL, 'j': NULL}),
+(NULL),
+({'i': 1.2, 'j': 1.3});

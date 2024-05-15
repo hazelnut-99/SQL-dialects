@@ -1,3 +1,5 @@
-DROP TABLE IF EXISTS t;
-CREATE TABLE t (a Int, b Int, c Int) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO t SELECT number, number * 2, number * 3 FROM numbers(100);
+DROP TABLE IF EXISTS logs;
+CREATE TABLE logs( 
+  date_visited DateTime, 
+  date Date MATERIALIZED toDate(date_visited)
+) ENGINE = MergeTree() ORDER BY tuple();

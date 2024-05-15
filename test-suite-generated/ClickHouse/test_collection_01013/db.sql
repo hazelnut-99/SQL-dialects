@@ -1,8 +1,2 @@
-DROP TABLE IF EXISTS zero_rows_per_granule1;
-DROP TABLE IF EXISTS zero_rows_per_granule2;
-DROP TABLE IF EXISTS zero_rows_per_granule1;
-DROP TABLE IF EXISTS zero_rows_per_granule2;
-DROP TABLE IF EXISTS four_rows_per_granule1;
-DROP TABLE IF EXISTS four_rows_per_granule2;
-DROP TABLE IF EXISTS four_rows_per_granule1;
-DROP TABLE IF EXISTS four_rows_per_granule2;
+drop table if exists table;
+create table table(query String, test String, run UInt32, metrics Array(UInt32), version UInt32) engine Memory;

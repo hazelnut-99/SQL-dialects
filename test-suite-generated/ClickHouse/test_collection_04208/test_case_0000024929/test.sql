@@ -1,1 +1,0 @@
-SELECT singleValueOrNull(toNullable('Hello'));

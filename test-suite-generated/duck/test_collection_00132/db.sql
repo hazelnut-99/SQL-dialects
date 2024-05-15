@@ -235,3 +235,5 @@ INSERT INTO cards_tbl values (1, 'ace', 'spades'),   (11,'jack', 'spades' ),
 (12, 'queen', 'spades' ),    (13, 'king', 'spades');
 CREATE MACRO card_select(_val_min:=1, _val_max:=1,  _name:='%', _suit:='%')
 as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;
+CREATE MACRO card_select_args(_val_min, _val_max,  _name:='%', _suit:='%')
+as TABLE SELECT * FROM  cards_tbl WHERE val>=_val_min AND val<=_val_max AND name like  _name AND suit like _suit;

@@ -1,1 +1,0 @@
-SELECT 'Map(UUID, UInt16)';

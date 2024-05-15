@@ -1,1 +1,0 @@
-select 'HAVING LIMIT';

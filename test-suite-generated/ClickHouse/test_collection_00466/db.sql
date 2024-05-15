@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test
-(
-    x Nullable(Int32)
-) ENGINE = Log;
-INSERT INTO test VALUES(1), (0), (null);
+drop table if exists lc_lambda;
+drop table if exists lc_lambda;
+drop table if exists test_array;
+CREATE TABLE test_array(resources_host Array(LowCardinality(String))) ENGINE = MergeTree() ORDER BY (resources_host);
+insert into test_array values (['a']);
+drop table if exists test_array;

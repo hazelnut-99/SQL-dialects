@@ -1,1 +1,0 @@
-SELECT '-- Before DROP PARTITION --';

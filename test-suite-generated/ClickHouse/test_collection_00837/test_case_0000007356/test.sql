@@ -1,1 +1,0 @@
-SELECT globalIn([''], [NULL]);

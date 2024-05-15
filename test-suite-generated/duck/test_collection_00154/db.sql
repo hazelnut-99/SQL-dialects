@@ -298,3 +298,14 @@ CREATE MACRO in_next_n(x, s, n) AS x IN (
     SELECT nxt
     FROM cte
 );
+CREATE MACRO in_next_n2(x, s, n) AS x IN (
+    WITH RECURSIVE cte AS (
+            SELECT nextval(s) AS nxt, n AS n
+        UNION ALL
+            SELECT nextval(s), cte.n - 1
+            FROM cte
+            WHERE cte.n > 1
+    )
+    SELECT nxt
+    FROM cte
+);

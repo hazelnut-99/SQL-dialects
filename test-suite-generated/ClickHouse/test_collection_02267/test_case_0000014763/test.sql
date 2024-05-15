@@ -1,1 +1,0 @@
-SELECT 'Invocation with DateTime';

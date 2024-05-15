@@ -6,3 +6,6 @@ CREATE TABLE integers(i INTEGER, j INTEGER,);
 INSERT INTO integers VALUES (42, 84,),;
 UPDATE integers SET i=100,;
 CREATE TABLE numerics AS SELECT 42 a42, 84 b84, 126 c126, 1000 d;
+create table a as select 42 as i, 80 as j;
+create table b as select 43 as i, 84 as k;
+create table c as select 44 as i, 84 as l;

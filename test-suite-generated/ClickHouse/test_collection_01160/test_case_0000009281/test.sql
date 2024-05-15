@@ -1,1 +1,0 @@
-SELECT * FROM t0 ANY INNER JOIN t1 ON t1.x = t0.x;

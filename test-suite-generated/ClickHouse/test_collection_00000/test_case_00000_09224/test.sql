@@ -1,0 +1,1 @@
+SELECT CAST(1, 'UInt8');

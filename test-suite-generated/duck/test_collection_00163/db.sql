@@ -329,3 +329,4 @@ CREATE FUNCTION two() AS (SELECT 2);
 DROP FUNCTION two;
 CREATE TABLE floats (b FLOAT);
 INSERT INTO floats VALUES (0.5);
+CREATE MACRO string_split(a,b) AS a + b;

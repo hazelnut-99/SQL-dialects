@@ -1,0 +1,1 @@
+SELECT n, FROM (SELECT 1 AS n);

@@ -1,1 +1,0 @@
-SELECT round(arrayJoin(categoricalInformationValue(x.1, x.2)), 3) FROM (SELECT arrayJoin([(0, 0), (NULL, 2), (1, 0), (1, 1)]) AS x);

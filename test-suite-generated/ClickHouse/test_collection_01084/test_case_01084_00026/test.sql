@@ -1,0 +1,1 @@
+select 'GROUP BY (compound)';

@@ -1,1 +1,0 @@
-select * from format(JSONEachRow, '{"obj" : [{"a" : 42, "b" : "Hello", "c" : [1,2,3]}, {"a" : 43, "b" : "World", "d" : "2020-01-01"}]}, {"obj" : [{}]}');

@@ -105,3 +105,29 @@ CREATE TABLE integers(
 	k INTEGER DEFAULT 0
 );
 INSERT INTO integers(i) SELECT i from range(5000) tbl(i);
+INSERT INTO integers SELECT * FROM integers on conflict do nothing;
+INSERT INTO integers SELECT * FROM integers on conflict do update set j = 10;
+INSERT INTO integers(i,j) select i%5,i from range(4995, 5000) tbl(i) on conflict do update set j = excluded.j, k = excluded.i;
+insert into integers(i,j)
+	select
+		CASE WHEN i % 2 = 0
+			THEN
+				4999 - (i//2)
+			ELSE
+				i - ((i//2)+1)
+		END,
+		i
+	from range(5000) tbl(i)
+on conflict do update set j = excluded.j;
+update integers set j = 0;
+insert into integers(i,j)
+	select
+		CASE WHEN i % 2 = 0
+			THEN
+				4999 - (i//2)
+			ELSE
+				i - ((i//2)+1)
+		END,
+		i
+	from range(5000) tbl(i)
+on conflict do update set j = excluded.j where i % 2 = 0 AND excluded.j % 2 = 0;

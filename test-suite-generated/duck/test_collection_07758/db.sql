@@ -361,3 +361,57 @@ WITH t AS (
 SELECT *, COUNT(b) OVER(PARTITION BY a), COUNT(DISTINCT b) OVER(PARTITION BY a) 
 FROM t
 ORDER BY 1, 2;
+WITH uncascaded AS (
+	SELECT i, i % 29 AS v 
+	FROM range(1000) tbl(i)
+)
+SELECT i
+	, v
+	, COUNT(DISTINCT v) OVER (ORDER BY i ROWS BETWEEN 25 PRECEDING AND 25 FOLLOWING) AS w
+FROM uncascaded
+ORDER BY i;
+WITH cascaded AS (
+	SELECT i, i % 29 AS v 
+	FROM range(10000) tbl(i)
+)
+SELECT i
+	, v
+	, COUNT(DISTINCT v) OVER (ORDER BY i ROWS BETWEEN 25 PRECEDING AND 25 FOLLOWING) AS w
+FROM cascaded
+ORDER BY i;
+INSERT INTO figure1 VALUES 
+	(9, NULL),
+	(NULL, 'b'),
+	(NULL, NULL),
+;
+CREATE TABLE nested AS
+	SELECT 
+		i, 
+		s, 
+		{"m": i % 2, "s": s} AS n,
+		[(i % 2)::VARCHAR, s] AS l,
+		i * i AS r
+	FROM figure1;
+create table image  (
+    id          smallint primary key,
+    width       int not null,
+    height      integer not null
+);
+insert into image (id, width, height) values (1, 500, 297);
+create table pixel (
+    image_id    integer not null,
+    x           integer not null,
+    y           integer not null,
+    red         utinyint not null,
+    green       utinyint not null,
+    blue        utinyint not null
+);
+insert into pixel
+    select
+        1 as image_id,
+        r % 500 as x,
+        r // 500 as y,
+        random() * 255 as red,
+        random() * 255 as green,
+        random() * 255 as blue
+    from (select range r from range(0, 297 * 500)) r;

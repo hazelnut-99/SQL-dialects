@@ -1,8 +1,18 @@
-DROP TABLE IF EXISTS a;
-DROP TABLE IF EXISTS b;
-DROP TABLE IF EXISTS m;
-CREATE TABLE a (key UInt32) ENGINE = MergeTree ORDER BY key;
-CREATE TABLE b (key UInt32, ID UInt32) ENGINE = MergeTree ORDER BY key;
-CREATE TABLE m (key UInt32) ENGINE = Merge(currentDatabase(), 'a');
-INSERT INTO a VALUES (0);
-INSERT INTO b VALUES (0, 1);
+DROP DATABASE IF EXISTS 01913_db;
+CREATE DATABASE 01913_db ENGINE=Atomic;
+DROP TABLE IF EXISTS 01913_db.test_source_table_1;
+CREATE TABLE 01913_db.test_source_table_1
+(
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO 01913_db.test_source_table_1 VALUES (0, 'Value0');
+DROP DICTIONARY IF EXISTS 01913_db.test_dictionary;
+CREATE DICTIONARY 01913_db.test_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+LAYOUT(DIRECT())
+SOURCE(CLICKHOUSE(DB '01913_db' TABLE 'test_source_table_1'));

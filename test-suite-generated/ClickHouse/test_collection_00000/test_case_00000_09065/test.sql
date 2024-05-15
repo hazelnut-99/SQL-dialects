@@ -1,0 +1,6 @@
+SELECT
+    *,
+    if((number % 2) = 0, 0.5, 1) AS a,
+    30 AS b,
+    sum(a * b) OVER (ORDER BY number ASC) AS s
+FROM numbers(10);

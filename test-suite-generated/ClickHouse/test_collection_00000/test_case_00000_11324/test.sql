@@ -1,0 +1,1 @@
+SELECT cast(tuple(0, 1), 'Tuple(value_1 UInt64, value_2 UInt64)') AS value, number FROM numbers(untuple(value));

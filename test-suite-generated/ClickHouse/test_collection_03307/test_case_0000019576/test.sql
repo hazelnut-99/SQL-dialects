@@ -1,1 +1,0 @@
-select * from (select 0 as k, toUInt128('18446744073709551617') as v) t1 asof join (select 0 as k, toUInt128('18446744073709551616') as v) t2 using(k, v);

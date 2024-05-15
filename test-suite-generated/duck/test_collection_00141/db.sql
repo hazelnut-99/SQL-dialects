@@ -249,3 +249,18 @@ CREATE MACRO parameterized_cte(a) AS (WITH cte AS (SELECT a AS answer) SELECT an
 CREATE MACRO in_with_cte(i) AS i IN (WITH cte AS (SELECT a AS answer FROM integers) SELECT answer FROM cte);
 CREATE MACRO plus42(a) AS (WITH cte AS (SELECT 42 AS answer) SELECT answer + a FROM cte);
 CREATE MACRO plus1(a) AS (WITH tbl AS (SELECT 1 AS one) SELECT one + a FROM tbl);
+CREATE MACRO deep_cte(param) AS (
+    WITH cte1 AS (
+        WITH cte2 AS (
+            WITH cte3 AS (
+                WITH cte4 AS (
+                    SELECT param AS d
+                )
+                SELECT d AS c FROM cte4
+            )
+            SELECT c AS b FROM cte3
+        )
+        SELECT b AS a FROM cte2
+    )
+    SELECT a FROM cte1
+);

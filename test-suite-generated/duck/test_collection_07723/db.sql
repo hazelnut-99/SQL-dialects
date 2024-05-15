@@ -160,3 +160,11 @@ insert into tbl VALUES
 	(2, 20, 1),
 	(3, 30, 2);
 insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 5;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 1 + excluded.k;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
+create or replace table tbl (
+	a integer primary key default 5,
+	b integer
+);
+insert into tbl(b) VALUES (10);
+insert into tbl(b) VALUES (10) ON CONFLICT (a) DO NOTHING;

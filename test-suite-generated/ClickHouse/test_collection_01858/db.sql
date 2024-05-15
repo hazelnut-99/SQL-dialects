@@ -1,15 +1,11 @@
-DROP DATABASE IF EXISTS db_01391;
-CREATE DATABASE db_01391;
-USE db_01391;
-DROP TABLE IF EXISTS t;
-DROP TABLE IF EXISTS d_src;
-DROP DICTIONARY IF EXISTS d;
-CREATE TABLE t (click_city_id UInt32, click_country_id UInt32) Engine = Memory;
-CREATE TABLE d_src (id UInt64, country_id UInt8, name String) Engine = Memory;
-INSERT INTO t VALUES (0, 0);
-INSERT INTO d_src VALUES (0, 0, 'n');
-CREATE DICTIONARY d (id UInt32, country_id UInt8, name String)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' DB 'db_01391' table 'd_src'))
-LIFETIME(MIN 1 MAX 1)
-LAYOUT(HASHED());
+drop table if exists tab;
+create table tab (t DateTime) engine = MergeTree order by toStartOfDay(t);
+insert into tab values ('2020-02-02 01:01:01');
+with t as s select t from tab where s > '2020-01-01 01:01:01';
+drop table if exists tab;
+create table tab (t DateTime) engine = MergeTree order by toStartOfDay(t + 1);
+insert into tab values ('2020-02-02 01:01:01');
+with t + 1 as s select t from tab where s > '2020-01-01 01:01:01';
+drop table if exists tab;
+create table tab (x Int32, y Int32) engine = MergeTree partition by x + y order by tuple();
+insert into tab values (1, 1), (2, 2);

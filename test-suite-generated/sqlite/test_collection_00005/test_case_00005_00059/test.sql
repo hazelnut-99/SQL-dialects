@@ -1,0 +1,2 @@
+SELECT e
+  FROM t1;

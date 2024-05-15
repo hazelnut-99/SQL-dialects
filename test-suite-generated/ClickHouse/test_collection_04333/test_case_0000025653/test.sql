@@ -1,1 +1,0 @@
-SELECT byteSwap(3455829959::UInt32);

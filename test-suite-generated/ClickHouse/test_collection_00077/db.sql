@@ -1,2 +1,12 @@
-DROP TABLE IF EXISTS numbers_mt;
-CREATE TABLE numbers_mt (number UInt64) ENGINE = Log;
+DROP TABLE IF EXISTS multi_if_check;
+CREATE TABLE multi_if_check(col1 UInt64, col2 String, col3 String, col4 String) ENGINE=TinyLog;
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(1, 'A', 'AB', 'ABC');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(2, 'B', 'BC', 'BCD');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(3, 'C', 'CD', 'CDE');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(4, 'D', 'DE', 'DEF');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(5, 'E', 'EF', 'EFG');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(6, 'F', 'FG', 'FGH');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(7, 'G', 'GH', 'GHI');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(8, 'H', 'HI', 'HIJ');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(9, 'I', 'IJ', 'IJK');
+INSERT INTO multi_if_check(col1, col2, col3, col4) VALUES(10, 'J', 'JK', 'JKL');

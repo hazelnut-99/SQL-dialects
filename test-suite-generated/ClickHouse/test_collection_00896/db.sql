@@ -1,15 +1,11 @@
-DROP TABLE IF EXISTS t64;
-CREATE TABLE t64
-(
-    u8 UInt8,
-    t_u8 UInt8 Codec(T64, ZSTD),
-    u16 UInt16,
-    t_u16 UInt16 Codec(T64, ZSTD),
-    u32 UInt32,
-    t_u32 UInt32 Codec(T64, ZSTD),
-    u64 UInt64,
-    t_u64 UInt64 Codec(T64, ZSTD)
-) ENGINE MergeTree() ORDER BY tuple();
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
-INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+DROP TABLE IF EXISTS view1;
+CREATE TABLE t1 (id UInt32, value1 String ) ENGINE ReplacingMergeTree() ORDER BY id;
+CREATE TABLE t2 (id UInt32, value2 String ) ENGINE ReplacingMergeTree() ORDER BY id;
+CREATE TABLE t3 (id UInt32, value3 String ) ENGINE ReplacingMergeTree() ORDER BY id;
+INSERT INTO t1 (id, value1) VALUES (1, 'val11');
+INSERT INTO t2 (id, value2) VALUES (1, 'val21');
+INSERT INTO t3 (id, value3) VALUES (1, 'val31');
+CREATE VIEW IF NOT EXISTS view1 AS SELECT t1.id AS id, t1.value1 AS value1, t2.value2 AS value2, t3.value3 AS value3 FROM t1 LEFT JOIN t2 ON t1.id = t2.id LEFT JOIN t3 ON t1.id = t3.id WHERE t1.id > 0;

@@ -1,1 +1,0 @@
-SELECT '-- Regression introduced in https://github.com/ClickHouse/ClickHouse/pull/54184';

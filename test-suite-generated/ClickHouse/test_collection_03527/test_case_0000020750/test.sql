@@ -1,5 +1,0 @@
-SELECT Num
-FROM order
-PREWHERE Type = 1
-WHERE ID = 1
-ORDER BY Num ASC limit 5;

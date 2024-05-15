@@ -1,14 +1,12 @@
-DROP TABLE IF EXISTS defaults_on_defaults;
-CREATE TABLE defaults_on_defaults (
-    key UInt64
-)
-ENGINE = MergeTree()
-ORDER BY tuple();
-INSERT INTO defaults_on_defaults values (1);
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C1` Array(UInt32) DEFAULT emptyArrayUInt32();
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C2` Array(UInt32) DEFAULT arrayResize(emptyArrayUInt32(), length(Arr.C1));
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C3` Array(UInt32) ALIAS arrayResize(emptyArrayUInt32(), length(Arr.C2));
-ALTER TABLE defaults_on_defaults ADD COLUMN `Arr.C4` Array(UInt32) DEFAULT arrayResize(emptyArrayUInt32(), length(Arr.C3));
-ALTER TABLE defaults_on_defaults ADD COLUMN `ArrLen` UInt64 DEFAULT length(Arr.C4);
-SHOW CREATE TABLE defaults_on_defaults;
-OPTIMIZE TABLE defaults_on_defaults FINAL;
+DROP TABLE IF EXISTS dictionary_non_nullable_source_table;
+CREATE TABLE dictionary_non_nullable_source_table (id UInt64, value String) ENGINE=TinyLog;
+INSERT INTO dictionary_non_nullable_source_table VALUES (0, 'Test');
+DROP DICTIONARY IF EXISTS test_dictionary_non_nullable;
+CREATE DICTIONARY test_dictionary_non_nullable (id UInt64, value String) PRIMARY KEY id LAYOUT(DIRECT()) SOURCE(CLICKHOUSE(TABLE 'dictionary_non_nullable_source_table'));
+DROP DICTIONARY test_dictionary_non_nullable;
+DROP TABLE dictionary_non_nullable_source_table;
+DROP TABLE IF EXISTS dictionary_nullable_source_table;
+CREATE TABLE dictionary_nullable_source_table (id UInt64, value Nullable(String)) ENGINE=TinyLog;
+INSERT INTO dictionary_nullable_source_table VALUES (0, 'Test'), (1, NULL);
+DROP DICTIONARY IF EXISTS test_dictionary_nullable;
+CREATE DICTIONARY test_dictionary_nullable (id UInt64, value Nullable(String)) PRIMARY KEY id LAYOUT(DIRECT()) SOURCE(CLICKHOUSE(TABLE 'dictionary_nullable_source_table'));

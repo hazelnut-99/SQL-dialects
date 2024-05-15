@@ -1,1 +1,0 @@
-select 'wide fsync_after_insert';

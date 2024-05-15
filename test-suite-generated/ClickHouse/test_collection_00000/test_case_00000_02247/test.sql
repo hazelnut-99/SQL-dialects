@@ -1,0 +1,1 @@
+select arrayPopFront(emptyArrayUInt8());

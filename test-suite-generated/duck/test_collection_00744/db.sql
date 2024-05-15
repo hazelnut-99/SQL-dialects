@@ -4,3 +4,6 @@ INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);
 create table integers as select i from range(200) tbl(i);
 CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a::VARCHAR || 'ducktastic' c, get_current_time() c from range(1000);
 CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a::VARCHAR || 'ducktastic' c, get_current_time() c from range(10000);
+CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a::VARCHAR || 'ducktastic' c, get_current_time() c from range(1000000);
+CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a::VARCHAR || 'ducktastic' c, get_current_time() c from range(1000);
+CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a::VARCHAR || 'ducktastic' c, get_current_time() c from range(10000);

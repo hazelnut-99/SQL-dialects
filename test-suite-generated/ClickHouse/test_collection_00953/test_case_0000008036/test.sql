@@ -1,1 +1,0 @@
-select 'arrayEnumerateUniq(a1, a2) =';

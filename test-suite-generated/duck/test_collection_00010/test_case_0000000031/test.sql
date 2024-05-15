@@ -1,1 +1,0 @@
-SELECT typeof(#1) FROM v2 LIMIT 1;

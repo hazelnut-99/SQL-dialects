@@ -1,51 +1,13 @@
-DROP TABLE IF EXISTS 02183_dictionary_source_table;
-CREATE TABLE 02183_dictionary_source_table
+CREATE TABLE raw_data
 (
-    id UInt64,
-    value_date Date,
-    value_date_32 Date32,
-    value_date_time DateTime,
-    value_date_time_64 DateTime64
-) ENGINE=TinyLog;
-INSERT INTO 02183_dictionary_source_table VALUES (0, '2019-05-05', '2019-05-05', '2019-05-05', '2019-05-05');
-DROP DICTIONARY IF EXISTS 02183_flat_dictionary;
-CREATE DICTIONARY 02183_flat_dictionary
-(
-    id UInt64,
-    value_date Date,
-    value_date_32 Date32,
-    value_date_time DateTime,
-    value_date_time_64 DateTime64
+	`id` UInt8,
+	`data` String
 )
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(TABLE '02183_dictionary_source_table'))
-LIFETIME(0)
-LAYOUT(FLAT());
-DROP DICTIONARY 02183_flat_dictionary;
-DROP DICTIONARY IF EXISTS 02183_hashed_dictionary;
-CREATE DICTIONARY 02183_hashed_dictionary
-(
-    id UInt64,
-    value_date Date,
-    value_date_32 Date32,
-    value_date_time DateTime,
-    value_date_time_64 DateTime64
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(TABLE '02183_dictionary_source_table'))
-LIFETIME(0)
-LAYOUT(HASHED());
-DROP DICTIONARY 02183_hashed_dictionary;
-DROP DICTIONARY IF EXISTS 02183_hashed_array_dictionary;
-CREATE DICTIONARY 02183_hashed_array_dictionary
-(
-    id UInt64,
-    value_date Date,
-    value_date_32 Date32,
-    value_date_time DateTime,
-    value_date_time_64 DateTime64
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(TABLE '02183_dictionary_source_table'))
-LIFETIME(0)
-LAYOUT(HASHED_ARRAY());
+ENGINE = MergeTree
+ORDER BY id;
+INSERT INTO raw_data SELECT number, number
+FROM numbers(10);
+CREATE VIEW raw_data_parametrized AS
+SELECT *
+FROM raw_data
+WHERE (id >= {id_from:UInt8}) AND (id <= {id_to:UInt8});

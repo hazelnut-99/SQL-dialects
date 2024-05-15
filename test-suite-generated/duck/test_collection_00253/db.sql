@@ -60,3 +60,4 @@ explain analyze SELECT regexp_matches(s, '^a.*b$', 's'), s FROM TEST;
 explain analyze select regexp_matches(s, 'a_a'), s from test;
 explain analyze select regexp_matches(s, 'a%a'), s from test;
 explain analyze select regexp_matches(s, 'a\\a'), s from test;
+explain analyze select regexp_matches(s, 'a\.a'), s from test;

@@ -1,37 +1,36 @@
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLog();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = Log();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = StripeLog();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt16) ENGINE = Memory();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables_null;
-CREATE TABLE check_system_tables_null (key UInt16) ENGINE = Null();
-CREATE TABLE check_system_tables (key UInt16) ENGINE = Buffer(
-    currentDatabase(),
-    check_system_tables_null,
-    2,
-    0,   100, /* min_time /max_time */
-    100, 100, /* min_rows /max_rows */
-    0,   1e6  /* min_bytes/max_bytes */
-);
-INSERT INTO check_system_tables SELECT * FROM numbers_mt(50);
-OPTIMIZE TABLE check_system_tables; -- flush
-INSERT INTO check_system_tables SELECT * FROM numbers_mt(50);
-OPTIMIZE TABLE check_system_tables; -- flush
-INSERT INTO check_system_tables SELECT * FROM numbers_mt(101); -- direct block write (due to min_rows exceeded)
-DROP TABLE check_system_tables;
-DROP TABLE check_system_tables_null;
-CREATE TABLE check_system_tables Engine=Set() AS SELECT * FROM numbers(50);
-INSERT INTO check_system_tables SELECT number+50 FROM numbers(50);
-DROP TABLE check_system_tables;
+DROP DATABASE IF EXISTS database_for_dict;
+CREATE DATABASE database_for_dict;
+CREATE TABLE database_for_dict.table_for_dict
+(
+  key_column UInt64,
+  second_column UInt8,
+  third_column String,
+  fourth_column Float64
+)
+ENGINE = MergeTree()
+ORDER BY key_column;
+INSERT INTO database_for_dict.table_for_dict SELECT number, number % 17, toString(number * number), number / 2.0 from numbers(100);
+CREATE DICTIONARY database_for_dict.dict1
+(
+  key_column UInt64 DEFAULT 0,
+  second_column UInt8 DEFAULT 1,
+  third_column String DEFAULT 'qqq',
+  fourth_column Float64 DEFAULT 42.0
+)
+PRIMARY KEY key_column
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' DB 'database_for_dict'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(FLAT());
+CREATE DICTIONARY database_for_dict.dict2
+(
+  key_column UInt64 DEFAULT 0,
+  second_column UInt8 DEFAULT 1,
+  third_column String DEFAULT 'qqq',
+  fourth_column Float64 DEFAULT 42.0
+)
+PRIMARY KEY key_column
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'dict1' DB 'database_for_dict'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(HASHED());
+INSERT INTO database_for_dict.table_for_dict SELECT number, number % 17, toString(number * number), number / 2.0 from numbers(100, 100);
+SYSTEM RELOAD DICTIONARIES;

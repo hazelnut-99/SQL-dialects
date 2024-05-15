@@ -1,1 +1,0 @@
-select '-- array join, but request the original columns';

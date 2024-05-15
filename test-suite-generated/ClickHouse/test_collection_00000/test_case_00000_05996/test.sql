@@ -1,0 +1,1 @@
+SELECT number AS x FROM numbers(3) ORDER BY toFloat32(x) as k, toFloat64(k);

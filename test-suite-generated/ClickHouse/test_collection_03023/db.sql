@@ -1,10 +1,44 @@
-drop table if exists test;
+DROP TABLE IF EXISTS test;
 CREATE TABLE test
 (
-    d DateTime,
-    a String,
-    b UInt64
+  EventDate Date
 )
 ENGINE = MergeTree
-PARTITION BY toDate(d)
-ORDER BY d;
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION (('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION '2023-10-09';
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS test2;
+CREATE TABLE test2
+(
+  a UInt32,
+  b Int64
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY (a * b, b * b);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION tuple(2, 4);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION (2, 4);
+INSERT INTO test2 VALUES(1, 2);
+DROP TABLE IF EXISTS test2;
+DROP TABLE IF EXISTS test3;
+CREATE TABLE test3
+(
+  a UInt32,
+  b Int64
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY a;
+INSERT INTO test3 VALUES(1, 2);

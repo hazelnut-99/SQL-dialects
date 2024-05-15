@@ -1,0 +1,1 @@
+SELECT '\w' LIKE '%\w';

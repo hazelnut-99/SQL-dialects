@@ -1,0 +1,1 @@
+SELECT [number][0xFFFFFFFFFFFFFFFF] FROM numbers(1);

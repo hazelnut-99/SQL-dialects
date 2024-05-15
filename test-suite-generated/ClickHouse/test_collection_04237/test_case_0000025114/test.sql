@@ -1,1 +1,0 @@
-SELECT subDate('2022-05-07'::String, INTERVAL 5 MINUTE);

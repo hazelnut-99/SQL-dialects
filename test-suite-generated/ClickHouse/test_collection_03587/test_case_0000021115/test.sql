@@ -1,1 +1,0 @@
-SELECT id FROM test_table UNION DISTINCT SELECT id FROM test_table;

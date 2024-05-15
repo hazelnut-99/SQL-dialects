@@ -49,3 +49,5 @@ EXECUTE v1(['column1', 'column2']);
 PREPARE v1 AS SELECT POSITION(? in ?);
 EXECUTE v1('e', 'hello world');
 ;
+CREATE TABLE people(Name VARCHAR, STATE VARCHAR, Country VARCHAR);
+DESCRIBE people;

@@ -1,16 +1,19 @@
-DROP TABLE IF EXISTS join_any_inner;
-DROP TABLE IF EXISTS join_any_left;
-DROP TABLE IF EXISTS join_any_left_null;
-DROP TABLE IF EXISTS join_all_inner;
-DROP TABLE IF EXISTS join_all_left;
-DROP TABLE IF EXISTS join_string_key;
-CREATE TABLE join_any_inner (s String, x Array(UInt8), k UInt64) ENGINE = Join(ANY, INNER, k);
-CREATE TABLE join_any_left (s String, x Array(UInt8), k UInt64) ENGINE = Join(ANY, LEFT, k);
-CREATE TABLE join_all_inner (s String, x Array(UInt8), k UInt64) ENGINE = Join(ALL, INNER, k);
-CREATE TABLE join_all_left (s String, x Array(UInt8), k UInt64) ENGINE = Join(ALL, LEFT, k);
-INSERT INTO join_any_inner VALUES ('abc', [0], 1), ('def', [1, 2], 2);
-INSERT INTO join_any_left VALUES ('abc', [0], 1), ('def', [1, 2], 2);
-INSERT INTO join_all_inner VALUES ('abc', [0], 1), ('def', [1, 2], 2);
-INSERT INTO join_all_left VALUES ('abc', [0], 1), ('def', [1, 2], 2);
-CREATE TABLE join_string_key (s String, x Array(UInt8), k UInt64) ENGINE = Join(ANY, LEFT, s);
-INSERT INTO join_string_key VALUES ('abc', [0], 1), ('def', [1, 2], 2);
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab(e8 Enum8('hello' = -5, 'world' = 15), e16 Enum16('shark' = -999, 'eagle' = 9999)) ENGINE MergeTree ORDER BY tuple();
+INSERT INTO TABLE tab VALUES ('hello', 'shark'), ('world', 'eagle');
+DROP TABLE tab;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (s String, l Int8, r Int8) ENGINE = Memory;
+INSERT INTO tab VALUES ('abcdefgh', 2, -2), ('12345678', 3, -3);
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (s FixedString(8), l Int8, r Int8) ENGINE = Memory;
+INSERT INTO tab VALUES ('abcdefgh', 2, -2), ('12345678', 3, -3);
+DROP TABLE IF EXISTS tab;
+DROP TABLE IF EXISTS t;
+CREATE TABLE t
+(
+    s String,
+    l Int8,
+    r Int8
+) ENGINE = Memory;
+INSERT INTO t VALUES ('abcdefgh', -2, -2),('12345678', -3, -3);

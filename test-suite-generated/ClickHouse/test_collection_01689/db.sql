@@ -1,3 +1,4 @@
-drop table if exists t;
-create table t (x UInt8, id UInt8) ENGINE = MergeTree() order by (id);
-insert into t values (1, 1);
+DROP TABLE IF EXISTS test_tuple;
+CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
+INSERT INTO test_tuple VALUES ((NULL, 1));
+DROP TABLE test_tuple;

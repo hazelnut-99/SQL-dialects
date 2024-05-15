@@ -1,15 +1,13 @@
-DROP TABLE IF EXISTS zstd_1_00;
-DROP TABLE IF EXISTS zstd_1_24;
-DROP TABLE IF EXISTS zstd_9_00;
-DROP TABLE IF EXISTS zstd_9_24;
-DROP TABLE IF EXISTS words;
-CREATE TABLE words(i Int, word String) ENGINE = Memory;
-INSERT INTO words SELECT * FROM generateRandom('i Int, word String',1,10) LIMIT 1 BY i LIMIT 10000;
-CREATE TABLE zstd_1_00(n Int, b String CODEC(ZSTD(1))) ENGINE = MergeTree ORDER BY n;
-CREATE TABLE zstd_1_24(n Int, b String CODEC(ZSTD(1,24))) ENGINE = MergeTree ORDER BY n;
-CREATE TABLE zstd_9_00(n Int, b String CODEC(ZSTD(9))) ENGINE = MergeTree ORDER BY n;
-CREATE TABLE zstd_9_24(n Int, b String CODEC(ZSTD(9,24))) ENGINE = MergeTree ORDER BY n;
-INSERT INTO zstd_1_00 SELECT * FROM words;
-INSERT INTO zstd_1_24 SELECT * FROM words;
-INSERT INTO zstd_9_00 SELECT * FROM words;
-INSERT INTO zstd_9_24 SELECT * FROM words;
+DROP TABLE IF EXISTS hierarchy_source_table;
+CREATE TABLE hierarchy_source_table (id UInt64, parent_id UInt64) ENGINE = TinyLog;
+INSERT INTO hierarchy_source_table VALUES (1, 0), (2, 1), (3, 1), (4, 2);
+DROP DICTIONARY IF EXISTS hierarchy_flat_dictionary;
+CREATE DICTIONARY hierarchy_flat_dictionary
+(
+    id UInt64,
+    parent_id UInt64 HIERARCHICAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE 'hierarchy_source_table'))
+LAYOUT(FLAT())
+LIFETIME(MIN 1 MAX 1000);

@@ -1,1 +1,0 @@
-SELECT CAST(if(1 = 1, toNullable(toInt8(3)), NULL) AS Int32) as x, toTypeName(x);

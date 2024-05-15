@@ -1,0 +1,1 @@
+SELECT * FROM test24 ORDER BY l;

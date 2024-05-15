@@ -1,12 +1,16 @@
-DROP TABLE IF EXISTS db;
-CREATE TABLE tb
-(
-    date Date,
-    `index` Int32,
-    value Int32,
-    idx Int32 ALIAS `index`
-)
-ENGINE = MergeTree
-PARTITION BY date
-ORDER BY (date, `index`);
-insert into tb values ('2017-12-15', 1, 1);
+desc format(JSONEachRow, '{"x" : [null, 1]}');
+desc format(JSONEachRow, '{"x" : [null, 1]}, {"x" : []}');
+desc format(JSONEachRow, '{"x" : [null, 1]}, {"x" : [null]}');
+desc format(JSONEachRow, '{"x" : [null, 1]}, {"x" : [1, null]}');
+desc format(JSONEachRow, '{"x" : [null, 1]}, {"x" : ["abc", 1]}');
+desc format(JSONEachRow, '{"x" : [null, 1]}, {"x" : ["abc", null]}');
+desc format(JSONEachRow, '{"x" : {}}, {"x" : {"a" : 1}}');
+desc format(JSONEachRow, '{"x" : {"a" : null}}, {"x" : {"b" : 1}}');
+desc format(JSONEachRow, '{"x" : null}, {"x" : [1, 2]}');
+desc format(JSONEachRow, '{"x" : [[], [null], [1, 2, 3]]}');
+desc format(JSONEachRow, '{"x" : [{"a" : null}, {"b" : 1}]}');
+desc format(JSONEachRow, '{"x" : [["2020-01-01", null, "1234"], ["abcd"]]}');
+desc format(JSONEachRow, '{"x" : [1, 2]}');
+desc format(JSONEachRow, '{"x" : [null, 1]}');
+desc format(JSONEachRow, '{"x" : [1, 2]}, {"x" : [3]}');
+desc format(JSONEachRow, '{"x" : [1, 2]}, {"x" : [null]}');

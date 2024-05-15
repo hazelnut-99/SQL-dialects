@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS test_00681;
-CREATE TABLE test_00681(x Int32) ENGINE = Log;
-INSERT INTO test_00681 VALUES (123);
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;
+DROP TABLE IF EXISTS four_rows_per_granule;
+DROP TABLE IF EXISTS four_rows_per_granule;

@@ -1,1 +1,0 @@
-SELECT 'Check constant key and data from a table';

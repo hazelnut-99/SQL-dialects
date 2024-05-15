@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS execute_on_single_replica_r1 SYNC;
-DROP TABLE IF EXISTS execute_on_single_replica_r2 SYNC;
-SYSTEM STOP REPLICATION QUEUES execute_on_single_replica_r2;
-SYSTEM START REPLICATION QUEUES execute_on_single_replica_r2;
-SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS foo;
+CREATE TABLE foo (ts DateTime, x UInt64)
+ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
+ORDER BY (ts);
+ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);

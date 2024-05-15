@@ -1,1 +1,0 @@
-select ltrim('   foo');

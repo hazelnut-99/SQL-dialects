@@ -1,0 +1,1 @@
+select number, arrayReduce( 'sumMap', [a],[b]  ) from (select materialize([100,100,200]) a,materialize([10,20,30]) b, number from numbers(10));

@@ -1,1 +1,0 @@
-SELECT 'DST boundary test for Europe/Moscow:';

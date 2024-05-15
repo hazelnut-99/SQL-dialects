@@ -16,3 +16,6 @@ INSERT INTO collate_join_table VALUES ('HeLlO', 1), ('mÜHLEISEN', 3);
 DROP TABLE collate_test;
 CREATE TABLE collate_test(s VARCHAR COLLATE NOCASE);
 INSERT INTO collate_test VALUES ('Hallo'), ('ham'), ('HELLO'), ('hElp');
+DROP TABLE collate_test;
+CREATE TABLE collate_test(s VARCHAR COLLATE NOCASE);
+INSERT INTO collate_test VALUES ('Hallo'), ('hallo');

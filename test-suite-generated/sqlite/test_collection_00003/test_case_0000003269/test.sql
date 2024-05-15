@@ -1,4 +1,0 @@
-SELECT b4, a9*580
-  FROM t9, t4
- WHERE (410=b9 OR b9=703)
-   AND b4 in (68,607,884,606,810,627);

@@ -1,25 +1,3 @@
-DROP DATABASE IF EXISTS `01945.db`;
-CREATE DATABASE `01945.db`;
-CREATE TABLE `01945.db`.test_dictionary_values
-(
-	id UInt64,
-	value String
-) ENGINE=TinyLog;
-INSERT INTO `01945.db`.test_dictionary_values VALUES (0, 'Value');
-CREATE DICTIONARY `01945.db`.test_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(DB '01945.db' TABLE 'test_dictionary_values'));
-DROP DICTIONARY `01945.db`.test_dictionary;
-CREATE DICTIONARY `01945.db`.`test_dictionary.test`
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(DB '01945.db' TABLE 'test_dictionary_values'));
+DROP TABLE IF EXISTS series;
+CREATE TABLE series(i UInt32, x Float64, y Float64) ENGINE = Memory;
+INSERT INTO series(i, x, y) VALUES (1, 5.6,-4.4),(2, -9.6,3),(3, -1.3,-4),(4, 5.3,9.7),(5, 4.4,0.037),(6, -8.6,-7.8),(7, 5.1,9.3),(8, 7.9,-3.6),(9, -8.2,0.62),(10, -3,7.3);

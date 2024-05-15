@@ -1,1 +1,0 @@
-select 'order by v2, v1 nulls first';

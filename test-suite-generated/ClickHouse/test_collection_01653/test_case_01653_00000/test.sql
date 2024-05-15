@@ -1,0 +1,1 @@
+SELECT * FROM 01686_test WHERE key = 123;

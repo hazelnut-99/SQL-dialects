@@ -279,3 +279,22 @@ create temporary macro if not exists test(a, b) as a + b;
 CREATE MACRO "sum"(x) AS (CASE WHEN sum(x) IS NULL THEN 0 ELSE sum(x) END);
 DROP MACRO sum;
 CREATE MACRO "sum"(x) AS (CASE WHEN system.main.sum(x) IS NULL THEN 0 ELSE system.main.sum(x) END);
+create macro m1(a) as a+1;
+create macro m2(a) as m1(a)+1;
+create or replace macro m1(a) as m2(a)+1;
+create macro m3(a) as a+1;
+create macro m4(a) as table select m3(a);
+create or replace macro m3(a) as (from m4(42));
+INSERT INTO integers VALUES (42), (42);
+CREATE SEQUENCE seq;
+CREATE MACRO in_next_n(x, s, n) AS x IN (
+    WITH RECURSIVE cte AS (
+            SELECT nextval(s) AS nxt, 1 AS iter
+        UNION ALL
+            SELECT nextval(s), iter + 1
+            FROM cte
+            WHERE iter < n
+    )
+    SELECT nxt
+    FROM cte
+);

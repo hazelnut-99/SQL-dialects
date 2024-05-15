@@ -1,9 +1,0 @@
-SELECT d6 FROM t6
-   WHERE (d6=424)
-      OR (2=a6 AND e6=211 AND 469=d6)
-      OR e6 in (969,95,711,237,225)
-UNION ALL
-  SELECT a3 FROM t3
-   WHERE c3 in (898,800,395,594,845,607,986,763,885,400)
-      OR (593=e3)
-      OR (d3=635 AND c3=84);

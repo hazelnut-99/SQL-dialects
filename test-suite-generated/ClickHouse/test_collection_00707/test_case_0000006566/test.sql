@@ -1,1 +1,0 @@
-SELECT toFixedString('00000000-0000-04f8-9cb8-cb1b82fb3900', 36) AS str, CAST(str, 'UUID');

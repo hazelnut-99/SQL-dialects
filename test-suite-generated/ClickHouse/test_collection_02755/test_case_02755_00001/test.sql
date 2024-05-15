@@ -1,0 +1,1 @@
+SELECT * FROM m PREWHERE f = 1 ORDER BY a, f;

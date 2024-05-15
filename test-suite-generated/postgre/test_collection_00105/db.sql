@@ -1,13 +1,9 @@
-begin;
-create table simple as
-  select generate_series(1, 20000) AS id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-analyze simple;
-create table bigger_than_it_looks as
-  select generate_series(1, 20000) as id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-analyze bigger_than_it_looks;
-create table extremely_skewed (id int, t text);
-analyze extremely_skewed;
-insert into extremely_skewed
-  select 42 as id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-  from generate_series(1, 20000);
-create table wide as select generate_series(1, 2) as id, rpad('', 320000, 'x') as t;
+COMMIT;
+CREATE TEMP TABLE test_jsonb (
+       json_type text,
+       test_json jsonb
+);
+INSERT INTO test_jsonb VALUES
+('scalar','"a scalar"'),
+('array','["zero", "one","two",null,"four","five", [1,2,3],{"f1":9}]'),
+('object','{"field1":"val1","field2":"val2","field3":null, "field4": 4, "field5": [1,2,3], "field6": {"f1":9}}');

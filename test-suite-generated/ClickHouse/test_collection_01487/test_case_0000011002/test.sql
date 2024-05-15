@@ -1,1 +1,0 @@
-SELECT 'hashed: inner on';

@@ -1,1 +1,0 @@
-SELECT toDecimal128('92233720368547757.99', 2) AS x, toInt64(x), toInt64(-x);

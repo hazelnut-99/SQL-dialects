@@ -1,0 +1,1 @@
+SELECT '-----lightweight mutation type-----';

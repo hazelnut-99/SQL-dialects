@@ -1,1 +1,0 @@
-SELECT COALESCE(42::uinteger);

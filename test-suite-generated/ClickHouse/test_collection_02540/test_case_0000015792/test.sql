@@ -1,1 +1,0 @@
-select 'different types -- prohibited';

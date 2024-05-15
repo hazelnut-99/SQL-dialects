@@ -1,1 +1,0 @@
-SELECT 'Window functions WINDOW';

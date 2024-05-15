@@ -1,7 +1,36 @@
-DROP database IF EXISTS test_1603_rename_bug_ordinary;
-DROP database IF EXISTS test_1603_rename_bug_atomic;
-create database test_1603_rename_bug_atomic engine=Atomic;
-create table test_1603_rename_bug_atomic.foo engine=Memory as select * from numbers(100);
-create table test_1603_rename_bug_atomic.bar engine=Log as select * from numbers(200);
-detach table test_1603_rename_bug_atomic.foo;
-attach table test_1603_rename_bug_atomic.foo;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    value Map(Int64, Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+DROP TABLE 02005_test_table;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    key Array(Int64),
+    value Array(Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0], [5]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0, 5], [5, 10]);

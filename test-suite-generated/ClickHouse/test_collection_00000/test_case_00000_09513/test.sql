@@ -1,0 +1,1 @@
+SELECT 'test add[...]seconds()';

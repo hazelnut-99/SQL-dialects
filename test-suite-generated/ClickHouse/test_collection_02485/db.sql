@@ -1,12 +1,18 @@
-DROP TABLE IF EXISTS test_tuple;
-CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
-INSERT INTO test_tuple VALUES ((NULL, 1));
-DROP TABLE test_tuple;
-DROP TABLE IF EXISTS test_tuple_nested_in_array;
-CREATE TABLE test_tuple_nested_in_array (value Array(Tuple(UInt8, UInt8))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array VALUES ([(NULL, 2), (3, NULL), (NULL, 4)]);
-DROP TABLE test_tuple_nested_in_array;
-DROP TABLE IF EXISTS test_tuple_nested_in_array_nested_in_tuple;
-CREATE TABLE test_tuple_nested_in_array_nested_in_tuple (value Tuple(UInt8, Array(Tuple(UInt8, UInt8)))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array_nested_in_tuple VALUES ( (NULL, [(NULL, 2), (3, NULL), (NULL, 4)]) );
-DROP TABLE test_tuple_nested_in_array_nested_in_tuple;
+DROP TABLE IF EXISTS test_table_join_1;
+CREATE TABLE test_table_join_1
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog;
+DROP TABLE IF EXISTS test_table_join_2;
+CREATE TABLE test_table_join_2
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog;
+INSERT INTO test_table_join_1 VALUES (0, 'Join_1_Value_0');
+INSERT INTO test_table_join_1 VALUES (1, 'Join_1_Value_1');
+INSERT INTO test_table_join_1 VALUES (2, 'Join_1_Value_2');
+INSERT INTO test_table_join_2 VALUES (0, 'Join_2_Value_0');
+INSERT INTO test_table_join_2 VALUES (1, 'Join_2_Value_1');
+INSERT INTO test_table_join_2 VALUES (3, 'Join_2_Value_3');

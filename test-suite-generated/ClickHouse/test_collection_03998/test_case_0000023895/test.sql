@@ -1,1 +1,0 @@
-SELECT '*** AFTER FIRST OPTIMIZE ***';

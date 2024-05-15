@@ -1,34 +1,19 @@
-DROP DATABASE IF EXISTS database_for_dict;
-CREATE DATABASE database_for_dict;
-CREATE TABLE database_for_dict.table_for_dict
-(
-  key_column UInt64,
-  second_column UInt8,
-  third_column String,
-  fourth_column Float64
-)
-ENGINE = MergeTree()
-ORDER BY key_column;
-INSERT INTO database_for_dict.table_for_dict SELECT number, number % 17, toString(number * number), number / 2.0 from numbers(100);
-CREATE DICTIONARY database_for_dict.dict1
-(
-  key_column UInt64 DEFAULT 0,
-  second_column UInt8 DEFAULT 1,
-  third_column String DEFAULT 'qqq',
-  fourth_column Float64 DEFAULT 42.0
-)
-PRIMARY KEY key_column
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' DB 'database_for_dict'))
-LIFETIME(MIN 1 MAX 10)
-LAYOUT(FLAT());
-CREATE DICTIONARY database_for_dict.dict2
-(
-  key_column UInt64 DEFAULT 0,
-  second_column UInt8 DEFAULT 1,
-  third_column String DEFAULT 'qqq',
-  fourth_column Float64 DEFAULT 42.0
-)
-PRIMARY KEY key_column
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'dict1' DB 'database_for_dict'))
-LIFETIME(MIN 1 MAX 10)
-LAYOUT(HASHED());
+DROP TABLE IF EXISTS tags;
+CREATE TABLE tags (
+    id String,
+    seqs Array(UInt8),
+    create_time DateTime DEFAULT now()
+) engine=ReplacingMergeTree()
+ORDER BY (id);
+INSERT INTO tags(id, seqs) VALUES ('id1', [1,2,3]), ('id2', [0,2,3]), ('id1', [1,3]);
+WITH
+    (SELECT [0, 1, 2, 3]) AS arr1
+SELECT arraySort(arrayIntersect(argMax(seqs, create_time), arr1)) AS common, id
+FROM tags
+WHERE id LIKE 'id%'
+GROUP BY id
+ORDER BY id;
+DROP TABLE tags;
+drop table if exists TestTable;
+create table TestTable (column String, start DateTime, end DateTime) engine MergeTree order by start;
+insert into TestTable (column, start, end) values('test', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00')),('test1', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00')),('test2', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00'));

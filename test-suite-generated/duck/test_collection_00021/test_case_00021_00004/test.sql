@@ -1,0 +1,1 @@
+SELECT COUNT(i) AS j FROM integers HAVING j=5;

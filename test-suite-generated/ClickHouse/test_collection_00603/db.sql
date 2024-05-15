@@ -1,4 +1,12 @@
-DROP TABLE IF EXISTS mult_aggregation;
-CREATE TABLE mult_aggregation(a UInt32, b UInt32) ENGINE = Memory;
-INSERT INTO mult_aggregation VALUES(1, 1);
-INSERT INTO mult_aggregation VALUES(1, 3);
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE IF NOT EXISTS defaults
+(
+    vals String
+) ENGINE = Memory;
+insert into defaults values ('ba'), ('aa'), ('ba'), ('b'), ('ba'), ('aa');
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE IF NOT EXISTS defaults
+(
+     vals UInt64
+) ENGINE = Memory;
+insert into defaults values (0), (0), (1), (0), (0), (0), (1), (2), (3), (5), (3), (1), (1), (4), (5), (2);

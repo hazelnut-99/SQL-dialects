@@ -1,3 +1,4 @@
-drop table if exists t1;
-create table t1(x1 Date32) engine Memory;
-insert into t1 values ('1900-01-01'),('1899-01-01'),('2299-12-15'),('2300-12-31'),('2021-06-22');
+DROP TABLE IF EXISTS t4;
+DROP TABLE IF EXISTS t7;
+create table t4 (c26 String) engine = Log;
+create view t7 as select max(ref_3.c26) as c_2_c46_1 from t4 as ref_3;

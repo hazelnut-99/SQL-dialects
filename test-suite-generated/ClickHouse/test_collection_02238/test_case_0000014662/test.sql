@@ -1,1 +1,0 @@
-SELECT 'database atomic tests';

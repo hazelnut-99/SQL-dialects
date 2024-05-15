@@ -1,1 +1,0 @@
-select if(number % 2, 5 * (1 + intDiv(100, number + 1)), 3 + 10 * intDiv(100, intDiv(100, number + 1))) from numbers(10);

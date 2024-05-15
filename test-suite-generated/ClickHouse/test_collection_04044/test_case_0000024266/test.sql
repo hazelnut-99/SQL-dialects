@@ -1,1 +1,0 @@
-SELECT 'R1, R2: (x == 2) FROM ANOTHER';

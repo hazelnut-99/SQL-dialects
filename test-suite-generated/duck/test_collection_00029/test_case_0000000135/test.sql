@@ -1,1 +1,0 @@
-SELECT concat('a', (SELECT s)) FROM collate_test ORDER BY 1 COLLATE NOCASE;

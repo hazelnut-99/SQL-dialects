@@ -1,12 +1,38 @@
-DROP DATABASE IF EXISTS 01765_db;
-CREATE DATABASE 01765_db;
-CREATE TABLE 01765_db.simple_key_simple_attributes_source_table
-(
-   id UInt64,
-   value_first String,
-   value_second String
-)
-ENGINE = TinyLog;
-INSERT INTO 01765_db.simple_key_simple_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
-INSERT INTO 01765_db.simple_key_simple_attributes_source_table VALUES(1, 'value_1', 'value_second_1');
-INSERT INTO 01765_db.simple_key_simple_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+SYSTEM STOP MERGES tbl;
+create table if not exists replacing_mt (x String) engine=ReplacingMergeTree() ORDER BY x;
+insert into replacing_mt values ('abc');
+insert into replacing_mt values ('abc');
+create table if not exists lhs (x String) engine=ReplacingMergeTree() ORDER BY x;
+create table if not exists rhs (x String) engine=ReplacingMergeTree() ORDER BY x;
+insert into lhs values ('abc');
+insert into lhs values ('abc');
+insert into rhs values ('abc');
+insert into rhs values ('abc');
+create table if not exists regular_mt_table (x String) engine=MergeTree() ORDER BY x;
+create table if not exists left_table (id UInt64, val_left String) engine=ReplacingMergeTree() ORDER BY id;
+create table if not exists middle_table (id UInt64, val_middle String) engine=MergeTree() ORDER BY id;
+create table if not exists right_table (id UInt64, val_right String) engine=ReplacingMergeTree() ORDER BY id;
+insert into left_table values (1,'a');
+insert into left_table values (1,'b');
+insert into left_table values (1,'c');
+insert into middle_table values (1,'a');
+insert into middle_table values (1,'b');
+insert into right_table values (1,'a');
+insert into right_table values (1,'b');
+insert into right_table values (1,'c');
+DROP TABLE IF EXISTS table_to_merge_a;
+DROP TABLE IF EXISTS table_to_merge_b;
+DROP TABLE IF EXISTS table_to_merge_c;
+DROP TABLE IF EXISTS merge_table;
+create table if not exists table_to_merge_a (id UInt64, val String) engine=ReplacingMergeTree() ORDER BY id;
+create table if not exists table_to_merge_b (id UInt64, val String) engine=MergeTree() ORDER BY id;
+create table if not exists table_to_merge_c (id UInt64, val String) engine=ReplacingMergeTree() ORDER BY id;
+CREATE TABLE merge_table Engine=Merge(currentDatabase(), '^(table_to_merge_[a-z])$') AS table_to_merge_a;
+insert into table_to_merge_a values (1,'a');
+insert into table_to_merge_a values (1,'b');
+insert into table_to_merge_a values (1,'c');
+insert into table_to_merge_b values (2,'a');
+insert into table_to_merge_b values (2,'b');
+insert into table_to_merge_c values (3,'a');
+insert into table_to_merge_c values (3,'b');
+insert into table_to_merge_c values (3,'c');

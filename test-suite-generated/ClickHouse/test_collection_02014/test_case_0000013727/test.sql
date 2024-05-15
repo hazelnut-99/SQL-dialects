@@ -1,1 +1,0 @@
-SELECT '----- Default Settings -----';

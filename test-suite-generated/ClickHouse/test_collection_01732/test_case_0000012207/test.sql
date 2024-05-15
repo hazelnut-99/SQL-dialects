@@ -1,1 +1,0 @@
-SELECT round(avg(log(2) * number), 6) AS k FROM numbers(10000000) GROUP BY number % 5, ((number % 5) * (number % 5)) HAVING ((number % 5) * (number % 5)) < 5 ORDER BY k;

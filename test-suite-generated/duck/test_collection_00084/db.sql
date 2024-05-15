@@ -78,3 +78,4 @@ INSERT INTO integers2 VALUES (4);
 INSERT INTO integers2 VALUES (5);
 INSERT INTO integers2 VALUES (6);
 INSERT INTO integers2 VALUES (7);
+INSERT INTO integers2 VALUES (8);

@@ -1,7 +1,8 @@
-DROP TABLE IF EXISTS dst_00753;
-DROP TABLE IF EXISTS buffer_00753;
-CREATE TABLE dst_00753 (x UInt64, y UInt64) ENGINE = MergeTree ORDER BY tuple();
-CREATE TABLE buffer_00753 (x UInt64, y UInt64) ENGINE = Buffer(currentDatabase(), dst_00753, 1, 99999, 99999, 1, 1, 99999, 99999);
-INSERT INTO buffer_00753 VALUES (1, 100);
-INSERT INTO buffer_00753 VALUES (2, 200);
-INSERT INTO buffer_00753 VALUES (3, 300);
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE defaults
+(
+	t1 Tuple(UInt16, UInt16),
+	t2 Tuple(UInt32, UInt32),
+	t3 Tuple(Int64, Int64)
+)ENGINE = Memory();
+INSERT INTO defaults VALUES ((12, 43), (12312, 43453) ,(-10, 32)) ((1, 4), (546, 12345), (546, 12345)) ((90, 9875), (43456, 234203), (1231, -123)) ((87, 987), (545645, 768354634), (9123, 909));

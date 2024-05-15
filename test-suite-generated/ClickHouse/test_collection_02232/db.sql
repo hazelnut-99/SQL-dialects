@@ -1,32 +1,10 @@
-drop database if exists test_01600;
-create database test_01600;
-CREATE TABLE test_01600.base
+DROP TABLE IF EXISTS 02185_range_dictionary_source_table;
+CREATE TABLE 02185_range_dictionary_source_table
 (
-`id` UInt64,
-`id2` UInt64,
-`d` UInt64,
-`value` UInt64
+    id UInt64,
+    start Nullable(UInt64),
+    end Nullable(UInt64),
+    value String
 )
-ENGINE=MergeTree()
-PARTITION BY d
-ORDER BY (id,id2,d);
-CREATE TABLE test_01600.derived1
-(
-    `id1` UInt64,
-    `d1` UInt64,
-    `value1` UInt64
-)
-ENGINE = MergeTree()
-PARTITION BY d1
-ORDER BY (id1, d1)
-;
-CREATE TABLE test_01600.derived2
-(
-    `id2` UInt64,
-    `d2` UInt64,
-    `value2` UInt64
-)
-ENGINE = MergeTree()
-PARTITION BY d2
-ORDER BY (id2, d2)
-;
+ENGINE = TinyLog;
+INSERT INTO 02185_range_dictionary_source_table VALUES (0, NULL, 5000, 'Value0'), (0, 5001, 10000, 'Value1'), (0, 10001, NULL, 'Value2');

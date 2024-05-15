@@ -1,0 +1,4 @@
+SELECT *
+FROM numbers(2) AS n1
+JOIN numbers(3) AS n2 ON n1.number = n2.number, numbers(4) AS n3
+ORDER BY n1.number, n2.number, n3.number;

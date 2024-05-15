@@ -154,3 +154,120 @@ create table integers as with recursive t as (select 1 as x union select x+1 fro
 with recursive t as (select (select min(x) from integers) as x union select x+1 from t where x < 3) select * from t order by x;
 with recursive t as (select 1 as x union select sum(x+1) from t where x < 3) select * from t order by 1 nulls last;
 create view vr as (with recursive t(x) as (select 1 union select x+1 from t where x < 3) select * from t order by x);
+with recursive t as (select 1 as x union all select x+1 from t where x < 3) select * from t;
+with recursive t as (select 1 as x union all select x+1 from t as m where m.x < 3) select * from t;
+with recursive t as (select 1 as x union all select m.x+f.x from t as m, t as f where m.x < 3) select * from t;
+with recursive t as (select 1 as x, 'hello' as y union all select x+1, y || '-' || 'hello' from t where x < 3) select * from t;
+with recursive t as (select 1 as x union all select x+1 from t where x < 3) select min(a1.x) from t a1, t a2;
+with recursive t as (select 1 as x union all select x+(SELECT 1) from t where x < 3) select * from t;
+with recursive t as (select (select min(x) from integers) as x union all select x+1 from t where x < 3) select * from t;
+with recursive t as (select 1 as x union all select sum(x+1) AS x from t where x < 3 group by x) select * from t;
+with recursive t as (select 1 as x union all select sum(x+1) AS x from t where x < 3)
+select * from (select * from t limit 10) t1(x) order by x nulls last;
+WITH RECURSIVE t AS (
+	SELECT 1 AS i
+	UNION ALL
+	SELECT j
+	FROM t, generate_series(0, 10, 1) series(j)
+	WHERE j=i+1
+)
+SELECT * FROM t;
+WITH RECURSIVE cte AS (SELECT 42) SELECT * FROM cte;
+CREATE TABLE v(x INT);
+INSERT INTO v
+VALUES
+(1),(2),(3);
+WITH RECURSIVE t(x) AS
+(
+  SELECT 1
+    UNION ALL
+  SELECT x + 1
+  FROM   (SELECT t.x+1 FROM v AS _(p) FULL OUTER JOIN t ON t.x = p) AS _(x)
+  WHERE  x < 10
+) SELECT * FROM v AS _(p) RIGHT OUTER JOIN t ON t.x = p ORDER BY p, t NULLS LAST;
+CREATE TABLE tag(id int, name string, subclassof int);
+INSERT INTO tag VALUES
+  (7, 'Music',  9),
+  (8, 'Movies', 9),
+  (9, 'Art',    NULL)
+;
+WITH RECURSIVE tag_hierarchy(id, source, path, target) AS (
+  SELECT id, name, name AS path, NULL AS target -- this should be '' for correct behaviour
+  FROM tag
+  WHERE subclassof IS NULL
+  UNION ALL
+  SELECT tag.id, tag.name, tag_hierarchy.path || ' <- ' || tag.name, tag.name AS target
+  FROM tag, tag_hierarchy
+  WHERE tag.subclassof = tag_hierarchy.id
+)
+SELECT source, path, target
+FROM tag_hierarchy
+;
+CREATE TABLE emp (empno INTEGER PRIMARY KEY,
+                  ename VARCHAR,
+				  job VARCHAR,
+				  mgr INTEGER,
+				  hiredate DATE,
+				  sal DOUBLE,
+				  comm DOUBLE,
+				  deptno INTEGER);
+INSERT INTO emp VALUES (7839, 'KING', 'PRESIDENT', NULL, DATE '1981-11-17', 5000.00, NULL, 10);
+INSERT INTO emp VALUES (7698, 'BLAKE', 'MANAGER', 7839, DATE '1981-05-01', 2850.00, NULL, 30);
+INSERT INTO emp VALUES (7782, 'CLARK', 'MANAGER', 7839, DATE '1981-06-09', 2450.00, NULL, 10);
+INSERT INTO emp VALUES (7566, 'JONES', 'MANAGER', 7839, DATE '1981-04-02', 2975.00, NULL, 20);
+INSERT INTO emp VALUES (7902, 'FORD', 'ANALYST', 7566, DATE '1981-12-03', 3000.00, NULL, 20);
+INSERT INTO emp VALUES (7369, 'SMITH', 'CLERK', 7902, DATE '1980-12-17', 800.00, NULL, 20);
+INSERT INTO emp VALUES (7499, 'ALLEN', 'SALESMAN', 7698, DATE '1981-02-20', 1600.00, 300.00, 30);
+INSERT INTO emp VALUES (7521, 'WARD', 'SALESMAN', 7698, DATE '1981-02-22', 1250.00, 500.00, 30);
+INSERT INTO emp VALUES (7654, 'MARTIN', 'SALESMAN', 7698, DATE '1981-09-28', 1250.00, 1400.00, 30);
+INSERT INTO emp VALUES (7844, 'TURNER', 'SALESMAN', 7698, DATE '1981-09-08', 1500.00, 0.00, 30);
+INSERT INTO emp VALUES (7900, 'JAMES', 'CLERK', 7698, DATE '1981-12-03', 950.00, NULL, 30);
+INSERT INTO emp VALUES (7934, 'MILLER', 'CLERK', 7782, DATE '1982-01-23', 1300.00, NULL, 10);
+WITH RECURSIVE ctename AS (
+      SELECT empno, ename
+      FROM emp
+      WHERE empno = 7566
+   UNION ALL
+      SELECT emp.empno, emp.ename
+      FROM emp
+         JOIN ctename ON emp.mgr = ctename.empno
+)
+SELECT * FROM ctename;
+WITH RECURSIVE ctename AS (
+      SELECT empno, ename,
+             0 AS level
+      FROM emp
+      WHERE empno = 7566
+   UNION ALL
+      SELECT emp.empno, emp.ename,
+             ctename.level + 1
+      FROM emp
+         JOIN ctename ON emp.mgr = ctename.empno
+)
+SELECT * FROM ctename;
+WITH RECURSIVE ctename AS (
+      SELECT empno, ename,
+             ename AS path
+      FROM emp
+      WHERE empno = 7566
+   UNION ALL
+      SELECT emp.empno, emp.ename,
+             ctename.path || ' -> ' || emp.ename
+      FROM emp
+         JOIN ctename ON emp.mgr = ctename.empno
+)
+SELECT * FROM ctename;
+CREATE VIEW ctenames AS (
+  WITH RECURSIVE ctename AS (
+      SELECT empno, ename,
+             ename AS path
+      FROM emp
+      WHERE empno = 7566
+     UNION ALL
+      SELECT emp.empno, emp.ename,
+             ctename.path || ' -> ' || emp.ename
+      FROM emp
+         JOIN ctename ON emp.mgr = ctename.empno
+  )
+  SELECT * FROM ctename
+);

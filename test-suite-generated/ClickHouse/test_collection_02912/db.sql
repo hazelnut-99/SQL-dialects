@@ -1,3 +1,11 @@
-DROP TABLE IF EXISTS predicate_table;
-CREATE TABLE predicate_table (value UInt8) ENGINE=TinyLog;
-INSERT INTO predicate_table VALUES (0), (1);
+create temporary table test (
+    data int,
+    default Nullable(DateTime) DEFAULT '1977-01-01 00:00:00'
+) engine  = Memory();
+insert into test (data) select 1;
+drop temporary table test;
+create temporary table test (
+    data int,
+    default DateTime DEFAULT '1977-01-01 00:00:00'
+) engine  = Memory();
+insert into test (data) select 1;

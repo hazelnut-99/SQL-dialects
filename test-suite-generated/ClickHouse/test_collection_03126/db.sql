@@ -1,3 +1,10 @@
-drop table if exists table_02152;
-create table table_02152 (a String, b LowCardinality(String)) engine = MergeTree order by a;
-insert into table_02152 values ('a_1', 'b_1') ('a_2', 'b_2') ('a_1', 'b_3') ('a_2', 'b_2');
+DROP TABLE IF EXISTS landing;
+DROP TABLE IF EXISTS ds_1_1;
+DROP VIEW IF EXISTS mv_1_1;
+DROP TABLE IF EXISTS ds_1_2;
+DROP VIEW IF EXISTS mv_1_2;
+DROP TABLE IF EXISTS ds_2_1;
+DROP VIEW IF EXISTS mv_2_1;
+DROP VIEW IF EXISTS mv_2_2;
+DROP TABLE IF EXISTS ds_3_1;
+DROP VIEW IF EXISTS mv_3_1;

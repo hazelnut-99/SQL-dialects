@@ -102,3 +102,5 @@ INSERT INTO integers VALUES (84);
 checkpoint;
 INSERT INTO integers VALUES (84);
 checkpoint;
+INSERT INTO integers VALUES (84);
+checkpoint;

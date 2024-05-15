@@ -1,0 +1,1 @@
+select sleepEachRow(0.5) as test_does_not_rely_on_this;

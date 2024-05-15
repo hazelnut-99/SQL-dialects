@@ -51,3 +51,5 @@ EXECUTE v1('e', 'hello world');
 ;
 CREATE TABLE people(Name VARCHAR, STATE VARCHAR, Country VARCHAR);
 DESCRIBE people;
+CREATE TABLE varchars(v VARCHAR);
+INSERT INTO varchars VALUES ('Hello'), ('World');

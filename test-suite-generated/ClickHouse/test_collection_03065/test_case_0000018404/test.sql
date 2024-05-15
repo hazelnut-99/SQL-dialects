@@ -1,4 +1,0 @@
-SELECT toYear(d) AS y, count()
-FROM ( SELECT today() AS d WHERE 0)
-GROUP BY y
-ORDER BY y ASC WITH FILL FROM 2019;

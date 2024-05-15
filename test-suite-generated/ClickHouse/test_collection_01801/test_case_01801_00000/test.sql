@@ -1,0 +1,1 @@
+SELECT 'INSERT INTO main_table_01818';

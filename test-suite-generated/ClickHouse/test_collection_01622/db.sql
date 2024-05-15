@@ -1,2 +1,8 @@
-DROP TABLE IF EXISTS tutorial;
-create table tutorial ( inner_poly  Array(Tuple(Int32, Int32)), outer_poly  Array(Tuple(Int32, Int32)) ) engine = Log();
+DROP TABLE IF EXISTS data_01660;
+CREATE TABLE data_01660 (key Int) Engine=MergeTree() ORDER BY key;
+SYSTEM STOP MERGES data_01660;
+INSERT INTO data_01660 VALUES (0);
+INSERT INTO data_01660 VALUES (1);
+SYSTEM START MERGES data_01660;
+OPTIMIZE TABLE data_01660 FINAL;
+TRUNCATE data_01660;

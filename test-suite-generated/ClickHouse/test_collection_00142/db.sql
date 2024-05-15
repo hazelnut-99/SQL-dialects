@@ -1,2 +1,2 @@
-drop temporary table if exists one_0023;
-create temporary table one_0023 as select 1;
+CREATE TABLE IF NOT EXISTS data (sketch Array(Int8)) ENGINE=Memory;
+INSERT INTO data VALUES ([-1,-1,-1]), ([4,-1,2]), ([0,25,-1]), ([-1,-1,7]), ([-1,-1,-1]);

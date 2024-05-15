@@ -1,1 +1,0 @@
-SELECT 'Union constants';

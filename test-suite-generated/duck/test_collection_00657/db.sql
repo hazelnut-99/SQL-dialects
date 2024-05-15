@@ -31,3 +31,4 @@ CREATE TABLE df2 AS
   SELECT
     UNNEST(['K0', 'K2', 'K5']) AS key,
     UNNEST([2, 3, 5]) AS C;
+CREATE TABLE grouped_table AS SELECT  1 id, 42 index1, 84 index2 UNION ALL SELECT 2, 13, 14;

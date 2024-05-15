@@ -1,1 +1,0 @@
-SELECT arrayStringConcat(['Hello', 'World'], ', ');

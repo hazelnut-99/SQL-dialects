@@ -1,1 +1,0 @@
-select initcap('hello world');

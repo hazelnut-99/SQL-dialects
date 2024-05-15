@@ -1,7 +1,8 @@
-DROP TABLE IF EXISTS test_tuple;
-CREATE TABLE test_tuple (value Tuple(UInt8, UInt8)) ENGINE=TinyLog;
-INSERT INTO test_tuple VALUES ((NULL, 1));
-DROP TABLE test_tuple;
-DROP TABLE IF EXISTS test_tuple_nested_in_array;
-CREATE TABLE test_tuple_nested_in_array (value Array(Tuple(UInt8, UInt8))) ENGINE=TinyLog;
-INSERT INTO test_tuple_nested_in_array VALUES ([(NULL, 2), (3, NULL), (NULL, 4)]);
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+    value_1 Array(UInt8),
+    value_2 Array(UInt8),
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, [1, 2, 3], [1, 2, 3, 4]);

@@ -1,11 +1,5 @@
-DROP TABLE IF EXISTS tab;
-CREATE TABLE tab(e8 Enum8('hello' = -5, 'world' = 15), e16 Enum16('shark' = -999, 'eagle' = 9999)) ENGINE MergeTree ORDER BY tuple();
-INSERT INTO TABLE tab VALUES ('hello', 'shark'), ('world', 'eagle');
-DROP TABLE tab;
-DROP TABLE IF EXISTS tab;
-CREATE TABLE tab (s String, l Int8, r Int8) ENGINE = Memory;
-INSERT INTO tab VALUES ('abcdefgh', 2, -2), ('12345678', 3, -3);
-DROP TABLE IF EXISTS tab;
-CREATE TABLE tab (s FixedString(8), l Int8, r Int8) ENGINE = Memory;
-INSERT INTO tab VALUES ('abcdefgh', 2, -2), ('12345678', 3, -3);
-DROP TABLE IF EXISTS tab;
+DROP TABLE IF EXISTS test_joinGet;
+CREATE TABLE test_joinGet(a String, b String, c Float64) ENGINE = Join(any, left, a, b);
+INSERT INTO test_joinGet VALUES ('ab', '1', 0.1), ('ab', '2', 0.2), ('cd', '3', 0.3);
+CREATE TABLE test_lc(a LowCardinality(String), b LowCardinality(String), c Float64) ENGINE = Join(any, left, a, b);
+INSERT INTO test_lc VALUES ('ab', '1', 0.1), ('ab', '2', 0.2), ('cd', '3', 0.3);

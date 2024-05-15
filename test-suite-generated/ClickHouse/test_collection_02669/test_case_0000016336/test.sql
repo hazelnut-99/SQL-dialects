@@ -1,1 +1,0 @@
-SELECT 1::Int8 AS c;

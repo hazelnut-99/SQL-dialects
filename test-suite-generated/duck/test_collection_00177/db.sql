@@ -52,3 +52,7 @@ CREATE TABLE wide_nulls AS (
 		c9
 	FROM wide
 );
+CREATE TABLE limits_nulls AS (
+	SELECT CASE WHEN z % 9 = 0 THEN NULL ELSE z END AS z
+	FROM limits
+);

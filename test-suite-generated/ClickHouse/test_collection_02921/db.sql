@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS "/t0";
-DROP TABLE IF EXISTS "/t1";
-create table "/t0" (a Int64, b Int64) engine = MergeTree() partition by a order by a;
-create table "/t1" (a Int64, b Int64) engine = MergeTree() partition by a order by a;
-insert into "/t0" values (0, 0);
-insert into "/t1" values (0, 1);
+DROP TABLE IF EXISTS tb1;
+CREATE TABLE tb1 (n UInt32, a Array(Float64)) engine=Memory;
+INSERT INTO tb1 VALUES (1, [-3, 2.40, 15, 3.90, 5, 6, 4.50, 5.20, 3, 4, 5, 16, 7, 5, 5, 4]), (2, [-3, 2.40, 15, 3.90, 5, 6, 4.50, 5.20, 12, 45, 12, 3.40, 3, 4, 5, 6]);

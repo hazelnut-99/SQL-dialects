@@ -1,13 +1,15 @@
-DROP DATABASE IF EXISTS 01760_db;
-CREATE DATABASE 01760_db;
-DROP TABLE IF EXISTS 01760_db.example_simple_key_source;
-CREATE TABLE 01760_db.example_simple_key_source (id UInt64, value UInt64) ENGINE=TinyLog;
-INSERT INTO 01760_db.example_simple_key_source VALUES (0, 0), (1, 1), (2, 2);
-DROP DICTIONARY IF EXISTS 01760_db.example_simple_key_dictionary;
-CREATE DICTIONARY 01760_db.example_simple_key_dictionary (
-    id UInt64,
-    value UInt64
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'example_simple_key_source' DATABASE '01760_db'))
-LAYOUT(DIRECT());
+drop table if exists test;
+create table test (x Map(UInt8, AggregateFunction(uniq, UInt64))) engine=Memory;
+insert into test select uniqStateMap(map(1, number)) from numbers(10);
+truncate table test;
+drop table test;
+create table test (x Map(UInt8, Array(Map(UInt8, Array(AggregateFunction(uniq, UInt64)))))) engine=Memory;
+insert into test select uniqStateForEachMapForEachMap(map(1, [map(1, [number, number])])) from numbers(10);
+truncate table test;
+drop table test;
+create table test (x Array(Array(AggregateFunction(uniq, UInt64)))) engine=Memory;
+insert into test select uniqStateForEachResample(30, 75, 30)([number, number + 1], 30) from numbers(10);
+truncate table test;
+drop table test;
+create table test (x Array(Array(Map(UInt8, AggregateFunction(uniq, UInt64))))) engine=Memory;
+insert into test select uniqStateMapForEachResample(30, 75, 30)([map(1, number)], 30) from numbers(10);

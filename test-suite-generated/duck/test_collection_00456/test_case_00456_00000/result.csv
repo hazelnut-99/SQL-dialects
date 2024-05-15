@@ -1,0 +1,7 @@
+"[array(['0', None, None, '0'], dtype=object)]"
+"[array(['0', None, None, '1'], dtype=object)]"
+"[array([None, None, '0'], dtype=object)
+ array(['1', None, '0'], dtype=object)]"
+"[array([None, None, '0'], dtype=object)
+ array(['1', None, '1'], dtype=object)]"
+"[array([None, None, '1'], dtype=object)]"

@@ -1,1 +1,0 @@
-SELECT * FROM test4 ORDER BY cast(i AS VARCHAR), cast(j AS VARCHAR);

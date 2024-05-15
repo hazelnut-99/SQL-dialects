@@ -1,4 +1,0 @@
-SELECT x5, d9*699
-  FROM t9, t5
- WHERE b9 in (751,118,818)
-   AND c5 in (18,820,437,915);

@@ -1,0 +1,1 @@
+SELECT roundDuration(30);

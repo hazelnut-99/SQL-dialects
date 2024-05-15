@@ -1,1 +1,0 @@
-SELECT 'And we can not detach it permanently';

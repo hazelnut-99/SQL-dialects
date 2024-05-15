@@ -1,0 +1,1 @@
+select notEmpty(map());

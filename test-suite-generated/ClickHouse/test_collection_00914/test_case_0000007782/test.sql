@@ -1,1 +1,0 @@
-SELECT * FROM t64 WHERE i8 != t_i8;

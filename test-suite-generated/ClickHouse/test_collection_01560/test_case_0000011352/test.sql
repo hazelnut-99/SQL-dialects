@@ -1,1 +1,0 @@
-select toDate(x) from values('x Nullable(String)', '2020-12-24', NULL, '0000-00-00', '', '9999-01-01');

@@ -1,9 +1,7 @@
-drop table if exists tab2;
-drop table if exists tab3;
-create table tab2 (a2 Int32, b2 Int32) engine = MergeTree order by a2;
-create table tab3 (a3 Int32, b3 Int32) engine = MergeTree order by a3;
-insert into tab2 values (2, 3);
-insert into tab2 values (6, 4);
-insert into tab3 values (2, 3);
-insert into tab3 values (5, 4);
-insert into tab3 values (100, 4);
+DROP TABLE IF EXISTS bug_36995;
+CREATE TABLE bug_36995(
+    `time` DateTime,
+    `product` String)
+ENGINE = MergeTree
+ORDER BY time AS
+SELECT '2022-01-01 00:00:00','1';

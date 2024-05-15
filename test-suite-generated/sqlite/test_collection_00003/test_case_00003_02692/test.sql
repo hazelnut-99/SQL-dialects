@@ -1,0 +1,4 @@
+SELECT a4+b4, x8
+  FROM t4, t8
+ WHERE b4=964
+   AND e8 in (221,776,809,881,186,893);

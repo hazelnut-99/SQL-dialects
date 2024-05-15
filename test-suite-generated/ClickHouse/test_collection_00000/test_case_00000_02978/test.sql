@@ -1,0 +1,1 @@
+SELECT 0 IN 0;

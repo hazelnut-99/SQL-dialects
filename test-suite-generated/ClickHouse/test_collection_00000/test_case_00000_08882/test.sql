@@ -1,0 +1,1 @@
+SELECT tokens('test');

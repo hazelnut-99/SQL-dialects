@@ -1,24 +1,3 @@
-BEGIN;
-CREATE TABLE xacttest (a smallint, b real);
-INSERT INTO xacttest VALUES
-  (56, 7.8),
-  (100, 99.097),
-  (0, 0.09561),
-  (42, 324.78);
-INSERT INTO xacttest (a, b) VALUES (777, 777.777);
-END;
-BEGIN;
-CREATE TABLE disappear (a int4);
-DELETE FROM xacttest;
-ABORT;
-END;
-BEGIN TRANSACTION READ ONLY;
-END;
-BEGIN TRANSACTION DEFERRABLE;
-END;
-CREATE TABLE writetest (a int);
-CREATE TEMPORARY TABLE temptest (a int);
-BEGIN;
-COMMIT;
-BEGIN;
-SAVEPOINT x;
+CREATE TABLE truncate_a (col1 integer primary key);
+INSERT INTO truncate_a VALUES (1);
+INSERT INTO truncate_a VALUES (2);

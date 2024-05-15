@@ -1,19 +1,40 @@
-DROP TABLE IF EXISTS tags;
-CREATE TABLE tags (
-    id String,
-    seqs Array(UInt8),
-    create_time DateTime DEFAULT now()
-) engine=ReplacingMergeTree()
-ORDER BY (id);
-INSERT INTO tags(id, seqs) VALUES ('id1', [1,2,3]), ('id2', [0,2,3]), ('id1', [1,3]);
-WITH
-    (SELECT [0, 1, 2, 3]) AS arr1
-SELECT arraySort(arrayIntersect(argMax(seqs, create_time), arr1)) AS common, id
-FROM tags
-WHERE id LIKE 'id%'
-GROUP BY id
-ORDER BY id;
-DROP TABLE tags;
-drop table if exists TestTable;
-create table TestTable (column String, start DateTime, end DateTime) engine MergeTree order by start;
-insert into TestTable (column, start, end) values('test', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00')),('test1', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00')),('test2', toDateTime('2020-07-20 09:00:00'), toDateTime('2020-07-20 20:00:00'));
+DROP DATABASE IF EXISTS 01785_db;
+CREATE DATABASE 01785_db;
+DROP TABLE IF EXISTS 01785_db.simple_key_source_table;
+CREATE TABLE 01785_db.simple_key_source_table
+(
+    id UInt64,
+    value String
+) ENGINE = TinyLog();
+INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
+INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
+DROP DICTIONARY IF EXISTS 01785_db.simple_key_flat_dictionary;
+CREATE DICTIONARY 01785_db.simple_key_flat_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
+LAYOUT(FLAT())
+LIFETIME(MIN 0 MAX 1000);
+DROP DICTIONARY 01785_db.simple_key_flat_dictionary;
+CREATE DICTIONARY 01785_db.simple_key_hashed_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
+LAYOUT(HASHED())
+LIFETIME(MIN 0 MAX 1000);
+DROP DICTIONARY 01785_db.simple_key_hashed_dictionary;
+CREATE DICTIONARY 01785_db.simple_key_cache_dictionary
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
+LAYOUT(CACHE(SIZE_IN_CELLS 100000))
+LIFETIME(MIN 0 MAX 1000);

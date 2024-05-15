@@ -1,0 +1,4 @@
+SELECT c2*543+d2, d6+19
+  FROM t2, t6
+ WHERE d6=129
+   AND b2 in (292,779,501,846,264);

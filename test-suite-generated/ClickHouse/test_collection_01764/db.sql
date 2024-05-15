@@ -1,11 +1,13 @@
-CREATE TABLE encryption_test
+DROP DATABASE IF EXISTS 01778_db;
+CREATE DATABASE 01778_db;
+CREATE TABLE 01778_db.hierarchy_source_table (id UInt64, parent_id UInt64) ENGINE = TinyLog;
+INSERT INTO 01778_db.hierarchy_source_table VALUES (1, 0), (2, 1), (3, 1), (4, 2);
+CREATE DICTIONARY 01778_db.hierarchy_flat_dictionary
 (
-    input String,
-    key String DEFAULT unhex('fb9958e2e897ef3fdb49067b51a24af645b3626eed2f9ea1dc7fd4dd71b7e38f9a68db2a3184f952382c783785f9d77bf923577108a88adaacae5c141b1576b0'),
-    iv String DEFAULT unhex('8CA3554377DFF8A369BC50A89780DD85'),
-    key32 String DEFAULT substring(key, 1, 32),
-    key24 String DEFAULT substring(key, 1, 24),
-    key16 String DEFAULT substring(key, 1, 16)
-) Engine = Memory;
-INSERT INTO encryption_test (input)
-VALUES (''), ('text'), ('What Is ClickHouse? ClickHouse is a column-oriented database management system (DBMS) for online analytical processing of queries (OLAP).');
+    id UInt64,
+    parent_id UInt64 HIERARCHICAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'hierarchy_source_table' DB '01778_db'))
+LAYOUT(FLAT())
+LIFETIME(MIN 1 MAX 1000);

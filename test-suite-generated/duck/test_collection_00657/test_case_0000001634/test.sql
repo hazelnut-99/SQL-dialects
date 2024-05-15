@@ -1,1 +1,0 @@
-SELECT MIN(COLUMNS(*)), MAX(COLUMNS(*)) FROM integers;

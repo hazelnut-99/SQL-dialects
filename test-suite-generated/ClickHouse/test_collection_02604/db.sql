@@ -1,30 +1,10 @@
-DROP DATABASE IF EXISTS 01785_db;
-CREATE DATABASE 01785_db;
-DROP TABLE IF EXISTS 01785_db.simple_key_source_table;
-CREATE TABLE 01785_db.simple_key_source_table
+DROP TABLE IF EXISTS arrays_test;
+CREATE TABLE arrays_test
 (
-    id UInt64,
-    value String
-) ENGINE = TinyLog();
-INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
-INSERT INTO 01785_db.simple_key_source_table VALUES (1, 'First');
-DROP DICTIONARY IF EXISTS 01785_db.simple_key_flat_dictionary;
-CREATE DICTIONARY 01785_db.simple_key_flat_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
-LAYOUT(FLAT())
-LIFETIME(MIN 0 MAX 1000);
-DROP DICTIONARY 01785_db.simple_key_flat_dictionary;
-CREATE DICTIONARY 01785_db.simple_key_hashed_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() DB '01785_db' TABLE 'simple_key_source_table'))
-LAYOUT(HASHED())
-LIFETIME(MIN 0 MAX 1000);
+    s String,
+    arr1 Array(UInt8),
+    map1 Map(UInt8, String),
+    map2 Map(UInt8, String)
+) ENGINE = Memory;
+INSERT INTO arrays_test
+VALUES ('Hello', [1,2], map(1, '1', 2, '2'), map(1, '1')), ('World', [3,4,5], map(3, '3', 4, '4', 5, '5'), map(3, '3', 4, '4')), ('Goodbye', [], map(), map());

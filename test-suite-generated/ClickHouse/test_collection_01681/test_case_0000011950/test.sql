@@ -1,1 +1,0 @@
-SELECT 'with explicit timezone';

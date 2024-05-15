@@ -1,4 +1,7 @@
-drop table if exists mult_tab;
-drop table if exists mult_tab;
-drop table if exists mult_tab;
-drop table if exists mult_tab;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+DROP TABLE IF EXISTS check_system_tables;
+CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLog();
+INSERT INTO check_system_tables VALUES (1);
+DROP TABLE check_system_tables;

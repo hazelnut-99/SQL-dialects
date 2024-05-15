@@ -1,1 +1,0 @@
-SELECT i FROM integers WHERE i > 0::TINYINT ORDER BY i;

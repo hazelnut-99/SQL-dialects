@@ -1,4 +1,8 @@
-DROP TABLE IF EXISTS mt;
-CREATE TABLE mt (x String, y UInt64, INDEX idx (y) TYPE minmax GRANULARITY 1) ENGINE = MergeTree ORDER BY y;
-INSERT INTO mt VALUES ('Hello, world', 1);
-ALTER TABLE mt FREEZE;
+DROP TABLE IF EXISTS decimal;
+CREATE TABLE decimal
+(
+    a Decimal32(4),
+    b Decimal64(8),
+    c Decimal128(8)
+) ENGINE = Memory;
+DROP TABLE decimal;

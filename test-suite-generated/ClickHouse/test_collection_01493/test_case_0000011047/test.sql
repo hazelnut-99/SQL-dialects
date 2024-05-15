@@ -1,1 +1,0 @@
-SELECT GREATEST(1, 2);

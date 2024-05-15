@@ -2711,3 +2711,8 @@ create table test as (select range i from range(100000));
 drop table test;
 CREATE TABLE test (a INTEGER, b INTEGER);
 INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);
+WITH cte AS (SELECT 3) SELECT * FROM range(10000000) LIMIT (SELECT * FROM cte);
+WITH cte AS (SELECT 3) SELECT * FROM range(10000000) LIMIT (SELECT * FROM cte) OFFSET (SELECT * FROM cte);
+drop table test;
+create table test as (select range i from range(100000));
+insert into test values (NULL);

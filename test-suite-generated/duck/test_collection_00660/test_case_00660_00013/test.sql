@@ -1,0 +1,1 @@
+SELECT '12.1_2e2'::FLOAT;

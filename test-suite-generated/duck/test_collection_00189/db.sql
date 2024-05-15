@@ -130,3 +130,6 @@ CREATE TABLE all_types("varchar" VARCHAR, nested_int_array INTEGER[][]);
 INSERT INTO all_types VALUES('b',[[], NULL, [], [NULL]]);
 CREATE TABLE nested(nested_int_array INTEGER[][]);
 INSERT INTO nested VALUES([[42, 999]]);
+CREATE VIEW list_int AS
+SELECT i, i%2 as i2, [i, i + 1, i + 2] as l3
+FROM range(10) tbl(i);

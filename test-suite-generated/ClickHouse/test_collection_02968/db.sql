@@ -1,9 +1,10 @@
-DROP TABLE IF EXISTS tmp;
-CREATE TABLE tmp (x Int64) ENGINE = MergeTree() ORDER BY tuple() PARTITION BY tuple();
-ALTER TABLE tmp ADD COLUMN s String DEFAULT toString(x);
-ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+1);
-ALTER TABLE tmp MATERIALIZE COLUMN s;
-ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+2);
-ALTER TABLE tmp CLEAR COLUMN s; -- Need to clear because MATERIALIZE COLUMN won't override past values;
-ALTER TABLE tmp MATERIALIZE COLUMN s;
-ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+3);
+drop table if exists test_rewrite_uniq_to_count;
+CREATE TABLE test_rewrite_uniq_to_count
+(
+    `a` UInt8,
+    `b` UInt8,
+    `c` UInt8
+) ENGINE = MergeTree ORDER BY `a`;
+INSERT INTO test_rewrite_uniq_to_count values ('1', '1', '1'), ('1', '1', '1');
+INSERT INTO test_rewrite_uniq_to_count values ('2', '2', '2'), ('2', '2', '2');
+INSERT INTO test_rewrite_uniq_to_count values ('3', '3', '3'), ('3', '3', '3');

@@ -1,1 +1,0 @@
-SELECT toDecimal128(-12345.6789, 4) AS x, round(x), round(x, 1), round(x, 2), round(x, 3), round(x, 4), round(x, 5);

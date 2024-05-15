@@ -1,0 +1,1 @@
+SELECT 1, 'a' UNION ALL SELECT 2, 'b';

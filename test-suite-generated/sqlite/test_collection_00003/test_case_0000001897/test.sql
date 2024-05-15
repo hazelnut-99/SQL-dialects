@@ -1,5 +1,0 @@
-SELECT x5, d2*650+c2, a7
-  FROM t5, t7, t2
- WHERE (e7=590 OR e7=522 OR e7=31 OR e7=291)
-   AND c5 in (721,941,299,723,442,681,613)
-   AND 760=d2;

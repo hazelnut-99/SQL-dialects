@@ -320,3 +320,21 @@ CREATE TABLE tpch_q1_agg (l_returnflag VARCHAR, l_linestatus VARCHAR, sum_qty IN
 INSERT INTO tpch_q1_agg VALUES ('N', 'O', 7459297, 10512270008.90, 9986238338.3847, 10385578376.585467, 25.545537671232875, 36000.9246880137, 0.05009595890410959, 292000), ('R', 'F', 3785523, 5337950526.47, 5071818532.9420, 5274405503.049367, 25.5259438574251, 35994.029214030925, 0.04998927856184382, 148301), ('A', 'F', 3774200, 5320753880.69, 5054096266.6828, 5256751331.449234, 25.537587116854997, 36002.12382901414, 0.05014459706340077, 147790), ('N', 'F', 95257, 133737795.84, 127132372.6512, 132286291.229445, 25.30066401062417, 35521.32691633466, 0.04939442231075697, 3765);
 create table test5 (i int, s varchar);
 insert into test5 values (3, 'ababa'), (1, 'babab'), (NULL, 'abbab'), (2, NULL);
+CREATE TABLE test6 (i1 INT, s1 VARCHAR, i2 int, s2 VARCHAR);
+INSERT INTO test6 VALUES
+(6, '0reallylongstring1', 3, '1reallylongstring8'),
+(6, '0reallylongstring1', 3, '1reallylongstring7'),
+(6, '0reallylongstring1', 4, '1reallylongstring8'),
+(6, '0reallylongstring1', 4, '1reallylongstring7'),
+(6, '0reallylongstring2', 3, '1reallylongstring8'),
+(6, '0reallylongstring2', 3, '1reallylongstring7'),
+(6, '0reallylongstring2', 4, '1reallylongstring8'),
+(6, '0reallylongstring2', 4, '1reallylongstring7'),
+(5, '0reallylongstring1', 3, '1reallylongstring8'),
+(5, '0reallylongstring1', 3, '1reallylongstring7'),
+(5, '0reallylongstring1', 4, '1reallylongstring8'),
+(5, '0reallylongstring1', 4, '1reallylongstring7'),
+(5, '0reallylongstring2', 3, '1reallylongstring8'),
+(5, '0reallylongstring2', 3, '1reallylongstring7'),
+(5, '0reallylongstring2', 4, '1reallylongstring8'),
+(5, '0reallylongstring2', 4, '1reallylongstring7');

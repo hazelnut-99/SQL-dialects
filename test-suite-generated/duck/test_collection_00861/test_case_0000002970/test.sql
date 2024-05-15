@@ -1,1 +1,0 @@
-SELECT * FROM hugeints ORDER BY 1;

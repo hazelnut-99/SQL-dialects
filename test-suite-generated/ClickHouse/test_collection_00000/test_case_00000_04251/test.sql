@@ -1,0 +1,1 @@
+SELECT toWeek(toDate('1998-12-31')), toWeek(toDate('1997-12-31')), toWeek(toDate('1998-12-31'), 1), toWeek(toDate('1997-12-31'), 1);

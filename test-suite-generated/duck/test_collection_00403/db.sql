@@ -690,3 +690,5 @@ INSERT INTO test10 values
 ({'i': NULL, 'j': NULL}),
 (NULL),
 ({'i': 2, 'j': 3});
+CREATE TABLE test11 (s STRUCT(s1 STRUCT(i bigint, j bigint)));
+INSERT INTO test11 VALUES ({'s1': NULL}), (NULL), ({'s1': {'i': NULL, 'j': 1}}), ({'s1': {'i': 0, 'j': NULL}}), ({'s1': {'i': NULL, 'j': NULL}}), ({'s1': {'i': 0, 'j': 1}});

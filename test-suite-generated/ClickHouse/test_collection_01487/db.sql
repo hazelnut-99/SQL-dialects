@@ -1,21 +1,4 @@
-DROP TABLE IF EXISTS t1;
-DROP DICTIONARY IF EXISTS dict_flat;
-DROP DICTIONARY IF EXISTS dict_hashed;
-DROP DICTIONARY IF EXISTS dict_complex_cache;
-CREATE TABLE t1 (key UInt64, a UInt8, b String, c Float64) ENGINE = MergeTree() ORDER BY key;
-INSERT INTO t1 SELECT number, number, toString(number), number from numbers(4);
-CREATE DICTIONARY dict_flat (key UInt64 DEFAULT 0, a UInt8 DEFAULT 42, b String DEFAULT 'x', c Float64 DEFAULT 42.0)
-PRIMARY KEY key
-SOURCE(CLICKHOUSE(TABLE 't1'))
-LIFETIME(MIN 1 MAX 10)
-LAYOUT(FLAT());
-CREATE DICTIONARY dict_hashed (key UInt64 DEFAULT 0, a UInt8 DEFAULT 42, b String DEFAULT 'x', c Float64 DEFAULT 42.0)
-PRIMARY KEY key
-SOURCE(CLICKHOUSE(TABLE 't1'))
-LIFETIME(MIN 1 MAX 10)
-LAYOUT(HASHED());
-CREATE DICTIONARY dict_complex_cache (key UInt64 DEFAULT 0, a UInt8 DEFAULT 42, b String DEFAULT 'x', c Float64 DEFAULT 42.0)
-PRIMARY KEY key, b
-SOURCE(CLICKHOUSE(TABLE 't1'))
-LIFETIME(MIN 1 MAX 10)
-LAYOUT(COMPLEX_KEY_CACHE(SIZE_IN_CELLS 1));
+drop table if exists t_01568;
+create table t_01568 engine Memory as
+select intDiv(number, 3) p, modulo(number, 3) o, number
+from numbers(9);

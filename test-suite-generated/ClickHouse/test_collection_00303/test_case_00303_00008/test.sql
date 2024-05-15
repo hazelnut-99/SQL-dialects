@@ -1,0 +1,1 @@
+select '(key, left array join arr) in ((1, 1), (2, 2))';

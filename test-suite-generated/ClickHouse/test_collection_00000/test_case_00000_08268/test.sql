@@ -1,0 +1,1 @@
+SELECT 'fooooo' INTERSECT DISTINCT SELECT 'fooooo';

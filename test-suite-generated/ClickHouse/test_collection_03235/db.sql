@@ -1,3 +1,0 @@
-#!
-SELECT # hello
-1;

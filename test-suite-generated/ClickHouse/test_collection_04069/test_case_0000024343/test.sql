@@ -1,1 +1,0 @@
-SELECT (1::UInt64, 2::UInt64, 3::UInt64) AS x, (4::UInt64, 5::UInt64, 6::UInt64) AS y, dotProduct(x, y) AS res, toTypeName(res);

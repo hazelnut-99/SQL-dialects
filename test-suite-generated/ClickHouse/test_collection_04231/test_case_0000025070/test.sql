@@ -1,1 +1,0 @@
-SELECT CRC32IEEE(sipHash128());

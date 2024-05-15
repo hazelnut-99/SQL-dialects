@@ -1,1 +1,0 @@
-select getTypeSerializationStreams('Nullable(String)');

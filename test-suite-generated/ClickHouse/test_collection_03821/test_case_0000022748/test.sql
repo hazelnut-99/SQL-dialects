@@ -1,1 +1,0 @@
-SELECT concatWithSeparator('|', 'a', materialize('2001:0001:130F:0002:0003:09C0:876A:130B' :: IPv6)) == 'a|2001:0001:130F:0002:0003:09C0:876A:130B';

@@ -1,5 +1,17 @@
-DROP DATABASE IF EXISTS test1601_detach_permanently_atomic;
-CREATE DATABASE test1601_detach_permanently_atomic Engine=Atomic;
-create table test1601_detach_permanently_atomic.test_name_reuse (number UInt64) engine=MergeTree order by tuple();
-INSERT INTO test1601_detach_permanently_atomic.test_name_reuse SELECT * FROM numbers(100);
-DETACH table test1601_detach_permanently_atomic.test_name_reuse PERMANENTLY;
+DROP TABLE IF EXISTS 02188_test_dictionary_source;
+CREATE TABLE 02188_test_dictionary_source
+(
+    id UInt64,
+    value String
+)
+ENGINE=TinyLog;
+INSERT INTO 02188_test_dictionary_source VALUES (0, 'Value');
+DROP DICTIONARY IF EXISTS 02188_test_dictionary_simple_primary_key;
+CREATE DICTIONARY 02188_test_dictionary_simple_primary_key
+(
+    id UInt64,
+    value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE '02188_test_dictionary_source'))
+LAYOUT(DIRECT());

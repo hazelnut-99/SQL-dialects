@@ -319,3 +319,5 @@ CREATE MACRO add_macro(a, b) AS a + b;
 CREATE SEQUENCE seqq;
 create macro information_schema.foo(a) as a;
 create table information_schema.integers(i int);
+INSERT INTO integers VALUES (1);
+CREATE MACRO one() AS (SELECT 1);

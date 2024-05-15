@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS cat_hist;
-DROP TABLE IF EXISTS prod_hist;
-DROP TABLE IF EXISTS products_l;
-DROP TABLE IF EXISTS products;
-CREATE TABLE cat_hist (categoryId UUID, categoryName String) ENGINE Memory;
-CREATE TABLE prod_hist (categoryId UUID, productId UUID) ENGINE = MergeTree ORDER BY productId;
-CREATE TABLE products as prod_hist ENGINE = Merge(currentDatabase(), '^products_');
+CREATE TEMPORARY TABLE IF NOT EXISTS default_table (x UInt32, y UInt32 DEFAULT 42, z UInt32 DEFAULT 33) ENGINE = Memory;
+INSERT INTO default_table(x) values (DEFAULT);
+INSERT INTO default_table(x, z) values (1, DEFAULT);
+INSERT INTO default_table values (2, 33, DEFAULT);

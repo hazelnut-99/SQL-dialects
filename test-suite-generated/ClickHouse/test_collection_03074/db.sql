@@ -1,10 +1,21 @@
-CREATE DATABASE IF NOT EXISTS test_02115;
-USE test_02115;
-DROP TABLE IF EXISTS t1_local;
-DROP TABLE IF EXISTS t2_local;
-DROP TABLE IF EXISTS t1_all;
-DROP TABLE IF EXISTS t2_all;
-create table t1_local(a Int32) engine=MergeTree() order by a;
-create table t2_local as t1_local;
-insert into t1_local values (1), (2), (3);
-insert into t2_local values (1), (2), (3);
+CREATE TABLE raw
+(
+  name String,
+  num String
+) ENGINE = MergeTree
+ORDER BY (name);
+CREATE TABLE parsed_eph
+(
+  name String,
+  num_ephemeral UInt32 EPHEMERAL,
+  num UInt32 MATERIALIZED num_ephemeral,
+) ENGINE = MergeTree
+ORDER BY (name);
+CREATE MATERIALIZED VIEW parse_mv_eph
+TO parsed_eph
+AS
+SELECT
+  name,
+  toUInt32(num) as num_ephemeral
+FROM raw;
+INSERT INTO raw VALUES ('3', '3'), ('42', '42');

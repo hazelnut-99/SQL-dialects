@@ -1,1 +1,0 @@
-SELECT farmHash64(123456);

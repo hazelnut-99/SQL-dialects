@@ -1,1 +1,0 @@
-SELECT '-- invalid sqid';

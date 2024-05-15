@@ -1,8 +1,14 @@
-DROP TABLE IF EXISTS source_table1;
-DROP TABLE IF EXISTS source_table2;
-DROP TABLE IF EXISTS distributed_table1;
-DROP TABLE IF EXISTS distributed_table2;
-CREATE TABLE source_table1 (a Int64, b String) ENGINE = Memory;
-CREATE TABLE source_table2 (c Int64, d String) ENGINE = Memory;
-INSERT INTO source_table1 VALUES (42, 'qwe');
-INSERT INTO source_table2 VALUES (42, 'qwe');
+DROP TABLE IF EXISTS ints;
+DROP TABLE IF EXISTS floats;
+DROP TABLE IF EXISTS strings;
+CREATE TABLE ints (
+    a TINYINT,
+    b TINYINT(8),
+    c SMALLINT,
+    d SMALLINT(16),
+    e INT,
+    f INT(32),
+    g BIGINT,
+    h BIGINT(64)
+) engine=Memory;
+INSERT INTO ints VALUES (1, 8, 11, 16, 21, 32, 41, 64);

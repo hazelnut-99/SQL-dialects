@@ -1,13 +1,29 @@
-drop table if exists t1;
-drop table if exists t2;
-create table t1
+DROP DICTIONARY IF EXISTS TestTblDict;
+DROP VIEW IF EXISTS TestTbl_view;
+DROP TABLE IF EXISTS TestTbl;
+CREATE TABLE TestTbl
 (
-    col UInt64,
-    x UInt64 MATERIALIZED col + 1
-) Engine = MergeTree order by tuple();
-create table t2
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+ENGINE = MergeTree
+PARTITION BY dt
+ORDER BY (id);
+CREATE VIEW TestTbl_view
+AS
+SELECT *
+FROM TestTbl
+WHERE dt = ( SELECT max(dt) FROM TestTbl );
+CREATE DICTIONARY IF NOT EXISTS TestTblDict
 (
-    x UInt64
-) Engine = MergeTree order by tuple();
-insert into t1 values (1),(2),(3),(4),(5);
-insert into t2 values (1),(2),(3),(4),(5);
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE TestTbl_view DB currentDatabase()))
+LIFETIME(1)
+LAYOUT(COMPLEX_KEY_HASHED());
+insert into TestTbl values(1, '2022-10-20', 'first');
+insert into TestTbl values(1, '2022-10-21', 'second');

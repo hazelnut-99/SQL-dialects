@@ -1,3 +1,0 @@
-SELECT countDigits(toNullable(toDecimal32(4.2, 1))), countDigits(materialize(toNullable(toDecimal32(4.2, 2)))),
-       countDigits(toNullable(toDecimal64(4.2, 3))), countDigits(materialize(toNullable(toDecimal64(4.2, 4)))),
-       countDigits(toNullable(toDecimal128(4.2, 5))), countDigits(materialize(toNullable(toDecimal128(4.2, 6))));

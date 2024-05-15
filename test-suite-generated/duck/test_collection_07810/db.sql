@@ -1,3 +1,15 @@
 CREATE TABLE integers(i INTEGER);
 INSERT INTO integers VALUES (1), (2), (3), (4), (5);
 CREATE TABLE i2 AS SELECT 1 AS i FROM integers WHERE i % 2 <> 0;
+UPDATE i2 SET i=NULL;
+CREATE TABLE IF NOT EXISTS presentations(presentation_date Date NOT NULL UNIQUE, author VARCHAR NOT NULL, title VARCHAR NOT NULL, bio VARCHAR, abstract VARCHAR, zoom_link VARCHAR);
+insert into presentations values ('2020-05-29', 'Eduardo Pena', 'Analytical Query Processing Based on Continuous Compression of Intermediates', NULL, 'Modern in-memory column-stores are widely accepted as the adequate database architecture for the efficient processing of complex analytical queries over large relational data volumes. These systems keep their entire data in main memory and typically employ lightweight compression to address the bottleneck between main memory and CPU. Numerous lightweight compression algorithms have been proposed in the past years, but none of them is suitable in all cases. While lightweight compression is already well established for base data, the efficient representation of intermediate results generated during query processing has attracted insufficient attention so far, although in in-memory systems, accessing intermeFdiates is as expensive as accessing base data. Thus, our vision is a continuous use of lightweight compression for all intermediates in a query execution plan, whereby a suitable compression algorithm should be selected for each intermediate. In this talk, I will provide an overview of our research in the context of this vision, including an experimental survey of lightweight compression algorithms, our compression-enabled processing model, and our compression-aware query optimization strategies.', 'https://zoom.us/j/7845983526');
+CREATE TABLE integers2 AS SELECT * FROM integers GROUP BY i;
+DROP TABLE integers;
+DROP TABLE integers2;
+CREATE TABLE integers AS SELECT case when i%2=0 then null else i end AS i  FROM range(1000000) tbl(i);
+CREATE TABLE integers2 AS SELECT * FROM integers GROUP BY i;
+CREATE TABLE varchars AS SELECT case when i%2=0 then null else concat('thisismyvarchar-', i//4) end AS v  FROM range(1000000) tbl(i);
+CREATE TABLE varchars2 AS SELECT * FROM varchars GROUP BY v;
+CREATE TABLE lists AS SELECT [i, NULL, i + 2] AS l FROM range(1000000) tbl(i);
+CREATE TABLE lists2 AS SELECT * FROM lists GROUP BY l;

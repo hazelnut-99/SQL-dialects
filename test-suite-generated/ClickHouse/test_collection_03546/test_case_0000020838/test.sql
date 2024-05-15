@@ -1,1 +1,0 @@
-select [2] = multiSearchAllPositions(materialize('abcdefgh'), ['bcdefg']);

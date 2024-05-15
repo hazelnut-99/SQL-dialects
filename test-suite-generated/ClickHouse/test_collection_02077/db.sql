@@ -1,2 +1,10 @@
-DROP TABLE IF EXISTS merge_tree_table1;
-CREATE TABLE buffer_table1 ( `s` String , x UInt32) ENGINE = Buffer(currentDatabase(), 'merge_tree_table1', 16, 10, 60, 10, 1000, 1048576, 2097152);
+WITH map(1, 2, 3, 4) AS m SELECT m[number] FROM numbers(5);
+WITH map('1', 2, '3', 4) AS m SELECT m[toString(number)] FROM numbers(5);
+WITH map(1, 2, 3, 4) AS m SELECT m[3];
+WITH map('1', 2, '3', 4) AS m SELECT m['3'];
+DROP TABLE IF EXISTS t_map_02014;
+CREATE TABLE t_map_02014(i1 UInt64, i2 Int32, m1 Map(UInt32, String), m2 Map(Int8, String), m3 Map(Int128, String)) ENGINE = Memory;
+INSERT INTO t_map_02014 VALUES (1, -1, map(1, 'foo', 2, 'bar'), map(-1, 'foo', 1, 'bar'), map(-1, 'foo', 1, 'bar'));
+DROP TABLE IF EXISTS t_map_02014;
+CREATE TABLE t_map_02014(s String, fs FixedString(3), m1 Map(String, String), m2 Map(FixedString(3), String)) ENGINE = Memory;
+INSERT INTO t_map_02014 VALUES ('aaa', 'bbb', map('aaa', 'foo', 'bbb', 'bar'), map('aaa', 'foo', 'bbb', 'bar'));

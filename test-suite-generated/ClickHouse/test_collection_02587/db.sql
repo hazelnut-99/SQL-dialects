@@ -1,13 +1,3 @@
-DROP DATABASE IF EXISTS 01778_db;
-CREATE DATABASE 01778_db;
-CREATE TABLE 01778_db.hierarchy_source_table (id UInt64, parent_id UInt64) ENGINE = TinyLog;
-INSERT INTO 01778_db.hierarchy_source_table VALUES (1, 0), (2, 1), (3, 1), (4, 2);
-CREATE DICTIONARY 01778_db.hierarchy_flat_dictionary
-(
-    id UInt64,
-    parent_id UInt64 HIERARCHICAL
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'hierarchy_source_table' DB '01778_db'))
-LAYOUT(FLAT())
-LIFETIME(MIN 1 MAX 1000);
+drop table if exists unhex_in_fix_string_table;
+create table unhex_in_fix_string_table ( dt Date, s1 FixedString(20), s2 String) engine=MergeTree partition by dt order by tuple();
+insert into unhex_in_fix_string_table values(today(), '436C69636B486F757365', '436C69636B486F757365');

@@ -1,0 +1,1 @@
+select countMatchesCaseInsensitive('foobarfoo', 'FOo.*');

@@ -1,0 +1,1 @@
+SELECT tryPunycodeDecode('no punycode');

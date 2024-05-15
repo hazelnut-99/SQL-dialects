@@ -1,1 +1,0 @@
-select d from values('d Decimal(27, 8)', 0, 9) where d not in (-9223372036854775808, 0);

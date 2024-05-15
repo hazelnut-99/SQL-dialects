@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS test_datetime;
-CREATE TABLE test_datetime (time DateTime) ENGINE=MergeTree PARTITION BY time ORDER BY time;
-INSERT INTO test_datetime (time) VALUES (toDate(18012));
+create temporary table test (
+    arr Array(Array(LowCardinality(String)))
+);
+insert into test(arr) values ([['a'], ['b', 'c']]);

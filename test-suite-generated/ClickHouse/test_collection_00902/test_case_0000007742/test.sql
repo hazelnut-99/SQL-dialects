@@ -1,1 +1,0 @@
-SELECT * FROM t64 WHERE u32 != t_u32;

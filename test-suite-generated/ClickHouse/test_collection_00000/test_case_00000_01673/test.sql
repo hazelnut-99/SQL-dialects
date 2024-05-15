@@ -1,0 +1,15 @@
+SELECT
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d')),
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d#e=f')),
+    extractURLParameters(materialize('http://bigmir.net/?a&c=d#e=f')),
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d#e=f&g=h')),
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d#e')),
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d#e&g=h')),
+    extractURLParameters(materialize('http://bigmir.net/?a=b&c=d#test?e=f&g=h')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d#e=f')),
+    extractURLParameters(materialize('//bigmir.net/?a&c=d#e=f')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d#e=f&g=h')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d#e')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d#e&g=h')),
+    extractURLParameters(materialize('//bigmir.net/?a=b&c=d#test?e=f&g=h'));

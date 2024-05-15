@@ -1,5 +1,3 @@
-drop table if exists test;
-drop table if exists test2;
-create table test(x1 Int, x2 Int, x3 Int) engine=Memory();
-insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);
-insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);
+DROP TABLE IF EXISTS 02845_prewhere;
+CREATE TABLE  02845_prewhere  ( e String, c String, q String ) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO 02845_prewhere SELECT number, number, number from numbers(10);

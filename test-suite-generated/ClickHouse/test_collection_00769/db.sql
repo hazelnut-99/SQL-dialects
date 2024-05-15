@@ -1,12 +1,10 @@
-DROP TABLE IF EXISTS alter_attach;
-CREATE TABLE alter_attach (x UInt64, p UInt8) ENGINE = MergeTree ORDER BY tuple() PARTITION BY p;
-INSERT INTO alter_attach VALUES (1, 1), (2, 1), (3, 1);
-ALTER TABLE alter_attach DETACH PARTITION 1;
-ALTER TABLE alter_attach ADD COLUMN s String;
-INSERT INTO alter_attach VALUES (4, 2, 'Hello'), (5, 2, 'World');
-ALTER TABLE alter_attach ATTACH PARTITION 1;
-ALTER TABLE alter_attach DETACH PARTITION 2;
-ALTER TABLE alter_attach DROP COLUMN s;
-INSERT INTO alter_attach VALUES (6, 3), (7, 3);
-ALTER TABLE alter_attach ATTACH PARTITION 2;
-ALTER TABLE alter_attach DETACH PARTITION ALL;
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE defaults
+(
+    strings String,
+    i8 Int8,
+    u16 UInt16,
+    u32 UInt32,
+    u64 UInt64
+)ENGINE = Memory();
+INSERT INTO defaults values ('abc', 3, 12, 4, 56) ('sdfgg', -2, 10, 21, 200) ('xywq', -1, 4, 9, 5) ('plkf', 0, 5, 7,77);

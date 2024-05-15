@@ -1,18 +1,16 @@
-DROP TABLE IF EXISTS table_with_version;
-CREATE TABLE table_with_version
-(
-    key UInt64,
-    value String,
-    version UInt8,
-    sign Int8
-)
-ENGINE VersionedCollapsingMergeTree(sign, version)
-ORDER BY key;
-INSERT INTO table_with_version VALUES (1, '1', 1, -1);
-INSERT INTO table_with_version VALUES (2, '2', 2, -1);
-SHOW CREATE TABLE table_with_version;
-ALTER TABLE table_with_version MODIFY COLUMN version UInt32;
-SHOW CREATE TABLE table_with_version;
-INSERT INTO TABLE table_with_version VALUES(1, '1', 1, 1);
-INSERT INTO TABLE table_with_version VALUES(1, '1', 2, 1);
-INSERT INTO TABLE table_with_version VALUES(3, '3', 65555, 1);
+DROP TABLE IF EXISTS tmp;
+CREATE TABLE tmp (x Int64) ENGINE = MergeTree() ORDER BY tuple() PARTITION BY tuple();
+ALTER TABLE tmp ADD COLUMN s String DEFAULT toString(x);
+ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+1);
+ALTER TABLE tmp MATERIALIZE COLUMN s;
+ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+2);
+ALTER TABLE tmp CLEAR COLUMN s; -- Need to clear because MATERIALIZE COLUMN won't override past values;
+ALTER TABLE tmp MATERIALIZE COLUMN s;
+ALTER TABLE tmp MODIFY COLUMN s String DEFAULT toString(x+3);
+ALTER TABLE tmp DROP COLUMN s;
+ALTER TABLE tmp ADD COLUMN s String MATERIALIZED toString(x);
+ALTER TABLE tmp MODIFY COLUMN s String MATERIALIZED toString(x+1);
+ALTER TABLE tmp MATERIALIZE COLUMN s;
+ALTER TABLE tmp MODIFY COLUMN s String MATERIALIZED toString(x+2);
+ALTER TABLE tmp MATERIALIZE COLUMN s;
+ALTER TABLE tmp MODIFY COLUMN s String MATERIALIZED toString(x+3);

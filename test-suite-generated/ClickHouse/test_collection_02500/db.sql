@@ -1,9 +1,8 @@
-DROP TABLE IF EXISTS constraint_constant_number_expression;
-CREATE TABLE constraint_constant_number_expression
+DROP TABLE IF EXISTS t_parse_tuples;
+CREATE TABLE t_parse_tuples
 (
-    id UInt64,
-    CONSTRAINT `c0` CHECK 1,
-    CONSTRAINT `c1` CHECK 1 < 2,
-    CONSTRAINT `c2` CHECK isNull(cast(NULL, 'Nullable(UInt8)'))
-) ENGINE = TinyLog();
-INSERT INTO constraint_constant_number_expression VALUES (1);
+    id UInt32,
+    arr Array(Array(Tuple(c1 Int32, c2 UInt8)))
+)
+ENGINE = Memory;
+INSERT INTO t_parse_tuples VALUES (1, [[]]), (2, [[(500, -10)]]), (3, [[(500, '10')]]);

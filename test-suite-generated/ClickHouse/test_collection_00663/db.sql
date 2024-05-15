@@ -1,2 +1,6 @@
-DROP TABLE IF EXISTS mergetree_00698;
-CREATE TABLE mergetree_00698 (k UInt32, `n.x` Array(UInt64), `n.y` Array(UInt64)) ENGINE = MergeTree ORDER BY k;
+drop table if exists array_intersect;
+create table array_intersect (date Date, arr Array(UInt8)) engine=MergeTree partition by date order by date;
+insert into array_intersect values ('2019-01-01', [1,2,3]);
+insert into array_intersect values ('2019-01-01', [1,2]);
+insert into array_intersect values ('2019-01-01', [1]);
+insert into array_intersect values ('2019-01-01', []);

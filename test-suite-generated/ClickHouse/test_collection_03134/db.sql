@@ -1,24 +1,10 @@
-DROP TABLE IF EXISTS 02155_test_table;
-CREATE TABLE 02155_test_table
-(
-    id UInt64,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 02155_test_table VALUES (0, 'Value');
-DROP DICTIONARY IF EXISTS 02155_test_dictionary;
-CREATE DICTIONARY 02155_test_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(TABLE '02155_test_table'))
-LAYOUT(DIRECT());
-ALTER TABLE 02155_test_dictionary MODIFY COMMENT '02155_test_dictionary_comment_0';
-ALTER TABLE 02155_test_dictionary MODIFY COMMENT '02155_test_dictionary_comment_1';
-DROP TABLE IF EXISTS 02155_test_dictionary_view;
-CREATE TABLE 02155_test_dictionary_view
-(
-    id UInt64,
-    value String
-) ENGINE=Dictionary(concat(currentDatabase(), '.02155_test_dictionary'));
+DROP TABLE IF EXISTS test_empty;
+CREATE TABLE test_empty (a Array(Int64)) engine=MergeTree ORDER BY a;
+INSERT INTO test_empty VALUES ([]);
+INSERT INTO test_empty VALUES ([1]);
+DROP TABLE test_empty;
+DROP TABLE IF EXISTS test_null;
+DROP TABLE IF EXISTS test_nested_arrays;
+CREATE TABLE test_nested_arrays (a Array(Array(Int64))) engine=MergeTree ORDER BY a;
+INSERT INTO test_nested_arrays VALUES ([[1,2,3,4,5,6], [1,2,4,5]]);
+INSERT INTO test_nested_arrays VALUES ([[1,2,4,5]]);

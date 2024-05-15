@@ -1,4 +1,10 @@
-DROP TABLE IF EXISTS arrayDistinct_test;
-CREATE TABLE arrayDistinct_test(arr_int Array(UInt8), arr_string Array(String)) ENGINE=Memory;
-INSERT INTO arrayDistinct_test values ([1, 2, 3], ['a', 'b', 'c']), ([21, 21, 21, 21], ['123', '123', '123']);
-DROP TABLE arrayDistinct_test;
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS zero_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;
+DROP TABLE IF EXISTS two_rows_per_granule;
+DROP TABLE IF EXISTS four_rows_per_granule;
+DROP TABLE IF EXISTS four_rows_per_granule;
+DROP TABLE IF EXISTS huge_granularity_small_blocks;
+DROP TABLE IF EXISTS huge_granularity_small_blocks;
+DROP TABLE IF EXISTS adaptive_granularity_alter;
+DROP TABLE IF EXISTS adaptive_granularity_alter;

@@ -1,2 +1,3 @@
-drop temporary table if exists test_00670;
-create temporary table test_00670(id int);
+DROP TABLE IF EXISTS ANIMAL;
+CREATE TABLE ANIMAL ( ANIMAL Nullable(String) ) engine = TinyLog;
+INSERT INTO ANIMAL (ANIMAL) VALUES ('CAT'), ('FISH'), ('DOG'), ('HORSE'), ('BIRD');

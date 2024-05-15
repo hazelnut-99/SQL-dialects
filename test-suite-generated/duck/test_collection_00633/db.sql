@@ -2734,3 +2734,6 @@ insert into test values (NULL);
 drop table test;
 create table test as (select range i from range(100000));
 insert into test values (NULL);
+drop table test;
+CREATE TABLE test (a INTEGER, b INTEGER);
+INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);

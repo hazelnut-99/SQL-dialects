@@ -1,0 +1,1 @@
+SELECT '-- Single argument tests';

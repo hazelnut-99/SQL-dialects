@@ -2756,3 +2756,8 @@ INSERT INTO integers SELECT * FROM integers;
 INSERT INTO integers SELECT * FROM integers;
 INSERT INTO integers SELECT * FROM integers;
 CREATE TABLE strings AS SELECT '5'::VARCHAR k;
+PREPARE v1 AS SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT ?::VARCHAR;
+EXECUTE v1(5);
+PREPARE v1 AS SELECT * FROM generate_series(0, 10000, 1) tbl(i) ORDER BY i DESC LIMIT ?::VARCHAR %;
+EXECUTE v1('0.05');
+CREATE TABLE doubles AS SELECT 0.05 d;

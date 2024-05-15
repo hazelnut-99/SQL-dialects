@@ -1,1 +1,0 @@
-SELECT 'And detach permanently again to check how database drop will behave';

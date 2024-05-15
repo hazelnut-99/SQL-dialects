@@ -1,0 +1,1 @@
+SELECT * FROM 01780_db.dict3;

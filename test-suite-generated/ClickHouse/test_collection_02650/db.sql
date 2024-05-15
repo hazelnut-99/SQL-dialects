@@ -1,3 +1,7 @@
-DROP TABLE IF EXISTS t_json_sparse;
-SYSTEM STOP MERGES t_json_sparse;
-SYSTEM START MERGES t_json_sparse;
+DROP TABLE IF EXISTS t;
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS tj;
+CREATE TABLE tj (key2 UInt64, key1 Int64, a UInt64, b UInt64, x UInt64, y UInt64) ENGINE = Join(ALL, RIGHT, key1, key2);
+INSERT INTO tj VALUES (2, -2, 20, 200, 2000, 20000), (3, -3, 30, 300, 3000, 30000), (4, -4, 40, 400, 4000, 40000), (5, -5, 50, 500, 5000, 50000), (6, -6, 60, 600, 6000, 60000);
+CREATE TABLE t1 (id2 UInt64, id1 Int64, val UInt64) ENGINE = Memory;
+INSERT INTO t1 VALUES (1, -1, 11), (2, -2, 22), (3, -3, 33), (4, -4, 44), (5, -5, 55);

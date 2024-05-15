@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (1), (Null);
-DROP TABLE 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a UInt64) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (0), (1), (2);
-DROP TABLE 00662_has_nullable;
+drop table if exists test_distance;
+create table test_distance (Title String) engine = Memory;
+insert into test_distance values ('привет как дела?... Херсон'), ('привет как дела клип - TUT.BY'), ('привет'), ('пап привет как дела - TUT.BY'), ('привет братан как дела - TUT.BY'), ('http://metric.ru/'), ('http://autometric.ru/'), ('http://top.bigmir.net/'), ('http://metris.ru/'), ('http://metrika.ru/'), ('');

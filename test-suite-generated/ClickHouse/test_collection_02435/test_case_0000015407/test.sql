@@ -1,1 +1,0 @@
-SELECT toUnixTimestamp(x) as tt, (toDateTime('2019-04-07 01:00:00', 'Australia/Lord_Howe') + INTERVAL number * 600 SECOND) AS x,  toString(x) as xx FROM numbers(20);

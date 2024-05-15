@@ -1,1 +1,0 @@
-select * from (select number, intDiv(number,5) value from numbers(20) order by value limit 3 with ties) ORDER BY number, value;

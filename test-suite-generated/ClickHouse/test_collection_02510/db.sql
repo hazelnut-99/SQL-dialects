@@ -1,3 +1,8 @@
-DROP TABLE IF EXISTS join_tbl;
-CREATE TABLE join_tbl (`id` String, `name` String, lcname LowCardinality(String)) ENGINE = Join(any, left, id);
-INSERT INTO join_tbl VALUES ('xxx', 'yyy', 'yyy');
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');
+WITH cte_subquery AS (SELECT 1) SELECT * FROM cte_subquery;

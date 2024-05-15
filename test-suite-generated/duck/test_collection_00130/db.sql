@@ -218,3 +218,9 @@ create macro my_macro2(a := i) as (
 	select min(a) from integers
 );
 insert into integers values (5), (10), (13);
+drop table integers;
+Create table t1 (a int, b int);
+Create table t2 (c int, d int);
+CREATE OR REPLACE MACRO eq(x := NULL, y := NULL) AS x = y;
+INSERT INTO t1 VALUES (1, 1), (1, 2), (2, 2), (3, 4);
+INSERT INTO t2 VALUES (4, 1), (2, 10), (6, 2), (2, 6);

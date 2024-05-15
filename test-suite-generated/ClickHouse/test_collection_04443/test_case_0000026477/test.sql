@@ -1,1 +1,0 @@
-SELECT dateTrunc('Month', toDateTime64('2022-03-01 12:55:55', 2));

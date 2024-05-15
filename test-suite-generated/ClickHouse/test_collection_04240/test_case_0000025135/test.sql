@@ -1,1 +1,0 @@
-SELECT timestamp(materialize('2013-12-31 12:00:00'), materialize('12:00:00'));

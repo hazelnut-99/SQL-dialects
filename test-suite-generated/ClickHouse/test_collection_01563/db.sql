@@ -1,8 +1,7 @@
-drop table if exists test;
-drop table if exists file;
-drop table if exists mt;
-insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
-attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
-detach table file;
-attach table file;
-attach table mt from '01188_attach/file' (n UInt8, s String) engine=MergeTree order by n;
+DROP database IF EXISTS test_1603_rename_bug_ordinary;
+DROP database IF EXISTS test_1603_rename_bug_atomic;
+create database test_1603_rename_bug_atomic engine=Atomic;
+create table test_1603_rename_bug_atomic.foo engine=Memory as select * from numbers(100);
+create table test_1603_rename_bug_atomic.bar engine=Log as select * from numbers(200);
+detach table test_1603_rename_bug_atomic.foo;
+attach table test_1603_rename_bug_atomic.foo;

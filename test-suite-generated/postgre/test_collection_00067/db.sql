@@ -1,10 +1,32 @@
-create table t(a integer, b integer);
-insert into t(a, b) select i/100 + 1, i + 1 from generate_series(0, 999) n(i);
-analyze t;
-delete from t;
-insert into t(a, b) select i/50 + 1, i + 1 from generate_series(0, 999) n(i);
-analyze t;
-delete from t;
-insert into t(a, b) select (case when i < 5 then i else 9 end), i from generate_series(1, 1000) n(i);
-analyze t;
-begin;
+CREATE TABLE J1_TBL (
+  i integer,
+  j integer,
+  t text
+);
+CREATE TABLE J2_TBL (
+  i integer,
+  k integer
+);
+INSERT INTO J1_TBL VALUES (1, 4, 'one');
+INSERT INTO J1_TBL VALUES (2, 3, 'two');
+INSERT INTO J1_TBL VALUES (3, 2, 'three');
+INSERT INTO J1_TBL VALUES (4, 1, 'four');
+INSERT INTO J1_TBL VALUES (5, 0, 'five');
+INSERT INTO J1_TBL VALUES (6, 6, 'six');
+INSERT INTO J1_TBL VALUES (7, 7, 'seven');
+INSERT INTO J1_TBL VALUES (8, 8, 'eight');
+INSERT INTO J1_TBL VALUES (0, NULL, 'zero');
+INSERT INTO J1_TBL VALUES (NULL, NULL, 'null');
+INSERT INTO J1_TBL VALUES (NULL, 0, 'zero');
+INSERT INTO J2_TBL VALUES (1, -1);
+INSERT INTO J2_TBL VALUES (2, 2);
+INSERT INTO J2_TBL VALUES (3, -3);
+INSERT INTO J2_TBL VALUES (2, 4);
+INSERT INTO J2_TBL VALUES (5, -5);
+INSERT INTO J2_TBL VALUES (5, -5);
+INSERT INTO J2_TBL VALUES (0, NULL);
+INSERT INTO J2_TBL VALUES (NULL, NULL);
+INSERT INTO J2_TBL VALUES (NULL, 0);
+create temp table onerow();
+insert into onerow default values;
+analyze onerow;

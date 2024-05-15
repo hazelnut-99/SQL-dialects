@@ -1,11 +1,28 @@
-DROP TABLE IF EXISTS buf_dest;
-DROP TABLE IF EXISTS buf;
-CREATE TABLE buf_dest (timestamp DateTime)
-ENGINE = MergeTree PARTITION BY toYYYYMMDD(timestamp)
-ORDER BY (timestamp);
-CREATE TABLE buf (timestamp DateTime) Engine = Buffer(currentDatabase(), buf_dest, 16, 86400, 86400, 2000000, 20000000, 100000000, 300000000);
-INSERT INTO buf (timestamp) VALUES (toDateTime('2020-01-01 00:05:00'));
-OPTIMIZE TABLE buf;
-ALTER TABLE buf_dest ADD COLUMN s String;
-ALTER TABLE buf ADD COLUMN s String;
-INSERT INTO buf (timestamp, s) VALUES (toDateTime('2020-01-01 00:06:00'), 'hello');
+DROP TABLE IF EXISTS date_table;
+CREATE TABLE date_table
+(
+  CountryID UInt64,
+  CountryKey String,
+  StartDate Date,
+  EndDate Date,
+  Tax Float64
+)
+ENGINE = MergeTree()
+ORDER BY CountryID;
+INSERT INTO date_table VALUES(1, '1', toDate('2019-05-05'), toDate('2019-05-20'), 0.33);
+INSERT INTO date_table VALUES(1, '1', toDate('2019-05-21'), toDate('2019-05-30'), 0.42);
+INSERT INTO date_table VALUES(2, '2', toDate('2019-05-21'), toDate('2019-05-30'), 0.46);
+DROP DICTIONARY IF EXISTS range_dictionary;
+CREATE DICTIONARY range_dictionary
+(
+  CountryID UInt64,
+  CountryKey String,
+  StartDate Date,
+  EndDate Date,
+  Tax Float64 DEFAULT 0.2
+)
+PRIMARY KEY CountryID, CountryKey
+SOURCE(CLICKHOUSE(TABLE 'date_table'))
+LIFETIME(MIN 1 MAX 1000)
+LAYOUT(COMPLEX_KEY_RANGE_HASHED())
+RANGE(MIN StartDate MAX EndDate);

@@ -1,8 +1,0 @@
-DROP TABLE IF EXISTS replicated_table_r1 SYNC;
-DROP TABLE IF EXISTS replicated_table_r2 SYNC;
-DROP TABLE IF EXISTS replicated_table_r1 SYNC;
-DROP TABLE IF EXISTS replicated_table_r2 SYNC;
-DROP TABLE IF EXISTS t_light_r1 SYNC;
-DROP TABLE IF EXISTS t_light_r2 SYNC;
-DROP TABLE IF EXISTS t_light_r1 SYNC;
-DROP TABLE IF EXISTS t_light_r2 SYNC;

@@ -1,1 +1,0 @@
-SELECT toYYYYMM(toDate('2017-07-21'));

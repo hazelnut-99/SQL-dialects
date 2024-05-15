@@ -324,3 +324,4 @@ CREATE MACRO one() AS (SELECT 1);
 DROP MACRO one;
 CREATE MACRO having_macro(x) AS (SELECT * FROM integers GROUP BY a HAVING a = x);
 CREATE MACRO union_macro(x, y, z) AS (SELECT x IN (SELECT y UNION ALL SELECT z));
+CREATE MACRO in_expression_list(x, y, z) AS (SELECT x IN (VALUES (y), (z)));

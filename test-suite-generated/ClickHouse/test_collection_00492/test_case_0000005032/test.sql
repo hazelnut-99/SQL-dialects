@@ -1,1 +1,0 @@
-select 'Vertival merge';

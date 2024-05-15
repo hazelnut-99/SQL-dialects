@@ -48,3 +48,4 @@ EXECUTE v1('col.*3');
 EXECUTE v1(['column1', 'column2']);
 PREPARE v1 AS SELECT POSITION(? in ?);
 EXECUTE v1('e', 'hello world');
+;

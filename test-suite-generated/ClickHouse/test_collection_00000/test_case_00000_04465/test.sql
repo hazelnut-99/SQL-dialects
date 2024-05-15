@@ -1,0 +1,2 @@
+SELECT lon/5 - 40 AS lon1, lat/5 - 20 AS lat1, lon1 AS lon2, lat1 AS lat2, geohashesInBox(lon1, lat1, lon2, lat2, 12) AS g
+FROM (SELECT arrayJoin(range(80*5)) AS lon,  arrayJoin(range(10*5)) AS lat) WHERE length(g) != 1;

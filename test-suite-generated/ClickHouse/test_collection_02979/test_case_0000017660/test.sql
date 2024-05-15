@@ -1,1 +1,0 @@
-SELECT tuple(*, 1) + tuple(2, *) FROM numbers(3);

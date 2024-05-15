@@ -1,3 +1,2 @@
-drop table if exists table_map;
-create table table_map (a Map(String, String)) engine = Memory;
-insert into table_map values ({'name':'zhangsan', 'gender':'male'}), ({'name':'lisi', 'gender':'female'});
+DROP FUNCTION IF EXISTS 02126_function;
+CREATE FUNCTION 02126_function AS x -> x;

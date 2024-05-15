@@ -1,12 +1,7 @@
-DROP TABLE IF EXISTS table1;
-DROP TABLE IF EXISTS table2;
-DROP TABLE IF EXISTS table3;
-DROP TABLE IF EXISTS table5;
-CREATE TABLE table1 (a UInt32) ENGINE = Memory;
-CREATE TABLE table2 (a UInt32, b UInt32) ENGINE = Memory;
-CREATE TABLE table3 (b UInt32, c UInt32) ENGINE = Memory;
-CREATE TABLE table5 (a UInt32, b UInt32, c UInt32) ENGINE = Memory;
-INSERT INTO table1 SELECT number FROM numbers(21);
-INSERT INTO table2 SELECT number * 2, number * 20 FROM numbers(11);
-INSERT INTO table3 SELECT number * 30, number * 300 FROM numbers(10);
-INSERT INTO table5 SELECT number * 5, number * 50, number * 500 FROM numbers(10);
+DROP TABLE IF EXISTS requests;
+CREATE TABLE requests (
+    event_time DateTime,
+    event_date Date MATERIALIZED toDate(event_time),
+    event_tm DateTime ALIAS event_time
+) ENGINE = MergeTree ORDER BY (event_time);
+INSERT INTO requests (event_time) VALUES ('2010-01-01 00:00:00');

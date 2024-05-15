@@ -1,1 +1,0 @@
-SELECT (1, NULL) IN (1, NULL);

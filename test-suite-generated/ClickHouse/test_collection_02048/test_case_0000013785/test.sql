@@ -1,1 +1,0 @@
-SELECT COUNT(1) == 1 FROM 01504_test;

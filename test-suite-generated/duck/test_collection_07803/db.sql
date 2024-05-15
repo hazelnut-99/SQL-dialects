@@ -1006,3 +1006,28 @@ drop table a;
 create table a as select range%3::uinteger j, range::uinteger AS i from range(1, 7, 1);
 drop table a;
 create table a as select range%3::ubigint j, range::ubigint AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::uhugeint j, range::uhugeint AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::float j, range::float AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::double j, range::double AS i from range(1, 7, 1);
+drop table a;
+create table partsupp as select uuid()::varchar as c5 from range(8000);
+with subquery as (select i, lag(i) over named_window from (values (1), (2), (3)) as t (i) window named_window as (order by i)) select * from subquery;
+CREATE TABLE a (id INT);
+WITH
+  cte_a AS (
+    SELECT *
+    FROM a
+    WINDOW my_window AS ()
+  ),
+  cte_b AS (
+    SELECT *
+    FROM a
+    WINDOW my_window AS ()
+  )
+SELECT *
+FROM cte_a CROSS JOIN cte_b;
+CREATE OR REPLACE TABLE issue10855(i INTEGER, v FLOAT);
+INSERT INTO issue10855 VALUES (0, 1), (1, 2), (2, 3),;

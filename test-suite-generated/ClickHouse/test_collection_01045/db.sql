@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS retention_test;
-CREATE TABLE retention_test(date Date, uid Int32)ENGINE = Memory;
-INSERT INTO retention_test SELECT '2018-08-06', number FROM numbers(8);
-INSERT INTO retention_test SELECT '2018-08-07', number FROM numbers(6);
-INSERT INTO retention_test SELECT '2018-08-08', number FROM numbers(7);
+drop table if exists mt1;
+drop table if exists mt2;
+create table mt1 (n Int64) engine=MergeTree order by n;
+create table mt2 (n Int64) engine=MergeTree order by n;
+insert into mt1 values (1);
+insert into mt2 values (10);
+insert into mt1 values (2);
+insert into mt2 values (20);
+insert into mt1 values (3);
+insert into mt2 values (30);

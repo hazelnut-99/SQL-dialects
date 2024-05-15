@@ -79,3 +79,7 @@ INSERT INTO integers2 VALUES (5);
 INSERT INTO integers2 VALUES (6);
 INSERT INTO integers2 VALUES (7);
 INSERT INTO integers2 VALUES (8);
+INSERT INTO integers2 VALUES (9);
+CREATE TABLE test (i INTEGER);
+INSERT INTO test SELECT * FROM generate_series(0, 999);
+DELETE FROM test WHERE i%2=0;

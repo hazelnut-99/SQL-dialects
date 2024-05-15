@@ -1,12 +1,5 @@
-DROP TABLE IF EXISTS test_00861;
-CREATE TABLE test_00861 (key UInt64, d32 Decimal32(2), d64 Decimal64(2), d128 Decimal128(2)) ENGINE = Memory;
-INSERT INTO test_00861 FORMAT CSV "1","1","1","1"
-;
-INSERT INTO test_00861 FORMAT CSV "2","-1","-1","-1"
-;
-INSERT INTO test_00861 FORMAT CSV "3","1.0","1.0","1.0"
-;
-INSERT INTO test_00861 FORMAT CSV "4","-0.1","-0.1","-0.1"
-;
-INSERT INTO test_00861 FORMAT CSV "5","0.010","0.010","0.010"
-;
+DROP TABLE IF EXISTS test_prewhere_default_column;
+DROP TABLE IF EXISTS test_prewhere_column_type;
+CREATE TABLE test_prewhere_default_column (APIKey UInt8, SessionType UInt8) ENGINE = MergeTree() PARTITION BY APIKey ORDER BY tuple();
+INSERT INTO test_prewhere_default_column VALUES( 42, 42 );
+ALTER TABLE test_prewhere_default_column ADD COLUMN OperatingSystem UInt64 DEFAULT SessionType+1;

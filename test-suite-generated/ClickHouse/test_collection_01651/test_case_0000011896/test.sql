@@ -1,1 +1,0 @@
-select min(n + 1) c from (select number n from numbers(10)) having c > 0;

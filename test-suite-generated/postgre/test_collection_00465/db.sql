@@ -1,31 +1,13 @@
-CREATE TABLE truncate_a (col1 integer primary key);
-INSERT INTO truncate_a VALUES (1);
-INSERT INTO truncate_a VALUES (2);
-BEGIN;
-TRUNCATE truncate_a;
-ROLLBACK;
-BEGIN;
-COMMIT;
-CREATE TABLE trunc_c (a serial PRIMARY KEY);
-CREATE TABLE trunc_d (a int REFERENCES trunc_c);
-TRUNCATE TABLE trunc_c,trunc_d;		-- fail
-INSERT INTO trunc_c VALUES (1);
-INSERT INTO trunc_d VALUES (1);
-INSERT INTO trunc_d VALUES (1);
-TRUNCATE TABLE trunc_c CASCADE;  -- ok
-CREATE TABLE trunc_f (col1 integer primary key);
-INSERT INTO trunc_f VALUES (1);
-INSERT INTO trunc_f VALUES (2);
-CREATE TABLE trunc_fa (col2a text) INHERITS (trunc_f);
-INSERT INTO trunc_fa VALUES (3, 'three');
-CREATE TABLE trunc_fb (col2b int) INHERITS (trunc_f);
-INSERT INTO trunc_fb VALUES (4, 444);
-CREATE TABLE trunc_faa (col3 text) INHERITS (trunc_fa);
-INSERT INTO trunc_faa VALUES (5, 'five', 'FIVE');
-BEGIN;
-TRUNCATE trunc_f;
-ROLLBACK;
-BEGIN;
-TRUNCATE ONLY trunc_f;
-ROLLBACK;
-BEGIN;
+CREATE SCHEMA testxmlschema;
+CREATE TABLE testxmlschema.test1 (a int, b text);
+INSERT INTO testxmlschema.test1 VALUES (1, 'one'), (2, 'two'), (-1, null);
+CREATE DOMAIN testxmldomain AS varchar;
+CREATE TABLE testxmlschema.test2 (z int, y varchar(500), x char(6),
+    w numeric(9,2), v smallint, u bigint, t real,
+    s time, stz timetz, r timestamp, rtz timestamptz, q date,
+    p xml, o testxmldomain, n bool, m bytea, aaa text);
+ALTER TABLE testxmlschema.test2 DROP COLUMN aaa;
+INSERT INTO testxmlschema.test2 VALUES (55, 'abc', 'def',
+    98.6, 2, 999, 0,
+    '21:07', '21:11 +05', '2009-06-08 21:07:30', '2009-06-08 21:07:30 -07', '2009-06-08',
+    NULL, 'ABC', true, 'XYZ');

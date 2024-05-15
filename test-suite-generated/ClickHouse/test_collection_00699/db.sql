@@ -1,3 +1,4 @@
-drop table if exists prewhere_alias;
-CREATE TABLE prewhere_alias (a UInt8,  b Int32,  c UInt8 ALIAS a,  d Int64 ALIAS b + 1, e Int32 alias a + b) ENGINE = MergeTree ORDER BY tuple();
-insert into prewhere_alias values (1, 1);
+DROP TABLE IF EXISTS test_generic_events_all;
+CREATE TABLE test_generic_events_all (APIKey UInt8, SessionType UInt8) ENGINE = MergeTree() PARTITION BY APIKey ORDER BY tuple();
+INSERT INTO test_generic_events_all VALUES( 42, 42 );
+ALTER TABLE test_generic_events_all ADD COLUMN OperatingSystem UInt64 DEFAULT 42;

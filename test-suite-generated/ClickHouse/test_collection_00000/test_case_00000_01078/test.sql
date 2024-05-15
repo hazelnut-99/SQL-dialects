@@ -1,0 +1,1 @@
+SELECT toDateTime('2010-01-02 03:04:05') AS x, toDateTime('2011-02-03 04:05:06') AS y, least(x, y), greatest(x, y), least(x, materialize(y)), greatest(materialize(x), y), greatest(materialize(x), materialize(y)), toTypeName(least(x, y));

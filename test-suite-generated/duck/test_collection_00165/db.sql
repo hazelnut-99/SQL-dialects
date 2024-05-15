@@ -332,3 +332,5 @@ INSERT INTO floats VALUES (0.5);
 CREATE MACRO string_split(a,b) AS a + b;
 CREATE SCHEMA macros;
 CREATE MACRO macros.add_macro(a, b) AS a + b;
+CREATE MACRO myavg(x) AS SUM(x) / COUNT(x);
+INSERT INTO integers VALUES (21), (41);

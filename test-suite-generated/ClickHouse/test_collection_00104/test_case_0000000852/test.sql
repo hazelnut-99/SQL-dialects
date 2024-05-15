@@ -1,1 +1,0 @@
-SELECT transform(2, [2, 3], ['Meta.ua', 'Google'], materialize('Остальные')) AS title;

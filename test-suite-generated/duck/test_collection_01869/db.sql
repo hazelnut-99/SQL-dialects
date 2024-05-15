@@ -1076,3 +1076,8 @@ DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 COMMIT;
 UPDATE integers SET i=14 WHERE i=13;
+BEGIN TRANSACTION;
+UPDATE integers SET i=14 WHERE i=12;
+ROLLBACK;
+BEGIN TRANSACTION;
+ROLLBACK;

@@ -1,30 +1,9 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
-(
-    id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
-DROP TABLE IF EXISTS test_table_float_values;
-CREATE TABLE test_table_float_values
-(
-    id UInt64,
-
-    value1 Float32,
-    value2 Float64
-) ENGINE=TinyLog;
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS t2;
+DROP TABLE IF EXISTS t3;
+CREATE TABLE t1 (a UInt64, b UInt64) ENGINE = Memory;
+INSERT INTO t1 VALUES (1, 2), (3, 4), (5, 6);
+CREATE TABLE t2 (a UInt64, b UInt64) ENGINE = Memory;
+INSERT INTO t2 VALUES (3, 4), (5, 6), (7, 8);
+CREATE TABLE t3 (a UInt64, b UInt64) ENGINE = Memory;
+INSERT INTO t3 VALUES (5, 6), (7, 8), (9, 10);

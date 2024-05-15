@@ -1,0 +1,1 @@
+SELECT '---------- cond_non_constant_nullable ----------';

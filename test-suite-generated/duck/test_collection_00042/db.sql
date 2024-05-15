@@ -461,3 +461,6 @@ as (values (1, 1, 2), (2, 2, 4), (3, 1, 4), (4, 2, -1), (5, 1, 2), (6, 2, 7), (7
 select * from parents_tab
 union all
 select id, value+2, parent from parents_tab2;
+create table t as with q(id,s) as (values(1,42)),
+a(s)as materialized(select 42)
+select id from q join a on q.s=a.s;

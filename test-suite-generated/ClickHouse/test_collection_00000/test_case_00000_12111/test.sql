@@ -1,0 +1,1 @@
+SELECT countDigits(CAST(CAST(-1 AS UInt256) DIV 2 + 1 AS Int256));

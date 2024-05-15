@@ -1,2 +1,41 @@
-drop table if exists enum;
-create table enum engine MergeTree order by enum as select cast(1, 'Enum8(\'zero\'=0, \'one\'=1)') AS enum;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    value Map(Int64, Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10));
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES (map(-5, -5, 0, 5, 5, 10, 10, 15));
+TRUNCATE TABLE 02005_test_table;
+DROP TABLE 02005_test_table;
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    key Array(Int64),
+    value Array(Int64)
+)
+ENGINE = TinyLog;
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0], [5]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([0, 5], [5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5], [-5, 5, 10]);
+TRUNCATE TABLE 02005_test_table;
+INSERT INTO 02005_test_table VALUES ([-5, 0, 5, 10], [-5, 5, 10, 15]);
+TRUNCATE TABLE 02005_test_table;

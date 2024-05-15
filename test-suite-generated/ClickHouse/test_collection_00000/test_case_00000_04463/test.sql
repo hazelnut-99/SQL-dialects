@@ -1,0 +1,1 @@
+SELECT 'small range always produces array of length 1';

@@ -1002,3 +1002,7 @@ DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
 DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);

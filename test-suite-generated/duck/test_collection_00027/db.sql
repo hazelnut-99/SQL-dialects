@@ -7,3 +7,6 @@ INSERT INTO collate_join_table VALUES ('Hello', 1), ('Muhleisen', 3);
 DROP TABLE collate_test;
 CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT);
 INSERT INTO collate_test VALUES ('Hällo'), ('Hallo'), ('Hello');
+DROP TABLE collate_test;
+CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT);
+INSERT INTO collate_test VALUES ('Hällo'), ('Hallo');

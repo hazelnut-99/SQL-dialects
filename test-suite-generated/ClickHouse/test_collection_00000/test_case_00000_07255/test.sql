@@ -1,0 +1,1 @@
+SELECT [number][-0x8000000000000000] FROM numbers(1);

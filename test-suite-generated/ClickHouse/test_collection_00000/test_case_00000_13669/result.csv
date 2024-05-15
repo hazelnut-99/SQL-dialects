@@ -1,0 +1,2 @@
+"SELECT LAST_VALUE(number) RESPECT NULLS
+FROM numbers(1)"

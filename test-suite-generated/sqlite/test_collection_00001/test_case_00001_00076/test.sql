@@ -1,0 +1,12 @@
+SELECT x45,x21,x32,x25,x24,x43,x19,x39,x55,x35
+  FROM t25,t35,t21,t32,t24,t55,t45,t43,t39,t19
+ WHERE b19=a39
+   AND a24=8
+   AND a21=b55
+   AND a32=b35
+   AND b39=a35
+   AND b43=a55
+   AND b45=a24
+   AND a25=b32
+   AND a43=b25
+   AND a45=b21;

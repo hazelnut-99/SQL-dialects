@@ -2716,3 +2716,6 @@ WITH cte AS (SELECT 3) SELECT * FROM range(10000000) LIMIT (SELECT * FROM cte) O
 drop table test;
 create table test as (select range i from range(100000));
 insert into test values (NULL);
+drop table test;
+create table test as (select range i from range(100000));
+insert into test values (NULL);

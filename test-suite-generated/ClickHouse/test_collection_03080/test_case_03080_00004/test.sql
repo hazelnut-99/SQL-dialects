@@ -1,0 +1,1 @@
+SELECT '*** optimize_aggregation_in_order = 0, max_bytes_before_external_group_by = 1, group_by_two_level_threshold = 1 ***';

@@ -1,0 +1,1 @@
+SELECT subquery(1);

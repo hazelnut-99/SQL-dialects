@@ -1,2 +1,12 @@
-DROP TABLE IF EXISTS table;
-CREATE TABLE table (id Int32, values Array(Tuple(LowCardinality(String), Int32)), date Date) ENGINE MergeTree() PARTITION BY toYYYYMM(date) ORDER BY (id, date);
+DROP TABLE IF EXISTS db;
+CREATE TABLE tb
+(
+    date Date,
+    `index` Int32,
+    value Int32,
+    idx Int32 ALIAS `index`
+)
+ENGINE = MergeTree
+PARTITION BY date
+ORDER BY (date, `index`);
+insert into tb values ('2017-12-15', 1, 1);

@@ -1,3 +1,10 @@
-DROP TABLE IF EXISTS test;
-create table test (id UInt64,insid UInt64,insidvalue Nullable(UInt64), index insid_idx (insid) type bloom_filter() granularity 1, index insidvalue_idx (insidvalue) type bloom_filter() granularity 1) ENGINE=MergeTree() ORDER BY (insid,id);
-insert into test values(1,1,1),(2,2,2);
+DROP TABLE IF EXISTS t0;
+DROP TABLE IF EXISTS t1;
+CREATE TABLE t0 (vkey UInt32, pkey UInt32, c0 UInt32) engine = TinyLog;
+CREATE TABLE t1 (vkey UInt32) ENGINE = AggregatingMergeTree  ORDER BY vkey;
+INSERT INTO t0 VALUES (15, 25000, 58);
+DROP TABLE t0;
+DROP TABLE t1;
+DROP TABLE IF EXISTS t5;
+CREATE TABLE t5 (vkey UInt32, pkey UInt32, c18 Float32, c19 UInt32) ENGINE = Log;
+INSERT INTO t5 VALUES (3, 13000, 73.90, 83);

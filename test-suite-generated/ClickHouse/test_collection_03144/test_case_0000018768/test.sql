@@ -1,1 +1,0 @@
-SELECT round(cramersV(a, b), 2), round(cramersVBiasCorrected(a, b), 2), round(theilsU(a, b), 2), round(theilsU(b, a), 2), round(contingency(a, b), 2) FROM (SELECT number AS a, number + 1 AS b FROM numbers(150));

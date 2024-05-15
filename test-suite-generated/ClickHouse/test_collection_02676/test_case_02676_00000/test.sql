@@ -1,0 +1,1 @@
+SELECT x::UInt64 FROM t WHERE toUInt64(x) = 1;

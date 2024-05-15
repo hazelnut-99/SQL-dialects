@@ -1,74 +1,25 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
-(
-    id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
-DROP TABLE IF EXISTS test_table_float_values;
-CREATE TABLE test_table_float_values
-(
-    id UInt64,
-
-    value1 Float32,
-    value2 Float64
-) ENGINE=TinyLog;
-DROP TABLE test_table_float_values;
-DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
-CREATE TABLE test_table_nullable_unsigned_values
-(
-    id UInt64,
-
-    value1 Nullable(UInt8),
-    value2 Nullable(UInt16),
-    value3 Nullable(UInt32),
-    value4 Nullable(UInt64)
-) ENGINE=TinyLog;
-DROP TABLE test_table_nullable_unsigned_values;
-DROP TABLE IF EXISTS test_table_nullable_signed_values;
-CREATE TABLE test_table_nullable_signed_values
-(
-    id UInt64,
-
-    value1 Nullable(Int8),
-    value2 Nullable(Int16),
-    value3 Nullable(Int32),
-    value4 Nullable(Int64)
-) ENGINE=TinyLog;
-DROP TABLE test_table_nullable_signed_values;
-DROP TABLE IF EXISTS test_table_nullable_float_values;
-CREATE TABLE test_table_nullable_float_values
-(
-    id UInt64,
-
-    value1 Nullable(Float32),
-    value2 Nullable(Float64)
-) ENGINE=TinyLog;
-DROP TABLE test_table_nullable_float_values;
-DROP TABLE IF EXISTS test_table_null_specifics;
-CREATE TABLE test_table_null_specifics
-(
-    id UInt64,
-
-    value1 Nullable(UInt64),
-    value2 Nullable(UInt64),
-    value3 Nullable(UInt64)
-) ENGINE=TinyLog;
-INSERT INTO test_table_null_specifics VALUES (0, 1, 1, NULL);
-INSERT INTO test_table_null_specifics VALUES (0, 2, NULL, NULL);
-INSERT INTO test_table_null_specifics VALUES (0, 3, 3, NULL);
+WITH ('a', 'b')::Tuple(c1 String, c2 String) AS t
+SELECT t.c1, t.c2;
+WITH materialize(('a', 'b')::Tuple(c1 String, c2 String)) AS t
+SELECT t.c1, t.c2;
+WITH (1, ('a', 'b'))::Tuple(c1 UInt64, t1 Tuple(c1 String, c2 String)) AS t
+SELECT t.c1, t.t1.c1, t.t1.c2;
+WITH materialize((1, ('a', 'b'))::Tuple(c1 UInt64, t1 Tuple(c1 String, c2 String))) AS t
+SELECT t.c1, t.t1.c1, t.t1.c2;
+WITH [1, 2, 3] AS arr SELECT arr.size0;
+WITH materialize([1, 2, 3]) AS arr SELECT arr.size0;
+WITH [1, 2, NULL] AS arr SELECT arr.null;
+WITH materialize([1, 2, NULL]) AS arr SELECT arr.null;
+WITH [[1, 2], [], [3]] AS arr SELECT arr.size0, arr.size1;
+WITH materialize([[1, 2], [], [3]]) AS arr SELECT arr.size0, arr.size1;
+WITH map('foo', 1, 'bar', 2) AS m SELECT m.keys, m.values;
+WITH materialize(map('foo', 1, 'bar', 2)) AS m SELECT m.keys, m.values;
+WITH map('foo', 1, 'bar', 2) AS m SELECT m.*;
+WITH map('foo', (1, 2), 'bar', (3, 4))::Map(String, Tuple(a UInt64, b UInt64)) AS m
+SELECT m.keys, m.values, m.values.a, m.values.b;
+WITH materialize(map('foo', (1, 2), 'bar', (3, 4))::Map(String, Tuple(a UInt64, b UInt64))) AS m
+SELECT m.keys, m.values, m.values.a, m.values.b;
+WITH map('foo', (1, 2), 'bar', (3, 4))::Map(String, Tuple(a UInt64, b UInt64)) AS m
+SELECT m.keys, m.values, m.values.*;
+WITH materialize(map('foo', (1, 2), 'bar', (3, 4))::Map(String, Tuple(a UInt64, b UInt64))) AS m
+SELECT m.keys, m.values, m.values.*;

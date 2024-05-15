@@ -1,0 +1,1 @@
+SELECT argMin((n, n), n) t, toTypeName(t) FROM (SELECT if(number % 5 == 0, NULL, number) as n from numbers(5, 10));

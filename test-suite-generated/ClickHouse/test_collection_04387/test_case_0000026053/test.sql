@@ -1,1 +1,0 @@
-SELECT '-- Original issue with max_insert_delayed_streams_for_parallel_write <= 1';

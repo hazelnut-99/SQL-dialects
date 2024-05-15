@@ -1,0 +1,4 @@
+SELECT x9, e8
+  FROM t9, t8
+ WHERE b9=12
+   AND e8=893;

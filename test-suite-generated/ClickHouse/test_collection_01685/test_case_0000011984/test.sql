@@ -1,1 +1,0 @@
-select maxMap(val, cnt) from values ('val Array(Date), cnt Array(Int16)',  ([1], [1]), ([1], [2]));

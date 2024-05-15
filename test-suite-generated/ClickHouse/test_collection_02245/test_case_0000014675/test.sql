@@ -1,1 +1,0 @@
-SELECT 'After database reattachement the table is still absent (it was detached permamently)';

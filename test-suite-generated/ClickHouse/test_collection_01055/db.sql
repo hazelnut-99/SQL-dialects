@@ -1,6 +1,8 @@
-DROP TABLE IF EXISTS src_00942;
-DROP TABLE IF EXISTS view_table_00942;
-DROP TABLE IF EXISTS new_view_table_00942;
-CREATE TABLE src_00942 (x UInt8) ENGINE = Null;
-CREATE MATERIALIZED VIEW view_table_00942 Engine = Memory AS SELECT * FROM src_00942;
-INSERT INTO src_00942 VALUES (1), (2), (3);
+drop table if exists test;
+drop table if exists file;
+drop table if exists mt;
+insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
+attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
+detach table file;
+attach table file;
+attach table mt from '01188_attach/file' (n UInt8, s String) engine=MergeTree order by n;

@@ -1,1 +1,0 @@
-SELECT dateTrunc('MILLISECOND', toDateTime64('1952-03-01 12:12:12.012324251', 9));

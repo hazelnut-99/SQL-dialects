@@ -1,1 +1,0 @@
-SELECT arrayResize(arrayPartialSort((x, y) -> y, 3, ['directly','ignore','wrongly','relocate','upright'], [4,2,1,3,5]), 3);

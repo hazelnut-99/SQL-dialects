@@ -1,0 +1,1 @@
+select '----VERTICAL MERGE TESTS----';

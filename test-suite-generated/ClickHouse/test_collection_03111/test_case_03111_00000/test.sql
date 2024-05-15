@@ -1,0 +1,1 @@
+SELECT 'POLYGON dictionary';

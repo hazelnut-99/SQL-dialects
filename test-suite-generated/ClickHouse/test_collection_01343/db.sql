@@ -1,32 +1,29 @@
-DROP TABLE IF EXISTS t1;
-DROP TABLE IF EXISTS t2;
-DROP TABLE IF EXISTS t3;
-DROP TABLE IF EXISTS v;
-DROP TABLE IF EXISTS lv;
-CREATE TABLE t1 (key Int) Engine=Memory;
-CREATE TABLE t2 AS t1;
-DROP TABLE t2;
-CREATE TABLE t2 Engine=Memory AS t1;
-DROP TABLE t2;
-CREATE TABLE t2 AS t1 Engine=Memory;
-DROP TABLE t2;
-CREATE TABLE t3 AS numbers(10);
-DROP TABLE t3;
-CREATE VIEW v AS SELECT * FROM t1;
-DROP TABLE v;
-DROP DICTIONARY IF EXISTS dict;
-CREATE DICTIONARY dict
+DROP TABLE IF EXISTS prop_table;
+CREATE TABLE prop_table
 (
-    `key` UInt64,
-    `value` UInt16
+    column_default UInt64 DEFAULT 42,
+    column_materialized UInt64 MATERIALIZED column_default * 42,
+    column_alias UInt64 ALIAS column_default + 1,
+    column_codec String CODEC(ZSTD(10)),
+    column_comment Date COMMENT 'Some comment',
+    column_ttl UInt64 TTL column_comment + INTERVAL 1 MONTH
 )
-PRIMARY KEY key
-SOURCE(CLICKHOUSE(
-    HOST '127.0.0.1' PORT tcpPort()
-    TABLE 'dict_data' DB concat(currentDatabase(), '_1') USER 'default' PASSWORD ''))
-LIFETIME(MIN 0 MAX 0)
-LAYOUT(SPARSE_HASHED());
-DROP TABLE IF EXISTS t1;
-DROP TABLE IF EXISTS t3;
-DROP DICTIONARY dict;
-CREATE TABLE t1 (x String) ENGINE = Memory AS SELECT 1;
+ENGINE MergeTree()
+ORDER BY tuple()
+TTL column_comment + INTERVAL 2 MONTH;
+SHOW CREATE TABLE prop_table;
+SYSTEM STOP TTL MERGES prop_table;
+INSERT INTO prop_table (column_codec, column_comment, column_ttl) VALUES ('str', toDate('2019-10-01'), 1);
+ALTER TABLE prop_table MODIFY COLUMN column_comment REMOVE COMMENT;
+SHOW CREATE TABLE prop_table;
+ALTER TABLE prop_table MODIFY COLUMN column_codec REMOVE CODEC;
+SHOW CREATE TABLE prop_table;
+ALTER TABLE prop_table MODIFY COLUMN column_alias REMOVE ALIAS;
+SHOW CREATE TABLE prop_table;
+INSERT INTO prop_table (column_alias, column_codec, column_comment, column_ttl) VALUES (33, 'trs', toDate('2020-01-01'), 2);
+ALTER TABLE prop_table MODIFY COLUMN column_materialized REMOVE MATERIALIZED;
+SHOW CREATE TABLE prop_table;
+INSERT INTO prop_table (column_materialized, column_alias, column_codec, column_comment, column_ttl) VALUES (11, 44, 'rts', toDate('2020-02-01'), 3);
+ALTER TABLE prop_table MODIFY COLUMN column_default REMOVE DEFAULT;
+SHOW CREATE TABLE prop_table;
+INSERT INTO prop_table (column_materialized, column_alias, column_codec, column_comment, column_ttl) VALUES (22, 55, 'tsr', toDate('2020-03-01'), 4);

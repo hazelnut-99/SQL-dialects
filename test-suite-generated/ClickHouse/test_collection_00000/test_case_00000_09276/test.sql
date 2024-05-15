@@ -1,0 +1,1 @@
+SELECT 'ArrayFirstIndex constant predicate';

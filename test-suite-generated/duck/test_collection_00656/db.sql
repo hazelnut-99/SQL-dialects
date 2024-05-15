@@ -21,3 +21,13 @@ FROM integers SELECT i%2 AS g, SUM(i) sum GROUP BY g HAVING sum IS NOT NULL ORDE
 FROM integers JOIN integers i2 USING (i);
 FROM integers i1, integers i2 SELECT COUNT(*);
 INSERT INTO tbl VALUES (1, 200, 10), (2, 100, 20), (3, 200, 0);
+FROM tbl UNION FROM tbl ORDER BY COLUMNS('col2|col3') DESC;
+CREATE TABLE df1 AS
+  SELECT
+    UNNEST(['K0', 'K1', 'K2', 'K3', 'K4', 'K5']) AS key,
+    UNNEST([11, 12, 13, 14, 15, 16]) AS A,
+    UNNEST([21, 22, 23, 24, 25, 26]) AS B;
+CREATE TABLE df2 AS
+  SELECT
+    UNNEST(['K0', 'K2', 'K5']) AS key,
+    UNNEST([2, 3, 5]) AS C;

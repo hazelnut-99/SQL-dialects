@@ -1,3 +1,0 @@
-"ALTER TABLE a
-    MODIFY TTL expr TO VOLUME 'vol1', expr2 + toIntervalYear(2) TO VOLUME 'vol2',
-    DROP COLUMN c"

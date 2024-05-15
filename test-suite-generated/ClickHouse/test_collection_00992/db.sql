@@ -1,10 +1,18 @@
-DROP TABLE IF EXISTS zero_rows_per_granule;
-DROP TABLE IF EXISTS zero_rows_per_granule;
-DROP TABLE IF EXISTS two_rows_per_granule;
-DROP TABLE IF EXISTS two_rows_per_granule;
-DROP TABLE IF EXISTS four_rows_per_granule;
-DROP TABLE IF EXISTS four_rows_per_granule;
-DROP TABLE IF EXISTS huge_granularity_small_blocks;
-DROP TABLE IF EXISTS huge_granularity_small_blocks;
-DROP TABLE IF EXISTS adaptive_granularity_alter;
-DROP TABLE IF EXISTS adaptive_granularity_alter;
+DROP DATABASE IF EXISTS db_for_dict;
+CREATE DATABASE db_for_dict;
+CREATE TABLE db_for_dict.table_for_dict
+(
+  key1 UInt64,
+  value String
+)
+ENGINE = Memory();
+INSERT INTO db_for_dict.table_for_dict VALUES (1, 'Hello'), (2, 'World');
+CREATE DICTIONARY db_for_dict.dict_with_hashed_layout
+(
+  key1 UInt64,
+  value String
+)
+PRIMARY KEY key1
+LAYOUT(HASHED)
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' DB 'db_for_dict'))
+LIFETIME(MIN 1 MAX 10);

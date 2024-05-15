@@ -1,13 +1,9 @@
-CREATE TEMP TABLE articles (
-    id int CONSTRAINT articles_pkey PRIMARY KEY,
-    keywords text,
-    title text UNIQUE NOT NULL,
-    body text UNIQUE,
-    created date
-);
-CREATE TEMP TABLE articles_in_category (
-    article_id int,
-    category_id int,
-    changed date,
-    PRIMARY KEY (article_id, category_id)
-);
+create table t(a integer, b integer);
+insert into t(a, b) select i/100 + 1, i + 1 from generate_series(0, 999) n(i);
+analyze t;
+delete from t;
+insert into t(a, b) select i/50 + 1, i + 1 from generate_series(0, 999) n(i);
+analyze t;
+delete from t;
+insert into t(a, b) select (case when i < 5 then i else 9 end), i from generate_series(1, 1000) n(i);
+analyze t;

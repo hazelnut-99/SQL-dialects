@@ -1,1 +1,0 @@
-SELECT '--- Other Types Empty ---';

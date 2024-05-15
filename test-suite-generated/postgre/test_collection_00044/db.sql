@@ -1,108 +1,188 @@
-CREATE TABLE a_star (
-	class		char,
-	a 			int4
+COMMIT;
+CREATE TABLE remember_node_subid (c int);
+BEGIN;
+ALTER TABLE remember_node_subid ALTER c TYPE bigint;
+SAVEPOINT q;
+DROP TABLE remember_node_subid;
+ROLLBACK TO q;
+COMMIT;
+DROP TABLE remember_node_subid;
+CREATE FUNCTION const_func () RETURNS int AS $$ SELECT 1; $$ LANGUAGE SQL IMMUTABLE;
+DROP FUNCTION const_func();
+CREATE FUNCTION immut_func (a int) RETURNS int AS $$ SELECT a + random()::int; $$ LANGUAGE SQL;
+DROP FUNCTION immut_func(int);
+CREATE FUNCTION plusone(a int) RETURNS INT AS $$ SELECT a+1; $$ LANGUAGE SQL;
+CREATE TABLE partitioned (
+	a int,
+	b int,
+	c text,
+	d text
+) PARTITION BY RANGE (a oid_ops, plusone(b), c collate "default", d collate "C");
+CREATE TABLE partitioned2 (
+	a int,
+	b text
+) PARTITION BY RANGE ((a+1), substr(b, 1, 5));
+CREATE TABLE part2_1 PARTITION OF partitioned2 FOR VALUES FROM (-1, 'aaaaa') TO (100, 'ccccc');
+drop table partitioned;
+create table partitioned (a int, b int)
+  partition by list ((partitioned));
+create table partitioned1
+  partition of partitioned for values in ('(1,2)');
+create domain intdom1 as int;
+alter table partitioned drop column a;  -- fail
+drop domain intdom1;  -- fail, requires cascade
+table partitioned;  -- gone
+create domain intdom1 as int;
+drop domain intdom1;  -- fail, requires cascade
+table partitioned;  -- gone
+CREATE TABLE list_parted (
+	a int
+) PARTITION BY LIST (a);
+CREATE TABLE part_p1 PARTITION OF list_parted FOR VALUES IN ('1');
+CREATE TABLE part_p2 PARTITION OF list_parted FOR VALUES IN (2);
+CREATE TABLE part_p3 PARTITION OF list_parted FOR VALUES IN ((2+1));
+CREATE TABLE part_null PARTITION OF list_parted FOR VALUES IN (null);
+CREATE TABLE part_default PARTITION OF list_parted DEFAULT;
+CREATE TABLE bools (
+	a bool
+) PARTITION BY LIST (a);
+DROP TABLE bools;
+CREATE TABLE moneyp (
+	a money
+) PARTITION BY LIST (a);
+CREATE TABLE moneyp_10 PARTITION OF moneyp FOR VALUES IN (10);
+CREATE TABLE moneyp_11 PARTITION OF moneyp FOR VALUES IN ('11');
+CREATE TABLE moneyp_12 PARTITION OF moneyp FOR VALUES IN (to_char(12, '99')::int);
+DROP TABLE moneyp;
+CREATE TABLE bigintp (
+	a bigint
+) PARTITION BY LIST (a);
+CREATE TABLE bigintp_10 PARTITION OF bigintp FOR VALUES IN (10);
+DROP TABLE bigintp;
+CREATE TABLE range_parted (
+	a date
+) PARTITION BY RANGE (a);
+CREATE TABLE hash_parted (
+	a int
+) PARTITION BY HASH (a);
+CREATE TABLE hpart_1 PARTITION OF hash_parted FOR VALUES WITH (MODULUS 10, REMAINDER 0);
+CREATE TABLE hpart_2 PARTITION OF hash_parted FOR VALUES WITH (MODULUS 50, REMAINDER 1);
+CREATE TABLE hpart_3 PARTITION OF hash_parted FOR VALUES WITH (MODULUS 200, REMAINDER 2);
+CREATE TABLE hpart_4 PARTITION OF hash_parted FOR VALUES WITH (MODULUS 10, REMAINDER 3);
+CREATE TABLE unparted (
+	a int
 );
-CREATE TABLE b_star (
-	b 			text
-) INHERITS (a_star);
-CREATE TABLE c_star (
-	c 			name
-) INHERITS (a_star);
-CREATE TABLE d_star (
-	d 			float8
-) INHERITS (b_star, c_star);
-CREATE TABLE e_star (
-	e 			int2
-) INHERITS (c_star);
-CREATE TABLE f_star (
-	f 			polygon
-) INHERITS (e_star);
-INSERT INTO a_star (class, a) VALUES ('a', 1);
-INSERT INTO a_star (class, a) VALUES ('a', 2);
-INSERT INTO a_star (class) VALUES ('a');
-INSERT INTO b_star (class, a, b) VALUES ('b', 3, 'mumble'::text);
-INSERT INTO b_star (class, a) VALUES ('b', 4);
-INSERT INTO b_star (class, b) VALUES ('b', 'bumble'::text);
-INSERT INTO b_star (class) VALUES ('b');
-INSERT INTO c_star (class, a, c) VALUES ('c', 5, 'hi mom'::name);
-INSERT INTO c_star (class, a) VALUES ('c', 6);
-INSERT INTO c_star (class, c) VALUES ('c', 'hi paul'::name);
-INSERT INTO c_star (class) VALUES ('c');
-INSERT INTO d_star (class, a, b, c, d)
-   VALUES ('d', 7, 'grumble'::text, 'hi sunita'::name, '0.0'::float8);
-INSERT INTO d_star (class, a, b, c)
-   VALUES ('d', 8, 'stumble'::text, 'hi koko'::name);
-INSERT INTO d_star (class, a, b, d)
-   VALUES ('d', 9, 'rumble'::text, '1.1'::float8);
-INSERT INTO d_star (class, a, c, d)
-   VALUES ('d', 10, 'hi kristin'::name, '10.01'::float8);
-INSERT INTO d_star (class, b, c, d)
-   VALUES ('d', 'crumble'::text, 'hi boris'::name, '100.001'::float8);
-INSERT INTO d_star (class, a, b)
-   VALUES ('d', 11, 'fumble'::text);
-INSERT INTO d_star (class, a, c)
-   VALUES ('d', 12, 'hi avi'::name);
-INSERT INTO d_star (class, a, d)
-   VALUES ('d', 13, '1000.0001'::float8);
-INSERT INTO d_star (class, b, c)
-   VALUES ('d', 'tumble'::text, 'hi andrew'::name);
-INSERT INTO d_star (class, b, d)
-   VALUES ('d', 'humble'::text, '10000.00001'::float8);
-INSERT INTO d_star (class, c, d)
-   VALUES ('d', 'hi ginger'::name, '100000.000001'::float8);
-INSERT INTO d_star (class, a) VALUES ('d', 14);
-INSERT INTO d_star (class, b) VALUES ('d', 'jumble'::text);
-INSERT INTO d_star (class, c) VALUES ('d', 'hi jolly'::name);
-INSERT INTO d_star (class, d) VALUES ('d', '1000000.0000001'::float8);
-INSERT INTO d_star (class) VALUES ('d');
-INSERT INTO e_star (class, a, c, e)
-   VALUES ('e', 15, 'hi carol'::name, '-1'::int2);
-INSERT INTO e_star (class, a, c)
-   VALUES ('e', 16, 'hi bob'::name);
-INSERT INTO e_star (class, a, e)
-   VALUES ('e', 17, '-2'::int2);
-INSERT INTO e_star (class, c, e)
-   VALUES ('e', 'hi michelle'::name, '-3'::int2);
-INSERT INTO e_star (class, a)
-   VALUES ('e', 18);
-INSERT INTO e_star (class, c)
-   VALUES ('e', 'hi elisa'::name);
-INSERT INTO e_star (class, e)
-   VALUES ('e', '-4'::int2);
-INSERT INTO f_star (class, a, c, e, f)
-   VALUES ('f', 19, 'hi claire'::name, '-5'::int2, '(1,3),(2,4)'::polygon);
-INSERT INTO f_star (class, a, c, e)
-   VALUES ('f', 20, 'hi mike'::name, '-6'::int2);
-INSERT INTO f_star (class, a, c, f)
-   VALUES ('f', 21, 'hi marcel'::name, '(11,44),(22,55),(33,66)'::polygon);
-INSERT INTO f_star (class, a, e, f)
-   VALUES ('f', 22, '-7'::int2, '(111,555),(222,666),(333,777),(444,888)'::polygon);
-INSERT INTO f_star (class, c, e, f)
-   VALUES ('f', 'hi keith'::name, '-8'::int2,
-	   '(1111,3333),(2222,4444)'::polygon);
-INSERT INTO f_star (class, a, c)
-   VALUES ('f', 24, 'hi marc'::name);
-INSERT INTO f_star (class, a, e)
-   VALUES ('f', 25, '-9'::int2);
-INSERT INTO f_star (class, a, f)
-   VALUES ('f', 26, '(11111,33333),(22222,44444)'::polygon);
-INSERT INTO f_star (class, c, e)
-   VALUES ('f', 'hi allison'::name, '-10'::int2);
-INSERT INTO f_star (class, c, f)
-   VALUES ('f', 'hi jeff'::name,
-           '(111111,333333),(222222,444444)'::polygon);
-INSERT INTO f_star (class, e, f)
-   VALUES ('f', '-11'::int2, '(1111111,3333333),(2222222,4444444)'::polygon);
-INSERT INTO f_star (class, a) VALUES ('f', 27);
-INSERT INTO f_star (class, c) VALUES ('f', 'hi carl'::name);
-INSERT INTO f_star (class, e) VALUES ('f', '-12'::int2);
-INSERT INTO f_star (class, f)
-   VALUES ('f', '(11111111,33333333),(22222222,44444444)'::polygon);
-INSERT INTO f_star (class) VALUES ('f');
-ALTER TABLE f_star RENAME COLUMN f TO ff;
-ALTER TABLE e_star* RENAME COLUMN e TO ee;
-ALTER TABLE d_star* RENAME COLUMN d TO dd;
-ALTER TABLE c_star* RENAME COLUMN c TO cc;
-ALTER TABLE b_star* RENAME COLUMN b TO bb;
-ALTER TABLE a_star* RENAME COLUMN a TO aa;
-ALTER TABLE a_star RENAME COLUMN aa TO foo;
+DROP TABLE unparted;
+CREATE TEMP TABLE temp_parted (
+	a int
+) PARTITION BY LIST (a);
+DROP TABLE temp_parted;
+CREATE TABLE list_parted2 (
+	a varchar
+) PARTITION BY LIST (a);
+CREATE TABLE part_null_z PARTITION OF list_parted2 FOR VALUES IN (null, 'z');
+CREATE TABLE part_ab PARTITION OF list_parted2 FOR VALUES IN ('a', 'b');
+CREATE TABLE list_parted2_def PARTITION OF list_parted2 DEFAULT;
+INSERT INTO list_parted2 VALUES('X');
+CREATE TABLE range_parted2 (
+	a int
+) PARTITION BY RANGE (a);
+CREATE TABLE part0 PARTITION OF range_parted2 FOR VALUES FROM (minvalue) TO (1);
+CREATE TABLE part1 PARTITION OF range_parted2 FOR VALUES FROM (1) TO (10);
+CREATE TABLE part2 PARTITION OF range_parted2 FOR VALUES FROM (20) TO (30);
+CREATE TABLE part3 PARTITION OF range_parted2 FOR VALUES FROM (30) TO (40);
+CREATE TABLE range2_default PARTITION OF range_parted2 DEFAULT;
+INSERT INTO range_parted2 VALUES (85);
+CREATE TABLE part4 PARTITION OF range_parted2 FOR VALUES FROM (90) TO (100);
+CREATE TABLE range_parted3 (
+	a int,
+	b int
+) PARTITION BY RANGE (a, (b+1));
+CREATE TABLE part00 PARTITION OF range_parted3 FOR VALUES FROM (0, minvalue) TO (0, maxvalue);
+CREATE TABLE part10 PARTITION OF range_parted3 FOR VALUES FROM (1, minvalue) TO (1, 1);
+CREATE TABLE part11 PARTITION OF range_parted3 FOR VALUES FROM (1, 1) TO (1, 10);
+CREATE TABLE part12 PARTITION OF range_parted3 FOR VALUES FROM (1, 10) TO (1, maxvalue);
+CREATE TABLE range3_default PARTITION OF range_parted3 DEFAULT;
+CREATE TABLE hash_parted2 (
+	a varchar
+) PARTITION BY HASH (a);
+CREATE TABLE h2part_1 PARTITION OF hash_parted2 FOR VALUES WITH (MODULUS 4, REMAINDER 2);
+CREATE TABLE h2part_2 PARTITION OF hash_parted2 FOR VALUES WITH (MODULUS 8, REMAINDER 0);
+CREATE TABLE h2part_3 PARTITION OF hash_parted2 FOR VALUES WITH (MODULUS 8, REMAINDER 4);
+CREATE TABLE h2part_4 PARTITION OF hash_parted2 FOR VALUES WITH (MODULUS 8, REMAINDER 5);
+CREATE TABLE parted (
+	a text,
+	b int NOT NULL DEFAULT 0,
+	CONSTRAINT check_a CHECK (length(a) > 0)
+) PARTITION BY LIST (a);
+CREATE TABLE part_a PARTITION OF parted FOR VALUES IN ('a');
+CREATE TABLE part_b PARTITION OF parted (
+	b NOT NULL DEFAULT 1,
+	CONSTRAINT check_a CHECK (length(a) > 0),
+	CONSTRAINT check_b CHECK (b >= 0)
+) FOR VALUES IN ('b');
+ALTER TABLE parted ADD CONSTRAINT check_b CHECK (b >= 0);
+ALTER TABLE parted DROP CONSTRAINT check_a, DROP CONSTRAINT check_b;
+CREATE TABLE part_c PARTITION OF parted (b WITH OPTIONS NOT NULL DEFAULT 0) FOR VALUES IN ('c') PARTITION BY RANGE ((b));
+CREATE TABLE part_c_1_10 PARTITION OF part_c FOR VALUES FROM (1) TO (10);
+create table parted_notnull_inh_test (a int default 1, b int not null default 0) partition by list (a);
+create table parted_notnull_inh_test1 partition of parted_notnull_inh_test (a not null, b default 1) for values in (1);
+create table parted_boolean_col (a bool, b text) partition by list(a);
+create table parted_boolean_less partition of parted_boolean_col
+  for values in ('foo' < 'bar');
+create table parted_boolean_greater partition of parted_boolean_col
+  for values in ('foo' > 'bar');
+drop table parted_boolean_col;
+create table parted_collate_must_match (a text collate "C", b text collate "C")
+  partition by range (a);
+create table parted_collate_must_match1 partition of parted_collate_must_match
+  (a collate "POSIX") for values from ('a') to ('m');
+create table parted_collate_must_match2 partition of parted_collate_must_match
+  (b collate "POSIX") for values from ('m') to ('z');
+drop table parted_collate_must_match;
+create table test_part_coll_posix (a text) partition by range (a collate "POSIX");
+create table test_part_coll2 partition of test_part_coll_posix for values from ('g') to ('m');
+create table test_part_coll_cast2 partition of test_part_coll_posix for values from (name 's') to ('z');
+drop table test_part_coll_posix;
+CREATE FUNCTION my_int4_sort(int4,int4) RETURNS int LANGUAGE sql
+  AS $$ SELECT CASE WHEN $1 = $2 THEN 0 WHEN $1 > $2 THEN 1 ELSE -1 END; $$;
+CREATE OPERATOR CLASS test_int4_ops FOR TYPE int4 USING btree AS
+  OPERATOR 1 < (int4,int4), OPERATOR 2 <= (int4,int4),
+  OPERATOR 3 = (int4,int4), OPERATOR 4 >= (int4,int4),
+  OPERATOR 5 > (int4,int4), FUNCTION 1 my_int4_sort(int4,int4);
+CREATE TABLE partkey_t (a int4) PARTITION BY RANGE (a test_int4_ops);
+CREATE TABLE partkey_t_1 PARTITION OF partkey_t FOR VALUES FROM (0) TO (1000);
+INSERT INTO partkey_t VALUES (100);
+INSERT INTO partkey_t VALUES (200);
+DROP TABLE parted, list_parted, range_parted, list_parted2, range_parted2, range_parted3;
+DROP TABLE partkey_t, hash_parted, hash_parted2;
+DROP OPERATOR CLASS test_int4_ops USING btree;
+DROP FUNCTION my_int4_sort(int4,int4);
+CREATE TABLE parted_col_comment (a int, b text) PARTITION BY LIST (a);
+COMMENT ON TABLE parted_col_comment IS 'Am partitioned table';
+COMMENT ON COLUMN parted_col_comment.a IS 'Partition key';
+CREATE TABLE arrlp (a int[]) PARTITION BY LIST (a);
+CREATE TABLE arrlp12 PARTITION OF arrlp FOR VALUES IN ('{1}', '{2}');
+create table boolspart (a bool) partition by list (a);
+create table boolspart_t partition of boolspart for values in (true);
+create table boolspart_f partition of boolspart for values in (false);
+create table perm_parted (a int) partition by list (a);
+create temporary table temp_parted (a int) partition by list (a);
+create temp table temp_part partition of temp_parted default; -- ok
+drop table perm_parted cascade;
+drop table temp_parted cascade;
+create table tab_part_create (a int) partition by list (a);
+create or replace function func_part_create() returns trigger
+  language plpgsql as $$
+  begin
+    execute 'create table tab_part_create_1 partition of tab_part_create for values in (1)';
+    return null;
+  end $$;
+create trigger trig_part_create before insert on tab_part_create
+  for each statement execute procedure func_part_create();
+drop table tab_part_create;
+drop function func_part_create();
+create table volatile_partbound_test (partkey timestamp) partition by range (partkey);
+create table volatile_partbound_test1 partition of volatile_partbound_test for values from (minvalue) to (current_timestamp);
+create table volatile_partbound_test2 partition of volatile_partbound_test for values from (current_timestamp) to (maxvalue);
+insert into volatile_partbound_test values (current_timestamp);

@@ -1,1 +1,0 @@
-SELECT a FROM test WHERE a < 13 UNION ALL SELECT a FROM test WHERE a = 13;

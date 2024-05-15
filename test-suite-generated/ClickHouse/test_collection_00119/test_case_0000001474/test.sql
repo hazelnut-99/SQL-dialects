@@ -1,1 +1,0 @@
-SELECT toDate(16343);

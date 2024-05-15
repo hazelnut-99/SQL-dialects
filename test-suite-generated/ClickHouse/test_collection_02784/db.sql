@@ -1,11 +1,5 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
+drop table if exists 02681_undrop_mergetree sync;
+create table 02681_undrop_mergetree (id Int32) Engine=MergeTree() order by id;
+insert into 02681_undrop_mergetree values (1),(2),(3);
+drop table 02681_undrop_mergetree;
+undrop table 02681_undrop_mergetree;

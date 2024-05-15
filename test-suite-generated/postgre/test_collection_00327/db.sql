@@ -1,35 +1,4 @@
-begin;
-COMMIT;
-COMMIT;
-ROLLBACK;
-COMMIT;
-BEGIN;
-COMMIT;
-COMMIT;
-BEGIN;
-ROLLBACK;
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-ROLLBACK;
-BEGIN;
-COMMIT AND CHAIN;
-COMMIT;
-ROLLBACK;
-ROLLBACK;
-COMMIT;
-ROLLBACK;
-COMMIT;
-COMMIT;
-CREATE FUNCTION psql_error(msg TEXT) RETURNS BOOLEAN AS $$
-  BEGIN
-    RAISE EXCEPTION 'error %', msg;
-  END;
-$$ LANGUAGE plpgsql;
-CREATE TABLE bla(s TEXT);                       -- succeeds
-INSERT INTO bla VALUES ('Calvin'), ('Hobbes');
-COMMIT;
-BEGIN;
-INSERT INTO bla VALUES ('Susie');         -- succeeds
-COMMIT;
+CREATE TEMP TABLE foo (f1 serial, f2 text, f3 int default 42);
+INSERT INTO foo (f2,f3)
+  VALUES ('test', DEFAULT), ('More', 11), (upper('more'), 7+9)
+  RETURNING *, f1+f3 AS sum;

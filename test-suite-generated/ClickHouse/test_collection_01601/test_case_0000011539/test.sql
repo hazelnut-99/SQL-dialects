@@ -1,1 +1,0 @@
-select 'GROUP BY number ORDER BY number DESC';

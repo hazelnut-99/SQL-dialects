@@ -1,0 +1,1 @@
+select scale(NULL::numeric);

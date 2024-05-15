@@ -1,1 +1,0 @@
-SELECT toDateTime('2017-01-01 00:00:00') + INTERVAL 0 YEAR AS x;

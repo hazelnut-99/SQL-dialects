@@ -1,1 +1,0 @@
-select arraySlice([1, 2, 3, 4, 5, 6], 10, -1);

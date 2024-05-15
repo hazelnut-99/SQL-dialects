@@ -1,29 +1,7 @@
-CREATE TABLE t (t TEXT);
-INSERT INTO t VALUES ('foo'), ('bar'), ('baz');
-CREATE TABLE integers("COL1" INTEGER, "COL2" INTEGER);
-CREATE TABLE tbl AS SELECT * FROM integers;
-DROP TABLE tbl;
-CREATE TABLE tbl AS SELECT COL1, COL2 FROM integers;
-DROP TABLE tbl;
-CREATE TABLE tbl AS SELECT integers.COL1, integers.COL2 FROM integers;
-DROP TABLE tbl;
-CREATE SCHEMA s1;
-CREATE TABLE s1.integers("COL1" INTEGER, "COL2" INTEGER);
-CREATE TABLE tbl AS SELECT s1.integers.COL1, s1.integers.COL2 FROM s1.integers;
-CREATE SCHEMA test;
-CREATE TABLE test.tbl(col INTEGER);
-INSERT INTO test.tbl VALUES (1), (2), (3);
-CREATE SCHEMA t;
-CREATE TABLE t.t(t ROW(t INTEGER));
-INSERT INTO t.t VALUES ({'t': 42});
-DROP SCHEMA t CASCADE;
-CREATE SCHEMA t;
-CREATE TABLE t.t AS SELECT {'t': {'t': {'t': {'t': {'t': 42}}}}} t;
-DROP SCHEMA t CASCADE;
-CREATE SCHEMA s2;
-CREATE TABLE s1.t1 AS SELECT 42 t;
-CREATE TABLE s2.t1 AS SELECT 84 t;
-CREATE TABLE s1.tbl(i INTEGER);
-CREATE SCHEMA s;
-create table s.a as select 'hello' as col1;
-create view s.b as select * from s.a;
+CREATE TABLE a AS SELECT i, i+1 AS j, i+2 AS k, i+3 AS l FROM range(42,43) t(i);
+CREATE TABLE b AS SELECT i, i+1 AS j, i+2 AS k, i+3 AS l FROM range(40,41) t(i);
+CREATE VIEW vals AS SELECT * FROM (VALUES (1, 10), (2, 5), (3, 4)) tbl(i, j);
+CREATE VIEW vunion AS
+SELECT * FROM vals
+UNION ALL
+SELECT * FROM vals;

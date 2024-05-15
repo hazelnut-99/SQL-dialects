@@ -1,22 +1,13 @@
-DROP TABLE IF EXISTS local_01099_a;
-DROP TABLE IF EXISTS local_01099_b;
-DROP TABLE IF EXISTS distributed_01099_a;
-DROP TABLE IF EXISTS distributed_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-SYSTEM STOP DISTRIBUTED SENDS distributed_01099_b;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = MergeTree() ORDER BY number;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = MergeTree() ORDER BY number;
-SYSTEM STOP DISTRIBUTED SENDS distributed_01099_b;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
+DROP TABLE IF EXISTS src;
+CREATE TABLE src (k UInt64, s FixedString(11)) ENGINE = Memory;
+INSERT INTO src VALUES (1, 'Hello\0World');
+DROP DICTIONARY IF EXISTS dict;
+CREATE DICTIONARY dict
+(
+    k UInt64,
+    s String
+)
+PRIMARY KEY k
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER default TABLE 'src'))
+LAYOUT(FLAT)
+LIFETIME(MIN 10 MAX 10);

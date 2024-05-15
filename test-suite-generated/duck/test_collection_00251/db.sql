@@ -56,3 +56,4 @@ DELETE FROM test;
 INSERT INTO test VALUES ('aaa'), ('a.a'), ('baba'), ('abba'), ('a\.a'), ('a_a');
 explain analyze select regexp_matches(s, 'a.a', 's'), s from test;
 explain analyze SELECT regexp_matches(s, 'a.*a', 's'), s FROM TEST;
+explain analyze SELECT regexp_matches(s, '^a.*b$', 's'), s FROM TEST;

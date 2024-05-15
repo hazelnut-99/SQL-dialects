@@ -1,1 +1,0 @@
-SELECT toDecimal64('123456789.123456789', 9) AS x, -x AS y, trunc(x), trunc(y), trunc(x, 5), trunc(y, 5), trunc(x, -5), trunc(y, -5);

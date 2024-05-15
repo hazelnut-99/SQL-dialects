@@ -1,9 +1,22 @@
-drop table if exists test;
-create table test (number UInt64) engine=File('Parquet');
-insert into test select * from numbers(10);
-truncate table test;
-drop table test;
-create table test (number UInt64) engine=File('Parquet', 'test_02155/test1/data.Parquet');
-insert into test select * from numbers(10, 10); -- { serverError CANNOT_APPEND_TO_FILE }
-drop table test;
-insert into table function file(concat(currentDatabase(), '/test2/data.Parquet'), 'Parquet', 'number UInt64') select * from numbers(10, 10); -- { serverError CANNOT_APPEND_TO_FILE }
+DROP TABLE IF EXISTS test_empty;
+CREATE TABLE test_empty (a Array(Int64)) engine=MergeTree ORDER BY a;
+INSERT INTO test_empty VALUES ([]);
+INSERT INTO test_empty VALUES ([1]);
+DROP TABLE test_empty;
+DROP TABLE IF EXISTS test_null;
+DROP TABLE IF EXISTS test_nested_arrays;
+CREATE TABLE test_nested_arrays (a Array(Array(Int64))) engine=MergeTree ORDER BY a;
+INSERT INTO test_nested_arrays VALUES ([[1,2,3,4,5,6], [1,2,4,5]]);
+INSERT INTO test_nested_arrays VALUES ([[1,2,4,5]]);
+INSERT INTO test_nested_arrays VALUES ([[1,4,3,0,5,5,5]]);
+DROP TABLE test_nested_arrays;
+DROP TABLE IF EXISTS test_numbers;
+CREATE TABLE test_numbers (a Array(Int64)) engine=MergeTree ORDER BY a;
+INSERT INTO test_numbers VALUES ([1,2,3,4,5,6]);
+INSERT INTO test_numbers VALUES ([1,2,4,5]);
+INSERT INTO test_numbers VALUES ([1,4,3,0,5,5,5]);
+INSERT INTO test_numbers VALUES ([9]);
+DROP TABLE test_numbers;
+DROP TABLE IF EXISTS test_big_numbers_sep;
+CREATE TABLE test_big_numbers_sep (a Array(Int64)) engine=MergeTree ORDER BY a;
+INSERT INTO test_big_numbers_sep SELECT array(number) FROM numbers_mt(1000000);

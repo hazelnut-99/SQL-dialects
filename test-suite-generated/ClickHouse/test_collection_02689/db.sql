@@ -1,12 +1,21 @@
-DROP TABLE IF EXISTS interval;
-DROP TABLE IF EXISTS fl_interval;
-DROP TABLE IF EXISTS dt_interval;
-DROP TABLE IF EXISTS date_interval;
-CREATE TABLE interval ( `id` String, `start` Int64, `end` Int64 ) ENGINE = MergeTree ORDER BY start;
-INSERT INTO interval VALUES ('a', 1, 3), ('a', 1, 3), ('a', 2, 4), ('a', 1, 1), ('a', 5, 6), ('a', 5, 7), ('b', 10, 12), ('b', 13, 19), ('b', 14, 16), ('c', -1, 1), ('c', -2, -1);
-CREATE TABLE fl_interval ( `id` String, `start` Float, `end` Float ) ENGINE = MergeTree ORDER BY start;
-INSERT INTO fl_interval VALUES ('a', 1.1, 3.2), ('a', 1.5, 3.6), ('a', 4.0, 5.0);
-CREATE TABLE dt_interval ( `id` String, `start` DateTime, `end` DateTime ) ENGINE = MergeTree ORDER BY start;
-INSERT INTO dt_interval VALUES ('a', '2020-01-01 02:11:22', '2020-01-01 03:12:31'), ('a', '2020-01-01 01:12:30', '2020-01-01 02:50:11');
-CREATE TABLE date_interval ( `id` String, `start` Date, `end` Date ) ENGINE = MergeTree ORDER BY start;
-INSERT INTO date_interval VALUES ('a', '2020-01-01', '2020-01-04'), ('a', '2020-01-03', '2020-01-08 02:50:11');
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+   uid Int64,
+   start Int64,
+   end Int64,
+   insert_time DateTime
+) ENGINE = MergeTree ORDER BY (uid, start);
+DROP DICTIONARY IF EXISTS test_dictionary;
+CREATE DICTIONARY test_dictionary
+(
+  start Int64,
+  end Int64,
+  insert_time DateTime,
+  uid Int64
+) PRIMARY KEY uid
+LAYOUT(RANGE_HASHED())
+RANGE(MIN start MAX end)
+SOURCE(CLICKHOUSE(TABLE 'test_table' UPDATE_FIELD 'insert_time' UPDATE_LAG 10))
+LIFETIME(MIN 1 MAX 2);
+INSERT INTO test_table VALUES (1, 0, 100, '2022-12-26 11:38:34'), (1, 101, 200, '2022-12-26 11:38:34'), (2, 0, 999, '2022-12-26 11:38:34'), (2, 1000, 10000, '2022-12-26 11:38:34');

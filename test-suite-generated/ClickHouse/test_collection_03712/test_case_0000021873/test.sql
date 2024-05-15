@@ -1,1 +1,0 @@
-SELECT a FROM mytable ORDER BY a DESC LIMIT 5;

@@ -1,6 +1,11 @@
-drop table if exists x;
-create table x (i UInt64, j UInt64, k UInt64, projection agg (select sum(j), avg(k) group by i), projection norm (select j, k order by i)) engine MergeTree order by tuple();
-insert into x values (1, 2, 3);
-drop table x;
-create table if not exists flows (SrcAS UInt32, Bytes UInt64) engine MergeTree() order by tuple();
-insert into table flows values (15169, 83948), (12322, 98989), (60068, 99990), (15169, 89898), (15169, 83948), (15169, 89898), (15169, 83948), (15169, 89898), (15169, 83948), (15169, 89898), (15169, 83948), (15169, 89898);
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers
+(    
+    FirstName Nullable(String),
+    LastName String, 
+    Occupation String,
+    Education String,
+    Age Nullable(UInt8)
+) ENGINE = Memory;
+INSERT INTO Customers VALUES  ('Theodore','Diaz','Skilled Manual','Bachelors',28),('Stephanie','Cox','Management abcd defg','Bachelors',33),('Peter','Nara','Skilled Manual','Graduate Degree',26),('Latoya','Shen','Professional','Graduate Degree',25),('Apple','','Skilled Manual','Bachelors',28),(NULL,'why','Professional','Partial College',38);
+Select '-- #1 --' ;

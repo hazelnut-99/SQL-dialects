@@ -1,0 +1,1 @@
+SELECT match(materialize('Hello'), '');

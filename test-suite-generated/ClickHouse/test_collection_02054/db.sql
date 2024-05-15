@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS t;
-DROP TABLE IF EXISTS d;
-CREATE TABLE t (x Enum8('abc' = 0, 'def' = 1, 'ghi' = 2)) ENGINE = TinyLog;
-INSERT INTO t VALUES (0), (1), (2);
+drop table if exists test;
+drop table if exists test2;
+create table test(x1 Int, x2 Int, x3 Int) engine=Memory();
+insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);
+insert into test values (1, 10, 100), (10, 1, 10), (100, 100, 1);

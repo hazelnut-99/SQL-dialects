@@ -1,1 +1,0 @@
-SELECT (1::UInt16, 2::UInt16, 3::UInt16) AS x, (4::UInt16, 5::UInt16, 6::UInt16) AS y, dotProduct(x, y) AS res, toTypeName(res);

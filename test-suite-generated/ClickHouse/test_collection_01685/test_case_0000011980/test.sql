@@ -1,1 +1,0 @@
-select maxMap(val, cnt) from values ('val Array(String), cnt Array(String)',  (['1'], ['1']), (['1'], ['2']));

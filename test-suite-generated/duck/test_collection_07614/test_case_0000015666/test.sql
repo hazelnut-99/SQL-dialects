@@ -1,1 +1,0 @@
-SELECT COUNT(i) FROM numbers WHERE i = CAST(0 AS DOUBLE);

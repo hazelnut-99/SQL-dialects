@@ -1,3 +1,5 @@
-DROP TABLE IF EXISTS test_00818;
-CREATE TABLE test_00818 (field String, not_field String) ENGINE = Memory;
-INSERT INTO test_00818 (field, not_field) VALUES ('123', '456');
+DROP TABLE IF EXISTS test_01040;
+DROP TABLE IF EXISTS dist_test_01040;
+CREATE TABLE test_01040 (key UInt64) ENGINE=TinyLog();
+TRUNCATE TABLE test_01040;
+TRUNCATE TABLE test_01040;

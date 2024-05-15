@@ -1,1 +1,0 @@
-SELECT CAST(1234567890.123456 AS DateTime64(6, 'Europe/Amsterdam'));

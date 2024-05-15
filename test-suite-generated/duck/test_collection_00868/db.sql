@@ -74,3 +74,7 @@ INSERT INTO integers VALUES (5,5,5,5);
 CREATE TABLE storage as select i::INTEGER i, random() j from range(1, 1001, 1) tbl(i);
 CREATE INDEX i_index ON integers(i);
 BEGIN TRANSACTION;
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);
+DELETE FROM storage WHERE i=(select i from storage order by j limit 1);

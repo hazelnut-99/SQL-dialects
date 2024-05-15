@@ -1,17 +1,4 @@
-DROP TABLE IF EXISTS t64;
-CREATE TABLE t64
-(
-    u8 UInt8,
-    t_u8 UInt8 Codec(T64, ZSTD),
-    u16 UInt16,
-    t_u16 UInt16 Codec(T64, ZSTD),
-    u32 UInt32,
-    t_u32 UInt32 Codec(T64, ZSTD),
-    u64 UInt64,
-    t_u64 UInt64 Codec(T64, ZSTD)
-) ENGINE MergeTree() ORDER BY tuple();
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(1);
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(2);
-INSERT INTO t64 SELECT 42 AS x, x, x, x, x, x, x, x FROM numbers(4);
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(8));
-INSERT INTO t64 SELECT number AS x, x, x, x, x, x, x, x FROM numbers(intExp2(9));
+DROP TABLE IF EXISTS defaults_all_columns;
+CREATE TABLE defaults_all_columns (n UInt8 DEFAULT 42, s String DEFAULT concat('test', CAST(n, 'String'))) ENGINE = Memory;
+INSERT INTO defaults_all_columns FORMAT JSONEachRow {"n": 1, "s": "hello"} {};
+INSERT INTO defaults_all_columns FORMAT JSONEachRow {"n": 2}, {"s": "world"};

@@ -1,1 +1,0 @@
-select hasAny([], [1]);

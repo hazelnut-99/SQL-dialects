@@ -1,6 +1,11 @@
-DROP TABLE IF EXISTS auto_assign_enum;
-DROP TABLE IF EXISTS auto_assign_enum1;
-DROP TABLE IF EXISTS auto_assign_enum2;
-DROP TABLE IF EXISTS auto_assign_enum3;
-CREATE TABLE auto_assign_enum (x enum('a', 'b')) ENGINE=MergeTree() order by x;
-INSERT INTO auto_assign_enum VALUES('a'), ('b');
+CREATE TABLE test
+(
+    `x` Tuple(UInt64, UInt64)
+)
+ENGINE = MergeTree
+ORDER BY x;
+INSERT INTO test SELECT (number, number) FROM numbers(1000000);
+ALTER TABLE test DETACH PARTITION tuple();
+ALTER TABLE test ATTACH PARTITION tuple();
+DETACH TABLE test;
+ATTACH TABLE test;

@@ -1,1 +1,0 @@
-SELECT 'Moscow DST Years:';

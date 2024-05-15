@@ -1,0 +1,3 @@
+SELECT id, value, value_array_array, value_array_array_inner_element, value_array_array_inner_element, value_array_array_inner_inner_element
+FROM test_table ARRAY JOIN value_array_array AS value_array_array_inner_element
+ARRAY JOIN value_array_array_inner_element AS value_array_array_inner_inner_element;

@@ -1,15 +1,3 @@
-CREATE TABLE t1 (i Int64, j Int64) ENGINE = Memory;
-CREATE TABLE t2 (k Int64, l Int64, m Int64, n Int64) ENGINE = Memory;
-SYSTEM FLUSH LOGS;
-truncate table t2;
-SYSTEM FLUSH LOGS;
-DROP TABLE mv1;
-CREATE TABLE t3 (z Int64) ENGINE = Memory;
-SYSTEM FLUSH LOGS;
-truncate table t3;
-SYSTEM FLUSH LOGS;
-DROP TABLE mv2;
-CREATE TABLE t4 (z Int64) ENGINE = Memory;
-SYSTEM FLUSH LOGS;
-truncate table t4;
-SYSTEM FLUSH LOGS;
+DROP TABLE IF EXISTS t_nullable_keys_1;
+CREATE TABLE t_nullable_keys_1 (x Nullable(Int64)) ENGINE = Memory;
+INSERT INTO t_nullable_keys_1 VALUES (1), (1), (NULL);

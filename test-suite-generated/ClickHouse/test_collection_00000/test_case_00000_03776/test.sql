@@ -1,0 +1,1 @@
+select javaHash('abc');

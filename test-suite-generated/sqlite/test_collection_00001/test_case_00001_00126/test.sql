@@ -1,0 +1,16 @@
+SELECT x23,x52,x34,x15,x16,x57,x39,x5,x42,x21,x9,x61,x47,x19
+  FROM t57,t15,t47,t16,t34,t9,t39,t23,t42,t19,t52,t21,t61,t5
+ WHERE a19=b9
+   AND b34=a52
+   AND b42=a16
+   AND a15=b5
+   AND b39=a34
+   AND a23=7
+   AND b61=a42
+   AND b21=a57
+   AND b16=a21
+   AND b57=a23
+   AND a61=b19
+   AND a47=b52
+   AND a9=b47
+   AND b15=a39;

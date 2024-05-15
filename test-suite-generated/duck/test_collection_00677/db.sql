@@ -307,3 +307,14 @@ CREATE TEMP VIEW sales(year, quarter, region, sales) AS
           (2019, 2, 'west', 115),
           (2019, 3, 'west',  85),
           (2019, 4, 'west',  65);
+CREATE OR REPLACE TEMPORARY VIEW sales(location, year, q1, q2, q3, q4) AS
+  VALUES ('Toronto'      , 2020, 100 , 80 , 70, 150),
+         ('San Francisco', 2020, NULL, 20 , 50,  60),
+         ('Toronto'      , 2021, 110 , 90 , 80, 170),
+         ('San Francisco', 2021, 70  , 120, 85, 105);
+CREATE OR REPLACE TEMPORARY VIEW oncall
+         (year, week, area      , name1   , email1              , phone1     , name2   , email2              , phone2) AS
+  VALUES (2022, 1   , 'frontend', 'Freddy', 'fred@alwaysup.org' , 15551234567, 'Fanny' , 'fanny@lwaysup.org' , 15552345678),
+         (2022, 1   , 'backend' , 'Boris' , 'boris@alwaysup.org', 15553456789, 'Boomer', 'boomer@lwaysup.org', 15554567890),
+         (2022, 2   , 'frontend', 'Franky', 'frank@lwaysup.org' , 15555678901, 'Fin'   , 'fin@alwaysup.org'  , 15556789012),
+         (2022, 2   , 'backend' , 'Bonny' , 'bonny@alwaysup.org', 15557890123, 'Bea'   , 'bea@alwaysup.org'  , 15558901234);

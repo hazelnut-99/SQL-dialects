@@ -1,0 +1,1 @@
+SELECT '----Test lighweight delete is disabled if table has projections-----';

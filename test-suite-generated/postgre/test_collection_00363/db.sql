@@ -1,32 +1,47 @@
-create type complex as (r float8, i float8);
-create temp table fullname (first text, last text);
-create type quad as (c1 complex, c2 complex);
-rollback;
-create temp table compos (f1 int, f2 text);
-create function fcompos1(v compos) returns void as $$
-insert into compos values (v.*);
-$$ language sql;
-create function fcompos2(v compos) returns void as $$
-select fcompos1(v);
-$$ language sql;
-create function fcompos3(v compos) returns void as $$
-select fcompos1(fcompos3.v.*);
-$$ language sql;
-with r(a,b) as materialized
-  (values (1,row(1,2)), (1,row(null,null)), (1,null),
-          (null,row(1,2)), (null,row(null,null)), (null,null) )
-select r, r is null as isnull, r is not null as isnotnull from r;
-with cte(c) as materialized (select row(1, 2)),
-     cte2(c) as (select * from cte)
-select * from cte2 as t
-where (select * from (select c as c1) s
-       where (select (c1).f1 > 0)) is not null;
-create view composite_v as
-with cte(c) as materialized (select row(1, 2)),
-     cte2(c) as (select * from cte)
-select 1 as one from cte2 as t
-where (select * from (select c as c1) s
-       where (select (c1).f1 > 0)) is not null;
-drop view composite_v;
-CREATE TABLE compositetable(a text, b text);
-INSERT INTO compositetable(a, b) VALUES('fa', 'fb');
+CREATE TABLE TIMESTAMPTZ_TBL (d1 timestamp(2) with time zone);
+BEGIN;
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('today');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('yesterday');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow EST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('tomorrow zulu');
+COMMIT;
+DELETE FROM TIMESTAMPTZ_TBL;
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('now');
+BEGIN;
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('now');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('now');
+COMMIT;
+TRUNCATE TIMESTAMPTZ_TBL;
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('-infinity');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('infinity');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('epoch');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01.000001 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01.999999 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01.4 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01.5 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Mon Feb 10 17:32:01.6 1997 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-01-02');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-01-02 03:04:05');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-02-10 17:32:01-08');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-02-10 17:32:01-0800');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-02-10 17:32:01 -08:00');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('19970210 173201 -0800');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-06-10 17:32:01 -07:00');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2001-09-22T18:19:20');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2000-03-15 08:14:01 GMT+8');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2000-03-15 13:14:02 GMT-1');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2000-03-15 12:14:03 GMT-2');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2000-03-15 03:14:04 PST+8');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('2000-03-15 02:14:05 MST+7:00');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Feb 10 17:32:01 1997 -0800');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Feb 10 17:32:01 1997');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Feb 10 5:32PM 1997');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997/02/10 17:32:01-0800');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997-02-10 17:32:01 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('Feb-10-1997 17:32:01 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('02-10-1997 17:32:01 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('19970210 173201 PST');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('1997.041 17:32:01 UTC');
+INSERT INTO TIMESTAMPTZ_TBL VALUES ('19970210 173201 America/New_York');

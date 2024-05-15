@@ -34,3 +34,42 @@ CREATE TABLE integers2(i INTEGER);
 INSERT INTO integers2 VALUES (2), (3);
 CREATE VIEW v1 AS SELECT * FROM integers UNION ALL SELECT * FROM integers;
 CREATE VIEW v2 AS SELECT * FROM integers2 UNION ALL SELECT * FROM integers2;
+CREATE VIEW v3 AS SELECT (SELECT integers2.i-1) i FROM integers2 UNION ALL SELECT (SELECT integers2.i-1) i FROM integers2;
+CREATE VIEW v4 AS SELECT (SELECT integers.i+1) i FROM integers UNION ALL SELECT (SELECT integers.i+1) i FROM integers;
+create table c (i integer);
+insert into c values(44);
+create table t (i int);
+insert into t values (1),(2),(3),(4),(4);
+CREATE TABLE FLOAT8_TBL(f1 float8);
+INSERT INTO FLOAT8_TBL(f1) VALUES
+  ('0.0'),
+  ('-34.84'),
+  ('-1004.30'),
+  ('-1.2345678901234e+200'),
+  ('-1.2345678901234e-200');
+CREATE TABLE INT4_TBL(f1 int4);
+INSERT INTO INT4_TBL(f1) VALUES
+  ('   0  '),
+  ('123456     '),
+  ('    -123456'),
+  ('2147483647'),  -- largest and smallest values
+  ('-2147483647');
+CREATE TABLE INT8_TBL(q1 int8, q2 int8);
+INSERT INTO INT8_TBL VALUES
+  ('  123   ','  456'),
+  ('123   ','4567890123456789'),
+  ('4567890123456789','123'),
+  (+4567890123456789,'4567890123456789'),
+  ('+4567890123456789','-4567890123456789');
+CREATE TABLE CHAR_TBL(f1 char(4));
+INSERT INTO CHAR_TBL (f1) VALUES
+  ('a'),
+  ('ab'),
+  ('abcd'),
+  ('abcd    ');
+CREATE TABLE VARCHAR_TBL(f1 varchar(4));
+INSERT INTO VARCHAR_TBL (f1) VALUES
+  ('a'),
+  ('ab'),
+  ('abcd'),
+  ('abcd    ');

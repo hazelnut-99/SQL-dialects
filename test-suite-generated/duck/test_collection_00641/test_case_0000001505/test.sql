@@ -1,1 +1,0 @@
-SELECT 2e38::FLOAT / 0.1;

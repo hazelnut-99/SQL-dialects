@@ -1,1 +1,0 @@
-SELECT * FROM mv_00508 ORDER BY x;

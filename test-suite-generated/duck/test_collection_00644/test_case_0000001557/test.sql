@@ -1,1 +1,0 @@
-SELECT i::TINYINT+120::TINYINT FROM smallints WHERE i=1;

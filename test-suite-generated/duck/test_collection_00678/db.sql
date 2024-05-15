@@ -312,3 +312,210 @@ CREATE OR REPLACE TEMPORARY VIEW sales(location, year, q1, q2, q3, q4) AS
          ('San Francisco', 2020, NULL, 20 , 50,  60),
          ('Toronto'      , 2021, 110 , 90 , 80, 170),
          ('San Francisco', 2021, 70  , 120, 85, 105);
+CREATE OR REPLACE TEMPORARY VIEW oncall
+         (year, week, area      , name1   , email1              , phone1     , name2   , email2              , phone2) AS
+  VALUES (2022, 1   , 'frontend', 'Freddy', 'fred@alwaysup.org' , 15551234567, 'Fanny' , 'fanny@lwaysup.org' , 15552345678),
+         (2022, 1   , 'backend' , 'Boris' , 'boris@alwaysup.org', 15553456789, 'Boomer', 'boomer@lwaysup.org', 15554567890),
+         (2022, 2   , 'frontend', 'Franky', 'frank@lwaysup.org' , 15555678901, 'Fin'   , 'fin@alwaysup.org'  , 15556789012),
+         (2022, 2   , 'backend' , 'Bonny' , 'bonny@alwaysup.org', 15557890123, 'Bea'   , 'bea@alwaysup.org'  , 15558901234);
+PIVOT Cities ON Country USING SUM(Population);
+PIVOT Cities ON Country, Name USING SUM(Population);
+PIVOT Cities ON Country IN ('xx') USING SUM(Population);
+PIVOT Cities ON (Country, Name) IN ('xx') USING SUM(Population);
+PIVOT Cities ON Country IN ('xx', 'yy') USING SUM(Population);
+CREATE TABLE cpb_tbl AS
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+) FROM CPB;
+pivot cpb_tbl on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf IN (2010, 2017, 2018, 2022) using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+SELECT *
+FROM  (pivot CPB on nf using sum(jg)group by cpdh);
+WITH CPB(CPDH,NF,JG) AS (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+from CPB pivot (sum(jg) for nf in (2010, 2017, 2018, 2022) group by cpdh);
+WITH CPB AS (SELECT 42)
+SELECT *
+FROM  (
+	WITH CPB(CPDH,NF,JG) AS (
+		SELECT 'C1',2022,10
+		UNION ALL
+		SELECT 'C1',2018,20
+		UNION ALL
+		SELECT 'C1',2017,0
+		UNION ALL
+		SELECT 'C2',2022,10
+		UNION ALL
+		SELECT 'C2',2010,30
+		UNION ALL
+		SELECT 'C3',2010,80
+	)
+	pivot CPB on nf using sum(jg) group by cpdh);
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf IN (2010, 2017, 2018, 2022) using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+pivot CPB on nf using sum(jg)group by cpdh;
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+SELECT *
+FROM  (pivot CPB on nf using sum(jg)group by cpdh);
+WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+SELECT 'C1',2022,10
+UNION ALL
+SELECT 'C1',2018,20
+UNION ALL
+SELECT 'C1',2017,0
+UNION ALL
+SELECT 'C2',2022,10
+UNION ALL
+SELECT 'C2',2010,30
+UNION ALL
+SELECT 'C3',2010,80
+)
+from CPB pivot (sum(jg) for nf in (2010, 2017, 2018, 2022) group by cpdh);
+WITH CPB AS (SELECT 42)
+SELECT *
+FROM  (
+	WITH CPB(CPDH,NF,JG) AS MATERIALIZED (
+		SELECT 'C1',2022,10
+		UNION ALL
+		SELECT 'C1',2018,20
+		UNION ALL
+		SELECT 'C1',2017,0
+		UNION ALL
+		SELECT 'C2',2022,10
+		UNION ALL
+		SELECT 'C2',2010,30
+		UNION ALL
+		SELECT 'C3',2010,80
+	)
+	pivot CPB on nf using sum(jg) group by cpdh);
+CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT, month TEXT);
+INSERT INTO monthly_sales VALUES
+    (1, 10000, '1-JAN'),
+    (1, 400, '1-JAN'),
+    (2, 4500, '1-JAN'),
+    (2, 35000, '1-JAN'),
+    (1, 5000, '2-FEB'),
+    (1, 3000, '2-FEB'),
+    (2, 200, '2-FEB'),
+    (2, 90500, '2-FEB'),
+    (1, 6000, '3-MAR'),
+    (1, 5000, '3-MAR'),
+    (2, 2500, '3-MAR'),
+    (2, 9500, '3-MAR'),
+    (1, 8000, '4-APR'),
+    (1, 10000, '4-APR'),
+    (2, 800, '4-APR'),
+    (2, 4500, '4-APR');
+PREPARE v1 AS SELECT *
+  FROM monthly_sales
+    PIVOT(SUM(amount + ?) FOR MONTH IN ('1-JAN', '2-FEB', '3-MAR', '4-APR'))
+      AS p
+  ORDER BY EMPID;
+EXECUTE v1(0);
+EXECUTE v1(1);
+PREPARE v2 AS
+   PIVOT monthly_sales ON MONTH USING SUM(AMOUNT + ?);
+EXECUTE v2(1);
+CREATE OR REPLACE TABLE monthly_sales(empid INT, dept TEXT, Jan INT, Feb INT, Mar INT, April INT);
+INSERT INTO monthly_sales VALUES
+    (1, 'electronics', 100, 200, 300, 100),
+    (2, 'clothes', 100, 300, 150, 200),
+    (3, 'cars', 200, 400, 100, 50);

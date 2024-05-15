@@ -1,1 +1,0 @@
-select key, toTypeName(i8), byteSize(i8), toTypeName(i16), byteSize(i16), toTypeName(i32), byteSize(i32), toTypeName(i64), byteSize(i64), toTypeName(i128), byteSize(i128), toTypeName(u256), byteSize(u256) from test_byte_size_number0 order by key;

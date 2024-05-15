@@ -1,18 +1,28 @@
-DROP TABLE IF EXISTS binary_op_mono1;
-DROP TABLE IF EXISTS binary_op_mono2;
-DROP TABLE IF EXISTS binary_op_mono3;
-DROP TABLE IF EXISTS binary_op_mono4;
-DROP TABLE IF EXISTS binary_op_mono5;
-DROP TABLE IF EXISTS binary_op_mono6;
-DROP TABLE IF EXISTS binary_op_mono7;
-DROP TABLE IF EXISTS binary_op_mono8;
-CREATE TABLE binary_op_mono1(i int, j int) ENGINE MergeTree PARTITION BY toDate(i / 1000) ORDER BY j;
-CREATE TABLE binary_op_mono3(i int, j int) ENGINE MergeTree PARTITION BY i + 1000 ORDER BY j;
-CREATE TABLE binary_op_mono4(i int, j int) ENGINE MergeTree PARTITION BY 1000 + i ORDER BY j;
-CREATE TABLE binary_op_mono5(i int, j int) ENGINE MergeTree PARTITION BY i - 1000 ORDER BY j;
-CREATE TABLE binary_op_mono6(i int, j int) ENGINE MergeTree PARTITION BY 1000 - i ORDER BY j;
-INSERT INTO binary_op_mono1 VALUES (toUnixTimestamp('2020-09-01 00:00:00') * 1000, 1), (toUnixTimestamp('2020-09-01 00:00:00') * 1000, 2);
-INSERT INTO binary_op_mono3 VALUES (1, 1), (10000, 2);
-INSERT INTO binary_op_mono4 VALUES (1, 1), (10000, 2);
-INSERT INTO binary_op_mono5 VALUES (1, 1), (10000, 2);
-INSERT INTO binary_op_mono6 VALUES (1, 1), (10000, 2);
+DROP DICTIONARY IF EXISTS TestTblDict;
+DROP VIEW IF EXISTS TestTbl_view;
+DROP TABLE IF EXISTS TestTbl;
+CREATE TABLE TestTbl
+(
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+ENGINE = MergeTree
+PARTITION BY dt
+ORDER BY (id);
+CREATE VIEW TestTbl_view
+AS
+SELECT *
+FROM TestTbl
+WHERE dt = ( SELECT max(dt) FROM TestTbl );
+CREATE DICTIONARY IF NOT EXISTS TestTblDict
+(
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE TestTbl_view DB currentDatabase()))
+LIFETIME(1)
+LAYOUT(COMPLEX_KEY_HASHED());
+insert into TestTbl values(1, '2022-10-20', 'first');

@@ -1,7 +1,4 @@
-create database if not exists shard_0;
-create database if not exists shard_1;
-drop table if exists shard_0.tbl;
-drop table if exists shard_1.tbl;
-drop table if exists distr;
-create table shard_0.tbl (number UInt64) engine = MergeTree order by number;
-create table shard_1.tbl (number UInt64) engine = MergeTree order by number;
+DROP TABLE IF EXISTS t_key_condition_float;
+CREATE TABLE t_key_condition_float (a Float32)
+ENGINE = MergeTree ORDER BY a;
+INSERT INTO t_key_condition_float VALUES (0.1), (0.2);

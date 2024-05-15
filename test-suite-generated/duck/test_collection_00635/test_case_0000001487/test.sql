@@ -1,1 +1,0 @@
-SELECT * FROM integers ORDER BY i NULLS LAST;

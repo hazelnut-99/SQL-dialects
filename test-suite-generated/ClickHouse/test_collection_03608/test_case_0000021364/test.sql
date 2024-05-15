@@ -1,1 +1,0 @@
-SELECT * FROM t1 AS t2, (SELECT 1) AS t1;

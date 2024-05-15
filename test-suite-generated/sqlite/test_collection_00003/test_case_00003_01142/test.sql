@@ -1,0 +1,4 @@
+SELECT b4, b2+433+c4
+  FROM t2, t4
+ WHERE b4=735
+   AND a2=b4;

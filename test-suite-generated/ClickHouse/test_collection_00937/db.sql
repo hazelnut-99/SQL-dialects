@@ -1,9 +1,6 @@
-drop table if exists t;
-drop table if exists s;
-drop table if exists y;
-create table t(a Int64, b Int64) engine = Memory;
-create table s(a Int64, b Int64) engine = Memory;
-create table y(a Int64, b Int64) engine = Memory;
-insert into t values (1,1), (2,2);
-insert into s values (1,1);
-insert into y values (1,1);
+SHOW TABLES NOT LIKE '%';
+SHOW TABLES;
+CREATE TABLE test1 (x UInt8) ENGINE = Memory;
+CREATE TABLE test2 (x UInt8) ENGINE = Memory;
+SHOW TABLES;
+SHOW TABLES LIKE 'tes%';

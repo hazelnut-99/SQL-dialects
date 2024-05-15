@@ -86,3 +86,6 @@ insert into test values (1000000000), (250000000), (750000000), (500000000);
 drop table test;
 create table test (i ubigint);
 insert into test values (1000000000), (250000000), (750000000), (500000000);
+drop table test;
+create table test (i hugeint);
+insert into test values (1000000000), (250000000), (750000000), (500000000);

@@ -996,3 +996,13 @@ INSERT INTO test13 VALUES
 ({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': NULL, 'f': NULL, 'g': NULL, 'h': NULL, 'i': 8, 'j': 9}),
 ({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': NULL, 'i': NULL, 'j': 8}),
 ({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': NULL, 'i': NULL, 'j': 9});
+CREATE TABLE test20 (l STRUCT(i uinteger)[]);
+INSERT INTO test20 VALUES
+([{'i': NULL}, {'i': NULL}, {'i': 0}, {'i': NULL}, {'i': NULL}, {'i': 0}]),
+([{'i': NULL}, {'i': NULL}, {'i': 0}, {'i': NULL}, {'i': NULL}, {'i': 1}]),
+([{'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': 1}]),
+([{'i': NULL}, {'i': NULL}, {'i': 0}, {'i': NULL}, {'i': NULL}, {'i': NULL}]),
+([{'i': NULL}, {'i': NULL}, {'i': 1}, {'i': NULL}, {'i': NULL}, {'i': 0}]),
+([{'i': NULL}, {'i': NULL}, {'i': 1}, {'i': NULL}, {'i': NULL}, {'i': 1}]),
+([{'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': NULL}, {'i': 0}]),
+([{'i': NULL}, {'i': NULL}, {'i': 1}, {'i': NULL}, {'i': NULL}, {'i': NULL}]);

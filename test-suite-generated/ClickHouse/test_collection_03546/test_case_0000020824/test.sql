@@ -1,1 +1,0 @@
-select 0 = multiSearchFirstIndexUTF8('\0', CAST([], 'Array(String)'));

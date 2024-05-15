@@ -1,2 +1,3 @@
-DROP TABLE IF EXISTS test_alias;
-CREATE TABLE test_alias (a UInt8 ALIAS b, b UInt8) ENGINE Log;
+DROP TABLE IF EXISTS to_uuid_test;
+CREATE TABLE to_uuid_test (value String) ENGINE = TinyLog();
+INSERT INTO to_uuid_test VALUES ('61f0c404-5cb3-11e7-907b-a6006ad3dba0');

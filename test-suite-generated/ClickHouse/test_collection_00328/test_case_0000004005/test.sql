@@ -1,3 +1,0 @@
-SELECT 1 AS x
-UNION/**/ALL
-SELECT 1;

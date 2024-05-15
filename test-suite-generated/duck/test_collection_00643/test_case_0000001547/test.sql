@@ -1,1 +1,0 @@
-SELECT i+100::TINYINT FROM tinyints ORDER BY 1;

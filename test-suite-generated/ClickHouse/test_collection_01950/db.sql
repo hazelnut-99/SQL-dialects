@@ -1,15 +1,63 @@
-drop table if exists badFixedStringSort;
-CREATE TABLE IF NOT EXISTS badFixedStringSort (uuid5_old FixedString(16), subitem String) engine=MergeTree order by  tuple();
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '2');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '2');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('8ad8fc5e-a49e-544c-98e6-1140afd79f80'), '2');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('8ad8fc5e-a49e-544c-98e6-1140afd79f80'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('8ad8fc5e-a49e-544c-98e6-1140afd79f80'), '2');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('8ad8fc5e-a49e-544c-98e6-1140afd79f80'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '2');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '1');
-INSERT INTO badFixedStringSort values (UUIDStringToNum('999e1140-66ef-5610-9c3a-b3fb33e0fda9'), '2');
-optimize table badFixedStringSort final;
+DROP TABLE IF EXISTS test_table_unsigned_values;
+CREATE TABLE test_table_unsigned_values
+(
+    id UInt64,
+
+    value1 UInt8,
+    value2 UInt16,
+    value3 UInt32,
+    value4 UInt64,
+
+    predicate_value UInt8
+) ENGINE=TinyLog;
+DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS test_table_signed_values;
+CREATE TABLE test_table_signed_values
+(
+    id UInt64,
+
+    value1 Int8,
+    value2 Int16,
+    value3 Int32,
+    value4 Int64,
+
+    predicate_value UInt8
+) ENGINE=TinyLog;
+DROP TABLE test_table_signed_values;
+DROP TABLE IF EXISTS test_table_float_values;
+CREATE TABLE test_table_float_values
+(
+    id UInt64,
+
+    value1 Float32,
+    value2 Float64,
+
+    predicate_value UInt8
+) ENGINE=TinyLog;
+DROP TABLE test_table_float_values;
+DROP TABLE IF EXISTS test_table_nullable_unsigned_values;
+CREATE TABLE test_table_nullable_unsigned_values
+(
+    id UInt64,
+
+    value1 Nullable(UInt8),
+    value2 Nullable(UInt16),
+    value3 Nullable(UInt32),
+    value4 Nullable(UInt64),
+
+    predicate_value UInt8
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_unsigned_values;
+DROP TABLE IF EXISTS test_table_nullable_signed_values;
+CREATE TABLE test_table_nullable_signed_values
+(
+    id UInt64,
+
+    value1 Nullable(Int8),
+    value2 Nullable(Int16),
+    value3 Nullable(Int32),
+    value4 Nullable(Int64),
+
+    predicate_value UInt8
+) ENGINE=TinyLog;
+DROP TABLE test_table_nullable_signed_values;

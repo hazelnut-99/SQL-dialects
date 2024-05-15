@@ -1,0 +1,1 @@
+SELECT {'x': NULL} UNION ALL SELECT {'x': True};

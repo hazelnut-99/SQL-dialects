@@ -1,0 +1,1 @@
+select xxHash32(toUInt32(0)) = xxHash32('\0\0\0\0');

@@ -1,0 +1,1 @@
+SELECT '*** AFTER FIRST OPTIMIZE ***';

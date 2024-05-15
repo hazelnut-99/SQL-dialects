@@ -1,0 +1,1 @@
+SELECT tryIdnaEncode('xn--tešla');

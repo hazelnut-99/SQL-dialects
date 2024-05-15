@@ -1,0 +1,1 @@
+SELECT CASE col1 WHEN 1 THEN 'A' WHEN 2 THEN 'AB' ELSE 'ABC' END FROM multi_if_check;

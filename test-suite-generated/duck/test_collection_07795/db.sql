@@ -990,3 +990,13 @@ INSERT INTO rides VALUES
 	(10, '2023-01-01', 'San Francisco', 856),
 	(11, '2023-01-02', 'San Francisco', 490),
 	(12, '2023-01-02', 'San Francisco', 720),;
+drop table a;
+create table a as select range%3::smallint j, range::smallint AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::integer j, range::integer AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::bigint j, range::bigint AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::hugeint j, range::hugeint AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::utinyint j, range::utinyint AS i from range(1, 7, 1);

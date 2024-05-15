@@ -1,3 +1,9 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test(a Array(Int64), b Array(Float64), c Array(UInt64)) ENGINE=Memory;
-INSERT INTO test VALUES ([1, -3, 0, 1], [1.0, 0.4, -0.1], [1, 3, 1]);
+DROP TABLE IF EXISTS min_max_with_nullable_string;
+CREATE TABLE min_max_with_nullable_string (
+  t DateTime,
+  nullable_str Nullable(String),
+  INDEX nullable_str_min_max nullable_str TYPE minmax GRANULARITY 1
+) ENGINE = MergeTree ORDER BY (t);
+INSERT INTO min_max_with_nullable_string(t) VALUES (now()) (now());
+INSERT INTO min_max_with_nullable_string(t, nullable_str) VALUES (now(), '.') (now(), '.');
+INSERT INTO min_max_with_nullable_string(t, nullable_str) VALUES (now(), NULL) (now(), '.') (now(), NULL) (now(), '.') (now(), NULL);

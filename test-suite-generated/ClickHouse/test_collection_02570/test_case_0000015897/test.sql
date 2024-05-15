@@ -1,1 +1,0 @@
-SELECT toInt16(toRelativeWeekNum(toDateTime64('1960-11-30 18:00:11.999', 3, 'UTC')));

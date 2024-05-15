@@ -1,6 +1,0 @@
-SELECT x31,x60,x61,x64
-  FROM t31,t64,t61,t60
- WHERE a60=b61
-   AND b31=a61
-   AND b60=a64
-   AND a64=9;

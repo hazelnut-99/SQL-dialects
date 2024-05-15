@@ -1,7 +1,6 @@
-DROP TABLE IF EXISTS partition_and_primary_keys_using_same_expression;
-CREATE TABLE partition_and_primary_keys_using_same_expression(dt DateTime)
-    ENGINE MergeTree PARTITION BY toDate(dt) ORDER BY toDayOfWeek(toDate(dt));
-INSERT INTO partition_and_primary_keys_using_same_expression
-    VALUES ('2018-02-19 12:00:00');
-INSERT INTO partition_and_primary_keys_using_same_expression
-    VALUES ('2018-02-20 12:00:00'), ('2018-02-21 12:00:00');
+DROP TABLE IF EXISTS fact_cpc_clicks;
+DROP TABLE IF EXISTS dim_model;
+CREATE TABLE fact_cpc_clicks (model_id UInt8) ENGINE = Memory;
+CREATE TABLE dim_model (model_id UInt8) ENGINE = Memory;
+INSERT INTO fact_cpc_clicks VALUES (1);
+INSERT INTO dim_model VALUES (1);

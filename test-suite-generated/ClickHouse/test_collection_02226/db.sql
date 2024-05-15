@@ -1,14 +1,16 @@
-drop table if exists product_groups;
-drop table if exists products;
-CREATE TABLE product_groups (
-	group_id Int64,
-	group_name String
-) Engine = Memory;
-CREATE TABLE products (
-	product_id Int64,
-	product_name String,
-	price DECIMAL(11, 2),
-	group_id Int64
-) Engine = Memory;
-INSERT INTO product_groups  VALUES	(1, 'Smartphone'),(2, 'Laptop'),(3, 'Tablet');
-INSERT INTO products (product_id,product_name, group_id,price) VALUES (1, 'Microsoft Lumia', 1, 200), (2, 'HTC One', 1, 400), (3, 'Nexus', 1, 500), (4, 'iPhone', 1, 900),(5, 'HP Elite', 2, 1200),(6, 'Lenovo Thinkpad', 2, 700),(7, 'Sony VAIO', 2, 700),(8, 'Dell Vostro', 2, 800),(9, 'iPad', 3, 700),(10, 'Kindle Fire', 3, 150),(11, 'Samsung Galaxy Tab', 3, 200);
+CREATE TABLE table_02184 (x UInt8, PRIMARY KEY (x));
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE test_optimize_exception (date Date) PARTITION BY toYYYYMM(date) ORDER BY date;
+SHOW CREATE TABLE test_optimize_exception;
+DROP TABLE test_optimize_exception;
+CREATE TABLE table_02184 (x UInt8) ORDER BY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE table_02184 (x UInt8) PRIMARY KEY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE numbers2 ORDER BY intHash32(number) SAMPLE BY intHash32(number) AS SELECT number FROM numbers(10);
+SHOW CREATE TABLE numbers2;
+DROP TABLE numbers2;
+CREATE TABLE numbers3 ENGINE = Log AS SELECT number FROM numbers(10);

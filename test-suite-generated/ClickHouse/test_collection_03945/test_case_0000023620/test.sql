@@ -1,1 +1,0 @@
-SELECT countDigits(0);

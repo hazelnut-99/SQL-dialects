@@ -1,16 +1,56 @@
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-DROP TABLE IF EXISTS check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLog();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = Log();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt8) ENGINE = StripeLog();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
-CREATE TABLE check_system_tables (key UInt16) ENGINE = Memory();
-INSERT INTO check_system_tables VALUES (1);
-DROP TABLE check_system_tables;
+DROP DATABASE IF EXISTS memory_db;
+DROP DATABASE IF EXISTS db_01018;
+DROP DATABASE IF EXISTS database_for_dict_01018;
+CREATE DATABASE database_for_dict_01018;
+CREATE TABLE database_for_dict_01018.table_for_dict
+(
+  key_column UInt64,
+  second_column UInt8,
+  third_column String
+)
+ENGINE = MergeTree()
+ORDER BY key_column;
+INSERT INTO database_for_dict_01018.table_for_dict VALUES (1, 100, 'Hello world');
+DROP DATABASE IF EXISTS db_01018;
+CREATE DATABASE db_01018;
+CREATE DICTIONARY db_01018.dict1
+(
+  key_column UInt64 DEFAULT 0,
+  second_column UInt8 DEFAULT 1,
+  third_column String DEFAULT 'qqq'
+)
+PRIMARY KEY key_column
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' PASSWORD '' DB 'database_for_dict_01018'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(FLAT());
+SHOW CREATE DICTIONARY db_01018.dict1;
+SHOW DICTIONARIES FROM db_01018 LIKE 'dict1';
+EXISTS DICTIONARY db_01018.dict1;
+DETACH DICTIONARY db_01018.dict1;
+SHOW DICTIONARIES FROM db_01018 LIKE 'dict1';
+EXISTS DICTIONARY db_01018.dict1;
+ATTACH DICTIONARY db_01018.dict1;
+SHOW DICTIONARIES FROM db_01018 LIKE 'dict1';
+EXISTS DICTIONARY db_01018.dict1;
+DROP DICTIONARY IF EXISTS db_01018.dict1;
+SHOW DICTIONARIES FROM db_01018 LIKE 'dict1';
+EXISTS DICTIONARY db_01018.dict1;
+DROP DATABASE IF EXISTS db_01018;
+DROP DATABASE IF EXISTS memory_db;
+CREATE DATABASE memory_db ENGINE = Memory;
+CREATE DICTIONARY memory_db.dict2
+(
+  key_column UInt64 DEFAULT 0 INJECTIVE,
+  second_column UInt8 DEFAULT 1 EXPRESSION rand() % 222,
+  third_column String DEFAULT 'qqq'
+)
+PRIMARY KEY key_column
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' PASSWORD '' DB 'database_for_dict_01018'))
+LIFETIME(MIN 1 MAX 10)
+LAYOUT(FLAT());
+SHOW CREATE DICTIONARY memory_db.dict2;
+SHOW DICTIONARIES FROM memory_db LIKE 'dict2';
+EXISTS DICTIONARY memory_db.dict2;
+DROP DATABASE IF EXISTS lazy_db;
+CREATE DATABASE lazy_db ENGINE = Lazy(1);
+DROP DATABASE IF EXISTS lazy_db;

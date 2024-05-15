@@ -1,4 +1,0 @@
-SELECT c6*224, d7+a6
-  FROM t7, t6
- WHERE d6=a7
-   AND 975=e7;

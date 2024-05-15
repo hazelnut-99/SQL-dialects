@@ -1,1 +1,0 @@
-select hex(sipHash64());

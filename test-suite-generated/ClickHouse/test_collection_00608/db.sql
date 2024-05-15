@@ -1,3 +1,4 @@
-drop table if exists `table_00653`;
-create table `table_00653` (val Int32) engine = MergeTree order by val;
-insert into `table_00653` values (-2), (0), (2);
+DROP TABLE if exists lc;
+CREATE TABLE lc (a LowCardinality(Nullable(String)), b LowCardinality(Nullable(String))) ENGINE = MergeTree order by tuple();
+INSERT INTO lc VALUES ('a', 'b');
+INSERT INTO lc VALUES ('c', 'd');

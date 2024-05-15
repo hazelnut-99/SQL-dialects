@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS part_info;
-CREATE TABLE part_info (t DateTime) ENGINE = MergeTree PARTITION BY toDate(t) ORDER BY (t);
-INSERT INTO part_info VALUES (toDateTime('1970-10-01 00:00:01')), (toDateTime('1970-10-02 00:00:01')), (toDateTime('1970-10-03 00:00:01'));
-ALTER TABLE part_info FREEZE PARTITION '1970-10-02';
+drop table if exists merge_dist_01223;
+drop table if exists dist_01223;
+drop table if exists dist_layer_01223;
+drop table if exists data_01223;
+create table data_01223 (key Int) Engine=Memory();
+insert into data_01223 select * from numbers(3);

@@ -1,20 +1,14 @@
-DROP TABLE IF EXISTS table_for_rename;
-CREATE TABLE table_for_rename
+DROP DATABASE IF EXISTS sqllt SYNC;
+DROP USER IF EXISTS sqllt_user;
+DROP ROLE IF EXISTS sqllt_role;
+DROP POLICY IF EXISTS sqllt_policy ON sqllt.table, sqllt.view, sqllt.dictionary;
+DROP ROW POLICY IF EXISTS sqllt_row_policy ON sqllt.table, sqllt.view, sqllt.dictionary;
+DROP QUOTA IF EXISTS sqllt_quota;
+CREATE DATABASE sqllt;
+CREATE TABLE sqllt.table
 (
-  date Date,
-  key UInt64,
-  value1 String,
-  value2 String,
-  value3 String DEFAULT concat(value1, ' + ', value2) 
+    i UInt8, s String
 )
-ENGINE = MergeTree()
-PARTITION BY date
-ORDER BY key;
-INSERT INTO table_for_rename (date, key, value1, value2) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(9);
-ALTER TABLE table_for_rename RENAME COLUMN value1 TO value4;
-ALTER TABLE table_for_rename RENAME COLUMN value2 TO value5;
-SHOW CREATE TABLE table_for_rename;
-INSERT INTO table_for_rename (date, key, value4, value5) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(10, 10);
-ALTER TABLE table_for_rename RENAME COLUMN value4 TO value1;
-ALTER TABLE table_for_rename RENAME COLUMN value5 TO value2;
-SHOW CREATE TABLE table_for_rename;
+ENGINE = MergeTree PARTITION BY tuple() ORDER BY tuple();
+CREATE VIEW sqllt.view AS SELECT i, s FROM sqllt.table;
+CREATE DICTIONARY sqllt.dictionary (key UInt64, value UInt64) PRIMARY KEY key SOURCE(CLICKHOUSE(DB 'sqllt' TABLE 'table' HOST 'localhost' PORT 9001)) LIFETIME(0) LAYOUT(FLAT());

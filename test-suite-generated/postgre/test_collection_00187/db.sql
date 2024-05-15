@@ -481,3 +481,82 @@ CREATE UNIQUE INDEX num_exp_power_10_ln_idx ON num_exp_power_10_ln (id);
 DELETE FROM num_result;
 INSERT INTO num_result SELECT t1.id, t2.id, t1.val + t2.val
     FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, round(t1.val + t2.val, 10)
+    FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, t1.val - t2.val
+    FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, round(t1.val - t2.val, 40)
+    FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, t1.val * t2.val
+    FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, round(t1.val * t2.val, 30)
+    FROM num_data t1, num_data t2;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, t1.val / t2.val
+    FROM num_data t1, num_data t2
+    WHERE t2.val != '0.0';
+DELETE FROM num_result;
+INSERT INTO num_result SELECT t1.id, t2.id, round(t1.val / t2.val, 80)
+    FROM num_data t1, num_data t2
+    WHERE t2.val != '0.0';
+DELETE FROM num_result;
+INSERT INTO num_result SELECT id, 0, SQRT(ABS(val))
+    FROM num_data;
+DELETE FROM num_result;
+INSERT INTO num_result SELECT id, 0, LN(ABS(val))
+    FROM num_data
+    WHERE val != '0.0';
+DELETE FROM num_result;
+INSERT INTO num_result SELECT id, 0, LOG(numeric '10', ABS(val))
+    FROM num_data
+    WHERE val != '0.0';
+DELETE FROM num_result;
+INSERT INTO num_result SELECT id, 0, POWER(numeric '10', LN(ABS(round(val,200))))
+    FROM num_data
+    WHERE val != '0.0';
+CREATE TABLE fract_only (id int, val numeric(4,4));
+INSERT INTO fract_only VALUES (1, '0.0');
+INSERT INTO fract_only VALUES (2, '0.1');
+INSERT INTO fract_only VALUES (4, '-0.9999');
+INSERT INTO fract_only VALUES (5, '0.99994');
+INSERT INTO fract_only VALUES (7, '0.00001');
+INSERT INTO fract_only VALUES (8, '0.00017');
+INSERT INTO fract_only VALUES (9, 'NaN');
+DROP TABLE fract_only;
+CREATE TABLE ceil_floor_round (a numeric);
+INSERT INTO ceil_floor_round VALUES ('-5.5');
+INSERT INTO ceil_floor_round VALUES ('-5.499999');
+INSERT INTO ceil_floor_round VALUES ('9.5');
+INSERT INTO ceil_floor_round VALUES ('9.4999999');
+INSERT INTO ceil_floor_round VALUES ('0.0');
+INSERT INTO ceil_floor_round VALUES ('0.0000001');
+INSERT INTO ceil_floor_round VALUES ('-0.000001');
+DROP TABLE ceil_floor_round;
+CREATE TABLE width_bucket_test (operand_num numeric, operand_f8 float8);
+DROP TABLE width_bucket_test;
+WITH v(exp) AS
+  (VALUES(-16379),(-16378),(-1234),(-789),(-45),(-5),(-4),(-3),(-2),(-1),(0),
+         (1),(2),(3),(4),(5),(38),(275),(2345),(45678),(131070),(131071))
+SELECT exp,
+  to_char(('1.2345e'||exp)::numeric, '9.999EEEE') as numeric
+FROM v;
+CREATE TABLE num_input_test (n1 numeric);
+INSERT INTO num_input_test(n1) VALUES (' 123');
+INSERT INTO num_input_test(n1) VALUES ('   3245874    ');
+INSERT INTO num_input_test(n1) VALUES ('  -93853');
+INSERT INTO num_input_test(n1) VALUES ('555.50');
+INSERT INTO num_input_test(n1) VALUES ('-555.50');
+INSERT INTO num_input_test(n1) VALUES ('NaN ');
+INSERT INTO num_input_test(n1) VALUES ('        nan');
+CREATE TABLE num_variance (a numeric);
+INSERT INTO num_variance VALUES (0);
+INSERT INTO num_variance VALUES (3e-500);
+INSERT INTO num_variance VALUES (-3e-500);
+INSERT INTO num_variance VALUES (4e-500 - 1e-16383);
+INSERT INTO num_variance VALUES (-4e-500 + 1e-16383);
+BEGIN;

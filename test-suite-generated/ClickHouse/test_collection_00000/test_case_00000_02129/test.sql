@@ -1,0 +1,1 @@
+SELECT arr, element FROM (SELECT arrayJoin([emptyArrayUInt8(), [1], [2, 3]]) AS arr) LEFT ARRAY JOIN arr AS element;

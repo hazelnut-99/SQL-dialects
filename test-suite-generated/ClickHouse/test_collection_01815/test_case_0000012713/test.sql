@@ -1,1 +1,0 @@
-select tuple(toNullable(number + 1)) >= tuple(toNullable(number)) from numbers(1);

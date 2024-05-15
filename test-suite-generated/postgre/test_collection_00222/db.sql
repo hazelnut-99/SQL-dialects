@@ -1,69 +1,161 @@
-CREATE TABLE prt1 (a int, b int, c varchar) PARTITION BY RANGE(a);
-CREATE TABLE prt1_p1 PARTITION OF prt1 FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt1_p3 PARTITION OF prt1 FOR VALUES FROM (500) TO (600);
-CREATE TABLE prt1_p2 PARTITION OF prt1 FOR VALUES FROM (250) TO (500);
-INSERT INTO prt1 SELECT i, i % 25, to_char(i, 'FM0000') FROM generate_series(0, 599) i WHERE i % 2 = 0;
-CREATE INDEX iprt1_p1_a on prt1_p1(a);
-CREATE INDEX iprt1_p2_a on prt1_p2(a);
-CREATE INDEX iprt1_p3_a on prt1_p3(a);
-CREATE TABLE prt2 (a int, b int, c varchar) PARTITION BY RANGE(b);
-CREATE TABLE prt2_p1 PARTITION OF prt2 FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt2_p2 PARTITION OF prt2 FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt2_p3 PARTITION OF prt2 FOR VALUES FROM (500) TO (600);
-INSERT INTO prt2 SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(0, 599) i WHERE i % 3 = 0;
-CREATE INDEX iprt2_p1_b on prt2_p1(b);
-CREATE INDEX iprt2_p2_b on prt2_p2(b);
-CREATE INDEX iprt2_p3_b on prt2_p3(b);
-CREATE TABLE prt1_e (a int, b int, c int) PARTITION BY RANGE(((a + b)/2));
-CREATE TABLE prt1_e_p1 PARTITION OF prt1_e FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt1_e_p2 PARTITION OF prt1_e FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt1_e_p3 PARTITION OF prt1_e FOR VALUES FROM (500) TO (600);
-INSERT INTO prt1_e SELECT i, i, i % 25 FROM generate_series(0, 599, 2) i;
-CREATE INDEX iprt1_e_p1_ab2 on prt1_e_p1(((a+b)/2));
-CREATE INDEX iprt1_e_p2_ab2 on prt1_e_p2(((a+b)/2));
-CREATE INDEX iprt1_e_p3_ab2 on prt1_e_p3(((a+b)/2));
-CREATE TABLE prt2_e (a int, b int, c int) PARTITION BY RANGE(((b + a)/2));
-CREATE TABLE prt2_e_p1 PARTITION OF prt2_e FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt2_e_p2 PARTITION OF prt2_e FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt2_e_p3 PARTITION OF prt2_e FOR VALUES FROM (500) TO (600);
-INSERT INTO prt2_e SELECT i, i, i % 25 FROM generate_series(0, 599, 3) i;
-CREATE TABLE prt1_m (a int, b int, c int) PARTITION BY RANGE(a, ((a + b)/2));
-CREATE TABLE prt1_m_p1 PARTITION OF prt1_m FOR VALUES FROM (0, 0) TO (250, 250);
-CREATE TABLE prt1_m_p2 PARTITION OF prt1_m FOR VALUES FROM (250, 250) TO (500, 500);
-CREATE TABLE prt1_m_p3 PARTITION OF prt1_m FOR VALUES FROM (500, 500) TO (600, 600);
-INSERT INTO prt1_m SELECT i, i, i % 25 FROM generate_series(0, 599, 2) i;
-CREATE TABLE prt2_m (a int, b int, c int) PARTITION BY RANGE(((b + a)/2), b);
-CREATE TABLE prt2_m_p1 PARTITION OF prt2_m FOR VALUES FROM (0, 0) TO (250, 250);
-CREATE TABLE prt2_m_p2 PARTITION OF prt2_m FOR VALUES FROM (250, 250) TO (500, 500);
-CREATE TABLE prt2_m_p3 PARTITION OF prt2_m FOR VALUES FROM (500, 500) TO (600, 600);
-INSERT INTO prt2_m SELECT i, i, i % 25 FROM generate_series(0, 599, 3) i;
-CREATE TABLE plt1 (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE plt1_p1 PARTITION OF plt1 FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt1_p2 PARTITION OF plt1 FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt1_p3 PARTITION OF plt1 FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt1 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE plt2 (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE plt2_p1 PARTITION OF plt2 FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt2_p2 PARTITION OF plt2 FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt2_p3 PARTITION OF plt2 FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt2 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 3) i;
-CREATE TABLE plt1_e (a int, b int, c text) PARTITION BY LIST(ltrim(c, 'A'));
-CREATE TABLE plt1_e_p1 PARTITION OF plt1_e FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt1_e_p2 PARTITION OF plt1_e FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt1_e_p3 PARTITION OF plt1_e FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt1_e SELECT i, i, 'A' || to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE pht1 (a int, b int, c text) PARTITION BY HASH(c);
-CREATE TABLE pht1_p1 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht1_p2 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht1_p3 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht1 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE pht2 (a int, b int, c text) PARTITION BY HASH(c);
-CREATE TABLE pht2_p1 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht2_p2 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht2_p3 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht2 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 3) i;
-CREATE TABLE pht1_e (a int, b int, c text) PARTITION BY HASH(ltrim(c, 'A'));
-CREATE TABLE pht1_e_p1 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht1_e_p2 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht1_e_p3 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht1_e SELECT i, i, 'A' || to_char(i/50, 'FM0000') FROM generate_series(0, 299, 2) i;
+create table Room (
+    roomno	char(8),
+    comment	text
+);
+create unique index Room_rno on Room using btree (roomno bpchar_ops);
+create table WSlot (
+    slotname	char(20),
+    roomno	char(8),
+    slotlink	char(20),
+    backlink	char(20)
+);
+create unique index WSlot_name on WSlot using btree (slotname bpchar_ops);
+create table PField (
+    name	text,
+    comment	text
+);
+create unique index PField_name on PField using btree (name text_ops);
+create table PSlot (
+    slotname	char(20),
+    pfname	text,
+    slotlink	char(20),
+    backlink	char(20)
+);
+create unique index PSlot_name on PSlot using btree (slotname bpchar_ops);
+create table PLine (
+    slotname	char(20),
+    phonenumber	char(20),
+    comment	text,
+    backlink	char(20)
+);
+create unique index PLine_name on PLine using btree (slotname bpchar_ops);
+create table Hub (
+    name	char(14),
+    comment	text,
+    nslots	integer
+);
+create unique index Hub_name on Hub using btree (name bpchar_ops);
+create table HSlot (
+    slotname	char(20),
+    hubname	char(14),
+    slotno	integer,
+    slotlink	char(20)
+);
+create unique index HSlot_name on HSlot using btree (slotname bpchar_ops);
+create index HSlot_hubname on HSlot using btree (hubname bpchar_ops);
+create table System (
+    name	text,
+    comment	text
+);
+create unique index System_name on System using btree (name text_ops);
+create table IFace (
+    slotname	char(20),
+    sysname	text,
+    ifname	text,
+    slotlink	char(20)
+);
+create unique index IFace_name on IFace using btree (slotname bpchar_ops);
+create table PHone (
+    slotname	char(20),
+    comment	text,
+    slotlink	char(20)
+);
+create unique index PHone_name on PHone using btree (slotname bpchar_ops);
+commit;
+create function refcursor_test2(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param2 int) for select * from rc_test where a > param1 and b > param2;
+    nonsense record;
+begin
+    open c1($1, $2);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function constant_refcursor() returns refcursor as $$
+declare
+    rc constant refcursor;
+begin
+    open rc for select a from rc_test;
+    return rc;
+end
+$$ language plpgsql;
+create or replace function constant_refcursor() returns refcursor as $$
+declare
+    rc constant refcursor := 'my_cursor_name';
+begin
+    open rc for select a from rc_test;
+    return rc;
+end
+$$ language plpgsql;
+create function namedparmcursor_test1(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param12 int) for select * from rc_test where a > param1 and b > param12;
+    nonsense record;
+begin
+    open c1(param12 := $2, param1 := $1);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function namedparmcursor_test2(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param2 int) for select * from rc_test where a > param1 and b > param2;
+    nonsense record;
+begin
+    open c1(param1 := $1, $2);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function namedparmcursor_test7() returns void as $$
+declare
+  c1 cursor (p1 int, p2 int) for
+    select * from tenk1 where thousand = p1 and tenthous = p2;
+begin
+  open c1 (p2 := 77, p1 := 42/0);
+end $$ language plpgsql;
+create function namedparmcursor_test8() returns int4 as $$
+declare
+  c1 cursor (p1 int, p2 int) for
+    select count(*) from tenk1 where thousand = p1 and tenthous = p2;
+  n int4;
+begin
+  open c1 (77 -- test
+  , 42);
+  fetch c1 into n;
+  return n;
+end $$ language plpgsql;
+create function namedparmcursor_test9(p1 int) returns int4 as $$
+declare
+  c1 cursor (p1 int, p2 int, debug int) for
+    select count(*) from tenk1 where thousand = p1 and tenthous = p2
+      and four = debug;
+  p2 int4 := 1006;
+  n int4;
+begin
+  open c1 (p1 := p1, p2 := p2, debug := 2);
+  fetch c1 into n;
+  return n;
+end $$ language plpgsql;
+create function raise_test3(int) returns int as $$
+begin
+    raise notice 'This message has no parameters (despite having %% signs in it)!';
+    return $1;
+end;
+$$ language plpgsql;

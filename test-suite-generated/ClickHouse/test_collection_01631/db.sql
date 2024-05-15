@@ -1,21 +1,22 @@
-DROP TABLE IF EXISTS testView;
-DROP TABLE IF EXISTS testTable;
-CREATE TABLE IF NOT EXISTS testTable (
- A LowCardinality(String), -- like voter
- B Int64
-) ENGINE MergeTree()
-ORDER BY (A);
-INSERT INTO testTable VALUES ('A', 1),('B',2),('C',3);
-CREATE VIEW testView AS 
-SELECT
- A as ALow, -- like account
- B
-FROM
-   testTable;
-DROP TABLE testTable;
-CREATE TABLE IF NOT EXISTS testTable (
- A String, -- like voter
- B Int64
-) ENGINE MergeTree()
-ORDER BY (A);
-INSERT INTO testTable VALUES ('A', 1),('B',2),('C',3);
+CREATE TABLE group_bitmap_data_test
+(
+    `pickup_date` Date,
+    `city_id` UInt32,
+    `uid` UInt32
+)
+ENGINE = Memory;
+INSERT INTO group_bitmap_data_test SELECT
+    '2019-01-01',
+    1,
+    number
+FROM numbers(1, 50);
+INSERT INTO group_bitmap_data_test SELECT
+    '2019-01-02',
+    1,
+    number
+FROM numbers(11, 60);
+INSERT INTO group_bitmap_data_test SELECT
+    '2019-01-03',
+    2,
+    number
+FROM numbers(1, 10);

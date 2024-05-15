@@ -1,1 +1,2 @@
-DROP TABLE IF EXISTS t_materialize_column;
+DROP TABLE IF EXISTS test_table;
+SYSTEM STOP MERGES test_table;

@@ -1,1 +1,0 @@
-SELECT * FROM memory ORDER BY x;

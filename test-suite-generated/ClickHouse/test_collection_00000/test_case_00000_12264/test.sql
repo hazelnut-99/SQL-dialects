@@ -1,0 +1,1 @@
+select parseDateTime('/11', '/%d', 'UTC') = toDateTime('2000-01-11', 'UTC');

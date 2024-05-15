@@ -1,7 +1,15 @@
-DROP TABLE IF EXISTS null_subcolumns;
-CREATE TABLE null_subcolumns (id UInt32, n Nullable(String)) ENGINE = MergeTree ORDER BY id;
-INSERT INTO null_subcolumns VALUES (1, 'foo') (2, NULL) (3, NULL) (4, 'abc');
-DETACH TABLE null_subcolumns;
-ATTACH TABLE null_subcolumns;
-DROP TABLE null_subcolumns;
-DROP TABLE IF EXISTS map_subcolumns;
+DROP TABLE IF EXISTS t_01906;
+CREATE TABLE t_01906
+(
+    `id` UInt64,
+    `update_ts` DateTime,
+    `value` UInt32
+)
+ENGINE = ReplacingMergeTree(update_ts)
+PARTITION BY 0 * id
+ORDER BY (update_ts, id);
+INSERT INTO t_01906 SELECT
+    number,
+    toDateTime('2020-01-01 00:00:00'),
+    1
+FROM numbers(100);

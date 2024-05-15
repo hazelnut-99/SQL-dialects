@@ -661,3 +661,15 @@ INSERT INTO test24 VALUES
 ([{'l1': [{'i': 0}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1}]}, {'l1': [{'i': NULL}]}, {'l1': [{'i': NULL}]}]);
+DROP TABLE test0;
+DROP TABLE test2;
+DROP TABLE test3;
+DROP TABLE test4;
+DROP TABLE test10;
+DROP TABLE test11;
+DROP TABLE test13;
+DROP TABLE test20;
+DROP TABLE test22;
+DROP TABLE test24;
+CREATE TABLE test0 (i bigint[]);
+INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);

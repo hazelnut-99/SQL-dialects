@@ -1,0 +1,9 @@
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_cardinality_low sync;
+drop table if exists distinct_in_order sync;
+drop table if exists ordinary_distinct sync;
+drop table if exists distinct_in_order sync;
+drop table if exists ordinary_distinct sync;

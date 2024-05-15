@@ -1,1 +1,0 @@
-SELECT JSONLength(unhex('5B30000E06D7AA5D'));

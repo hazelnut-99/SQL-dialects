@@ -1,0 +1,1 @@
+SELECT arrayExists(x -> ((x.1) = 'pattern'), cast([tuple('a', 1)] as Array(Tuple(LowCardinality(String), UInt8))));

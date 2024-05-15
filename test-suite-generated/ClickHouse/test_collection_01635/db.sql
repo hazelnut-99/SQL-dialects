@@ -1,8 +1,10 @@
-DROP TABLE IF EXISTS tztest;
-CREATE TABLE tztest
-(
-    timeBerlin DateTime('Europe/Berlin'), 
-    timeLA DateTime('America/Los_Angeles')
-)
-ENGINE = Memory;
-INSERT INTO tztest (timeBerlin, timeLA) VALUES ('2019-05-06 12:00:00', '2019-05-06 12:00:00');
+DROP DATABASE IF EXISTS test_01676 SYNC;
+CREATE DATABASE test_01676;
+CREATE TABLE test_01676.dict_data (key UInt64, value UInt64) ENGINE=MergeTree ORDER BY tuple();
+INSERT INTO test_01676.dict_data VALUES (2,20), (3,30), (4,40), (5,50);
+CREATE DICTIONARY test_01676.dict (key UInt64, value UInt64) PRIMARY KEY key SOURCE(CLICKHOUSE(DB 'test_01676' TABLE 'dict_data' HOST '127.0.0.1' PORT tcpPort())) LIFETIME(0) LAYOUT(HASHED());
+CREATE TABLE test_01676.table (x UInt64, y UInt64 DEFAULT dictGet('test_01676.dict', 'value', x)) ENGINE=MergeTree ORDER BY tuple();
+INSERT INTO test_01676.table (x) VALUES (2);
+INSERT INTO test_01676.table VALUES (toUInt64(3), toUInt64(15));
+DETACH DATABASE test_01676;
+ATTACH DATABASE test_01676;

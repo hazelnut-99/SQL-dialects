@@ -1,0 +1,1 @@
+SELECT COALESCE(a) FROM exprtest;

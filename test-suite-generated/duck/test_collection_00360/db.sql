@@ -410,3 +410,5 @@ INSERT INTO test6 VALUES
 (5, '0reallylongstring2', 3, '1reallylongstring7'),
 (5, '0reallylongstring2', 4, '1reallylongstring8'),
 (5, '0reallylongstring2', 4, '1reallylongstring7');
+create table test7 (p_brand VARCHAR, p_type VARCHAR, p_size INT, supplier_cnt BIGINT);
+insert into test7 values ('Brand#11', 'ECONOMY BRUSHED COPPER', 3, 4), ('Brand#11', 'ECONOMY BRUSHED COPPER', 9, 4), ('Brand#11', 'ECONOMY BRUSHED STEEL', 36, 4), ('Brand#11', 'ECONOMY BRUSHED STEEL', 9, 4), ('Brand#11', 'ECONOMY BURNISHED BRASS', 36, 4), ('Brand#11', 'ECONOMY BURNISHED COPPER', 49, 4), ('Brand#11', 'ECONOMY BURNISHED COPPER', 9, 4), ('Brand#11', 'ECONOMY BURNISHED NICKEL', 14, 4), ('Brand#11', 'ECONOMY BURNISHED NICKEL', 49, 4);

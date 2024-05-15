@@ -1,80 +1,9 @@
-DROP TABLE IF EXISTS test1_00395;
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = Memory;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = TinyLog;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = Log;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(
-col1 UInt64, col2 Nullable(UInt64),
-col3 String, col4 Nullable(String),
-col5 Array(UInt64), col6 Array(Nullable(UInt64)),
-col7 Array(String), col8 Array(Nullable(String)),
-d Date) Engine = StripeLog;
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, NULL, 'a', 'a', [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', NULL, [1], [1], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [NULL], ['a'], ['a'], '2000-01-01');
-INSERT INTO test1_00395 VALUES (1, 1, 'a', 'a', [1], [1], ['a'], [NULL], '2000-01-01');
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 Array(Nullable(UInt64))) Engine=Memory;
-INSERT INTO test1_00395(col1) VALUES ([1+1]);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 Nullable(UInt64), col2 UInt64) Engine=Memory;
-DROP TABLE IF EXISTS test2;
-CREATE TABLE test2(col1 UInt64, col2 Nullable(UInt64)) Engine=Memory;
-INSERT INTO test1_00395(col1,col2) VALUES (2,7)(6,9)(5,1)(4,3)(8,2);
-INSERT INTO test2(col1,col2) SELECT col1,col2 FROM test1_00395;
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 Nullable(UInt64), col2 Nullable(UInt64)) Engine=Memory;
-INSERT INTO test1_00395(col1,col2) VALUES (2,7)(NULL,6)(9,NULL)(NULL,NULL)(5,1)(42,42);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395 (col1 Nullable(String)) ENGINE=TinyLog;
-INSERT INTO test1_00395 VALUES ('a'), ('b'), ('c'), (NULL);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 Nullable(Int8), col2 Nullable(UInt16), col3 Nullable(Float32)) Engine=TinyLog;
-INSERT INTO test1_00395(col1,col2,col3) VALUES (toInt8(1),toUInt16(2),toFloat32(3))(NULL,toUInt16(1),toFloat32(2))(toInt8(1),NULL,toFloat32(2))(toInt8(1),toUInt16(2),NULL);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(cond1 Nullable(UInt8), then1 Int8, cond2 UInt8, then2 Nullable(UInt16), then3 Nullable(Float32)) Engine=TinyLog;
-INSERT INTO test1_00395(cond1,then1,cond2,then2,then3) VALUES(1,1,1,42,99)(0,7,1,99,42)(NULL,6,2,99,NULL);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 UInt64) Engine=TinyLog;
-INSERT INTO test1_00395(col1) VALUES(1),(2),(3),(4);
-DROP TABLE IF EXISTS test1_00395;
-CREATE TABLE test1_00395(col1 Array(Nullable(UInt64))) Engine=TinyLog;
-INSERT INTO test1_00395(col1) VALUES([2,3,7,NULL]);
-INSERT INTO test1_00395(col1) VALUES([NULL,3,7,4]);
-INSERT INTO test1_00395(col1) VALUES([2,NULL,7,NULL]);
-INSERT INTO test1_00395(col1) VALUES([2,3,NULL,4]);
-INSERT INTO test1_00395(col1) VALUES([NULL,NULL,NULL,NULL]);
+DROP TABLE IF EXISTS nums;
+DROP TABLE IF EXISTS nums_buf;
+CREATE TABLE nums ( n UInt64, m UInt64 MATERIALIZED n+1 ) ENGINE = Log;
+CREATE TABLE nums_buf AS nums ENGINE = Buffer(currentDatabase(), nums, 1, 10, 100, 1, 3, 10000000, 100000000);
+INSERT INTO nums_buf (n) VALUES (1);
+INSERT INTO nums_buf (n) VALUES (2);
+INSERT INTO nums_buf (n) VALUES (3);
+INSERT INTO nums_buf (n) VALUES (4);
+INSERT INTO nums_buf (n) VALUES (5);

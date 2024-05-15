@@ -1,2 +1,3 @@
-drop table if exists table_01356_view_threads;
-create view table_01356_view_threads as select number % 10 as g, sum(number) as s from numbers_mt(1000000) group by g;
+DROP TABLE IF EXISTS test_null_as_default;
+CREATE TABLE test_null_as_default (a String DEFAULT 'WORLD') ENGINE = Memory;
+INSERT INTO test_null_as_default SELECT 'HELLO' UNION ALL SELECT NULL;

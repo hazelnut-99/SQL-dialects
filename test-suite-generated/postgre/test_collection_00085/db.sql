@@ -76,3 +76,102 @@ insert into xx values (3);
 insert into yy values (101, 1);
 insert into yy values (201, 2);
 insert into yy values (301, NULL);
+create temp table zt1 (f1 int primary key);
+create temp table zt2 (f2 int primary key);
+create temp table zt3 (f3 int primary key);
+insert into zt1 values(53);
+insert into zt2 values(53);
+create temp view zv1 as select *,'dummy'::text AS junk from zt1;
+begin;
+create temp table a (i integer);
+create temp table b (x integer, y integer);
+rollback;
+begin;
+create type mycomptype as (id int, v bigint);
+create temp table tidv (idv mycomptype);
+create index on tidv (idv);
+rollback;
+begin;
+create temp table a (
+     code char not null,
+     constraint a_pk primary key (code)
+);
+create temp table b (
+     a char not null,
+     num integer not null,
+     constraint b_pk primary key (a, num)
+);
+create temp table c (
+     name char not null,
+     a char,
+     constraint c_pk primary key (name)
+);
+insert into a (code) values ('p');
+insert into a (code) values ('q');
+insert into b (a, num) values ('p', 1);
+insert into b (a, num) values ('p', 2);
+insert into c (name, a) values ('A', 'p');
+insert into c (name, a) values ('B', 'q');
+insert into c (name, a) values ('C', null);
+rollback;
+create temp table nt1 (
+  id int primary key,
+  a1 boolean,
+  a2 boolean
+);
+create temp table nt2 (
+  id int primary key,
+  nt1_id int,
+  b1 boolean,
+  b2 boolean,
+  foreign key (nt1_id) references nt1(id)
+);
+create temp table nt3 (
+  id int primary key,
+  nt2_id int,
+  c1 boolean,
+  foreign key (nt2_id) references nt2(id)
+);
+insert into nt1 values (1,true,true);
+insert into nt1 values (2,true,false);
+insert into nt1 values (3,false,false);
+insert into nt2 values (1,1,true,true);
+insert into nt2 values (2,2,true,false);
+insert into nt2 values (3,3,false,false);
+insert into nt3 values (1,1,true);
+insert into nt3 values (2,2,false);
+insert into nt3 values (3,3,true);
+create temp table q1 as select 1 as q1;
+create temp table q2 as select 0 as q2;
+analyze q1;
+analyze q2;
+with ctetable as not materialized ( select 1 as f1 )
+select * from ctetable c1
+where f1 in ( select c3.f1 from ctetable c2 full join ctetable c3 on true );
+create function f_immutable_int4(i integer) returns integer as
+$$ begin return i; end; $$ language plpgsql immutable;
+drop function f_immutable_int4(int);
+begin;
+create temp table t (a int unique);
+rollback;
+begin;
+CREATE TEMP TABLE a (id int PRIMARY KEY, b_id int);
+CREATE TEMP TABLE b (id int PRIMARY KEY, c_id int);
+CREATE TEMP TABLE c (id int PRIMARY KEY);
+CREATE TEMP TABLE d (a int, b int);
+INSERT INTO a VALUES (0, 0), (1, NULL);
+INSERT INTO b VALUES (0, 0), (1, NULL);
+INSERT INTO c VALUES (0), (1);
+INSERT INTO d VALUES (1,3), (2,2), (3,1);
+CREATE TEMP TABLE parted_b (id int PRIMARY KEY) partition by range(id);
+CREATE TEMP TABLE parted_b1 partition of parted_b for values from (0) to (10);
+rollback;
+create temp table parent (k int primary key, pd int);
+create temp table child (k int unique, cd int);
+insert into parent values (1, 10), (2, 20), (3, 30);
+insert into child values (1, 100), (4, 400);
+begin;
+CREATE TEMP TABLE a (id int PRIMARY KEY);
+CREATE TEMP TABLE b (id int PRIMARY KEY, a_id int);
+INSERT INTO a VALUES (0), (1);
+INSERT INTO b VALUES (0, 0), (1, NULL);

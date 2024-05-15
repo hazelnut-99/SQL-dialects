@@ -1,1 +1,0 @@
-SELECT 'Test inverted(2) on a column with two parts';

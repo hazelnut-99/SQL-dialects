@@ -1,1 +1,0 @@
-SELECT arrayReduce('sum', [NULL]::Array(Nullable(UInt8))) as a, toTypeName(a);

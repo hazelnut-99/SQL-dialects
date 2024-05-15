@@ -47,3 +47,6 @@ insert into test values (10000), (2500), (7500), (5000);
 drop table test;
 create table test (i integer);
 insert into test values (10000), (2500), (7500), (5000);
+drop table test;
+create table test (i uinteger);
+insert into test values (10000), (2500), (7500), (5000);

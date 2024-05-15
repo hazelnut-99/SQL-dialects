@@ -1,1 +1,0 @@
-select * from (select * from numbers(1) union all select * from numbers(2) union all select * from numbers(3)) order by number;

@@ -1,0 +1,1 @@
+SELECT EXTRACT(DAY FROM toDate('2019-05-05') arg_1), arg_1;

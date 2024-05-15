@@ -1,1 +1,0 @@
-select minMap(val, cnt) from values ('val Array(Decimal(10, 2)), cnt Array(Int16)',  (['1.01'], [1]), (['1.01'], [2]));

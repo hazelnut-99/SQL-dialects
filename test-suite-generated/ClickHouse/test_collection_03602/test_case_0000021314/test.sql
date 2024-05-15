@@ -1,1 +1,0 @@
-SELECT 'bug with constant columns in join keys';

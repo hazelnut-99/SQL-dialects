@@ -1,1 +1,0 @@
-select 'inserted value deduplicated by dedup token, the same result as before';

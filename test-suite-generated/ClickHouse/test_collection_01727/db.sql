@@ -1,25 +1,61 @@
-DROP QUOTA IF EXISTS q1_01297, q2_01297, q3_01297, q4_01297, q5_01297, q6_01297, q7_01297, q8_01297, q9_01297,
-q10_01297, q11_01297, q12_01297, q13_01297, q14_01297, q15_01297, q16_01297, q17_01297,q18_01297;
-DROP QUOTA IF EXISTS q2_01297_renamed;
-DROP USER IF EXISTS u1_01297;
-DROP ROLE IF EXISTS r1_01297;
-DROP QUOTA IF EXISTS q1_01297;
-DROP QUOTA IF EXISTS q2_01297;
-DROP QUOTA IF EXISTS q3_01297;
-DROP QUOTA IF EXISTS q4_01297;
-DROP QUOTA IF EXISTS q5_01297;
-DROP QUOTA IF EXISTS q6_01297;
-DROP QUOTA IF EXISTS q7_01297;
-DROP QUOTA IF EXISTS q8_01297;
-DROP QUOTA IF EXISTS q9_01297;
-DROP QUOTA IF EXISTS q10_01297;
-DROP QUOTA IF EXISTS q11_01297;
-DROP QUOTA IF EXISTS q12_01297;
-DROP QUOTA IF EXISTS q13_01297;
-DROP QUOTA IF EXISTS q14_01297;
-DROP QUOTA IF EXISTS q15_01297;
-DROP QUOTA IF EXISTS q16_01297;
-DROP QUOTA IF EXISTS q1_01297;
-DROP QUOTA IF EXISTS q2_01297;
-DROP QUOTA IF EXISTS q1_01297;
-DROP QUOTA IF EXISTS q2_01297;
+DROP DATABASE IF EXISTS 01753_dictionary_db;
+CREATE DATABASE 01753_dictionary_db;
+CREATE TABLE 01753_dictionary_db.simple_key_simple_attributes_source_table
+(
+   id UInt64,
+   value_first String,
+   value_second String
+)
+ENGINE = TinyLog;
+INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(1, 'value_1', 'value_second_1');
+INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+CREATE DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_simple_attributes
+(
+   id UInt64,
+   value_first String DEFAULT 'value_first_default',
+   value_second String DEFAULT 'value_second_default'
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_simple_attributes_source_table'))
+LAYOUT(DIRECT());
+DROP DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_simple_attributes;
+DROP TABLE 01753_dictionary_db.simple_key_simple_attributes_source_table;
+CREATE TABLE 01753_dictionary_db.simple_key_complex_attributes_source_table
+(
+   id UInt64,
+   value_first String,
+   value_second Nullable(String)
+)
+ENGINE = TinyLog;
+INSERT INTO 01753_dictionary_db.simple_key_complex_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
+INSERT INTO 01753_dictionary_db.simple_key_complex_attributes_source_table VALUES(1, 'value_1', NULL);
+INSERT INTO 01753_dictionary_db.simple_key_complex_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
+CREATE DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_complex_attributes
+(
+   id UInt64,
+   value_first String DEFAULT 'value_first_default',
+   value_second Nullable(String) DEFAULT 'value_second_default'
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_complex_attributes_source_table'))
+LAYOUT(DIRECT());
+DROP DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_complex_attributes;
+DROP TABLE 01753_dictionary_db.simple_key_complex_attributes_source_table;
+CREATE TABLE 01753_dictionary_db.simple_key_hierarchy_table
+(
+    id UInt64,
+    parent_id UInt64
+) ENGINE = TinyLog();
+INSERT INTO 01753_dictionary_db.simple_key_hierarchy_table VALUES (1, 0);
+INSERT INTO 01753_dictionary_db.simple_key_hierarchy_table VALUES (2, 1);
+INSERT INTO 01753_dictionary_db.simple_key_hierarchy_table VALUES (3, 1);
+INSERT INTO 01753_dictionary_db.simple_key_hierarchy_table VALUES (4, 2);
+CREATE DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_hierarchy
+(
+   id UInt64,
+   parent_id UInt64 HIERARCHICAL
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_hierarchy_table'))
+LAYOUT(DIRECT());

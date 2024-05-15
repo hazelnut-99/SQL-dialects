@@ -1,20 +1,4 @@
-DROP TABLE IF EXISTS numbers_squashed;
-CREATE TABLE numbers_squashed (number UInt8) ENGINE = StripeLog;
-INSERT INTO numbers_squashed
-SELECT arrayJoin(range(10)) AS number
-UNION ALL
-SELECT arrayJoin(range(100))
-UNION ALL
-SELECT arrayJoin(range(10));
-INSERT INTO numbers_squashed
-SELECT arrayJoin(range(100)) AS number
-UNION ALL
-SELECT arrayJoin(range(10))
-UNION ALL
-SELECT arrayJoin(range(100));
-INSERT INTO numbers_squashed
-SELECT arrayJoin(range(10)) AS number
-UNION ALL
-SELECT arrayJoin(range(100))
-UNION ALL
-SELECT arrayJoin(range(100));
+DROP TABLE IF EXISTS not_partitioned_replica1_00502 SYNC;
+DROP TABLE IF EXISTS not_partitioned_replica2_00502 SYNC;
+DROP TABLE IF EXISTS partitioned_by_week_replica1 SYNC;
+DROP TABLE IF EXISTS partitioned_by_week_replica2 SYNC;

@@ -1,7 +1,5 @@
-drop table if exists test;
-drop table if exists file;
-drop table if exists mt;
-insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
-attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
-detach table file;
-attach table file;
+CREATE TABLE IF NOT EXISTS test01603 (
+    f64 Float64,
+    d Decimal64(3) DEFAULT toDecimal32(f64, 3),
+    f32 Float32 DEFAULT f64
+) ENGINE=MergeTree() ORDER BY f32;

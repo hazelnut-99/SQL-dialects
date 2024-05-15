@@ -1,1 +1,0 @@
-select jsonMergePatch('{ "a": 1, "b":2 }','{ "a": 3, "c":4 }','{ "a": 5, "d":6 }');

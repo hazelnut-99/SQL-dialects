@@ -2210,3 +2210,7 @@ INSERT INTO test10 values
 ({'i': NULL, 'j': NULL}),
 (NULL),
 ({'i': false, 'j': false});
+DROP TABLE test0;
+DROP TABLE test10;
+CREATE TABLE test0 (i INTERVAL[]);
+INSERT INTO test0 VALUES (['2 years']), (['1 year']), (['1 year', '2 years']), ([]), (['2 years', '2 years']), ([NULL]), (NULL), (['1 year', '1 year']);

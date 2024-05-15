@@ -1,4 +1,0 @@
-SELECT isDecimalOverflow(materialize(toDecimal64(1000000000000000000, 0)), 18),
-       isDecimalOverflow(materialize(toDecimal64(1000000000000000000, 0))),
-       isDecimalOverflow(materialize(toDecimal64(-1000000000000000000, 0)), 18),
-       isDecimalOverflow(materialize(toDecimal64(-1000000000000000000, 0)));

@@ -1654,3 +1654,11 @@ INSERT INTO test10 values
 ({'i': 2, 'j': 3});
 CREATE TABLE test11 (s STRUCT(s1 STRUCT(i utinyint, j utinyint)));
 INSERT INTO test11 VALUES ({'s1': NULL}), (NULL), ({'s1': {'i': NULL, 'j': 1}}), ({'s1': {'i': 0, 'j': NULL}}), ({'s1': {'i': NULL, 'j': NULL}}), ({'s1': {'i': 0, 'j': 1}});
+CREATE TABLE test13 (s STRUCT(a utinyint, b utinyint, c utinyint, d utinyint, e utinyint, f utinyint, g utinyint, h utinyint, i utinyint, j utinyint));
+INSERT INTO test13 VALUES
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 8}),
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9}),
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': NULL, 'f': NULL, 'g': NULL, 'h': NULL, 'i': 8, 'j': 8}),
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': NULL, 'f': NULL, 'g': NULL, 'h': NULL, 'i': 8, 'j': 9}),
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': NULL, 'i': NULL, 'j': 8}),
+({'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': NULL, 'i': NULL, 'j': 9});

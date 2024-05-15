@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS Alpha;
-DROP TABLE IF EXISTS Beta;
-CREATE TABLE Alpha (foo String, bar UInt64) ENGINE = Memory;
-CREATE TABLE Beta (foo LowCardinality(String), baz UInt64) ENGINE = Memory;
-INSERT INTO Alpha VALUES ('a', 1);
-INSERT INTO Beta VALUES ('a', 2), ('b', 3);
+DROP TABLE IF EXISTS compression_codec_on_alias;
+CREATE TABLE compression_codec_on_alias (
+    c0 UInt64 CODEC(ZSTD),
+    c1 UInt64
+) ENGINE = MergeTree() PARTITION BY c0 ORDER BY c1; -- success

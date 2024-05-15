@@ -1,0 +1,1 @@
+SELECT * FROM nested ORDER BY x;

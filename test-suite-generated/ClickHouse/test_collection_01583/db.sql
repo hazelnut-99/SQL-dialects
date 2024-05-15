@@ -1,12 +1,15 @@
-DROP TABLE IF EXISTS table_for_rename_nested;
-CREATE TABLE table_for_rename_nested
-(
-    date Date,
-    key UInt64,
-    n Nested(x UInt32, y String),
-    value1 String
-)
-ENGINE = MergeTree()
-PARTITION BY date
-ORDER BY key;
-INSERT INTO table_for_rename_nested (date, key, n.x, n.y, value1) SELECT toDate('2019-10-01'), number, [number + 1, number + 2, number + 3], ['a', 'b', 'c'], toString(number) FROM numbers(10);
+DROP TABLE IF EXISTS zstd_1_00;
+DROP TABLE IF EXISTS zstd_1_24;
+DROP TABLE IF EXISTS zstd_9_00;
+DROP TABLE IF EXISTS zstd_9_24;
+DROP TABLE IF EXISTS words;
+CREATE TABLE words(i Int, word String) ENGINE = Memory;
+INSERT INTO words SELECT * FROM generateRandom('i Int, word String',1,10) LIMIT 1 BY i LIMIT 10000;
+CREATE TABLE zstd_1_00(n Int, b String CODEC(ZSTD(1))) ENGINE = MergeTree ORDER BY n;
+CREATE TABLE zstd_1_24(n Int, b String CODEC(ZSTD(1,24))) ENGINE = MergeTree ORDER BY n;
+CREATE TABLE zstd_9_00(n Int, b String CODEC(ZSTD(9))) ENGINE = MergeTree ORDER BY n;
+CREATE TABLE zstd_9_24(n Int, b String CODEC(ZSTD(9,24))) ENGINE = MergeTree ORDER BY n;
+INSERT INTO zstd_1_00 SELECT * FROM words;
+INSERT INTO zstd_1_24 SELECT * FROM words;
+INSERT INTO zstd_9_00 SELECT * FROM words;
+INSERT INTO zstd_9_24 SELECT * FROM words;

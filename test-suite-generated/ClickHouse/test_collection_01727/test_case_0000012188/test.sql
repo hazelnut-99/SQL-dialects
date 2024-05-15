@@ -1,1 +1,0 @@
-SELECT '-- underflow test';

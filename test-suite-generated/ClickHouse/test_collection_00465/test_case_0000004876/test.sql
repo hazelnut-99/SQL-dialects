@@ -1,9 +1,0 @@
-SELECT
-    0 OR NULL,
-    1 OR NULL,
-    toNullable(0) OR NULL,
-    toNullable(1) OR NULL,
-    0.0 OR NULL,
-    0.1 OR NULL,
-    NULL OR 1 OR NULL,
-    0 OR NULL OR 1 OR NULL;

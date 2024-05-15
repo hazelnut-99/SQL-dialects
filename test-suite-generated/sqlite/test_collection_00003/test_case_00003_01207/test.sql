@@ -1,0 +1,4 @@
+SELECT x9, b6
+  FROM t6, t9
+ WHERE 161=d9
+   AND d6=446;

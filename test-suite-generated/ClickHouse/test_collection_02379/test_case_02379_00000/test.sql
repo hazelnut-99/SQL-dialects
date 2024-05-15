@@ -1,0 +1,1 @@
+select '-- the same values in every chunk, pre-distinct should skip entire chunks with the same key as previous one';

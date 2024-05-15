@@ -1,2 +1,6 @@
-drop table if exists local_t;
-create table local_t engine Log as select 1 a;
+DROP TABLE IF EXISTS foo;
+CREATE TABLE foo (ts DateTime, x UInt64)
+ENGINE = MergeTree PARTITION BY toYYYYMMDD(ts)
+ORDER BY (ts);
+ALTER TABLE foo UPDATE x = 1 WHERE x = (SELECT x from foo WHERE x = 4);
+ALTER TABLE foo UPDATE x = 1 WHERE x IN (SELECT x FROM foo WHERE x != 0);

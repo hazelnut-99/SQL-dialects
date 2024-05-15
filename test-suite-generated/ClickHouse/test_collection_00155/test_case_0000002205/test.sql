@@ -1,1 +1,0 @@
-select '-- select DEFAULT and ALIAS nested columns, array joining one at a time';

@@ -1,1 +1,0 @@
-SELECT '-- Various arguments tests';

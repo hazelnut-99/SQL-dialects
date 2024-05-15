@@ -1,10 +1,2 @@
-DROP TABLE IF EXISTS visits1;
-CREATE TABLE visits1
-(
-    Sign Int8,
-    Arr Array(Int8),
-    `ParsedParams.Key1` Array(String),
-    `ParsedParams.Key2` Array(String),
-    CounterID UInt32
-) ENGINE = Memory;
-DROP TABLE visits1;
+WITH number - 90 AS lat SELECT DISTINCT greatCircleAngle(0, 0, 0, lat) = abs(lat) FROM numbers(180);
+WITH number - 180 AS lon SELECT lon, round(greatCircleAngle(0, 0, lon, 0) - abs(lon) AS err, 2) FROM numbers(360) WHERE abs(err) > 0.01;

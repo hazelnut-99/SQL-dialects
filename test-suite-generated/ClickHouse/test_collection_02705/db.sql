@@ -1,4 +1,21 @@
-DROP TABLE IF EXISTS t_func_to_subcolumns;
-CREATE TABLE t_func_to_subcolumns (id UInt64, arr Array(UInt64), n Nullable(String), m Map(String, UInt64))
-ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO t_func_to_subcolumns VALUES (1, [1, 2, 3], 'abc', map('foo', 1, 'bar', 2)) (2, [], NULL, map());
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Memory;
+INSERT INTO tab VALUES ((2, 2), 4);
+DROP TABLE tab;
+DROP TABLE IF EXISTS sipHashKeyed_test;
+CREATE TABLE sipHashKeyed_test ENGINE = Memory() AS SELECT 1 a, 'test' b;
+DROP TABLE sipHashKeyed_test;
+DROP TABLE IF EXISTS sipHashKeyed_keys;
+CREATE TABLE sipHashKeyed_keys (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Memory;
+INSERT INTO sipHashKeyed_keys VALUES ((2, 2), 4);
+INSERT INTO sipHashKeyed_keys VALUES ((4, 4), 4);
+DROP TABLE sipHashKeyed_keys;
+DROP TABLE IF EXISTS sipHashKeyed_keys;
+CREATE TABLE sipHashKeyed_keys (key0 UInt64, key1 UInt64, val UInt64) ENGINE=Memory;
+INSERT INTO sipHashKeyed_keys VALUES (2, 2, 4);
+INSERT INTO sipHashKeyed_keys VALUES (4, 4, 4);
+DROP TABLE sipHashKeyed_keys;
+DROP TABLE IF EXISTS sipHashKeyed_keys;
+CREATE TABLE sipHashKeyed_keys (key0 UInt64, key1 UInt64) ENGINE=Memory;
+INSERT INTO sipHashKeyed_keys VALUES (2, 2);
+INSERT INTO sipHashKeyed_keys VALUES (4, 4);

@@ -1,1 +1,0 @@
-select argMin(x.1, x.2), argMax(x.1, x.2) from (select (toDecimal32(number, 2), toDecimal64(number, 2) + 1) as x from numbers(10));

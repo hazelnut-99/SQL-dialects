@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS temp;
-CREATE TABLE temp
-(
-    x Decimal(38, 2),
-    y Nullable(Decimal(38, 2))
-) ENGINE = Memory;
-INSERT INTO temp VALUES (32, 32), (64, 64), (128, 128), (256, 256);
+DROP TABLE IF EXISTS test_prewhere_default_column;
+DROP TABLE IF EXISTS test_prewhere_column_type;
+CREATE TABLE test_prewhere_default_column (APIKey UInt8, SessionType UInt8) ENGINE = MergeTree() PARTITION BY APIKey ORDER BY tuple();
+INSERT INTO test_prewhere_default_column VALUES( 42, 42 );
+ALTER TABLE test_prewhere_default_column ADD COLUMN OperatingSystem UInt64 DEFAULT SessionType+1;
+CREATE TABLE test_prewhere_column_type (`a` LowCardinality(String), `x` Nullable(Int32)) ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO test_prewhere_column_type VALUES ('', 2);

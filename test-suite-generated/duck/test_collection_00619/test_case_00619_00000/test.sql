@@ -1,0 +1,1 @@
+SELECT STRUCT_PACK(a := 42, b := 43);

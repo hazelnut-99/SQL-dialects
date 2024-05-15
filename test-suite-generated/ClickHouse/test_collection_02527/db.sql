@@ -1,23 +1,17 @@
-DROP DATABASE IF EXISTS test_01748;
-CREATE DATABASE test_01748;
-USE test_01748;
-DROP TABLE IF EXISTS `test.txt`;
-DROP DICTIONARY IF EXISTS test_dict;
-CREATE TABLE `test.txt`
-(
-    `key1` UInt32,
-    `key2` UInt32,
-    `value` String
-)
-ENGINE = Memory();
-CREATE DICTIONARY test_dict
-(
-    `key1` UInt32,
-    `key2` UInt32,
-    `value` String
-)
-PRIMARY KEY key1, key2
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT 9000 USER 'default' TABLE `test.txt` PASSWORD '' DB currentDatabase()))
-LIFETIME(MIN 1 MAX 3600)
-LAYOUT(COMPLEX_KEY_HASHED());
-INSERT INTO `test.txt` VALUES (1, 2, 'Hello');
+drop table if exists pr_t;
+drop table if exists dist_t_different_dbs;
+drop table if exists shard_1.t_different_dbs;
+drop table if exists t_different_dbs;
+drop table if exists dist_t;
+drop table if exists t;
+create table t(a UInt64, b UInt64) engine=MergeTree order by a;
+system stop merges t;
+insert into t select number, number from numbers_mt(1e6);
+create database if not exists shard_1;
+create table t_different_dbs(a UInt64, b UInt64) engine = MergeTree order by a;
+create table shard_1.t_different_dbs(a UInt64, b UInt64) engine = MergeTree order by tuple();
+insert into t_different_dbs select number % 1000, number % 1000 from numbers_mt(1e6);
+insert into shard_1.t_different_dbs select number % 1000, number % 1000 from numbers_mt(1e6);
+drop table if exists pr_t;
+create table pr_t(a UInt64, b UInt64) engine=MergeTree order by a;
+insert into pr_t select number % 1000, number % 1000 from numbers_mt(1e6);

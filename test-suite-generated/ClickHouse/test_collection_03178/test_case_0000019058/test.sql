@@ -1,1 +1,0 @@
-SELECT toBool(toDecimal64(100000000000.1, 2));

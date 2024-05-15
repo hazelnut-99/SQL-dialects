@@ -376,3 +376,5 @@ DROP table test7;
 DROP table test8;
 DROP TABLE test9;
 DROP TABLE DirectReports;
+create table t0 (c0 varchar);
+insert into t0 values ('a'), (NULL), (NULL), (NULL), (NULL), (NULL), (NULL);

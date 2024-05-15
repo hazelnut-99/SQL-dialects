@@ -1,0 +1,1 @@
+SELECT 'Check total_uncompressed_bytes/total_bytes/total_rows for Materialized views';

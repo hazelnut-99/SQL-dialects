@@ -1,4 +1,5 @@
-DROP TABLE IF EXISTS tuple;
-CREATE TABLE tuple (t Tuple(Date, UInt32, UInt64)) ENGINE = Memory;
-INSERT INTO tuple VALUES ((concat('2000', '-01-01'), /* Hello */ 12+3, 45+6));
-INSERT INTO tuple VALUES (('2000-01-01', 123, 456));
+DROP TABLE IF EXISTS cube;
+CREATE TABLE cube(a String, b Int32, s Int32) ENGINE = Memory;
+INSERT INTO cube VALUES ('a', 1, 10), ('a', 1, 15), ('a', 2, 20);
+INSERT INTO cube VALUES ('a', 2, 25), ('b', 1, 10), ('b', 1, 5);
+INSERT INTO cube VALUES ('b', 2, 20), ('b', 2, 15);

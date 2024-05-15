@@ -1,25 +1,10 @@
-DROP TABLE IF EXISTS minmax_idx;
-DROP TABLE IF EXISTS minmax_idx2;
-CREATE TABLE minmax_idx
-(
-    u64 UInt64,
-    i32 Int32
-) ENGINE = MergeTree()
-ORDER BY u64;
-INSERT INTO minmax_idx VALUES (1, 2);
-ALTER TABLE minmax_idx ADD INDEX idx1 u64 * i32 TYPE minmax GRANULARITY 10;
-ALTER TABLE minmax_idx ADD INDEX idx2 u64 + i32 TYPE minmax GRANULARITY 10;
-ALTER TABLE minmax_idx ADD INDEX idx3 (u64 - i32) TYPE minmax GRANULARITY 10 AFTER idx1;
-SHOW CREATE TABLE minmax_idx;
-INSERT INTO minmax_idx VALUES (1, 2);
-INSERT INTO minmax_idx VALUES (1, 2);
-INSERT INTO minmax_idx VALUES (1, 2);
-INSERT INTO minmax_idx VALUES (1, 2);
-INSERT INTO minmax_idx VALUES (1, 2);
-ALTER TABLE minmax_idx DROP INDEX idx1;
-SHOW CREATE TABLE minmax_idx;
-ALTER TABLE minmax_idx DROP INDEX idx2;
-ALTER TABLE minmax_idx DROP INDEX idx3;
-SHOW CREATE TABLE minmax_idx;
-ALTER TABLE minmax_idx ADD INDEX idx1 (u64 * i32) TYPE minmax GRANULARITY 10;
-SHOW CREATE TABLE minmax_idx;
+DROP TABLE IF EXISTS a;
+DROP TABLE IF EXISTS b;
+DROP TABLE IF EXISTS id1;
+DROP TABLE IF EXISTS id2;
+CREATE TABLE a(`id1` UInt32, `id2` UInt32, `valA` UInt32) ENGINE = TinyLog;
+CREATE TABLE id1(`id1` UInt32, `val1` UInt8) ENGINE = Join(ANY, LEFT, id1);
+CREATE TABLE id2(`id2` UInt32, `val2` UInt8) ENGINE = Join(ANY, LEFT, id2);
+INSERT INTO a VALUES (1,1,1)(2,2,2)(3,3,3);
+INSERT INTO id1 VALUES (1,1)(2,2)(3,3);
+INSERT INTO id2 VALUES (1,1)(2,2)(3,3);

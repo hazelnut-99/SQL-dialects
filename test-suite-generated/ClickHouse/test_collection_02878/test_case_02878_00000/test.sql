@@ -1,0 +1,1 @@
+SELECT 'const, uint, multiple';

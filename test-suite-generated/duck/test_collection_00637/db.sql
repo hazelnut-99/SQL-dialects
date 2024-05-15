@@ -2755,3 +2755,4 @@ INSERT INTO integers SELECT * FROM integers;
 INSERT INTO integers SELECT * FROM integers;
 INSERT INTO integers SELECT * FROM integers;
 INSERT INTO integers SELECT * FROM integers;
+CREATE TABLE strings AS SELECT '5'::VARCHAR k;

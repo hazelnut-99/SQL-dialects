@@ -1,1 +1,0 @@
-select 'cluster() ORDER BY';

@@ -1,1 +1,0 @@
-SELECT 'DEDUPLICATE BY pk,sk,val,mat,partition_key';

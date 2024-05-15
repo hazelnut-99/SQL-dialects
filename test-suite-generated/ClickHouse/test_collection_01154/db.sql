@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS l;
-DROP TABLE IF EXISTS r;
-CREATE TABLE l (a String, b Tuple(String, String)) ENGINE = Memory();
-CREATE TABLE r (a String, c Tuple(String, String)) ENGINE = Memory();
-INSERT INTO l (a, b) VALUES ('a', ('b', 'c')), ('d', ('e', 'f'));
-INSERT INTO r (a, c) VALUES ('a', ('b', 'c')), ('x', ('y', 'z'));
+CREATE TEMPORARY TABLE times (t DateTime);
+INSERT INTO times SELECT now();
+INSERT INTO times SELECT now();

@@ -1,24 +1,7 @@
-DROP TABLE IF EXISTS local_01099_a;
-DROP TABLE IF EXISTS local_01099_b;
-DROP TABLE IF EXISTS distributed_01099_a;
-DROP TABLE IF EXISTS distributed_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = Log;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = Log;
-SYSTEM STOP DISTRIBUTED SENDS distributed_01099_b;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_a (number UInt64) ENGINE = MergeTree() ORDER BY number;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = MergeTree() ORDER BY number;
-SYSTEM STOP DISTRIBUTED SENDS distributed_01099_b;
-DROP TABLE local_01099_a;
-DROP TABLE local_01099_b;
-CREATE TABLE local_01099_b (number UInt64) ENGINE = MergeTree() ORDER BY number;
-SYSTEM STOP DISTRIBUTED SENDS distributed_01099_b;
+CREATE TABLE datetime64_cmp
+(
+	dt6 DateTime64(6, 'UTC'),
+	dt3 DateTime64(3, 'UTC')
+) ENGINE = Memory;
+INSERT INTO datetime64_cmp
+VALUES ('2019-09-16 19:20:33.123000', '2019-09-16 19:20:33.123'), ('2019-09-16 19:20:33.123456', '2015-05-18 07:40:29.123'),  ('2015-05-18 07:40:29.123456', '2019-09-16 19:20:33.123');

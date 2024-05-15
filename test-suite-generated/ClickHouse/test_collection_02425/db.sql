@@ -1,3 +1,7 @@
-DROP TABLE IF EXISTS tmp_01683;
-DROP TABLE IF EXISTS dist_01683;
-CREATE TABLE tmp_01683 (n Int8) ENGINE=Memory;
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
+(
+    id UInt64,
+    value String
+) ENGINE=TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');

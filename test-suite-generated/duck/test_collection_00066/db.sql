@@ -50,3 +50,6 @@ TRUNCATE a;
 ROLLBACK;
 DELETE FROM a WHERE i >= 2000 AND i < 5000;
 DELETE FROM a WHERE i >= 2000 AND i < 5000;
+create table integers as select * from generate_series(0, 9, 1);
+create table integers2 as select * from generate_series(0, 9, 1);
+DELETE FROM integers USING integers2;

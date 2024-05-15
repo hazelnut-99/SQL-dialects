@@ -1,6 +1,12 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE defaults
-(
-    s FixedString(20)
-)ENGINE = Memory();
-INSERT INTO defaults SELECT s FROM generateRandom('s FixedString(20)', 1, 1, 1) LIMIT 20;
+drop table if exists data_01811;
+drop table if exists buffer_01811;
+create table data_01811 (key Int) Engine=Memory();
+create table buffer_01811 (key Int) Engine=Buffer(currentDatabase(), data_01811,
+    /* num_layers= */ 1,
+    /* min_time= */   1,     /* max_time= */  86400,
+    /* min_rows= */   1e9,   /* max_rows= */  1e6,
+    /* min_bytes= */  0,     /* max_bytes= */ 4e6,
+    /* flush_time= */ 86400, /* flush_rows= */ 10, /* flush_bytes= */0
+);
+insert into buffer_01811 select * from numbers(10);
+insert into buffer_01811 select * from numbers(10);

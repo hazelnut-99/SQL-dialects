@@ -1,11 +1,10 @@
-DROP TABLE IF EXISTS constrained;
-CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = Null;
-INSERT INTO constrained VALUES ('https://www.censor.net/?q=upyachka'), ('ftp://censor.net/Hello'), (toValidUTF8('https://censor.net/te\xFFst'));
-DROP TABLE constrained;
-CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = Memory;
-INSERT INTO constrained VALUES ('https://www.censor.net/?q=upyachka'), ('ftp://censor.net/Hello'), (toValidUTF8('https://censor.net/te\xFFst'));
-DROP TABLE constrained;
-CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = StripeLog;
-INSERT INTO constrained VALUES ('https://www.censor.net/?q=upyachka'), ('ftp://censor.net/Hello'), (toValidUTF8('https://censor.net/te\xFFst'));
-DROP TABLE constrained;
-CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = TinyLog;
+DROP TABLE IF EXISTS data_01285;
+CREATE TABLE data_01285 (
+    key   Int,
+    value SimpleAggregateFunction(max, Nullable(Int)),
+    INDEX value_idx assumeNotNull(value) TYPE minmax GRANULARITY 1
+)
+ENGINE=AggregatingMergeTree()
+ORDER BY key;
+INSERT INTO data_01285 SELECT 1, number FROM numbers(2);
+INSERT INTO data_01285 SELECT 1, number FROM numbers(4);

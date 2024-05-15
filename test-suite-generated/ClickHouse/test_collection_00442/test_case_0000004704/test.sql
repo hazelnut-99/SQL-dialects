@@ -1,1 +1,0 @@
-SELECT toDate('2017-01-01') + INTERVAL -11 MONTH AS x;

@@ -1,1 +1,0 @@
-SELECT 'const, uint, multiple';

@@ -1,0 +1,9 @@
+SELECT
+    0 AND NULL,
+    1 AND NULL,
+    toNullable(0) AND NULL,
+    toNullable(1) AND NULL,
+    0.0 AND NULL,
+    0.1 AND NULL,
+    NULL AND 1 AND NULL,
+    0 AND NULL AND 1 AND NULL;

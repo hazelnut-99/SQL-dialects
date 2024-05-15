@@ -1,0 +1,1 @@
+SELECT * FROM buffer_00753 ORDER BY x;

@@ -1,0 +1,1 @@
+SELECT abs(entropy(number) - 8) < 0.000001, abs(entropy(number % 64, number % 32) - 6) < 0.000001 FROM numbers(256);

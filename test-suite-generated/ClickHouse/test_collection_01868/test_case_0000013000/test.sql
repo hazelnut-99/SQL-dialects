@@ -1,1 +1,0 @@
-SELECT arrayFilter((a) -> ((a, arrayJoin([[]])) IN (Null, [Null])), []);

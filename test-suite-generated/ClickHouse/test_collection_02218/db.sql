@@ -1,6 +1,22 @@
-CREATE TABLE low_card
+DROP TABLE IF EXISTS 02183_dictionary_test_table;
+CREATE TABLE 02183_dictionary_test_table (id UInt64) ENGINE=TinyLog;
+INSERT INTO 02183_dictionary_test_table VALUES (0), (1);
+DROP DICTIONARY IF EXISTS 02183_flat_dictionary;
+CREATE DICTIONARY 02183_flat_dictionary
 (
-    `lc` LowCardinality(String)
+    id UInt64
 )
-ENGINE = Join(ANY, LEFT, lc);
-INSERT INTO low_card VALUES ( '1' );
+PRIMARY KEY id
+LAYOUT(FLAT())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);
+DROP DICTIONARY 02183_flat_dictionary;
+DROP DICTIONARY IF EXISTS 02183_hashed_dictionary;
+CREATE DICTIONARY 02183_hashed_dictionary
+(
+    id UInt64
+)
+PRIMARY KEY id
+LAYOUT(HASHED())
+SOURCE(CLICKHOUSE(TABLE '02183_dictionary_test_table'))
+LIFETIME(0);

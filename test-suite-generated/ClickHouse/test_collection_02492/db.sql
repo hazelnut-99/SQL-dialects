@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS constraint_on_nullable_type;
-CREATE TABLE constraint_on_nullable_type
-(
-    `id` Nullable(UInt64),
-    CONSTRAINT `c0` CHECK `id` = 1
-)
-ENGINE = TinyLog();
-INSERT INTO constraint_on_nullable_type VALUES (1);
+drop table if exists test_02377;
+create table test_02377 (n UInt32, s String) engine=File(CSVWithNames);
+insert into test_02377 values(1, 's') (2, 'x') (3, 'y');

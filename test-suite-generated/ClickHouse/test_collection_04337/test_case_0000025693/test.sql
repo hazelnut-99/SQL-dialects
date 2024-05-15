@@ -1,1 +1,0 @@
-SELECT COUNT(*) FROM e WHERE (t, dt) IN (86, '2022-12-12 11:00:00');

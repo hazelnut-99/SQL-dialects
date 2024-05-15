@@ -1,9 +1,8 @@
-drop table if exists test;
-drop table if exists file;
-drop table if exists mt;
-insert into table function file('01188_attach/file/data.TSV', 'TSV', 's String, n UInt8') values ('file', 42);
-attach table file from '01188_attach/file' (s String, n UInt8) engine=File(TSV);
-detach table file;
-attach table file;
-attach table mt from '01188_attach/file' (n UInt8, s String) engine=MergeTree order by n;
-insert into mt values (42, 'mt');
+DROP TABLE IF EXISTS distinct_two_level;
+CREATE TABLE distinct_two_level (
+    time DateTime64(3),
+    domain String,
+    subdomain String
+) ENGINE = MergeTree ORDER BY time;
+INSERT INTO distinct_two_level SELECT 1546300800000, 'test.com', concat('foo', toString(number % 10000)) from numbers(10000);
+INSERT INTO distinct_two_level SELECT 1546300800000, concat('test.com', toString(number / 10000)) , concat('foo', toString(number % 10000)) from numbers(10000);

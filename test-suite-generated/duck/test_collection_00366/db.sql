@@ -452,3 +452,5 @@ DROP TABLE DirectReports;
 CREATE TABLE test0 (i tinyint[]);
 INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);
 INSERT INTO test0 VALUES (NULL);
+CREATE TABLE test2 (i tinyint[][]);
+INSERT INTO test2 VALUES ([[2]]), ([[1]]), ([NULL, []]), ([[1], [2]]), ([]), ([[]]), ([[2], [2]]), ([NULL]), (NULL), ([[2], [3]]);

@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS decimal;
-CREATE TABLE IF NOT EXISTS decimal
-(
-    A UInt64,
-    B Decimal128(18),
-    C Decimal128(18)
-) Engine = Memory;
-INSERT INTO decimal VALUES (1,1,1), (1,1,2), (1,1,3), (1,1,4);
+DROP TABLE IF EXISTS order_with_aggr;
+CREATE TABLE order_with_aggr(a Int) ENGINE = MergeTree ORDER BY a;
+INSERT INTO order_with_aggr SELECT * FROM numbers(100);

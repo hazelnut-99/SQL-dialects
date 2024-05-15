@@ -1,1 +1,0 @@
-SELECT '-------ENABLE OPTIMIZE PREDICATE-------';

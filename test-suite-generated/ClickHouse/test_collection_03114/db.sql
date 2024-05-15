@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS t_02147;
-DROP TABLE IF EXISTS t_02147_dist;
-DROP TABLE IF EXISTS t_02147_merge;
-CREATE TABLE t_02147 (date DateTime, v UInt32)
-ENGINE = MergeTree ORDER BY toStartOfHour(date);
-CREATE TABLE t_02147_merge AS t_02147 ENGINE = Merge(currentDatabase(), 't_02147');
-drop table t_02147;
-CREATE TABLE t_02147 (date DateTime, v UInt32) ENGINE = MergeTree ORDER BY date;
+DROP TABLE IF EXISTS spark_bar_test;
+CREATE TABLE spark_bar_test (`value` Int64, `event_date` Date) ENGINE = MergeTree ORDER BY event_date;
+INSERT INTO spark_bar_test VALUES (1,'2020-01-01'), (3,'2020-01-02'), (4,'2020-01-02'), (-3,'2020-01-02'), (5,'2020-01-03'), (2,'2020-01-04'), (3,'2020-01-05'), (7,'2020-01-06'), (6,'2020-01-07'), (8,'2020-01-08'), (2,'2020-01-11');

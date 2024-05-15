@@ -1,4 +1,7 @@
-DROP TABLE IF EXISTS t0;
-DROP TABLE IF EXISTS t1;
-CREATE TABLE t0 (x UInt32, y UInt64) engine = MergeTree ORDER BY (x,y);
-CREATE TABLE t1 (x UInt32, y UInt64) engine = MergeTree ORDER BY (x,y);
+drop table if exists data_01292;
+create table data_01292 (
+    key Int,
+    index key_idx (key) type minmax granularity 1
+) Engine=MergeTree() ORDER BY (key+0);
+insert into data_01292 values (1);
+optimize table data_01292 final;

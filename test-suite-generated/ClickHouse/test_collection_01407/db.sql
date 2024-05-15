@@ -1,8 +1,12 @@
-SHOW TABLES NOT LIKE '%';
-SHOW TABLES;
-CREATE TABLE test1 (x UInt8) ENGINE = Memory;
-CREATE TABLE test2 (x UInt8) ENGINE = Memory;
-SHOW TABLES;
-SHOW TABLES LIKE 'tes%';
-SHOW TABLES NOT LIKE 'tes%';
-SHOW TABLES LIKE 'tes%1';
+DROP TABLE IF EXISTS data_01515;
+CREATE TABLE data_01515
+(
+    key Int,
+    d1 Int,
+    d1_null Nullable(Int),
+    INDEX d1_idx d1 TYPE minmax GRANULARITY 1,
+    INDEX d1_null_idx assumeNotNull(d1_null) TYPE minmax GRANULARITY 1
+)
+Engine=MergeTree()
+ORDER BY key;
+INSERT INTO data_01515 VALUES (1, 2, 3);

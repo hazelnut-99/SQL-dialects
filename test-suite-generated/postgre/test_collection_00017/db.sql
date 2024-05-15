@@ -16,3 +16,16 @@ INSERT INTO CASE2_TBL VALUES (3, -3);
 INSERT INTO CASE2_TBL VALUES (2, -4);
 INSERT INTO CASE2_TBL VALUES (1, NULL);
 INSERT INTO CASE2_TBL VALUES (NULL, -6);
+ROLLBACK;
+BEGIN;
+CREATE DOMAIN arrdomain AS int[];
+CREATE FUNCTION make_ad(int,int) returns arrdomain as
+  'declare x arrdomain;
+   begin
+     x := array[$1,$2];
+     return x;
+   end' language plpgsql volatile;
+CREATE FUNCTION ad_eq(arrdomain, arrdomain) returns boolean as
+  'begin return array_eq($1, $2); end' language plpgsql;
+CREATE OPERATOR = (procedure = ad_eq,
+                   leftarg = arrdomain, rightarg = arrdomain);

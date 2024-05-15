@@ -1,5 +1,16 @@
-CREATE TEMP TABLE foo (f1 serial, f2 text, f3 int default 42);
-INSERT INTO foo (f2,f3)
-  VALUES ('test', DEFAULT), ('More', 11), (upper('more'), 7+9)
-  RETURNING *, f1+f3 AS sum;
-DELETE FROM foo WHERE f1 > 2 RETURNING f3, f2, f1, least(f1,f3);
+ROLLBACK;
+CREATE SCHEMA testschema;
+PREPARE selectsource(int) AS SELECT $1;
+CREATE TABLE testschema.part (a int) PARTITION BY LIST (a);
+CREATE TABLE testschema.part1 PARTITION OF testschema.part FOR VALUES IN (1);
+CREATE TABLE testschema.part2 PARTITION OF testschema.part FOR VALUES IN (2);
+CREATE TABLE testschema.dflt2 (a int PRIMARY KEY) PARTITION BY LIST (a);
+CREATE TABLE testschema.test_tab(a int, b int, c int);
+ALTER TABLE testschema.test_tab ADD CONSTRAINT test_tab_unique UNIQUE (a);
+CREATE INDEX test_tab_a_idx ON testschema.test_tab (a);
+CREATE INDEX test_tab_b_idx ON testschema.test_tab (b);
+CREATE TABLE testschema.atable AS VALUES (1), (2);
+CREATE UNIQUE INDEX anindex ON testschema.atable(column1);
+INSERT INTO testschema.atable VALUES(3);	-- ok
+CREATE MATERIALIZED VIEW testschema.amv AS SELECT * FROM testschema.atable;
+REFRESH MATERIALIZED VIEW testschema.amv;

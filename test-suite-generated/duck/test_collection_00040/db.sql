@@ -271,3 +271,15 @@ CREATE VIEW ctenames AS (
   )
   SELECT * FROM ctename
 );
+WITH RECURSIVE fib AS (
+      SELECT 1 AS n,
+             1::bigint AS "fibₙ",
+             1::bigint AS "fibₙ₊₁"
+   UNION ALL
+      SELECT n+1,
+             "fibₙ₊₁",
+             "fibₙ" + "fibₙ₊₁"
+      FROM fib
+)
+SELECT n, "fibₙ" FROM fib
+LIMIT 20;

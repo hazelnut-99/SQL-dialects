@@ -1,0 +1,13 @@
+CREATE TABLE table_02184 (x UInt8, PRIMARY KEY (x));
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE test_optimize_exception (date Date) PARTITION BY toYYYYMM(date) ORDER BY date;
+SHOW CREATE TABLE test_optimize_exception;
+DROP TABLE test_optimize_exception;
+CREATE TABLE table_02184 (x UInt8) ORDER BY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE table_02184 (x UInt8) PRIMARY KEY x;
+SHOW CREATE TABLE table_02184;
+DROP TABLE table_02184;
+CREATE TABLE numbers2 ORDER BY intHash32(number) SAMPLE BY intHash32(number) AS SELECT number FROM numbers(10);

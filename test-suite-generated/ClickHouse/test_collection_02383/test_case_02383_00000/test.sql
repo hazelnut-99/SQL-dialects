@@ -1,0 +1,1 @@
+select '-- check that distinct in order WITH order by returns the same result as ordinary distinct';

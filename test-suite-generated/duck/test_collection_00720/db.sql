@@ -61,3 +61,8 @@ INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);
 DROP TABLE IF EXISTS exprtest;
 CREATE TABLE exprtest (a DECIMAL(18,0), b DECIMAL(18,0));
 INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);
+DROP TABLE IF EXISTS exprtest;
+CREATE TABLE exprtest (a DECIMAL(38,0), b DECIMAL(38,0));
+INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);
+CREATE TABLE strings(n VARCHAR, s VARCHAR);
+INSERT INTO strings (s) VALUES ('thisisalongstring'), ('thisisalsoalongstring'), ('hello'), ('world'), ('duckduckduckduckduck'), (NULL);

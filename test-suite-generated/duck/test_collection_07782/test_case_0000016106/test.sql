@@ -1,1 +1,0 @@
-SELECT DISTINCT j,sum(j) FILTER (where i <> 3) OVER (ORDER BY j ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING EXCLUDE TIES) AS sum FROM generate_series(1,300) _(i), generate_series(1,10) AS __(j) ORDER BY j, sum;

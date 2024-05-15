@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS test_aggregation;
-CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4,5,6]), ([]), ([1,2,3]);
+DROP TABLE IF EXISTS 02005_test_table;
+CREATE TABLE 02005_test_table
+(
+    value Map(Int64, Int64)
+)
+ENGINE = TinyLog;

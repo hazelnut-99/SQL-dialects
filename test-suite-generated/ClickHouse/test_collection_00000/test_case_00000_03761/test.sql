@@ -1,0 +1,1 @@
+select RTRIM('   foo   ');

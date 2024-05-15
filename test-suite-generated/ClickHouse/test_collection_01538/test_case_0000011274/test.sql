@@ -1,1 +1,0 @@
-select 'duration_microseconds';

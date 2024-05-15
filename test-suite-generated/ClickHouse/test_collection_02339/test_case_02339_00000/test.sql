@@ -1,0 +1,1 @@
+select 'create table, several columns with different default specifiers';

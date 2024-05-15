@@ -1,6 +1,13 @@
-DROP TABLE IF EXISTS h3_indexes;
-CREATE TABLE h3_indexes (h3_index UInt64) ENGINE = Memory;
-INSERT INTO h3_indexes VALUES (stringToH3('8f28308280f18f2'));
-INSERT INTO h3_indexes VALUES (stringToH3('0x8f28308280f18f2L'));
-INSERT INTO h3_indexes VALUES (stringToH3('821c07fffffffff'));
-INSERT INTO h3_indexes VALUES (stringToH3('0x821c07fffffffffL'));
+DROP TABLE IF EXISTS or_bug;
+CREATE TABLE or_bug (key UInt8) ENGINE=MergeTree ORDER BY key;
+INSERT INTO TABLE or_bug VALUES (0), (1);
+DROP TABLE IF EXISTS forms;
+CREATE TABLE forms
+(
+   `form_id` FixedString(24),
+   `text_field` String
+)
+ENGINE = MergeTree
+PRIMARY KEY form_id
+ORDER BY form_id;
+insert into forms values ('5840ead423829c1eab29fa97','this is a test');

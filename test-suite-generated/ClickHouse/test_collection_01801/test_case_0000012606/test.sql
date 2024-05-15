@@ -1,1 +1,0 @@
-SELECT toUUID('417ddc5de5564d2795dda34d84e46a50');

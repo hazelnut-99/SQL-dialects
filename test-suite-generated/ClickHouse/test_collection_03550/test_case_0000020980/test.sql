@@ -1,7 +1,0 @@
-select minMerge(y) from 
-(
-  select cast(x, 'AggregateFunction(min, Decimal(18, 10))') y from 
-   (
-     select arrayReduce('minState', [toDecimal64('0.000001', 10), toDecimal64('1.1', 10)]) x
-   )
-);

@@ -327,3 +327,5 @@ CREATE MACRO union_macro(x, y, z) AS (SELECT x IN (SELECT y UNION ALL SELECT z))
 CREATE MACRO in_expression_list(x, y, z) AS (SELECT x IN (VALUES (y), (z)));
 CREATE FUNCTION two() AS (SELECT 2);
 DROP FUNCTION two;
+CREATE TABLE floats (b FLOAT);
+INSERT INTO floats VALUES (0.5);

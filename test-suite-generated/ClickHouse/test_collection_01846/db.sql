@@ -1,10 +1,15 @@
-create temporary table t1(a String);
-create temporary table t2(a LowCardinality(String));
-CREATE TEMPORARY TABLE a (x String);
-CREATE TEMPORARY TABLE b (x LowCardinality(String));
-CREATE TEMPORARY TABLE c (x Nullable(String));
-CREATE TEMPORARY TABLE d (x LowCardinality(Nullable(String)));
-INSERT INTO a VALUES ('hello');
-INSERT INTO b VALUES ('hello');
-INSERT INTO c VALUES ('hello');
-INSERT INTO d VALUES ('hello');
+DROP TABLE IF EXISTS table1 SYNC;
+DROP TABLE IF EXISTS table2 SYNC;
+CREATE TABLE table2 (id Int64, v UInt64)
+ENGINE = MergeTree()
+PARTITION BY (toInt32(id / 2) % 3, id % 200) ORDER BY id;
+INSERT INTO table2 SELECT number-205, number FROM numbers(10);
+INSERT INTO table2 SELECT number-205, number FROM numbers(400, 10);
+DROP TABLE IF EXISTS table3 SYNC;
+CREATE TABLE table3 (id Int64, v UInt64)
+ENGINE = MergeTree()
+PARTITION BY (id % 200, (id % 200) % 10, toInt32(round((id % 200) / 2, 0))) ORDER BY id;
+INSERT INTO table3 SELECT number-205, number FROM numbers(10);
+INSERT INTO table3 SELECT number-205, number FROM numbers(400, 10);
+DETACH TABLE table3;
+ATTACH TABLE table3;

@@ -1,14 +1,24 @@
-DROP TABLE IF EXISTS test02008;
-CREATE TABLE test02008 (
-       col Tuple(
-           a Tuple(key1 int, key2 int),
-           b Tuple(key1 int, key2 int)
-       )
-) ENGINE=Memory();
-INSERT INTO test02008 VALUES (tuple(tuple(1, 2), tuple(3, 4)));
-INSERT INTO test02008 VALUES (tuple(tuple(5, 6), tuple(7, 8)));
-DROP TABLE IF EXISTS test02008;
-CREATE TABLE test02008 (
-       col Tuple(CPU double, Memory double, Disk double)
-) ENGINE=Memory();
-INSERT INTO test02008 VALUES (tuple(3.3, 5.5, 6.6));
+CREATE TEMPORARY TABLE table_lz4 (id UInt64, ui UInt256 CODEC(LZ4)) ENGINE = Memory;
+INSERT INTO table_lz4 SELECT * FROM generateRandom() LIMIT 50;
+CREATE TEMPORARY TABLE table_gcd (id UInt64, ui UInt256 CODEC(GCD, LZ4)) ENGINE = Memory;
+INSERT INTO table_gcd SELECT * FROM table_lz4;
+CREATE TEMPORARY TABLE table_gcd_codec_uint8 (n UInt8 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_uint16 (n UInt16 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_uint32 (n UInt32 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_uint64 (n UInt64 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_uint128 (n UInt128 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_uint256 (n UInt256 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int8 (n Int8 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int16 (n Int16 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int32 (n Int32 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int64 (n Int64 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int128 (n Int128 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_int256 (n Int256 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_decimal32 (n Decimal32(1) CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_decimal64 (n Decimal64(1) CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_decimal128 (n Decimal128(1) CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_decimal256 (n Decimal256(1) CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_date (n Date CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_date32 (n Date32 CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_datetime (n DateTime('Asia/Istanbul') CODEC(GCD, LZ4)) ENGINE = Memory;
+CREATE TEMPORARY TABLE table_gcd_codec_datetime64 (n DateTime64(3, 'Asia/Istanbul') CODEC(GCD, LZ4)) ENGINE = Memory;

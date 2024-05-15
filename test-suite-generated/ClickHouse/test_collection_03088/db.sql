@@ -1,3 +1,2 @@
-drop table if exists test;
-create table test (x String) Engine=StripeLog;
-insert into test values (0);
+DROP TABLE IF EXISTS tokenbf_tab;
+DROP TABLE IF EXISTS ngrambf_tab;

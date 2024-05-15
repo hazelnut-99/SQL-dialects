@@ -1,11 +1,3 @@
-drop table if exists tab_00612;
-create table tab_00612 (key UInt64, arr Array(UInt64)) Engine = MergeTree order by key;
-insert into tab_00612 values (1, [1]);
-insert into tab_00612 values (2, [2]);
-drop table if exists tab_00612;
-create table tab_00612 (key UInt64, n Nested(x UInt64)) Engine = MergeTree order by key;
-insert into tab_00612 values (1, [1]);
-insert into tab_00612 values (2, [2]);
-drop table if exists tab_00612;
-CREATE TABLE tab_00612 (key1 Int32, id1  Int64, c1 Int64) ENGINE = MergeTree  PARTITION BY id1 ORDER BY (key1);
-insert into tab_00612 values ( -1, 1, 0 );
+DROP TABLE IF EXISTS file;
+CREATE TABLE file (s String, n UInt32) ENGINE = File(CSVWithNames);
+INSERT INTO file VALUES ('hello', 1), ('world', 2);

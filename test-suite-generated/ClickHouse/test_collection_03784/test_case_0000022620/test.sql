@@ -1,1 +1,0 @@
-SELECT range(cast('100', 'Int8')) == range(0, cast('100', 'Int8')) and  range(0, cast('100', 'Int8')) == range(0, cast('100', 'Int8'), 1) and range(0, cast('100', 'Int8')) == range(0, cast('100', 'Int8'), cast('1', 'Int8'));

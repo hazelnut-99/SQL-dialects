@@ -1,0 +1,4 @@
+SELECT c1, b3+e1
+  FROM t3, t1
+ WHERE a3 in (979,347,244,135,255,145)
+   AND a1=d3;

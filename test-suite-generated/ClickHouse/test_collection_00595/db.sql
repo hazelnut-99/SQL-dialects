@@ -1,3 +1,6 @@
-DROP TABLE IF EXISTS endsWith_test;
-CREATE TABLE endsWith_test(S1 String, S2 String, S3 FixedString(2)) ENGINE=Memory;
-INSERT INTO endsWith_test values ('11', '22', '33'), ('a', 'a', 'bb'), ('abc', 'bc', '23');
+DROP TABLE IF EXISTS t;
+DROP TABLE IF EXISTS nt;
+CREATE TABLE t (x String) ENGINE = Log();
+CREATE TABLE nt (x Nullable(String)) ENGINE = Log();
+INSERT INTO t (x) VALUES ('id'), ('1');
+INSERT INTO nt (x) VALUES ('id'), (NULL), ('1');

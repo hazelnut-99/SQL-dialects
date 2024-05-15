@@ -1,1 +1,0 @@
-SELECT '0xF_F_F_F'::INT;

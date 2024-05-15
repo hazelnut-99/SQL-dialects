@@ -1,9 +1,10 @@
-DROP TABLE IF EXISTS src;
-DROP TABLE IF EXISTS dst1;
-DROP TABLE IF EXISTS src_to_dst1;
-DROP TABLE IF EXISTS dst2;
-CREATE TABLE src (x UInt8) ENGINE Memory;
-CREATE TABLE dst1 (x UInt8) ENGINE Memory;
-CREATE MATERIALIZED VIEW src_to_dst1 TO dst1 AS SELECT x + 1 as x FROM src;
-CREATE MATERIALIZED VIEW dst2 ENGINE Memory AS SELECT x + 1 as x FROM dst1;
-INSERT INTO src VALUES (1), (2);
+DROP TABLE IF EXISTS data_01269;
+CREATE TABLE data_01269
+(
+    key     Int32,
+    value   Nullable(Int32),
+    alias   UInt8 ALIAS value>0
+)
+ENGINE = MergeTree()
+ORDER BY key;
+INSERT INTO data_01269 VALUES (1, 0);

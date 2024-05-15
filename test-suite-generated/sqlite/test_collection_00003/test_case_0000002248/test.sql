@@ -1,4 +1,0 @@
-SELECT e3, x6
-  FROM t3, t6
- WHERE (699=a3 OR 959=a3)
-   AND d6=129;

@@ -1,6 +1,0 @@
-SELECT b5*782, x1, a6+d6, b4+824
-  FROM t6, t4, t5, t1
- WHERE 598=c5
-   AND a1=294
-   AND b4 in (23,735,748,644,167,892,847)
-   AND (d6=2 OR d6=366 OR d6=161 OR d6=991);

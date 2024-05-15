@@ -1010,3 +1010,25 @@ drop table a;
 create table a as select range%3::uhugeint j, range::uhugeint AS i from range(1, 7, 1);
 drop table a;
 create table a as select range%3::float j, range::float AS i from range(1, 7, 1);
+drop table a;
+create table a as select range%3::double j, range::double AS i from range(1, 7, 1);
+drop table a;
+create table partsupp as select uuid()::varchar as c5 from range(8000);
+with subquery as (select i, lag(i) over named_window from (values (1), (2), (3)) as t (i) window named_window as (order by i)) select * from subquery;
+CREATE TABLE a (id INT);
+WITH
+  cte_a AS (
+    SELECT *
+    FROM a
+    WINDOW my_window AS ()
+  ),
+  cte_b AS (
+    SELECT *
+    FROM a
+    WINDOW my_window AS ()
+  )
+SELECT *
+FROM cte_a CROSS JOIN cte_b;
+CREATE OR REPLACE TABLE issue10855(i INTEGER, v FLOAT);
+INSERT INTO issue10855 VALUES (0, 1), (1, 2), (2, 3),;
+INSERT INTO empsalary VALUES ('develop', 10, 5200, '2007-08-01'), ('sales', 1, 5000, '2006-10-01'), ('personnel', 5, 3500, '2007-12-10'), ('sales', 4, 4800, '2007-08-08'), ('personnel', 2, 3900, '2006-12-23'), ('develop', 7, 4200, '2008-01-01'), ('develop', 9, 4500, '2008-01-01'), ('sales', 3, 4800, '2007-08-01'), ('develop', 8, 6000, '2006-10-01'), ('develop', 11, 5200, '2007-08-15');

@@ -1,11 +1,4 @@
-DROP DATABASE IF EXISTS test1601_detach_permanently_atomic;
-CREATE DATABASE test1601_detach_permanently_atomic Engine=Atomic;
-create table test1601_detach_permanently_atomic.test_name_reuse (number UInt64) engine=MergeTree order by tuple();
-INSERT INTO test1601_detach_permanently_atomic.test_name_reuse SELECT * FROM numbers(100);
-DETACH table test1601_detach_permanently_atomic.test_name_reuse PERMANENTLY;
-create table test1601_detach_permanently_atomic.test_name_rename_attempt (number UInt64) engine=MergeTree order by tuple();
-SHOW CREATE TABLE test1601_detach_permanently_atomic.test_name_reuse FORMAT Vertical;
-ATTACH TABLE test1601_detach_permanently_atomic.test_name_reuse;
-DETACH table test1601_detach_permanently_atomic.test_name_reuse;
-DETACH DATABASE test1601_detach_permanently_atomic;
-ATTACH DATABASE test1601_detach_permanently_atomic;
+DROP TABLE IF EXISTS t_nested_with_dots;
+CREATE TABLE t_nested_with_dots (n Nested(id UInt64, `values.id` Array(UInt64)))
+ENGINE = MergeTree ORDER BY tuple();
+INSERT INTO t_nested_with_dots VALUES ([1], [[1]]);

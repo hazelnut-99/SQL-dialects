@@ -1,5 +1,1 @@
-DROP TABLE IF EXISTS log;
-CREATE TABLE log (x UInt8) ENGINE = StripeLog;
-INSERT INTO log VALUES (0);
-INSERT INTO log VALUES (1);
-INSERT INTO log VALUES (2);
+DROP TABLE if exists array_functions;

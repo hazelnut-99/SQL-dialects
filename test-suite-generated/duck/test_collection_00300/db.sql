@@ -103,3 +103,5 @@ INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);
 create table sorted_integers as select i from integers order by i;
 drop table sorted_integers;
 create table sorted_integers as select i from integers order by i;
+drop table sorted_integers;
+create table sorted_integers as select i from integers order by i;

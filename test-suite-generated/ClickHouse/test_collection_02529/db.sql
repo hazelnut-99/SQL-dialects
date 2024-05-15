@@ -1,21 +1,26 @@
-DROP DATABASE IF EXISTS 01753_dictionary_db;
-CREATE DATABASE 01753_dictionary_db;
-CREATE TABLE 01753_dictionary_db.simple_key_simple_attributes_source_table
-(
-   id UInt64,
-   value_first String,
-   value_second String
-)
-ENGINE = TinyLog;
-INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(0, 'value_0', 'value_second_0');
-INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(1, 'value_1', 'value_second_1');
-INSERT INTO 01753_dictionary_db.simple_key_simple_attributes_source_table VALUES(2, 'value_2', 'value_second_2');
-CREATE DICTIONARY 01753_dictionary_db.direct_dictionary_simple_key_simple_attributes
-(
-   id UInt64,
-   value_first String DEFAULT 'value_first_default',
-   value_second String DEFAULT 'value_second_default'
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'simple_key_simple_attributes_source_table'))
-LAYOUT(DIRECT());
+WITH
+    arrayJoin([1, 2, 3, nan, 4, 5]) AS data,
+    arrayJoin([nan, 1, 2, 3, 4]) AS data2,
+    arrayJoin([1, 2, 3, 4, nan]) AS data3,
+    arrayJoin([nan, nan, nan]) AS data4,
+    arrayJoin([nan, 1, 2, 3, nan]) AS data5
+SELECT
+    min(data),
+    min(data2),
+    min(data3),
+    min(data4),
+    min(data5);
+WITH
+    arrayJoin([1, 2, 3, nan, 4, 5]) AS data,
+    arrayJoin([nan, 1, 2, 3, 4]) AS data2,
+    arrayJoin([1, 2, 3, 4, nan]) AS data3,
+    arrayJoin([nan, nan, nan]) AS data4,
+    arrayJoin([nan, 1, 2, 3, nan]) AS data5
+SELECT
+    max(data),
+    max(data2),
+    max(data3),
+    max(data4),
+    max(data5);
+Select max(-number) from numbers(100);
+Select min(-number) from numbers(100);

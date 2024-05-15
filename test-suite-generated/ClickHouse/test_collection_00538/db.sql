@@ -1,3 +1,3 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test(start Integer, end Integer) engine = Memory;
-INSERT INTO test(start,end) VALUES (1,3),(2,7),(3,999),(4,7),(5,8);
+DROP TABLE IF EXISTS file;
+CREATE TABLE file (number UInt64) ENGINE = File(TSV);
+INSERT INTO file VALUES (1);

@@ -1,2 +1,0 @@
-SELECT DISTINCT 42,
-       84,;

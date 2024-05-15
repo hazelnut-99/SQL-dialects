@@ -1,20 +1,8 @@
-DROP TABLE IF EXISTS table_map_with_key_integer;
-CREATE TABLE table_map_with_key_integer (d DATE, m Map(Int8, Int8))
-ENGINE = MergeTree() ORDER BY d;
-INSERT INTO table_map_with_key_integer VALUES ('2020-01-01', map(127, 1, 0, 1, -1, 1)) ('2020-01-01', map());
-DROP TABLE IF EXISTS table_map_with_key_integer;
-CREATE TABLE table_map_with_key_integer (d DATE, m Map(Int32, UInt16))
-ENGINE = MergeTree() ORDER BY d;
-INSERT INTO table_map_with_key_integer VALUES ('2020-01-01', map(-1, 1, 2147483647, 2, -2147483648, 3));
-DROP TABLE IF EXISTS table_map_with_key_integer;
-CREATE TABLE table_map_with_key_integer (d DATE, m Map(Date, Int32))
-ENGINE = MergeTree() ORDER BY d;
-INSERT INTO table_map_with_key_integer VALUES ('2020-01-01', map('2020-01-01', 1, '2020-01-02', 2, '1970-01-02', 3));
-DROP TABLE IF EXISTS table_map_with_key_integer;
-CREATE TABLE table_map_with_key_integer (d DATE, m Map(UUID, UInt16))
-ENGINE = MergeTree() ORDER BY d;
-INSERT INTO table_map_with_key_integer VALUES ('2020-01-01', map('00001192-0000-4000-8000-000000000001', 1, '00001192-0000-4000-7000-000000000001', 2));
-DROP TABLE IF EXISTS table_map_with_key_integer;
-CREATE TABLE table_map_with_key_integer (d DATE, m Map(Int128, String))
-ENGINE = MergeTree() ORDER BY d;
-INSERT INTO table_map_with_key_integer SELECT '2020-01-01', map(-1, 'a', 0, 'b', toInt128('1234567898765432123456789'), 'c', toInt128('-1234567898765432123456789'), 'd');
+drop table if exists test_02381;
+drop table if exists test_02381_compress;
+drop table if exists test_02381;
+drop table if exists test_02381_compress;
+drop table if exists test_02381_compact;
+create table test_02381_compact (a UInt64, b String) ENGINE = MergeTree order by (a, b);
+insert into test_02381_compact values (1, 'Hello');
+insert into test_02381_compact values (2, 'World');

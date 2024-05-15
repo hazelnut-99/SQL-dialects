@@ -1,1 +1,2 @@
-CREATE TEMPORARY TABLE test_00645 (d DateTime) ENGINE = Memory;
+DROP TABLE IF EXISTS visits;
+CREATE TABLE visits (str String) ENGINE = MergeTree ORDER BY (str);

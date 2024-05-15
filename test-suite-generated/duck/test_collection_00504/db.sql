@@ -1414,3 +1414,5 @@ DROP TABLE test24;
 CREATE TABLE test0 (i integer[]);
 INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);
 INSERT INTO test0 VALUES (NULL);
+CREATE TABLE test2 (i integer[][]);
+INSERT INTO test2 VALUES ([[2]]), ([[1]]), ([NULL, []]), ([[1], [2]]), ([]), ([[]]), ([[2], [2]]), ([NULL]), (NULL), ([[2], [3]]);

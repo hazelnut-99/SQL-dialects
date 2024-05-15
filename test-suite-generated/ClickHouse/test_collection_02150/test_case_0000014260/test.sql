@@ -1,1 +1,0 @@
-select accurateCastOrNull('xfalse', 'Bool');

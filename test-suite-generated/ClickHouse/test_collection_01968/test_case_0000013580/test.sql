@@ -1,6 +1,0 @@
-SELECT isDecimalOverflow(materialize(toDecimal128('99999999999999999999999999999999999999', 0)), 37),
-       isDecimalOverflow(materialize(toDecimal128('10', 0)), 1),
-       isDecimalOverflow(materialize(toDecimal128('1', 0)), 0),
-       isDecimalOverflow(materialize(toDecimal128('-99999999999999999999999999999999999999', 0)), 37),
-       isDecimalOverflow(materialize(toDecimal128('-10', 0)), 1),
-       isDecimalOverflow(materialize(toDecimal128('-1', 0)), 0);

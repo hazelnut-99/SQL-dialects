@@ -1,0 +1,5 @@
+SELECT a8, c2, a4*696
+  FROM t8, t2, t4
+ WHERE b4=551
+   AND e2 in (938,505,706,131,940)
+   AND 586=e8;

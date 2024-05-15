@@ -1,1 +1,0 @@
-SELECT 'SHOW CREATE TABLE 01902_db.t_merge_1';

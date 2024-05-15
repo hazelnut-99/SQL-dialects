@@ -1,1 +1,0 @@
-SELECT toDateTime64(-2300000000, 9, 'UTC');

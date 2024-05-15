@@ -149,3 +149,21 @@ CREATE TABLE test_table(id VARCHAR PRIMARY KEY, name VARCHAR);
 create or replace table tbl (a integer primary key, b integer);
 insert into tbl VALUES (1,3), (2,2), (3,10), (4,3);
 insert into tbl VALUES (3,8), (2,2) ON CONFLICT (a) DO UPDATE SET b = b*2 WHERE b == excluded.b;
+create or replace table tbl (a integer default 3);
+create or replace table tbl(
+	i integer PRIMARY KEY,
+	j integer UNIQUE,
+	k integer
+);
+insert into tbl VALUES
+	(1, 10, 1),
+	(2, 20, 1),
+	(3, 30, 2);
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 5;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 1 + excluded.k;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
+create or replace table tbl (
+	a integer primary key default 5,
+	b integer
+);
+insert into tbl(b) VALUES (10);

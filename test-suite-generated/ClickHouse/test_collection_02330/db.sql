@@ -1,15 +1,18 @@
-DROP TABLE IF EXISTS trend;
-CREATE TABLE trend
-(
-    `event_date` Date,
-    `user_id` Int32,
-    `timestamp` DateTime,
-    `eventID` Int32,
-    `product` String
-)
-ENGINE = MergeTree()
-PARTITION BY toYYYYMM(event_date)
-ORDER BY user_id;
-insert into trend values ('2019-01-28', 1, '2019-01-29 10:00:00', 1004, 'phone') ('2019-01-28', 1, '2019-01-29 10:00:00', 1003, 'phone') ('2019-01-28', 1, '2019-01-28 10:00:00', 1002, 'phone');
-TRUNCATE TABLE trend;
-insert into trend values ('2019-01-28', 1, '2019-01-29 10:00:00', 1003, 'phone') ('2019-01-28', 1, '2019-01-29 10:00:00', 1004, 'phone') ('2019-01-28', 1, '2019-01-28 10:00:00', 1002, 'phone');
+WITH CAST([-547274980, 1790553898, 1981517754, 1908431500, 1352428565, -573412550, -552499284, 2096941042], 'Array(Int32)') AS a
+SELECT
+    L1Norm(a),
+    L2Norm(a),
+    L2SquaredNorm(a),
+    LpNorm(a,1),
+    LpNorm(a,2),
+    LpNorm(a,3.14),
+    LinfNorm(a);
+DROP TABLE IF EXISTS vec1;
+DROP TABLE IF EXISTS vec1f;
+DROP TABLE IF EXISTS vec1d;
+CREATE TABLE vec1 (id UInt64, v Array(UInt8)) ENGINE = Memory;
+CREATE TABLE vec1f (id UInt64, v Array(Float32)) ENGINE = Memory;
+CREATE TABLE vec1d (id UInt64, v Array(Float64)) ENGINE = Memory;
+INSERT INTO vec1 VALUES (1, [3, 4]), (2, [2]), (3, [3, 3, 3]), (4, NULL), (5, range(7, 27)), (6, range(3, 103));
+INSERT INTO vec1f VALUES (1, [3, 4]), (2, [2]), (3, [3, 3, 3]), (4, NULL), (5, range(7, 27)), (6, range(3, 103));
+INSERT INTO vec1d VALUES (1, [3, 4]), (2, [2]), (3, [3, 3, 3]), (4, NULL), (5, range(7, 27)), (6, range(3, 103));

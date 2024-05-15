@@ -1,1 +1,0 @@
-SELECT toDecimal128OrNull('', 0) AS x, toDecimal128OrNull('-0.42', 2) AS y;

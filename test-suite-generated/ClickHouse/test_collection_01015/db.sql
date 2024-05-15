@@ -1,6 +1,38 @@
-DROP TABLE IF EXISTS A;
-DROP TABLE IF EXISTS B;
-CREATE TABLE A(k UInt32, t UInt32, a UInt64) ENGINE = MergeTree() ORDER BY (k, t);
-INSERT INTO A(k,t,a) VALUES (1,101,1),(1,102,2),(1,103,3),(1,104,4),(1,105,5);
-CREATE TABLE B(k UInt32, t UInt32, b UInt64) ENGINE = MergeTree() ORDER BY (k, t);
-INSERT INTO B(k,t,b) VALUES (1,102,2), (1,104,4);
+DROP TABLE IF EXISTS multiword_types;
+DROP TABLE IF EXISTS unsigned_types;
+CREATE TABLE multiword_types (
+    a DOUBLE,
+    b DOUBLE PRECISION,
+    c CHAR DEFAULT 'str',
+    d CHAR VARYING,
+    e CHAR LARGE OBJECT COMMENT 'comment',
+    f CHARACTER VARYING(123),
+    g ChArAcTeR   large    OBJECT,
+    h nchar varying (456) default toString(a) comment 'comment',
+    i NCHAR LARGE OBJECT,
+    j BINARY LARGE OBJECT,
+    k BINARY VARYING,
+    l NATIONAL CHAR,
+    m NATIONAL CHARACTER,
+    n NATIONAL CHARACTER LARGE OBJECT,
+    o NATIONAL CHARACTER VARYING,
+    p NATIONAL CHAR VARYING
+) ENGINE=Memory;
+SHOW CREATE TABLE multiword_types;
+INSERT INTO multiword_types(a) VALUES (1);
+CREATE TABLE unsigned_types (
+    a TINYINT  SIGNED,
+    b INT1     SIGNED,
+    c SMALLINT SIGNED,
+    d INT      SIGNED,
+    e INTEGER  SIGNED,
+    f BIGINT   SIGNED,
+    g TINYINT  UNSIGNED,
+    h INT1     UNSIGNED,
+    i SMALLINT UNSIGNED,
+    j INT      UNSIGNED,
+    k INTEGER  UNSIGNED,
+    l BIGINT   UNSIGNED
+) ENGINE=Memory;
+SHOW CREATE TABLE unsigned_types;
+INSERT INTO unsigned_types(a) VALUES (1);

@@ -1,1 +1,0 @@
-SELECT FROM_UNIXTIME(toDateTime('2018-01-02 02:33:44'), '%H');

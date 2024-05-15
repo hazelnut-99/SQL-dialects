@@ -1,0 +1,1 @@
+SELECT reinterpret(toDecimal64(5, 2), 'Decimal64(2)'), reinterpret('1', 'Decimal64(2)');

@@ -1,1 +1,0 @@
-SELECT g, 3>ANY(l) FROM v3 ORDER BY g LIMIT 50%;

@@ -1,0 +1,1 @@
+SELECT ngrams('😁😈😁😈', 3);

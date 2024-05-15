@@ -72,3 +72,12 @@ CREATE TABLE integers(i INTEGER);
 INSERT INTO integers VALUES (1), (2), (3), (NULL);
 CREATE TABLE groups(i INTEGER, j INTEGER);
 INSERT INTO groups VALUES (1, 1), (2, 1), (3, 2), (NULL, 2);
+INSERT INTO integers VALUES (1), (2), (3), (5), (NULL);
+CREATE VIEW intlists AS SELECT * FROM (VALUES
+	(1, [1]),
+	(2, [NULL]),
+	(3, []),
+	(4, [2, 3]),
+	(5, [9,10,11]),
+	(NULL::INTEGER, [13])
+	) lv(pk, p);

@@ -321,3 +321,5 @@ create macro information_schema.foo(a) as a;
 create table information_schema.integers(i int);
 INSERT INTO integers VALUES (1);
 CREATE MACRO one() AS (SELECT 1);
+DROP MACRO one;
+CREATE MACRO having_macro(x) AS (SELECT * FROM integers GROUP BY a HAVING a = x);

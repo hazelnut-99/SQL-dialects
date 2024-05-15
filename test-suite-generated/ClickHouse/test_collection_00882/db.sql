@@ -1,12 +1,25 @@
-DROP TABLE IF EXISTS t1_00844;
-DROP TABLE IF EXISTS t2_00844;
-CREATE TABLE IF NOT EXISTS t1_00844 (
-f1 UInt32,
-f2 String
-) ENGINE = MergeTree ORDER BY (f1);
-CREATE TABLE IF NOT EXISTS t2_00844 (
-f1 String,
-f3 String
-) ENGINE = MergeTree ORDER BY (f1);
-insert into t1_00844 values(1,'1');
-insert into t2_00844 values('1','name1');
+DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS any_left_join;
+DROP TABLE IF EXISTS any_inner_join;
+DROP TABLE IF EXISTS any_right_join;
+DROP TABLE IF EXISTS any_full_join;
+DROP TABLE IF EXISTS semi_left_join;
+DROP TABLE IF EXISTS semi_right_join;
+DROP TABLE IF EXISTS anti_left_join;
+DROP TABLE IF EXISTS anti_right_join;
+CREATE TABLE t1 (x UInt32, str String) engine = Memory;
+CREATE TABLE any_left_join (x UInt32, s String) engine = Join(ANY, LEFT, x);
+CREATE TABLE any_inner_join (x UInt32, s String) engine = Join(ANY, INNER, x);
+CREATE TABLE any_right_join (x UInt32, s String) engine = Join(ANY, RIGHT, x);
+CREATE TABLE semi_left_join (x UInt32, s String) engine = Join(SEMI, LEFT, x);
+CREATE TABLE semi_right_join (x UInt32, s String) engine = Join(SEMI, RIGHT, x);
+CREATE TABLE anti_left_join (x UInt32, s String) engine = Join(ANTI, LEFT, x);
+CREATE TABLE anti_right_join (x UInt32, s String) engine = Join(ANTI, RIGHT, x);
+INSERT INTO t1 (x, str) VALUES (0, 'a1'), (1, 'a2'), (2, 'a3'), (3, 'a4'), (4, 'a5');
+INSERT INTO any_left_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO any_inner_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO any_right_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO semi_left_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO semi_right_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO anti_left_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');
+INSERT INTO anti_right_join (x, s) VALUES (2, 'b1'), (2, 'b2'), (4, 'b3'), (4, 'b4'), (4, 'b5'), (5, 'b6');

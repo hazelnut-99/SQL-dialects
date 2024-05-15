@@ -1,0 +1,1 @@
+SELECT JSONExtractBool('-1');

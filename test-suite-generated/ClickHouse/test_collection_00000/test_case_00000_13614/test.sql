@@ -1,0 +1,1 @@
+SELECT 693961 AS u, toInt32(u) AS s, fromDaysSinceYearZero32(u), fromDaysSinceYearZero32(materialize(u)), fromDaysSinceYearZero32(s), fromDaysSinceYearZero32(materialize(s));

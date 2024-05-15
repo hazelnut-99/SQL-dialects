@@ -1,1 +1,0 @@
-SELECT 'Standalone lambda';

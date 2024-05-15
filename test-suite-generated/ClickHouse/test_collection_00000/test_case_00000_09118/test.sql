@@ -1,0 +1,1 @@
+SELECT CAST('F', 'Bool');

@@ -1,4 +1,5 @@
-create table values_01564(
-    a int,
-    constraint c1 check a < 10) engine Memory;
-insert into values_01564 values (1);
+DROP TABLE IF EXISTS test_tb;
+CREATE TABLE test_tb (a UInt64, s String) ENGINE = MergeTree() ORDER BY a;
+DROP VIEW IF EXISTS test_view_tb;
+CREATE MATERIALIZED VIEW test_view_tb ENGINE = MergeTree() ORDER BY a AS SELECT * FROM test_tb;
+INSERT INTO test_tb VALUES (1, '1'), (2, '2'), (3, '3');

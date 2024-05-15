@@ -1,1 +1,0 @@
-SELECT * FROM constraint_constant_nullable_expression_that_contains_null;

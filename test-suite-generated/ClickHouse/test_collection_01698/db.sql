@@ -1,12 +1,8 @@
-DROP TABLE IF EXISTS data_01285;
-CREATE TABLE data_01285 (
-    key   Int,
-    value SimpleAggregateFunction(max, Nullable(Int)),
-    INDEX value_idx assumeNotNull(value) TYPE minmax GRANULARITY 1
+DROP TABLE IF EXISTS constraint_on_nullable_type;
+CREATE TABLE constraint_on_nullable_type
+(
+    `id` Nullable(UInt64),
+    CONSTRAINT `c0` CHECK `id` = 1
 )
-ENGINE=AggregatingMergeTree()
-ORDER BY key;
-INSERT INTO data_01285 SELECT 1, number FROM numbers(2);
-INSERT INTO data_01285 SELECT 1, number FROM numbers(4);
-OPTIMIZE TABLE data_01285 FINAL;
-OPTIMIZE TABLE data_01285 FINAL;
+ENGINE = TinyLog();
+INSERT INTO constraint_on_nullable_type VALUES (1);

@@ -40,3 +40,10 @@ insert into tbl VALUES
 	(2, 20, 1),
 	(3, 30, 2);
 insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = excluded.k;
+insert into tbl VALUES (4,2,3), (3,5,10) ON CONFLICT (i) DO NOTHING;
+insert into tbl VALUES
+	(3,1,5),
+ON CONFLICT (i) DO UPDATE SET
+	k = excluded.k;
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) WHERE k >= 5 DO UPDATE SET k = 1;

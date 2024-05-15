@@ -1919,3 +1919,32 @@ INSERT INTO test24 VALUES
 ([{'l1': [{'i': 0}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1}]}, {'l1': [{'i': NULL}]}]),
 ([{'l1': [{'i': 1}]}, {'l1': [{'i': NULL}]}, {'l1': [{'i': NULL}]}]);
+DROP TABLE test0;
+DROP TABLE test2;
+DROP TABLE test3;
+DROP TABLE test4;
+DROP TABLE test10;
+DROP TABLE test11;
+DROP TABLE test13;
+DROP TABLE test20;
+DROP TABLE test22;
+DROP TABLE test24;
+CREATE TABLE test0 (i uhugeint[]);
+INSERT INTO test0 VALUES ([2]), ([1]), ([1, 2]), ([]), ([2, 2]), ([NULL]), ([2, 3]);
+INSERT INTO test0 VALUES (NULL);
+CREATE TABLE test2 (i uhugeint[][]);
+INSERT INTO test2 VALUES ([[2]]), ([[1]]), ([NULL, []]), ([[1], [2]]), ([]), ([[]]), ([[2], [2]]), ([NULL]), (NULL), ([[2], [3]]);
+CREATE TABLE test3 (i uhugeint[][]);
+INSERT INTO test3 VALUES ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], []]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, 1]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, NULL]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [5, 5, 5, 5, 2]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [NULL]]), ([[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], NULL]);
+CREATE TABLE test4 (i uhugeint[][]);
+INSERT INTO test4 VALUES ([[NULL, NULL, 0], [1, NULL, 1]]), ([[NULL, NULL, 1]]), ([[NULL, NULL, 0], [1, NULL, 0]]), ([[0, NULL, NULL, 1]]), ([[0, NULL, NULL, 0]]);
+CREATE TABLE test10 (s STRUCT(i uhugeint, j uhugeint));
+INSERT INTO test10 values
+({'i': 2, 'j': NULL}),
+({'i': 1, 'j': NULL}),
+({'i': 2, 'j': 3}),
+({'i': 1, 'j': 2}),
+({'i': 2, 'j': 2}),
+({'i': NULL, 'j': NULL}),
+(NULL),
+({'i': 2, 'j': 3});

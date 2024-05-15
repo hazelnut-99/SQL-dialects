@@ -1,1 +1,0 @@
-SELECT FIRST(LIST_EXTRACT(l, 1)) FROM list_window GROUP BY g ORDER BY g;

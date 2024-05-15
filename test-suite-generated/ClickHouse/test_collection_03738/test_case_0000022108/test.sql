@@ -1,1 +1,0 @@
-SELECT age('second', toDate('2017-12-31'), toDateTime('2016-01-01 00:00:00', 'UTC'), 'UTC');

@@ -1,7 +1,3 @@
-drop table if exists data_01292;
-create table data_01292 (
-    key Int,
-    index key_idx (key) type minmax granularity 1
-) Engine=MergeTree() ORDER BY (key+0);
-insert into data_01292 values (1);
-optimize table data_01292 final;
+DROP TABLE IF EXISTS join_tbl;
+CREATE TABLE join_tbl (`id` String, `name` String, lcname LowCardinality(String)) ENGINE = Join(any, left, id);
+INSERT INTO join_tbl VALUES ('xxx', 'yyy', 'yyy');

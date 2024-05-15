@@ -1,1 +1,0 @@
-select '------cast to String----';

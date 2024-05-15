@@ -1,1 +1,0 @@
-SELECT COUNT(*) FROM range(1) UNION SELECT COUNT(*) FROM range(1);

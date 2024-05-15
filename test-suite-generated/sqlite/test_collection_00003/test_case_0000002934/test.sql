@@ -1,4 +1,0 @@
-SELECT d3+134, d8+555
-  FROM t8, t3
- WHERE 811=e8
-   AND a3 in (895,393,282,335);

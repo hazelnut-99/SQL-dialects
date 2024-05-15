@@ -1,1 +1,0 @@
-SELECT sum(1) WHERE 42=0;

@@ -1,1 +1,0 @@
-SELECT '====== remove column default ======';

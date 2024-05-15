@@ -1,16 +1,3 @@
-DROP TABLE IF EXISTS table_for_rename;
-CREATE TABLE table_for_rename
-(
-  date Date,
-  key UInt64,
-  value1 String,
-  value2 String,
-  value3 String DEFAULT concat(value1, ' + ', value2) 
-)
-ENGINE = MergeTree()
-PARTITION BY date
-ORDER BY key;
-INSERT INTO table_for_rename (date, key, value1, value2) SELECT toDate('2019-10-01') + number % 3, number, toString(number), toString(number + 1) from numbers(9);
-ALTER TABLE table_for_rename RENAME COLUMN value1 TO value4;
-ALTER TABLE table_for_rename RENAME COLUMN value2 TO value5;
-SHOW CREATE TABLE table_for_rename;
+drop table if exists t;
+create table t(i8 Int8, i16 Int16, i32 Int32, i64 Int64) engine Memory;
+insert into t values (-1, -1, -1, -1), (-2, -2, -2, -2), (-3, -3, -3, -3), (-4, -4, -4, -4), (-5, -5, -5, -5);

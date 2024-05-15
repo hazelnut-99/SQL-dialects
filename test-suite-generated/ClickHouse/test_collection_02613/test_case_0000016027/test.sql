@@ -1,1 +1,0 @@
-SELECT 'uniqTheta complex types';

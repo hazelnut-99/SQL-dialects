@@ -1,0 +1,1 @@
+SELECT [concat(NULL, arrayJoin([]))];

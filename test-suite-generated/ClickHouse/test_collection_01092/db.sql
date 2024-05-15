@@ -1,7 +1,23 @@
-DROP TABLE IF EXISTS t_enum8;
-CREATE TABLE t_enum8( x Enum('hello' = 1, 'world' = 2) ) ENGINE = TinyLog;
-INSERT INTO t_enum8 Values('hello'),('world'),('hello');
-DROP TABLE t_enum8;
-DROP TABLE IF EXISTS t_enum16;
-CREATE TABLE t_enum16( x Enum('hello' = 1, 'world' = 128) ) ENGINE = TinyLog;
-INSERT INTO t_enum16 Values('hello'),('world'),('hello');
+DROP DATABASE IF EXISTS database_for_dict;
+CREATE DATABASE database_for_dict;
+DROP TABLE IF EXISTS database_for_dict.dict_source;
+CREATE TABLE database_for_dict.dict_source (id UInt64, parent_id UInt64, value String) ENGINE = Memory;
+INSERT INTO database_for_dict.dict_source VALUES (1, 0, 'hello'), (2, 1, 'world'), (3, 2, 'upyachka'), (11, 22, 'a'), (22, 11, 'b');
+DROP DICTIONARY IF EXISTS database_for_dict.dictionary_with_hierarchy;
+CREATE DICTIONARY database_for_dict.dictionary_with_hierarchy
+(
+    id UInt64, parent_id UInt64 HIERARCHICAL, value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(host 'localhost' port tcpPort() user 'default' db 'database_for_dict' table 'dict_source'))
+LAYOUT(HASHED())
+LIFETIME(MIN 1 MAX 1);
+DROP DICTIONARY IF EXISTS database_for_dict.dictionary_with_hierarchy;
+CREATE DICTIONARY database_for_dict.dictionary_with_hierarchy
+(
+    id UInt64, parent_id UInt64 HIERARCHICAL, value String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(host 'localhost' port tcpPort() user 'default' db 'database_for_dict' table 'dict_source'))
+LAYOUT(FLAT())
+LIFETIME(MIN 1 MAX 1);

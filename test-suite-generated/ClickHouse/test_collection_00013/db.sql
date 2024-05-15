@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS addresses;
+CREATE TABLE addresses(addr UInt32) ENGINE = Memory;
+INSERT INTO addresses(addr) VALUES (1297626935), (2130706433), (3254522122);

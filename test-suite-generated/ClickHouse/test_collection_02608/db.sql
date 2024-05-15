@@ -1,4 +1,8 @@
-DROP TABLE IF EXISTS group_by_pk;
-CREATE TABLE group_by_pk (k UInt64, v UInt64)
-ENGINE = MergeTree ORDER BY k PARTITION BY v % 50;
-INSERT INTO group_by_pk SELECT number / 100, number FROM numbers(1000);
+DROP TABLE IF EXISTS 02483_substitute_udf;
+DROP FUNCTION IF EXISTS 02483_plusone;
+DROP FUNCTION IF EXISTS 02483_plustwo;
+DROP FUNCTION IF EXISTS 02483_plusthree;
+CREATE FUNCTION 02483_plusone AS (a) -> a + 1;
+CREATE TABLE 02483_substitute_udf (id UInt32, number UInt32 DEFAULT 02483_plusone(id)) ENGINE=MergeTree() ORDER BY id;
+DESC TABLE 02483_substitute_udf;
+INSERT INTO 02483_substitute_udf (id, number) VALUES (1, NULL);

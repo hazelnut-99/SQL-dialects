@@ -42,3 +42,13 @@ CREATE TABLE tbl_ints AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY[6] AS col_b;
 INSERT INTO tbl_ints VALUES (ARRAY[4, 5], ARRAY[7, 8]);
 CREATE TABLE tbl_mix AS SELECT ARRAY[1, 2, 3] AS col_a, ARRAY['a'] AS col_b;
 INSERT INTO tbl_mix VALUES (ARRAY[4, 5], ARRAY['b', 'c']);
+WITH tbl AS (SELECT [{'a': 1, 'b': 'oh no!'}] AS c)
+SELECT a, b, c FROM tbl, (SELECT UNNEST(c, recursive := TRUE));
+WITH tbl AS (SELECT [{'a': 1, 'b': 2}] as c)
+SELECT a, b, c FROM tbl, (SELECT UNNEST(c, recursive := TRUE));
+CREATE TABLE test(s VARCHAR);
+INSERT INTO test VALUES ('aaa');
+EXPLAIN SELECT regexp_matches(s, 'aa') FROM test;
+EXPLAIN SELECT contains(s, 'aa') FROM test;
+EXPLAIN SELECT regexp_matches(s, 'a') FROM test;
+EXPLAIN SELECT contains(s, 'a') FROM test;

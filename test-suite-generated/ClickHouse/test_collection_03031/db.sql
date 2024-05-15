@@ -1,7 +1,12 @@
-DROP TABLE IF EXISTS test_data;
-CREATE TABLE test_data (
-    col1 Nullable(String),
-    col2 Nullable(String),
-    col3 Nullable(String)
-) ENGINE = Memory;
-INSERT INTO test_data VALUES ('val1', NULL, 'val3');
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab
+(
+    `machine_id` UInt64,
+    `name` String,
+    `timestamp` DateTime
+)
+ENGINE = MergeTree
+PARTITION BY toYYYYMM(timestamp)
+ORDER BY machine_id;
+insert into tab(machine_id, name, timestamp)
+select 1, 'a_name', '2022-11-24 12:00:00';

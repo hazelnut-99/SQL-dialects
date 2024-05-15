@@ -2704,3 +2704,5 @@ drop table test;
 create table test as (select range i from range(100000));
 drop table test;
 create table test as (select range i from range(100000));
+drop table test;
+create table test as (select range i from range(100000));

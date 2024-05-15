@@ -1,22 +1,22 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
+DROP DATABASE IF EXISTS 02563_db;
+CREATE DATABASE 02563_db;
+DROP TABLE IF EXISTS 02563_db.test_merge_table_1;
+CREATE TABLE 02563_db.test_merge_table_1
 (
     id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
+    value String
+) ENGINE=MergeTree ORDER BY id;
+INSERT INTO 02563_db.test_merge_table_1 VALUES (0, 'Value_0');
+DROP TABLE IF EXISTS 02563_db.test_merge_table_2;
+CREATE TABLE 02563_db.test_merge_table_2
 (
     id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
+    value String
+) ENGINE=MergeTree ORDER BY id;
+INSERT INTO 02563_db.test_merge_table_2 VALUES (1, 'Value_1');
+DROP TABLE IF EXISTS 02563_db.test_merge_table;
+CREATE TABLE 02563_db.test_merge_table
+(
+    id UInt64,
+    value String
+) ENGINE=Merge(02563_db, '^test_merge_table');

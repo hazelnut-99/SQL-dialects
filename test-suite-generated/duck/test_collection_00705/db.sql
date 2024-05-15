@@ -15,3 +15,10 @@ INSERT INTO integers VALUES (1, 2, 3);
 CREATE TABLE vals AS SELECT * FROM (
 	VALUES (1, 'hello'), (NULL, '2'), (3, NULL)
 ) tbl(a, b);
+CREATE TABLE b(i row(t int));
+DROP TABLE IF EXISTS exprtest;
+CREATE TABLE exprtest (a tinyint, b tinyint);
+INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);
+DROP TABLE IF EXISTS exprtest;
+CREATE TABLE exprtest (a smallint, b smallint);
+INSERT INTO exprtest VALUES (42, 10), (43, 100), (NULL, 1), (45, 0);

@@ -1,1 +1,0 @@
-SELECT 1 WHERE 10 != NOT ( NOT 10);

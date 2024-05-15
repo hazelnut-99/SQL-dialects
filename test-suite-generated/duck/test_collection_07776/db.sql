@@ -599,3 +599,218 @@ CREATE TABLE testing AS
 drop table a;
 create table a as select range%2 j, range%3==0 AS i from range(1, 5, 1);
 create table quantiles as select range r from range(10) union all values (NULL), (NULL), (NULL);
+WITH t(i, p, f) AS (VALUES
+	(0, 1, 1),
+	(1, 1, 1),
+	(2, 1, 1),
+	(3, 3, 1),
+	(4, 1, 1),
+	(5, 3, 1)
+)
+SELECT i, MEDIAN(i) OVER (ORDER BY i ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, NULL, 1, 2),
+	(2, NULL, 1, 2),
+	(3, NULL, 1, 2),
+	(4, NULL, 1, 2),
+	(5, NULL, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, MEDIAN(i) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 1),
+	(1, 1, 1, 1),
+	(2, 2, 1, 1),
+	(3, 0, 1, 1),
+	(4, 1, 1, 1),
+	(5, 2, 1, 1)
+)
+SELECT r, QUANTILE_DISC(i, 0.5) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, NULL, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 3, 1, 2),
+	(4, 4, 1, 2),
+	(5, 5, 1, 2)
+)
+SELECT r, QUANTILE_DISC(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+WITH t(r, i, p, f) AS (VALUES
+	(0, 0, 1, 2),
+	(1, 1, 1, 2),
+	(2, 2, 1, 2),
+	(3, 0, 1, 2),
+	(4, 1, 1, 2),
+	(5, 2, 1, 2)
+)
+SELECT r, QUANTILE_CONT(i, [0.25, 0.5, 0.75]) OVER (ORDER BY r ROWS BETWEEN p PRECEDING and f FOLLOWING)
+FROM t
+ORDER BY 1;
+create table mads as select range r from range(20) union all values (NULL), (NULL), (NULL);
+CREATE TABLE coverage AS SELECT * FROM (VALUES
+	(1), (2), (3), (1)
+	) tbl(r);
+create table tenk1d(ten int4, four int4);
+insert into tenk1d values (0,0), (1,1), (3,3), (2,2), (4,2), (9,1), (4,0), (7,3), (0,2), (2,0), (5,1), (1,3), (3,1), (6,0), (8,0), (9,3), (8,2), (6,2), (7,1), (5,3);

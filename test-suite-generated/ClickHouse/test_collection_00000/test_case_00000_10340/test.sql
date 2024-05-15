@@ -1,0 +1,1 @@
+SELECT 'Test the default index granularity for vector search indexes (CREATE TABLE AND ALTER TABLE), should be 100 million for Annoy and USearch';

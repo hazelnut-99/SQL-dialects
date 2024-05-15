@@ -1,6 +1,18 @@
-drop table if exists projection_test;
-drop row policy if exists filter on projection_test;
-drop table if exists projection_test;
-drop table if exists projection_without_key;
-create table projection_without_key (key UInt32, PROJECTION x (SELECT max(key))) engine MergeTree order by key;
-insert into projection_without_key select number from numbers(1000);
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers
+(    
+    FirstName Nullable(String),
+    LastName String, 
+    Occupation String,
+    Education String,
+    Age Nullable(UInt8)
+) ENGINE = Memory;
+INSERT INTO Customers VALUES  ('Theodore','Diaz','Skilled Manual','Bachelors',28),('Stephanie','Cox','Management abcd defg','Bachelors',33),('Peter','Nara','Skilled Manual','Graduate Degree',26),('Latoya','Shen','Professional','Graduate Degree',25),('Apple','','Skilled Manual','Bachelors',28),(NULL,'why','Professional','Partial College',38);
+Select '-- #1 --' ;
+Select '-- #2 --' ;
+Select '-- #3 --' ;
+Select '-- #4 --' ;
+Select '-- #5 --' ;
+Select '-- #6 --' ;
+Select '-- #7 --' ;
+Select '-- #8 --' ;

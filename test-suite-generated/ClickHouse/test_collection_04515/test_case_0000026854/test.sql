@@ -1,1 +1,0 @@
-select if(number % 2 = 0, materialize(map(3,4,5,6)), materialize(map(1,2))) from numbers(2);

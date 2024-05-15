@@ -1,1 +1,0 @@
-SELECT WIDTH_BUCKET(15, 15, 15, 15) FROM mytable WHERE count != 0;

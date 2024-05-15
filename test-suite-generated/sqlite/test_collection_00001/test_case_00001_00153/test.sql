@@ -1,0 +1,18 @@
+SELECT x31,x2,x45,x61,x41,x1,x12,x36,x52,x16,x25,x43,x33,x35,x26,x27
+  FROM t43,t31,t35,t61,t36,t52,t41,t2,t26,t25,t33,t45,t27,t1,t16,t12
+ WHERE b27=a2
+   AND b61=a12
+   AND a35=b33
+   AND a16=b31
+   AND a41=1
+   AND b35=a25
+   AND a43=b36
+   AND a61=b25
+   AND a33=b16
+   AND b26=a36
+   AND b2=a52
+   AND a27=b45
+   AND a31=b52
+   AND a45=b1
+   AND a41=b43
+   AND a26=b12;

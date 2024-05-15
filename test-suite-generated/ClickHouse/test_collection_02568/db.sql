@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS test_aggregation;
-CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4]), ([]), ([1,2,3]);
-DROP TABLE test_aggregation;
-CREATE TABLE test_aggregation (x Array(Decimal64(8))) ENGINE=TinyLog;
-INSERT INTO test_aggregation VALUES ([1,2,3,4]), ([]), ([1,2,3]);
+drop table if exists a;
+drop table if exists b;
+create table a (i int, j int) engine Log;
+create materialized view b engine Log as select countState(*) from a;
+insert into a values (1, 2);

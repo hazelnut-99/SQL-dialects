@@ -8,3 +8,6 @@ INSERT INTO tinyints VALUES (1), (10);
 CREATE TABLE smallints(i SMALLINT);
 INSERT INTO smallints VALUES (1), (10);
 INSERT INTO smallints VALUES (1000);
+INSERT INTO smallints VALUES (30000);
+CREATE TABLE smallints2 (j SMALLINT);
+INSERT INTO smallints2 VALUES (1), (10);

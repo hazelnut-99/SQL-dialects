@@ -1,1 +1,0 @@
-SELECT cast(3 AS VARCHAR);

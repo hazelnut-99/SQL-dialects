@@ -1,3 +1,21 @@
-DROP TABLE IF EXISTS ties;
-CREATE TABLE ties (a Int) ENGINE = Memory;
-INSERT INTO ties VALUES (1), (1), (2), (2), (2), (2) (3), (3);
+WITH
+	toDateTime64('2019-09-16 19:20:12.345678910', 3) AS dt64
+SELECT
+	dt64,
+	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
+	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
+	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));
+WITH
+	toDateTime64('2019-09-16 19:20:12.345678910', 6) AS dt64
+SELECT
+	dt64,
+	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
+	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
+	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));
+WITH
+	toDateTime64('2019-09-16 19:20:12.345678910', 9) AS dt64
+SELECT
+	dt64,
+	fromUnixTimestamp64Milli(toUnixTimestamp64Milli(dt64)),
+	fromUnixTimestamp64Micro(toUnixTimestamp64Micro(dt64)),
+	fromUnixTimestamp64Nano(toUnixTimestamp64Nano(dt64));

@@ -70,3 +70,12 @@ insert into issue1472 values
 create table issue1697 as
     select mod(b, 100) as a, b from (select b from range(10000) tbl(b)) t;
 CREATE TABLE integers(i INTEGER);
+CREATE TABLE t1 (id INTEGER, ch CHAR(1)) ;
+INSERT INTO t1 VALUES (1, 'A');
+INSERT INTO t1 VALUES (2, 'B');
+INSERT INTO t1 VALUES (NULL, 'B');
+create table strings as select i, i::varchar s, (i % 1023)::varchar ms, (i / 2023)::varchar ds from integers;
+CREATE  TABLE "data" ("Store" INTEGER, "Dept" INTEGER, "Date" DATE, "Weekly_Sales" DOUBLE, "IsHoliday" BOOLEAN);
+CREATE TABLE dbplyr_052 (x INTEGER, g DOUBLE, w int);
+INSERT INTO dbplyr_052 VALUES (1,1, 42),(2,1, 42),(3,1, 42),(2,2, 42),(3,2, 42),(4,2, 42);
+create table temp as select * from range(0, 10000) temp(x);

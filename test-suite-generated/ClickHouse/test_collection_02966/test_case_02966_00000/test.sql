@@ -1,0 +1,1 @@
+SELECT 'pure nullable result:';

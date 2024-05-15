@@ -1,19 +1,80 @@
-DROP TABLE IF EXISTS dictionary_source_en;
-DROP TABLE IF EXISTS dictionary_source_ru;
-DROP TABLE IF EXISTS dictionary_source_view;
-DROP DICTIONARY IF EXISTS flat_dictionary;
-CREATE TABLE dictionary_source_en
-(
-    id UInt64,
-    value String
-) ENGINE = TinyLog;
-INSERT INTO dictionary_source_en VALUES (1, 'One'), (2,'Two'), (3, 'Three');
-CREATE TABLE dictionary_source_ru
-(
-    id UInt64,
-    value String
-) ENGINE = TinyLog;
-INSERT INTO dictionary_source_ru VALUES (1, 'Один'), (2,'Два'), (3, 'Три');
-CREATE VIEW dictionary_source_view AS
-    SELECT id, dictionary_source_en.value as value_en, dictionary_source_ru.value as value_ru
-    FROM dictionary_source_en LEFT JOIN dictionary_source_ru USING (id);
+drop table if exists basic_types_02735;
+create temporary table basic_types_02735 as select * from generateRandom('
+    u8 UInt8,
+    u16 UInt16,
+    u32 UInt32,
+    u64 UInt64,
+    i8 Int8,
+    i16 Int16,
+    i32 Int32,
+    i64 Int64,
+    date Date,
+    date32 Date32,
+    datetime DateTime,
+    datetime64 DateTime64,
+    enum8 Enum8(''x'' = 1, ''y'' = 2, ''z'' = 3),
+    enum16 Enum16(''xx'' = 1000, ''yy'' = 2000, ''zz'' = 3000),
+    float32 Float32,
+    float64 Float64,
+    str String,
+    fstr FixedString(12),
+    u128 UInt128,
+    u256 UInt256,
+    i128 Int128,
+    i256 Int256,
+    decimal32 Decimal32(3),
+    decimal64 Decimal64(10),
+    decimal128 Decimal128(20),
+    decimal256 Decimal256(40),
+    ipv4 IPv4,
+    ipv6 IPv6') limit 10101;
+insert into function file(basic_types_02735.parquet) select * from basic_types_02735;
+desc file(basic_types_02735.parquet);
+drop table basic_types_02735;
+drop table if exists nullables_02735;
+create temporary table nullables_02735 as select * from generateRandom('
+    u16 Nullable(UInt16),
+    i64 Nullable(Int64),
+    datetime64 Nullable(DateTime64),
+    enum8 Nullable(Enum8(''x'' = 1, ''y'' = 2, ''z'' = 3)),
+    float64 Nullable(Float64),
+    str Nullable(String),
+    fstr Nullable(FixedString(12)),
+    i256 Nullable(Int256),
+    decimal256 Nullable(Decimal256(40)),
+    ipv6 Nullable(IPv6)') limit 10000;
+insert into function file(nullables_02735.parquet) select * from nullables_02735;
+drop table nullables_02735;
+drop table if exists arrays_02735;
+drop table if exists arrays_out_02735;
+create table arrays_02735 engine = Memory as select * from generateRandom('
+    u32 Array(UInt32),
+    i8 Array(Int8),
+    datetime Array(DateTime),
+    enum16 Array(Enum16(''xx'' = 1000, ''yy'' = 2000, ''zz'' = 3000)),
+    float32 Array(Float32),
+    str Array(String),
+    fstr Array(FixedString(12)),
+    u128 Array(UInt128),
+    decimal64 Array(Decimal64(10)),
+    ipv4 Array(IPv4),
+    msi Map(String, Int16),
+    tup Tuple(FixedString(3), Array(String), Map(Int8, Date))') limit 10000;
+insert into function file(arrays_02735.parquet) select * from arrays_02735;
+create temporary table arrays_out_02735 as arrays_02735;
+insert into arrays_out_02735 select * from file(arrays_02735.parquet);
+drop table arrays_02735;
+drop table arrays_out_02735;
+drop table if exists madness_02735;
+insert into function file(long_string_02735.parquet) select toString(range(number * 2000)) from numbers(2);
+drop table if exists other_encoders_02735;
+create temporary table other_encoders_02735 as select number, number*2 from numbers(10000);
+insert into function file(datetime64_02735.parquet) select
+    toDateTime64(number / 1e3, 3) as ms,
+    toDateTime64(number / 1e6, 6) as us,
+    toDateTime64(number / 1e9, 9) as ns,
+    toDateTime64(number / 1e2, 2) as cs,
+    toDateTime64(number, 0) as s,
+    toDateTime64(number / 1e7, 7) as dus
+    from numbers(2000);
+desc file(datetime64_02735.parquet);

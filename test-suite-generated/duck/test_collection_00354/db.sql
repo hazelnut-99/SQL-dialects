@@ -382,3 +382,5 @@ CREATE TABLE test0 (job VARCHAR, name VARCHAR);
 INSERT INTO test0 VALUES ('Shipping and Receiving Supervisor', 'Ackerman'), ('Shipping and Receiving Clerk', 'Berndt'), ('Shipping and Receiving Clerk', 'Kuppa'), ('Production Supervisor - WC60', 'Brown'), ('Production Supervisor - WC60', 'Campbell'), ('Production Supervisor - WC40', 'Dsa');
 CREATE TABLE test1 (s VARCHAR);
 INSERT INTO test1 VALUES ('2'), (NULL), ('3555555555552'), ('1'), ('355555555556'), ('10'), ('3555555555553'), ('3555555555551');
+CREATE TABLE test2 AS (SELECT CAST(range AS VARCHAR) r, random() rand FROM range(10000));
+CREATE TABLE test2_1 AS (SELECT * FROM test2 ORDER BY r);

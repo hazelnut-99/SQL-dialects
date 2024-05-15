@@ -1,1 +1,0 @@
-SELECT (dummy IN (1)) AS x GROUP BY x;

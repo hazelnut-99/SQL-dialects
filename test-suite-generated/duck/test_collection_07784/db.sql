@@ -852,3 +852,75 @@ EXPLAIN
 SELECT i, SUM(i) OVER() FROM integers;
 EXPLAIN
 SELECT i, COUNT(*) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT i, SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM integers;
+EXPLAIN
+SELECT SUM(s) FROM (
+	SELECT SUM(i) OVER(ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) s
+	FROM range(5000) tbl(i)
+);
+explain select first_value(i IGNORE NULLS) over () from integers;
+explain select first_value(i) over (), last_value(i) over () from integers;
+explain select last_value(i) over (), first_value(i) over () from integers;
+CREATE TABLE v1(id bigint);
+CREATE TABLE v2(id bigint);
+INSERT INTO v1 VALUES (11),  (12),  (13);
+INSERT INTO v2 VALUES (21),  (22);
+CREATE VIEW vertices_view AS
+  SELECT * FROM v1
+  UNION ALL
+  SELECT * FROM v2;
+WITH RECURSIVE rte AS (
+	SELECT 1 l, 1::BIGINT r
+	UNION  ALL
+	SELECT l+1, row_number() OVER()
+	FROM rte
+	WHERE l < 3
+)
+SELECT * FROM rte;
+PREPARE sw1 AS
+	SELECT i, row_number() OVER() AS row_no
+	FROM range(10, 20) tbl(i)
+	QUALIFY row_no <= ?::BIGINT
+;
+EXECUTE sw1(10);
+EXECUTE sw1(2);
+WITH t AS (
+	SELECT i, RANK() OVER (ORDER BY i % 50) AS d
+	FROM range(3000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+WITH t AS (
+	SELECT i, RANK() OVER (PARTITION BY i // 3000 ORDER BY i % 50) AS d
+	FROM range(9000) tbl(i)
+), w AS (
+	SELECT d, COUNT(*) as c
+	FROM t
+	GROUP BY ALL
+)
+SELECT COUNT(*), MIN(d), MAX(d), MIN(c), MAX(c)
+FROM w;
+INSERT INTO t1 VALUES
+  (5, 10), (10, 20), (13, 26), (13, 26),
+  (15, 30), (20, 40), (22,80), (30, 90);
+CREATE TABLE t_time(t TIME);
+INSERT INTO t_time VALUES 
+	('12:30:00'),
+    ('22:30:00'),
+    ('13:30:00'),
+    ('01:30:00'),
+    ('15:30:00'),
+    ('20:30:00'),
+    ('04:30:00'),
+    ('06:30:00'),
+    ('18:30:00'),
+    ('21:30:00'),
+    ('00:30:00'),
+    ('00:31:00');

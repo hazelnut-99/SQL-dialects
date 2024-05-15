@@ -1,1 +1,0 @@
-SELECT CAST(14289 AS Date);

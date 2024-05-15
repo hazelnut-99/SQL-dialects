@@ -1,3 +1,5 @@
-drop table if exists tab_00717;
-create table tab_00717 (a String, b StringWithDictionary) engine = MergeTree order by a;
-insert into tab_00717 values ('a_1', 'b_1'), ('a_2', 'b_2');
+DROP TABLE IF EXISTS mt_table;
+CREATE TABLE mt_table (d Date, key UInt64, data String) ENGINE = MergeTree() PARTITION BY toYYYYMM(d) ORDER BY key;
+INSERT INTO mt_table VALUES (toDate('2018-01-01'), 1, 'old');
+INSERT INTO mt_table VALUES (toDate('2019-01-02'), 1, 'Hello'), (toDate('2019-01-02'), 2, 'World');
+INSERT INTO mt_table VALUES (toDate('2019-01-02'), 3, 'quick'), (toDate('2019-01-02'), 4, 'brown');

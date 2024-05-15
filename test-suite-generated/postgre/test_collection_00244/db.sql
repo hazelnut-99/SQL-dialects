@@ -159,3 +159,464 @@ begin
     return $1;
 end;
 $$ language plpgsql;
+CREATE FUNCTION reraise_test() RETURNS void AS $$
+BEGIN
+   BEGIN
+       RAISE syntax_error;
+   EXCEPTION
+       WHEN syntax_error THEN
+           BEGIN
+               raise notice 'exception % thrown in inner block, reraising', sqlerrm;
+               RAISE;
+           EXCEPTION
+               WHEN OTHERS THEN
+                   raise notice 'RIGHT - exception % caught in inner block', sqlerrm;
+           END;
+   END;
+EXCEPTION
+   WHEN OTHERS THEN
+       raise notice 'WRONG - exception % caught in outer block', sqlerrm;
+END;
+$$ LANGUAGE plpgsql;
+create function void_return_expr() returns void as $$
+begin
+    perform 2+2;
+end;$$ language plpgsql;
+create function missing_return_expr() returns int as $$
+begin
+    perform 2+2;
+end;$$ language plpgsql;
+drop function void_return_expr();
+drop function missing_return_expr();
+create table eifoo (i integer, y integer);
+create type eitype as (i integer, y integer);
+create or replace function execute_into_test(varchar) returns record as $$
+declare
+    _r record;
+    _rt eifoo%rowtype;
+    _v eitype;
+    i int;
+    j int;
+    k int;
+begin
+    execute 'insert into '||$1||' values(10,15)';
+    execute 'select (row).* from (select row(10,1)::eifoo) s' into _r;
+    raise notice '% %', _r.i, _r.y;
+    execute 'select * from '||$1||' limit 1' into _rt;
+    raise notice '% %', _rt.i, _rt.y;
+    execute 'select *, 20 from '||$1||' limit 1' into i, j, k;
+    raise notice '% % %', i, j, k;
+    execute 'select 1,2' into _v;
+    return _v;
+end; $$ language plpgsql;
+drop table eifoo cascade;
+drop type eitype cascade;
+create function excpt_test1() returns void as $$
+begin
+    raise notice '% %', sqlstate, sqlerrm;
+end; $$ language plpgsql;
+create function excpt_test2() returns void as $$
+begin
+    begin
+        begin
+            raise notice '% %', sqlstate, sqlerrm;
+        end;
+    end;
+end; $$ language plpgsql;
+create function excpt_test3() returns void as $$
+begin
+    begin
+        raise exception 'user exception';
+    exception when others then
+	    raise notice 'caught exception % %', sqlstate, sqlerrm;
+	    begin
+	        raise notice '% %', sqlstate, sqlerrm;
+	        perform 10/0;
+        exception
+            when substring_error then
+                raise notice 'unexpected exception: % %', sqlstate, sqlerrm;
+	        when division_by_zero then
+	            raise notice 'caught exception % %', sqlstate, sqlerrm;
+	    end;
+	    raise notice '% %', sqlstate, sqlerrm;
+    end;
+end; $$ language plpgsql;
+create function excpt_test4() returns text as $$
+begin
+	begin perform 1/0;
+	exception when others then return sqlerrm; end;
+end; $$ language plpgsql;
+drop function excpt_test1();
+drop function excpt_test2();
+drop function excpt_test3();
+drop function excpt_test4();
+create function raise_exprs() returns void as $$
+declare
+    a integer[] = '{10,20,30}';
+    c varchar = 'xyz';
+    i integer;
+begin
+    i := 2;
+    raise notice '%; %; %; %; %; %', a, a[i], c, (select c || 'abc'), row(10,'aaa',NULL,30), NULL;
+end;$$ language plpgsql;
+drop function raise_exprs();
+create function multi_datum_use(p1 int) returns bool as $$
+declare
+  x int;
+  y int;
+begin
+  select into x,y unique1/p1, unique1/$1 from tenk1 group by unique1/p1;
+  return x = y;
+end$$ language plpgsql;
+create temp table foo (f1 int, f2 int);
+insert into foo values (1,2), (3,4);
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  insert into foo values(5,6) returning * into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  insert into foo values(7,8),(9,10) returning * into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'insert into foo values(5,6) returning *' into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'insert into foo values(7,8),(9,10) returning *' into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 = 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 = 0 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 > 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = 0' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+drop function stricttest();
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 = p1 and f1::text = p3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := $a$'Valame Dios!' dijo Sancho; 'no le dije yo a vuestra merced que mirase bien lo que hacia?'$a$;
+begin
+  select * from foo where f1 = p1 and f1::text = p3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 > 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = $1 or f1::text = $2' using 0, 'foo' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > $1' using 1 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+#print_strict_params off
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+#print_strict_params on
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function shadowtest(in1 int)
+	returns table (out1 int) as $$
+declare
+in1 int;
+out1 int;
+begin
+end
+$$ language plpgsql;
+create or replace function shadowtest(in1 int)
+	returns table (out1 int) as $$
+declare
+in1 int;
+out1 int;
+begin
+end
+$$ language plpgsql;
+drop function shadowtest(int);
+create or replace function shadowtest()
+	returns void as $$
+declare
+f1 int;
+begin
+	declare
+	f1 int;
+	begin
+	end;
+end$$ language plpgsql;
+drop function shadowtest();
+create or replace function shadowtest(in1 int)
+	returns void as $$
+declare
+in1 int;
+begin
+	declare
+	in1 int;
+	begin
+	end;
+end$$ language plpgsql;
+drop function shadowtest(int);
+create or replace function shadowtest()
+	returns void as $$
+declare
+f1 int;
+c1 cursor (f1 int) for select 1;
+begin
+end$$ language plpgsql;
+drop function shadowtest();
+create or replace function shadowtest(f1 int)
+	returns boolean as $$
+declare f1 int; begin return 1; end $$ language plpgsql;
+create or replace function shadowtest(f1 int)
+	returns boolean as $$
+declare f1 int; begin return 1; end $$ language plpgsql;
+do $$
+declare x int;
+begin
+  select v from generate_series(1,2) g(v) into x;
+end;
+$$;
+do $$
+declare x int;
+begin
+  select v from generate_series(1,2) g(v) into x;
+end;
+$$;
+do $$
+declare
+  x int;
+  y int;
+begin
+  select 1 into x, y;
+  select 1,2 into x, y;
+  select 1,2,3 into x, y;
+end
+$$;
+do $$
+declare
+  x int;
+  y int;
+begin
+  select 1 into x, y;
+  select 1,2 into x, y;
+  select 1,2,3 into x, y;
+end
+$$;
+create table test_01(a int, b int, c int);
+alter table test_01 drop column a;
+insert into test_01 values(10,20);
+do $$
+declare
+  x int;
+  y int;
+begin
+  select * from test_01 into x, y; -- should be ok
+  raise notice 'ok';
+  select * from test_01 into x;    -- should to fail
+end;
+$$;
+do $$
+declare
+  t test_01;
+begin
+  select 1, 2 into t;  -- should be ok
+  raise notice 'ok';
+  select 1, 2, 3 into t; -- should fail;
+end;
+$$;
+do $$
+declare
+  t test_01;
+begin
+  select 1 into t; -- should fail;
+end;
+$$;
+drop table test_01;
+create function pl_qual_names (param1 int) returns void as $$
+<<outerblock>>
+declare
+  param1 int := 1;
+begin
+  <<innerblock>>
+  declare
+    param1 int := 2;
+  begin
+    raise notice 'param1 = %', param1;
+    raise notice 'pl_qual_names.param1 = %', pl_qual_names.param1;
+    raise notice 'outerblock.param1 = %', outerblock.param1;
+    raise notice 'innerblock.param1 = %', innerblock.param1;
+  end;
+end;
+$$ language plpgsql;
+drop function pl_qual_names(int);
+create type record_type as (x text, y int, z boolean);
+create function exc_using(int, text) returns int as $$
+declare i int;
+begin
+  for i in execute 'select * from generate_series(1,$1)' using $1+1 loop
+    raise notice '%', i;
+  end loop;
+  execute 'select $2 + $2*3 + length($1)' into i using $2,$1;
+  return i;
+end
+$$ language plpgsql;
+drop function exc_using(int, text);
+create or replace function exc_using(int) returns void as $$
+declare
+  c refcursor;
+  i int;
+begin
+  open c for execute 'select * from generate_series(1,$1)' using $1+1;
+  loop
+    fetch c into i;
+    exit when not found;
+    raise notice '%', i;
+  end loop;
+  close c;
+  return;
+end;
+$$ language plpgsql;
+drop function exc_using(int);
+create or replace function forc01() returns void as $$
+declare
+  c cursor(r1 integer, r2 integer)
+       for select * from generate_series(r1,r2) i;
+  c2 cursor
+       for select * from generate_series(41,43) i;
+begin
+  c := 'c';
+  c2 := 'c2';
+  for r in c(5,7) loop
+    raise notice '% from %', r.i, c;
+  end loop;
+  for r in c(9,10) loop
+    raise notice '% from %', r.i, c;
+  end loop;
+  for r in c2 loop
+    raise notice '% from %', r.i, c2;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  c2 := 'special_name';
+  for r in c2 loop
+    raise notice '% from %', r.i, c2;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  c2 := null;
+  for r in c2 loop
+    raise notice '%', r.i;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  return;
+end;
+$$ language plpgsql;
+create temp table forc_test as
+  select n as i, n as j from generate_series(1,10) n;
+drop function forc01();
+create table tabwithcols(a int, b int, c int, d int);
+insert into tabwithcols values(10,20,30,40),(50,60,70,80);
+alter table tabwithcols drop column b;
+alter table tabwithcols drop column d;
+alter table tabwithcols add column d int;
+drop table tabwithcols;
+create type compostype as (x int, y varchar);
+create or replace function compos() returns compostype as $$
+declare
+  v compostype;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+declare
+  v record;
+begin
+  v := (1, 'hello'::varchar);
+  return v;
+end;
+$$ language plpgsql;

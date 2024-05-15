@@ -1,34 +1,13 @@
-DROP DATABASE IF EXISTS 01913_db;
-CREATE DATABASE 01913_db ENGINE=Atomic;
-DROP TABLE IF EXISTS 01913_db.test_source_table_1;
-CREATE TABLE 01913_db.test_source_table_1
+DROP TABLE IF EXISTS defaults;
+CREATE TABLE defaults
 (
-    id UInt64,
-    value String
-) ENGINE=TinyLog;
-INSERT INTO 01913_db.test_source_table_1 VALUES (0, 'Value0');
-DROP DICTIONARY IF EXISTS 01913_db.test_dictionary;
-CREATE DICTIONARY 01913_db.test_dictionary
-(
-    id UInt64,
-    value String
-)
-PRIMARY KEY id
-LAYOUT(DIRECT())
-SOURCE(CLICKHOUSE(DB '01913_db' TABLE 'test_source_table_1'));
-DROP TABLE IF EXISTS 01913_db.test_source_table_2;
-CREATE TABLE 01913_db.test_source_table_2
-(
-    id UInt64,
-    value_1 String
-) ENGINE=TinyLog;
-INSERT INTO 01913_db.test_source_table_2 VALUES (0, 'Value1');
-REPLACE DICTIONARY 01913_db.test_dictionary
-(
-    id UInt64,
-    value_1 String
-)
-PRIMARY KEY id
-LAYOUT(HASHED())
-SOURCE(CLICKHOUSE(DB '01913_db' TABLE 'test_source_table_2'))
-LIFETIME(0);
+    u8 UInt8,
+    u16 UInt16,
+    u32 UInt32,
+    u64 UInt64,
+    i8 Int8,
+    i16 Int16,
+    i32 Int32,
+    i64 Int64
+) ENGINE = Memory();
+INSERT INTO defaults values (3, 12, 4, 56, 3, 12, -4, 56) (2, 10, 21, 20, 2, 10, -21, 20) (1, 4, 9, 5, 1, 4, -9, 5) (0, 5, 7, 7, 0, 5, -7, 7);

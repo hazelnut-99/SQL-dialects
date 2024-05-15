@@ -1,1 +1,0 @@
-SELECT 'test_cluster_two_shards_internal_replication prefer_localhost_replica=1';

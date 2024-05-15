@@ -1,13 +1,7 @@
-DROP TABLE IF EXISTS t64;
-CREATE TABLE t64
-(
-    date16 Date,
-    t_date16 Date Codec(T64, ZSTD),
-    date_32 Date32,
-    t_date32 Date32 Codec(T64, ZSTD)
-) ENGINE MergeTree() ORDER BY tuple();
-INSERT INTO t64 values ('1970-01-01', '1970-01-01', '1970-01-01', '1970-01-01');
-INSERT INTO t64 values ('2149-06-06', '2149-06-06', '2149-06-06', '2149-06-06');
-INSERT INTO t64 values ('2149-06-08', '2149-06-08', '2149-06-08', '2149-06-08');
-INSERT INTO t64 values ('1950-01-01', '1950-01-01', '1950-01-01', '1950-01-01');
-OPTIMIZE TABLE t64 FINAL;
+drop table if exists ttl;
+create table ttl (i Int, a Int, s String) engine = MergeTree order by i;
+insert into ttl values (1, 1, 'a') (2, 1, 'b') (3, 1, 'c') (4, 1, 'd');
+alter table ttl modify ttl a % 2 = 0 ? today() - 10 : toDate('2100-01-01');
+alter table ttl materialize ttl;
+alter table ttl update a = 0 where i % 2 = 0;
+drop table ttl;

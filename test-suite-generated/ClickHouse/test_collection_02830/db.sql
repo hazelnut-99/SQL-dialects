@@ -1,26 +1,3 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64,
-
-    weight UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
-DROP TABLE IF EXISTS test_table_signed_values;
-CREATE TABLE test_table_signed_values
-(
-    id UInt64,
-
-    value1 Int8,
-    value2 Int16,
-    value3 Int32,
-    value4 Int64,
-
-    weight UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_signed_values;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (col String) Engine=MergeTree ORDER BY col;
+INSERT INTO tab VALUES ('') ('12345') ('341Jons54326ton') ('A2222222') ('Fairdale') ('Faredale') ('Jon1s2o3n') ('Jonson') ('Jonston') ('M\acDonald22321') ('MacDonald') ('S3344mith0000') ('Smith');

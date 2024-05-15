@@ -1,7 +1,6 @@
-DROP TABLE IF EXISTS test_view_00740;
-DROP TABLE IF EXISTS test_nested_view_00740;
-DROP TABLE IF EXISTS test_joined_view_00740;
-CREATE VIEW test_00740 AS SELECT 1 AS N;
-CREATE VIEW test_view_00740 AS SELECT * FROM test_00740;
-CREATE VIEW test_nested_view_00740 AS SELECT * FROM (SELECT * FROM test_00740);
-CREATE VIEW test_joined_view_00740 AS SELECT *, N AS x FROM test_00740 ANY LEFT JOIN test_00740 USING N;
+DROP TABLE IF EXISTS constrained;
+CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = Null;
+INSERT INTO constrained VALUES ('https://www.censor.net/?q=upyachka'), ('ftp://censor.net/Hello'), (toValidUTF8('https://censor.net/te\xFFst'));
+DROP TABLE constrained;
+CREATE TABLE constrained (URL String, CONSTRAINT is_censor CHECK domainWithoutWWW(URL) = 'censor.net', CONSTRAINT is_utf8 CHECK isValidUTF8(URL)) ENGINE = Memory;
+INSERT INTO constrained VALUES ('https://www.censor.net/?q=upyachka'), ('ftp://censor.net/Hello'), (toValidUTF8('https://censor.net/te\xFFst'));

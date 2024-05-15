@@ -1,0 +1,4 @@
+SELECT b_num, isNull(b_num), toTypeName(b_num), b_num = 0, if(b_num = 0, 'fail', 'ok')
+FROM (SELECT 1 k, toInt8(1) a_num) AS x
+LEFT JOIN (SELECT 2 k, toInt8(1) b_num) AS y
+USING (k);

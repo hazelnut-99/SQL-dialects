@@ -1,14 +1,28 @@
-DROP TABLE IF EXISTS ttl_where;
-CREATE TABLE ttl_where
+DROP TABLE IF EXISTS dict_table;
+DROP TABLE IF EXISTS data_table;
+DROP DICTIONARY IF EXISTS dict;
+create table dict_table
 (
-    `d` Date,
-    `i` UInt32
+    `strField` String,
+    `dateField` Date,
+    `float64Field` Float64
+) Engine Log();
+insert into dict_table values ('SomeStr', toDate('2021-01-01'), 1.1), ('SomeStr2', toDate('2021-01-02'), 2.2);
+create dictionary dict
+(
+    `strField` String,
+    `dateField` Date,
+    `float64Field` Float64
 )
-ENGINE = MergeTree
-ORDER BY tuple()
-TTL d + toIntervalYear(10) DELETE WHERE i % 3 = 0,
-    d + toIntervalYear(40) DELETE WHERE i % 3 = 1;
-INSERT INTO ttl_where SELECT toDate('2000-10-10'), number FROM numbers(10);
-INSERT INTO ttl_where SELECT toDate('1970-10-10'), number FROM numbers(10);
-OPTIMIZE TABLE ttl_where FINAL;
-DROP TABLE ttl_where;
+PRIMARY KEY strField, dateField
+SOURCE (CLICKHOUSE(TABLE 'dict_table'))
+LIFETIME(MIN 300 MAX 360)
+LAYOUT (COMPLEX_KEY_HASHED());
+create table data_table
+(
+    `float64Field1` Float64,
+    `float64Field2` Float64,
+    `strField1` String,
+    `strField2` String
+) Engine Log();
+insert into data_table values (1.1, 1.2, 'SomeStr', 'SomeStr'), (2.1, 2.2, 'SomeStr2', 'SomeStr2');

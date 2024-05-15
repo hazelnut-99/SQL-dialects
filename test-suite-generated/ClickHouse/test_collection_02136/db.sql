@@ -1,2 +1,2 @@
-/* gap in error codes */
-SELECT errorCodeToName(0);
+DROP TABLE IF EXISTS insert_dedup_token1 SYNC;
+DROP TABLE IF EXISTS insert_dedup_token2 SYNC;

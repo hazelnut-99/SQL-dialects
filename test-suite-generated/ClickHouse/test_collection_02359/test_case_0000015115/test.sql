@@ -1,1 +1,0 @@
-select 'subqueries with OR';

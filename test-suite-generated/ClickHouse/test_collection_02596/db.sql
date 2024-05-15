@@ -1,44 +1,21 @@
-DROP TABLE IF EXISTS simple_key_dictionary_source_table;
-CREATE TABLE simple_key_dictionary_source_table
+CREATE TABLE argmaxstate_hex_small
 (
-    id UInt64,
-    value String,
-    value_nullable Nullable(String)
-) ENGINE = TinyLog;
-INSERT INTO simple_key_dictionary_source_table VALUES (1, 'First', 'First');
-INSERT INTO simple_key_dictionary_source_table VALUES (2, 'Second', NULL);
-INSERT INTO simple_key_dictionary_source_table VALUES (3, 'Third', 'Third');
-DROP DICTIONARY IF EXISTS simple_key_dictionary;
-CREATE DICTIONARY simple_key_dictionary
-(
-    id UInt64,
-    value String,
-    value_nullable Nullable(String)
+    `v` String,
+    `state` String
 )
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'simple_key_dictionary_source_table'))
-LAYOUT(DIRECT());
-DROP DICTIONARY simple_key_dictionary;
-DROP TABLE simple_key_dictionary_source_table;
-DROP TABLE IF EXISTS complex_key_dictionary_source_table;
-CREATE TABLE complex_key_dictionary_source_table
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_small VALUES ('22.8.5.29','0B0000003031323334353637383900010000000000000000'), ('22.8.6.71','0A00000030313233343536373839010000000000000000');
+CREATE TABLE argmaxstate_hex_large
 (
-    id UInt64,
-    id_key String,
-    value String,
-    value_nullable Nullable(String)
-) ENGINE = TinyLog;
-INSERT INTO complex_key_dictionary_source_table VALUES (1, 'key', 'First', 'First');
-INSERT INTO complex_key_dictionary_source_table VALUES (2, 'key', 'Second', NULL);
-INSERT INTO complex_key_dictionary_source_table VALUES (3, 'key', 'Third', 'Third');
-DROP DICTIONARY IF EXISTS complex_key_dictionary;
-CREATE DICTIONARY complex_key_dictionary
-(
-    id UInt64,
-    id_key String,
-    value String,
-    value_nullable Nullable(String)
+    `v` String,
+    `state` String
 )
-PRIMARY KEY id, id_key
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() TABLE 'complex_key_dictionary_source_table'))
-LAYOUT(COMPLEX_KEY_DIRECT());
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_large VALUES ('22.8.5.29','350000004142434445464748494A4B4C4D4E4F505152535455565758595A6162636465666768696A6B6C6D6E6F707172737475767778797A00010000000000000000'), ('22.8.6.71','340000004142434445464748494A4B4C4D4E4F505152535455565758595A6162636465666768696A6B6C6D6E6F707172737475767778797A010000000000000000');
+CREATE TABLE argmaxstate_hex_empty
+(
+    `v` String,
+    `state` String
+)
+ENGINE = TinyLog;
+INSERT into argmaxstate_hex_empty VALUES ('22.8.5.29','0100000000010000000000000000'), ('22.8.6.71','00000000010000000000000000');

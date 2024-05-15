@@ -1,2 +1,0 @@
-CREATE TEMPORARY TABLE a (key UInt32, ID LowCardinality(String));
-CREATE TEMPORARY TABLE b (key UInt32);

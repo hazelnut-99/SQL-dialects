@@ -1,18 +1,22 @@
-DROP TABLE IF EXISTS table_function_dictionary_source_table;
-CREATE TABLE table_function_dictionary_source_table
-(
-   id UInt64,
-   value UInt64
-)
-ENGINE = TinyLog;
-INSERT INTO table_function_dictionary_source_table VALUES (0, 0);
-INSERT INTO table_function_dictionary_source_table VALUES (1, 1);
-DROP DICTIONARY IF EXISTS table_function_dictionary_test_dictionary;
-CREATE DICTIONARY table_function_dictionary_test_dictionary
-(
-   id UInt64,
-   value UInt64 DEFAULT 0
-)
-PRIMARY KEY id
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_function_dictionary_source_table'))
-LAYOUT(DIRECT());
+SYSTEM STOP MERGES tbl;
+create table if not exists replacing_mt (x String) engine=ReplacingMergeTree() ORDER BY x;
+insert into replacing_mt values ('abc');
+insert into replacing_mt values ('abc');
+create table if not exists lhs (x String) engine=ReplacingMergeTree() ORDER BY x;
+create table if not exists rhs (x String) engine=ReplacingMergeTree() ORDER BY x;
+insert into lhs values ('abc');
+insert into lhs values ('abc');
+insert into rhs values ('abc');
+insert into rhs values ('abc');
+create table if not exists regular_mt_table (x String) engine=MergeTree() ORDER BY x;
+create table if not exists left_table (id UInt64, val_left String) engine=ReplacingMergeTree() ORDER BY id;
+create table if not exists middle_table (id UInt64, val_middle String) engine=MergeTree() ORDER BY id;
+create table if not exists right_table (id UInt64, val_right String) engine=ReplacingMergeTree() ORDER BY id;
+insert into left_table values (1,'a');
+insert into left_table values (1,'b');
+insert into left_table values (1,'c');
+insert into middle_table values (1,'a');
+insert into middle_table values (1,'b');
+insert into right_table values (1,'a');
+insert into right_table values (1,'b');
+insert into right_table values (1,'c');

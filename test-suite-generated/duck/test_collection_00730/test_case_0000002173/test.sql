@@ -1,1 +1,0 @@
-SELECT typeof(x) FROM (VALUES (DATE '1992-01-01'), ('1992-01-01')) v1(x) LIMIT 1;

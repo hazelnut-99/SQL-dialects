@@ -1,1 +1,0 @@
-select (1,2)  as x, ((1,2),(3,4)) as y, 1 in x,  x in y;

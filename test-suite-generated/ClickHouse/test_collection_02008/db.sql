@@ -1,21 +1,19 @@
-DROP TABLE IF EXISTS prop_table;
-CREATE TABLE prop_table
-(
-    column_default UInt64 DEFAULT 42,
-    column_materialized UInt64 MATERIALIZED column_default * 42,
-    column_alias UInt64 ALIAS column_default + 1,
-    column_codec String CODEC(ZSTD(10)),
-    column_comment Date COMMENT 'Some comment',
-    column_ttl UInt64 TTL column_comment + INTERVAL 1 MONTH
-)
-ENGINE MergeTree()
-ORDER BY tuple()
-TTL column_comment + INTERVAL 2 MONTH;
-SHOW CREATE TABLE prop_table;
-SYSTEM STOP TTL MERGES prop_table;
-INSERT INTO prop_table (column_codec, column_comment, column_ttl) VALUES ('str', toDate('2019-10-01'), 1);
-ALTER TABLE prop_table MODIFY COLUMN column_comment REMOVE COMMENT;
-SHOW CREATE TABLE prop_table;
-ALTER TABLE prop_table MODIFY COLUMN column_codec REMOVE CODEC;
-SHOW CREATE TABLE prop_table;
-ALTER TABLE prop_table MODIFY COLUMN column_alias REMOVE ALIAS;
+DROP DATABASE IF EXISTS 01914_db;
+CREATE DATABASE 01914_db ENGINE=Atomic;
+DROP TABLE IF EXISTS 01914_db.table_1;
+CREATE TABLE 01914_db.table_1 (id UInt64, value String) ENGINE=TinyLog;
+DROP TABLE IF EXISTS 01914_db.table_2;
+CREATE TABLE 01914_db.table_2 (id UInt64, value String) ENGINE=TinyLog;
+INSERT INTO 01914_db.table_1 VALUES (1, 'Table1');
+INSERT INTO 01914_db.table_2 VALUES (2, 'Table2');
+DROP DICTIONARY IF EXISTS 01914_db.dictionary_1;
+CREATE DICTIONARY 01914_db.dictionary_1 (id UInt64, value String)
+PRIMARY KEY id
+LAYOUT(DIRECT())
+SOURCE(CLICKHOUSE(DB '01914_db' TABLE 'table_1'));
+DROP DICTIONARY IF EXISTS 01914_db.dictionary_2;
+CREATE DICTIONARY 01914_db.dictionary_2 (id UInt64, value String)
+PRIMARY KEY id
+LAYOUT(DIRECT())
+SOURCE(CLICKHOUSE(DB '01914_db' TABLE 'table_2'));
+EXCHANGE DICTIONARIES 01914_db.dictionary_1 AND 01914_db.dictionary_2;

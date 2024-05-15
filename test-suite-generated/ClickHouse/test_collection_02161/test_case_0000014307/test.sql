@@ -1,1 +1,0 @@
-SELECT Sum(1);

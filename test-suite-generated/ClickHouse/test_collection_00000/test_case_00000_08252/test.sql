@@ -1,0 +1,1 @@
+SELECT $doc$ТЕСТ$doc$;

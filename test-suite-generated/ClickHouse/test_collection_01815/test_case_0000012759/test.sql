@@ -1,1 +1,0 @@
-select 'many arguments';

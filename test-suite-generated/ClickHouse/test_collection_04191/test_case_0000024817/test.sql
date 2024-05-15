@@ -1,1 +1,0 @@
-SELECT transform(number % 3 = 1 ? NULL : number, [2, 5, NULL], ['Hello', 'World', 'xyz'], '-') FROM numbers(10);

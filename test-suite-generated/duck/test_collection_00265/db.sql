@@ -204,3 +204,5 @@ create table t3 as select range a, range+8 b from range(11);
 create table t4 as select range a, range+8 b from range(11);
 create table t5 as select range a, range+8 b from range(11);
 explain select a from (select * from t2 semi join (select * from t3 where 1 = 0) tt0 on (t2.a = tt0.b)) tmp1 ANTI JOIN (select * from t3 semi join (select * from t4) tt1 on (t3.a = tt1.b)) tmp2 on (tmp1.a=tmp2.a);
+create table left_table as (select * from VALUES (1, 9), (1, 10) t(a, b));
+create table right_table as (select * from VALUES (1, 4) t(a, b));

@@ -1,1 +1,0 @@
-SELECT a, b, c FROM test2 USING SAMPLE 3;

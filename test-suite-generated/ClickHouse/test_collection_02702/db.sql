@@ -1,15 +1,12 @@
-DROP TABLE IF EXISTS table1 SYNC;
-DROP TABLE IF EXISTS table2 SYNC;
-CREATE TABLE table2 (id Int64, v UInt64)
-ENGINE = MergeTree()
-PARTITION BY (toInt32(id / 2) % 3, id % 200) ORDER BY id;
-INSERT INTO table2 SELECT number-205, number FROM numbers(10);
-INSERT INTO table2 SELECT number-205, number FROM numbers(400, 10);
-DROP TABLE IF EXISTS table3 SYNC;
-CREATE TABLE table3 (id Int64, v UInt64)
-ENGINE = MergeTree()
-PARTITION BY (id % 200, (id % 200) % 10, toInt32(round((id % 200) / 2, 0))) ORDER BY id;
-INSERT INTO table3 SELECT number-205, number FROM numbers(10);
-INSERT INTO table3 SELECT number-205, number FROM numbers(400, 10);
-DETACH TABLE table3;
-ATTACH TABLE table3;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Memory;
+INSERT INTO tab VALUES ((2, 2), 4);
+DROP TABLE tab;
+DROP TABLE IF EXISTS sipHashKeyed_test;
+CREATE TABLE sipHashKeyed_test ENGINE = Memory() AS SELECT 1 a, 'test' b;
+DROP TABLE sipHashKeyed_test;
+DROP TABLE IF EXISTS sipHashKeyed_keys;
+CREATE TABLE sipHashKeyed_keys (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Memory;
+INSERT INTO sipHashKeyed_keys VALUES ((2, 2), 4);
+INSERT INTO sipHashKeyed_keys VALUES ((4, 4), 4);
+DROP TABLE sipHashKeyed_keys;

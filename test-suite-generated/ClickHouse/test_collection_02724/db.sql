@@ -1,11 +1,7 @@
-DROP TABLE IF EXISTS test_table_unsigned_values;
-CREATE TABLE test_table_unsigned_values
-(
-    id UInt64,
-
-    value1 UInt8,
-    value2 UInt16,
-    value3 UInt32,
-    value4 UInt64
-) ENGINE=TinyLog;
-DROP TABLE test_table_unsigned_values;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Memory;
+INSERT INTO tab VALUES ((2, 2), 4);
+DROP TABLE tab;
+DROP TABLE IF EXISTS sipHashKeyed_test;
+CREATE TABLE sipHashKeyed_test ENGINE = Memory() AS SELECT 1 a, 'test' b;
+DROP TABLE sipHashKeyed_test;

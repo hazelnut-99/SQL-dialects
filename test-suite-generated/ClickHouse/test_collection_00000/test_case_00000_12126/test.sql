@@ -1,0 +1,1 @@
+SELECT (number * 2)::Int128 FROM numbers(10) ORDER BY 1 ASC WITH FILL FROM 3 TO 8;

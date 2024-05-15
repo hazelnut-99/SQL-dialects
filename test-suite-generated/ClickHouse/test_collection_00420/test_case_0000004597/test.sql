@@ -1,1 +1,0 @@
-SELECT (toDateTime64('2000-01-01 12:00:00.678', 3) - INTERVAL 12345 MILLISECOND) x, toTypeName(x);

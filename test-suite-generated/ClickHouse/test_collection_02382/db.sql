@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS test;
-DROP TABLE IF EXISTS test_r1;
-DROP TABLE IF EXISTS test_r2;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;
+drop table if exists distinct_in_order sync;

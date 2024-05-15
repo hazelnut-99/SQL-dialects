@@ -346,3 +346,55 @@ WITH t(r) AS (VALUES (0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (NULL), (
 SELECT r, r//3, mode(r//3) over (order by r rows between 1 preceding and 1 following) 
 FROM t 
 ORDER BY ALL;
+WITH t AS (
+	SELECT col0 AS a, col1 AS b 
+	FROM (VALUES
+		(1,2),
+		(1,1),
+		(1,2),
+		(2,1),
+		(2,1),
+		(2,2),
+		(2,3),
+		(2,4)
+	) v) 
+SELECT *, COUNT(b) OVER(PARTITION BY a), COUNT(DISTINCT b) OVER(PARTITION BY a) 
+FROM t
+ORDER BY 1, 2;
+WITH uncascaded AS (
+	SELECT i, i % 29 AS v 
+	FROM range(1000) tbl(i)
+)
+SELECT i
+	, v
+	, COUNT(DISTINCT v) OVER (ORDER BY i ROWS BETWEEN 25 PRECEDING AND 25 FOLLOWING) AS w
+FROM uncascaded
+ORDER BY i;
+WITH cascaded AS (
+	SELECT i, i % 29 AS v 
+	FROM range(10000) tbl(i)
+)
+SELECT i
+	, v
+	, COUNT(DISTINCT v) OVER (ORDER BY i ROWS BETWEEN 25 PRECEDING AND 25 FOLLOWING) AS w
+FROM cascaded
+ORDER BY i;
+INSERT INTO figure1 VALUES 
+	(9, NULL),
+	(NULL, 'b'),
+	(NULL, NULL),
+;
+CREATE TABLE nested AS
+	SELECT 
+		i, 
+		s, 
+		{"m": i % 2, "s": s} AS n,
+		[(i % 2)::VARCHAR, s] AS l,
+		i * i AS r
+	FROM figure1;
+create table image  (
+    id          smallint primary key,
+    width       int not null,
+    height      integer not null
+);
+insert into image (id, width, height) values (1, 500, 297);

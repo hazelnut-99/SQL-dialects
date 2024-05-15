@@ -1,0 +1,1 @@
+SELECT uniq(v4) > 1000, uniq(v6) > 1000 FROM (SELECT * FROM generateRandom('v4 IPv4, v6 IPv6') LIMIT 100000);

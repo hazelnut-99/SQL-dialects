@@ -102,3 +102,5 @@ CREATE TABLE nestedtypes AS SELECT * FROM
 INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);
 create table r4 (i int, j int);
 insert into r4 (i, j) values (1,1), (1,2), (1,3), (1,4), (1,5);
+create table tbl as select case when i%2=0 then null else i end as i from range(10) tbl(i);
+(VALUES (1, 3), (2, 4));

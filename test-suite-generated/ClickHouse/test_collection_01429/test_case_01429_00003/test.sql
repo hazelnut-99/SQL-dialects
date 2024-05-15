@@ -1,0 +1,1 @@
+SELECT '*** timeout exceeded, r1 failed to get the merged part from r2 and did the merge by its own';

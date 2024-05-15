@@ -1,14 +1,5 @@
-DROP TABLE IF EXISTS merge_tree_pk SYNC;
-CREATE TABLE merge_tree_pk
-(
-    key UInt64,
-    value String
-)
-ENGINE = ReplacingMergeTree()
-PRIMARY KEY key;
-SHOW CREATE TABLE merge_tree_pk;
-INSERT INTO merge_tree_pk VALUES (1, 'a');
-INSERT INTO merge_tree_pk VALUES (2, 'b');
-INSERT INTO merge_tree_pk VALUES (1, 'c');
-DETACH TABLE merge_tree_pk;
-ATTACH TABLE merge_tree_pk;
+drop table if exists tbl_repr;
+CREATE TABLE tbl_repr(
+ts DateTime,
+x  String)
+ENGINE=MergeTree ORDER BY ts;

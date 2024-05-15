@@ -1,5 +1,0 @@
-SELECT
-    *,
-    if(number = 1, 1, 0) as a,
-    max(a) OVER (ORDER BY number ASC) AS s
-FROM numbers(10);

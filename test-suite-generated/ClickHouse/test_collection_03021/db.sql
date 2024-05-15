@@ -1,21 +1,32 @@
-CREATE TABLE dict_nested_map_test_table
+DROP TABLE IF EXISTS test;
+CREATE TABLE test
 (
-	test_id UInt32,
-	type String,
-	test_config Array(Map(String, Decimal(28,12))),
-	ncp UInt8
+  EventDate Date
 )
-ENGINE=MergeTree()
-ORDER BY test_id;
-INSERT INTO dict_nested_map_test_table VALUES (3, 't', [{'l': 0.0, 'h': 10000.0, 't': 0.1}, {'l': 10001.0, 'h': 100000000000000.0, 't': 0.2}], 0);
-CREATE DICTIONARY dict_nested_map_dictionary
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION (('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION '2023-10-09';
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+INSERT INTO test VALUES(toDate('2023-10-09'));
+DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS test2;
+CREATE TABLE test2
 (
-	test_id UInt32,
-	type String,
-	test_config Array(Map(String, Decimal(28,12))),
-	ncp UInt8
+  a UInt32,
+  b Int64
 )
-PRIMARY KEY test_id
-SOURCE(CLICKHOUSE(TABLE 'dict_nested_map_test_table'))
-LAYOUT(HASHED())
-LIFETIME(MIN 1 MAX 1000000);
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY (a * b, b * b);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION tuple(2, 4);
+INSERT INTO test2 VALUES(1, 2);
+ALTER TABLE test2 DROP PARTITION (2, 4);

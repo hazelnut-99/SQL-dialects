@@ -1,0 +1,7 @@
+SELECT b6 FROM t6
+   WHERE (e6=175 OR 668=e6)
+      OR (595=e6)
+      OR (956=d6 AND e6=646)
+UNION ALL
+  SELECT a4 FROM t4
+   WHERE e4 in (349,677,565);

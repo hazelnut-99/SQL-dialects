@@ -1,1 +1,0 @@
-SELECT 'The Default for query_cache_system_table_handling is = throw';

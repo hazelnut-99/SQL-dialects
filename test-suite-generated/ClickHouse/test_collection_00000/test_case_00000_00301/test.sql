@@ -1,0 +1,1 @@
+SELECT '*** External aggregation.';

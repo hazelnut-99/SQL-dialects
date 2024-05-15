@@ -1,0 +1,1 @@
+select countSubstringsCaseInsensitive('bab', 'B');

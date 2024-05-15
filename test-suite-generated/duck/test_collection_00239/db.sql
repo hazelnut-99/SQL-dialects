@@ -273,3 +273,52 @@ CREATE TABLE integers2 AS SELECT i FROM range(10) tbl(i);
 CREATE VIEW integers_empty AS SELECT * FROM integers WHERE rowid>100;
 CREATE VIEW integers2_empty AS SELECT * FROM integers WHERE rowid>100;
 CREATE VIEW empty_join AS SELECT * FROM integers JOIN integers2_empty USING (i);
+CREATE VIEW intlistdim AS SELECT * FROM (VALUES
+	([1]),
+	([NULL]),
+	([]),
+	([9,10,11]),
+	(NULL)
+	) lv(pk);
+CREATE VIEW strlistdim AS SELECT * FROM (VALUES
+	(['a']),
+	([NULL]),
+	([]),
+	(['i','j','k']),
+	(NULL)
+	) lv(pk);
+CREATE VIEW structdim AS SELECT * FROM (VALUES
+	({'x': 1, 'y': 'a'}),
+	({'x': NULL, 'y': NULL}),
+	({'x': 0, 'y': ''}),
+	({'x': 9, 'y': 'i'}),
+	(NULL)
+	) sd(pk);
+CREATE VIEW struct_lint_lstr_dim AS SELECT * FROM (VALUES
+	({'x': [1], 'y': ['a']}),
+	({'x': [NULL], 'y': [NULL]}),
+	({'x': [], 'y': []}),
+	({'x': [2, 3], 'y': ['Branta Canadensis', 'c']}),
+	(NULL)
+	) dim(pk);
+CREATE VIEW r2l3r4l5i4i2l3v_dim AS SELECT * FROM (VALUES
+	({'x': [{'l4': [51], 'i4': 41}], 'y': ['a']}),
+	({'x': [NULL], 'y': [NULL]}),
+	({'x': [], 'y': []}),
+	({'x': [{'l4': [52, 53], 'i4': 42}, {'l4': [54, 55], 'i4': 43}], 'y': ['Branta Canadensis', 'c']}),
+	(NULL)
+	) dim(pk);
+CREATE VIEW longlists_dim AS
+SELECT *
+FROM ((VALUES
+	([1]),
+	([NULL]),
+	([]),
+	([2, 3]),
+	(NULL)
+	)
+UNION ALL
+	select list(r) as pk from range(2000) tbl(r)
+UNION ALL
+	select list(r) as pk from range(1050) tbl(r)
+) dim(pk);

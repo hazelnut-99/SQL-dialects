@@ -1,1 +1,0 @@
-SELECT * FROM (VALUES (42,));

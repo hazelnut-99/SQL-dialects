@@ -85,3 +85,4 @@ INSERT INTO test SELECT * FROM generate_series(0, 999);
 DELETE FROM test WHERE i%2=0;
 INSERT INTO test SELECT * FROM generate_series(1000, 1099);
 DELETE FROM test WHERE i%3=0;
+INSERT INTO test SELECT * FROM generate_series(1000, 1999);

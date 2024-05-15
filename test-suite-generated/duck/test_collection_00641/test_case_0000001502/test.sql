@@ -1,1 +1,0 @@
-SELECT 1e308::DOUBLE / 0.1;

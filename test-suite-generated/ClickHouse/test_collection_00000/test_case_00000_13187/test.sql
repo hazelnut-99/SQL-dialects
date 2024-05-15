@@ -1,0 +1,9 @@
+SELECT
+  (X.c + 1) AS c,
+  Z.c + 1
+FROM
+  (SELECT 10 c) X
+CROSS JOIN
+  (SELECT 20 b) Y
+CROSS JOIN
+  (SELECT 30 c) Z;

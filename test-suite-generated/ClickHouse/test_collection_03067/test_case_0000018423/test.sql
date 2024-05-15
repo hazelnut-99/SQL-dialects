@@ -1,1 +1,0 @@
-SELECT '15 MINUTE';

@@ -392,3 +392,122 @@ CREATE TABLE nested AS
 		[(i % 2)::VARCHAR, s] AS l,
 		i * i AS r
 	FROM figure1;
+create table image  (
+    id          smallint primary key,
+    width       int not null,
+    height      integer not null
+);
+insert into image (id, width, height) values (1, 500, 297);
+create table pixel (
+    image_id    integer not null,
+    x           integer not null,
+    y           integer not null,
+    red         utinyint not null,
+    green       utinyint not null,
+    blue        utinyint not null
+);
+insert into pixel
+    select
+        1 as image_id,
+        r % 500 as x,
+        r // 500 as y,
+        random() * 255 as red,
+        random() * 255 as green,
+        random() * 255 as blue
+    from (select range r from range(0, 297 * 500)) r;
+create temp table delta1 as select range delta from range(-1,2);
+create temp table delta2 as select x.delta as dx, y.delta as dy from delta1 x, delta1 y;
+create sequence patchids;
+create table patch AS
+    SELECT p.* FROM (
+        SELECT
+            nextval('patchids') AS id,
+            1 AS params_id,
+            image_id,
+            x + dx AS x_pos,
+            y + dy AS y_pos,
+            AVG(red) AS red_avg,
+            AVG(green) AS green_avg,
+            AVG(blue) AS blue_avg
+        FROM pixel, delta2
+        GROUP BY params_id, image_id, x_pos, y_pos
+    ) p, image i
+    WHERE x_pos >= 1 AND x_pos < i.width - 1
+      AND y_pos >= 1 AND y_pos < i.height - 1;
+create temp table channel (channel char(1));
+insert into channel (channel) values ('R'), ('G'), ('B');
+CREATE or replace TABLE big_table AS
+    SELECT
+    (i % 500)::int16 AS "Pid",
+    (i % 5000)::int16 AS "Planid",
+    left(uuid()::VARCHAR, 10) AS "Claimid",
+    FROM range(2e7::int) tbl(i);
+WITH new_table as (SELECT
+        Pid,
+        Planid,
+        Claimid,
+        'CLAIM' || dense_rank() OVER(PARTITION BY Pid, Planid ORDER BY Claimid) AS Fake_Claimid
+    FROM big_table
+)
+SELECT MAX(Fake_Claimid), COUNT(*)
+FROM new_table;
+create table lineitem (
+    l_extendedprice decimal(15,2),
+    l_partkey integer,
+    l_orderkey integer
+);
+insert into lineitem (values 
+	(29733.00, 1, 2883),
+	(1802.00, 1, 5121),
+	(4505.00, 1, 6179),
+	(29733.00, 1, 6273),
+	(30634.00, 1, 8645),
+	(41446.00, 1, 12005),
+	(36040.00, 1, 16135),
+	(29733.00, 1, 16198),
+	(26129.00, 1, 20199),
+	(24327.00, 1, 22117),
+	(19822.00, 1, 24866),
+	(24327.00, 1, 26756),
+	(9010.00, 1, 27558),
+	(45050.00, 1, 29859),
+	(2703.00, 1, 34692),
+	(11713.00, 1, 36611),
+	(18020.00, 1, 38051),
+	(21624.00, 1, 42465),
+	(36040.00, 1, 42758),
+	(39644.00, 1, 47620),
+	(28832.00, 1, 50498),
+	(12614.00, 1, 51970),
+	(2703.00, 1, 53189),
+	(22525.00, 1, 53825),
+	(21624.00, 1, 54592),
+	(36941.00, 1, 59202),
+	(18942.00, 2, 548),
+	(17138.00, 2, 807),
+	(24354.00, 2, 2117),
+	(9020.00, 2, 2528),
+	(28864.00, 2, 4102),
+	(42394.00, 2, 4452),
+	(11726.00, 2, 7458),
+	(39688.00, 2, 27969),
+	(37884.00, 2, 28900),
+	(9922.00, 2, 30278),
+	(12628.00, 2, 30597),
+	(7216.00, 2, 33058),
+	(41492.00, 2, 37026),
+	(40590.00, 2, 37123),
+	(36982.00, 2, 39809),
+	(36080.00, 2, 41415),
+	(18942.00, 2, 42147),
+	(24354.00, 2, 42533),
+	(41492.00, 2, 43650),
+	(45100.00, 2, 44103),
+	(17138.00, 2, 46913),
+	(31570.00, 2, 50499),
+	(37884.00, 2, 54086),
+	(26158.00, 2, 54436),
+	(4510.00, 2, 54436),
+	(3608.00, 2, 54630),
+	(41492.00, 2, 55136),
+);

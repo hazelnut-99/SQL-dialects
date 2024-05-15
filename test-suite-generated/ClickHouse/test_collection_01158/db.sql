@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS ttl_with_default;
-CREATE TABLE ttl_with_default (d DateTime, a Int default 777 ttl d + interval 5 SECOND) ENGINE = MergeTree ORDER BY d;
-INSERT INTO ttl_with_default VALUES (now() - 1000, 1) (now() - 1000, 2) (now() + 1000, 3)(now() + 1000, 4);
-OPTIMIZE TABLE ttl_with_default FINAL;
-OPTIMIZE TABLE ttl_with_default FINAL;
+drop table if exists count_lc_test;
+CREATE TABLE count_lc_test
+(
+    `s` LowCardinality(String),
+    `arr` Array(LowCardinality(String)),
+    `num` UInt64
+)
+ENGINE = MergeTree
+ORDER BY (s, arr);
+INSERT INTO count_lc_test(num, arr) VALUES (1,[]),(2,['a']),(3,['a','b','c']),(4,['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']);

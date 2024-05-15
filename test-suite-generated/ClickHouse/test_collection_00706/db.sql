@@ -1,6 +1,4 @@
-drop table if exists tab_00712_2;
-create table tab_00712_2 (a UInt32, b UInt32) engine = MergeTree order by b % 2 sample by b % 2;
-insert into tab_00712_2 values (1, 2), (1, 4);
-drop table if exists tab_00712_2;
-DROP TABLE IF EXISTS sample_prewhere;
-CREATE TABLE sample_prewhere (CounterID UInt32, UserID UInt64) ENGINE = MergeTree ORDER BY UserID SAMPLE BY UserID;
+DROP TABLE IF EXISTS part_info;
+CREATE TABLE part_info (t DateTime) ENGINE = MergeTree PARTITION BY toDate(t) ORDER BY (t);
+INSERT INTO part_info VALUES (toDateTime('1970-10-01 00:00:01')), (toDateTime('1970-10-02 00:00:01')), (toDateTime('1970-10-03 00:00:01'));
+ALTER TABLE part_info FREEZE PARTITION '1970-10-02';

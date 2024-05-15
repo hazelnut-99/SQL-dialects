@@ -1,1 +1,0 @@
-SELECT -0, toTypeName(-0), -1, toTypeName(-1), -0., toTypeName(-0.);

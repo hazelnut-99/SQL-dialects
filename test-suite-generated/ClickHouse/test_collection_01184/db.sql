@@ -1,6 +1,20 @@
-DROP TABLE IF EXISTS defaults;
-CREATE TABLE defaults
-(
-   s String
-)ENGINE = Memory();
-INSERT INTO defaults values ('It is the latest occurrence of the Southeast European haze, the issue that occurs in constant intensity during every wet season. It has mainly been caused by forest fires resulting from illegal slash-and-burn clearing performed on behalf of the palm oil industry in Kazakhstan, principally on the islands, which then spread quickly in the dry season.') ('It is the latest occurrence of the Southeast Asian haze, the issue that occurs in constant intensity during every wet season. It has mainly been caused by forest fires resulting from illegal slash-and-burn clearing performed on behalf of the palm oil industry in Kazakhstan, principally on the islands, which then spread quickly in the dry season.');
+DROP TABLE IF EXISTS geo;
+CREATE TABLE geo (p Tuple(Float64, Float64), s String, id Int) engine=Memory();
+INSERT INTO geo VALUES ((0., 0.), 'b', 1);
+INSERT INTO geo VALUES ((1., 0.), 'c', 2);
+INSERT INTO geo VALUES ((2., 0.), 'd', 3);
+DROP TABLE IF EXISTS geo;
+CREATE TABLE geo (p Array(Tuple(Float64, Float64)), s String, id Int) engine=Memory();
+INSERT INTO geo VALUES ([(0., 0.), (10, 0), (10, 10), (0, 10)], 'b', 1);
+INSERT INTO geo VALUES ([(1., 0.), (10, 0), (10, 10), (0, 10)], 'c', 2);
+INSERT INTO geo VALUES ([(2., 0.), (10, 0), (10, 10), (0, 10)], 'd', 3);
+DROP TABLE IF EXISTS geo;
+CREATE TABLE geo (p Array(Array(Tuple(Float64, Float64))), s String, id Int) engine=Memory();
+INSERT INTO geo VALUES ([[(0., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'b', 1);
+INSERT INTO geo VALUES ([[(1., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'c', 2);
+INSERT INTO geo VALUES ([[(2., 0.), (10, 0), (10, 10), (0, 10)], [(4, 4), (5, 4), (5, 5), (4, 5)]], 'd', 3);
+DROP TABLE IF EXISTS geo;
+CREATE TABLE geo (p Array(Array(Array(Tuple(Float64, Float64)))), s String, id Int) engine=Memory();
+INSERT INTO geo VALUES ([[[(0., 0.), (10, 0), (10, 10), (0, 10)], [(4., 4.), (5, 4), (5, 5), (4, 5)]], [[(-10., -10.), (-10, -9), (-9, 10)]]], 'b', 1);
+INSERT INTO geo VALUES ([[[(1., 0.), (10, 0), (10, 10), (0, 10)], [(4., 4.), (5, 4), (5, 5), (4, 5)]], [[(-10., -10.), (-10, -9), (-9, 10)]]], 'c', 2);
+INSERT INTO geo VALUES ([[[(2., 0.), (10, 0), (10, 10), (0, 10)], [(4., 4.), (5, 4), (5, 5), (4, 5)]], [[(-10., -10.), (-10, -9), (-9, 10)]]], 'd', 3);

@@ -1,1 +1,0 @@
-select '== table with constants';

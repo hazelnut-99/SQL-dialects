@@ -1,13 +1,9 @@
-DROP TABLE IF EXISTS merge_tree_deduplication;
-SYSTEM STOP MERGES merge_tree_deduplication;
-DROP TABLE IF EXISTS merge_tree_deduplication;
-DROP TABLE IF EXISTS merge_tree_no_deduplication;
-CREATE TABLE merge_tree_no_deduplication
+DROP TABLE IF EXISTS test_table;
+CREATE TABLE test_table
 (
-    key UInt64,
+    id UInt64,
     value String
-)
-ENGINE=MergeTree()
-ORDER BY key;
-INSERT INTO merge_tree_no_deduplication (key, value) VALUES (1, '1');
-INSERT INTO merge_tree_no_deduplication (key, value) VALUES (1, '1');
+) ENGINE = TinyLog;
+INSERT INTO test_table VALUES (0, 'Value');
+WITH cte_subquery AS (SELECT 1) SELECT * FROM cte_subquery AS cte_subquery;
+WITH cte_subquery AS (SELECT 1) SELECT * FROM cte_subquery AS cte_subquery, cte_subquery AS subquery;

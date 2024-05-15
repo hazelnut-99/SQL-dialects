@@ -1,0 +1,1 @@
+SELECT dummy + dummy;

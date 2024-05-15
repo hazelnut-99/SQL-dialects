@@ -1,1 +1,0 @@
-SELECT toDecimalString('128.78932312332132985464'::Decimal128(20), 20);

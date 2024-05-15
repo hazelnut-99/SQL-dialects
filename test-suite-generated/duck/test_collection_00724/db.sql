@@ -88,3 +88,15 @@ CREATE TABLE multilists AS SELECT * FROM
 			(NULL, NULL, NULL, NULL, [NULL, 18, NULL, 20], NULL),
 			(NULL, NULL, NULL, NULL, NULL, NULL)
 	) tbl(s1, s2, s3, s4, s5);
+CREATE TABLE nestedtypes AS SELECT * FROM
+	(
+		VALUES
+			(NULL, NULL, NULL, NULL, NULL, NULL),
+			([NULL, [NULL, NULL]]::STRUCT(x INTEGER[])[][], NULL, NULL, NULL, NULL, NULL),
+			(NULL, [[{'x': [3, 4]}], [{'x': [17]}, {'x': [22, NULL]}]], NULL, NULL, NULL, NULL),
+			(NULL, NULL, [[], [], []]::STRUCT(x INTEGER[])[][], NULL, NULL, NULL),
+			(NULL, NULL, NULL, [[{'x': NULL}], NULL, [NULL, NULL], []]::STRUCT(x INTEGER[])[][], NULL, NULL),
+			(NULL, NULL, NULL, NULL, [[{'x': [10, 12, 13, 14, 15]}], [{'x': [NULL]}, NULL]], NULL),
+			(NULL, NULL, NULL, NULL, NULL, NULL)
+	) tbl(s1, s2, s3, s4, s5);
+INSERT INTO test VALUES (11, 22), (12, 21), (13, 22);

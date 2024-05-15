@@ -57,3 +57,24 @@ create or replace table single_constraint (
 );
 insert into single_constraint values (5,1,'hello'), (1,10,'test');
 insert into single_constraint values (1,5,'bye'), (3,10,'quack') on conflict do update set j = excluded.j, k = concat(k, excluded.k);
+create or replace table tbl(
+	i integer PRIMARY KEY,
+	j integer UNIQUE,
+	k integer
+);
+insert into tbl VALUES (1, 10, 1), (2, 20, 1), (3, 30, 2);
+insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
+create or replace table tbl (
+	a integer,
+	b integer,
+	c integer,
+	primary key (a, b)
+);
+insert into tbl VALUES (1,2,3), (1,4,5);
+insert into tbl VALUES (1,4,7), (1,8,4) ON CONFLICT (a,b) DO UPDATE set c = 5;
+create or replace table tbl (
+	a integer unique,
+	b integer
+);
+insert into tbl VALUES (3,2), (1,3);
+insert into tbl(b) VALUES (5) ON CONFLICT (a) DO UPDATE SET b = 8;

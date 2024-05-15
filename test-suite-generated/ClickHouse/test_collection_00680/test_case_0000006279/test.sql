@@ -1,1 +1,0 @@
-SELECT count() FROM decimal WHERE e IS NULL AND f IS NULL;

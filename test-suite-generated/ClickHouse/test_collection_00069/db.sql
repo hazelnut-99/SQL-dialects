@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_view;
-DROP TABLE IF EXISTS test_view_filtered;
-CREATE MATERIALIZED VIEW test_view (Rows UInt64,  MaxHitTime DateTime('America/Los_Angeles')) ENGINE = Memory AS SELECT count() AS Rows, max(UTCEventTime) AS MaxHitTime FROM test_table;
+DROP TABLE IF EXISTS test_00309_formats_case_insensitive;
+CREATE TABLE test_00309_formats_case_insensitive(a Int64, b String) ENGINE=File(Csv);
+INSERT INTO test_00309_formats_case_insensitive SELECT number, 'Hello & world' FROM numbers(3);

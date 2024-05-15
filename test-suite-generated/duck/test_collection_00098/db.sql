@@ -98,3 +98,5 @@ CREATE TABLE integers AS SELECT * FROM generate_series(0,599999) t(i);
 DELETE FROM integers WHERE i%2=0;
 INSERT INTO integers VALUES (42);
 DELETE FROM integers WHERE i%3=0;
+INSERT INTO integers VALUES (84);
+checkpoint;

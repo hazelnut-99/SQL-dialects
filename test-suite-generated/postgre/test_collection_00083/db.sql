@@ -60,3 +60,94 @@ analyze tt3;
 create temp table tt4(f1 int);
 insert into tt4 values (0),(1),(9999);
 analyze tt4;
+create temp table tt4x(c1 int, c2 int, c3 int);
+create temp table tt5(f1 int, f2 int);
+create temp table tt6(f1 int, f2 int);
+insert into tt5 values(1, 10);
+insert into tt5 values(1, 11);
+insert into tt6 values(1, 9);
+insert into tt6 values(1, 2);
+insert into tt6 values(2, 9);
+create temp table xx (pkxx int);
+create temp table yy (pkyy int, pkxx int);
+insert into xx values (1);
+insert into xx values (2);
+insert into xx values (3);
+insert into yy values (101, 1);
+insert into yy values (201, 2);
+insert into yy values (301, NULL);
+create temp table zt1 (f1 int primary key);
+create temp table zt2 (f2 int primary key);
+create temp table zt3 (f3 int primary key);
+insert into zt1 values(53);
+insert into zt2 values(53);
+create temp view zv1 as select *,'dummy'::text AS junk from zt1;
+begin;
+create temp table a (i integer);
+create temp table b (x integer, y integer);
+rollback;
+begin;
+create type mycomptype as (id int, v bigint);
+create temp table tidv (idv mycomptype);
+create index on tidv (idv);
+rollback;
+begin;
+create temp table a (
+     code char not null,
+     constraint a_pk primary key (code)
+);
+create temp table b (
+     a char not null,
+     num integer not null,
+     constraint b_pk primary key (a, num)
+);
+create temp table c (
+     name char not null,
+     a char,
+     constraint c_pk primary key (name)
+);
+insert into a (code) values ('p');
+insert into a (code) values ('q');
+insert into b (a, num) values ('p', 1);
+insert into b (a, num) values ('p', 2);
+insert into c (name, a) values ('A', 'p');
+insert into c (name, a) values ('B', 'q');
+insert into c (name, a) values ('C', null);
+rollback;
+create temp table nt1 (
+  id int primary key,
+  a1 boolean,
+  a2 boolean
+);
+create temp table nt2 (
+  id int primary key,
+  nt1_id int,
+  b1 boolean,
+  b2 boolean,
+  foreign key (nt1_id) references nt1(id)
+);
+create temp table nt3 (
+  id int primary key,
+  nt2_id int,
+  c1 boolean,
+  foreign key (nt2_id) references nt2(id)
+);
+insert into nt1 values (1,true,true);
+insert into nt1 values (2,true,false);
+insert into nt1 values (3,false,false);
+insert into nt2 values (1,1,true,true);
+insert into nt2 values (2,2,true,false);
+insert into nt2 values (3,3,false,false);
+insert into nt3 values (1,1,true);
+insert into nt3 values (2,2,false);
+insert into nt3 values (3,3,true);
+create temp table q1 as select 1 as q1;
+create temp table q2 as select 0 as q2;
+analyze q1;
+analyze q2;
+with ctetable as not materialized ( select 1 as f1 )
+select * from ctetable c1
+where f1 in ( select c3.f1 from ctetable c2 full join ctetable c3 on true );
+create function f_immutable_int4(i integer) returns integer as
+$$ begin return i; end; $$ language plpgsql immutable;
+drop function f_immutable_int4(int);

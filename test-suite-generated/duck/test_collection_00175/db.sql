@@ -40,3 +40,7 @@ CREATE TABLE wide AS (
 		10 * (i + 9) AS c9
 	FROM range(1, 10) tbl(i)
 );
+CREATE TABLE limits AS (
+	SELECT 100 + (i * 17 % 100) AS z
+	FROM range(1, 10) tbl(i)
+);

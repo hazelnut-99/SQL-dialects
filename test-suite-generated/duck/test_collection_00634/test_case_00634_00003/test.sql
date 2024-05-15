@@ -1,0 +1,1 @@
+SELECT 10 AS j, i FROM integers ORDER BY j, i NULLS LAST;

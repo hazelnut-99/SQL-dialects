@@ -1,3 +1,4 @@
-DROP TABLE IF EXISTS min_if;
-CREATE TABLE min_if (arr Array(UInt8), str String, int Int32) ENGINE = Memory;
-INSERT INTO min_if SELECT [1] AS arr, '2' AS str, toInt32(3) AS int;
+DROP TABLE IF EXISTS view1_00270;
+DROP TABLE IF EXISTS view2_00270;
+DROP TABLE IF EXISTS merge_view_00270;
+CREATE TABLE merge_view_00270 (number UInt64) ENGINE = Merge(currentDatabase(), '^view');

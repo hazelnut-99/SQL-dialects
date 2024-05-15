@@ -1,1 +1,0 @@
-SELECT bitmaskToList(0);

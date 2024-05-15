@@ -1,0 +1,1 @@
+SELECT a from tbl_1 WHERE a IS DISTINCT FROM b;

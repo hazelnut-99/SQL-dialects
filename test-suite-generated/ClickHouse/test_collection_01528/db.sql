@@ -1,23 +1,32 @@
-DROP TABLE IF EXISTS src;
-DROP TABLE IF EXISTS mv;
-DROP TABLE IF EXISTS ".inner_id.e15f3ab5-6cae-4df3-b879-f40deafd82c2";
-CREATE TABLE src (n UInt64) ENGINE=MergeTree ORDER BY n;
-CREATE MATERIALIZED VIEW mv (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n AS SELECT n, n * n AS n2 FROM src;
-INSERT INTO src VALUES (1), (2);
-DETACH TABLE mv;
-ATTACH TABLE mv;
-INSERT INTO src VALUES (3), (4);
-DROP TABLE mv SYNC;
-CREATE TABLE ".inner_id.e15f3ab5-6cae-4df3-b879-f40deafd82c2" (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n;
-ATTACH MATERIALIZED VIEW mv UUID 'e15f3ab5-6cae-4df3-b879-f40deafd82c2' (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n AS SELECT n, n * n AS n2 FROM src;
-SHOW CREATE TABLE mv;
-INSERT INTO src VALUES (1), (2);
-DETACH TABLE mv;
-ATTACH TABLE mv;
-SHOW CREATE TABLE mv;
-INSERT INTO src VALUES (3), (4);
-DROP TABLE mv SYNC;
-CREATE TABLE ".inner_id.e15f3ab5-6cae-4df3-b879-f40deafd82c2" UUID '3bd68e3c-2693-4352-ad66-a66eba9e345e' (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n;
-ATTACH MATERIALIZED VIEW mv UUID 'e15f3ab5-6cae-4df3-b879-f40deafd82c2' TO INNER UUID '3bd68e3c-2693-4352-ad66-a66eba9e345e' (n Int32, n2 Int64) ENGINE = MergeTree PARTITION BY n % 10 ORDER BY n AS SELECT n, n * n AS n2 FROM src;
-SHOW CREATE TABLE mv;
-INSERT INTO src VALUES (1), (2);
+drop database if exists test_01600;
+create database test_01600;
+CREATE TABLE test_01600.base
+(
+`id` UInt64,
+`id2` UInt64,
+`d` UInt64,
+`value` UInt64
+)
+ENGINE=MergeTree()
+PARTITION BY d
+ORDER BY (id,id2,d);
+CREATE TABLE test_01600.derived1
+(
+    `id1` UInt64,
+    `d1` UInt64,
+    `value1` UInt64
+)
+ENGINE = MergeTree()
+PARTITION BY d1
+ORDER BY (id1, d1)
+;
+CREATE TABLE test_01600.derived2
+(
+    `id2` UInt64,
+    `d2` UInt64,
+    `value2` UInt64
+)
+ENGINE = MergeTree()
+PARTITION BY d2
+ORDER BY (id2, d2)
+;

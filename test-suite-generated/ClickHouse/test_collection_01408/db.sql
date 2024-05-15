@@ -1,9 +1,4 @@
-SHOW TABLES NOT LIKE '%';
-SHOW TABLES;
-CREATE TABLE test1 (x UInt8) ENGINE = Memory;
-CREATE TABLE test2 (x UInt8) ENGINE = Memory;
-SHOW TABLES;
-SHOW TABLES LIKE 'tes%';
-SHOW TABLES NOT LIKE 'tes%';
-SHOW TABLES LIKE 'tes%1';
-SHOW TABLES NOT LIKE 'tes%2';
+with 1 as x select x;
+with 1 as x select * from (select x);
+with 1 as x select *, x from (with 2 as x select x as y);
+with 1 as x select x union all select x;

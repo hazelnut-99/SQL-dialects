@@ -342,3 +342,4 @@ create macro zz1(x) as (select 10+x);
 create macro zz2(x) as 20+x;
 CREATE MACRO my_values(m,s) as TABLE select * from (values  (1.0*m+s,'adam'), (2.0*m+s,'ben'),
 (3.0*m+s,'cris'), (4.0*m+s,'desmond'),(5.0*m+s, 'eric'));
+CREATE MACRO my_values_union(m1,s1,m2,s2) as TABLE select * from my_values(m1,s1) UNION select * from my_values(m2,s2);

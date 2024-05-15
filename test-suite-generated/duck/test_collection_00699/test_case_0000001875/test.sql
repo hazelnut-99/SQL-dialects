@@ -1,1 +1,0 @@
-SELECT * FROM intest WHERE a IN (NULL, NULL, NULL, NULL);

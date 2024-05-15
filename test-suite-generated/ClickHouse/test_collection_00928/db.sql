@@ -1,3 +1,6 @@
-drop table if exists t;
-create table t (a Int8, val Float32) engine = Memory();
-insert into t values (1,1.1), (1,1.2), (2,2.1);
+DROP TABLE IF EXISTS json_square_brackets;
+CREATE TABLE json_square_brackets (id UInt32, name String) ENGINE = Memory;
+INSERT INTO json_square_brackets FORMAT JSONEachRow [{"id": 1, "name": "name1"}, {"id": 2, "name": "name2"}];
+INSERT INTO json_square_brackets FORMAT JSONEachRow[];
+INSERT INTO json_square_brackets FORMAT JSONEachRow [  ]  ;
+INSERT INTO json_square_brackets FORMAT JSONEachRow ;

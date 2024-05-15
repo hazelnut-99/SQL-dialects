@@ -1,1 +1,0 @@
-SELECT 1 or 10;

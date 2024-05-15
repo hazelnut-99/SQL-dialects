@@ -1,12 +1,6 @@
-DROP DATABASE IF EXISTS truncate_test;
-CREATE DATABASE IF NOT EXISTS truncate_test;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_log(id UInt64) ENGINE = Log;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_memory(id UInt64) ENGINE = Memory;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_tiny_log(id UInt64) ENGINE = TinyLog;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_stripe_log(id UInt64) ENGINE = StripeLog;
-CREATE TABLE IF NOT EXISTS truncate_test.truncate_test_merge_tree(p Date, k UInt64) ENGINE = MergeTree ORDER BY p;
-INSERT INTO truncate_test.truncate_test_log VALUES(1);
-INSERT INTO truncate_test.truncate_test_memory VALUES(1);
-INSERT INTO truncate_test.truncate_test_tiny_log VALUES(1);
-INSERT INTO truncate_test.truncate_test_stripe_log VALUES(1);
-INSERT INTO truncate_test.truncate_test_merge_tree VALUES('2000-01-01', 1);
+DROP TABLE IF EXISTS f;
+DROP TABLE IF EXISTS d;
+CREATE TABLE f (`d_ids` Array(Int64) ) ENGINE = TinyLog;
+INSERT INTO f VALUES ([1, 2]);
+CREATE TABLE d (`id` Int64, `name` String ) ENGINE = TinyLog;
+INSERT INTO d VALUES (2, 'a2'), (3, 'a3');

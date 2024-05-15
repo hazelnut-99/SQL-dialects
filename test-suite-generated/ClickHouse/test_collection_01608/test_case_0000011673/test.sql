@@ -1,1 +1,0 @@
-SELECT LEAST([NULL], [0]);

@@ -267,3 +267,4 @@ CREATE MACRO deep_cte(param) AS (
 INSERT INTO integers VALUES (1);
 CREATE MACRO subquery(a) AS (SELECT a);
 CREATE MACRO a1(b) AS (SELECT a + a FROM integers);
+CREATE MACRO a2(b) AS (SELECT i.a + b FROM integers i);

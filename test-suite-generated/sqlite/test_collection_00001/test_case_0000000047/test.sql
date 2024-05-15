@@ -1,9 +1,0 @@
-SELECT x15,x53,x55,x62,x43,x20,x8
-  FROM t8,t62,t20,t43,t53,t55,t15
- WHERE a8=b20
-   AND b8=a62
-   AND a53=2
-   AND a53=b62
-   AND b55=a43
-   AND b15=a55
-   AND a20=b43;

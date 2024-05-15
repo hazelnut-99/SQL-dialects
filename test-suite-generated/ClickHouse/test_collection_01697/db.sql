@@ -1,11 +1,3 @@
-DROP TABLE IF EXISTS data_01285;
-CREATE TABLE data_01285 (
-    key   Int,
-    value SimpleAggregateFunction(max, Nullable(Int)),
-    INDEX value_idx assumeNotNull(value) TYPE minmax GRANULARITY 1
-)
-ENGINE=AggregatingMergeTree()
-ORDER BY key;
-INSERT INTO data_01285 SELECT 1, number FROM numbers(2);
-INSERT INTO data_01285 SELECT 1, number FROM numbers(4);
-OPTIMIZE TABLE data_01285 FINAL;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (timestamp DateTime('UTC'), i UInt8) Engine=MergeTree() PARTITION BY toYYYYMM(timestamp) ORDER BY (i);
+INSERT INTO test values ('2020-05-13 16:38:45', 1);

@@ -1,1 +1,0 @@
-SELECT * FROM 01753_dictionary_db.direct_dictionary_simple_key_simple_attributes;

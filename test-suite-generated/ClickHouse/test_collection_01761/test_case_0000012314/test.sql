@@ -1,1 +1,0 @@
-SELECT parseDateTimeBestEffortOrZero('<Empty>', 'UTC');

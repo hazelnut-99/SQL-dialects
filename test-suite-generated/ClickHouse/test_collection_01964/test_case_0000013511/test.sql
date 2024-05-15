@@ -1,1 +1,0 @@
-SELECT toInt128(123) AS k GROUP BY k;

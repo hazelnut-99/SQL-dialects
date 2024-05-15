@@ -1,1 +1,0 @@
-SELECT transform(toString(number), ['2', '4', '6'], ['google', 'yandex', 'yahoo']) as x FROM numbers(10) GROUP BY x ORDER BY x;

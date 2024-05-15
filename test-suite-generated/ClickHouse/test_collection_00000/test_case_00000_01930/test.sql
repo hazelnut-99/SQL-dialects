@@ -1,0 +1,1 @@
+SELECT 4 as nelems, arrayResize(arrayPartialSort(nelems, [1, nan, 2, NULL, 3, nan, -4, NULL, inf, -inf]), nelems);

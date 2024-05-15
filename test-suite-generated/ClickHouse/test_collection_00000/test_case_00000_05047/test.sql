@@ -1,0 +1,1 @@
+select 'Array', blockSerializedSize(['foo']);

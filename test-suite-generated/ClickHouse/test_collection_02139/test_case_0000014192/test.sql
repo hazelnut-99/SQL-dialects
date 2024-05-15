@@ -1,1 +1,0 @@
-SELECT * FROM HASH_MV;

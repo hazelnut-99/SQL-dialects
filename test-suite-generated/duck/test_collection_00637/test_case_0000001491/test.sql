@@ -1,1 +1,0 @@
-SELECT SUM(i) FROM (SELECT i FROM integers ORDER BY i) t1;

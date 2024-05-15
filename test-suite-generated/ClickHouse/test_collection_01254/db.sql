@@ -1,2 +1,1 @@
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_table_2;
+drop table if exists test_23634;

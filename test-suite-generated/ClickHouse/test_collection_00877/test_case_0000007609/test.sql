@@ -1,1 +1,0 @@
-SELECT bitmaskToArray(-128);

@@ -1,3 +1,0 @@
-"{'nested_obj': {'a': 42, 'b': 'Hello', 'c': [1, 2, 3], 'd': NaT}}"
-"{'nested_obj': {'a': 43, 'b': 'World', 'c': [], 'd': numpy.datetime64('2020-01-01')}}"
-"{'nested_obj': {'a': <NA>, 'b': <NA>, 'c': [], 'd': NaT}}"

@@ -1,1 +1,0 @@
-SELECT * FROM interval ORDER BY 1;

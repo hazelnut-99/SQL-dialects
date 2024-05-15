@@ -1,6 +1,0 @@
-SELECT c
-  FROM t1
- WHERE (a>b-2 AND a<b+2)
-   AND d NOT BETWEEN 110 AND 150
-   AND (e>a AND e<b)
- ORDER BY 1;

@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS test_table;
-DROP TABLE IF EXISTS test_index;
-DROP TABLE IF EXISTS test_index;
-drop table if exists p;
-create table pl (dt DateTime, i int, projection p (select sum(i) group by toStartOfMinute(dt))) engine MergeTree order by dt;
-insert into pl values ('2020-10-24', 1);
-drop table pl;
-drop table if exists t;
-create temporary table t (x UInt64, y alias x);
-insert into t values (1);
+DROP TABLE IF EXISTS test_nested_default;
+CREATE TABLE test_nested_default
+(
+    `id` String,
+    `with_dot.str` String,
+    `with_dot.array` Array(String)
+)
+ENGINE = MergeTree()
+ORDER BY id;
+INSERT INTO test_nested_default(`id`, `with_dot.array`) VALUES('id', ['str1', 'str2']);

@@ -1,1 +1,0 @@
-SELECT * FROM test_9 ORDER BY a;

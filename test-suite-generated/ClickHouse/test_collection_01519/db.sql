@@ -1,38 +1,5 @@
-DROP TABLE IF EXISTS multiword_types;
-DROP TABLE IF EXISTS unsigned_types;
-CREATE TABLE multiword_types (
-    a DOUBLE,
-    b DOUBLE PRECISION,
-    c CHAR DEFAULT 'str',
-    d CHAR VARYING,
-    e CHAR LARGE OBJECT COMMENT 'comment',
-    f CHARACTER VARYING(123),
-    g ChArAcTeR   large    OBJECT,
-    h nchar varying (456) default toString(a) comment 'comment',
-    i NCHAR LARGE OBJECT,
-    j BINARY LARGE OBJECT,
-    k BINARY VARYING,
-    l NATIONAL CHAR,
-    m NATIONAL CHARACTER,
-    n NATIONAL CHARACTER LARGE OBJECT,
-    o NATIONAL CHARACTER VARYING,
-    p NATIONAL CHAR VARYING
-) ENGINE=Memory;
-SHOW CREATE TABLE multiword_types;
-INSERT INTO multiword_types(a) VALUES (1);
-CREATE TABLE unsigned_types (
-    a TINYINT  SIGNED,
-    b INT1     SIGNED,
-    c SMALLINT SIGNED,
-    d INT      SIGNED,
-    e INTEGER  SIGNED,
-    f BIGINT   SIGNED,
-    g TINYINT  UNSIGNED,
-    h INT1     UNSIGNED,
-    i SMALLINT UNSIGNED,
-    j INT      UNSIGNED,
-    k INTEGER  UNSIGNED,
-    l BIGINT   UNSIGNED
-) ENGINE=Memory;
-SHOW CREATE TABLE unsigned_types;
-INSERT INTO unsigned_types(a) VALUES (1);
+DROP TABLE IF EXISTS realtimedrep;
+DROP TABLE IF EXISTS realtimedistributed;
+DROP TABLE IF EXISTS realtimebuff;
+CREATE TABLE realtimebuff(amount Int64,transID String,userID String,appID String,appName String,transType String,orderSource String,nau String,fau String,transactionType String,supplier String,fMerchant String,bankConnCode String,reqDate DateTime) ENGINE = Buffer(currentDatabase(), 'realtimedistributed', 16, 3600, 36000, 10000, 1000000, 10000000, 100000000);
+insert into realtimebuff (amount,transID,userID,appID,appName,transType,orderSource,nau,fau,transactionType,supplier,fMerchant,bankConnCode,reqDate) values (100, '200312000295032','200223000028708','14', 'Data','1', '20','1', '0','123','abc', '1234a','ZPVBIDV', 1598256583);

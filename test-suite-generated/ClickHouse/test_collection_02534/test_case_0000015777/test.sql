@@ -1,1 +1,0 @@
-SELECT 'Dictionary direct_dictionary_complex_key_complex_attributes';

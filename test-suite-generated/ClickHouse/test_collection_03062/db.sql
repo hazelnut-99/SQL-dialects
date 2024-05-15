@@ -1,1 +1,3 @@
-CREATE FUNCTION IF NOT EXISTS 02102_test_function AS x -> x + 1;
+DROP TABLE IF EXISTS tab;
+CREATE TABLE tab (idna String) ENGINE=MergeTree ORDER BY idna;
+INSERT INTO tab VALUES ('straße.münchen.de') ('') ('münchen');

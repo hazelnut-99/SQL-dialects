@@ -1,1 +1,0 @@
-SELECT '*** External aggregation.';

@@ -1,1 +1,0 @@
-SELECT d3, f1, d3 + f1 FROM t ORDER BY f1;

@@ -1,1 +1,0 @@
-SELECT * FROM 01754_dictionary_db.direct_dictionary_complex_key_complex_attributes;

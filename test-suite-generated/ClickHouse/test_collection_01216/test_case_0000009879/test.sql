@@ -1,1 +1,0 @@
-SELECT * FROM dest_01019 ORDER BY v;

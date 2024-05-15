@@ -1,1 +1,0 @@
-SELECT * from l RIGHT JOIN r USING a ORDER BY a;

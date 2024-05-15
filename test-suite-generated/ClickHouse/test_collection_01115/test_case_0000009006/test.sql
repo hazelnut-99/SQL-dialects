@@ -1,1 +1,0 @@
-SELECT * FROM dst2 ORDER BY x;

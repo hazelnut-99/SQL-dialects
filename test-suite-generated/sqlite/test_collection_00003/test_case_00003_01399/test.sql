@@ -1,0 +1,4 @@
+SELECT e4+224+a4, e8+d4
+  FROM t8, t4
+ WHERE b4=901
+   AND e8=874;

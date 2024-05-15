@@ -1,0 +1,1 @@
+select 'create table failed, column -type +AUTO_INCREMENT +DEFAULT';

@@ -1,10 +1,12 @@
-DROP TABLE IF EXISTS a;
-DROP TABLE IF EXISTS b;
-DROP TABLE IF EXISTS id1;
-DROP TABLE IF EXISTS id2;
-CREATE TABLE a(`id1` UInt32, `id2` UInt32, `valA` UInt32) ENGINE = TinyLog;
-CREATE TABLE id1(`id1` UInt32, `val1` UInt8) ENGINE = Join(ANY, LEFT, id1);
-CREATE TABLE id2(`id2` UInt32, `val2` UInt8) ENGINE = Join(ANY, LEFT, id2);
-INSERT INTO a VALUES (1,1,1)(2,2,2)(3,3,3);
-INSERT INTO id1 VALUES (1,1)(2,2)(3,3);
-INSERT INTO id2 VALUES (1,1)(2,2)(3,3);
+DROP TABLE IF EXISTS table_for_ttl;
+CREATE TABLE table_for_ttl(
+  d DateTime,
+  key UInt64,
+  value String)
+ENGINE = MergeTree()
+ORDER BY tuple()
+PARTITION BY key;
+INSERT INTO table_for_ttl SELECT now() - INTERVAL 2 YEAR, 1, toString(number) from numbers(1000);
+INSERT INTO table_for_ttl SELECT now() - INTERVAL 2 DAY, 3, toString(number) from numbers(2000, 1000);
+INSERT INTO table_for_ttl SELECT now(), 4, toString(number) from numbers(3000, 1000);
+OPTIMIZE TABLE table_for_ttl FINAL;

@@ -1,1 +1,0 @@
-select number, q * 10, quantileExact(number) over (partition by intDiv(number, 3) order by number rows unbounded preceding) q from numbers(10) order by number;

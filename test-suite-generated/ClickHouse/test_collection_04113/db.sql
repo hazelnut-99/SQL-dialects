@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS join_inner_table SYNC;
-SYSTEM FLUSH LOGS;
-DROP TABLE IF EXISTS join_outer_table SYNC;

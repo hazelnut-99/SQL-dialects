@@ -1,3 +1,0 @@
-SELECT countDigits(toDecimal32(0, 0)), countDigits(toDecimal32(42, 0)), countDigits(toDecimal32(4.2, 1)),
-       countDigits(toDecimal64(0, 0)), countDigits(toDecimal64(42, 0)), countDigits(toDecimal64(4.2, 2)),
-       countDigits(toDecimal128(0, 0)), countDigits(toDecimal128(42, 0)), countDigits(toDecimal128(4.2, 3));

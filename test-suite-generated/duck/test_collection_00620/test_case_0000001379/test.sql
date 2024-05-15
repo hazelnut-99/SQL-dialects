@@ -1,1 +1,0 @@
-SELECT e, STRUCT_PACK(e) FROM struct_data ORDER BY e LIMIT 60%;

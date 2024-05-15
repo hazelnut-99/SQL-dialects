@@ -1,0 +1,1 @@
+SELECT 'Ohello' ILIKE '%hell%';

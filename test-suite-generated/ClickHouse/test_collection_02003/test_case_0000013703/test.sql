@@ -1,1 +1,0 @@
-SELECT * FROM a INNER JOIN b USING(key) GROUP BY ID, key;

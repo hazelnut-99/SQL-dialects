@@ -1,7 +1,0 @@
-CREATE TABLE argmaxstate_hex_small
-(
-    `v` String,
-    `state` String
-)
-ENGINE = TinyLog;
-INSERT into argmaxstate_hex_small VALUES ('22.8.5.29','0B0000003031323334353637383900010000000000000000'), ('22.8.6.71','0A00000030313233343536373839010000000000000000');

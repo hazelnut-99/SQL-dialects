@@ -1,1 +1,0 @@
-SELECT '-------FORCE PRIMARY KEY-------';

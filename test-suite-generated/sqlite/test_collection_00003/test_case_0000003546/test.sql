@@ -1,4 +1,0 @@
-SELECT d7*524, a1*755
-  FROM t1, t7
- WHERE a1 in (222,477,866,825)
-   AND e7=975;

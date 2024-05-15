@@ -1,6 +1,0 @@
-SELECT d4, b7, x8, c6*47
-  FROM t6, t7, t4, t8
- WHERE e7 in (248,254,638,290,689,27,841)
-   AND 476=e8
-   AND (b4=735 OR 721=b4)
-   AND d6=185;

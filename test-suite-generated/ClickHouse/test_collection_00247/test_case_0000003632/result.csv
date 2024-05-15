@@ -1,4 +1,0 @@
-a,1,Nullable(UInt8)
-b,1,Nullable(UInt8)
-c,,Nullable(UInt8)
-,,Nullable(UInt8)

@@ -1,6 +1,10 @@
-DROP TABLE IF EXISTS h3_indexes;
-CREATE TABLE h3_indexes (h3_index UInt64) ENGINE = Memory;
-INSERT INTO h3_indexes VALUES (geoToH3(0.0, 0.0, 0));
-INSERT INTO h3_indexes VALUES (geoToH3(10.0, 0.0, 1));
-INSERT INTO h3_indexes VALUES (geoToH3(0.0, 10.0, 2));
-INSERT INTO h3_indexes VALUES (geoToH3(10.0, 10.0, 3));
+DROP TABLE IF EXISTS test;
+CREATE TABLE test
+(
+  EventDate Date
+)
+ENGINE = MergeTree
+ORDER BY tuple()
+PARTITION BY toMonday(EventDate);
+INSERT INTO test VALUES(toDate('2023-10-09'));
+ALTER TABLE test DROP PARTITION ('2023-10-09');

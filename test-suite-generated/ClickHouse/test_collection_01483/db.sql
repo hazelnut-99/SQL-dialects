@@ -1,21 +1,23 @@
-DROP DATABASE IF EXISTS db_for_dict;
-CREATE DATABASE db_for_dict;
-CREATE TABLE db_for_dict.table_for_dict
-(
-  key1 UInt64,
-  value String
-)
-ENGINE = Memory();
-INSERT INTO db_for_dict.table_for_dict VALUES (1, 'Hello'), (2, 'World');
-CREATE DICTIONARY db_for_dict.dict_with_hashed_layout
-(
-  key1 UInt64,
-  value String
-)
-PRIMARY KEY key1
-LAYOUT(HASHED)
-SOURCE(CLICKHOUSE(HOST 'localhost' PORT tcpPort() USER 'default' TABLE 'table_for_dict' DB 'db_for_dict'))
-LIFETIME(MIN 1 MAX 10);
-DETACH DICTIONARY db_for_dict.dict_with_hashed_layout;
-ATTACH DICTIONARY db_for_dict.dict_with_hashed_layout;
-SHOW CREATE DICTIONARY db_for_dict.dict_with_hashed_layout;
+DROP TABLE IF EXISTS replacing_merge_tree;
+CREATE TABLE replacing_merge_tree (key UInt32, date Datetime) ENGINE=ReplacingMergeTree() PARTITION BY date ORDER BY key;
+INSERT INTO replacing_merge_tree VALUES (1, '2020-01-01'), (2, '2020-01-02'), (1, '2020-01-01'), (2, '2020-01-02');
+DROP TABLE replacing_merge_tree;
+DROP TABLE IF EXISTS collapsing_merge_tree;
+CREATE TABLE collapsing_merge_tree (key UInt32, sign Int8, date Datetime) ENGINE=CollapsingMergeTree(sign) PARTITION BY date ORDER BY key;
+INSERT INTO collapsing_merge_tree VALUES (1, 1, '2020-01-01'), (2, 1, '2020-01-02'), (1, -1, '2020-01-01'), (2, -1, '2020-01-02'), (1, 1, '2020-01-01');
+DROP TABLE collapsing_merge_tree;
+DROP TABLE IF EXISTS versioned_collapsing_merge_tree;
+CREATE TABLE versioned_collapsing_merge_tree (key UInt32, sign Int8, version Int32, date Datetime) ENGINE=VersionedCollapsingMergeTree(sign, version) PARTITION BY date ORDER BY (key, version);
+INSERT INTO versioned_collapsing_merge_tree VALUES (1, 1, 1, '2020-01-01'), (1, -1, 1, '2020-01-01'), (1, 1, 2, '2020-01-01');
+DROP TABLE versioned_collapsing_merge_tree;
+DROP TABLE IF EXISTS summing_merge_tree;
+CREATE TABLE summing_merge_tree (key UInt32, val UInt32, date Datetime) ENGINE=SummingMergeTree(val) PARTITION BY date ORDER BY key;
+INSERT INTO summing_merge_tree VALUES (1, 1, '2020-01-01'), (2, 1, '2020-01-02'), (1, 5, '2020-01-01'), (2, 5, '2020-01-02');
+DROP TABLE summing_merge_tree;
+DROP TABLE IF EXISTS aggregating_merge_tree;
+CREATE TABLE aggregating_merge_tree (key UInt32, val SimpleAggregateFunction(max, UInt32), date Datetime) ENGINE=AggregatingMergeTree() PARTITION BY date ORDER BY key;
+INSERT INTO aggregating_merge_tree VALUES (1, 1, '2020-01-01'), (2, 1, '2020-01-02'), (1, 5, '2020-01-01'), (2, 5, '2020-01-02');
+DROP TABLE aggregating_merge_tree;
+DROP TABLE IF EXISTS empty;
+CREATE TABLE empty (key UInt32, val UInt32, date Datetime) ENGINE=SummingMergeTree(val) PARTITION BY date ORDER BY key;
+INSERT INTO empty VALUES (1, 1, '2020-01-01'), (1, 1, '2020-01-01'), (1, -2, '2020-01-01');

@@ -1,14 +1,3 @@
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 DEFAULT x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
-DROP TABLE test;
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 MATERIALIZED x + 1) ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
-DROP TABLE test;
-DROP TABLE IF EXISTS test;
-CREATE TABLE test (x UInt8, y UInt8 ALIAS x + 1, z String DEFAULT 'Hello') ENGINE = MergeTree ORDER BY tuple();
-INSERT INTO test (x) VALUES (1), (2), (3);
-ALTER TABLE test CLEAR COLUMN x;
+drop table if exists tab;
+create table tab (t DateTime) engine = MergeTree order by toStartOfDay(t);
+insert into tab values ('2020-02-02 01:01:01');

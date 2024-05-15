@@ -1,6 +1,27 @@
-DROP TABLE IF EXISTS t;
-DROP TABLE IF EXISTS nr;
-CREATE TABLE t (`x` UInt32, `s` LowCardinality(String)) ENGINE = Memory;
-CREATE TABLE nr (`x` Nullable(UInt32), `s` Nullable(String)) ENGINE = Memory;
-INSERT INTO t VALUES (1, 'l');
-INSERT INTO nr VALUES (2, NULL);
+DROP DICTIONARY IF EXISTS TestTblDict;
+DROP VIEW IF EXISTS TestTbl_view;
+DROP TABLE IF EXISTS TestTbl;
+CREATE TABLE TestTbl
+(
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+ENGINE = MergeTree
+PARTITION BY dt
+ORDER BY (id);
+CREATE VIEW TestTbl_view
+AS
+SELECT *
+FROM TestTbl
+WHERE dt = ( SELECT max(dt) FROM TestTbl );
+CREATE DICTIONARY IF NOT EXISTS TestTblDict
+(
+    `id` UInt16,
+    `dt` Date,
+    `val` String
+)
+PRIMARY KEY id
+SOURCE(CLICKHOUSE(TABLE TestTbl_view DB currentDatabase()))
+LIFETIME(1)
+LAYOUT(COMPLEX_KEY_HASHED());

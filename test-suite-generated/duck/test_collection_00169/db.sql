@@ -337,3 +337,6 @@ INSERT INTO integers VALUES (21), (41);
 CREATE MACRO weird_avg(x) AS (MIN(x) + MAX(x)) / COUNT(x);
 CREATE MACRO add_default5(a, b := 5) AS a + b;
 CREATE MACRO two_default_params(a := 4, b := 2) AS a + b;
+CREATE MACRO my_macro(a) AS 42;
+create macro zz1(x) as (select 10+x);
+create macro zz2(x) as 20+x;

@@ -1,10 +1,5 @@
-DROP TABLE IF EXISTS 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (1), (Null);
-DROP TABLE 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a UInt64) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (0), (1), (2);
-DROP TABLE 00662_has_nullable;
-CREATE TABLE 00662_has_nullable(a Nullable(UInt64)) ENGINE = Memory;
-INSERT INTO 00662_has_nullable VALUES (0), (Null), (1);
-DROP TABLE 00662_has_nullable;
+DROP TABLE IF EXISTS buffer_table1__fuzz_28;
+DROP TABLE IF EXISTS merge_tree_table1;
+CREATE TABLE merge_tree_table1 (`x` UInt32) ENGINE = MergeTree ORDER BY x;
+INSERT INTO merge_tree_table1 VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
+CREATE TABLE buffer_table1__fuzz_28 (`x` Nullable(UInt32)) ENGINE = Buffer(currentDatabase(), 'merge_tree_table1', 16, 10, 60, 10, 1000, 1048576, 2097152);

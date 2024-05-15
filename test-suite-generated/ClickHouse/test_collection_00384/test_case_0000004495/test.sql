@@ -1,1 +1,0 @@
-SELECT 'Sum after DROP PARTITION:';

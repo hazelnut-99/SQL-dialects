@@ -1,177 +1,54 @@
-create table tbl (a integer, b integer unique, c integer default 10);
-insert into tbl(a,b) values (1,2), (2,1);
-insert or replace into tbl(a,b,c) values (5,2,20), (10,1,30);
-insert or replace into tbl (a,b) values (5,2);
-insert or replace into tbl AS not_tbl (a,b) values (5,2);
-create or replace table tbl (
-	a integer primary key default 4,
-	b integer DEFAULT 3
-);
-insert into tbl VALUES (2,3), (4,5);
-insert into tbl VALUES (DEFAULT, 6) ON CONFLICT (a) DO UPDATE SET b = DEFAULT;
-create or replace table tbl (
-	a integer primary key DEFAULT 5,
-	b integer
-);
-insert into tbl DEFAULT VALUES;
-FROM tbl;
-create or replace table tbl(
-	i integer UNIQUE,
-	j integer,
-	k integer PRIMARY KEY
-);
-insert into tbl values (3,4,2), (5,3,1);
-insert into tbl(k, i) values (2,3), (4,4), (1,8) on conflict (k) do update set j = excluded.j;
-create or replace table tbl (
-	a integer primary key,
-	b integer
-);
-insert into tbl VALUES (1,2), (2,2);
-insert into tbl VALUES (1,3), (3,4) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
-insert into tbl VALUES (4,3), (3,8) ON CONFLICT (a) WHERE excluded.b >= 8 DO UPDATE SET b = 10;
-insert into tbl VALUES (3,8), (2,2), (7,2) ON CONFLICT (a) DO UPDATE SET b = b*2 WHERE b == excluded.b;
-create or replace table tbl(
-	i integer PRIMARY KEY,
-	j integer UNIQUE,
-	k integer
-);
-insert into tbl VALUES
-	(1, 10, 1),
-	(2, 20, 1),
-	(3, 30, 2);
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = excluded.k;
-insert into tbl VALUES (4,2,3), (3,5,10) ON CONFLICT (i) DO NOTHING;
-insert into tbl VALUES
-	(3,1,5),
-ON CONFLICT (i) DO UPDATE SET
-	k = excluded.k;
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) WHERE k >= 5 DO UPDATE SET k = 1;
-insert into tbl VALUES (3,5,3) on conflict (i) do update set k = 10 WHERE k != 1;
-insert into tbl VALUES (3,5,3) on conflict (i) do update set k = 10 WHERE k == 1;
-insert into tbl VALUES (5,1,0), (3,5,20) ON CONFLICT DO NOTHING;
-create or replace table single_constraint (
-	i integer PRIMARY KEY,
-	j integer,
-	k varchar,
-);
-insert into single_constraint values (5,1,'hello'), (1,10,'test');
-insert into single_constraint values (1,5,'bye'), (3,10,'quack') on conflict do update set j = excluded.j, k = concat(k, excluded.k);
-create or replace table tbl(
-	i integer PRIMARY KEY,
-	j integer UNIQUE,
-	k integer
-);
-insert into tbl VALUES (1, 10, 1), (2, 20, 1), (3, 30, 2);
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
-create or replace table tbl (
-	a integer,
-	b integer,
-	c integer,
-	primary key (a, b)
-);
-insert into tbl VALUES (1,2,3), (1,4,5);
-insert into tbl VALUES (1,4,7), (1,8,4) ON CONFLICT (a,b) DO UPDATE set c = 5;
-create or replace table tbl (
-	a integer unique,
-	b integer
-);
-insert into tbl VALUES (3,2), (1,3);
-insert into tbl(b) VALUES (5) ON CONFLICT (a) DO UPDATE SET b = 8;
-insert into tbl(b) VALUES (5) ON CONFLICT (a) DO UPDATE SET b = 8;
-BEGIN TRANSACTION;
-INSERT INTO tbl VALUES (1, 2) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
-INSERT INTO tbl VALUES (1, 3) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
-COMMIT;
-BEGIN TRANSACTION;
-COMMIT;
-BEGIN TRANSACTION;
-INSERT INTO tbl VALUES
-	(5, 0);
-COMMIT;
-BEGIN TRANSACTION;
-INSERT INTO tbl VALUES (6,0);
-INSERT INTO tbl VALUES (5,0), (6,0), (7,0) ON CONFLICT (a) DO UPDATE set b = excluded.b;
-INSERT INTO tbl VALUES (-1, 0), (5,0), (6,0) ON CONFLICT (a) DO NOTHING;
-COMMIT;
-BEGIN TRANSACTION;
-CREATE OR REPLACE TABLE tbl (a SHORT PRIMARY KEY, b SHORT);
-INSERT INTO tbl (select i, 0 from range(2500) tbl(i));
-INSERT INTO tbl (select i, i from range(2500) tbl(i)) ON CONFLICT (a) DO UPDATE SET b = excluded.b;
-COMMIT;
-CREATE TABLE integers(
-	i INTEGER unique,
-	j INTEGER DEFAULT 0,
-	k INTEGER DEFAULT 0
-);
-INSERT INTO integers(i) SELECT i from range(5000) tbl(i);
-INSERT INTO integers SELECT * FROM integers on conflict do nothing;
-INSERT INTO integers SELECT * FROM integers on conflict do update set j = 10;
-INSERT INTO integers(i,j) select i%5,i from range(4995, 5000) tbl(i) on conflict do update set j = excluded.j, k = excluded.i;
-insert into integers(i,j)
-	select
-		CASE WHEN i % 2 = 0
-			THEN
-				4999 - (i//2)
-			ELSE
-				i - ((i//2)+1)
-		END,
-		i
-	from range(5000) tbl(i)
-on conflict do update set j = excluded.j;
-update integers set j = 0;
-insert into integers(i,j)
-	select
-		CASE WHEN i % 2 = 0
-			THEN
-				4999 - (i//2)
-			ELSE
-				i - ((i//2)+1)
-		END,
-		i
-	from range(5000) tbl(i)
-on conflict do update set j = excluded.j where i % 2 = 0 AND excluded.j % 2 = 0;
-insert or ignore into tbl values (1,2), (2,1);
-insert or replace into tbl values (5,2), (10,1);
-create or replace table tbl (a integer unique, b integer unique);
-insert into tbl(b) VALUES (3), (5), (6);
-create table t (i int primary key, j int);
-insert into t values (1, 1) on conflict do nothing;
-insert into t values (1, 1) on conflict do nothing;
-insert into t values (1, 1) on conflict (i) do update set j = excluded.i;
-CREATE TABLE test_table_raw(id VARCHAR, name VARCHAR);
-INSERT INTO test_table_raw VALUES
-	('abc001','foo'),
-	('abc002','bar'),
-	('abc001','foo2'),
-	('abc002','bar2');
-CREATE TABLE test_table(id VARCHAR PRIMARY KEY, name VARCHAR);
-create or replace table tbl (a integer primary key, b integer);
-insert into tbl VALUES (1,3), (2,2), (3,10), (4,3);
-insert into tbl VALUES (3,8), (2,2) ON CONFLICT (a) DO UPDATE SET b = b*2 WHERE b == excluded.b;
-create or replace table tbl (a integer default 3);
-create or replace table tbl(
-	i integer PRIMARY KEY,
-	j integer UNIQUE,
-	k integer
-);
-insert into tbl VALUES
-	(1, 10, 1),
-	(2, 20, 1),
-	(3, 30, 2);
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 5;
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = 1 + excluded.k;
-insert into tbl VALUES (3,5,1) ON CONFLICT (i) DO UPDATE SET k = k + excluded.k;
-create or replace table tbl (
-	a integer primary key default 5,
-	b integer
-);
-insert into tbl(b) VALUES (10);
-insert into tbl(b) VALUES (10) ON CONFLICT (a) DO NOTHING;
-insert into tbl(b) VALUES (10) ON CONFLICT (a) DO UPDATE SET b = excluded.b * 2;
-create or replace table index_tbl (
-	i integer,
-	j integer
-);
-insert into index_tbl values (5, 3);
-create unique index other_index on index_tbl(i);
+CREATE TABLE eventlog AS
+	SELECT ts,
+		CHR((RANDOM() * 3 + 65)::INTEGER) AS activity_name,
+		(RANDOM() * 100)::INTEGER AS case_id
+	FROM generate_series('2023-01-01'::TIMESTAMP, '2023-02-01'::TIMESTAMP, INTERVAL 1 HOUR) tbl(ts);
+CREATE VIEW cse AS 
+WITH t AS (SELECT
+    string_agg(activity_name, ',' order by ts asc, activity_name) as trace,
+    1 as cnt
+from
+    eventlog
+group by case_id
+)
+SELECT
+    trace,
+    sum(cnt) as cnt_trace,
+    sum(cnt_trace) over () as cnt_total,
+    sum(cnt) / sum(cnt_trace) over () as rel,
+    sum(cnt_trace) over (
+         order by cnt_trace desc 
+         ROWS between UNBOUNDED PRECEDING and CURRENT ROW) 
+      / sum(cnt_trace) over () 
+      as rel
+from t
+group by trace
+order by cnt_trace desc;
+EXPLAIN FROM cse;
+EXPLAIN FROM cse;
+EXPLAIN FROM cse;
+EXPLAIN FROM cse;
+CREATE VIEW noncse AS
+SELECT
+    quantile(x, 0.3) over() as q3,
+    quantile(x, 0.7) over() as q7
+FROM generate_series(1, 10) as tbl(x);
+EXPLAIN FROM noncse;
+CREATE TABLE flog AS
+	SELECT (random() * 100)::INTEGER AS laufzeit
+	, TIMESTAMP '2020-10-15 16:45:00' + INTERVAL (random() * 15 * 60) SECOND AS "timestamp"
+	FROM range(26000);
+CREATE TABLE Scoreboard(TeamName VARCHAR, Player VARCHAR, Score INTEGER);
+INSERT INTO Scoreboard VALUES ('Mongrels', 'Apu', 350);
+INSERT INTO Scoreboard VALUES ('Mongrels', 'Ned', 666);
+INSERT INTO Scoreboard VALUES ('Mongrels', 'Meg', 1030);
+INSERT INTO Scoreboard VALUES ('Mongrels', 'Burns', 1270);
+INSERT INTO Scoreboard VALUES ('Simpsons', 'Homer', 1);
+INSERT INTO Scoreboard VALUES ('Simpsons', 'Lisa', 710);
+INSERT INTO Scoreboard VALUES ('Simpsons', 'Marge', 990);
+INSERT INTO Scoreboard VALUES ('Simpsons', 'Bart', 2010);
+CREATE TABLE list_extract_test(i INTEGER, g INTEGER);
+INSERT INTO list_extract_test VALUES (1, 1), (2, 1), (3, 2), (NULL, 3), (42, 3);
+CREATE VIEW list_window AS
+SELECT g, LIST(i) OVER (PARTITION BY g ORDER BY i ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as l
+FROM list_extract_test;

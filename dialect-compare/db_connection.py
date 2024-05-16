@@ -294,10 +294,11 @@ for host_db in all_dbs:
     test_suite_path = test_suite_paths[host_db]
     for guest_db in all_dbs:
         collections = list(glob.glob(test_suite_path + '/test_collection_*'))
-        db_name = collections.split("/")[-1]
+        
         result_list = []
         compare_result_list = []
         for collection in collections:
+            db_name = collection.split("/")[-1]
             host_db_instance = get_database_instance(host_db, f"{host_db}_{db_name}")
             guest_db_instance = get_database_instance(guest_db, f"{guest_db}_{db_name}")
             

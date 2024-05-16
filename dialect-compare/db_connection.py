@@ -3,6 +3,71 @@ import psycopg2
 import duckdb
 import os
 import glob
+from enum import Enum
+import json
+import docker
+import time
+import clickhouse_connect 
+
+
+client = docker.from_env()
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Enum):
+            return obj.value
+        elif isinstance(obj, RunResultDetail):
+            return {
+                "result_type": obj.result_type.value,
+                "result_detail": obj.result_detail,
+                "fail_stage": obj.fail_stage.value if obj.fail_stage else None
+            }
+        else:
+            return super().default(obj)
+
+def custom_decoder(obj):
+    if 'result_type' in obj and 'result_detail' in obj:
+        result_type = RunResultType(obj['result_type'])
+        result_detail = obj['result_detail']
+        fail_stage = FailStageEnum(obj['fail_stage']) if 'fail_stage' in obj else None
+        return RunResultDetail(result_type, result_detail, fail_stage)
+    return obj
+
+        
+class RunResultType(Enum):
+    SUCCESS = "success"
+    ERROR = "error"
+
+
+class CompareResultType(Enum):
+    SAME = "same"
+    ERROR = "error"
+    DIFFERENT = "different"
+
+
+class FailStageEnum(Enum):
+    SET_UP = "set_up"
+    QUERY = "query"
+
+
+class RunResultDetail:
+    def __init__(self, result_type, result_detail, fail_stage=None):
+        self.result_type = result_type
+        self.result_detail = result_detail
+        self.fail_stage = fail_stage
+
+    def __str__(self):
+        return f"Result Type: {self.result_type}, Result Detail: {self.result_detail}, fail stage: {self.fail_stage}"
+
+
+def get_run_result_stats(run_result_details):
+    success_num = len([
+        result for result in run_result_details if result.result_type == RunResultType.SUCCESS
+    ])
+    error_num = len([
+        result for result in run_result_details if result.result_type == RunResultType.ERROR
+    ])
+    return success_num, error_num
+
 
 class DB_Instance:
     def __init__(self, database):
@@ -10,12 +75,9 @@ class DB_Instance:
         self.connection = None
 
     def execute_set_up_script(self, setup_script_file):
-        try:
-            with open(setup_script_file, 'r') as script:
-                setup_sql = script.read()
-                self.execute_query(setup_sql)
-        except Exception as e:
-            print(f"Error executing setup script: {e}")
+        with open(setup_script_file, "r") as script:
+            setup_sql = script.read()
+            self.execute_query(setup_sql)
 
     def get_connection(self):
         raise NotImplementedError
@@ -31,6 +93,44 @@ class DB_Instance:
         except Exception as e:
             print(f"Error closing connection: {e}")
 
+    def delete_database(self):
+        pass
+
+    # todo handle possible errors
+    def run_a_collection(self, collection_path):
+        result_map = {}
+        setup_file = collection_path + "/db.sql"
+        test_cases = list(glob.glob(collection_path + "/test_case_*"))
+
+        if os.path.exists(setup_file) and os.stat(setup_file).st_size != 0:
+            try:
+                self.execute_set_up_script(setup_file)
+            except Exception as e:
+                # no need to continue
+                run_result_detail = RunResultDetail(
+                    RunResultType.ERROR, str(e), FailStageEnum.SET_UP
+                )
+                for test_case in test_cases:
+                    result_map[test_case.split("/")[-1]] = run_result_detail
+                return result_map
+
+        for test_case in test_cases:
+            try:
+                with open(test_case + "/test.sql", "r") as sql_file:
+                    sql_query = sql_file.read()
+                    query_result = self.execute_query(sql_query)
+                    run_result_detail = RunResultDetail(
+                        RunResultType.SUCCESS, query_result
+                    )
+                    result_map[test_case.split("/")[-1]] = run_result_detail
+            except Exception as e:
+                run_result_detail = RunResultDetail(
+                    RunResultType.ERROR, str(e), FailStageEnum.QUERY
+                )
+                result_map[test_case.split("/")[-1]] = run_result_detail
+        return result_map
+
+
 class SQLiteDB(DB_Instance):
     def get_connection(self):
         try:
@@ -39,31 +139,23 @@ class SQLiteDB(DB_Instance):
         except Exception as e:
             print(f"Error connecting to SQLite database: {e}")
             return None
-    
+
     def execute_set_up_script(self, setup_script_file):
-        try:
-            if not self.connection:
-                self.get_connection()
+        if not self.connection:
+            self.get_connection()
 
-            with open(setup_script_file, 'r') as script:
-                setup_sql = script.read()
+        with open(setup_script_file, "r") as script:
+            setup_sql = script.read()
 
-            self.connection.executescript(setup_sql)
-
-        except Exception as e:
-            print(f"Error executing setup script in SQLite database: {e}")
+        self.connection.executescript(setup_sql)
 
     def execute_query(self, sql):
-        try:
-            if not self.connection:
-                self.get_connection()
-            cursor = self.connection.cursor()
-            cursor.execute(sql)
-            return cursor.fetchall()  # Fetch all results if it's a query
-        except Exception as e:
-            print(f"Error executing query in SQLite database: {e}")
-            return None
-    
+        if not self.connection:
+            self.get_connection()
+        cursor = self.connection.cursor()
+        cursor.execute(sql)
+        return cursor.fetchall()
+
     def delete_database(self):
         try:
             if os.path.exists(self.database):
@@ -82,15 +174,11 @@ class DuckDB(DB_Instance):
             return None
 
     def execute_query(self, sql):
-        try:
-            if not self.connection:
-                self.get_connection()
-            cursor = self.connection.execute(sql)
-            return cursor.fetchall()  # Fetch all results if it's a query
-        except Exception as e:
-            print(f"Error executing query in DuckDB database: {e}")
-            return None
-    
+        if not self.connection:
+            self.get_connection()
+        cursor = self.connection.execute(sql)
+        return cursor.fetchall()  # Fetch all results if it's a query
+
     def delete_database(self):
         try:
             if os.path.exists(self.database):
@@ -99,32 +187,138 @@ class DuckDB(DB_Instance):
             print(f"Error deleting DuckDB database: {e}")
 
 
+class PostGreDB(DB_Instance):
+    def __init__(self, database):
+        super().__init__(database)
+        client = docker.from_env()
+        command_1 = f'psql -U postgres -c "DROP DATABASE IF EXISTS {database};"'
+        command_2 = f'psql -U postgres -c "CREATE DATABASE {database};"'
+        container = client.containers.get("my_postgres")
+        container.exec_run(
+            cmd=['sh', '-c', command_1]
+        )
+        container.exec_run(
+            cmd=['sh', '-c', command_2]
+        )
+    
+    def get_connection(self):
+        connection = psycopg2.connect(
+            host='localhost',
+            port=54320,
+            dbname=f"{self.database}",
+            user='postgres',
+            password='my_password',
+        )
+        self.connection = connection
+
+    
+    def execute_set_up_script(self, setup_script_file):
+        if self.connection is None:
+            self.get_connection()
+        with open(setup_script_file, 'r') as script_file:
+            sql_script = script_file.read()
+        cursor = self.connection.cursor()
+        cursor.execute(sql_script)
+        self.connection.commit()
+        cursor.close()
+    
+    def execute_query(self, sql):
+        if self.connection is None:
+            self.get_connection()
+        cursor = self.connection.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        return result
+    
+    def close_connection(self):
+        return self.connection.close()
+    
+    
+    def delete_database(self):
+        command = f'psql -U postgres -c "DROP DATABASE {self.database};"'
+        container = client.containers.get("my_postgres")
+        container.exec_run(
+            cmd=['sh', '-c', command]
+        )
+
+class ClickHouseDB(DB_Instance):
+    def __init__(self, database):
+        super().__init__(database)
+        self.client = self.get_connection()
+        self.client.command(f"CREATE DATABASE IF NOT EXISTS {database}")
+        client.database = database
+    
+    def get_connection(self):
+        client = clickhouse_connect.get_client(host='localhost', port=18123)
+        return client
+    
+    
+    def execute_set_up_script(self, setup_script_file):
+        with open(setup_script_file, 'r') as script_file:
+            sql_script = script_file.read()
+        self.client.command(sql_script, use_database=True)
+    
+    def execute_query(self, sql):
+        return self.client.query(sql).result_rows
+    
+    def delete_database(self):
+        self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
+
+test_suite_paths = {
+    "duck": "../test-suite-generated/duck",
+    "sqlite": "../test-suite-generated/sqlite",
+    "postgre": "../test-suite-generated/",
+    "click":  "../test-suite-generated/ClickHouse"
+}
+
+sqlite_test_suite_path = "../test-suite-generated/sqlite"
+duck_test_suite_path = "../test-suite-generated/duck"
+click_house_test_suite_path = "../test-suite-generated/ClickHouse"
+post_gre_test_suite_path = "../test-suite-generated/"
+
+all_dbs = ["duck", "sqlite", "postgre", "click"]
 
 
 
-def custom_key(item):
-    # Replace None values with a default value (e.g., a large number) for sorting
-    return tuple(float('inf') if x is None else x for x in item)
+def get_database_instance(db_type, db_name):
+    if db_type == "duck":
+        return DuckDB(db_name)
+    if db_type == "sqlite":
+        return SQLiteDB(db_name)
+    if db_type == "postgre":
+        return PostGreDB(db_name)
+    return ClickHouseDB(db_name)
+    
 
+for host_db in all_dbs:
+    test_suite_path = test_suite_paths[host_db]
+    for guest_db in all_dbs:
+        collections = list(glob.glob(test_suite_path + '/test_collection_*'))
+        db_name = collections.split("/")[-1]
+        result_list = []
+        compare_result_list = []
+        for collection in collections:
+            host_db_instance = get_database_instance(host_db, f"{host_db}_{db_name}")
+            guest_db_instance = get_database_instance(guest_db, f"{guest_db}_{db_name}")
+            
+            host_result = host_db_instance.run_a_collection(collection)
+            guest_result = guest_db_instance.run_a_collection(collection)
+            
+            
+            test_cases = host_result.keys()
+            for case in test_cases:
+                item = {
+                    "test_case": case,
+                    "host_result": host_result,
+                    "guest_result": guest_result
+                }
+                result_list.append(item)
+                
+            host_db_instance.close_connection()
+            guest_db_instance.close_connection()
+            host_db_instance.delete_database()
+            guest_db_instance.delete_database()
 
-
-sqlite = SQLiteDB("sqlite_test.db")
-duck = DuckDB("duck_test.db")
-
-query = "select \
-	l_extendedprice, \
-	l_partkey, \
-	l_orderkey, \
-	sum(l_extendedprice) over(), \
-from lineitem \
-order by l_partkey, l_orderkey;"
-
-
-sqlite.execute_set_up_script("/Users/hongshu/Desktop/eth-master-study/2024-spring/automated-software-testing/projects/SQL-dialects/test-suite-generated/duck/test_collection_07761/db.sql")
-duck.execute_set_up_script("/Users/hongshu/Desktop/eth-master-study/2024-spring/automated-software-testing/projects/SQL-dialects/test-suite-generated/duck/test_collection_07761/db.sql")
-print(sqlite.execute_query(query))
-print(duck.execute_query(query))
-duck.close_connection()
-sqlite.close_connection()
-duck.delete_database()
-sqlite.delete_database()
+        json_str = json.dumps(result_list, cls=CustomJSONEncoder)
+        with open("f{host_db}_{guest_db}", "w") as json_file:
+            json_file.write(json_str)  

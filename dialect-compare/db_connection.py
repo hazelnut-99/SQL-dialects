@@ -245,6 +245,7 @@ class ClickHouseDB(DB_Instance):
     def __init__(self, database):
         super().__init__(database)
         self.client = self.get_connection()
+        self.client.command(f"SET max_execution_time = 5")
         self.client.command(f"CREATE DATABASE IF NOT EXISTS {database}")
         client.database = database
     

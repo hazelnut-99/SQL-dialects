@@ -9,34 +9,63 @@ test_suite_paths = {
     "click":  "../test-suite-generated/ClickHouse"
 }
 
-all_dbs = ["duck", "sqlite", "postgre", "click"]
+all_dbs = ["duck", "sqlite", "postgre"]
 
+def custom_key(item):
+    # Replace None with a very small value
+    return tuple(-float('inf') if x is None else x for x in item)
 
 
 for host_db in all_dbs:
-    print("running %s" % (host_db))
-    error_cases = []
     test_suite_path = test_suite_paths[host_db]
-    collections = list(glob.glob(test_suite_path + '/test_collection_*'))
+    collections = list(glob.glob(test_suite_path + '/test_collection_*'))[:1]
     for collection in collections:
         db_name = collection.split("/")[-1]
-        host_db_instance = get_database_instance(host_db, f"{host_db}_{db_name}")
+        host_db_instance = get_database_instance(host_db, db_name + "_" + host_db)
         host_result = host_db_instance.run_a_collection(collection)
-        for test_case, result in host_result.items():
-            if result.result_type == RunResultType.ERROR:
-                error_cases.append({
-                    "test_case": test_case,
-                    "result": result
-                })
         host_db_instance.close_connection()
         host_db_instance.delete_database()
         
-    print("%s number of error test cases: %d" % (host_db, len(error_cases)))
-    
-    json_str = json.dumps(error_cases, cls=CustomJSONEncoder)
-    with open(f"{host_db}_errors.json", "w") as json_file:
-        json_file.write(json_str)  
+        for guest_db in all_dbs:
+            if guest_db == host_db:
+                continue 
+            top_dir = f"{host_db}_{guest_db}"
+            os.makedirs(top_dir, exist_ok=True)
+            guest_db_instance = get_database_instance(guest_db, db_name + "_" + guest_db)
+            guest_result = guest_db_instance.run_a_collection(collection)
+            guest_db_instance.close_connection()
+            guest_db_instance.delete_database()
         
+            test_cases = host_result.keys()
+            diff_details = []
+            for test_case in test_cases:
+                if guest_result[test_case].result_type == RunResultType.ERROR:
+                    compare_result_detail = {
+                        "test_case": test_case,
+                        "type": "error",
+                        "result_detail":  guest_result[test_case].result_detail,
+                        "error_stage": guest_result[test_case].fail_stage
+                    }
+                elif sorted(guest_result[test_case].result_detail, key=custom_key) == sorted(host_result[test_case].result_detail, key=custom_key):
+                    compare_result_detail = {
+                        "test_case": test_case,
+                        "type": "same"
+                    }
+                else:
+                    compare_result_detail = {
+                        "test_case": test_case,
+                        "type": "different",
+                        "host_result_detail": host_result[test_case].result_detail,
+                        "guest_result_detail": guest_result[test_case].result_detail 
+                    }
+                diff_details.append(compare_result_detail)
+                json_str = json.dumps(diff_details, cls=CustomJSONEncoder)
+                with open(f"{top_dir}/{db_name}.json", "w") as json_file:
+                    json_file.write(json_str)  
+    
+
+
+
         
     
     
@@ -78,3 +107,5 @@ for host_db in all_dbs:
     #             json_file.write(json_str)  
 
         
+
+

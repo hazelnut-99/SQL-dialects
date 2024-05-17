@@ -256,7 +256,9 @@ class ClickHouseDB(DB_Instance):
     def execute_set_up_script(self, setup_script_file):
         with open(setup_script_file, 'r') as script_file:
             sql_script = script_file.read()
-        self.client.command(sql_script, use_database=True)
+            statements = sql_script.split(";")
+            for statement in statements:
+                self.client.command(statement, use_database=True)
     
     def execute_query(self, sql):
         return self.client.query(sql).result_rows
@@ -264,19 +266,6 @@ class ClickHouseDB(DB_Instance):
     def delete_database(self):
         self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
 
-test_suite_paths = {
-    "duck": "../test-suite-generated/duck",
-    "sqlite": "../test-suite-generated/sqlite",
-    "postgre": "../test-suite-generated/",
-    "click":  "../test-suite-generated/ClickHouse"
-}
-
-sqlite_test_suite_path = "../test-suite-generated/sqlite"
-duck_test_suite_path = "../test-suite-generated/duck"
-click_house_test_suite_path = "../test-suite-generated/ClickHouse"
-post_gre_test_suite_path = "../test-suite-generated/"
-
-all_dbs = ["duck", "sqlite", "postgre", "click"]
 
 
 
@@ -289,37 +278,3 @@ def get_database_instance(db_type, db_name):
         return PostGreDB(db_name)
     return ClickHouseDB(db_name)
     
-
-for host_db in all_dbs:
-    test_suite_path = test_suite_paths[host_db]
-    for guest_db in all_dbs:
-        collections = list(glob.glob(test_suite_path + '/test_collection_*'))
-        
-        result_list = []
-        compare_result_list = []
-        for collection in collections:
-            db_name = collection.split("/")[-1]
-            host_db_instance = get_database_instance(host_db, f"{host_db}_{db_name}")
-            guest_db_instance = get_database_instance(guest_db, f"{guest_db}_{db_name}")
-            
-            host_result = host_db_instance.run_a_collection(collection)
-            guest_result = guest_db_instance.run_a_collection(collection)
-            
-            
-            test_cases = host_result.keys()
-            for case in test_cases:
-                item = {
-                    "test_case": case,
-                    "host_result": host_result,
-                    "guest_result": guest_result
-                }
-                result_list.append(item)
-                
-            host_db_instance.close_connection()
-            guest_db_instance.close_connection()
-            host_db_instance.delete_database()
-            guest_db_instance.delete_database()
-
-        json_str = json.dumps(result_list, cls=CustomJSONEncoder)
-        with open("f{host_db}_{guest_db}", "w") as json_file:
-            json_file.write(json_str)  

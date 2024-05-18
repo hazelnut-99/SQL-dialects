@@ -259,9 +259,13 @@ class ClickHouseDB(DB_Instance):
             sql_script = script_file.read()
             statements = sql_script.split(";")
             for statement in statements:
+                statement = statement.strip()
+                if not statement:
+                    continue
                 self.client.command(statement, use_database=True)
     
     def execute_query(self, sql):
+        sql = sql.strip()
         return self.client.query(sql).result_rows
     
     def delete_database(self):

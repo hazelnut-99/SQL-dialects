@@ -83,4 +83,3 @@ for host_db in ["click"]:
             with open(f"{top_dir}/{db_name}_5.json", "w") as json_file:
                 json_file.write(json_str)  
     
-

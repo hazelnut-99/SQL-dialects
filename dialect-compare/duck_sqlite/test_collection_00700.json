@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00700_00001", "type": "error", "result_detail": "near \"(\": syntax error", "error_stage": "query"}, {"test_case": "test_case_00700_00000", "type": "same"}]

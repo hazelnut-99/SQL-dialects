@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02158_00000", "type": "error", "result_detail": "trailing junk after numeric literal at or near \"02148_\"\nLINE 1: DROP FUNCTION IF EXISTS 02148_test_function;\n                                ^\n", "error_stage": "set_up"}]

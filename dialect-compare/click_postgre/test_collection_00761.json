@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00761_00000", "type": "error", "result_detail": "syntax error at or near \"ttl\"\nLINE 2: ...E ttl_with_default (d DateTime, a Int default 777 ttl d + in...\n                                                             ^\n", "error_stage": "set_up"}]

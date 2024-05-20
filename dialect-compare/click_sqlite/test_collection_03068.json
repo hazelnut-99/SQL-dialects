@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03068_00000", "type": "error", "result_detail": "near \"=\": syntax error", "error_stage": "set_up"}, {"test_case": "test_case_03068_00001", "type": "error", "result_detail": "near \"=\": syntax error", "error_stage": "set_up"}]

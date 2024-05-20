@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02924_00001", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 4:     `account_id` UInt64,\n            ^\n", "error_stage": "set_up"}, {"test_case": "test_case_02924_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 4:     `account_id` UInt64,\n            ^\n", "error_stage": "set_up"}]

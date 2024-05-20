@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00492_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 5: CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLo...\n                                                     ^\n", "error_stage": "set_up"}]

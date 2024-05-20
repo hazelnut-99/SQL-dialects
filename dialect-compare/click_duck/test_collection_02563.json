@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02563_00000", "type": "error", "result_detail": "Catalog Error: Scalar Function with name sleep does not exist!\nDid you mean \"exp\"?\nLINE 1: select sleep(3);\n               ^", "error_stage": "query"}]

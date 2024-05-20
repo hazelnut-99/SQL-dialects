@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02019_00000", "type": "error", "result_detail": "syntax error at or near \"User\"\nLINE 9:     User UInt32,\n            ^\n", "error_stage": "set_up"}]

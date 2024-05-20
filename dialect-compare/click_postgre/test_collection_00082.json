@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00082_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: CREATE TABLE bad_arrays (a Array(String), b Array(UInt8)) EN...\n                                   ^\n", "error_stage": "set_up"}]

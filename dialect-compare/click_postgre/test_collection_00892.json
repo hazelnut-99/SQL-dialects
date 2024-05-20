@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00892_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 3: ..._default_column (APIKey UInt8, SessionType UInt8) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

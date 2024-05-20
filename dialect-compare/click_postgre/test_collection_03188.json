@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03188_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 1: create table query_run_metric_arrays engine Memory as with (...\n                                             ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00419_00000", "type": "error", "result_detail": "syntax error at or near \"alias\"\nLINE 2: create table tab_00712_1 (a UInt32, b UInt32 alias a + 1, c ...\n                                                     ^\n", "error_stage": "set_up"}]

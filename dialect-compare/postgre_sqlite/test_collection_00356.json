@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00356_00000", "type": "error", "result_detail": "no such column: ctid", "error_stage": "query"}, {"test_case": "test_case_00356_00001", "type": "error", "result_detail": "no such column: ctid", "error_stage": "query"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02682_00000", "type": "error", "result_detail": "syntax error at or near \"ALIAS\"\nLINE 4:     c0 String ALIAS c1,\n                      ^\n", "error_stage": "set_up"}]

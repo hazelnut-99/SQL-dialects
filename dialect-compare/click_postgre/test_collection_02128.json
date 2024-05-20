@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02128_00000", "type": "error", "result_detail": "syntax error at or near \"NOT\"\nLINE 1: CREATE DATABASE IF NOT EXISTS test_02115;\n                           ^\n", "error_stage": "set_up"}]

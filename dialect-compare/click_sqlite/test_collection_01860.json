@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01860_00000", "type": "error", "result_detail": "unrecognized token: \"01889_sql_json\"", "error_stage": "set_up"}, {"test_case": "test_case_01860_00001", "type": "error", "result_detail": "unrecognized token: \"01889_sql_json\"", "error_stage": "set_up"}]

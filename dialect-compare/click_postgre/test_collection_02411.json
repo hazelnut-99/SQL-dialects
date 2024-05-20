@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02411_00000", "type": "error", "result_detail": "syntax error at or near \"Tuple\"\nLINE 5:     value Tuple(value_0_level_0 Tuple(value_0_level_1 String...\n                                        ^\n", "error_stage": "set_up"}]

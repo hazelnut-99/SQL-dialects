@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00822_00000", "type": "error", "result_detail": "syntax error at or near \"describe\"\nLINE 2: describe \"a.b.c\";\n        ^\n", "error_stage": "set_up"}]

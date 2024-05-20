@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02578_00000", "type": "error", "result_detail": "syntax error at or near \"1\"\nLINE 1: WITH tuple(INTERVAL 1 SECOND) + INTERVAL 1 SECOND as expr SE...\n                            ^\n", "error_stage": "set_up"}]

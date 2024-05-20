@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00562_00000", "type": "error", "result_detail": "syntax error at or near \"Codec\"\nLINE 5:     t_u8 UInt8 Codec(T64, ZSTD),\n                       ^\n", "error_stage": "set_up"}]

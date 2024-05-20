@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03212_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 1: CREATE TABLE override_test__fuzz_45 (`_part` Float32) ENGINE...\n                                             ^\n", "error_stage": "set_up"}]

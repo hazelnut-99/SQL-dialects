@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00320_00000", "type": "error", "result_detail": "syntax error at or near \"column\"\nLINE 4:     column Nested\n            ^\n", "error_stage": "set_up"}]

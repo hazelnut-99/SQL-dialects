@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01256_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: create table tesd_dedupl (x UInt32, y UInt32) engine = Merge...\n                                                      ^\n", "error_stage": "set_up"}]

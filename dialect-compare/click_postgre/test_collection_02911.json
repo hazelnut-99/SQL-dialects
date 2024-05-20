@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02911_00000", "type": "error", "result_detail": "syntax error at or near \"default\"\nLINE 3:     default Nullable(DateTime) DEFAULT '1977-01-01 00:00:00'\n            ^\n", "error_stage": "set_up"}]

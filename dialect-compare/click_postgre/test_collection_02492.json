@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02492_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: create table test_02377 (n UInt32, s String) engine=File(CSV...\n                                                     ^\n", "error_stage": "set_up"}]

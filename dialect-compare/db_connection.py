@@ -97,10 +97,10 @@ class DB_Instance:
         pass
 
     # todo handle possible errors
-    def run_a_collection(self, collection_path):
+    def run_a_collection(self, collection_path, start_index=None, end_index=None):
         result_map = {}
         setup_file = collection_path + "/db.sql"
-        test_cases = list(glob.glob(collection_path + "/test_case_*"))
+        test_cases = sorted(list(glob.glob(collection_path + "/test_case_*")))
 
         if os.path.exists(setup_file) and os.stat(setup_file).st_size != 0:
             try:
@@ -114,7 +114,13 @@ class DB_Instance:
                     result_map[test_case.split("/")[-1]] = run_result_detail
                 return result_map
 
-        for test_case in test_cases:
+        if start_index is not None:
+            target_test_cases = test_cases[start_index:end_index]
+        else:
+            target_test_cases = test_cases
+        
+        
+        for test_case in target_test_cases:
             try:
                 with open(test_case + "/test.sql", "r") as sql_file:
                     sql_query = sql_file.read()
@@ -283,3 +289,4 @@ def get_database_instance(db_type, db_name):
         return PostGreDB(db_name)
     return ClickHouseDB(db_name)
     
+

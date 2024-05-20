@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00389_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 4: CREATE TABLE ary_lc_null (i int, v Array(LowCardinality(Null...\n                                           ^\n", "error_stage": "set_up"}]

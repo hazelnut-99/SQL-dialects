@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00305_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: create table tab_00612 (key UInt64, arr Array(UInt64)) Engin...\n                                                ^\n", "error_stage": "set_up"}]

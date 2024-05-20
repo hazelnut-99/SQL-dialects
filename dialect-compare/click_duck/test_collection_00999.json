@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00999_00000", "type": "error", "result_detail": "Binder Error: Ambiguous reference to column name \"visitorId\" (use: \"orders.visitorId\" or \"sessions.visitorId\")", "error_stage": "query"}]

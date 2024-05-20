@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00393_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 13: ...reate table lc_str_0 (str LowCardinality(String)) engine = M...\n                                                              ^\n", "error_stage": "set_up"}]

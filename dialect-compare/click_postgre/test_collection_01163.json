@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01163_00000", "type": "error", "result_detail": "syntax error at or near \"type\"\nLINE 4:     index key_idx (key) type minmax granularity 1\n                                ^\n", "error_stage": "set_up"}]

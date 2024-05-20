@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00037_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 3: CREATE TABLE merge_00160 (d Date, x UInt64) ENGINE = Merge(c...\n                                                    ^\n", "error_stage": "set_up"}]

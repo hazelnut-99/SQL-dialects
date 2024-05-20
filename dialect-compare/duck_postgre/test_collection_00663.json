@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00663_00001", "type": "error", "result_detail": "syntax error at or near \"PIVOT\"\nLINE 8: PIVOT\n        ^\n", "error_stage": "query"}, {"test_case": "test_case_00663_00000", "type": "error", "result_detail": "current transaction is aborted, commands ignored until end of transaction block\n", "error_stage": "query"}]

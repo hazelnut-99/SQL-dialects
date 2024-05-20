@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00010_00000", "type": "error", "result_detail": "syntax error at or near \"Engine\"\nLINE 1: ...REATE TABLE IF NOT EXISTS empty_tiny_log(A UInt8) Engine = T...\n                                                             ^\n", "error_stage": "set_up"}]

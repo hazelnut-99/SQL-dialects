@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01137_00000", "type": "error", "result_detail": "syntax error at or near \"CAST\"\nLINE 2:  CAST(1234567891011 AS Int64) AS i64,\n         ^\n", "error_stage": "set_up"}]

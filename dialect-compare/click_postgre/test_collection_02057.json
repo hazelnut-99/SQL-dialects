@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02057_00000", "type": "error", "result_detail": "syntax error at or near \"1\"\nLINE 1: WITH 1 AS max_size\n             ^\n", "error_stage": "set_up"}]

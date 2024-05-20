@@ -1,0 +1,3 @@
+=============test_case_00824_00000 from duck
+duck result: [('',)]
+postgre result: [(None,)]

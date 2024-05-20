@@ -1,0 +1,22 @@
+==============================
+run click test case on sqlite
+ERROR message; near "=": syntax error, example test case: test_case_00980_00000
+ERROR message; no such table: numbers, example test case: test_case_00000_09925
+ERROR message; near "DATABASE": syntax error, example test case: test_case_00788_00000
+ERROR message; near "String": syntax error, example test case: test_case_01159_00002
+ERROR message; near "Int8": syntax error, example test case: test_case_01702_00001
+ERROR message; no such function: toDateTime, example test case: test_case_00000_09329
+ERROR message; near "UInt8": syntax error, example test case: test_case_00665_00001
+ERROR message; near "(": syntax error, example test case: test_case_01122_00000
+ERROR message; no such function: materialize, example test case: test_case_02102_00003
+ERROR message; near "UInt64": syntax error, example test case: test_case_00118_00001
+ERROR message; near "?": syntax error, example test case: test_case_00000_09205
+ERROR message; unrecognized token: ":", example test case: test_case_00000_09941
+ERROR message; near ",": syntax error, example test case: test_case_00000_09955
+ERROR message; no such function: toFixedString, example test case: test_case_00000_09606
+ERROR message; no such function: dateDiff, example test case: test_case_00000_07761
+ERROR message; near "MergeTree": syntax error, example test case: test_case_01492_00001
+ERROR message; no such function: age, example test case: test_case_00000_11230
+ERROR message; unrecognized token: "]", example test case: test_case_00000_07936
+ERROR message; near "Int32": syntax error, example test case: test_case_02932_00000
+ERROR message; near "SYSTEM": syntax error, example test case: test_case_01232_00000

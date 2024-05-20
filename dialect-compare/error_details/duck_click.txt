@@ -1,0 +1,27 @@
+Syntax for the MergeTree table engine:
+
+CREATE TABLE [IF NOT EXISTS] [db.]table_name [ON CLUSTER cluster]
+(
+    name1 [type1] [DEFAULT|MATERIALIZED|ALIAS expr1] [TTL expr1],
+    name2 [type2] [DEFAULT|MATERIALIZED|ALIAS expr2] [TTL expr2],
+    ...
+    INDEX index_name1 expr1 TYPE type1(...) [GRANULARITY value1],
+    INDEX index_name2 expr2 TYPE type2(...) [GRANULARITY value2]
+) ENGINE = MergeTree()
+ORDER BY expr
+[PARTITION BY expr]
+[PRIMARY KEY expr]
+[SAMPLE BY expr]
+[TTL expr [DELETE|TO DISK 'xxx'|TO VOLUME 'xxx'], ...]
+[SETTINGS name=value, ...]
+[COMMENT 'comment']
+
+See details in documentation: https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree/. Other engines of the family support different syntax, see details in the corresponding documentation topics.
+
+If you use the Replicated version of engines, see https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/replication/.
+. (NUMBER_OF_ARGUMENTS_DOESNT_MATCH) (version 24.4.1.2088 (official build)), example test case: test_case_00824_00000
+ERROR message; :HTTPDriver for http://localhost:18123 returned response code 400)
+ Code: 62. DB::Exception: Syntax error: failed at position 223 ('(') (line 5, col 93): (ts). Expected one of: FINAL, SAMPLE, table, table function, subquery or list of joined tables, array join, LEFT ARRAY JOIN, INNER, ARRAY JOIN, GLOBAL, LOCAL, ANY, ALL, ASOF, SEMI, ANTI, ONLY, LEFT, RIGHT, FULL, CROSS, PASTE, JOIN, PREWHERE, WHERE, GROUP BY, WITH, HAVING, WINDOW, QUALIFY, ORDER BY, LIMIT, OFFSET, FETCH, SETTINGS, UNION, EXCEPT, INTERSECT, COMMENT, INTO OUTFILE, FORMAT, end of query. (SYNTAX_ERROR) (version 24.4.1.2088 (official build)), example test case: test_case_07766_00000
+ERROR message; :HTTPDriver for http://localhost:18123 returned response code 400)
+ Code: 62. DB::Exception: Syntax error: failed at position 95 ('('): (i). Expected one of: FINAL, SAMPLE, table, table function, subquery or list of joined tables, array join, LEFT ARRAY JOIN, INNER, ARRAY JOIN, GLOBAL, LOCAL, ANY, ALL, ASOF, SEMI, ANTI, ONLY, LEFT, RIGHT, FULL, CROSS, PASTE, JOIN, PREWHERE, WHERE, GROUP BY, WITH, HAVING, WINDOW, QUALIFY, ORDER BY, LIMIT, OFFSET, FETCH, SETTINGS, UNION, EXCEPT, INTERSECT, COMMENT, INTO OUTFILE, FORMAT, end of query. (SYNTAX_ERROR) (version 24.4.1.2088 (official build)), example test case: test_case_00759_00002
+ERROR message; :HTTPDriver for http://localhost:18123 returned response code 500)

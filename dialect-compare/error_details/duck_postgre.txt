@@ -1,0 +1,66 @@
+==============================
+run duck test case on postgre
+ERROR message; syntax error at or near "["
+LINE 4: insert into null_list values (null), ([null]);
+                                              ^, example test case: test_case_00980_00000
+ERROR message; syntax error at or near "TABLE"
+LINE 11: CREATE OR REPLACE TABLE t AS SELECT range x FROM range(10);
+                           ^, example test case: test_case_00629_00006
+ERROR message; syntax error at or near "1"
+LINE 5: ...01'::TIMESTAMP, '2023-02-01'::TIMESTAMP, INTERVAL 1 HOUR) tb...
+                                                             ^, example test case: test_case_07766_00000
+ERROR message; syntax error at or near "row"
+LINE 18: CREATE TABLE b(i row(t int));
+                          ^, example test case: test_case_00722_00002
+ERROR message; syntax error at or near "TABLE"
+LINE 5: CREATE or replace TABLE t1 as select range a, [1, a, 2] b, a...
+                          ^, example test case: test_case_00759_00002
+ERROR message; syntax error at or near ")"
+LINE 3: VALUES (42,);
+                   ^, example test case: test_case_00653_00000
+ERROR message; syntax error at or near "["
+LINE 77:  (1, [1]),
+              ^, example test case: test_case_00227_00001
+ERROR message; syntax error at or near "BY"
+LINE 12: ...T x FROM t1 UNION ALL SELECT x FROM t1) UNION ALL BY NAME SE...
+                                                              ^, example test case: test_case_00810_00001
+ERROR message; syntax error at or near "MACRO"
+LINE 3: CREATE MACRO cte_sq(a,b) AS (WITH cte AS (SELECT a * 2 AS c)...
+               ^, example test case: test_case_00118_00000
+ERROR message; syntax error at or near "{"
+LINE 7: create table structs as select {test: 4} main;
+                                       ^, example test case: test_case_00019_00001
+ERROR message; function range(integer, integer) does not exist
+LINE 7: ...range*random()::INT % 3 as customer_priority from range(1000...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts., example test case: test_case_00827_00001
+ERROR message; type "tinyint" does not exist
+LINE 3: CREATE TABLE test2 (a INTEGER, b TINYINT);
+                                         ^, example test case: test_case_00643_00003
+ERROR message; function range(integer) does not exist
+LINE 28: INSERT INTO student SELECT i, 'creator' FROM RANGE(260001) t...
+                                                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts., example test case: test_case_07633_00000
+ERROR message; function repeat(integer, integer) does not exist
+LINE 1: ...ECT i a, i::VARCHAR b, CONCAT(i, ' - ', i) c FROM repeat(1, ...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts., example test case: test_case_00739_00029
+ERROR message; syntax error at or near "{"
+LINE 8:   SELECT a.*, list({r:b.r, h:b.h, id: gen_random_uuid()}) as...
+                           ^, example test case: test_case_00245_00000
+ERROR message; syntax error at or near "or"
+LINE 3: insert or replace into tbl(a,b,c) values (5,2,20), (10,1,30)...
+               ^, example test case: test_case_07691_00000
+ERROR message; syntax error at or near "["
+LINE 64: INSERT INTO aggr VALUES ([0, 1, 1, 1, 4, 0, 3, 3, 2, 2, 4, 4...
+                                  ^, example test case: test_case_00085_00000
+ERROR message; syntax error at or near "TABLE"
+LINE 3: CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT,...
+                          ^, example test case: test_case_00665_00003
+ERROR message; schema "noaccent" does not exist
+LINE 1: CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT.NOCASE)...
+                                            ^, example test case: test_case_00025_00000
+ERROR message; function range(integer, integer) does not exist
+LINE 1: ... a AS SELECT i, i+1 AS j, i+2 AS k, i+3 AS l FROM range(42,4...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts., example test case: test_case_00793_00005

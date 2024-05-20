@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02606_00000", "type": "error", "result_detail": "trailing junk after numeric literal at or near \"02481_\"\nLINE 1: DROP TABLE IF EXISTS 02481_mergetree;\n                             ^\n", "error_stage": "set_up"}]

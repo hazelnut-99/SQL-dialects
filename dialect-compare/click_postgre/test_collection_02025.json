@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02025_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 4: create table x_1 engine=Log as select * from numbers(10);\n                         ^\n", "error_stage": "set_up"}]

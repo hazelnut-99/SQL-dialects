@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02684_00000", "type": "error", "result_detail": "syntax error at or near \")\"\nLINE 5:     value Nullable(Decimal(38, 2))\n                                         ^\n", "error_stage": "set_up"}]

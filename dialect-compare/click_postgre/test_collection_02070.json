@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02070_00000", "type": "error", "result_detail": "syntax error at or near \"Tuple\"\nLINE 4:            a Tuple(key1 int, key2 int),\n                     ^\n", "error_stage": "set_up"}]

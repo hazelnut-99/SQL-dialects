@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00001_00000", "type": "error", "result_detail": ":HTTPDriver for http://localhost:18123 returned response code 500)\n Code: 16. DB::Exception: No such column id in table default.a (ce642d95-7b49-48eb-b889-295220e4d181). (NO_SUCH_COLUMN_IN_TABLE) (version 24.4.1.2088 (official build))\n", "error_stage": "set_up"}]

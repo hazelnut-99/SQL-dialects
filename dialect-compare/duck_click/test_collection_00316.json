@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00316_00000", "type": "error", "result_detail": ":HTTPDriver for http://localhost:18123 returned response code 500)\n Code: 57. DB::Exception: Table default.test already exists. (TABLE_ALREADY_EXISTS) (version 24.4.1.2088 (official build))\n", "error_stage": "set_up"}]

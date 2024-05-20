@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01818_00000", "type": "error", "result_detail": "trailing junk after numeric literal at or near \"01837_\"\nLINE 1: DROP DATABASE IF EXISTS 01837_db;\n                                ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02327_00000", "type": "error", "result_detail": "syntax error at or near \"CAST\"\nLINE 1: WITH CAST([-547274980, 1790553898, 1981517754, 1908431500, 1...\n             ^\n", "error_stage": "set_up"}]

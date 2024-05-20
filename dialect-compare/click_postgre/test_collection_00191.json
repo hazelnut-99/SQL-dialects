@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00191_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: create table polygons ( id Int32, poly Array(Tuple(Int32, In...\n                                               ^\n", "error_stage": "set_up"}]

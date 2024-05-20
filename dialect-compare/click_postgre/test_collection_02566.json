@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02566_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: create table t_row_exists(a int, b int) engine=MergeTree ord...\n                                                ^\n", "error_stage": "set_up"}]

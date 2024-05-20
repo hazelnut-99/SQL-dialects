@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02838_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 1: ...ith_dot_column (date Date, regular_column String, `other_col...\n                                                             ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02588_00000", "type": "error", "result_detail": "Catalog Error: Table Function with name numbers does not exist!\nDid you mean \"unnest\"?\nLINE 1: ...H subquery AS (SELECT sum(number) FROM numbers(10)) SELECT * FROM subquery;\n                                                  ^", "error_stage": "set_up"}]

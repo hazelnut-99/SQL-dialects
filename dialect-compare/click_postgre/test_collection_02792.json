@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02792_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...able decimal_insert_cast_issue (a Decimal(76, 0)) engine = T...\n                                                             ^\n", "error_stage": "set_up"}]

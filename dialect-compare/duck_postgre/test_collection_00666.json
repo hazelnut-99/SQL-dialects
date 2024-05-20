@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00666_00000", "type": "error", "result_detail": "syntax error at or near \"TABLE\"\nLINE 3: CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT,...\n                          ^\n", "error_stage": "set_up"}]

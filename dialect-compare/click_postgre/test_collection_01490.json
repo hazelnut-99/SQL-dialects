@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01490_00000", "type": "error", "result_detail": "syntax error at or near \"select\"\nLINE 5: ...reate table pl (dt DateTime, i int, projection p (select sum...\n                                                             ^\n", "error_stage": "set_up"}]

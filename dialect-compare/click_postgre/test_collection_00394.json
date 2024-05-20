@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00394_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: CREATE TABLE mergetree_00698 (k UInt32, `n.x` Array(UInt64),...\n                                                ^\n", "error_stage": "set_up"}]

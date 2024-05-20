@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01131_00000", "type": "error", "result_detail": "syntax error at or near \"toInt64\"\nLINE 9:   CONSTRAINT cs_value1 CHECK toInt64(value1) < toInt64(value...\n                                     ^\n", "error_stage": "set_up"}]

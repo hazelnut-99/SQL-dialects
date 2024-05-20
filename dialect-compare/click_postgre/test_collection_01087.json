@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01087_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...x AggregateFunction(quantileTiming(0.2), UInt64)) engine = M...\n                                                             ^\n", "error_stage": "set_up"}]

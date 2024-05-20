@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01330_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...E null_subcolumns (id UInt32, n Nullable(String)) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

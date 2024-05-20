@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02321_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 4:     Value Array(Enum8('Option1'=1, 'Option2'=2))\n                  ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01153_00000", "type": "error", "result_detail": "Catalog Error: Table Function with name numbers does not exist!\nDid you mean \"unnest\"?\nLINE 1: SELECT count() FROM numbers(2000000);\n                            ^", "error_stage": "query"}]

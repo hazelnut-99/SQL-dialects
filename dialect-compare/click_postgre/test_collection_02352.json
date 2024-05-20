@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02352_00000", "type": "error", "result_detail": "syntax error at or near \"(\"\nLINE 1: WITH (SELECT 1) as v0\n             ^\n", "error_stage": "set_up"}]

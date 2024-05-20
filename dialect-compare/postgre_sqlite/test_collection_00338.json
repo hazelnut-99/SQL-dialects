@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00338_00000", "type": "different", "host_result_detail": [["ABAB    ", 2], ["bbbb    ", 1], ["BBBB    ", 2], ["cccc    ", 2], ["CCCC    ", 2], ["XXXX    ", 1]], "guest_result_detail": [["ABAB", 2], ["BBBB", 2], ["CCCC", 2], ["XXXX", 1], ["bbbb", 1], ["cccc", 2]]}, {"test_case": "test_case_00338_00001", "type": "same"}]

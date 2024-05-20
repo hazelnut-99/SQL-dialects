@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02796_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 4: ...E store (id UInt32, \"\u540d\u79f0\" String, \"\u72b6\u6001\" String) ENGINE=Mer...\n                                                             ^\n", "error_stage": "set_up"}]

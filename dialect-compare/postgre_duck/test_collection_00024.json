@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00024_00000", "type": "error", "result_detail": "Binder Error: Referenced column \"ctid\" not found in FROM clause!\nCandidate bindings: \"combocidtest.foobar\"\nLINE 1: SELECT ctid,cmin,* FROM combocidtest;\n               ^", "error_stage": "query"}]

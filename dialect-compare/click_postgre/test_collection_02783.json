@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02783_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...E TABLE test_grace_hash (id UInt32, value UInt64) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

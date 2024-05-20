@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02588_00000", "type": "error", "result_detail": "function numbers(integer) does not exist\nLINE 1: WITH subquery AS (SELECT sum(number) FROM numbers(10)) SELEC...\n                                                  ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n", "error_stage": "set_up"}]

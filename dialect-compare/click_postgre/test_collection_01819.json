@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01819_00000", "type": "error", "result_detail": "syntax error at or near \"DICTIONARY\"\nLINE 1: DROP DICTIONARY IF EXISTS example_simple_key_dictionary;\n             ^\n", "error_stage": "set_up"}]

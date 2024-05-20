@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01175_00000", "type": "error", "result_detail": "syntax error at or near \"QUOTA\"\nLINE 1: DROP QUOTA IF EXISTS q1_01297, q2_01297, q3_01297, q4_01297,...\n             ^\n", "error_stage": "set_up"}]

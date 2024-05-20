@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03126_00000", "type": "error", "result_detail": "function sleep(integer) does not exist\nLINE 1: SELECT sleep(3);\n               ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n", "error_stage": "query"}]

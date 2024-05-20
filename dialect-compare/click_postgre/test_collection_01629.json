@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01629_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...key_expression.test_for_dictionary (value String) ENGINE=Tin...\n                                                             ^\n", "error_stage": "set_up"}]

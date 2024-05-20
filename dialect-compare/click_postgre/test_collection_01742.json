@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01742_00000", "type": "error", "result_detail": "syntax error at or near \"[\"\nLINE 1: select x, y from (select [0, 1, 2] as y, 1 as a, 2 as b) arr...\n                                 ^\n", "error_stage": "query"}]

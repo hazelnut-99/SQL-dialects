@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03087_00000", "type": "error", "result_detail": "no such table: t", "error_stage": "query"}, {"test_case": "test_case_03087_00002", "type": "error", "result_detail": "no such table: numbers", "error_stage": "query"}, {"test_case": "test_case_03087_00001", "type": "error", "result_detail": "no such table: t", "error_stage": "query"}]

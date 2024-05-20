@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02082_00000", "type": "error", "result_detail": "syntax error at or near \"UInt64\"\nLINE 6: ...ple SimpleAggregateFunction(groupArrayArray, Array(UInt64)),\n                                                              ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02781_00000", "type": "error", "result_detail": "syntax error at or near \"(\"\nLINE 1: WITH ('a', 'b')::Tuple(c1 String, c2 String) AS t\n             ^\n", "error_stage": "set_up"}]

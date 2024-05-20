@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02507_00000", "type": "error", "result_detail": "type \"uint64\" does not exist\nLINE 1: CREATE TEMPORARY TABLE t (x UInt64);\n                                    ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00183_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: CREATE TABLE s (`id` String, `lng` Int64, `lat` Int64) ENGIN...\n                        ^\n", "error_stage": "set_up"}]

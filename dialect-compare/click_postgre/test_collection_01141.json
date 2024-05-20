@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01141_00000", "type": "error", "result_detail": "syntax error at or near \"'2019-09-16 19:20:12.345678910'\"\nLINE 2:  toDateTime64('2019-09-16 19:20:12.345678910', 3) AS dt64\n                      ^\n", "error_stage": "set_up"}]

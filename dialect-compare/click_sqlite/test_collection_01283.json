@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01283_00000", "type": "error", "result_detail": "no such column: 'a', 'b', 'c'", "error_stage": "query"}, {"test_case": "test_case_01283_00001", "type": "error", "result_detail": "no such column: 'a', 'b', NULL", "error_stage": "query"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02628_00000", "type": "error", "result_detail": "syntax error at or near \"SYSTEM\"\nLINE 1: SYSTEM DROP QUERY CACHE;\n        ^\n", "error_stage": "set_up"}]

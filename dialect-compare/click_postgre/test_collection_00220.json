@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00220_00000", "type": "error", "result_detail": "syntax error at or near \"UInt16\"\nLINE 2: ... Date, timeslot DateTime, statusMap Nested(status UInt16, re...\n                                                             ^\n", "error_stage": "set_up"}]

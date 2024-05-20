@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03185_00000", "type": "error", "result_detail": "trailing junk after numeric literal at or near \"03015_\"\nLINE 1: CREATE TABLE 03015_aggregator_empty_data_multiple_blocks (c0...\n                     ^\n", "error_stage": "set_up"}]

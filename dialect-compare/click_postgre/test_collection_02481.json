@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02481_00000", "type": "error", "result_detail": "syntax error at or near \"'CSV'\"\nLINE 1: WITH 'CSV', '1,2,\"[1,2,3]\",\"[[\\'abc\\'], [], [\\'d\\', \\'e\\']]\"...\n             ^\n", "error_stage": "set_up"}]

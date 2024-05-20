@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01057_00000", "type": "error", "result_detail": "syntax error at or near \"table\"\nLINE 4: insert into table function file('01188_attach/file/data.TSV'...\n                    ^\n", "error_stage": "set_up"}]

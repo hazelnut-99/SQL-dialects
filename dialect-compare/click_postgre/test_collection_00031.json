@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00031_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: CREATE TABLE t2 (k UInt64, s String) ENGINE = Join(ANY, LEFT...\n                                             ^\n", "error_stage": "set_up"}]

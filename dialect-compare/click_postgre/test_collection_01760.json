@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01760_00000", "type": "error", "result_detail": "syntax error at or near \"[\"\nLINE 1: WITH arrayJoin(['192.168.99.255', '192.168.100.1', '192.168....\n                       ^\n", "error_stage": "set_up"}]

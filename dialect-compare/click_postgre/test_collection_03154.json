@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03154_00000", "type": "error", "result_detail": "syntax error at or near \"table\"\nLINE 1: CREATE TEMPORARY TABLE table (x UInt8);\n                               ^\n", "error_stage": "set_up"}]

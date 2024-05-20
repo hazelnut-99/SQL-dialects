@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01028_00000", "type": "error", "result_detail": "syntax error at or near \"join\"\nLINE 4: drop table if exists join;\n                             ^\n", "error_stage": "set_up"}]

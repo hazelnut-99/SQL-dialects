@@ -1,0 +1,1 @@
+[{"test_case": "test_case_07817_00000", "type": "error", "result_detail": "syntax error at or near \"[\"\nLINE 14: CREATE TABLE lists AS SELECT [i, NULL, i + 2] AS l FROM rang...\n                                      ^\n", "error_stage": "set_up"}]

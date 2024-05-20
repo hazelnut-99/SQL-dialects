@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02018_00000", "type": "error", "result_detail": "syntax error at or near \"String\"\nLINE 2: CREATE TABLE t_array_index (n Nested(key String, value Strin...\n                                                 ^\n", "error_stage": "set_up"}]

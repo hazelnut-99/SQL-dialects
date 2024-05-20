@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01381_00000", "type": "error", "result_detail": "syntax error at or near \"UInt32\"\nLINE 2: create view testv(a UInt32) as select number a from numbers(...\n                            ^\n", "error_stage": "set_up"}]

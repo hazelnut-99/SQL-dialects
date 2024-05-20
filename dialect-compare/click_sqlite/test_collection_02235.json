@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02235_00001", "type": "error", "result_detail": "unrecognized token: \"02186_range_dictionary_source_table\"", "error_stage": "set_up"}, {"test_case": "test_case_02235_00000", "type": "error", "result_detail": "unrecognized token: \"02186_range_dictionary_source_table\"", "error_stage": "set_up"}]

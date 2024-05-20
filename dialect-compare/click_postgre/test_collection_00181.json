@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00181_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ... (x Enum8('browser' = 1, 'mobile' = 2), y String) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00457_00000", "type": "error", "result_detail": ":HTTPDriver for http://localhost:18123 returned response code 400)\n Code: 62. DB::Exception: Syntax error: failed at position 17 ('(') (line 1, col 17): (SELECT 1,2)\nSELECT * FROM q1, q1 AS q2. Expected identifier. (SYNTAX_ERROR) (version 24.4.1.2088 (official build))\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02821_00000", "type": "error", "result_detail": "syntax error at or near \"FROM\"\nLINE 2: SHOW COLUMNS FROM tab;\n                     ^\n", "error_stage": "set_up"}]

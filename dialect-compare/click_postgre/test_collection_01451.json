@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01451_00000", "type": "error", "result_detail": "function errorcodetoname(integer) does not exist\nLINE 2: SELECT errorCodeToName(0);\n               ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n", "error_stage": "set_up"}]

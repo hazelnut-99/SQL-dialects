@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01678_00000", "type": "error", "result_detail": "syntax error at or near \"SELECT\"\nLINE 2: CREATE TABLE proj(date Date, PROJECTION maxdate( SELECT max(...\n                                                         ^\n", "error_stage": "set_up"}]

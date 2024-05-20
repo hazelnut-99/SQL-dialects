@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02296_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 3: CREATE TABLE calendar ( `year` Int64, `month` Int64 ) ENGINE...\n                                ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00048_00000", "type": "error", "result_detail": "syntax error at or near \"DEFAULT\"\nLINE 2: CREATE TABLE defaults (a UInt8, b DEFAULT 0, c DEFAULT ident...\n                                          ^\n", "error_stage": "set_up"}]

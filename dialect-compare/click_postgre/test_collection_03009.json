@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03009_00000", "type": "error", "result_detail": "syntax error at or near \"1\"\nLINE 1: ...(currentDatabase(), '^view_without_sample$') SAMPLE 1 / 100;\n                                                               ^\n", "error_stage": "query"}]

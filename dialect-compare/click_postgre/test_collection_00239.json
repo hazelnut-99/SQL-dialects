@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00239_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: CREATE TABLE multidimensional (x UInt64, arr Array(Array(Str...\n                                                     ^\n", "error_stage": "set_up"}]

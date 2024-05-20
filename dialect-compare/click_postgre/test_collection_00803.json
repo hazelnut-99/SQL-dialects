@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00803_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 3:     `x` Tuple(UInt64, UInt64)\n            ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01843_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: create table replacing(    `A` Int64,    `D` DateTime64(9, '...\n                                   ^\n", "error_stage": "set_up"}]

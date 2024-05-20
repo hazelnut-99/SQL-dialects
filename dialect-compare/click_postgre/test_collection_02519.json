@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02519_00000", "type": "error", "result_detail": "syntax error at or near \"->\"\nLINE 1: WITH x -> toString(x) AS lambda SELECT arrayMap(x -> lambda(...\n               ^\n", "error_stage": "set_up"}]

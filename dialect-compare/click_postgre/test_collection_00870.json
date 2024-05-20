@@ -1,0 +1,1 @@
+[{"test_case": "test_case_00870_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 4: ...action (id Int32, value Float64, master_id Int32) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01757_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;\n                                         ^\n", "error_stage": "set_up"}]

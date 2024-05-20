@@ -1,0 +1,1 @@
+[{"test_case": "test_case_07757_00000", "type": "error", "result_detail": "syntax error at or near \"1\"\nLINE 5: ...01'::TIMESTAMP, '2023-02-01'::TIMESTAMP, INTERVAL 1 HOUR) tb...\n                                                             ^\n", "error_stage": "set_up"}]

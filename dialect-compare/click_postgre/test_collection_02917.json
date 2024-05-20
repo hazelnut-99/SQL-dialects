@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02917_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 1: CREATE TABLE my_table (values Array(Int32)) ENGINE = MergeTr...\n                                      ^\n", "error_stage": "set_up"}]

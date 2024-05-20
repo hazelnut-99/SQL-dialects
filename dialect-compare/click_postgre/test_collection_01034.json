@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01034_00000", "type": "error", "result_detail": "syntax error at or near \"sync\"\nLINE 1: drop table if exists rmt sync;\n                                 ^\n", "error_stage": "set_up"}]

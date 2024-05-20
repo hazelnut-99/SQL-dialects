@@ -104,7 +104,7 @@ class DB_Instance:
         with open(collection_path + "/" + test_case_name + "/test.sql", "r") as sql_file:
             sql_query = sql_file.read()
             return self.execute_query(sql_query)
-    
+
     def run_a_collection(self, collection_path, start_index=None, end_index=None):
         result_map = {}
         setup_file = collection_path + "/db.sql"
@@ -297,3 +297,4 @@ def get_database_instance(db_type, db_name):
         return PostGreDB(db_name)
     return ClickHouseDB(db_name)
     
+

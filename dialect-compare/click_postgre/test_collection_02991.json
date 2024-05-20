@@ -1,0 +1,1 @@
+[{"test_case": "test_case_02991_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...le t_json_merge (id UInt64, s1 String, s2 String) engine = M...\n                                                             ^\n", "error_stage": "set_up"}]

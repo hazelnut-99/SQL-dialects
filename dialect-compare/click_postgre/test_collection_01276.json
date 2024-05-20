@@ -1,0 +1,1 @@
+[{"test_case": "test_case_01276_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: CREATE TABLE pk_func (`d` DateTime, `ui` UInt32 ) ENGINE = M...\n                              ^\n", "error_stage": "set_up"}]

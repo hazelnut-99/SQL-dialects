@@ -1,0 +1,1 @@
+[{"test_case": "test_case_03203_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 1: ...TE TEMPORARY TABLE hits (date Date, data Float64) engine=Mem...\n                                                             ^\n", "error_stage": "set_up"}]

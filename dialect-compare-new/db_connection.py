@@ -194,7 +194,7 @@ class PostGreDB(DB_Instance):
     
     def delete_database(self):
         command = f'psql -U postgres -c "DROP DATABASE {self.database};"'
-        container = client.containers.get("my_postgres")
+        container = client.containers.get("ast_postgres")
         container.exec_run(
             cmd=['sh', '-c', command]
         )

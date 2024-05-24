@@ -203,7 +203,7 @@ class ClickHouseDB(DB_Instance):
     def __init__(self, database):
         super().__init__(database)
         self.client = self.get_connection()
-        self.client.command(f"CREATE DATABASE {database} ENGINE = Memory COMMENT 'The temporary database';")
+        self.client.command(f"CREATE DATABASE {database};")
         self.client.command(f"USE {database}")
     
     def get_connection(self):

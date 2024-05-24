@@ -51,6 +51,8 @@ def write_df_to_csv(df, path):
     except Exception as e:
         print("columns: ")
         print(list(df.columns))
+        print("data:")
+        print(df)
         raise e
     with open(path, 'w') as result_file:
         result_file.write(csv)

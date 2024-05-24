@@ -83,6 +83,8 @@ class DB_Instance:
                     "result_detail": str(e)
                 }
                 result_map[test_case.split("/")[-1]] = run_result_detail
+            if isinstance(self, ClickHouseDB):
+                time.sleep(0.5)
         return result_map
 
 

@@ -37,8 +37,6 @@ for guest_db in utils.ALL_DBS:
                 host_result_file = f"{case_dir}/{host_db}_result.csv"
                 
                 if not os.path.exists(guest_result_file):
-                    print("result")
-                    print(guest_result[test_case]["result_detail"])
                     utils.write_df_to_csv(guest_result[test_case]["result_detail"], guest_result_file)
                 utils.write_df_to_csv(host_result[test_case]["result_detail"], host_result_file)
                     

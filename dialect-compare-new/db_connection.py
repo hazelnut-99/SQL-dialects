@@ -73,7 +73,7 @@ class DB_Instance:
                 with open(test_case + "/test.sql", "r") as sql_file:
                     sql_query = sql_file.read()
                     query_result = self.execute_query(sql_query)
-                    if query_result:
+                    if not query_result.empty:
                         query_result = process_df(query_result)
                     run_result_detail = run_result_detail = {
                         "result": SUCCESS,

@@ -47,12 +47,8 @@ def write_string_to_csv(content, path):
 def write_df_to_csv(df, path):
     try:
         df.sort_values(by=list(df.columns), inplace=True)
-        csv = df.to_csv(index=False, header=False)
     except Exception as e:
-        print("columns: ")
-        print(list(df.columns))
-        print("data:")
-        print(df)
-        raise e
+        pass 
+    csv = df.to_csv(index=False, header=False)
     with open(path, 'w') as result_file:
         result_file.write(csv)

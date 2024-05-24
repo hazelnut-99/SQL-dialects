@@ -206,7 +206,6 @@ class ClickHouseDB(DB_Instance):
         self.client = self.get_connection()
         self.client.command(f"CREATE DATABASE {database};")
         self.client.close()
-        self.client = self.get_test_connection()
     
     def get_connection(self):
         client = clickhouse_connect.get_client(host='ht57uux4i3.eu-west-2.aws.clickhouse.cloud', port=8443, username='default', password='4LfArJ0WQyy_0')
@@ -218,7 +217,7 @@ class ClickHouseDB(DB_Instance):
     
     
     def execute_set_up_script(self, setup_script_file):
-        self.client.command(f"USE {self.database}")
+        self.client = self.get_test_connection()
         with open(setup_script_file, 'r') as script_file:
             sql_script = script_file.read()
             statements = sql_script.split(";\n")
@@ -227,11 +226,15 @@ class ClickHouseDB(DB_Instance):
                 if not statement:
                     continue
                 self.client.command(statement)
+        self.client.close()
     
     def execute_query(self, sql):
+        self.client = self.get_test_connection()
         sql = sql.strip()
         self.client.command(f"USE {self.database}")
-        return pd.DataFrame(self.client.query(sql).result_rows)
+        result =  pd.DataFrame(self.client.query(sql).result_rows)
+        self.client.close()
+        return result
     
     def close_connection(self):
         return self.client.close()

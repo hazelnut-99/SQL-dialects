@@ -33,3 +33,10 @@ def list_all_test_collections(test_suite_path):
 
 def list_all_test_cases(test_collection_path):
     return sorted(list(glob.glob(test_collection_path + "/test_case_*")))
+
+
+
+def write_df_to_csv(df, path):
+    csv = df.to_csv(index=False, header=False)
+    with open(path, 'w') as result_file:
+        result_file.write(csv)

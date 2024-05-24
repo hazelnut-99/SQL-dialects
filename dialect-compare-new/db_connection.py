@@ -203,10 +203,15 @@ class ClickHouseDB(DB_Instance):
         super().__init__(database)
         self.client = self.get_connection()
         self.client.command(f"CREATE DATABASE {database};")
-        self.client.command(f"USE {database}")
+        self.client.close()
+        self.client = self.get_test_connection()
     
     def get_connection(self):
         client = clickhouse_connect.get_client(host='ht57uux4i3.eu-west-2.aws.clickhouse.cloud', port=8443, username='default', password='4LfArJ0WQyy_0')
+        return client
+    
+    def get_test_connection(self):
+        client = clickhouse_connect.get_client(host='ht57uux4i3.eu-west-2.aws.clickhouse.cloud', port=8443, username='default', password='4LfArJ0WQyy_0', database = self.database)
         return client
     
     
@@ -226,8 +231,13 @@ class ClickHouseDB(DB_Instance):
         self.client.command(f"USE {self.database}")
         return pd.DataFrame(self.client.query(sql).result_rows)
     
+    def close_connection(self):
+        return self.client.close()
+    
     def delete_database(self):
+        self.get_connection()
         self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
+        self.client.close()
         
 
 

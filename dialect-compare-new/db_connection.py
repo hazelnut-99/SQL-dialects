@@ -202,20 +202,12 @@ class PostGreDB(DB_Instance):
 class ClickHouseDB(DB_Instance):
     def __init__(self, database):
         super().__init__(database)
-        self.container = client.containers.run(
-                "clickhouse/clickhouse-server",
-                detach=True,
-                ports={'8123/tcp': 18123, '9000/tcp': 19000},
-                name="some-clickhouse-server",
-                nano_cpus=1000000000 * 3,
-                ulimits=[docker.types.Ulimit(name='nofile', soft=262144, hard=262144)]
-        )
-        time.sleep(1)
         self.client = self.get_connection()
-        self.client.command(f"SET max_execution_time = 5")
+        self.client.command(f"CREATE DATABASE {database} ENGINE = Memory COMMENT 'The temporary database';")
+        self.client.command(f"USE {database}")
     
     def get_connection(self):
-        client = clickhouse_connect.get_client(host='localhost', port=18123)
+        client = clickhouse_connect.get_client(host='ht57uux4i3.eu-west-2.aws.clickhouse.cloud', port=8443, username='default', password='4LfArJ0WQyy_0')
         return client
     
     
@@ -234,8 +226,8 @@ class ClickHouseDB(DB_Instance):
         return pd.DataFrame(self.client.query(sql).result_rows)
     
     def delete_database(self):
-        self.container.stop()
-        self.container.remove()
+        self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
+        
 
 
 def get_database_instance(db_type, db_name):

@@ -175,6 +175,7 @@ class PostGreDB(DB_Instance):
             sql_script = script_file.read()
         cursor = self.connection.cursor()
         cursor.execute(sql_script)
+        self.connection.commit()
         cursor.close()
     
     def execute_query(self, sql):

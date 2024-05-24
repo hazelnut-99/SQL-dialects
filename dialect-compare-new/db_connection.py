@@ -176,7 +176,6 @@ class PostGreDB(DB_Instance):
             sql_script = script_file.read()
         cursor = self.connection.cursor()
         cursor.execute(sql_script)
-        self.connection.commit()
         cursor.close()
     
     def execute_query(self, sql):
@@ -212,6 +211,7 @@ class ClickHouseDB(DB_Instance):
     
     
     def execute_set_up_script(self, setup_script_file):
+        self.client.command(f"USE {self.database}")
         with open(setup_script_file, 'r') as script_file:
             sql_script = script_file.read()
             statements = sql_script.split(";\n")
@@ -223,6 +223,7 @@ class ClickHouseDB(DB_Instance):
     
     def execute_query(self, sql):
         sql = sql.strip()
+        self.client.command(f"USE {self.database}")
         return pd.DataFrame(self.client.query(sql).result_rows)
     
     def delete_database(self):

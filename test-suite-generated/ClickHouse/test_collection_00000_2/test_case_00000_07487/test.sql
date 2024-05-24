@@ -1,0 +1,1 @@
+SELECT toDateTime64(-2200000000, 9, 'UTC');

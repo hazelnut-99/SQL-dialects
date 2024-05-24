@@ -1,0 +1,1 @@
+SELECT concatWithSeparator('|', 'a', materialize('122.233.64.201' :: IPv4)) == 'a|122.233.64.201';

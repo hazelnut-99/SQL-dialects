@@ -1,0 +1,1 @@
+SELECT toInt256(123) IN (NULL);

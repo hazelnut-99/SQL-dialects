@@ -1,0 +1,1 @@
+SELECT tuple(INTERVAL 1 DAY) + '2022-10-11'::Date;

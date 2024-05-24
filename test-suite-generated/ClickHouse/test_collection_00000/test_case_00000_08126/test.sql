@@ -1,8 +1,0 @@
-select a
-from (
-    with a+1 as aa,
-        sumIf(aa, b > 0) as aaif
-    select a, aaif
-    FROM (select 1 as a, 2 as b)
-    GROUP BY a
-) as V;

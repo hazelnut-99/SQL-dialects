@@ -1,1 +1,0 @@
-SELECT '4 days test in batch comparing with manually computation result for Europe/Moscow:';

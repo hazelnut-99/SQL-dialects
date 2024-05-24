@@ -1,0 +1,1 @@
+select regexpExtract('100-200', '\\d+-\\d+', 0);

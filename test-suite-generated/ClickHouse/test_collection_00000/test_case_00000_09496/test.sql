@@ -1,1 +1,0 @@
-select endsWith([], [1]);

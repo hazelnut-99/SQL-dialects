@@ -1,0 +1,1 @@
+SELECT toTypeName(topKOrDefaultState(10)(toString(number))) FROM numbers(100);

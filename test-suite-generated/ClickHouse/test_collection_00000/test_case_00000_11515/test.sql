@@ -1,1 +1,0 @@
-SELECT concatWithSeparator('|', 'a', materialize('2023-11-14 05:50:12' :: DateTime('Europe/Amsterdam'))) == 'a|2023-11-14 05:50:12';

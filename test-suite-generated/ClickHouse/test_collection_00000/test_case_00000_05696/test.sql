@@ -1,1 +1,0 @@
-SELECT sum(abs(2) + 1), sum(abs(2) + n), sum(n - abs(2)), sum(1 - abs(2)) FROM (SELECT number n FROM numbers(10));

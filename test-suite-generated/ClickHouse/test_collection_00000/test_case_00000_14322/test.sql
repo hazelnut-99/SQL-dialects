@@ -1,5 +1,0 @@
-SELECT
-  *,
-  count() OVER () AS c
-FROM numbers(10)
-ORDER BY toString(number);

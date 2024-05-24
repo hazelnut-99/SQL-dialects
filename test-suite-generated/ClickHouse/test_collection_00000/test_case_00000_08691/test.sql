@@ -1,1 +1,0 @@
-SELECT 8, toFixedString('Hello', 10), bin(bitShiftLeft(toFixedString('Hello', 10), 8));

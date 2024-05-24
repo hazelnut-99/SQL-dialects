@@ -1,0 +1,1 @@
+SELECT '# Invocation with constants';

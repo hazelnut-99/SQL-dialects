@@ -1,0 +1,1 @@
+SELECT '1e-7' AS x, toDecimal32(x, 0);

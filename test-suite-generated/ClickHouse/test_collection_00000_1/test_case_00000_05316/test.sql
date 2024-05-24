@@ -1,0 +1,1 @@
+SELECT isConstant(x) FROM (SELECT 1 x UNION ALL SELECT 2);

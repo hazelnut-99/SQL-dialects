@@ -1,1 +1,0 @@
-SELECT GREATEST([NULL], [0]);

@@ -1,1 +1,0 @@
-SELECT CAST('123456789123.1' AS Decimal(10, 5));

@@ -1,1 +1,0 @@
-SELECT 'simple partition key:';

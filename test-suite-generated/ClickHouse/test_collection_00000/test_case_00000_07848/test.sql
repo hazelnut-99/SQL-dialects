@@ -1,1 +1,0 @@
-select if(number % 5 == 0, toDecimal64OrZero(toString(number), 5), Null) from numbers(20);

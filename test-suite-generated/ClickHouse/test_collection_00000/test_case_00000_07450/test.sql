@@ -1,1 +1,0 @@
-SELECT 'SELECT avg(number * 2) FROM numbers(10)';

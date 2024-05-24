@@ -1,0 +1,1 @@
+SELECT endsWith('123', '');

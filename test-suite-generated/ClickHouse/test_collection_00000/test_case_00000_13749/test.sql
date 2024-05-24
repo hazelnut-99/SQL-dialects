@@ -1,1 +1,0 @@
-SELECT '-- Regular cases';

@@ -1,1 +1,0 @@
-SELECT h3GetOriginIndexFromUnidirectionalEdge(1248204388774707197);

@@ -1,0 +1,1 @@
+SELECT toFloat32(0.9999999) as x, toDecimal32(x, 7), toDecimal32(-x, 7), toDecimal64(x, 7), toDecimal64(-x, 7);

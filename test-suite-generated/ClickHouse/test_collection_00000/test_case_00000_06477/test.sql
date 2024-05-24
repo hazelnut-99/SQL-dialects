@@ -1,1 +1,0 @@
-select 'left asof using';

@@ -1,0 +1,1 @@
+SELECT toDecimal64('4294967295', 4) AS x, toUInt32(x);

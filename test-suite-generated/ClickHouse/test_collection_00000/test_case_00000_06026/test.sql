@@ -1,1 +1,0 @@
-SELECT if(x = 0, 'fail', 'ok') FROM (SELECT if(toUInt8(1), NULL, toNullable(toUInt8(0))) AS x);

@@ -1,0 +1,1 @@
+SELECT 'HELLO' ilike 'hell%';

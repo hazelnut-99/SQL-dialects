@@ -1,0 +1,10 @@
+SELECT n, j FROM
+(
+    SELECT number * 200000 as n FROM numbers(5)
+) nums
+JOIN (
+    SELECT number * 2 AS n, number AS j
+    FROM numbers(1000000)
+) js2
+USING n
+ORDER BY n;

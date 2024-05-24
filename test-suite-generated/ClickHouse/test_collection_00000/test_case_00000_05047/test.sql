@@ -1,1 +1,0 @@
-select 'Array', blockSerializedSize(['foo']);

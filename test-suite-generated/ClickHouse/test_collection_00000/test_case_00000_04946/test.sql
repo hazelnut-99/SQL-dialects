@@ -1,1 +1,0 @@
-SELECT 'max_rows_in_join = 1000';

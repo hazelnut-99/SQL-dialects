@@ -1,1 +1,0 @@
-SELECT 0x0.e_e;

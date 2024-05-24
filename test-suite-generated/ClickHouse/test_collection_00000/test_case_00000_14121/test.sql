@@ -1,1 +1,0 @@
-SELECT formatQuery('ALTER TABLE a (DROP COLUMN b), (DROP COLUMN c)');

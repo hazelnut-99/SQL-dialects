@@ -1,3 +1,0 @@
-SELECT 1 + sum(number) / sum(sum(number)) OVER (PARTITION BY (number % 10))
-FROM numbers(10000)
-GROUP BY number % 10;

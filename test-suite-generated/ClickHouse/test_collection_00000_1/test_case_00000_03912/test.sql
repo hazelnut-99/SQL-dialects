@@ -1,0 +1,1 @@
+SELECT number BETWEEN 4 AND 6, NOT number NOT BETWEEN 4 AND 6 AND 1 FROM numbers(10);

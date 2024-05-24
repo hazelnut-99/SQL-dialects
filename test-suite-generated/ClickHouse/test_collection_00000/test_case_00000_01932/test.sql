@@ -1,1 +1,0 @@
-SELECT 3 as nelems, [[1,2],[-10,-20],[10,20],[0,0],[-1.5,1]] as arr, arrayResize(arrayPartialSort(nelems, arr), nelems), arrayResize(arrayPartialReverseSort(nelems, arr), nelems), arrayResize(arrayPartialSort((x) -> arraySum(x), nelems, arr), nelems);

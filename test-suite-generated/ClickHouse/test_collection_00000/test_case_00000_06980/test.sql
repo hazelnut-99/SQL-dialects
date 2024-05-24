@@ -1,1 +1,0 @@
-select countSubstrings('aaaa', 'aa');

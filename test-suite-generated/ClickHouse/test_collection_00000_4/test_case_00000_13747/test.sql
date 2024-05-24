@@ -1,0 +1,1 @@
+SELECT '---- Non-const input';

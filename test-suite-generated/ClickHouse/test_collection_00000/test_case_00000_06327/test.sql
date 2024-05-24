@@ -1,1 +1,0 @@
-SELECT DISTINCT hex(toString(uniqState(x))) FROM (SELECT materialize(1) AS k, toNullable(1) AS x FROM numbers(10)) GROUP BY k WITH TOTALS ORDER BY k;

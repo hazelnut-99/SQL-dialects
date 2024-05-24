@@ -1,1 +1,0 @@
-SELECT now() + INTERVAL 1::UInt128 SECOND - now();

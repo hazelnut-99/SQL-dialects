@@ -1,0 +1,1 @@
+SELECT gccMurmurHash(1);

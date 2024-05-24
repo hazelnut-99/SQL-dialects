@@ -1,1 +1,0 @@
-select multiIf(number % 2 != 0, intDiv(10, number % 2), 5, intDiv(10, 1 - number % 2), intDiv(10, number)) from numbers(5);

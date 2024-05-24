@@ -1,1 +1,0 @@
-SELECT '1' FROM numbers(10) INTERSECT SELECT '1' FROM numbers(10);

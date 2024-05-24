@@ -1,0 +1,1 @@
+SELECT CAST('1.123456' AS Decimal(10, 5));

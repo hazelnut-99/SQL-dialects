@@ -1,1 +1,0 @@
-SELECT xor(false, true);

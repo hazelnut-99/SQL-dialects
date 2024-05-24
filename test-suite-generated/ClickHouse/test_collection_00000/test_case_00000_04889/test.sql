@@ -1,1 +1,0 @@
-SELECT '||---WINDOW COLUMN ALIAS---';

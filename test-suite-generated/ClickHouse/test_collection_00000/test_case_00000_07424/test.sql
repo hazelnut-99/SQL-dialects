@@ -1,1 +1,0 @@
-SELECT 'Shanghai DST Years:';

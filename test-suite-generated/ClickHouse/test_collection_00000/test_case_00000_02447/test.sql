@@ -1,1 +1,0 @@
-SELECT arrayConcat([NULL, ''], [''], [NULL]);

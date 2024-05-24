@@ -1,1 +1,0 @@
-SELECT toDecimal128('65535', 10) AS x, toUInt16(x);

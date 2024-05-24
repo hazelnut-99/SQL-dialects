@@ -1,0 +1,1 @@
+SELECT minIf(map(0, c1), assumeNotNull(c1) >= 0), maxIf(map(0, c1), assumeNotNull(c1) >= 0) FROM values(NULL, 0, 5., 5.);

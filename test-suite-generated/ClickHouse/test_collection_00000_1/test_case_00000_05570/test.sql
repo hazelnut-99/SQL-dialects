@@ -1,0 +1,1 @@
+SELECT extractAllGroupsVertical('abc=111, def=222, ghi=333 "jkl mno"="444 foo bar"', '("[^"]+"|\\w+)=("[^"]+"|\\w+)');

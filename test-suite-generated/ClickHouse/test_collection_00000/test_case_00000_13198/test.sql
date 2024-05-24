@@ -1,1 +1,0 @@
-SELECT 'Invalid parameters';

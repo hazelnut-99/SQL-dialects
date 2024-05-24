@@ -1,1 +1,0 @@
-select isConstant(1);

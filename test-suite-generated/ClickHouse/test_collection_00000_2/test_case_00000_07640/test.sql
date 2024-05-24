@@ -1,0 +1,1 @@
+SELECT toStartOfQuarter(toDateTime64('1990-01-04 12:14:12', 0, 'UTC'));

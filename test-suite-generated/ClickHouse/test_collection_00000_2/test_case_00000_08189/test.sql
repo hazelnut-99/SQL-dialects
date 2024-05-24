@@ -1,0 +1,1 @@
+SELECT map(11::UInt64, 'v1', 22::UInt64, 'v2') AS m, toJSONString(m) AS s, isValidJSON(s);

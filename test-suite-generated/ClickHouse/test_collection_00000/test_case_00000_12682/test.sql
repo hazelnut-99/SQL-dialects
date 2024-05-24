@@ -1,1 +1,0 @@
-SELECT timezone(), timezoneOf(now());

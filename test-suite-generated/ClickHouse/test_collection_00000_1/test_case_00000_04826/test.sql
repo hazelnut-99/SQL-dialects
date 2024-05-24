@@ -1,0 +1,1 @@
+SELECT '-- argument validation';

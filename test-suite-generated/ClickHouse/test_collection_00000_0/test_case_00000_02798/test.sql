@@ -1,0 +1,1 @@
+SELECT toTimeZone(CAST(1 AS TIMESTAMP), 'UTC');

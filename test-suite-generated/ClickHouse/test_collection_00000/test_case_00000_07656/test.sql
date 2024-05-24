@@ -1,1 +1,0 @@
-SELECT toDateTime('2010-10-31 00:00:00', 'Europe/Moscow') + INTERVAL 15 * number MINUTE AS src, toStartOfInterval(src, INTERVAL 2 HOUR) AS rounded, toUnixTimestamp(src) AS t FROM numbers(20);

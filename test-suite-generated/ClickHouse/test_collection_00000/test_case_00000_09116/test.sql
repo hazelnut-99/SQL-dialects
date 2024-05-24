@@ -1,1 +1,0 @@
-SELECT CAST('N', 'Bool');

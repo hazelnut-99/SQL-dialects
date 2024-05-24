@@ -1,0 +1,1 @@
+SELECT 'Binary(N)' AS mysql_type, CAST('foo' AS BINARY(3)) AS result, toTypeName(result) AS native_type;

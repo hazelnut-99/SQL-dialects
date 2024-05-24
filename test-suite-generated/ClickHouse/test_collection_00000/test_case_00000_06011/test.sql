@@ -1,1 +1,0 @@
-SELECT CAST(a, 'Int32') as x, toTypeName(x) FROM (SELECT materialize(CAST(42, 'Nullable(UInt8)')) AS a);

@@ -1,1 +1,0 @@
-SELECT min(1 + n + 1), min(1 + 1 + n), min(1 + n - 1), min(1 + 1 - n) FROM (SELECT number n FROM numbers(10));

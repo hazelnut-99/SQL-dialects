@@ -1,1 +1,0 @@
-SELECT toInt32OrNull('-2147483648');

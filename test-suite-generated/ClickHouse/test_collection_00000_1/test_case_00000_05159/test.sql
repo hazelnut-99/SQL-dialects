@@ -1,0 +1,1 @@
+select timestamp '2001-09-28 23:00:00' - interval 23 hour;

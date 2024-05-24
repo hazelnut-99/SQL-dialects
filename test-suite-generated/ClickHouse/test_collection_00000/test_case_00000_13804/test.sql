@@ -1,1 +1,0 @@
-SELECT sqidDecode('invalid sqid');

@@ -1,1 +1,0 @@
-SELECT format('The {0} to all questions is {1}.', 'answer', materialize('2001:0001:130F:0002:0003:09C0:876A:130B' :: IPv6));

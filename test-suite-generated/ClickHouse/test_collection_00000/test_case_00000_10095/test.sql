@@ -1,1 +1,0 @@
-SELECT h3GetUnidirectionalEdgesFromHexagon(1248204388774707199);

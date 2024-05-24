@@ -1,1 +1,0 @@
-select hasAny(['a'], ['a']);

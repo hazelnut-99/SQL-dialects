@@ -1,0 +1,1 @@
+SELECT concatWithSeparator('|', 'a', materialize((42, 'foo') :: Tuple(Int32, String))) == 'a|(42,\'foo\')';

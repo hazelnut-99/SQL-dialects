@@ -1,1 +1,0 @@
-select countArray([NULL, NULL]);

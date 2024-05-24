@@ -1,1 +1,0 @@
-select lower('aaaaАБВГAAAAaaAA') = 'aaaaАБВГaaaaaaaa';

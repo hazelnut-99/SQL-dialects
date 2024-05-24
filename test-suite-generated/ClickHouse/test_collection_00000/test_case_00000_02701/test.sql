@@ -1,1 +1,0 @@
-SELECT res FROM (SELECT arrayJoin(x) AS res FROM (SELECT [1, 2, 3] AS x UNION ALL SELECT [nan, NULL]) ORDER BY res) ORDER BY res DESC;

@@ -1,0 +1,1 @@
+SELECT -0.111::Float64;

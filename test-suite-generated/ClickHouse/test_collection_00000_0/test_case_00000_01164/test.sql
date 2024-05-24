@@ -1,0 +1,1 @@
+SELECT 'uniqHLL12 round(toFloat32())';

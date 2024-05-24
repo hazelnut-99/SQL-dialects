@@ -1,0 +1,1 @@
+SELECT formatReadableTimeDelta(0x1000000000000000);

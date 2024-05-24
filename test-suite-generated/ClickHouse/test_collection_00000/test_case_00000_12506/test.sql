@@ -1,1 +1,0 @@
-select INSTR('hELlo', 'L');

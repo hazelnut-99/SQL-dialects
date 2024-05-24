@@ -1,1 +1,0 @@
-select countMatches('oooo', 'oo');

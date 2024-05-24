@@ -1,1 +1,0 @@
-SELECT visitParamExtractRaw('{"myparam": "["}', 'myparam');

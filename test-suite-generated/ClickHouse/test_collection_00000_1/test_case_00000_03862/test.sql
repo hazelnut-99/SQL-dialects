@@ -1,0 +1,1 @@
+SELECT notIn([['']], [[NULL]]);

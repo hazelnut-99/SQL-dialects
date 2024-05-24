@@ -1,0 +1,1 @@
+SELECT flatten(arrayMap(x -> arrayMap(y -> arrayMap(z -> range(x), range(x)), range(x)), range(number))) FROM numbers(6);

@@ -1,1 +1,0 @@
-SELECT 1 WINDOW x AS (PARTITION BY dummy);

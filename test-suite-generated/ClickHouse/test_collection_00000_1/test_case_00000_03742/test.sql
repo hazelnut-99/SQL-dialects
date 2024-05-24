@@ -1,0 +1,1 @@
+SELECT LoCaTe('abcabc', 'ca');

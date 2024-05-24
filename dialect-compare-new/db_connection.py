@@ -66,7 +66,6 @@ class DB_Instance:
         
         
         for index, test_case in enumerate(test_cases):
-            print(index)
             try:
                 with open(test_case + "/test.sql", "r") as sql_file:
                     sql_query = sql_file.read()
@@ -235,7 +234,7 @@ class ClickHouseDB(DB_Instance):
         return self.client.close()
     
     def delete_database(self):
-        self.get_connection()
+        self.client = self.get_connection()
         self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
         self.client.close()
         

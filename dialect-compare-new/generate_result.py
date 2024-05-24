@@ -3,8 +3,10 @@ import utils
 import os
 
 
-for guest_db in utils.ALL_DBS:
-    test_collections = utils.list_all_test_collections(utils.TEST_SUITE_PATHS[guest_db])[:1]
+databases = ["duck", "sqlite", "postgre"]
+
+for guest_db in utils.databases:
+    test_collections = utils.list_all_test_collections(utils.TEST_SUITE_PATHS[guest_db])
     for collection in test_collections:
     
         db_path = collection.split("/")[-1]
@@ -29,11 +31,11 @@ for guest_db in utils.ALL_DBS:
                 utils.write_result_to_file(guest_result[test_case], guest_result_file)
         
         
-        for host_db in utils.ALL_DBS:
+        for host_db in databases:
             if guest_db == host_db:
                 continue
             
-            host_db_instance = db_connection.get_database_instance(host_db, db_path + "_" + host_db)
+            host_db_instance = db_connection.get_database_instance(host_db, db_path + "_" + host_db + "_" + guest_db)
             host_result = host_db_instance.run_a_collection(collection)
             host_db_instance.close_connection()
             host_db_instance.delete_database()

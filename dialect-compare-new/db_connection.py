@@ -210,7 +210,7 @@ class ClickHouseDB(DB_Instance):
                 name="some-clickhouse-server",
                 ulimits=[docker.types.Ulimit(name='nofile', soft=262144, hard=262144)]
         )
-        time.sleep(0.5)
+        time.sleep(1)
         self.client = self.get_connection()
         self.client.command(f"SET max_execution_time = 5")
     

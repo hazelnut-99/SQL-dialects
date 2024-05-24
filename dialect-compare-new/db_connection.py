@@ -235,7 +235,10 @@ class ClickHouseDB(DB_Instance):
     
     def delete_database(self):
         self.client = self.get_connection()
-        self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
+        try:
+            self.client.command(f"DROP DATABASE IF EXISTS {self.database}")
+        except:
+            print("delete fails")
         self.client.close()
         
 

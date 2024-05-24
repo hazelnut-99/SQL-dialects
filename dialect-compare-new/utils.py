@@ -11,7 +11,7 @@ def process_element(element):
     return element
 
 def process_df(df):
-    return df.applymap(process_element)
+    return df.map(process_element)
 
 
 SUCCESS = "success"

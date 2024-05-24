@@ -5,18 +5,18 @@ import os
 
 for guest_db in utils.ALL_DBS:
     test_collections = utils.list_all_test_collections(utils.TEST_SUITE_PATHS[guest_db])[:1]
-    
-    db_path = collection.split("/")[-1]
-    
-    collection_dir = f"../result-compare/{guest_db}/{db_path}"
-    os.makedirs(collection_dir, exist_ok=True)
-    
-    guest_db_instance = db_connection.get_database_instance(guest_db, db_path + "_" + guest_db)
-    guest_result = guest_db_instance.run_a_collection(collection)
-    guest_db_instance.close_connection()
-    guest_db_instance.delete_database()
-    
     for collection in test_collections:
+    
+        db_path = collection.split("/")[-1]
+        
+        collection_dir = f"../result-compare/{guest_db}/{db_path}"
+        os.makedirs(collection_dir, exist_ok=True)
+        
+        guest_db_instance = db_connection.get_database_instance(guest_db, db_path + "_" + guest_db)
+        guest_result = guest_db_instance.run_a_collection(collection)
+        guest_db_instance.close_connection()
+        guest_db_instance.delete_database()
+        
         for host_db in utils.ALL_DBS:
             if guest_db == host_db:
                 continue
@@ -39,5 +39,5 @@ for guest_db in utils.ALL_DBS:
                 if not os.path.exists(guest_result_file):
                     utils.write_df_to_csv(guest_result[test_case])
                 utils.write_df_to_csv(host_result[test_case])
-                 
-    
+                    
+        

@@ -135,7 +135,9 @@ class DuckDB(DB_Instance):
     def execute_query(self, sql):
         if not self.connection:
             self.get_connection()
-        return self.connection.sql(sql).df() 
+        cursor = self.connection.execute(sql)
+        return pd.DataFrame(cursor.fetchall()) 
+
 
     def delete_database(self):
         try:
@@ -231,7 +233,7 @@ class ClickHouseDB(DB_Instance):
     
     def execute_query(self, sql):
         sql = sql.strip()
-        return self.client.query_df(sql)
+        return pd.DataFrame(self.client.query(sql).result_rows)
     
     def delete_database(self):
         self.container.stop()

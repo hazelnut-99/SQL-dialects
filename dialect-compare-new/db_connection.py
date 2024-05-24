@@ -46,14 +46,10 @@ class DB_Instance:
         pass
     
     
-    def run_a_collection(self, collection_path, start_index=None, end_index=None):
+    def run_a_collection(self, collection_path):
         result_map = {}
         setup_file = collection_path + "/db.sql"
         test_cases = sorted(list(glob.glob(collection_path + "/test_case_*")))
-        if start_index is not None:
-            target_test_cases = test_cases[start_index:end_index]
-        else:
-            target_test_cases = test_cases
         
         if os.path.exists(setup_file) and os.stat(setup_file).st_size != 0:
             try:
@@ -64,12 +60,13 @@ class DB_Instance:
                     "result": ERROR,
                     "result_detail": str(e)
                 }
-                for test_case in target_test_cases:
+                for test_case in test_cases:
                     result_map[test_case.split("/")[-1]] = run_result_detail
                 return result_map
         
         
-        for test_case in target_test_cases:
+        for index, test_case in enumerate(test_cases):
+            print(index)
             try:
                 with open(test_case + "/test.sql", "r") as sql_file:
                     sql_query = sql_file.read()

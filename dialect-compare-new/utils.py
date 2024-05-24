@@ -45,7 +45,7 @@ def write_string_to_csv(content, path):
         result_file.write(content)
 
 def write_df_to_csv(df, path):
-    df.sort_values(inplace=True)
+    df.sort_values(by=list(df.columns), inplace=True)
     csv = df.to_csv(index=False, header=False)
     with open(path, 'w') as result_file:
         result_file.write(csv)

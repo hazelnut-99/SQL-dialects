@@ -207,6 +207,7 @@ class ClickHouseDB(DB_Instance):
                 detach=True,
                 ports={'8123/tcp': 18123, '9000/tcp': 19000},
                 name="some-clickhouse-server",
+                nano_cpus=1000000000 * 2.5,
                 ulimits=[docker.types.Ulimit(name='nofile', soft=262144, hard=262144)]
         )
         time.sleep(1)

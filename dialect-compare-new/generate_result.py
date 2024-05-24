@@ -17,6 +17,18 @@ for guest_db in utils.ALL_DBS:
         guest_db_instance.close_connection()
         guest_db_instance.delete_database()
         
+        # host result, guest result
+        test_cases = guest_result.keys()
+        for test_case in test_cases:
+            case_dir = f"{collection_dir}/{test_case}"
+            os.makedirs(case_dir, exist_ok=True)
+            
+            guest_case_result = guest_result[test_case]
+            guest_result_file = f"{case_dir}/{guest_db}_result_{guest_case_result['result']}.csv"
+            if not os.path.exists(guest_result_file):
+                utils.write_result_to_file(guest_result[test_case], guest_result_file)
+        
+        
         for host_db in utils.ALL_DBS:
             if guest_db == host_db:
                 continue
@@ -32,15 +44,8 @@ for guest_db in utils.ALL_DBS:
             for test_case in test_cases:
                 case_dir = f"{collection_dir}/{test_case}"
                 os.makedirs(case_dir, exist_ok=True)
-                
-                guest_case_result = guest_result[test_case]
                 host_case_result = host_result[test_case]
-                
-                guest_result_file = f"{case_dir}/{guest_db}_result_{guest_case_result['result']}.csv"
                 host_result_file = f"{case_dir}/{host_db}_result_{host_case_result['result']}.csv"
-                
-                if not os.path.exists(guest_result_file):
-                    utils.write_result_to_file(guest_result[test_case], guest_result_file)
                 utils.write_result_to_file(host_result[test_case], host_result_file)
                     
         

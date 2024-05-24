@@ -40,6 +40,7 @@ for guest_db in utils.ALL_DBS:
                     print("result")
                     print(guest_result[test_case]["result_detail"])
                     utils.write_df_to_csv(guest_result[test_case]["result_detail"], guest_result_file)
+                print(host_result[test_case]["result_detail"])
                 utils.write_df_to_csv(host_result[test_case]["result_detail"], host_result_file)
                     
         

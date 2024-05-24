@@ -235,3 +235,14 @@ class ClickHouseDB(DB_Instance):
     def delete_database(self):
         self.container.stop()
         self.container.remove()
+
+
+def get_database_instance(db_type, db_name):
+    if db_type == "duck":
+        return DuckDB(db_name)
+    if db_type == "sqlite":
+        return SQLiteDB(db_name)
+    if db_type == "postgre":
+        return PostGreDB(db_name)
+    return ClickHouseDB(db_name)
+    

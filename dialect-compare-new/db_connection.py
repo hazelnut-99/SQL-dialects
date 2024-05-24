@@ -151,7 +151,7 @@ class PostGreDB(DB_Instance):
         client = docker.from_env()
         command_1 = f'psql -U postgres -c "DROP DATABASE IF EXISTS {database};"'
         command_2 = f'psql -U postgres -c "CREATE DATABASE {database};"'
-        container = client.containers.get("my_postgres")
+        container = client.containers.get("ast_postgres")
         container.exec_run(
             cmd=['sh', '-c', command_1]
         )

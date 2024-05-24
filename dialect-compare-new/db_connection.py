@@ -8,6 +8,7 @@ import duckdb
 import docker
 import clickhouse_connect 
 import pandas as pd
+import time
 
 client = docker.from_env()
 
@@ -209,7 +210,7 @@ class ClickHouseDB(DB_Instance):
                 name="some-clickhouse-server",
                 ulimits=[docker.types.Ulimit(name='nofile', soft=262144, hard=262144)]
         )
-        self.container.wait()
+        time.sleep(0.1)
         self.client = self.get_connection()
         self.client.command(f"SET max_execution_time = 5")
     

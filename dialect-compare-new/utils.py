@@ -34,7 +34,15 @@ def list_all_test_collections(test_suite_path):
 def list_all_test_cases(test_collection_path):
     return sorted(list(glob.glob(test_collection_path + "/test_case_*")))
 
+def write_result_to_file(result, path):
+    if result["result"] == SUCCESS:
+        write_df_to_csv(result["result_detail"], path)
+    else:
+        write_string_to_csv(result["result_detail"], path)
 
+def write_string_to_csv(content, path):
+    with open(path, 'w') as result_file:
+        result_file.write(content)
 
 def write_df_to_csv(df, path):
     csv = df.to_csv(index=False, header=False)

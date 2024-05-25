@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name atanh does not exist!
+Did you mean "atan"?
+LINE 1: select abs(atanh(tanh(1)) - 1) < 1e-5;
+                   ^

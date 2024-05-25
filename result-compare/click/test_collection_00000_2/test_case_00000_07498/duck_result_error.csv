@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint8ordefault does not exist!
+Did you mean "instr"?
+LINE 1: select toInt8OrDefault('-1xx', cast(-2 as Int8...
+               ^

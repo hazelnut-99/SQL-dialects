@@ -1,0 +1,2 @@
+Execution failed on sql 'select appendTrailingCharIfAbsent(materialize('a'), 'b') = materialize('ab');
+': no such function: materialize

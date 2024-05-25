@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtractBool('-1');
+': no such function: JSONExtractBool

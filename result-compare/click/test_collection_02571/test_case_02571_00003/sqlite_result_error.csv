@@ -1,0 +1,2 @@
+Execution failed on sql 'select mortonEncode(65534, 65533);
+': no such function: mortonEncode

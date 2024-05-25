@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...able tst (timestamp DateTime, val Nullable(Int8)) engine Sum...
+                                                             ^

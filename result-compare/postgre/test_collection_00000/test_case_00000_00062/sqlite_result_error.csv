@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT INTERVAL '1.5 weeks' AS "Ten days twelve hours";
+': near "AS": syntax error

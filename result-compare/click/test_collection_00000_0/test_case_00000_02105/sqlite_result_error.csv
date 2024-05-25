@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ifNull(1, NULL) AS res, toTypeName(res);
+': no such column: res

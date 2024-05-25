@@ -1,0 +1,4 @@
+Binder Error: Referenced column "ctid" not found in FROM clause!
+Candidate bindings: "combocidtest.foobar"
+LINE 1: SELECT ctid,cmin,* FROM combocidtest;
+               ^

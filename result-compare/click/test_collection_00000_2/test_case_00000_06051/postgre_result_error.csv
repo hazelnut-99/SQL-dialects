@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...om numbers(1) t1 left outer join numbers(1) t2 using number;
+                                                                ^

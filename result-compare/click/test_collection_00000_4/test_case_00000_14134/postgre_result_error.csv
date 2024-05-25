@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...FixedString('abc', 3), 0), leftPad('abc', CAST('0', 'Int32')...
+                                                             ^

@@ -1,0 +1,3 @@
+syntax error at or near "ROW"
+LINE 2: DROP ROW POLICY IF EXISTS row_level_policy_prewhere_policy0 ...
+             ^

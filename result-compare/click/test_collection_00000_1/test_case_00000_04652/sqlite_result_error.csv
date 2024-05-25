@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT wordShingleSimHashCaseInsensitiveUTF8('what a cute cat.');
+': no such function: wordShingleSimHashCaseInsensitiveUTF8

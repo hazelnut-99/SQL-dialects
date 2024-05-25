@@ -1,0 +1,10 @@
+Catalog Error: Scalar Function with name touuid does not exist!
+Did you mean "uuid"?
+LINE 4:     SELECT toUUID('00000000-0000-0000-0000-000000000002') AS uuid
+    UNION ALL
+    SELECT toUUID('00000000-0000-0000-0000-000000000000') AS uuid
+    UNION ALL
+    SELECT toUUID('00000000-0000-0000-0000-000000000001') AS uuid
+);
+...
+                   ^

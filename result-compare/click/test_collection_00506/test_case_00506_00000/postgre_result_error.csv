@@ -1,0 +1,3 @@
+syntax error at or near "DEFAULT"
+LINE 6:     a DEFAULT x + y,
+              ^

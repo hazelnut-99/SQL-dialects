@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01315_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 3: ...ct_dst (i int, middle_a int, middle_b int, j int) ENGINE = L...\n                                                             ^\n", "error_stage": "set_up"}]

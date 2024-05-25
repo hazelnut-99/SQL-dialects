@@ -1,0 +1,2 @@
+Execution failed on sql 'select tgamma(3) = 2;
+': no such function: tgamma

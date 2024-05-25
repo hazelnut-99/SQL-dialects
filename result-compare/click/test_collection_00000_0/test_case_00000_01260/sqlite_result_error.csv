@@ -1,0 +1,2 @@
+Execution failed on sql 'select 2 = position('abcabc', 'bca', 0);
+': no such function: position

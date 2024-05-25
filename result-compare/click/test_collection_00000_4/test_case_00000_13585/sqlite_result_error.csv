@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTime(toDateTime64('2299-12-31 23:59:59.999', 3));
+': no such function: toDateTime64

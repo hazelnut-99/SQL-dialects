@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...m numbers(1) t1 right outer join numbers(1) t2 using number;
+                                                                ^

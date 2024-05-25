@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT fromModifiedJulianDay(0);
+': no such function: fromModifiedJulianDay

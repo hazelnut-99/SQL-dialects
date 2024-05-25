@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name upperutf8 does not exist!
+Did you mean "upper"?
+LINE 1: select upperUTF8('aaaaАБВГAAAAaaAA') = 'AAAAАБ...
+               ^

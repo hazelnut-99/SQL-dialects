@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name isnullable does not exist!
+Did you mean "isnan"?
+LINE 1: SELECT isNullable(3);
+               ^

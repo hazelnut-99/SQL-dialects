@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleNegate((1, 0, 3.5));
+': no such function: tupleNegate

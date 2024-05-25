@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 1: create table tba (event_id Int64, event_dt Int64) Engine =Me...
+                                                          ^

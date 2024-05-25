@@ -1,0 +1,2 @@
+Execution failed on sql 'select toInt16(32765), bitPositionsToArray(toInt16(32765));
+': no such function: toInt16

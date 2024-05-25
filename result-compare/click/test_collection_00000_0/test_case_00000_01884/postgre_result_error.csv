@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT toFloat64OrZero(arrayJoin(['123.456a', '456.789']));
+                                         ^

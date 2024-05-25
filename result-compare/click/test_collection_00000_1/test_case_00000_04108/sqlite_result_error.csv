@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONType('{"a": true}', 'a');
+': no such function: JSONType

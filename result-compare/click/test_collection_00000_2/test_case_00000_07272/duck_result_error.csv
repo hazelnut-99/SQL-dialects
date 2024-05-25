@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayslice does not exist!
+Did you mean "array_slice"?
+LINE 1: select arraySlice([], -9223372036854775808);
+               ^

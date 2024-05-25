@@ -7,3 +7,8 @@ ROLLBACK;
 BEGIN;
 CREATE TYPE bogus AS ENUM('good','bad','ugly');
 ALTER TYPE bogus RENAME TO bogon;
+ROLLBACK;
+CREATE TYPE bogus AS ENUM('good');
+ALTER TYPE bogus RENAME TO bogon;
+ALTER TYPE bogon ADD VALUE 'bad';
+ALTER TYPE bogon ADD VALUE 'ugly';

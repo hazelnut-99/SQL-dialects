@@ -1,0 +1,2 @@
+Execution failed on sql 'select s2ToGeo(4573520603753570041);
+': no such function: s2ToGeo

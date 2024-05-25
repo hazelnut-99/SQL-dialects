@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTimeBestEffortOrZero('<Empty>', 'UTC');
+': no such function: parseDateTimeBestEffortOrZero

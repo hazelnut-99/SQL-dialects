@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT countDigits(CAST(0x8000000000000000 AS Int64));
+': no such function: countDigits

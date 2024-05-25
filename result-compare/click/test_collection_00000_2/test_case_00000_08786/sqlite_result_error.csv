@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT uniqCombinedIfMerge(n) FILTER(WHERE last>50) FROM (SELECT uniqCombinedIfState(number, number % 2) AS n, max(number) AS last FROM numbers(10));
+': no such table: numbers

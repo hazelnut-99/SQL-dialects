@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(n), 1 as x from t group by x;
+': no such table: t

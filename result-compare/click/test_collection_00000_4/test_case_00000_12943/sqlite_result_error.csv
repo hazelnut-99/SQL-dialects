@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT today() = CURRENT_DATE();
+': near "(": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT murmurHash3_64('\x01');
+': no such function: murmurHash3_64

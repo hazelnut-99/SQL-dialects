@@ -161,3 +161,28 @@ DROP FUNCTION my_int4_sort(int4,int4);
 CREATE TABLE parted_col_comment (a int, b text) PARTITION BY LIST (a);
 COMMENT ON TABLE parted_col_comment IS 'Am partitioned table';
 COMMENT ON COLUMN parted_col_comment.a IS 'Partition key';
+CREATE TABLE arrlp (a int[]) PARTITION BY LIST (a);
+CREATE TABLE arrlp12 PARTITION OF arrlp FOR VALUES IN ('{1}', '{2}');
+create table boolspart (a bool) partition by list (a);
+create table boolspart_t partition of boolspart for values in (true);
+create table boolspart_f partition of boolspart for values in (false);
+create table perm_parted (a int) partition by list (a);
+create temporary table temp_parted (a int) partition by list (a);
+create temp table temp_part partition of temp_parted default; -- ok
+drop table perm_parted cascade;
+drop table temp_parted cascade;
+create table tab_part_create (a int) partition by list (a);
+create or replace function func_part_create() returns trigger
+  language plpgsql as $$
+  begin
+    execute 'create table tab_part_create_1 partition of tab_part_create for values in (1)';
+    return null;
+  end $$;
+create trigger trig_part_create before insert on tab_part_create
+  for each statement execute procedure func_part_create();
+drop table tab_part_create;
+drop function func_part_create();
+create table volatile_partbound_test (partkey timestamp) partition by range (partkey);
+create table volatile_partbound_test1 partition of volatile_partbound_test for values from (minvalue) to (current_timestamp);
+create table volatile_partbound_test2 partition of volatile_partbound_test for values from (current_timestamp) to (maxvalue);
+insert into volatile_partbound_test values (current_timestamp);

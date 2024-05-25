@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toLowCardinality(toInt256(1));
+': no such function: toInt256

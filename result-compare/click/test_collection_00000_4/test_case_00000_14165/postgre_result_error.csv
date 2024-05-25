@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayFold((acc, x) -> x, materialize(CAST([NULL], 'Ar...
+                                                         ^

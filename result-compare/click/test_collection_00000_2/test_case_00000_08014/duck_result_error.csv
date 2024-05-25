@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name modulolegacy does not exist!
+Did you mean "mode"?
+LINE 1: SELECT moduloLegacy(-199, 200);
+               ^

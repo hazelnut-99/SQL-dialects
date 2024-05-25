@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name accuratecast does not exist!
+Did you mean "greatest"?
+LINE 1: SELECT accurateCast(1e19, 'UInt64');
+               ^

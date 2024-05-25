@@ -1,0 +1,7 @@
+Binder Error: No function matches the given name and argument types 'octet_length(INTEGER[])'. You might need to add explicit type casts.
+	Candidate functions:
+	octet_length(BLOB) -> BIGINT
+	octet_length(BIT) -> BIGINT
+
+LINE 1: SELECT OCTET_LENGTH([1,2,3,4]);
+               ^

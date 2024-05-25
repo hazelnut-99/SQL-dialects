@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal64OrNull('e', 2) x, isNull(x);
+': near "isNull": syntax error

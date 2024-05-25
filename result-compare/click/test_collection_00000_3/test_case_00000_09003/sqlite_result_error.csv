@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'b aaaa' == trim(trailing 'b ' FROM 'b aaaabb ') x;
+': near "'b '": syntax error

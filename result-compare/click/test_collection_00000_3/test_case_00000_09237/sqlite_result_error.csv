@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT POSITION('ll' IN 'Hello');
+': no such table: Hello

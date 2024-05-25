@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(initializeAggregation('anyState', initializeAggregation('quantileState', 0)));
+': no such function: initializeAggregation

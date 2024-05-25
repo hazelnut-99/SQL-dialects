@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(4294967296, 'UInt32');
+': no such function: accurateCastOrNull

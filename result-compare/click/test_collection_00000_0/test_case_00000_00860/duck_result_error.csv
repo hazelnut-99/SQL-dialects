@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tosecond does not exist!
+Did you mean "second"?
+LINE 1: SELECT toSecond(toDateTime(1412106600), 'Europ...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName([toDate('2000-01-01'), toDateTime('2000-01-01', 'Asia/Istanbul')]);
+': no such column: toDate('2000-01-01'), toDateTime('2000-01-01', 'Asia/Istanbul')

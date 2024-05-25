@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ECT uniq((x, toString(x))) FROM (SELECT arrayJoin([[], ['a']...
+                                                             ^

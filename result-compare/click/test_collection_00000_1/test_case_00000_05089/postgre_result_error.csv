@@ -1,0 +1,3 @@
+syntax error at or near "h"
+LINE 3: FROM generateRandom('i Nullable(Enum16(\'h\' = 1, \'w\' = 5 ...
+                                                 ^

@@ -1,0 +1,3 @@
+syntax error at or near "desc"
+LINE 1: desc file(02454_data.jsonobjecteachrow);
+        ^

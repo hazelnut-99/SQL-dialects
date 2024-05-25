@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isNullable(toNullable(3));
+': no such function: toNullable

@@ -1,0 +1,2 @@
+Execution failed on sql 'select sum(zero), count() from zeros(10000000);
+': no such table: zeros

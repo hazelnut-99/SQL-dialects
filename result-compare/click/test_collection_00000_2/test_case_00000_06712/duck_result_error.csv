@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...imal128(y, 6), toDecimal256(y, 7) FROM numbers(1, 1);
+                                                  ^

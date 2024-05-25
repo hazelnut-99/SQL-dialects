@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03160_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...EATE TABLE IF NOT EXISTS test_0 (a DateTime64(0)) engine = M...\n                                                             ^\n", "error_stage": "set_up"}]

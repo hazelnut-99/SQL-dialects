@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totypename does not exist!
+Did you mean "dayname"?
+LINE 1: ...type, cast(45.1 as decimal) as result, toTypeName(result) as native_type;
+                                                  ^

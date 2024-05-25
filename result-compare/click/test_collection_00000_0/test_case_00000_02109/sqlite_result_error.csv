@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(bitRotateRight(0x8000000000000001, 1));
+': no such function: bitRotateRight

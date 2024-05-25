@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name idnadecode does not exist!
+Did you mean "decode"?
+LINE 1: SELECT 'xn--h2brj9c' AS ascii, idnaDecode(ascii) AS unicode, idnaEncod...
+                                       ^

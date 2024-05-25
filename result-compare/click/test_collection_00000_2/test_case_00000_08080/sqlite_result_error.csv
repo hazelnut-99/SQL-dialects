@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSON_EXISTS('{"a":[{"b":1},{"c":2}]}', '$.a[*].b');
+': no such function: JSON_EXISTS

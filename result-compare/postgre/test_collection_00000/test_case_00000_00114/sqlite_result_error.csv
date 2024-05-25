@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT num_nulls('1');
+': no such function: num_nulls

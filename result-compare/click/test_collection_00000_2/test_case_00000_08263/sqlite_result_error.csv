@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT argMax(number, number + 1) FILTER(WHERE number != 99) FROM numbers(100) ;
+': no such table: numbers

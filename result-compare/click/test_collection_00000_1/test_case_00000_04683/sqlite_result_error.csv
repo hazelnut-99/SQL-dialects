@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitHammingDistance(100, 100000);
+': no such function: bitHammingDistance

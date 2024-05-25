@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM generateRandom(generateRandomStructure(5, 42), 42) LIMIT 1;
+': no such table: generateRandom

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 7: create table t(a UInt64, b UInt64) engine=MergeTree order by...
+                                           ^

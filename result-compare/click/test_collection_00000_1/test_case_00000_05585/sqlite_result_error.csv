@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT greatest(1, inf);
+': no such function: greatest

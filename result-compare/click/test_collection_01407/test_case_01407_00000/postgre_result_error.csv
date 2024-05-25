@@ -1,0 +1,3 @@
+syntax error at or near "d1"
+LINE 7:     INDEX d1_idx d1 TYPE minmax GRANULARITY 1,
+                         ^

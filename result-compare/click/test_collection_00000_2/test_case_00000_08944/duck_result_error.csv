@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofmonth does not exist!
+Did you mean "dayofmonth"?
+LINE 1: select toStartOfMonth(toDateTime(0, 'America/L...
+               ^

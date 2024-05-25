@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3toparent does not exist!
+Did you mean "tan"?
+LINE 1: SELECT h3ToParent(599405990164561919, 3);
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasAny([(toInt16(3), toInt16(3))],[(toInt16(3), toInt16(3))]);
+': no such column: (toInt16(3), toInt16(3))

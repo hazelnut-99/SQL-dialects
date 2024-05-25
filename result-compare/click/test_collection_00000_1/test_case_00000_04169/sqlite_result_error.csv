@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT multiSearchAny(arrayJoin(['hello', 'world', 'hello, world', 'abc']), ['hello', 'world']);
+': no such column: 'hello', 'world'

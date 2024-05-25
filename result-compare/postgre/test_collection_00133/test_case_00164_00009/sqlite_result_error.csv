@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT c.f1 FROM NAME_TBL c WHERE c.f1 ~ '[0-9]';
+': near "~": syntax error

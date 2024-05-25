@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name formatdatetime does not exist!
+Did you mean "format"?
+LINE 1: SELECT formatDateTime(FROM_UNIXTIME(123456789)...
+               ^

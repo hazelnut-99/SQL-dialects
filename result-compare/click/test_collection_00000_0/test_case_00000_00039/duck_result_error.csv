@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayfilter does not exist!
+Did you mean "array_filter"?
+LINE 1: SELECT arrayFilter(x -> materialize(0), materi...
+               ^

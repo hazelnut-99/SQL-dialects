@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(-1, 'UInt16'),  accurateCastOrDefault(-1, 'UInt16', toUInt16(5));
+': no such function: accurateCastOrDefault

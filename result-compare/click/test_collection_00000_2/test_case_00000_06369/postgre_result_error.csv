@@ -1,0 +1,3 @@
+syntax error at or near "ARRAY"
+LINE 1: SELECT * FROM numbers(1) LEFT ARRAY JOIN arrayFilter((x_0, x...
+                                      ^

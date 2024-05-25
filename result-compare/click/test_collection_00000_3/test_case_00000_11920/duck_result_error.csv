@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name transform does not exist!
+Did you mean "json_transform"?
+LINE 1: select transform(5, [1,2], ['a','b'], null);
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: SELECT 12 AS n GROUP BY n WITH ROLLUP;
+                                  ^

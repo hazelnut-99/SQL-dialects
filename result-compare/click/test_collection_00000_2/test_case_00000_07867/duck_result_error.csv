@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: select sum(number) FROM numbers(10) WHERE number != 0 and 3 % n...
+                                ^

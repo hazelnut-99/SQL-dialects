@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...ect countSubstringsCaseInsensitive('abaaaa', char(number)) f...
+                                                             ^

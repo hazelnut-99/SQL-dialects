@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select hasAny([(toUInt8(3), toUInt8(3))],[(toInt16(3), toInt...
+                      ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...untIfState(2, 1) UNION ALL SELECT countArrayState([1, 2]) UN...
+                                                             ^

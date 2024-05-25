@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isValidJSON('{"success"test:"123"}');
+': no such function: isValidJSON

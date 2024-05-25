@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name countmatches does not exist!
+Did you mean "count"?
+LINE 1: select countMatches('foo', '');
+               ^

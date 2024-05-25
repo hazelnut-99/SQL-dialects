@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT formatQuery('SELECT sum(number) RESPECT NULLS from numbers(1)');
+': no such function: formatQuery

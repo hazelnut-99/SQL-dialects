@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT repeat(DISTINCT, 5) FROM (SELECT 'a' AS DISTINCT);
+': near ",": syntax error

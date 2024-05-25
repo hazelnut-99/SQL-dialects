@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name grouparray does not exist!
+Did you mean "json_group_array"?
+LINE 1: select groupArray(a) as b, b[1] from (select (...
+               ^

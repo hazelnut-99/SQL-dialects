@@ -1,0 +1,3 @@
+syntax error at or near "MATERIALIZED"
+LINE 4:     event_date Date MATERIALIZED toDate(event_time),
+                            ^

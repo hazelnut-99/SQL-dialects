@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00663_00001", "type": "error", "result_detail": "near \"PIVOT\": syntax error", "error_stage": "query"}, {"test_case": "test_case_00663_00000", "type": "different", "host_result_detail": [[0, 5.0], [1, 224.0], [2, 359.0], [4, 949.0]], "guest_result_detail": [[0, 5.0885], [1, 223.88], [2, 359.1082], [4, 949.4105]]}]

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3GetResolution(581276613233082367);
+': no such function: h3GetResolution

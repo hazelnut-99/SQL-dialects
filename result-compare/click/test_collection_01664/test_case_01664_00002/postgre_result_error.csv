@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 2: ...ble test(dim1 String, dim2 String, projection p1 (select dim...
+                                                             ^

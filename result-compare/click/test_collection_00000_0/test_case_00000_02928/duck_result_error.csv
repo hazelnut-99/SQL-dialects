@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name murmurhash2_32 does not exist!
+Did you mean "hash"?
+LINE 1: SELECT murmurHash2_32('foo');
+               ^

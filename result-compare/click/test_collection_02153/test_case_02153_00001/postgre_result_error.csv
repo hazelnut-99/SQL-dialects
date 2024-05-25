@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 1: CREATE TABLE source (a Int32) ENGINE=MergeTree() ORDER BY tu...
+                                      ^

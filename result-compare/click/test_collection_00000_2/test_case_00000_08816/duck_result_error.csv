@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name accuratecastordefault does not exist!
+Did you mean "currval"?
+LINE 1: SELECT accurateCastOrDefault(nan, 'UInt64'), a...
+               ^

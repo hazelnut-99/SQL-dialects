@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayJoin(['а', 'я', 'ё', 'А', 'Я', 'Ё']) AS x ORDER BY x;
+': no such column: 'а', 'я', 'ё', 'А', 'Я', 'Ё'

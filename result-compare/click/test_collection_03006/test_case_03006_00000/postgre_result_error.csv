@@ -1,0 +1,3 @@
+syntax error at or near "UInt8"
+LINE 6:          id UInt8,
+                    ^

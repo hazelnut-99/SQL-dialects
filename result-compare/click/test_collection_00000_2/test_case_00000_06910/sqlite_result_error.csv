@@ -1,0 +1,2 @@
+Execution failed on sql 'select accurateCastOrNull('1', 'Bool');
+': no such function: accurateCastOrNull

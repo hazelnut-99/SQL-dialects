@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT length(h3kRing(111111111111, 1000));
+': no such function: h3kRing

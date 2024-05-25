@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ([1,2]+[1,number]) from numbers(5);
+': no such table: numbers

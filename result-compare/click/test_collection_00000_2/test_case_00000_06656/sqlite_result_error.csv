@@ -1,0 +1,4 @@
+Execution failed on sql 'SELECT normalizeQuery('SELECT 1 AS `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`'),
+    normalizedQueryHash('SELECT 1 AS `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`')
+  = normalizedQueryHash('SELECT 2 AS `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeef`');
+': no such function: normalizeQuery

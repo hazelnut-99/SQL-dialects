@@ -1,0 +1,6 @@
+Binder Error: No function matches the given name and argument types 'md5(BLOB)'. You might need to add explicit type casts.
+	Candidate functions:
+	md5(VARCHAR) -> VARCHAR
+
+LINE 1: select md5('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh...
+               ^

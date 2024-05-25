@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDistinct(materialize(['', 'Hello', ''])) FROM numbers(2);
+': no such table: numbers

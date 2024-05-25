@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addseconds does not exist!
+Did you mean "second"?
+LINE 1: SELECT addSeconds(materialize('2023-10-22'), 1...
+               ^

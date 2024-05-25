@@ -1,0 +1,3 @@
+syntax error at or near "NULLS"
+LINE 1: Select number, first_value (number) RESPECT NULLS over (orde...
+                                                    ^

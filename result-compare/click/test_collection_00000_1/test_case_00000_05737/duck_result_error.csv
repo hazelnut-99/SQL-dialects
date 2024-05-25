@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...in(n + 1) c from (select number n from numbers(10)) having c > 0;
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select length(toString(now64(9)));
+': no such function: now64

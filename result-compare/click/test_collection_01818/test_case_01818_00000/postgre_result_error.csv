@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "01837_"
+LINE 1: DROP DATABASE IF EXISTS 01837_db;
+                                ^

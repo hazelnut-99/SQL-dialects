@@ -1,0 +1,2 @@
+Execution failed on sql 'select groupArray(a) as b, b[1] from (select (1, 2) as a);
+': no such function: groupArray

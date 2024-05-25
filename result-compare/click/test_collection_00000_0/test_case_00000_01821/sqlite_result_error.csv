@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT multiIf(rand() % 2 = 0, emptyArrayUInt8(), emptyArrayUInt8());
+': no such function: multiIf

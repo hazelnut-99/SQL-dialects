@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstringsCaseInsensitive('bab', 'B');
+': no such function: countSubstringsCaseInsensitive

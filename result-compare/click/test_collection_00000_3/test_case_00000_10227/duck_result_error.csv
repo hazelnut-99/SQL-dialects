@@ -1,0 +1,6 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 3: ...T table1_id FROM (
+    SELECT first.table1_id
+    FROM (SELECT number+1 as table1_id FROM numbers(1)) as first
+                                                  ^

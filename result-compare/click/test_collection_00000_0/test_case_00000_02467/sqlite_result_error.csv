@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT exp10(nan);
+': no such column: nan

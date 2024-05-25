@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00900_00000", "type": "error", "result_detail": "near \"'UTC'\": syntax error", "error_stage": "set_up"}, {"test_case": "test_case_00900_00001", "type": "error", "result_detail": "near \"'UTC'\": syntax error", "error_stage": "set_up"}]

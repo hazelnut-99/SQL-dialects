@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concatWithSeparator('|', toFixedString('a', 1), 'b') == 'a|b';
+': no such function: concatWithSeparator

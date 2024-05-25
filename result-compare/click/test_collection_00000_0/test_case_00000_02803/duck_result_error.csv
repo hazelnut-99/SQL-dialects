@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name countstate does not exist!
+Did you mean "count_star"?
+LINE 1: ...T countMerge(x) AS y FROM ( SELECT 2 * countState() AS x FROM ( SELECT 1 ));
+                                                  ^

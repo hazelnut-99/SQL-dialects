@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT materialize([[13], [14]])[3::Int8];
+                           ^

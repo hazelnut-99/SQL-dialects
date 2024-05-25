@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: SELECT 'a{a' AS x, x LIKE (concat('%', x) AS pat), materiali...
+                                                  ^

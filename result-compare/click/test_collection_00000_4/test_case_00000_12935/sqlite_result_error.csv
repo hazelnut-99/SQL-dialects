@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT singleValueOrNull(toNullable(123));
+': no such function: toNullable

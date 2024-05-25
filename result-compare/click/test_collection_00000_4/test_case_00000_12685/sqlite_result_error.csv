@@ -1,0 +1,2 @@
+Execution failed on sql 'select match('abc123', '[a-zA-Z]+(?P<num>\\d+)');
+': unable to use function MATCH in the requested context

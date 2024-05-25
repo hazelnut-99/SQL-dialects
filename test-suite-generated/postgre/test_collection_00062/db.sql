@@ -47,3 +47,6 @@ insert into parted_conflict_test_1 values (1, 'a') on conflict (a) do nothing;
 create table parted_conflict_test_2 (b char, a int unique);
 alter table parted_conflict_test attach partition parted_conflict_test_2 for values in (3);
 truncate parted_conflict_test;
+alter table parted_conflict_test drop b, add b char;
+create table parted_conflict_test_3 partition of parted_conflict_test for values in (4);
+truncate parted_conflict_test;

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name halfmd5 does not exist!
+Did you mean "md5"?
+LINE 1: SELECT halfMD5(('a', [1, 2, 3], 4, (4, ['foo',...
+               ^

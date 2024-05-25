@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name num_nulls does not exist!
+Did you mean "enum_last"?
+LINE 1: SELECT num_nulls(VARIADIC '{}'::int[]);
+               ^

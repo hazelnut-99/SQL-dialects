@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractAllGroupsHorizontal('hello world', '(\\w+)');
+': no such function: extractAllGroupsHorizontal

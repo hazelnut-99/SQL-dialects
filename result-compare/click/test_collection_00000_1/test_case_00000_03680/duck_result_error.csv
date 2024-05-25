@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name siphash128 does not exist!
+Did you mean "hash"?
+LINE 1: SELECT hex(sipHash128('foo', 'foo'));
+                   ^

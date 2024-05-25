@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name isvalidjson does not exist!
+Did you mean "json"?
+LINE 1: SELECT isValidJSON('{"success"test:"123"}');
+               ^

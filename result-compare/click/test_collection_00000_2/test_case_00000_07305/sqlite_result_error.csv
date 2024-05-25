@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(INET6_ATON('2a02:6b8::11'));
+': no such function: INET6_ATON

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(5000000000, 'DateTime');
+': no such function: accurateCastOrNull

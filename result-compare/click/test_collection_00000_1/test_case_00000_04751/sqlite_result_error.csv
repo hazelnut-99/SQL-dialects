@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReduce('maxOrNull', arrayPopBack(['hello']));
+': no such function: arrayReduce

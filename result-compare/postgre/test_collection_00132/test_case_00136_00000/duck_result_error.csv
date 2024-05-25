@@ -1,0 +1,3 @@
+Binder Error: Table "t" does not have a column named "ctid"
+LINE 1: SELECT t.ctid is not null as matched, t.*, s.*...
+               ^

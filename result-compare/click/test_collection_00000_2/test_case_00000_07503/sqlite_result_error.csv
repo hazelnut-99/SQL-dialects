@@ -1,0 +1,2 @@
+Execution failed on sql 'select toUInt32OrDefault('1', cast(2 as UInt32));
+': no such function: toUInt32OrDefault

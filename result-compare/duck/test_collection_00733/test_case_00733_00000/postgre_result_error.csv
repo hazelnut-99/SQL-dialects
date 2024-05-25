@@ -1,0 +1,3 @@
+syntax error at or near "all"
+LINE 4: Select * from v0 order by all;
+                                  ^

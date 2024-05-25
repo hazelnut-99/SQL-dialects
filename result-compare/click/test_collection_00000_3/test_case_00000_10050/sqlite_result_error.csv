@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bin(toInt32(-100)) AS res;
+': no such function: toInt32

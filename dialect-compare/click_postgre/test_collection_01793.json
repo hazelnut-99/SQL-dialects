@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01793_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...ABLE t_map_null (a Map(String, String), b String) engine = M...\n                                                             ^\n", "error_stage": "set_up"}]

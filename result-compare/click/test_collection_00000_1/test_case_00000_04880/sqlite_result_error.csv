@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(randConstant(Null));
+': no such function: randConstant

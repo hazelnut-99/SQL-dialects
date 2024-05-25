@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniq([[1], [2], [34], [1]]);
+': unrecognized token: "]"

@@ -1,0 +1,8 @@
+Catalog Error: Scalar Function with name arrayfirst does not exist!
+Did you mean "first"?
+LINE 8: ...ect count(*)
+from (
+  select 1 as id, [1, 2, 3] as arr
+) as sessions
+ASOF LEFT...
+                                                  ^

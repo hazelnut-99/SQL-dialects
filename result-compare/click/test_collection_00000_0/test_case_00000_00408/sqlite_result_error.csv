@@ -1,0 +1,2 @@
+Execution failed on sql 'select URLHash('' as url, 1) = URLHash(url);
+': near "as": syntax error

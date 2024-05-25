@@ -1,0 +1,14 @@
+Execution failed on sql 'SELECT
+    value,
+    time,
+    round(exp_smooth, 3),
+    bar(exp_smooth, 0, 10, 50) AS bar
+FROM
+(
+    SELECT
+        (number = 0) OR (number >= 25) AS value,
+        number AS time,
+        exponentialTimeDecayedCount(5)(time) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS exp_smooth
+    FROM numbers(50)
+);
+': near "(": syntax error

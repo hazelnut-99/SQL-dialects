@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayMax([1.2::Decimal(60, 30), 3.45::Decimal(61, 29)...
+                        ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3tostring does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT h3ToString(617420388352917503);
+               ^

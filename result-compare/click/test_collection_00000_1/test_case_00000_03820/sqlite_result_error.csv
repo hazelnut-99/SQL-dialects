@@ -1,0 +1,2 @@
+Execution failed on sql 'select xxHash32(toUInt16(0)) = xxHash32('\0\0');
+': no such function: xxHash32

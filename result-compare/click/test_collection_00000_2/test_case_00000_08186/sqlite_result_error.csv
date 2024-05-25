@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT map(1, 2, 3, 4) AS m, toJSONString(m) AS s, isValidJSON(s);
+': no such function: map

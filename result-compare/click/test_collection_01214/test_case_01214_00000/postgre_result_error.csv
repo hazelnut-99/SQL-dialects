@@ -1,0 +1,3 @@
+syntax error at or near "TYPE"
+LINE 2: ...REATE TABLE mt (x String, y UInt64, INDEX idx (y) TYPE minma...
+                                                             ^

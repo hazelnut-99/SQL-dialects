@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cosineDistance((1, 1), (toNullable(0.5), 0.1));
+': no such function: cosineDistance

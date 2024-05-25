@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02934_00000", "type": "error", "result_detail": "syntax error at or near \"UInt64\"\nLINE 5:     n Nested(n UInt64, lc1 LowCardinality(String))\n                       ^\n", "error_stage": "set_up"}]

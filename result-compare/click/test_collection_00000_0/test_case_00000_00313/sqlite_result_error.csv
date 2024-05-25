@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt16(1) IN (1, 1000, 3);
+': no such function: toUInt16

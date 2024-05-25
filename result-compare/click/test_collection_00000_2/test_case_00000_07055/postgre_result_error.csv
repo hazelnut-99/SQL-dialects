@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: ...(5) order by rand()) group by number order by sum(any(number...
+                                                             ^

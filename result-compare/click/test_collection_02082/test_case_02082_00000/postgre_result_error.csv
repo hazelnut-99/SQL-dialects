@@ -1,0 +1,3 @@
+syntax error at or near "UInt64"
+LINE 6: ...ple SimpleAggregateFunction(groupArrayArray, Array(UInt64)),
+                                                              ^

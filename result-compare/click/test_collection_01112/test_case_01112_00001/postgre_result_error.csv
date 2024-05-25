@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 7: CREATE TABLE dest_table (`Date` Date, `Id` UInt64, `Units` F...
+                                 ^

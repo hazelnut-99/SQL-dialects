@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCumSum([toInt256(1), toInt128(1)]), toTypeName(arrayCumSum([toInt256(1), toInt128(1)]));
+': no such column: toInt256(1), toInt128(1)

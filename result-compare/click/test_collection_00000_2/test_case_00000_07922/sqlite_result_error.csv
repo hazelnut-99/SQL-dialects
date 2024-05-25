@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'abc'::FixedString(3) AS c;
+': unrecognized token: ":"

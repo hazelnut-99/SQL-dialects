@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name sumstate does not exist!
+Did you mean "stats"?
+LINE 1: SELECT sumMerge(y) AS z FROM ( SELECT sumState(x) * 11 AS y FROM ( SELECT 1 A...
+                                              ^

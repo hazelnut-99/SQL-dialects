@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'Hello' ILIKE '';
+': near "''": syntax error

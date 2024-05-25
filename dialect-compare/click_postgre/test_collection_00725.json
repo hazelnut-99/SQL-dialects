@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00725_00000", "type": "error", "result_detail": "syntax error at or near \"remote\"\nLINE 5: CREATE TABLE t3 AS remote('127.0.0.1', numbers(100));\n                           ^\n", "error_stage": "set_up"}]

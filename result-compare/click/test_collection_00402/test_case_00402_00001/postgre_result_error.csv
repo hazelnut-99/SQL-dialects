@@ -1,0 +1,3 @@
+syntax error at or near "a"
+LINE 7:     d MATERIALIZED a + toDecimal32('0.2', 1),
+                           ^

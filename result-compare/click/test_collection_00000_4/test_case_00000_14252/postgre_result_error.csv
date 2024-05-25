@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...ECT toString(1710612085::DateTime, tz) FROM Values('tz Strin...
+                                                             ^

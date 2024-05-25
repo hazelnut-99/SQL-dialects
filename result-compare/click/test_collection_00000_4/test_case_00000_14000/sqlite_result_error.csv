@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visibleWidth('ClickHouse是一个很好的数据库');
+': no such function: visibleWidth

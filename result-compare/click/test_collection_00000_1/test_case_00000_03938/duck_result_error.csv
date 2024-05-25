@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitmasktoarray does not exist!
+Did you mean "bit_or"?
+LINE 1: SELECT bitmaskToArray(-1);
+               ^

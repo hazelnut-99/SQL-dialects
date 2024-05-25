@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT date(now())::text = current_date::text;
+': unrecognized token: ":"

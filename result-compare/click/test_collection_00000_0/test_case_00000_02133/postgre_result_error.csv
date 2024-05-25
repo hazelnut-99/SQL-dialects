@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ing(x), 3), arrayMap(x -> nullIf(x, 2), arrayJoin([emptyArra...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(now('UTC') - 1);
+': no such function: toTypeName

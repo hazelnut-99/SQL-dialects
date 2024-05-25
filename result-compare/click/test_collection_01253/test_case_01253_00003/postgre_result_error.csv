@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 3: ...REATE TABLE l (luid Nullable(Int16), name String) ENGINE=Mer...
+                                                             ^

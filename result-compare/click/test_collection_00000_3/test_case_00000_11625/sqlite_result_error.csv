@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT generateULID(1) != generateULID(2), toTypeName(generateULID());
+': no such function: generateULID

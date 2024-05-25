@@ -1,0 +1,3 @@
+syntax error at or near ".2"
+LINE 1: SELECT arrayCompact(x -> x.2, groupArray((number, intDiv(num...
+                                  ^

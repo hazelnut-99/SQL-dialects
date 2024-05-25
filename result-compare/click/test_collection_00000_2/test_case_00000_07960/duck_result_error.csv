@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name s2capunion does not exist!
+Did you mean "sin"?
+LINE 1: select s2CapUnion(1157339245694594829, toFloat...
+               ^

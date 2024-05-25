@@ -1,0 +1,2 @@
+Execution failed on sql 'select getTypeSerializationStreams('LowCardinality(String)');
+': no such function: getTypeSerializationStreams

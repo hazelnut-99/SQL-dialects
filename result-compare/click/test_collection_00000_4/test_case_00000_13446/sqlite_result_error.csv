@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayExists(date -> (date = '2022-07-31'), [toDate('2022-07-31')]) AS date_exists;
+': no such column: toDate('2022-07-31')

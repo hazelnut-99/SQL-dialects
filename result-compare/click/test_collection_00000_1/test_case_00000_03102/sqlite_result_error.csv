@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal128(toDecimal128('1234567890', 28), 30);
+': no such function: toDecimal128

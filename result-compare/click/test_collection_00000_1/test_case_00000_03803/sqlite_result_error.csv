@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash64(CAST('foo' AS FixedString(3))) = xxHash64('foo');
+': no such function: xxHash64

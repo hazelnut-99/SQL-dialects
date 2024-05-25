@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -0x1.234;
+': near ".234": syntax error

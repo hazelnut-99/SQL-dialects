@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayfirstindex does not exist!
+Did you mean "array_indexof"?
+LINE 1: SELECT arrayFirstIndex(x -> 0, [1, 2, 3]);
+               ^

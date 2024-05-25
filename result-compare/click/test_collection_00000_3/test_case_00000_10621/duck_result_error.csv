@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal32ordefault does not exist!
+Did you mean "decade"?
+LINE 1: SELECT toDecimal32OrDefault(111, 3, 123.456::D...
+               ^

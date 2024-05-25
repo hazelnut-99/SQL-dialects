@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequenceCaseInsensitive('garbage', 'ARG');
+': no such function: hasSubsequenceCaseInsensitive

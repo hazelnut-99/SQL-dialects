@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT IPv4StringToNumOrNull('test');
+': no such function: IPv4StringToNumOrNull

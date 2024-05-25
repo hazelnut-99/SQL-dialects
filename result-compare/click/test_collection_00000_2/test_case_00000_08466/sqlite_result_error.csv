@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtractInt('[1]', toNullable(1));
+': no such function: JSONExtractInt

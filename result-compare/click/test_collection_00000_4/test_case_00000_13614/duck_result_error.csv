@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint32 does not exist!
+Did you mean "atan2"?
+LINE 1: SELECT 693961 AS u, toInt32(u) AS s, fromDaysSinceYearZero3...
+                            ^

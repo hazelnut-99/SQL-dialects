@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT timestamp(materialize('2013-12-31 12:00:00'), materialize('12:00:00'));
+': no such function: materialize

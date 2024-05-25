@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonextractuint does not exist!
+Did you mean "json_extract"?
+LINE 1: SELECT JSONExtractUInt('{"a": "hello", "b": [-...
+               ^

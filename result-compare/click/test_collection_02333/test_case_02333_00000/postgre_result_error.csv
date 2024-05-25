@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...c (t Tuple(`1` Tuple(`2` Int, `3` Int), `4` Int)) ENGINE = M...
+                                                             ^

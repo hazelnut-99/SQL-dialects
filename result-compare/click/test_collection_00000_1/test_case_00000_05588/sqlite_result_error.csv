@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT LEAST(-1, 18446744073709551615) x, toTypeName(x);
+': no such function: LEAST

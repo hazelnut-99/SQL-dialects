@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name connection_id does not exist!
+Did you mean "count_if"?
+LINE 1: SELECT connection_id(), CONNECTION_ID(), CoNnE...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select mortonEncode((4,4,4,4), 128, 128, 128, 128);
+': no such function: mortonEncode

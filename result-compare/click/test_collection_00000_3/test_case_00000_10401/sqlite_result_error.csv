@@ -1,0 +1,2 @@
+Execution failed on sql 'select [7] = multiSearchAllPositions(materialize('abcdefgh'), ['g']);
+': no such column: 7

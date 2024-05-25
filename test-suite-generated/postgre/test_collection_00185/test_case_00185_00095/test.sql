@@ -1,1 +1,0 @@
-select scale(numeric 'NaN');

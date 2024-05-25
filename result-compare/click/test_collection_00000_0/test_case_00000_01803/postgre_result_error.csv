@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT quantileInterpolatedWeighted(0.5)(x, 1) AS q5, quanti...
+                                                ^

@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...4-07 01:00:00', 'Australia/Lord_Howe') + INTERVAL number * 6...
+                                                             ^

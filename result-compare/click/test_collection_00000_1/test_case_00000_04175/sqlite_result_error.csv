@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAny('hallo some world', 1, ['^hello.*world$']);
+': no such function: multiFuzzyMatchAny

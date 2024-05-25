@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table coords (x Float32, y Float32) engine = Memory;
+                                                   ^

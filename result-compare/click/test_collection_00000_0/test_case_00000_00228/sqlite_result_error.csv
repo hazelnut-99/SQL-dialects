@@ -1,0 +1,2 @@
+Execution failed on sql 'select hypot(1, 0) = 1;
+': no such function: hypot

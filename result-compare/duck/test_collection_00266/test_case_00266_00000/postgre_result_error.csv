@@ -1,0 +1,3 @@
+syntax error at or near "{"
+LINE 8:   SELECT a.*, list({r:b.r, h:b.h, id: gen_random_uuid()}) as...
+                           ^

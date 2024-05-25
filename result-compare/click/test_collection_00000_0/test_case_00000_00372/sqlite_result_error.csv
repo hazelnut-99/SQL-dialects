@@ -1,0 +1,2 @@
+Execution failed on sql 'select isInfinite(inf) = 1;
+': no such column: inf

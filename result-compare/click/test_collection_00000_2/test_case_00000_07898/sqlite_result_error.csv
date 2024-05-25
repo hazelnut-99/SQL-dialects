@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST([] AS Array(Array(Array(String))));
+': near "Array": syntax error

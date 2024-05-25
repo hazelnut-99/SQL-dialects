@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT yesterday() + 1 = today();
+': no such function: yesterday

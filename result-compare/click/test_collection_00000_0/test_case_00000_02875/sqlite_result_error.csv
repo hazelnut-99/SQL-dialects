@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(arrayJoin(['', '2018', '2018-01-02', '2018-1-2', '2018-01-2', '2018-1-02', '2018-ab-cd', '2018-01-02a']) AS Nullable(Date));
+': near "Date": syntax error

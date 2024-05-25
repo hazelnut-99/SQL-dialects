@@ -1,0 +1,2 @@
+Execution failed on sql 'select 0 = multiMatchAny(materialize('abc'), ['defg']);
+': no such column: 'defg'

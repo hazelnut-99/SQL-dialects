@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02072_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 1: ... enum_alter_issue (a Enum8('one' = 1, 'two' = 2)) engine = M...\n                                                             ^\n", "error_stage": "set_up"}]

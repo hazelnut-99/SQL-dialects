@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tumblestart does not exist!
+Did you mean "substr"?
+LINE 1: SELECT tumbleStart(toDateTime('2020-01-09 12:0...
+               ^

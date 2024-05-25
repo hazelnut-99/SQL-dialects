@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayMap((x, y) -> x + y, [], CAST([], 'Array(Int32)'));
+': near ",": syntax error

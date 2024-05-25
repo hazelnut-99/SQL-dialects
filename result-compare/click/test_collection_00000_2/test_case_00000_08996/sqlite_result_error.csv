@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDateTime64('2283-11-11',2) > toDate32('1925-02-01');
+': no such function: toDate32

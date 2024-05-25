@@ -1,0 +1,3 @@
+syntax error at or near "column"
+LINE 1: ...TE TEMPORARY TABLE IF NOT EXISTS temporary_table (column UIn...
+                                                             ^

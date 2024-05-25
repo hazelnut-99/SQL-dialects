@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT __scalarSubqueryResult('1');
+': no such function: __scalarSubqueryResult

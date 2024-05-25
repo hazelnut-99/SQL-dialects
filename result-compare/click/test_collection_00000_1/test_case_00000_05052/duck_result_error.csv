@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...32)', blockSerializedSize(number) from numbers(2);
+                                                  ^

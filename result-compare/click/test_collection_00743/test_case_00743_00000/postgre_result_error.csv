@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT topKWeighted(10)(toString(number), number) from numbe...
+                               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayFilter(x -> 2 * x < 0, []);
+': no such function: arrayFilter

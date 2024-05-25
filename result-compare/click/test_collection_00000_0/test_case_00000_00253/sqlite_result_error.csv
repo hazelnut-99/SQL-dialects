@@ -1,0 +1,2 @@
+Execution failed on sql 'select erf(-10) = -1;
+': no such function: erf

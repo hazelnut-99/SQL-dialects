@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: ...number AS x FROM numbers(3) ORDER BY toFloat32(x) as k, toFl...
+                                                             ^

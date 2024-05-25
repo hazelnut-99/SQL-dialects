@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02097_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 5:  test_config Array(Map(String, Decimal(28,12))),\n                     ^\n", "error_stage": "set_up"}]

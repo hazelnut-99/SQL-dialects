@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE im (id Int32, dd Int32) ENGINE = Memory();
+                                             ^

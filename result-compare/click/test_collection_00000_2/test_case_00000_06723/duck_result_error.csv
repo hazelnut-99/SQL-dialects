@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...oFloat32(toDecimal128(number, 3)) FROM numbers(12, 1);
+                                                  ^

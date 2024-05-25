@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02038_00000", "type": "error", "result_detail": "syntax error at or near \"'2021-08-15 18:57:56'\"\nLINE 1: WITH toDateTime('2021-08-15 18:57:56', 'Asia/Shanghai') AS d...\n                        ^\n", "error_stage": "set_up"}]

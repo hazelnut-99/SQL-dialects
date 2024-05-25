@@ -1,0 +1,3 @@
+syntax error at or near "　from"
+LINE 1: select *　from (　select 'table' as table, toInt64(10) as ro...
+                ^

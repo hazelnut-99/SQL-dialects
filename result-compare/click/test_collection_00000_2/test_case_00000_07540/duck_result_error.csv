@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetimeordefault does not exist!
+Did you mean "datetrunc"?
+LINE 1: select toDateTimeOrDefault('2023-05-30 14:38:2...
+               ^

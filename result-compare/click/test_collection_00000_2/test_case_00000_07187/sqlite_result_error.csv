@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT repeat('a', DISTINCT) FROM (SELECT number AS DISTINCT FROM numbers(10));
+': near "DISTINCT": syntax error

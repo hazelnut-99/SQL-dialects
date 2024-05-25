@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...mber::Decimal256(3), number % 10) from numbers(1000);
+                                                  ^

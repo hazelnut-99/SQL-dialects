@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ... 0 = multiSearchAnyCaseInsensitiveUTF8('\0', CAST([], 'Array...
+                                                             ^

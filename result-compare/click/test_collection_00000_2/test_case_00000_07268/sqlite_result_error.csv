@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT FROM_BASE64('dGVzdCBzdHJpbmc=');
+': no such function: FROM_BASE64

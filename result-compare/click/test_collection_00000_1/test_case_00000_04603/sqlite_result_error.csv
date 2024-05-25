@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toDecimal128(99.67, 2));
+': no such function: toDecimal128

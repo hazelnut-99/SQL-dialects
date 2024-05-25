@@ -1,0 +1,3 @@
+syntax error at or near "9223372036854775807"
+LINE 1: SELECT ignore(now() + INTERVAL 9223372036854775807 MONTH);
+                                       ^

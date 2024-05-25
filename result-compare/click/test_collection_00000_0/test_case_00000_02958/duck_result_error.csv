@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 1: ...rdinality(val) as UInt64) from (select arrayJoin(['1']) as val);
+                                                  ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tofloat64 does not exist!
+Did you mean "format"?
+LINE 1: SELECT -199 % toFloat64(200) as k, toTypeName(k);
+                      ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(A) FROM (SELECT multiIf(1, 1, NULL) as A);
+': no such function: multiIf

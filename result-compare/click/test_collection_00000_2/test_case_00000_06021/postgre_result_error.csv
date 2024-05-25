@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...ECT if(x = 0, 'fail', 'ok') FROM (SELECT CAST(NULL, 'Nullabl...
+                                                             ^

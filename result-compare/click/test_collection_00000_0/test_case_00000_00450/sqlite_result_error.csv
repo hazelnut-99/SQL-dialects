@@ -1,0 +1,2 @@
+Execution failed on sql 'select lowerUTF8('aaaaАБВГAAAAaaAA') = 'aaaaабвгaaaaaaaa';
+': no such function: lowerUTF8

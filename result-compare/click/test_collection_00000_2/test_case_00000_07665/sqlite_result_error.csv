@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isIPAddressInRange('ffff::1', 'ffff::/16');
+': no such function: isIPAddressInRange

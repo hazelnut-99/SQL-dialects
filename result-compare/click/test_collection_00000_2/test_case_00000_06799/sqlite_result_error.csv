@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT formatReadableTimeDelta(0x1000000000000000);
+': no such function: formatReadableTimeDelta

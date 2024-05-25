@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table t (i int, j int) engine MergeTree order by i;
+                                      ^

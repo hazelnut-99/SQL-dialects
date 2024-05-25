@@ -1,0 +1,2 @@
+Execution failed on sql 'select isNaN(materialize(1)) = 0;
+': no such function: materialize

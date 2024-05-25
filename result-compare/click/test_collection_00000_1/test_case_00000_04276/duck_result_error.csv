@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraystringconcat does not exist!
+Did you mean "array_concat"?
+LINE 1: select 50 = length(format((select arrayStringConcat(arrayMap(x ->'{', ran...
+                                          ^

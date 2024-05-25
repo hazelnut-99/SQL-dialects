@@ -1,0 +1,2 @@
+Execution failed on sql 'select concat('third', 'first', 'second')=format('{2}{0}{1}', 'first', 'second', 'third');
+': no such function: concat

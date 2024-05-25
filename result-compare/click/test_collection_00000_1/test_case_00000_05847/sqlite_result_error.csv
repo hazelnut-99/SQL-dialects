@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(number < 1000 ? NULL : number) FROM numbers(10);
+': near "?": syntax error

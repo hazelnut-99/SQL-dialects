@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extracturlparameter does not exist!
+Did you mean "nextafter"?
+LINE 1: SELECT extractURLParameter('?_', '\0');
+               ^

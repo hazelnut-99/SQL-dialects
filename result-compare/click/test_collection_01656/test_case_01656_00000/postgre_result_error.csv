@@ -1,0 +1,3 @@
+syntax error at or near "CODEC"
+LINE 4:     time DateTime CODEC(DoubleDelta, LZ4),
+                          ^

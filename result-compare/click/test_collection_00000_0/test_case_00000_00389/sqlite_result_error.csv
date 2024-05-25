@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize('Hello') LIKE '%%';
+': no such function: materialize

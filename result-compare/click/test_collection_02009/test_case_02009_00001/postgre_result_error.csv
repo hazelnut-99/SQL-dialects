@@ -1,0 +1,3 @@
+syntax error at or near "type"
+LINE 2: ...idvalue Nullable(UInt64), index insid_idx (insid) type bloom...
+                                                             ^

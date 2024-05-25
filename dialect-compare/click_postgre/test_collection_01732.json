@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01732_00000", "type": "error", "result_detail": "syntax error at or near \"system\"\nLINE 6: system flush logs;\n        ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT revision()=Revision(), REVISION()=Revision(), revisiON()=reVision();
+': no such function: Revision

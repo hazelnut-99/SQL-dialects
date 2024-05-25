@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ULIDStringToDateTime('01GWJWKW30MFPQJRYEAF4XFZ9E', 'America/Costa_Rica');
+': no such function: ULIDStringToDateTime

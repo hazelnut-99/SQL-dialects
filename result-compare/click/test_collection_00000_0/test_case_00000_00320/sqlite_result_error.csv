@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number, tuple FROM (SELECT 3 AS number, (2, 3) AS tuple) WHERE (number, tuple) IN (3, (2, 3));
+': IN(...) element has 1 term - expected 2

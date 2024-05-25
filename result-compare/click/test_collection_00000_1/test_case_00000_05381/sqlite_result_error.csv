@@ -1,0 +1,2 @@
+Execution failed on sql 'select toUInt8(x) from values('x Nullable(String)', '42', NULL, '0', '', '256');
+': near "values": syntax error

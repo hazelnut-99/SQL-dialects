@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfInterval(toDate(17933), INTERVAL 1 week);
+': near "1": syntax error

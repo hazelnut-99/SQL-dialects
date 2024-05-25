@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 1: SELECT base64Decode(val) FROM (select arrayJoin(['', 'Zg==', 'Zm8=', 'Zm9v', ...
+                                              ^

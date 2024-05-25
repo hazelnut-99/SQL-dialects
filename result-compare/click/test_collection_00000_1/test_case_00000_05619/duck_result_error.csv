@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers_mt does not exist!
+Did you mean "unnest"?
+LINE 1: ...groupArray(DISTINCT number % 13)) FROM numbers_mt(100000);
+                                                  ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name current_timestamp does not exist!
+Did you mean "get_current_timestamp"?
+LINE 1: SELECT current_timestamp = current_timestamp(7);
+                                   ^

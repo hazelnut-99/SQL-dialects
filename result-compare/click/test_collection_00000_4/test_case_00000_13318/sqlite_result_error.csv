@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT YYYYMMDDToDate32(23000101.1);
+': no such function: YYYYMMDDToDate32

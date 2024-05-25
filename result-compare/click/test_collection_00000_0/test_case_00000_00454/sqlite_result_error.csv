@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT today() IN (toDate('2014-01-01'), toDate(now()));
+': no such function: now

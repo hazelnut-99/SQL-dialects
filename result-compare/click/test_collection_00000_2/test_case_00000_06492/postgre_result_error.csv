@@ -1,0 +1,3 @@
+syntax error at or near "ASOF"
+LINE 3: ASOF JOIN (SELECT 1 as pk, toNullable(0) as dt) b
+        ^

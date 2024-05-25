@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt32(-199) % toUInt16(200) as k, toTypeName(k);
+': no such function: toUInt16

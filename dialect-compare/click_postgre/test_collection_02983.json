@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02983_00000", "type": "error", "result_detail": "syntax error at or near \"desc\"\nLINE 1: desc format(JSONEachRow, '{\"obj\" : {\"a\" : 42, \"b\" : \"Hello\",...\n        ^\n", "error_stage": "set_up"}]

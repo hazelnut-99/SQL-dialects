@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(toNullable(number)) FROM numbers(10);
+': no such table: numbers

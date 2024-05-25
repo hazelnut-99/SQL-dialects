@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE e ( a UInt64, t DateTime ) ENGINE = MergeTree P...
+                                                ^

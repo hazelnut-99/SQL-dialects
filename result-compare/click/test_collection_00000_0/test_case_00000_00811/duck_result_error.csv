@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofyear does not exist!
+Did you mean "dayofyear"?
+LINE 1: SELECT toStartOfYear(toDateTime(1419800400), '...
+               ^

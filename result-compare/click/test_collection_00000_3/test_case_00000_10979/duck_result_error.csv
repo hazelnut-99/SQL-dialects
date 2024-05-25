@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name splitbyregexp does not exist!
+Did you mean "split"?
+LINE 1: SELECT splitByRegexp('\\d+', 'a12bc23de345f');
+               ^

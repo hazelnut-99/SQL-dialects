@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize(1) / CAST(materialize(NULL), 'Nullable(Decimal(7, 2))');
+': near ",": syntax error

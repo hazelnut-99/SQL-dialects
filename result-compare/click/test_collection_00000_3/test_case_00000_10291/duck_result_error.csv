@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...ber), '1234567890', 'ዩय𐑿𐐏নՅðй¿ค') FROM numbers(987654, 5);
+                                                  ^

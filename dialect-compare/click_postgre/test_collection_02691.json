@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02691_00000", "type": "error", "result_detail": "syntax error at or near \"Engine\"\nLINE 4: CREATE TABLE foo(Id Int32, Val Nullable(Int32)) Engine=Merge...\n                                                        ^\n", "error_stage": "set_up"}]

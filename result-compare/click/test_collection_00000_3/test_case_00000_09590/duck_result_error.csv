@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv6stringtonumornull does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT IPv6StringToNumOrNull('::ffff:127.0.0.1...
+               ^

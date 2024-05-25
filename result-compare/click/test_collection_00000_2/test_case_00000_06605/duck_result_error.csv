@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name normalizequery does not exist!
+Did you mean "nfc_normalize"?
+LINE 1: SELECT normalizeQuery('SELECT 1, 1, 1, /* Hwll...
+               ^

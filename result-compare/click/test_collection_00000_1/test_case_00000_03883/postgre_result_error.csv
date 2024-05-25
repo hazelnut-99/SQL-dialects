@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT bitmapToArray(bitmapBuild([1, 2, 3, 4, 5]));
+                                         ^

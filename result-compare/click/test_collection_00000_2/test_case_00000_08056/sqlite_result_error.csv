@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSON_QUERY('{"123":{"abc":1}}', '$.123.abc');
+': no such function: JSON_QUERY

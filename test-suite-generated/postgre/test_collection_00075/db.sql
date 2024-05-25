@@ -76,3 +76,8 @@ insert into xx values (3);
 insert into yy values (101, 1);
 insert into yy values (201, 2);
 insert into yy values (301, NULL);
+create temp table zt1 (f1 int primary key);
+create temp table zt2 (f2 int primary key);
+create temp table zt3 (f3 int primary key);
+insert into zt1 values(53);
+insert into zt2 values(53);

@@ -1,0 +1,2 @@
+Execution failed on sql 'select bin(toDecimal32(1.2, 8));
+': no such function: toDecimal32

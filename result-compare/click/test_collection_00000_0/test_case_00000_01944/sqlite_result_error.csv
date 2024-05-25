@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(toUUID('3f1ed72e-f7fe-4459-9cbe-95fe9298f845'));
+': no such function: toUUID

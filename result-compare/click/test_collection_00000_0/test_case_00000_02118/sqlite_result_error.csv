@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT x FROM (SELECT materialize(NULL) AS x) WHERE x;
+': no such function: materialize

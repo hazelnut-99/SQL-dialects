@@ -1,0 +1,3 @@
+syntax error at or near "cityHash64"
+LINE 1: SELECT cityHash64('abc') IN cityHash64('abc');
+                                    ^

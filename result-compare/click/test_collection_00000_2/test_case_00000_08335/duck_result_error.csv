@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toipv6 does not exist!
+Did you mean "fdiv"?
+LINE 1: SELECT CAST(toIPv6('2001:0db8:0000:85a3:0000:0000:a...
+                    ^

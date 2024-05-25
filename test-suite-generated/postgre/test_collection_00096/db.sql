@@ -1,26 +1,46 @@
-begin;
-create table simple as
-  select generate_series(1, 20000) AS id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-analyze simple;
-create table bigger_than_it_looks as
-  select generate_series(1, 20000) as id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-analyze bigger_than_it_looks;
-create table extremely_skewed (id int, t text);
-analyze extremely_skewed;
-insert into extremely_skewed
-  select 42 as id, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-  from generate_series(1, 20000);
-create table wide as select generate_series(1, 2) as id, rpad('', 320000, 'x') as t;
-rollback;
-BEGIN;
-CREATE TABLE hjtest_1 (a text, b int, id int, c bool);
-CREATE TABLE hjtest_2 (a bool, id int, b text, c int);
-INSERT INTO hjtest_1(a, b, id, c) VALUES ('text', 2, 1, false); -- matches
-INSERT INTO hjtest_1(a, b, id, c) VALUES ('text', 1, 2, false); -- fails id join condition
-INSERT INTO hjtest_1(a, b, id, c) VALUES ('text', 20, 1, false); -- fails < 50
-INSERT INTO hjtest_1(a, b, id, c) VALUES ('text', 1, 1, false); -- fails (SELECT hjtest_1.b * 5) = (SELECT hjtest_2.c*5)
-INSERT INTO hjtest_2(a, id, b, c) VALUES (true, 1, 'another', 2); -- matches
-INSERT INTO hjtest_2(a, id, b, c) VALUES (true, 3, 'another', 7); -- fails id join condition
-INSERT INTO hjtest_2(a, id, b, c) VALUES (true, 1, 'another', 90);  -- fails < 55
-INSERT INTO hjtest_2(a, id, b, c) VALUES (true, 1, 'another', 3); -- fails (SELECT hjtest_1.b * 5) = (SELECT hjtest_2.c*5)
-INSERT INTO hjtest_2(a, id, b, c) VALUES (true, 1, 'text', 1); --  fails hjtest_1.a <> hjtest_2.b;
+COMMIT;
+CREATE TEMP TABLE test_json (
+       json_type text,
+       test_json json
+);
+INSERT INTO test_json VALUES
+('scalar','"a scalar"'),
+('array','["zero", "one","two",null,"four","five", [1,2,3],{"f1":9}]'),
+('object','{"field1":"val1","field2":"val2","field3":null, "field4": 4, "field5": [1,2,3], "field6": {"f1":9}}');
+create type jpop as (a text, b int, c timestamp);
+CREATE DOMAIN js_int_not_null  AS int     NOT NULL;
+CREATE DOMAIN js_int_array_1d  AS int[]   CHECK(array_length(VALUE, 1) = 3);
+CREATE DOMAIN js_int_array_2d  AS int[][] CHECK(array_length(VALUE, 2) = 3);
+create type j_unordered_pair as (x int, y int);
+create domain j_ordered_pair as j_unordered_pair check((value).x <= (value).y);
+CREATE TYPE jsrec AS (
+	i	int,
+	ia	_int4,
+	ia1	int[],
+	ia2	int[][],
+	ia3	int[][][],
+	ia1d	js_int_array_1d,
+	ia2d	js_int_array_2d,
+	t	text,
+	ta	text[],
+	c	char(10),
+	ca	char(10)[],
+	ts	timestamp,
+	js	json,
+	jsb	jsonb,
+	jsa	json[],
+	rec	jpop,
+	reca	jpop[]
+);
+CREATE TYPE jsrec_i_not_null AS (
+	i	js_int_not_null
+);
+create type jpop2 as (a int, b json, c int, d int);
+CREATE TEMP TABLE jspoptest (js json);
+INSERT INTO jspoptest
+SELECT '{
+	"jsa": [1, "2", null, 4],
+	"rec": {"a": "abc", "c": "01.02.2003", "x": 43.2},
+	"reca": [{"a": "abc", "b": 456}, null, {"c": "01.02.2003", "x": 43.2}]
+}'::json
+FROM generate_series(1, 3);

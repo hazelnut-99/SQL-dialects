@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "01856_"
+LINE 1: CREATE FUNCTION 01856_test_function_0 AS (a, b, c) -> a * b ...
+                        ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT decodeHTMLComponent('Hello, &;&amp; world');
+': no such function: decodeHTMLComponent

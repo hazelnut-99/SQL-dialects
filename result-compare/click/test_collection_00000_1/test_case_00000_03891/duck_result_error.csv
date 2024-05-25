@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitmapxorcardinality does not exist!
+Did you mean "cardinality"?
+LINE 1: SELECT bitmapXorCardinality(bitmapBuild([1,2,3...
+               ^

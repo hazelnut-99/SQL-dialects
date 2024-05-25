@@ -1,0 +1,3 @@
+syntax error at or near "describe"
+LINE 2: describe "a.b.c";
+        ^

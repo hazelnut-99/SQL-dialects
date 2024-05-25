@@ -1,0 +1,3 @@
+syntax error at or near "plus"
+LINE 1: select 4 in plus(2, 2);
+                    ^

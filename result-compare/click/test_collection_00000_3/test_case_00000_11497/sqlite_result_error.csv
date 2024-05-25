@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concatWithSeparator('|', 'a', materialize(50 :: UInt32)) == 'a|50';
+': unrecognized token: ":"

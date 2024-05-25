@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00052_00000", "type": "error", "result_detail": "no such table: information_schema.columns", "error_stage": "query"}, {"test_case": "test_case_00052_00001", "type": "error", "result_detail": "no such table: information_schema.column_column_usage", "error_stage": "query"}]

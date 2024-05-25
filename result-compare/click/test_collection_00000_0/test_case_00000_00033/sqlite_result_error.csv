@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniq([(1, 2), (3, 4), (1, 2)]);
+': no such column: (1, 2), (3, 4), (1, 2)

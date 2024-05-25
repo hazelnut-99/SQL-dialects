@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtract(materialize('{"key":"value"}'), 'Tuple(key LowCardinality(Nullable(String)))');
+': no such function: materialize

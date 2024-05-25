@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: create table t4 (c26 String) engine = Log;
+                                     ^

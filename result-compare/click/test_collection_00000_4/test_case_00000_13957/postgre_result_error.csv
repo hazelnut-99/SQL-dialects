@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 4:     number, CAST(number / 9223372036854775806, 'UInt64') AS ...
+                                                     ^

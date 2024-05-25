@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractTextFromHTML('This is a     white   space test.');
+': no such function: extractTextFromHTML

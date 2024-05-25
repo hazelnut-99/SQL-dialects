@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT column_name, column_type FROM (DESCRIBE unpivot ( select {n : 1 }) on columns(*));
+': near "(": syntax error

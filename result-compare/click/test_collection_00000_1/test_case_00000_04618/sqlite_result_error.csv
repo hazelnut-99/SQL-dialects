@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 11 AS n GROUP BY n WITH TOTALS;
+': near "WITH": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number FROM numbers_mt(10,10);
+': no such table: numbers_mt

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint256ordefault does not exist!
+Did you mean "count"?
+LINE 1: select toUInt256OrDefault('1xx', cast(2 as UIn...
+               ^

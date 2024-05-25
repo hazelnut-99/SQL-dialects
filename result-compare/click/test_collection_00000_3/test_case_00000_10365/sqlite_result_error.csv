@@ -1,0 +1,2 @@
+Execution failed on sql 'select [] = multiSearchAllPositionsCaseInsensitive('\0', CAST([], 'Array(String)'));
+': near ",": syntax error

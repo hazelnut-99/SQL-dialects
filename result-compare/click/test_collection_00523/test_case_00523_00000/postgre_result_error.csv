@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...TABLE test_00818 (field String, not_field String) ENGINE = M...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT length(repeat('', 1000000));
+': no such function: repeat

@@ -1,0 +1,2 @@
+Execution failed on sql 'select parseDateTimeBestEffort('18:31:44  , 31/12/2015');
+': no such function: parseDateTimeBestEffort

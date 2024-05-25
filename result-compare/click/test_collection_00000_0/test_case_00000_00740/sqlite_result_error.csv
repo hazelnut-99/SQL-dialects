@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ['Hello', concat('wor', 'ld')];
+': no such column: 'Hello', concat('wor', 'ld')

@@ -1,0 +1,3 @@
+syntax error at or near "p_partkey"
+LINE 20:     CONSTRAINT pk CHECK p_partkey >= 0,
+                                 ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT scalarProduct((1, 2, 3), (4, 5, 6));
+': no such function: scalarProduct

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtracttupleofintervals does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractTupleOfIntervals('2022-10-11'::...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xor(1, 10);
+': no such function: xor

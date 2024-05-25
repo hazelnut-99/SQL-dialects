@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...= 2) AS value, sum(value) OVER () FROM numbers(1) WHERE 1;
+                                                  ^

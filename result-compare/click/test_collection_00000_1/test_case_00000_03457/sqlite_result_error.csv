@@ -1,0 +1,2 @@
+Execution failed on sql 'select base64Encode(toFixedString('foo', 3));
+': no such function: toFixedString

@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT isDecimalOverflow(toDecimal128('99999999999999999999999999999999999999', 0) + 1, 38),
+       isDecimalOverflow(toDecimal128('99999999999999999999999999999999999999', 0) + 1),
+       isDecimalOverflow(toDecimal128('-99999999999999999999999999999999999999', 0) - 1, 38),
+       isDecimalOverflow(toDecimal128('-99999999999999999999999999999999999999', 0) - 1);
+': no such function: isDecimalOverflow

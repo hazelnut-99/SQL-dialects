@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toNullable(toInt256(321)) IN (NULL);
+': no such function: toInt256

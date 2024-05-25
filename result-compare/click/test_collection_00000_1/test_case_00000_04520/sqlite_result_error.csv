@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT min(number), max(number), sum(number) FROM numbers_mt(10000000);
+': no such table: numbers_mt

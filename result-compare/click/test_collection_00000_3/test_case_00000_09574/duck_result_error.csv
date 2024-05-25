@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toipv4ornull does not exist!
+Did you mean "nullif"?
+LINE 1: SELECT toIPv4OrNull('test');
+               ^

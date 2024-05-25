@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal32orzero does not exist!
+Did you mean "corr"?
+LINE 1: SELECT toDecimal32OrZero('', 0) AS x, toDecima...
+               ^

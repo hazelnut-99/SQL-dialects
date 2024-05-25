@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number FROM numbers(3) ORDER BY toFloat32(abs(number)) DESC;
+': no such table: numbers

@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: PREPARE v1 AS SELECT list_transform(?, x -> x + 1);
+                                             ^

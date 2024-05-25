@@ -1,0 +1,3 @@
+syntax error at or near "UInt32"
+LINE 2: ...nt32), m1 Map(String, Date), m2 Map(String, Array(UInt32))) ...
+                                                             ^

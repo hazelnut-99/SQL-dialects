@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT now()::time::text = localtime::text;
+': unrecognized token: ":"

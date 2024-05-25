@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT
+    'days' AS maximum_unit,
+    arrayJoin([1, 60, 60*60, 60*60*24, 60*60*24*30, 60*60*24*365]) AS elapsed,
+    formatReadableTimeDelta(elapsed*5.5, maximum_unit) AS time_delta;
+': no such column: 1, 60, 60*60, 60*60*24, 60*60*24*30, 60*60*24*365

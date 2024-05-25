@@ -1,0 +1,3 @@
+Execution failed on sql 'SELECT DISTINCT 42,
+       84,;
+': near ";": syntax error

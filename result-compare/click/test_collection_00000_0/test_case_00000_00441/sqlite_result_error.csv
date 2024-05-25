@@ -1,0 +1,2 @@
+Execution failed on sql 'select lowerUTF8('aaaaaaaaaaaaaaa012345789,.!aaaa' as str) = str;
+': near "as": syntax error

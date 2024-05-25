@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT SUBSTRING('Hello, world' FROM 8);
+': near "FROM": syntax error

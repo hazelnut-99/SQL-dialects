@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name isinfinite does not exist!
+Did you mean "isfinite"?
+LINE 1: select isInfinite(materialize(0)) = 0;
+               ^

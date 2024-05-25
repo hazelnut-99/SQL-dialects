@@ -1,0 +1,3 @@
+syntax error at or near "600"
+LINE 1: SELECT TIMEDIFF(NOW(), UTC_TIMESTAMP()) DIV 600;
+                                                    ^

@@ -1,0 +1,3 @@
+syntax error at or near "ALL"
+LINE 10: ALL FULL OUTER JOIN 
+         ^

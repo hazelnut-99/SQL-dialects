@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name sumif does not exist!
+Did you mean "sum"?
+LINE 1: select sumIf(1, NULL);
+               ^

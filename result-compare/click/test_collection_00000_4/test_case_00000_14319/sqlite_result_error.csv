@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT mortonEncode(materialize((1, 1)), 65534, 65533);
+': no such function: materialize

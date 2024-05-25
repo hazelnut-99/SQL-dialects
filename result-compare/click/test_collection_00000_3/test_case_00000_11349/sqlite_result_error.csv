@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -12.3_4;
+': unrecognized token: "12.3_4"

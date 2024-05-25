@@ -1,0 +1,2 @@
+Execution failed on sql 'select B'111001101011010110001011111010001010111110010101' == '测试';
+': near "==": syntax error

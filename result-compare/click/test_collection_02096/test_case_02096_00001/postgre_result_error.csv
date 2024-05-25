@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table data_02021 (key Int) engine=MergeTree() order b...
+                                          ^

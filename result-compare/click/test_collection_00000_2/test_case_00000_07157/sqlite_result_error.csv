@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT decodeXMLComponent('Hello, &t;&amp; world');
+': no such function: decodeXMLComponent

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT rightPadUTF8('абвг', 2), rightPadUTF8('абвг', 2::Int32);
+': unrecognized token: ":"

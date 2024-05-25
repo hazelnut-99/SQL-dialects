@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 5.5 * (2, 4);
+': row value misused

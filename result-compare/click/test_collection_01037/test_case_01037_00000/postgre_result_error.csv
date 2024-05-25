@@ -1,0 +1,3 @@
+syntax error at or near "n"
+LINE 2: create table trunc (n int, primary key n) partition by n % 1...
+                                               ^

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...REATE TABLE tuple (t Tuple(Date, UInt32, UInt64)) ENGINE = M...
+                                                             ^

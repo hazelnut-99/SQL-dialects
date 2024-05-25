@@ -1,0 +1,2 @@
+Execution failed on sql 'select concat(materialize('a'), materialize('b'), 'c') == 'abc';
+': no such function: materialize

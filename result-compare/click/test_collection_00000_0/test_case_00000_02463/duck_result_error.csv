@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name uniqexactarray does not exist!
+Did you mean "era"?
+LINE 1: SELECT uniqExactArray([0, 1, 1], [0, 1, 1], [0...
+               ^

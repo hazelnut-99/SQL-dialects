@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniq(anyHeavy([]), []);
+': no such column: 

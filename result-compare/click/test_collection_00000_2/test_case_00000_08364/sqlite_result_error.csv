@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 == any (1);
+': no such function: any

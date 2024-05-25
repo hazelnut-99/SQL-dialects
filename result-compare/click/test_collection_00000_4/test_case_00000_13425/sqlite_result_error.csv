@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cast('0' as Nullable(DateTime64(3, 'UTC')));
+': near "DateTime64": syntax error

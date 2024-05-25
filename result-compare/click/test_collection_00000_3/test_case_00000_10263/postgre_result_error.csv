@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 4:     (select  [('y',0),('n',1)] as cg, 
+                     ^

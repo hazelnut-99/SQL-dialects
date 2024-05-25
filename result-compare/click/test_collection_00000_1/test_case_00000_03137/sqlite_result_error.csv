@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt64('9223372036854775807') AS x, toDecimal64(x, 0);
+': no such function: toUInt64

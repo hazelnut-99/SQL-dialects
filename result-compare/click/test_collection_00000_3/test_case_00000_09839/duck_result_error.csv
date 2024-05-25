@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name makedatetime does not exist!
+Did you mean "make_date"?
+LINE 1: select makeDateTime(1984, 1, 1, -1, 0, 0, 'UTC...
+               ^

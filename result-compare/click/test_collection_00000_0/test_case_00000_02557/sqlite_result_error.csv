@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT simpleJSONExtractFloat('{"myparam":null}', 'myparam');
+': no such function: simpleJSONExtractFloat

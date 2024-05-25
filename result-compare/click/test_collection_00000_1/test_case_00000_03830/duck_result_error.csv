@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name xxhash32 does not exist!
+Did you mean "hash"?
+LINE 1: SELECT xxHash32('\x01') = toUInt32(949155633);
+               ^

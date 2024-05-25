@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayAUC(cast([-10, -40, -35, -80] as Array(Int32)), [0, 0, 1, 1]);
+': near "Int32": syntax error

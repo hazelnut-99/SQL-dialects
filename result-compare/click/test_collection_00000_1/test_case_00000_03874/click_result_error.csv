@@ -1,0 +1,4 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 352. DB::Exception: Block structure mismatch in (columns with identical name must have identical structure) stream: different types:
+a UInt8 Const(size = 0, UInt8(size = 1))
+a UInt16 Const(size = 0, UInt16(size = 1)). (AMBIGUOUS_COLUMN_NAME) (version 24.2.2.16233 (official build))

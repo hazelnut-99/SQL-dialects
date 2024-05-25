@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03076_00000", "type": "error", "result_detail": "syntax error at or near \"String\"\nLINE 2: CREATE TABLE format_nested(attrs Nested(k String, v String))...\n                                                  ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT endsWith('123', '32');
+': no such function: endsWith

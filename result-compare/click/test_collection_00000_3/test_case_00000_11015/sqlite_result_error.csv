@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByNonAlpha('128.0.0.1', 4);
+': no such function: splitByNonAlpha

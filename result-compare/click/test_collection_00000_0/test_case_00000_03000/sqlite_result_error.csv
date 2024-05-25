@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCompact([toDecimal128(1.0,8), toDecimal128(1.0,8)]) x, toTypeName(x);
+': no such column: toDecimal128(1.0,8), toDecimal128(1.0,8)

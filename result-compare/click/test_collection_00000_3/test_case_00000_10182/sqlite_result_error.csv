@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT generateUUIDv4(1) = generateUUIDv4(2);
+': no such function: generateUUIDv4

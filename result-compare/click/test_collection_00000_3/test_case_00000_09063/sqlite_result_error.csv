@@ -1,0 +1,2 @@
+Execution failed on sql 'select length(hex(generateUUIDv4()));
+': no such function: generateUUIDv4

@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: create table array_functions (arr1 Array(Int8), arr2 Array(I...
+                                           ^

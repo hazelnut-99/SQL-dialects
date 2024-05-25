@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'hello' ILIKE 'H%o';
+': near "'H%o'": syntax error

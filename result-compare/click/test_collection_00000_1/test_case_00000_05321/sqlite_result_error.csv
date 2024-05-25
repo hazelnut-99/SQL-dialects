@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTimeZone(parseDateTimeBestEffort('Thu, 18 Aug 2018 07:22:16 GMT'), 'UTC');
+': no such function: parseDateTimeBestEffort

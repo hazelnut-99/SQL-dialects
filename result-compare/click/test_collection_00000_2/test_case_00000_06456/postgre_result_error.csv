@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST(null, 'Nullable(UInt8)') = 1 ? CAST(null, 'Nulla...
+                        ^

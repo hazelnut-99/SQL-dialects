@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 5:     CONSTRAINT `c0` CHECK 1,
+                       ^

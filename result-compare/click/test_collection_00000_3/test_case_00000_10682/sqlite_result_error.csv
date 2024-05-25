@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT anyHeavy('1') FROM (SELECT anyHeavy(1));
+': no such function: anyHeavy

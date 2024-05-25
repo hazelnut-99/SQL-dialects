@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDate('2020-01-01') in (toDate32('2020-01-01'));
+': no such function: toDate32

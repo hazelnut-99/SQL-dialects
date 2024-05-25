@@ -1,0 +1,6 @@
+Catalog Error: Table Function with name generaterandom does not exist!
+Did you mean "generate_series"?
+LINE 6: FROM generateRandom('ui64 UInt64, i64 Int64, ui32 UInt32, i32 Int32, ui16 UInt16, i16 Int16, ui8 UInt8, i8 Int8')
+LIMIT 1;
+...
+             ^

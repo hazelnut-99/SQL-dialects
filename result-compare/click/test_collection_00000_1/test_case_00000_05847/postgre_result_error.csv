@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: SELECT sum(number < 1000 ? NULL : number) FROM numbers(10);
+                                        ^

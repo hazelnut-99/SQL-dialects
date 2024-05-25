@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3getresolution does not exist!
+Did you mean "version"?
+LINE 1: SELECT h3GetResolution(581276613233082367);
+               ^

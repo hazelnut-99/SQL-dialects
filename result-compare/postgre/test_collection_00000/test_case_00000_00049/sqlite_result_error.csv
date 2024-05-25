@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT timestamp with time zone '20011227T040506.789+08';
+': near "time": syntax error

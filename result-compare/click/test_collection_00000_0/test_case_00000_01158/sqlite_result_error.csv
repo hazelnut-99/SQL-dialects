@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (SELECT 1, 2);
+': sub-select returns 2 columns - expected 1

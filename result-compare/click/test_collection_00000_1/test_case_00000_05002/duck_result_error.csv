@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitcount does not exist!
+Did you mean "bit_count"?
+LINE 1: SELECT bitCount(toInt64(-1));
+               ^

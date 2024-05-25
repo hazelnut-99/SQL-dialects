@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01281_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...4, i256 Int256, u256 UInt256, d256 Decimal256(2)) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

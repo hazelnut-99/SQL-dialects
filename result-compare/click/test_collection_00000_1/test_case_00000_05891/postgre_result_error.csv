@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select polygonsWithinSpherical([[[(4.3501568, 50.8518269), (...
+                                       ^

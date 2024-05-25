@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ifNotFinite(sqrt(-1), -42);
+': no such function: ifNotFinite

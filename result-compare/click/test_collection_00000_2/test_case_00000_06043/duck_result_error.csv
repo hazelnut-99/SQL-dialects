@@ -1,0 +1,3 @@
+Conversion Error: Could not convert string "123456789123.1" to DECIMAL(10,5)
+LINE 1: SELECT CAST('123456789123.1' AS Decimal(10, 5)...
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near ".1"
+LINE 1: ...umber limit (select sum(number), count() from numbers(3)).1;
+                                                                    ^

@@ -1,0 +1,7 @@
+Binder Error: Could not choose a best candidate function for the function call "octet_length(STRING_LITERAL)". In order to select one, please add explicit type casts.
+	Candidate functions:
+	octet_length(BIT) -> BIGINT
+	octet_length(BLOB) -> BIGINT
+
+LINE 1: SELECT OcTet_lenGtH('1234');
+               ^

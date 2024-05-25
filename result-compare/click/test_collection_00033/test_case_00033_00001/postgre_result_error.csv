@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 3: ...REATE TABLE null_sink_00126 (a UInt8, b String, c Array(UInt...
+                                                             ^

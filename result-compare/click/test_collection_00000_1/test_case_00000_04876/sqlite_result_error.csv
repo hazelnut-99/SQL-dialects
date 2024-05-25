@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(randCanonical(CAST(4 as Nullable(UInt8))));
+': near "UInt8": syntax error

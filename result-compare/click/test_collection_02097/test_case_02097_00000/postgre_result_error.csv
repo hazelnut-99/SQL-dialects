@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 5:  test_config Array(Map(String, Decimal(28,12))),
+                     ^

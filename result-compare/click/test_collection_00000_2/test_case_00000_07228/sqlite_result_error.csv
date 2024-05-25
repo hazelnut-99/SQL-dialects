@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleHammingDistance(tuple(1), tuple(2));
+': no such function: tuple

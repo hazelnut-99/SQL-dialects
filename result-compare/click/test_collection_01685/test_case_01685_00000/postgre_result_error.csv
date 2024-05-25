@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 2: ...tion_test (dt DateTime, cost Int64, projection p (select toS...
+                                                             ^

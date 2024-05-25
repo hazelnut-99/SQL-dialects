@@ -1,0 +1,2 @@
+Execution failed on sql 'select sum(any(number + 1)) over (rows unbounded preceding) from numbers(1);
+': no such table: numbers

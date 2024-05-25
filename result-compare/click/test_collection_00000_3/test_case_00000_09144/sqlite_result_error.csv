@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTimeBestEffort(toLowCardinality(materialize('15-JUL-16')));
+': no such function: materialize

@@ -1,0 +1,3 @@
+syntax error at or near "a"
+LINE 3:     constraint c1 check a < 10) engine Memory;
+                                ^

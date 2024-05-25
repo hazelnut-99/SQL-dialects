@@ -113,3 +113,4 @@ insert into b (a, num) values ('p', 2);
 insert into c (name, a) values ('A', 'p');
 insert into c (name, a) values ('B', 'q');
 insert into c (name, a) values ('C', null);
+rollback;

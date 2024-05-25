@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT DISTINCT toFloat64(arrayJoin(['inf', 'Inf', 'INF', 'i...
+                                            ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 64: INSERT INTO aggr VALUES ([0, 1, 1, 1, 4, 0, 3, 3, 2, 2, 4, 4...
+                                  ^

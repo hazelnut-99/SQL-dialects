@@ -1,0 +1,2 @@
+Execution failed on sql 'select x'' == b'';
+': no such column: b

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT fromUnixTimestampInJodaSyntax(1669804872, 'dd', 'UTC');
+': no such function: fromUnixTimestampInJodaSyntax

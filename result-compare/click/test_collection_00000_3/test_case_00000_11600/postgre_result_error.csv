@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...DISTINCT arrayReduce('quantile(0.5)', materialize([]::Array(...
+                                                             ^

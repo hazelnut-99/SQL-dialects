@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDistinct(['1212', 'sef', '343r4']);
+': no such column: '1212', 'sef', '343r4'

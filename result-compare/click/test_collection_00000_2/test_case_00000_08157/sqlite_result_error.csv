@@ -1,0 +1,2 @@
+Execution failed on sql 'select bin(materialize('12332424'));
+': no such function: materialize

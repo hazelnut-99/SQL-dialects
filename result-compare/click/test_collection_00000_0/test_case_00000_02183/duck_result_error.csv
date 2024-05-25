@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toyyyymmdd does not exist!
+Did you mean "add"?
+LINE 1: SELECT toYYYYMMDD(toDateTime('2017-07-21T11:22...
+               ^

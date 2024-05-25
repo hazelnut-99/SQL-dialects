@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toIPv6OrDefault('hello') as v, toTypeName(v);
+': no such function: toIPv6OrDefault

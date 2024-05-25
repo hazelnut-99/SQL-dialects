@@ -1,0 +1,2 @@
+Execution failed on sql 'select transform(5, [1,2], ['a','b'], null);
+': no such function: transform

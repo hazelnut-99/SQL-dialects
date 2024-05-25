@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01157_00000", "type": "error", "result_detail": "Invalid Input Error: Attempting to execute an unsuccessful or closed pending query result\nError: Catalog Error: Table with name times does not exist!\nDid you mean \"temp.information_schema.tables\"?", "error_stage": "set_up"}]

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tohour does not exist!
+Did you mean "hour"?
+LINE 1: SELECT toHour(toDateTime(1412106600), 'Pacific...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select toString(CAST(NULL, 'Nullable(Bool)'));
+': near ",": syntax error

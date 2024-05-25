@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT 'String' AS String, CAST(123, String);
+                                           ^

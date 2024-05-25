@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT formatReadableTimeDelta(arrayJoin([inf, -inf, nan]));
+': no such column: inf, -inf, nan

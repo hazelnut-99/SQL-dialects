@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT
+    materialize(toLowCardinality('')) AS lc,
+    toTypeName(lc)
+WHERE lc = defaultValueOfArgumentType(lc)
+': no such function: toLowCardinality

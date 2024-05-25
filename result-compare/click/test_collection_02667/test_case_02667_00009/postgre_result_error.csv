@@ -1,0 +1,3 @@
+syntax error at or near "col_date"
+LINE 11:     PRIMARY KEY col_date
+                         ^

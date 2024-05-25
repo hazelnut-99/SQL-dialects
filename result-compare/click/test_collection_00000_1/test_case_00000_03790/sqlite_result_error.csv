@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash64(NULL) is NULL;
+': no such function: xxHash64

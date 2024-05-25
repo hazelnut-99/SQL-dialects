@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ... 64, number % 32) - 6) < 0.000001 FROM numbers(256);
+                                                  ^

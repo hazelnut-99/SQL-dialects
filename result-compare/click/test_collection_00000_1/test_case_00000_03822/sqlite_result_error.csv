@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash32(CAST(3 AS UInt8))        = toUInt32(565077562);
+': no such function: toUInt32

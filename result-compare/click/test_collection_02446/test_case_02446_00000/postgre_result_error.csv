@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ... tab (id UInt32, haystack String, pattern String) engine = M...
+                                                             ^

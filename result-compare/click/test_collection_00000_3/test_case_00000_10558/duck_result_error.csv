@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name parsedatetime64besteffortusorzero does not exist!
+Did you mean "datediff"?
+LINE 1: SELECT parseDateTime64BestEffortUSOrZero('01/4...
+               ^

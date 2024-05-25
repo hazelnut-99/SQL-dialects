@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT addHours(toDateTime64('1984-03-31 23:00:00', 0, 'Asia/Novosibirsk'), 8);
+': no such function: toDateTime64

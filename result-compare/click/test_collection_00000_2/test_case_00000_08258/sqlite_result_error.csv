@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT $\xc3\x28$'\xc3\x28'$\xc3\x28$;
+': unrecognized token: "$"

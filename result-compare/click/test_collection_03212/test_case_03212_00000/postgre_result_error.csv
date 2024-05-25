@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: CREATE TABLE override_test__fuzz_45 (`_part` Float32) ENGINE...
+                                             ^

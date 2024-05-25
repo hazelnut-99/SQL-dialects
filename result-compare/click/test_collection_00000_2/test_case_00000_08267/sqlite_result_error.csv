@@ -1,0 +1,2 @@
+Execution failed on sql 'select shardNum() n, shardCount() c;
+': no such function: shardNum

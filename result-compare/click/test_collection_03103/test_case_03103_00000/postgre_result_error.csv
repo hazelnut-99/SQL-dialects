@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...n_subqueries (id UInt64, name String, num UInt64) ENGINE = M...
+                                                             ^

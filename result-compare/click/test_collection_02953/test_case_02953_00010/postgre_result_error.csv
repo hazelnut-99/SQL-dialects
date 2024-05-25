@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: create table t02845 (a Array(UInt8), s Int16, d UInt8) engin...
+                               ^

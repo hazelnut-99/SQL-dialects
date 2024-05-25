@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tokens(materialize('test'));
+': no such function: materialize

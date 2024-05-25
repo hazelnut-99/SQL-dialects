@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03067_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: CREATE TABLE t_lwd_mutations(id UInt64, v UInt64) ENGINE = M...\n                                                          ^\n", "error_stage": "set_up"}]

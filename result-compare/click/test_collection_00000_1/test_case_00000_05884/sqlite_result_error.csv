@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT wkt((0., 0.));
+': no such function: wkt

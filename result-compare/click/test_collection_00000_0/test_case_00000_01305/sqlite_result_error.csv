@@ -1,0 +1,2 @@
+Execution failed on sql 'select 3 = positionCaseInsensitive('abc', 'C');
+': no such function: positionCaseInsensitive

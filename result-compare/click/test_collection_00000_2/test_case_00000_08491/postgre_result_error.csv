@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT intDiv(1, CAST(materialize(NULL), 'Nullable(Decimal(7...
+                                               ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name file does not exist!
+Did you mean "filter"?
+LINE 1: SELECT file('nonexistent.txt', 'default');
+               ^

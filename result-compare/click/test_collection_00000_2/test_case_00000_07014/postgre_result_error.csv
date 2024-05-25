@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...ensitive(concat(toString(number), 'aaa111'), char(number)) f...
+                                                             ^

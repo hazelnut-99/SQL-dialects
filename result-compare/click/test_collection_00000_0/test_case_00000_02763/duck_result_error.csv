@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name identity does not exist!
+Did you mean "bin"?
+LINE 1: select identity(tuple(1)) in (tuple(1), tuple(...
+               ^

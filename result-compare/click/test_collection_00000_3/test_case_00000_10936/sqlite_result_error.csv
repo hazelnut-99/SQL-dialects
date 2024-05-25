@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT positive_modulo(1000, -32);
+': no such function: positive_modulo

@@ -1,0 +1,2 @@
+Execution failed on sql 'select sipHash64Keyed((toUInt64(0),toUInt64(0)),char(0, 1, 2, 3)) == sipHash64(char(0, 1, 2, 3));
+': no such function: sipHash64

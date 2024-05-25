@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00962_00000", "type": "error", "result_detail": "syntax error at or near \",\"\nLINE 2: ...DEFAULT 42, s String DEFAULT concat('test', CAST(n, 'String'...\n                                                             ^\n", "error_stage": "set_up"}]

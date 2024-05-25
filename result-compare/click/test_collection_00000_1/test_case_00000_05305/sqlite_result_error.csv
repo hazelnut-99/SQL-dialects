@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT *
+FROM numbers(3) AS n1, numbers(2) AS n2
+LEFT JOIN numbers(2) AS n3 ON n1.number = n3.number
+ORDER BY n1.number, n2.number, n3.number;
+': no such table: numbers

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 4: create table test1_00863 (id UInt64, code String) engine = M...
+                                                          ^

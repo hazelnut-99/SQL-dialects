@@ -1,0 +1,3 @@
+syntax error at or near "null"
+LINE 1: SELECT * FROM null();
+                      ^

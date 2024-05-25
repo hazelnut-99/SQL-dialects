@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toYYYYMM(toDateTime('2017-07-21T11:22:33'));
+': no such function: toDateTime

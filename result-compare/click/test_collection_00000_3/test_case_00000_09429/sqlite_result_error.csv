@@ -1,0 +1,2 @@
+Execution failed on sql 'select match('\0 key="v" ', 'key="(.*?)"'), REGEXP_MATCHES('\0 key="v" ', 'key="(.*?)"');
+': no such function: REGEXP_MATCHES

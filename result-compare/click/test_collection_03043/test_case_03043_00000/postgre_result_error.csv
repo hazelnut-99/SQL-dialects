@@ -1,0 +1,3 @@
+syntax error at or near "UInt8"
+LINE 2: ...rID UInt32, VisitID UInt32, NestedColumn Nested(A UInt8, S S...
+                                                             ^

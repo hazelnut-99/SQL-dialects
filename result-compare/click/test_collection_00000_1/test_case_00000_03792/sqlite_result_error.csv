@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash64(0)      = toUInt64(16804241149081757544);
+': no such function: toUInt64

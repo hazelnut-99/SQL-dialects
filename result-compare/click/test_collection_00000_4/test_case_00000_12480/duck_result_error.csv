@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ulidstringtodatetime does not exist!
+Did you mean "strftime"?
+LINE 1: SELECT dateDiff('minute', ULIDStringToDateTime(generateULID()), n...
+                                  ^

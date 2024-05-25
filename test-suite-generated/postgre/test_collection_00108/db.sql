@@ -40,3 +40,12 @@ CREATE TYPE jsbrec AS (
 CREATE TYPE jsbrec_i_not_null AS (
 	i	jsb_int_not_null
 );
+create type jsb_char2 as (a char(2));
+create type jsb_ia as (a int[]);
+create type jsb_ia2 as (a int[][]);
+create domain jsb_i_not_null as int not null;
+create domain jsb_i_gt_1 as int check (value > 1);
+create type jsb_i_not_null_rec as (a jsb_i_not_null);
+create type jsb_i_gt_1_rec as (a jsb_i_gt_1);
+drop type jsb_ia, jsb_ia2, jsb_char2, jsb_i_not_null_rec, jsb_i_gt_1_rec;
+drop domain jsb_i_not_null, jsb_i_gt_1;

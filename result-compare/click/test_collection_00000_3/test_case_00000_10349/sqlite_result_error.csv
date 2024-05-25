@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT file('nonexistent.txt', NULL);
+': no such function: file

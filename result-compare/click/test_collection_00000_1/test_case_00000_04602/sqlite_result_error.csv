@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toDecimal64(-123.978, 3));
+': no such function: toDecimal64

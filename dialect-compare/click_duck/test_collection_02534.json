@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02534_00000", "type": "error", "result_detail": "Parser Error: syntax error at or near \"02416\"", "error_stage": "set_up"}, {"test_case": "test_case_02534_00001", "type": "error", "result_detail": "Parser Error: syntax error at or near \"02416\"", "error_stage": "set_up"}]

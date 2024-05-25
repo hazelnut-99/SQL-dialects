@@ -1,17 +1,5 @@
-"[-- masked_array(data=[--, --],
-                 mask=[ True,  True],
-           fill_value='?',
-                dtype=object)        ]"
-"[array([{'x': [3, 4]}], dtype=object)
- array([{'x': [17]}, {'x': [22, None]}], dtype=object)]"
-"[array([], dtype=object) array([], dtype=object) array([], dtype=object)]"
-"[array([{'x': None}], dtype=object) -- masked_array(data=[--, --],
-                                                    mask=[ True,  True],
-                                              fill_value='?',
-                                                   dtype=object)
- array([], dtype=object)]"
-"[array([{'x': [10, 12, 13, 14, 15]}], dtype=object)
- masked_array(data=[{'x': [None]}, --],
-              mask=[False,  True],
-        fill_value='?',
-             dtype=object)             ]"
+"[None, [None, None]]"
+"[[{'x': [3, 4]}], [{'x': [17]}, {'x': [22, None]}]]"
+"[[], [], []]"
+"[[{'x': None}], None, [None, None], []]"
+"[[{'x': [10, 12, 13, 14, 15]}], [{'x': [None]}, None]]"

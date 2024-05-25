@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST('42.4200', 'Decimal(9,2)') AS a, CAST(a, 'Decima...
+                             ^

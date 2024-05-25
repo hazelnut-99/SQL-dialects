@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraylastornull does not exist!
+Did you mean "array_sort"?
+LINE 1: SELECT arrayLastOrNull((x,f) -> f, [1,2,3,NULL...
+               ^

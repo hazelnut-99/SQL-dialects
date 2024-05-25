@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 5: CREATE TABLE check_system_tables (key UInt8) ENGINE = TinyLo...
+                                                     ^

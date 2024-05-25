@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByWhitespace('There is.... so much to learn!');
+': no such function: splitByWhitespace

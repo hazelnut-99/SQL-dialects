@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00074_00000", "type": "error", "result_detail": "syntax error at or near \"[\"\nLINE 64: INSERT INTO aggr VALUES ([0, 1, 1, 1, 4, 0, 3, 3, 2, 2, 4, 4...\n                                  ^\n", "error_stage": "set_up"}]

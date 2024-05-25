@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(initializeAggregation('uniqExactState', toNullable('foo')));
+': no such function: initializeAggregation

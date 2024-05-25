@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 5: CREATE TABLE a(`id1` UInt32, `id2` UInt32, `valA` UInt32) EN...
+                       ^

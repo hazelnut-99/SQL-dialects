@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todateordefault does not exist!
+Did you mean "datediff"?
+LINE 1: select toDateOrDefault(19507, '2000-01-01'::Da...
+               ^

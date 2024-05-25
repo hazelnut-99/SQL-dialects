@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT path('www.example.com:443/a/b/c') AS Path;
+': no such function: path

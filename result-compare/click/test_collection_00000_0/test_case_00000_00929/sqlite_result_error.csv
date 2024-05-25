@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfInterval(toDate(17933), INTERVAL 2 month);
+': near "2": syntax error

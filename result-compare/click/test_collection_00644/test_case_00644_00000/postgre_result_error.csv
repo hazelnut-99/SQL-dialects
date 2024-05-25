@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 5: CREATE TABLE store_of_hash_00926 (hash UInt64) ENGINE = Memo...
+                                                       ^

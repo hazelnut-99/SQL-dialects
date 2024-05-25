@@ -1,0 +1,11 @@
+Catalog Error: Scalar Function with name deltasumstate does not exist!
+Did you mean "last"?
+LINE 5:         select deltaSumState(arrayJoin([3, 5])) as rows
+        union all
+        select deltaSumState(arrayJoin([1, 2])) as rows
+        union all
+        select deltaSumState(arrayJoin([4, 6])) as rows
+    ) order by rows
+) order by delta_sum;
+...
+                       ^

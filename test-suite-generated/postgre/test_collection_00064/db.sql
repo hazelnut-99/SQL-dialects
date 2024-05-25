@@ -53,3 +53,4 @@ truncate parted_conflict_test;
 create table parted_conflict_test_4 partition of parted_conflict_test for values in (5) partition by list (a);
 create table parted_conflict_test_4_1 partition of parted_conflict_test_4 for values in (5);
 truncate parted_conflict_test;
+truncate parted_conflict_test;

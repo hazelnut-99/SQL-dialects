@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...Reduce('quantilesDeterministic(0.5)', materialize([]::Array(...
+                                                             ^

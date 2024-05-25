@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 4: CREATE TABLE t1 (`1a` Nullable(Int64), `2b` Nullable(String)...
+                         ^

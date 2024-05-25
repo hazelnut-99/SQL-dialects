@@ -1,0 +1,2 @@
+Execution failed on sql 'select toUInt8OrDefault('1', cast(2 as UInt8));
+': no such function: toUInt8OrDefault

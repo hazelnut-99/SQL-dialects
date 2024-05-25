@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT startsWith('123', '123');
+': no such function: startsWith

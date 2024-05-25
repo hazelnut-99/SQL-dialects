@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ... (str String, fixedStr FixedString(10), id Int64) engine=Log...
+                                                             ^

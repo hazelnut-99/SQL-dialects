@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT max(log(2) * number) FROM numbers(100);
+': no such table: numbers

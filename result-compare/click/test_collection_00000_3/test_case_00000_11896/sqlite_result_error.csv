@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT notEmpty(toIPv4('0.0.0.0'));
+': no such function: toIPv4

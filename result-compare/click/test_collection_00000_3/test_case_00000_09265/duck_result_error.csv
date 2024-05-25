@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayfirst does not exist!
+Did you mean "first"?
+LINE 1: SELECT arrayFirst(x -> x >= 2, [1, 2, 3]);
+               ^

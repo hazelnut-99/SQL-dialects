@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 2:     arrayJoin([toUUID('992f6910-42b2...
+            ^

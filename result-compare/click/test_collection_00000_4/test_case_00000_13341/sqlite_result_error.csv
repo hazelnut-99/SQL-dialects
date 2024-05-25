@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [(NULL, 2), (2, NULL)] / 1;
+': no such column: (NULL, 2), (2, NULL)

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...uniq_array_date (d Date, dt DateTime, id Integer) ENGINE = M...
+                                                             ^

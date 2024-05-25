@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concat('With ', materialize('foo' :: String));
+': unrecognized token: ":"

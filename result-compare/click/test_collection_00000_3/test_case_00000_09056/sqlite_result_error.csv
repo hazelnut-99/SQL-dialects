@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT aes_encrypt_mysql('aes-256-ecb', CAST(null as Nullable(String)), 'test_key________________________');
+': near "String": syntax error

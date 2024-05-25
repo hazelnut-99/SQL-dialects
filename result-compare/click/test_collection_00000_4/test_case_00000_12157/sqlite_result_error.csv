@@ -1,0 +1,2 @@
+Execution failed on sql 'select regexpExtract('100-200', '(\\d+)-(\\d+)', number) from numbers(3);
+': no such table: numbers

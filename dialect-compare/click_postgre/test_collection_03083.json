@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03083_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...(id Int64, a Nullable(Int64), b Nullable(String)) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...um(1 - n*n) FROM (SELECT number n FROM numbers(10));
+                                                  ^

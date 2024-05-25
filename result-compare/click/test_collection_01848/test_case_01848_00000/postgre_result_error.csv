@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 4: CREATE TABLE data_01875_1 Engine=MergeTree ORDER BY number P...
+                                  ^

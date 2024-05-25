@@ -1,0 +1,3 @@
+syntax error at or near "MACRO"
+LINE 3: CREATE MACRO cte_sq(a,b) AS (WITH cte AS (SELECT a * 2 AS c)...
+               ^

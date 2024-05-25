@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM (SELECT * WHERE dummy GLOBAL IN (SELECT 0));
+': near "GLOBAL": syntax error

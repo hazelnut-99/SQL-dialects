@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visitParamExtractUInt('{"myparam":-1}', 'myparam');
+': no such function: visitParamExtractUInt

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDaysSinceYearZero(materialize(toDate('2023-09-08')));
+': no such function: toDate

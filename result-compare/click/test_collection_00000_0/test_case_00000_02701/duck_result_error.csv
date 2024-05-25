@@ -1,0 +1,3 @@
+Binder Error: Referenced column "nan" not found in FROM clause!
+LINE 1: ...ELECT [1, 2, 3] AS x UNION ALL SELECT [nan, NULL]) ORDER BY res) ORDER BY res ...
+                                                  ^

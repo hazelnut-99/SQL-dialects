@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT avg(bitCount(number)) FROM numbers(256);
+': no such table: numbers

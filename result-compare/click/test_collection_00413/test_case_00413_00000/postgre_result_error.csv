@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE where_qualified(a UInt32, b UInt8) ENGINE = Mem...
+                                                        ^

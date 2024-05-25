@@ -1,15 +1,46 @@
-/*
- * 1.1. test CREATE INDEX with buffered build
- */
-
-CREATE TABLE tbl_gist (c1 int, c2 int, c3 int, c4 box);
-INSERT INTO tbl_gist SELECT x, 2*x, 3*x, box(point(x,x+1),point(2*x,2*x+1)) FROM generate_series(1,8000) AS x;
-CREATE INDEX tbl_gist_idx ON tbl_gist using gist (c4) INCLUDE (c1,c2,c3);
-DROP TABLE tbl_gist;
-/*
- * 1.2. test CREATE INDEX with inserts
- */
-
-CREATE TABLE tbl_gist (c1 int, c2 int, c3 int, c4 box);
-CREATE INDEX tbl_gist_idx ON tbl_gist using gist (c4) INCLUDE (c1,c2,c3);
-INSERT INTO tbl_gist SELECT x, 2*x, 3*x, box(point(x,x+1),point(2*x,2*x+1)) FROM generate_series(1,8000) AS x;
+create table insertconflicttest(key int4, fruit text);
+create unique index op_index_key on insertconflicttest(key, fruit text_pattern_ops);
+create unique index collation_index_key on insertconflicttest(key, fruit collate "C");
+create unique index both_index_key on insertconflicttest(key, fruit collate "C" text_pattern_ops);
+create unique index both_index_expr_key on insertconflicttest(key, lower(fruit) collate "C" text_pattern_ops);
+drop index op_index_key;
+drop index collation_index_key;
+drop index both_index_key;
+drop index both_index_expr_key;
+create unique index cross_match on insertconflicttest(lower(fruit) collate "C", upper(fruit) text_pattern_ops);
+drop index cross_match;
+create unique index key_index on insertconflicttest(key);
+drop index key_index;
+create unique index comp_key_index on insertconflicttest(key, fruit);
+drop index comp_key_index;
+create unique index part_comp_key_index on insertconflicttest(key, fruit) where key < 5;
+create unique index expr_part_comp_key_index on insertconflicttest(key, lower(fruit)) where key < 5;
+drop index part_comp_key_index;
+drop index expr_part_comp_key_index;
+create unique index expr_key_index on insertconflicttest(lower(fruit));
+drop index expr_key_index;
+create unique index expr_comp_key_index on insertconflicttest(key, lower(fruit));
+create unique index tricky_expr_comp_key_index on insertconflicttest(key, lower(fruit), upper(fruit));
+drop index expr_comp_key_index;
+drop index tricky_expr_comp_key_index;
+create unique index key_index on insertconflicttest(key);
+create unique index fruit_index on insertconflicttest(fruit);
+drop index key_index;
+drop index fruit_index;
+create unique index partial_key_index on insertconflicttest(key) where fruit like '%berry';
+commit;
+begin transaction isolation level repeatable read;
+commit;
+begin transaction isolation level serializable;
+commit;
+begin transaction isolation level read committed;
+commit;
+begin transaction isolation level repeatable read;
+commit;
+begin transaction isolation level serializable;
+commit;
+create table parted_conflict_test (a int unique, b char) partition by list (a);
+create table parted_conflict_test_1 partition of parted_conflict_test (b unique) for values in (1, 2);
+insert into parted_conflict_test values (1, 'a') on conflict do nothing;
+insert into parted_conflict_test values (1, 'a') on conflict (a) do nothing;
+insert into parted_conflict_test_1 values (1, 'a') on conflict (a) do nothing;

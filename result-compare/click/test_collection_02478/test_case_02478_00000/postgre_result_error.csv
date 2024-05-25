@@ -1,0 +1,3 @@
+syntax error at or near "id"
+LINE 5:     alias_value_1 ALIAS id + alias_value_2 + 1,
+                                ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT anyIf(toNullable('Hello'), arrayJoin([0, 1]) = 0);
+': no such function: toNullable

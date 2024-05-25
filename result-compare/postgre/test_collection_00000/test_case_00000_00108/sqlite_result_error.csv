@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT num_nonnulls(NULL::text, NULL::int);
+': unrecognized token: ":"

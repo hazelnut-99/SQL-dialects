@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAllIndices('halo some wrld', 2, ['^halllllo.*world$', 'some random string']);
+': no such function: multiFuzzyMatchAllIndices

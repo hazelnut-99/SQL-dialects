@@ -1,0 +1,2 @@
+Execution failed on sql 'select 0 = positionUTF8('абвабв', 'бва', 3);
+': no such function: positionUTF8

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name stringjaccardindexutf8 does not exist!
+Did you mean "jaccard"?
+LINE 1: ...ECT 'clickhouse' AS s1, 'mouse' AS s2, stringJaccardIndexUTF8(s1, s2);
+                                                  ^

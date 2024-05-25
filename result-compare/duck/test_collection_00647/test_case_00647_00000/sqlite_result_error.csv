@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM tbl WHERE COLUMNS(*) >= 2 ORDER BY ALL;
+': near "ALL": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT subtractSeconds(today(), 1) - subtractSeconds(today(), 11);
+': no such function: today

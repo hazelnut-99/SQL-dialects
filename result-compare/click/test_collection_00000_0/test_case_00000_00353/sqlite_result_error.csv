@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM `system`.`one` AS `xxx`;
+': no such table: system.one

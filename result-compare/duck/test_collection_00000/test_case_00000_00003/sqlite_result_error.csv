@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT COUNT(*) FROM range(10000) USING SAMPLE 5;
+': near "SAMPLE": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name cosh does not exist!
+Did you mean "cos"?
+LINE 1: select abs(pow(cosh(1), 2) - pow(sinh(1), 2) - 1) < 1e...
+                       ^

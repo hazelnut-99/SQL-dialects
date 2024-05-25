@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitnot does not exist!
+Did you mean "bin"?
+LINE 1: SELECT bitNot(-inf) != 0, bitNot(inf) != 0, bi...
+               ^

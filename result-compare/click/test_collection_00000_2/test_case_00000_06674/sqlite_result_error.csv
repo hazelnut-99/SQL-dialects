@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniq([toInt128(123), toInt128(456), toInt128(123)]);
+': no such column: toInt128(123), toInt128(456), toInt128(123)

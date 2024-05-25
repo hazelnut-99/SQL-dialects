@@ -1,0 +1,3 @@
+syntax error at or near "'a'"
+LINE 1: SELECT sum(toNullable('a') IN 'a');
+                                      ^

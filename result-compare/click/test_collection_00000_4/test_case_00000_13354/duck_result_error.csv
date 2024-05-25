@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name dameraulevenshteindistance does not exist!
+Did you mean "damerau_levenshtein"?
+LINE 1: ...ECT 'clickhouse' AS s1, 'mouse' AS s2, damerauLevenshteinDistance(s1, s2);
+                                                  ^

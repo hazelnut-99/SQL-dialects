@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT punycodeDecode('');
+': no such function: punycodeDecode

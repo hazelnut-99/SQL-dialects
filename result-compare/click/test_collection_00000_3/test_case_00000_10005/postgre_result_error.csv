@@ -1,0 +1,3 @@
+syntax error at or near "key"
+LINE 1: ...T 1 as key) AS t1 JOIN (SELECT 1 as key) t2 USING key ORDER ...
+                                                             ^

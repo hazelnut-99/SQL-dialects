@@ -1,0 +1,3 @@
+syntax error at or near "ASOF"
+LINE 3: ASOF LEFT JOIN (SELECT 1 as pk, 2 as dt) b
+        ^

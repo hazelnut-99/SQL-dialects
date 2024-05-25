@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT []::Array(Float32) AS x, []::Array(Float32) AS y, dot...
+               ^

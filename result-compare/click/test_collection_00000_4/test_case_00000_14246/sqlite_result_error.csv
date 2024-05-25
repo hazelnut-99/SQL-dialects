@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(-1, 'DateTime');
+': no such function: accurateCastOrDefault

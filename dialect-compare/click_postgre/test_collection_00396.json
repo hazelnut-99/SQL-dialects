@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00396_00000", "type": "error", "result_detail": "syntax error at or near \"Int32\"\nLINE 5:         ID    Int32,\n                      ^\n", "error_stage": "set_up"}]

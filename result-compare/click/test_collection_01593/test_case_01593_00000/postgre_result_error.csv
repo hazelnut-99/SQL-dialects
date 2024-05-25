@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table dt_overflow(d Date, i int) engine MergeTree par...
+                                                ^

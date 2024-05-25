@@ -1,0 +1,7 @@
+Execution failed on sql 'SELECT avg(key), avgIf(key, key > 0), avg(key2), avgIf(key2, key2 > 0), avg(key3), avgIf(key3, key3 > 0)
+FROM
+(
+     SELECT 1::Int8 as key, Null::Nullable(Int8) AS key2, 1::Nullable(Int8) as key3
+     FROM numbers(100000)
+)
+': unrecognized token: ":"

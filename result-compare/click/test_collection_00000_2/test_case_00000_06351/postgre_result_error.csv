@@ -1,0 +1,4 @@
+LIMIT #,# syntax is not supported
+LINE 1: ...ELECT number FROM numbers(10) ORDER BY number ASC LIMIT 2, 9...
+                                                             ^
+HINT:  Use separate LIMIT and OFFSET clauses.

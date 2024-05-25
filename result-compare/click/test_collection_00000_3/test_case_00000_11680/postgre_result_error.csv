@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [9223372036854775806, 1048575], [], sumMap(val, [toDa...
+               ^

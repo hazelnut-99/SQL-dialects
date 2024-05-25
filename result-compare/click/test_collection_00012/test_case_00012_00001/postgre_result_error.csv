@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ATE TABLE insert_fewer_columns (a UInt8, b UInt8) ENGINE = M...
+                                                             ^

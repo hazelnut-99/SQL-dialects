@@ -1,0 +1,2 @@
+Execution failed on sql 'select cast(7 as String), * from (select number "'String'" FROM numbers(2));
+': no such table: numbers

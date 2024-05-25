@@ -1,0 +1,3 @@
+syntax error at or near "15"
+LINE 1: ...2010-10-31 00:00:00', 'Europe/Moscow') + INTERVAL 15 * numbe...
+                                                             ^

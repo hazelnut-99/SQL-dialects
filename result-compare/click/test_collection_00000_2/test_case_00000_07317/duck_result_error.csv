@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name avgweighted does not exist!
+Did you mean "age"?
+LINE 1: SELECT round(avgWeighted(x, y)) FROM (SELECT 1023 AS...
+                     ^

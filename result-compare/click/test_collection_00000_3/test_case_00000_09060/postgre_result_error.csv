@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 4:     SELECT CAST(CAST(number % 5, 'Enum8(\'Red\' = 0, \'Blue\...
+                                       ^

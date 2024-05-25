@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDate(toDateTime(1412106600), 'Asia/Tokyo');
+': no such function: toDateTime

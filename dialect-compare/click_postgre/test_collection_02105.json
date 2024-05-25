@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02105_00000", "type": "error", "result_detail": "syntax error at or near \"materialized\"\nLINE 1: ... data_02053 (id Int64, A Nullable(Int64), X Int64 materializ...\n                                                             ^\n", "error_stage": "set_up"}]

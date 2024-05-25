@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal32OrNull('1.1', 0);
+': no such function: toDecimal32OrNull

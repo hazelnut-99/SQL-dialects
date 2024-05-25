@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1_2.34;
+': unrecognized token: "1_2"

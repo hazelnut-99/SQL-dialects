@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT age('day', materialize(toDate32('2015-08-18', 'UTC')), toDate('2015-08-19', 'UTC'), 'UTC');
+': no such function: age

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT finalizeAggregation((SELECT sumState(number) FROM numbers(10)) * 10);
+': no such table: numbers

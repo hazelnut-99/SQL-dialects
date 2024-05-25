@@ -1,0 +1,1 @@
+"AggregateFunction(topKArrayResampleOrDefaultIf(10, 1, 2, 42), Array(String), UInt64, UInt8)"

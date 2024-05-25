@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitCount(toInt64(-1));
+': no such function: toInt64

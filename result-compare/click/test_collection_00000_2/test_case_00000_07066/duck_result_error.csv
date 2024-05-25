@@ -1,0 +1,8 @@
+Binder Error: No function matches the given name and argument types 'length(MAP(NULL, NULL))'. You might need to add explicit type casts.
+	Candidate functions:
+	length(VARCHAR) -> BIGINT
+	length(BIT) -> BIGINT
+	length(ANY[]) -> BIGINT
+
+LINE 1: select length(map());
+               ^

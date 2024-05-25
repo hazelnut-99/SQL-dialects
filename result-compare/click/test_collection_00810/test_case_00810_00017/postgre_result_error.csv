@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: CREATE TABLE t1 (x UInt32, s String) engine = Memory;
+                                             ^

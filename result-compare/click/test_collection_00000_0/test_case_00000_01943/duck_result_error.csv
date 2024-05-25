@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: SELECT materialize('01234567-89ab-cdef-0123-45...
+               ^

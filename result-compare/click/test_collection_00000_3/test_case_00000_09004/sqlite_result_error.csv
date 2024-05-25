@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'aaaa' == trim(both 'b ' FROM 'b aaaabb ') x;
+': near "'b '": syntax error

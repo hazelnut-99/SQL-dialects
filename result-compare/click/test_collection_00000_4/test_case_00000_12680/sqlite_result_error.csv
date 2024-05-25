@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [[1,2], [3,4]] AS arr1, [[1,2], [3,5]] AS arr2, round(arrayJaccardIndex(arr1, arr2), 2);
+': unrecognized token: "]"

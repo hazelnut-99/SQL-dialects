@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select arrayIntersect([[1, 2, Null], [1, 1]], [[-2, 1], [1, ...
+                              ^

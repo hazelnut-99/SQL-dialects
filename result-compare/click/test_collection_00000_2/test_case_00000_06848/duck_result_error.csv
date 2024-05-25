@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name frommodifiedjuliandayornull does not exist!
+Did you mean "julian"?
+LINE 1: SELECT fromModifiedJulianDayOrNull(59154);
+               ^

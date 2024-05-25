@@ -1,0 +1,3 @@
+syntax error at or near "EPHEMERAL"
+LINE 2: ...t_ephemeral_02205_1 (x UInt32 DEFAULT y, y UInt32 EPHEMERAL ...
+                                                             ^

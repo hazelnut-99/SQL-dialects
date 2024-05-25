@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'Array min ', (arrayMin(array(1,2,3,4,5,6)));
+': no such function: array

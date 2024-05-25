@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...y(materialize('hallo some world'), 1, materialize(['^hello.*...
+                                                             ^

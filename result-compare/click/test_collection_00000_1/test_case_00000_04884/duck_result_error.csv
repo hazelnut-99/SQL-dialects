@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name rand does not exist!
+Did you mean "random"?
+LINE 1: select rand(Null) * 0;
+               ^

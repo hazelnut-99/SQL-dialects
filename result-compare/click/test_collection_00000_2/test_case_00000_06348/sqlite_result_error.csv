@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap(x -> finalizeAggregation(x), finalizeAggregation(uniqStateForEachState([1, NULL]))) WITH TOTALS;
+': near "TOTALS": syntax error

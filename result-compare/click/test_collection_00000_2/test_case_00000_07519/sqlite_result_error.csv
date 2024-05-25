@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDateOrDefault('1xxx');
+': no such function: toDateOrDefault

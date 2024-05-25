@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: ...TE TABLE t0 (vkey UInt32, pkey UInt32, c0 UInt32) engine = T...
+                                                             ^

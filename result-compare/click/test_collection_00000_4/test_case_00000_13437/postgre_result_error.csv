@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT ['ab', 'c', 'de', '', 'hi'] AS arr, 1 AS len, arraySh...
+               ^

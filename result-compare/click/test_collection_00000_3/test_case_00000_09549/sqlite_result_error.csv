@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT s2CellsIntersect(9926595209846587392, arrayJoin([9926594385212866560, 5074766849661468672]));
+': no such function: s2CellsIntersect

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayJoin([0]), replicate('hello', emptyArrayString()) WHERE NOT ignore(replicate('hello', emptyArrayString()));
+': no such column: 0

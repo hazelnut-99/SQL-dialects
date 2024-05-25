@@ -1,0 +1,2 @@
+Execution failed on sql 'select if(0, toLowCardinality('a'), NULL);
+': no such function: if

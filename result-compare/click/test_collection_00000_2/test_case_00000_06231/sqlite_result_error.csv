@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayExists(x -> ((x.1) = 'pattern'), cast([tuple('a', 1)] as Array(Tuple(LowCardinality(String), UInt8))));
+': near ".1": syntax error

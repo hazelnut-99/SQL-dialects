@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT ['a'] AS arr1, ['a', 'aa', 'aaa'] AS arr2, round(arra...
+               ^

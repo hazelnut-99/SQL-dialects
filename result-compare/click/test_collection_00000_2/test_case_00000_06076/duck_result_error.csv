@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime64 does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT toDateTime64('2011-11-11 11:11:11.111',...
+               ^

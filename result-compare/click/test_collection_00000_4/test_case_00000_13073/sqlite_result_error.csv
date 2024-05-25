@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT addDate('2022-05-07', INTERVAL 5 MINUTE);
+': near "5": syntax error

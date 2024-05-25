@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3HexAreaKm2(15);
+': no such function: h3HexAreaKm2

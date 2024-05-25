@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name space does not exist!
+Did you mean "age"?
+LINE 1: SELECT space(3::Int64), length(space(3::Int64)...
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 4: CREATE TABLE data2013 (name String, value UInt32) ENGINE = M...
+                                                          ^

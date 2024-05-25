@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02680_00000", "type": "error", "result_detail": "syntax error at or near \"system\"\nLINE 1: system stop merges t1;\n        ^\n", "error_stage": "set_up"}]

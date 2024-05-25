@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...TABLE test_collate (x UInt32, s Nullable(String)) ENGINE=Mem...
+                                                             ^

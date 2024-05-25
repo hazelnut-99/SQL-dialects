@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3GetDestinationIndexFromUnidirectionalEdge(stringToH3('85283473ffffff'));
+': no such function: stringToH3

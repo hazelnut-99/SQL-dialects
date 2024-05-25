@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [number AS number] FROM numbers(1);
+': no such table: numbers

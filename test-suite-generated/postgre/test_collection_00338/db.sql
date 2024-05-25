@@ -1,11 +1,26 @@
-CREATE TABLE test_missing_target (a int, b int, c char(8), d char);
-INSERT INTO test_missing_target VALUES (0, 1, 'XXXX', 'A');
-INSERT INTO test_missing_target VALUES (1, 2, 'ABAB', 'b');
-INSERT INTO test_missing_target VALUES (2, 2, 'ABAB', 'c');
-INSERT INTO test_missing_target VALUES (3, 3, 'BBBB', 'D');
-INSERT INTO test_missing_target VALUES (4, 3, 'BBBB', 'e');
-INSERT INTO test_missing_target VALUES (5, 3, 'bbbb', 'F');
-INSERT INTO test_missing_target VALUES (6, 4, 'cccc', 'g');
-INSERT INTO test_missing_target VALUES (7, 4, 'cccc', 'h');
-INSERT INTO test_missing_target VALUES (8, 4, 'CCCC', 'I');
-INSERT INTO test_missing_target VALUES (9, 4, 'CCCC', 'j');
+CREATE TABLE truncate_a (col1 integer primary key);
+INSERT INTO truncate_a VALUES (1);
+INSERT INTO truncate_a VALUES (2);
+BEGIN;
+TRUNCATE truncate_a;
+ROLLBACK;
+BEGIN;
+COMMIT;
+CREATE TABLE trunc_c (a serial PRIMARY KEY);
+CREATE TABLE trunc_d (a int REFERENCES trunc_c);
+TRUNCATE TABLE trunc_c,trunc_d;		-- fail
+INSERT INTO trunc_c VALUES (1);
+INSERT INTO trunc_d VALUES (1);
+INSERT INTO trunc_d VALUES (1);
+TRUNCATE TABLE trunc_c CASCADE;  -- ok
+CREATE TABLE trunc_f (col1 integer primary key);
+INSERT INTO trunc_f VALUES (1);
+INSERT INTO trunc_f VALUES (2);
+CREATE TABLE trunc_fa (col2a text) INHERITS (trunc_f);
+INSERT INTO trunc_fa VALUES (3, 'three');
+CREATE TABLE trunc_fb (col2b int) INHERITS (trunc_f);
+INSERT INTO trunc_fb VALUES (4, 444);
+CREATE TABLE trunc_faa (col3 text) INHERITS (trunc_fa);
+INSERT INTO trunc_faa VALUES (5, 'five', 'FIVE');
+BEGIN;
+TRUNCATE trunc_f;

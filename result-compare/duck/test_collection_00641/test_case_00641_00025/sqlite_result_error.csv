@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 4611686018427387900::BIGINT * 2::BIGINT;
+': unrecognized token: ":"

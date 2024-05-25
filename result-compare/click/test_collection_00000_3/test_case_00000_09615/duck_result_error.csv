@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name gettypeserializationstreams does not exist!
+Did you mean "position"?
+LINE 1: select getTypeSerializationStreams('LowCardina...
+               ^

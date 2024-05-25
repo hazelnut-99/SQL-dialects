@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...CT '6553.5', uniqState(NULL) AS x FROM numbers(3) GROUP BY number);
+                                                  ^

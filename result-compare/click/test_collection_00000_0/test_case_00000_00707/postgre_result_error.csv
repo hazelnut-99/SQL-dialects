@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...t(x -> materialize(1), arrayMap(x -> toString(x), [1, 2, 3])...
+                                                             ^

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ATE TABLE repro_hits ( date Date, metric Float64) ENGINE = M...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'UInt8', blockSerializedSize(0);
+': no such function: blockSerializedSize

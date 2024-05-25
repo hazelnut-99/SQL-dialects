@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayenumeratedense does not exist!
+Did you mean "array_reverse"?
+LINE 1: SELECT arrayEnumerateDense([[1], [2], [34], [1...
+               ^

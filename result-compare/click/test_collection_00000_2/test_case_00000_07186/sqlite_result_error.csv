@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT repeat('a', ALL) FROM (SELECT number AS ALL FROM numbers(10));
+': near "ALL": syntax error

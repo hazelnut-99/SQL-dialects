@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '1' == replaceRegexpAll(',,1', '^[,]*|[,]*$', '') x;
+': no such function: replaceRegexpAll

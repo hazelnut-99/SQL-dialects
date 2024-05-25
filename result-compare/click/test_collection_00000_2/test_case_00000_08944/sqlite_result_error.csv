@@ -1,0 +1,2 @@
+Execution failed on sql 'select toStartOfMonth(toDateTime(0, 'America/Los_Angeles'));
+': no such function: toDateTime

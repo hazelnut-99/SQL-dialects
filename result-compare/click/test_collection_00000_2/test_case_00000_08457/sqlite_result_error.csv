@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(SHA512('abc'));
+': no such function: SHA512

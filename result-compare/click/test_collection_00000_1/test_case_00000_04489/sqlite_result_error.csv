@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDiv(-1, number) FROM numbers(1, 10);
+': no such table: numbers

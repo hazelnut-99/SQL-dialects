@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...223372036854775808 from (select toInt32(arrayJoin([3, 5])) v...
+                                                             ^

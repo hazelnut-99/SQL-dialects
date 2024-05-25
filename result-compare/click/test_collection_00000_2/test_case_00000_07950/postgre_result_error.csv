@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [3,4,5]::Array(Int64)[2]::Int8;
+               ^

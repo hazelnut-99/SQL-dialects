@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(fuzzBits(toFixedString('abacaba', 10), 0.9));
+': no such function: toFixedString

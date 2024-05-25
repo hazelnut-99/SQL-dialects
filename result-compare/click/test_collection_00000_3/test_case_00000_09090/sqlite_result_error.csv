@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT replaceRegexpAll(materialize('aa'), 'z*', '') == 'aa';
+': no such function: materialize

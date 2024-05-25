@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT pointInPolygon((4., 4.), [(4., 0.), (8., 4.), (4., 8.), (0., 4.)], [(3., 3.), (5., 3.), (5., 5.), (3., 5.)]);
+': no such function: pointInPolygon

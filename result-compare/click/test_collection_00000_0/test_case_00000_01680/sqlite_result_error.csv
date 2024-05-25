@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM format(cSv, '0,Hello & world');
+': no such table: format

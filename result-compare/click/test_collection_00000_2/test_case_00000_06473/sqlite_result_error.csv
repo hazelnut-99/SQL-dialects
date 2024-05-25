@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sumDistinct(number + nan) FROM numbers(1000);
+': no such table: numbers

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -2::INTEGER * 1073741824::INTEGER;
+': unrecognized token: ":"

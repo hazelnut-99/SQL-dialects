@@ -1,1 +1,0 @@
-select scale(0);

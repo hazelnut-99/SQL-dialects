@@ -1,0 +1,3 @@
+syntax error at or near "UTC"
+LINE 3: FROM generateRandom('d Date, dt DateTime(\'UTC\'), dtm DateT...
+                                                   ^

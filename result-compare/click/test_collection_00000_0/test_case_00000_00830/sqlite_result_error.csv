@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toMonth(toDateTime(1412106600), 'Europe/Paris');
+': no such function: toDateTime

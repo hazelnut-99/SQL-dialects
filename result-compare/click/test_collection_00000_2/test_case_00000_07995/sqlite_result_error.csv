@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt32(1), bitPositionsToArray(toUInt32(1));
+': no such function: toUInt32

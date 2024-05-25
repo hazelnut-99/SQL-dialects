@@ -1,0 +1,3 @@
+syntax error at or near "arg_1"
+LINE 1: SELECT substring('1234' arg_1, 2 arg_2, 3 arg_3), arg_1, arg...
+                                ^

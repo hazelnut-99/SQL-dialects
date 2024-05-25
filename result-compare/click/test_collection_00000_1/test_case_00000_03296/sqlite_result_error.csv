@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDayOfYear(toDate('2018-09-13'));
+': no such function: toDate

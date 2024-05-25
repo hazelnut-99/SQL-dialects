@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...REATE TABLE test (x UInt8, y UInt8 DEFAULT x + 1) ENGINE = M...
+                                                             ^

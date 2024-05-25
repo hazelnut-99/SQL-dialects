@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -0.111::Float64;
+': unrecognized token: ":"

@@ -1,0 +1,2 @@
+Execution failed on sql 'select number + nan k from numbers(256) group by k;
+': no such table: numbers

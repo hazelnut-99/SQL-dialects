@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDaysSinceYearZero(toDate('1970-01-01'));
+': no such function: toDate

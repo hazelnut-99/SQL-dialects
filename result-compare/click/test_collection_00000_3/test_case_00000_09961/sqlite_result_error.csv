@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT substring('1234' FROM 2 rhs), rhs;
+': near "FROM": syntax error

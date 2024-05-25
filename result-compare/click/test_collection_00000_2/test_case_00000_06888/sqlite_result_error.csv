@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(inf, 'UInt64');
+': no such column: inf

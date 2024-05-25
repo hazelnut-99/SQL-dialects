@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...yReduce('maxOrDefault', arrayPopBack(arrayPopBack([toDateTim...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toSecond(toDateTime(1412106600), 'Pacific/Pitcairn');
+': no such function: toDateTime

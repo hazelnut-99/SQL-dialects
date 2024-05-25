@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...eric_events_all (APIKey UInt8, SessionType UInt8) ENGINE = M...
+                                                             ^

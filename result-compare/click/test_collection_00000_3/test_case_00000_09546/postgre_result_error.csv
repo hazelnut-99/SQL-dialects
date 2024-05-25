@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT geoToS2(37.79506683, arrayJoin([55.71290588,37.795066...
+                                              ^

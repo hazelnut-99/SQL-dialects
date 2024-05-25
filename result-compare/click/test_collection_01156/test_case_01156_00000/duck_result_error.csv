@@ -1,0 +1,3 @@
+Binder Error: Cannot compare values of type INTERVAL and type INTEGER_LITERAL - an explicit cast is required
+LINE 1: SELECT max(t) - min(t) >= 1 FROM times;
+                               ^

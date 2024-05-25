@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT tuple(*, 1) + tuple(2, *) FROM numbers(3);
+                      ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select JSONArrayLength('[[1,2],[5,6,7]]');
+': no such function: JSONArrayLength

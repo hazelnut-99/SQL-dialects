@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTime('2016-02-29 01:02:03') - INTERVAL 1 QUARTER;
+': near "1": syntax error

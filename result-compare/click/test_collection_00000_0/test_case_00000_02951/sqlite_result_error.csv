@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(murmurHash3_128('foo'));
+': no such function: murmurHash3_128

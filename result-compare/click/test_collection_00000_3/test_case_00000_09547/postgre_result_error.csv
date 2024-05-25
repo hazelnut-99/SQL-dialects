@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT s2ToGeo(arrayJoin([4704772434919038107,99265943852128...
+                                 ^

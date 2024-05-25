@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(IPv4ToIPv6(1297626935));
+': no such function: IPv4ToIPv6

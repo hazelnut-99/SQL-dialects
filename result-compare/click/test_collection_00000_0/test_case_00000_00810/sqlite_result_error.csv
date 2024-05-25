@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfYear(toDateTime(1419800400), 'Asia/Istanbul');
+': no such function: toDateTime

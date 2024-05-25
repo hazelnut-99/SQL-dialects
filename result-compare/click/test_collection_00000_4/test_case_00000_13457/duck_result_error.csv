@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addmilliseconds does not exist!
+Did you mean "millisecond"?
+LINE 1: SELECT addMilliseconds('2023-10-22', 1), addMi...
+               ^

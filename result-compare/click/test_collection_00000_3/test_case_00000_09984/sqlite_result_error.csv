@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extract('1234' arg_1, '123' arg_2), arg_1, arg_2;
+': near "arg_1": syntax error

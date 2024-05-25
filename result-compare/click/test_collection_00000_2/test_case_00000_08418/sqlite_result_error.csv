@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT L2Norm((1, 1.0));
+': no such function: L2Norm

@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAllIndices('123', 0, ['1']);
+': no such function: multiFuzzyMatchAllIndices

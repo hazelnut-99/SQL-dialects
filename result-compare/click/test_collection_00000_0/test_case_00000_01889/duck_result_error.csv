@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name greatcircledistance does not exist!
+Did you mean "greatest"?
+LINE 1: select abs(greatCircleDistance(37.588144, 55.73384...
+                   ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3hexaream2 does not exist!
+Did you mean "era"?
+LINE 1: SELECT round(h3HexAreaM2(arrayJoin([1,2])), 2);
+                     ^

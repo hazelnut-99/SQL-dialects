@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: create table x (pk int, arr Array(int), projection p (select...
+                                    ^

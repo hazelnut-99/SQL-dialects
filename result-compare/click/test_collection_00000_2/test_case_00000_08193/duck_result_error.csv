@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name leftpad does not exist!
+Did you mean "left"?
+LINE 1: SELECT leftPad('abc', 1), leftPad('abc', 1::In...
+               ^

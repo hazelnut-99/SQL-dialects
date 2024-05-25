@@ -1,0 +1,2 @@
+Execution failed on sql 'select number as a from numbers(10) where a == any (select number from numbers(3, 3));
+': near "select": syntax error

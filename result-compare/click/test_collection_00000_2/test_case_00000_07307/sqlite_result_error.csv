@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT INET_ATON('192.168.0.1');
+': no such function: INET_ATON

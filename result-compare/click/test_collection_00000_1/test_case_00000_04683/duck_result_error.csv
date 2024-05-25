@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bithammingdistance does not exist!
+Did you mean "hamming"?
+LINE 1: SELECT bitHammingDistance(100, 100000);
+               ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraycumsum does not exist!
+Did you mean "array_cat"?
+LINE 1: SELECT arrayCumSum([toInt256(1), 2]), toTypeNa...
+               ^

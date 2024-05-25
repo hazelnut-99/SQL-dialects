@@ -1,0 +1,2 @@
+Execution failed on sql 'select tuple(number, materialize(toUInt64OrNull(''))) > tuple(number, number) from numbers(1);
+': no such table: numbers

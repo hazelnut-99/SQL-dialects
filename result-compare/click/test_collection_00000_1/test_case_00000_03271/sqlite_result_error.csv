@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal64OrZero('', 0) AS x, toDecimal64OrZero('0.42', 3) AS y;
+': no such function: toDecimal64OrZero

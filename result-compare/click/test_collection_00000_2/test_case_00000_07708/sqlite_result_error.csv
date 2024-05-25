@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT uniqExact(number) FROM numbers(1e7);
+': no such table: numbers

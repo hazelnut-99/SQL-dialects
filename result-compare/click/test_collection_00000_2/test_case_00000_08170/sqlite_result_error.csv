@@ -1,0 +1,2 @@
+Execution failed on sql 'select unhex('0') == unbin('0');
+': no such function: unbin

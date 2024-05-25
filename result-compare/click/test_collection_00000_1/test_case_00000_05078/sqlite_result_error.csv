@@ -1,0 +1,2 @@
+Execution failed on sql 'select moduloOrZero(1, 1) = 0;
+': no such function: moduloOrZero

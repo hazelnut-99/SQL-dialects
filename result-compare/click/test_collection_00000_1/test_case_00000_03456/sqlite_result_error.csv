@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tryBase64Decode('aoeo054640eu=');
+': no such function: tryBase64Decode

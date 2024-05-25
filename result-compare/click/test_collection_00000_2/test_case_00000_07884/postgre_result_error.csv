@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ... Null, 42 / x) from (select CAST(materialize(Null), 'Nullabl...
+                                                             ^

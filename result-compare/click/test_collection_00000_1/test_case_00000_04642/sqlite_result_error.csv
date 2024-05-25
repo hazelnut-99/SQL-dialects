@@ -1,0 +1,2 @@
+Execution failed on sql 'select randConstant() % 10 < 10;
+': no such function: randConstant

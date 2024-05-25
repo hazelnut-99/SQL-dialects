@@ -197,3 +197,4 @@ insert into parttbl values (11), (12);
 create table sj (a int unique, b int, c int unique);
 insert into sj values (1, null, 2), (null, 2, null), (2, 1, 1);
 analyze sj;
+INSERT INTO sj VALUES (3, 1, 3);

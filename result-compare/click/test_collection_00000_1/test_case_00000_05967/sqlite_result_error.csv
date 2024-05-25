@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT decrypt('aes-128-ctr', '', '1111111111111111') == '';
+': no such function: decrypt

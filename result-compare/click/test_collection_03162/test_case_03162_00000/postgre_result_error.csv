@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE t_data_version (a UInt64, b UInt64) ENGINE = Me...
+                                                         ^

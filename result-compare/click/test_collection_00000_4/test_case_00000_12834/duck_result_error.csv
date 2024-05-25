@@ -1,0 +1,3 @@
+Binder Error: Referenced column "inf" not found in FROM clause!
+LINE 1: ...ECT 1024, 256 INTERSECT SELECT 100 AND inf, 256);
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select (1 ? (now() as n) : now() - 1) = n;
+': near "?": syntax error

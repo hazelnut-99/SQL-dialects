@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name crc32 does not exist!
+Did you mean "chr"?
+LINE 1: SELECT CRC32(murmurHash3_128());
+               ^

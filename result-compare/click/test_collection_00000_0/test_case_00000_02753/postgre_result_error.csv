@@ -1,0 +1,3 @@
+syntax error at or near "Null"
+LINE 1: select 1 in Null;
+                    ^

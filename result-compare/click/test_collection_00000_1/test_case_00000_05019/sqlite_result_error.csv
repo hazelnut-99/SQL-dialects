@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3IndexesAreNeighbors(617420388351344639, 617420388352655359);
+': no such function: h3IndexesAreNeighbors

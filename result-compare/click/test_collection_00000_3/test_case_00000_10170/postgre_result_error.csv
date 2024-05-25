@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: select toBool(number % 2 ? 'true' : NULL) from numbers(2);
+                                          ^

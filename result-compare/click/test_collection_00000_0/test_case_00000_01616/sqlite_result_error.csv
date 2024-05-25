@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reverse(['Hello', 'World']);
+': no such column: 'Hello', 'World'

@@ -1,0 +1,2 @@
+Execution failed on sql 'select reinterpret(x, 'UInt8') from generateRandom('x Bool', 42) limit 5;
+': no such table: generateRandom

@@ -1,0 +1,3 @@
+syntax error at or near "TABLE"
+LINE 3: CREATE OR REPLACE TABLE monthly_sales(empid INT, amount INT,...
+                          ^

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 4: create table x_1 engine=Log as select * from numbers(10);
+                         ^

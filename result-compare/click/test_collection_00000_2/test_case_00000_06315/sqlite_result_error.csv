@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'hello' UNION ALL SELECT toLowCardinality('hello');
+': no such function: toLowCardinality

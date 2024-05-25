@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE replaceall (str FixedString(3)) ENGINE = Memory...
+                                                     ^

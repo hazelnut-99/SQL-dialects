@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfInterval(toDate(17933), INTERVAL 3 quarter);
+': near "3": syntax error

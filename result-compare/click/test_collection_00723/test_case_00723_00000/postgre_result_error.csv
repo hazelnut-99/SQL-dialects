@@ -1,0 +1,4 @@
+function geohashesinbox(numeric, numeric, numeric, numeric, integer) does not exist
+LINE 2: SELECT arraySort(geohashesInBox(20.0, 20.0, 20.000001, 20.00...
+                         ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

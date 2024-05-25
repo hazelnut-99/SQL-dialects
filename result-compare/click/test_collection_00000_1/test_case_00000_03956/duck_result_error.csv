@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint64 does not exist!
+Did you mean "count"?
+LINE 1: SELECT toUInt64(1) x FROM (select 1)
+               ^

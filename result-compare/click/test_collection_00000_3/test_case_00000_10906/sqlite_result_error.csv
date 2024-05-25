@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtract('{"a": 123456}', 'FixedString(12)');
+': no such function: JSONExtract

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayreversefill does not exist!
+Did you mean "array_reverse"?
+LINE 1: SELECT arrayReverseFill((x, y) -> y, [1, 2, 3,...
+               ^

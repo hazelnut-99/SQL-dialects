@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT groupArraySorted(5)(number) FROM numbers(100);
+': near "(": syntax error

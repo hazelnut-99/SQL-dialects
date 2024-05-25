@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03175_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...REATE TABLE t_nullable_keys_1 (x Nullable(Int64)) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

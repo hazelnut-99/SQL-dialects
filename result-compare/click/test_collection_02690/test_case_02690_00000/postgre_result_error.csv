@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 5: CREATE TABLE foo(Id Int32, Val Int32) Engine=MergeTree PARTI...
+                                              ^

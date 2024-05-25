@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name mapextractkeylike does not exist!
+Did you mean "map_extract"?
+LINE 1: SELECT mapExtractKeyLike(map('aa', 1, 'bb', 2)...
+               ^

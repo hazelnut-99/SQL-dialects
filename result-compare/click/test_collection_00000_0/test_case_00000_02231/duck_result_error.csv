@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraypushback does not exist!
+Did you mean "array_push_back"?
+LINE 1: select arrayPushBack(emptyArrayUInt8(), -1);
+               ^

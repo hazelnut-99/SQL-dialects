@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name timediff does not exist!
+Did you mean "datediff"?
+LINE 1: SELECT timeDiff(UTCTimestamp(), now('UTC')) <=...
+               ^

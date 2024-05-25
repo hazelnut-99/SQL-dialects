@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayPushFront(emptyArrayUInt8(), 1);
+': no such function: emptyArrayUInt8

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT LENGTH('корова'), CHAR_LENGTH('ворона'), CHARACTER_LENGTH('фейхоа');
+': no such function: CHAR_LENGTH

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02556_00000", "type": "error", "result_detail": "syntax error at or near \"Engine\"\nLINE 1: create table tba (event_id Int64, event_dt Int64) Engine =Me...\n                                                          ^\n", "error_stage": "set_up"}]

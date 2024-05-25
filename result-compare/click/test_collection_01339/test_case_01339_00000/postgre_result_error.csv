@@ -1,0 +1,3 @@
+syntax error at or near "MATERIALIZED"
+LINE 5:     column_materialized UInt64 MATERIALIZED column_default *...
+                                       ^

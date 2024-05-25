@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint16 does not exist!
+Did you mean "bin"?
+LINE 8:     toInt16(-1) IN (255),
+            ^

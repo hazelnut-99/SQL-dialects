@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT now() + INTERVAL 1::UInt256 SECOND - now();
+': near "1": syntax error

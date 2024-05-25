@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequenceCaseInsensitive(materialize('garbage'), materialize('ARG'));
+': no such function: materialize

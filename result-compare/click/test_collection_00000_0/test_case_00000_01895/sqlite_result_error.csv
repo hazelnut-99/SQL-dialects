@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDiv(10, 4.);
+': no such function: intDiv

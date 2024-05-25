@@ -1,0 +1,3 @@
+syntax error at or near "6"
+LINE 1: ...me('2021-03-23 13:58:00', 'Asia/Kolkata'), INTERVAL 6 HOUR);
+                                                               ^

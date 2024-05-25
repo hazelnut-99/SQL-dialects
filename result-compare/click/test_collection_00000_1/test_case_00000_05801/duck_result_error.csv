@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name minmap does not exist!
+Did you mean "map"?
+LINE 1: select minMap([1, 1, 1], [[1, 2], [1], [1, 2, ...
+               ^

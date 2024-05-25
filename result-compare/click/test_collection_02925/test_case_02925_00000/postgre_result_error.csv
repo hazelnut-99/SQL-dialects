@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 5: CREATE TABLE null_table (number UInt64) ENGINE = Null;
+                                                ^

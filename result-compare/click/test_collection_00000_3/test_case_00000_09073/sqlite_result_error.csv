@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT avg(-8000000000000000000) FROM numbers(65535 * 2);
+': no such table: numbers

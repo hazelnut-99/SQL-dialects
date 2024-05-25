@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint8 does not exist!
+Did you mean "bin"?
+LINE 2: FROM (SELECT 1 k, toInt8(1) a_num) AS x
+                          ^

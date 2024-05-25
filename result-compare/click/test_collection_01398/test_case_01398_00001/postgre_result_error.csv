@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 6: ) Engine=MergeTree ORDER BY tuple() PARTITION BY col001 % 3;
+          ^

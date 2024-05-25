@@ -1,0 +1,3 @@
+syntax error at or near "15"
+LINE 1: ...4-05 00:00:00', 'Australia/Lord_Howe') + INTERVAL 15 * numbe...
+                                                             ^

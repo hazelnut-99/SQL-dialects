@@ -1,0 +1,2 @@
+Execution failed on sql 'select (1 ? (today() as t) : yesterday()) = t;
+': near "?": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todate32 does not exist!
+Did you mean "today"?
+LINE 1: SELECT age('year', toDate32('1927-01-01', 'UTC'), toDate32...
+                           ^

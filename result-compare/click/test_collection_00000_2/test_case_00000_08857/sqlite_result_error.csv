@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngrams(materialize('😁😈😁😈'), 1);
+': no such function: materialize

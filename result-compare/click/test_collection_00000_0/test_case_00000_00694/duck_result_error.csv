@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayall does not exist!
+Did you mean "array_agg"?
+LINE 1: SELECT arrayAll(x -> materialize(0), emptyArra...
+               ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name s2rectadd does not exist!
+Did you mean "add"?
+LINE 1: SELECT s2RectAdd(5178914411069187297, 51770567...
+               ^

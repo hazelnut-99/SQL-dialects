@@ -1,0 +1,3 @@
+syntax error at or near "ANY"
+LINE 7: ) js1 ANY INNER JOIN
+              ^

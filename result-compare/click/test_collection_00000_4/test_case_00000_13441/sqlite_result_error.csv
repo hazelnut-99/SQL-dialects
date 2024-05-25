@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayShingles([toNullable(2), toNullable(1)], 1);
+': no such column: toNullable(2), toNullable(1)

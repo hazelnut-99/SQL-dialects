@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONLength(unhex('5B30000E06D7AA5D'));
+': no such function: unhex

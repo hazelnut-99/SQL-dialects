@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayenumeratedenseranked does not exist!
+Did you mean "array_prepend"?
+LINE 1: SELECT arrayEnumerateDenseRanked(2, [[[1,2,3],...
+               ^

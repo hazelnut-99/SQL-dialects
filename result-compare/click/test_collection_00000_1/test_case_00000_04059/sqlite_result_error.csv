@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(replicate(['a'], [1]) AS String);
+': no such column: 'a'

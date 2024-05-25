@@ -1,0 +1,3 @@
+syntax error at or near "EXCLUDE"
+LINE 1: SELECT * EXCLUDE (j, k) REPLACE (i+100 AS i), * EXCLUDE (j) ...
+                 ^

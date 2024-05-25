@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT localtime = localtime(7);
+': no such column: localtime

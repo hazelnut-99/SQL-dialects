@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT nan AS x, sin(x), cos(x), tan(x), asin(x), acos(x), atan(x);
+': no such column: nan

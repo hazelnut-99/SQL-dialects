@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TIMEDIFF(NOW(), UTC_TIMESTAMP()) DIV 600;
+': near "600": syntax error

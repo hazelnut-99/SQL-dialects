@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todayssinceyearzero does not exist!
+Did you mean "dayname"?
+LINE 1: SELECT toDaysSinceYearZero(toDate32('2023-09-0...
+               ^

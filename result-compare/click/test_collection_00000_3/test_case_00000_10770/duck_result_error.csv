@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addtupleofintervals does not exist!
+Did you mean "alias"?
+LINE 1: SELECT addTupleOfIntervals('2022-10-11'::Date,...
+               ^

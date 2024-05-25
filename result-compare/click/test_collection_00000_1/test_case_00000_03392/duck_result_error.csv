@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name groupuniqarrayforeachstatearray does not exist!
+Did you mean "array_cat"?
+LINE 1: ...pUniqArrayForEachMerge(x) from (select groupUniqArrayForEachStateArray([[1],[1...
+                                                  ^

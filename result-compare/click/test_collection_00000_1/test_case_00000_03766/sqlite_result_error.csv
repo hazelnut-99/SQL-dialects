@@ -1,0 +1,2 @@
+Execution failed on sql 'select javaHash(toInt8(123));
+': no such function: toInt8

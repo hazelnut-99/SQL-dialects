@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayrotateleft does not exist!
+Did you mean "array_select"?
+LINE 1: select arrayRotateLeft(['H', 'e', 'l', 'l', 'o...
+               ^

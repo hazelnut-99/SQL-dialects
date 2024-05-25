@@ -1,0 +1,2 @@
+Execution failed on sql 'select substringIndexUTF8('富强，民主，文明', '，', -4);
+': no such function: substringIndexUTF8

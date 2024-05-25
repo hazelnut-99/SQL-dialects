@@ -1,0 +1,2 @@
+Execution failed on sql 'select getServerPort('tcp_port');
+': no such function: getServerPort

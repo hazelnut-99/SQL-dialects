@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ... table_02152 (a String, b LowCardinality(String)) engine = M...
+                                                             ^

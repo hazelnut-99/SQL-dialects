@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concatWithSeparator('|', materialize('a'), materialize('b')) == 'a|b';
+': no such function: concatWithSeparator

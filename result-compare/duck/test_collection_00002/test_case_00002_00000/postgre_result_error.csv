@@ -1,0 +1,3 @@
+column "rowid" does not exist
+LINE 1: SELECT rowid FROM unit;
+               ^

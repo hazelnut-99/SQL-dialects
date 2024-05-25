@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT locate('abcabc', 'ca');
+': no such function: locate

@@ -1,0 +1,3 @@
+syntax error at or near "SYNC"
+LINE 1: DROP TABLE IF EXISTS not_partitioned_replica1_00502 SYNC;
+                                                            ^

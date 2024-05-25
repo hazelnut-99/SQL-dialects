@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 5: CREATE TABLE auto_assign_enum (x enum('a', 'b')) ENGINE=Merg...
+                                                         ^

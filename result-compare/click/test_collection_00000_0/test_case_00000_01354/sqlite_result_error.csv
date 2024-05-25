@@ -1,0 +1,2 @@
+Execution failed on sql 'select position('абв' as h, lower('Бв' as n)) = positionCaseInsensitive(h, n);
+': near "as": syntax error

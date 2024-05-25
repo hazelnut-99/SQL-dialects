@@ -1,0 +1,2 @@
+Execution failed on sql 'select format('{{}}', materialize('first'), 'second');
+': no such function: materialize

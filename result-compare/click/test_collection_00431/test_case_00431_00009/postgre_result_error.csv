@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...able tab_00717 (a String, b StringWithDictionary) engine = M...
+                                                             ^

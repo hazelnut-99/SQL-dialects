@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...terialize(toDecimal32(1, 2)) / CAST(materialize(1), 'Nullabl...
+                                                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 3: ...x, number + 1 AS y, [number % 2, number % 3] AS z FROM numbers(10)) UNION ALL SELECT 1, 2, 3)
+                                                  ^

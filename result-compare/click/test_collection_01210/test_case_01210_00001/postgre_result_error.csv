@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...loat_issue7347 (ne UInt64,test Nullable(Float64)) ENGINE = M...
+                                                             ^

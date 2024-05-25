@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(CAST('Hello' AS LowCardinality(Nullable(String))) AS String);
+': near "Nullable": syntax error

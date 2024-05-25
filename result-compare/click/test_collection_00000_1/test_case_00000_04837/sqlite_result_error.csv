@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3IsValid(Cast(0, 'UInt64'));
+': near ",": syntax error

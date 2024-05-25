@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name endswithutf8 does not exist!
+Did you mean "ends_with"?
+LINE 1: SELECT endsWithUTF8('123', '23');
+               ^

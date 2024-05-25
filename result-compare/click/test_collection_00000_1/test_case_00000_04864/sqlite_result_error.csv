@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT greatCircleDistance(0., 0., 90., 0.);
+': no such function: greatCircleDistance

@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 4: create table t1 (date Date, a Float64, b String) Engine=Merg...
+                                                         ^

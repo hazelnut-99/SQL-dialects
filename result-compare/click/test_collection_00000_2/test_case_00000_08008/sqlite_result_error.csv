@@ -1,0 +1,2 @@
+Execution failed on sql 'select splitByRegexp('<[^<>]*>', x) from (select arrayJoin(['<h1>hello<h2>world</h2></h1>', 'gbye<split>bug']) x);
+': no such column: '<h1>hello<h2>world</h2></h1>', 'gbye<split>bug'

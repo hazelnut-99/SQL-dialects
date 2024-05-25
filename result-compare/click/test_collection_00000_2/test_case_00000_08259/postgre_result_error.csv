@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 3:     arrayMap(a -> (a + 1), [1, 2, 3]),
+                                   ^

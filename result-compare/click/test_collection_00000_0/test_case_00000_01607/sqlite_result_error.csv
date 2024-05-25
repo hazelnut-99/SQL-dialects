@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayStringConcat(materialize([Null::Nullable(String), Null::Nullable(String)]), ';');
+': no such column: Null::Nullable(String), Null::Nullable(String)

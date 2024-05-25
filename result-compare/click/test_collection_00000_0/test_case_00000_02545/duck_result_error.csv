@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name visitparamextractstring does not exist!
+Did you mean "json_extract_string"?
+LINE 1: SELECT visitParamExtractString('{"myparam":"te...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt32('-2147483648');
+': no such function: toInt32

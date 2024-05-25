@@ -1,0 +1,3 @@
+syntax error at or near "a"
+LINE 2: ...e table prewhere_alias (a Int32, b Int32, c alias a + b) eng...
+                                                             ^

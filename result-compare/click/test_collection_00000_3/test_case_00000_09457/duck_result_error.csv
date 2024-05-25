@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 1: ...s, '_', 'oo') AS b, a = b FROM (SELECT arrayJoin(['_.', '_.']) AS s);
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1.123::Decimal64(5);
+': unrecognized token: ":"

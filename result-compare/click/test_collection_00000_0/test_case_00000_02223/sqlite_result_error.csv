@@ -1,0 +1,2 @@
+Execution failed on sql 'select arraySlice([], materialize(NULL), NULL), 1 from numbers(2);
+': no such table: numbers

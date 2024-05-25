@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 13 AS n GROUP BY n WITH CUBE;
+': near "WITH": syntax error

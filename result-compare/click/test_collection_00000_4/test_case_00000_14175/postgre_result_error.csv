@@ -1,0 +1,3 @@
+syntax error at or near "toNullable"
+LINE 1: SELECT toTypeName(sum(toNullable('a') IN toNullable('a'))) A...
+                                                 ^

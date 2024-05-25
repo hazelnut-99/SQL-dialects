@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM merge(currentDatabase(), '^view_without_sample$') SAMPLE 1 / 100;
+': near "1": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name dotproduct does not exist!
+Did you mean "product"?
+LINE 1: ...S x, (4::Int8, 5::Int8, 6::Int8) AS y, dotProduct(x, y) AS res, toTypeName(res...
+                                                  ^

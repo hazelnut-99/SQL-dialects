@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 3: CREATE TABLE numbers1 ENGINE = Memory AS SELECT number as _t...
+                              ^

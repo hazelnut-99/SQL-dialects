@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE t_uuid (x UInt8, y UUID, z String) ENGINE = Tin...
+                                                        ^

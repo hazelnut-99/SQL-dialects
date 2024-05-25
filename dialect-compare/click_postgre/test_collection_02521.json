@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02521_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 6: ) ENGINE=Memory() AS SELECT number, number FROM numbers(1e5)...\n          ^\n", "error_stage": "set_up"}]

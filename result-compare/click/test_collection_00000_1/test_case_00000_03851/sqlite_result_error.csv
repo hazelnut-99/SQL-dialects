@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DISTINCT regexpQuoteMeta(toString(number)) = toString(number) FROM numbers(100000);
+': no such table: numbers

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02036_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...e_op_mono(i int, tz String, create_time DateTime) ENGINE Mer...\n                                                             ^\n", "error_stage": "set_up"}]

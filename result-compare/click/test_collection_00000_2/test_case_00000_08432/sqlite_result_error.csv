@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT L1Distance((1, 2, 3), (2, 3, 1));
+': no such function: L1Distance

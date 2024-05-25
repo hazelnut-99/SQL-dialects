@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT IPv6StringToNumOrNull('test');
+': no such function: IPv6StringToNumOrNull

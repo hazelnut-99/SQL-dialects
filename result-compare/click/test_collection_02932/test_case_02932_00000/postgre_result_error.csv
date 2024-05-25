@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ble(Int32), b Nullable(Int32), c Nullable(Int32)) ENGINE = M...
+                                                             ^

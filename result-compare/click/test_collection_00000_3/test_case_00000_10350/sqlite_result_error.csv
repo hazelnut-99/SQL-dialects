@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dateDiff('h', toDateTime('2018-01-01 22:00:00'), toDateTime('2018-01-02 23:00:00'));
+': no such function: dateDiff

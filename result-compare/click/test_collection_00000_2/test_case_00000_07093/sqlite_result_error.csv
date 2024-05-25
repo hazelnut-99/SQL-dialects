@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatchesCaseInsensitive(concat(toString(number), 'Foofoo'), 'foo') from numbers(2);
+': no such table: numbers

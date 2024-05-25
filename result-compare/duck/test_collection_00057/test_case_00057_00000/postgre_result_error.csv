@@ -1,0 +1,4 @@
+function range(integer, integer, integer) does not exist
+LINE 2: INSERT INTO a SELECT * FROM range(0, 1024, 1);
+                                    ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

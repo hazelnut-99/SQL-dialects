@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name indexof does not exist!
+Did you mean "list_indexof"?
+LINE 1: SELECT indexOf(['a', 'b', NULL], toLowCardinal...
+               ^

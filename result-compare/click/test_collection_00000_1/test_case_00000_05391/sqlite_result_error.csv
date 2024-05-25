@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DISTINCT toFloat64(arrayJoin(['-inf', '-Inf', '-INF', '-infinity', '-Infinity']));
+': no such column: '-inf', '-Inf', '-INF', '-infinity', '-Infinity'

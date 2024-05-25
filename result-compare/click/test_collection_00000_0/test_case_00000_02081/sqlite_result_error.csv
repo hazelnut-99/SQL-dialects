@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cityHash64(arrayJoin(['abc', 'def'])) IN cityHash64('abc');
+': no such table: cityHash64

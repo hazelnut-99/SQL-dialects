@@ -1,0 +1,3 @@
+syntax error at or near "User"
+LINE 9:     User UInt32,
+            ^

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ABLE t_async_insert_02193_1 (id UInt32, s String) ENGINE = M...
+                                                             ^

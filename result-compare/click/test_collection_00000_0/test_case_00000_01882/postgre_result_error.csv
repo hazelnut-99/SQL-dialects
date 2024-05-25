@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT toUInt32OrZero(arrayJoin(['123a', '456']));
+                                        ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT normalizeQuery('f(+2, 3), 1');
+': no such function: normalizeQuery

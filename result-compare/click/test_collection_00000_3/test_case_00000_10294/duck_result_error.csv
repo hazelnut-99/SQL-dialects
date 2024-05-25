@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totypename does not exist!
+Did you mean "dayname"?
+LINE 1: SELECT toTypeName([toLowCardinality('1'), toLo...
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near ")"
+LINE 1: with generateUUIDv4() as uuid,
+                            ^

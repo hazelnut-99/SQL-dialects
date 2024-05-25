@@ -1,0 +1,3 @@
+syntax error at or near "CODEC"
+LINE 7:     valueF64 Float64  CODEC(Gorilla),
+                              ^

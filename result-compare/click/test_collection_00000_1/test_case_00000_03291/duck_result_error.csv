@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal128ornull does not exist!
+Did you mean "tan"?
+LINE 1: SELECT toDecimal128OrNull('9999999999999999999...
+               ^

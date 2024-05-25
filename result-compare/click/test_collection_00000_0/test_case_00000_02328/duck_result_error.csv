@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addmonths does not exist!
+Did you mean "month"?
+LINE 1: SELECT addMonths(toDateTime('2017-11-05 10:37:...
+               ^

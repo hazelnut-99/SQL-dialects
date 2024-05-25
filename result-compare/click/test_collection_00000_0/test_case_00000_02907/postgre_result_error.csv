@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT uniqUpTo(3)((x, toString(x))) FROM (SELECT arrayJoin(...
+                          ^

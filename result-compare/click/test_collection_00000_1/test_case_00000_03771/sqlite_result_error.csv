@@ -1,0 +1,2 @@
+Execution failed on sql 'select javaHash(toInt32(-123));
+': no such function: toInt32

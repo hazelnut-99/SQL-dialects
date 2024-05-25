@@ -1,0 +1,2 @@
+Execution failed on sql 'select abs(log(e()) - 1) < 1e-8;
+': no such function: e

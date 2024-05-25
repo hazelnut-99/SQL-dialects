@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraycompact does not exist!
+Did you mean "array_cat"?
+LINE 1: select arrayCompact([0]);
+               ^

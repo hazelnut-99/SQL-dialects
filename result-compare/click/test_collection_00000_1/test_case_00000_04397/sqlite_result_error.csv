@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT coalesce(toLowCardinality(toNullable(1)), NULL) as x, toTypeName(x);
+': no such function: toNullable

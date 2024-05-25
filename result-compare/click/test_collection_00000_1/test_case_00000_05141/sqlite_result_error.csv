@@ -1,0 +1,7 @@
+Execution failed on sql 'SELECT
+    arrayReduceInRanges(
+        'groupArray',
+        [(1, 3), (2, 3), (3, 3)],
+        ['a', 'b', 'c', 'd', 'e']
+    );
+': no such function: arrayReduceInRanges

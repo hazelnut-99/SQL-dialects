@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT
+toTypeName(d32)
+FROM generateRandom('d32 Date32')
+LIMIT 1;
+': no such table: generateRandom

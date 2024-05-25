@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal64OrNull('-999999999999999999', 0), toDecimal64OrNull('-1000000000000000000', 0);
+': no such function: toDecimal64OrNull

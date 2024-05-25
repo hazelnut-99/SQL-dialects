@@ -1,0 +1,3 @@
+syntax error at or near "UTC"
+LINE 8: ...   defaultValueOfTypeName('Tuple(Date, DateTime(\'UTC\'), Ar...
+                                                             ^

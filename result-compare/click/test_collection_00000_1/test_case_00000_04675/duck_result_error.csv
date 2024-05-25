@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ngramminhashcaseinsensitiveutf8 does not exist!
+Did you mean "isfinite"?
+LINE 1: SELECT ngramMinHashCaseInsensitiveUTF8('what a...
+               ^

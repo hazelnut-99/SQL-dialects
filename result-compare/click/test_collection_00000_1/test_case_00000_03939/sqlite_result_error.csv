@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitmaskToList(-128);
+': no such function: bitmaskToList

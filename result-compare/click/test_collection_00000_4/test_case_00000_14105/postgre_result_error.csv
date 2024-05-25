@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT min((c1, c2)), max((c1, c2)) FROM values((NULL, 0.), ...
+                                                       ^

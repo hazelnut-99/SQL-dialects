@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt8('-128');
+': no such function: toInt8

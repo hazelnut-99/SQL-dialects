@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...amp64Micro(toInt64(0)), 'UTC') ts FROM numbers(2);
+                                                  ^

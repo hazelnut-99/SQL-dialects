@@ -1,0 +1,3 @@
+syntax error at or near "DICTIONARY"
+LINE 4: DROP DICTIONARY IF EXISTS flat_dictionary;
+             ^

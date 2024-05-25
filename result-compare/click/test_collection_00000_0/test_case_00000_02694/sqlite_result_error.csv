@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number FROM numbers(10) LIMIT 2 BY intDiv(number, 5);
+': near "BY": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT round(1.234567890123456789012345678901::Decimal(60, 30), 30);
+': unrecognized token: ":"

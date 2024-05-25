@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: ...Time('2020-01-09 12:00:01', 'US/Samoa'), INTERVAL 1 MINUTE, ...
+                                                             ^

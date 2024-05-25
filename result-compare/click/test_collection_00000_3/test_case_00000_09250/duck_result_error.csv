@@ -1,0 +1,9 @@
+Binder Error: No function matches the given name and argument types 'datesub(DATE, INTERVAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	datesub(VARCHAR, DATE, DATE) -> BIGINT
+	datesub(VARCHAR, TIMESTAMP, TIMESTAMP) -> BIGINT
+	datesub(VARCHAR, TIME, TIME) -> BIGINT
+	datesub(VARCHAR, TIMESTAMP WITH TIME ZONE, TIMESTAMP WITH TIME ZONE) -> BIGINT
+
+LINE 1: SELECT DATESUB(DATE '2022-01-01', INTERVAL 1 Y...
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...rt(multiFuzzyMatchAllIndices('halo some wrld', 2, ['some ran...
+                                                             ^

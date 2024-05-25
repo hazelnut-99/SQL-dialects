@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name groupuniqarrayarraystate does not exist!
+Did you mean "array_aggregate"?
+LINE 1: ...oupUniqArrayArrayMerge(x) from (select groupUniqArrayArrayState([]) as x);
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select bitmapContains(bitmapBuild([9]), 964291337)
+': no such column: 9

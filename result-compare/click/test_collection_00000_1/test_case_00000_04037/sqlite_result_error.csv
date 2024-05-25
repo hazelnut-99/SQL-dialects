@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateDenseRanked(1, [10,20,10,30], 1);
+': no such function: arrayEnumerateDenseRanked

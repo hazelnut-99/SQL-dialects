@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT byteSize(number, number + 1) AS x, isConstant(x) FROM numbers(2);
+': no such table: numbers

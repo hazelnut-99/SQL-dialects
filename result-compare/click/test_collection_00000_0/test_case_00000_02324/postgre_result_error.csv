@@ -1,0 +1,3 @@
+syntax error at or near "12345"
+LINE 1: ...teTime64('2000-01-01 12:00:00.678', 3) - INTERVAL 12345 MILL...
+                                                             ^

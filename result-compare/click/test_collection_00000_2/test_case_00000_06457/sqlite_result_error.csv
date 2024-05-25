@@ -1,0 +1,2 @@
+Execution failed on sql 'select parseDateTime64BestEffortOrNull('2.55');
+': no such function: parseDateTime64BestEffortOrNull

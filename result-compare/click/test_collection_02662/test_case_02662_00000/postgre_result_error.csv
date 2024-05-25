@@ -1,0 +1,3 @@
+syntax error at or near "DICTIONARY"
+LINE 1: DROP DICTIONARY IF EXISTS regexp_dict1;
+             ^

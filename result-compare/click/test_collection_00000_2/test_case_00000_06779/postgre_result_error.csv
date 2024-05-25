@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 3: from (select cast(1,'Nullable(Float64)') a) where a =0 );
+                           ^

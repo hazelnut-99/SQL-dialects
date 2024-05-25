@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 3: CREATE TABLE src (p UInt64, k String, d UInt64) ENGINE = Mer...
+                                                        ^

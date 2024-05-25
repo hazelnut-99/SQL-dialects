@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT anyIf('Hello', arrayJoin([1, NULL]) = 1);
+': no such function: anyIf

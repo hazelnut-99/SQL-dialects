@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitmaskToArray(toInt64(7));
+': no such function: toInt64

@@ -1,0 +1,3 @@
+syntax error at or near "TABLE"
+LINE 2: INSERT INTO TABLE FUNCTION file('01721_file/test/data.TSV', ...
+                    ^

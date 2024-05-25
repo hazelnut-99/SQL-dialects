@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseTimeDelta('11hr 25min 3.1s');
+': no such function: parseTimeDelta

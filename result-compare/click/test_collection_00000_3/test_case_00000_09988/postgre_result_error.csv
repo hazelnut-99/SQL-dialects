@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: SELECT dateAdd(DAY, 1 AS arg_1, toDate('2019-05-05') AS arg_...
+                              ^

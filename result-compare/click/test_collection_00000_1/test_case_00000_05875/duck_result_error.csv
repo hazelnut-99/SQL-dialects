@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name readwktpoint does not exist!
+Did you mean "radians"?
+LINE 1: SELECT readWKTPoint('POINT(0 0)');
+               ^

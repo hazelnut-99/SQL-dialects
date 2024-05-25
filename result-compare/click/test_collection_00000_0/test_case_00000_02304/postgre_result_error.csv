@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT pointInPolygon((nan, 10.000100135803223), [(39.83154,...
+                                                         ^

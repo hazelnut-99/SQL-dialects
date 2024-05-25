@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDate('2015-06-12') IN (toDate('2015-06-12'));
+': no such function: toDate

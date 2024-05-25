@@ -1,0 +1,3 @@
+syntax error at or near "DIV"
+LINE 2: WITH number DIV 50 AS k, toUInt32(number % 50) AS value SELE...
+                    ^

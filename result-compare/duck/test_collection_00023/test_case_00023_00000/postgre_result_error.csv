@@ -1,0 +1,3 @@
+schema "noaccent" does not exist
+LINE 1: CREATE TABLE collate_test(s VARCHAR COLLATE NOACCENT.NOCASE)...
+                                            ^

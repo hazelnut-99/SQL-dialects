@@ -1,0 +1,3 @@
+syntax error at or near "0"
+LINE 1: ...Time64('3000-01-01 12:00:00.12345', 0) + interval 0 microsec...
+                                                             ^

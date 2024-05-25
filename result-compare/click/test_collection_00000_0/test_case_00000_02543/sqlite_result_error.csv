@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visitParamExtractFloat('{"myparam":-1}', 'myparam');
+': no such function: visitParamExtractFloat

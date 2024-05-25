@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT groupUniqArrayMerge(x) from (select groupUniqArrayStateArray([]) as x);
+': no such column: 

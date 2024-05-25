@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02661_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: insert into `my_table` (`col_date`, `col_date32`, `col_datet...\n                    ^\n", "error_stage": "set_up"}]

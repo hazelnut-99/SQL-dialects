@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name nowinblock does not exist!
+Did you mean "now"?
+LINE 1: SELECT nowInBlock(NULL) IS NULL;
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bool 't' AS true;
+': near "AS": syntax error

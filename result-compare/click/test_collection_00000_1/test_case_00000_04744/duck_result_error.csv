@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name avgornullifstate does not exist!
+Did you mean "nullif"?
+LINE 1: ...T avgOrNullIfMerge(state) FROM (SELECT avgOrNullIfState(x, x > 0) AS state FRO...
+                                                  ^

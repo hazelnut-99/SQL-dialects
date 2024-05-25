@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCast(1e19, 'Int256');
+': no such function: accurateCast

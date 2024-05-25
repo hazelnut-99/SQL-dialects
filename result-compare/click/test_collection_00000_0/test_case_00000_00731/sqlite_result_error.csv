@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ['Hello', 'world'];
+': no such column: 'Hello', 'world'

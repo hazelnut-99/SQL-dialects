@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT emptyArrayToSingle(arrayMap(x -> toFixedString(toString(x), 3), arrayMap(x -> nullIf(x, 2), arrayJoin([emptyArrayUInt8(), [1], [2, 3], [3, 4, 5]])))) AS arr;
+': unrecognized token: "]"

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '2023-10-23' + INTERVAL 1 MINUTE, '2023-10-23 12:34:56.123' + INTERVAL 1 MINUTE;
+': near "1": syntax error

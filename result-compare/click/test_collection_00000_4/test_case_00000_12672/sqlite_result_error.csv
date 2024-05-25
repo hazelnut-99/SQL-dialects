@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(bitCount(1::Int128));
+': unrecognized token: ":"

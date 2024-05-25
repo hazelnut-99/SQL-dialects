@@ -1,0 +1,12 @@
+Execution failed on sql 'SELECT
+    count(),
+    countOrNull(),
+    sum(x),
+    sumOrNull(x)
+FROM
+(
+    SELECT number AS x
+    FROM numbers(10)
+    WHERE number > 10
+);
+': no such table: numbers

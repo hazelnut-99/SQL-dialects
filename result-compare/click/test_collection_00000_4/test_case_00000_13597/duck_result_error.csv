@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tofloat32ornull does not exist!
+Did you mean "floor"?
+LINE 1: select toFloat32OrNull('2023-01-01');
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 12 AS n GROUP BY n WITH ROLLUP;
+': near "WITH": syntax error

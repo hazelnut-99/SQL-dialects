@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...OrNull(number + 127, 'Int8') AS x FROM numbers (2) ORDER BY x;
+                                                  ^

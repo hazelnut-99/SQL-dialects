@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 = positionCaseInsensitive('абв', '');
+': no such function: positionCaseInsensitive

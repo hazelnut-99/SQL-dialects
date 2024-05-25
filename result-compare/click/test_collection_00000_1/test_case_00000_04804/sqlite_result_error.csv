@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCompact(['hello', '', '', '', 'world', 'world']);
+': no such column: 'hello', '', '', '', 'world', 'world'

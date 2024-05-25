@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT singleValueOrNull((SELECT 'Hello'));
+': no such function: singleValueOrNull

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toBool(toDecimal32(10.10, 2));
+': no such function: toDecimal32

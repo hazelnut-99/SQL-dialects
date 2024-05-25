@@ -1,0 +1,3 @@
+syntax error at or near ".1"
+LINE 1: ...arrayMap(a -> arrayMap(b -> arrayMap(c -> (round(c.1, 6), ro...
+                                                             ^

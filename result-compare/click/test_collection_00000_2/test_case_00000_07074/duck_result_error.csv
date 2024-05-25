@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tounixtimestamp does not exist!
+Did you mean "to_timestamp"?
+LINE 1: select toUnixTimestamp(makeDate32(2023, 5, 10)...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpretAsUInt64(CAST(1.23456 AS Float64));
+': no such function: reinterpretAsUInt64

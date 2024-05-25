@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has(materialize(['a', NULL, 'b']), 'c');
+': no such column: 'a', NULL, 'b'

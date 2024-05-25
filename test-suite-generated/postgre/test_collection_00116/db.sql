@@ -76,3 +76,10 @@ create TEMP TABLE test_jsonb_subscript (
 insert into test_jsonb_subscript values
 (1, '{}'), -- empty jsonb
 (2, '{"key": "value"}'); -- jsonb with data
+insert into test_jsonb_subscript values (3, NULL);
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[0]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '[]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name uniq does not exist!
+Did you mean "unbin"?
+LINE 1: SELECT uniq(NULL);
+               ^

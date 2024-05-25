@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...ABLE t_map_null (a Map(String, String), b String) engine = M...
+                                                             ^

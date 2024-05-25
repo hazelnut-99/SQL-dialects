@@ -1,0 +1,2 @@
+Execution failed on sql 'select minMap([1], [toInt32(number) - 50]) from numbers(1, 100);
+': no such table: numbers

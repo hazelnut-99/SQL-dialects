@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name lowerutf8 does not exist!
+Did you mean "lower"?
+LINE 1: select lowerUTF8('aaaaАБВГAAAAaaAA') = 'aaaaаб...
+               ^

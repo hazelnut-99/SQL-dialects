@@ -198,3 +198,4 @@ create table sj (a int unique, b int, c int unique);
 insert into sj values (1, null, 2), (null, 2, null), (2, 1, 1);
 analyze sj;
 INSERT INTO sj VALUES (3, 1, 3);
+CREATE UNIQUE INDEX sj_fn_idx ON sj((a * a));

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has([(1, 2), (3, 4)], (toUInt16(3), 4));
+': no such column: (1, 2), (3, 4)

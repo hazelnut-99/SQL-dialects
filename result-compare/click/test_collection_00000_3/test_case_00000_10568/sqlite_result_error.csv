@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize([['Hello'], ['world']])[3::Int8];
+': unrecognized token: "]"

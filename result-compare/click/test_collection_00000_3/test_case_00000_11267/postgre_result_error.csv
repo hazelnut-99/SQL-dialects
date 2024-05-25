@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT sumMap([number % 3, number % 4 - 1], [number :: Float...
+                      ^

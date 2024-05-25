@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCumSum([toDecimal64(1.0,8), toDecimal64(1.0,8)]) x, toTypeName(x);
+': no such column: toDecimal64(1.0,8), toDecimal64(1.0,8)

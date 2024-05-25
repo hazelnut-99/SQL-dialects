@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDate(toDateTime64(today(), 0, 'UTC')) = toDate(toDateTime(today(), 'UTC'));
+': no such function: today

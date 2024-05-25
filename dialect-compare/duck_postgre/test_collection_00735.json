@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00735_00000", "type": "error", "result_detail": "syntax error at or near \"all\"\nLINE 4: Select * from v0 order by all;\n                                  ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint8 does not exist!
+Did you mean "bin"?
+LINE 1: ...(0, 1), greatest(-400, -200), greatest(toInt8(127), 255), greatest(-1, 1), gre...
+                                                  ^

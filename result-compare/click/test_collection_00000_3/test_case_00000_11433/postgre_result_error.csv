@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near ".2_34p"
+LINE 1: SELECT -0x1.2_34p01;
+                   ^

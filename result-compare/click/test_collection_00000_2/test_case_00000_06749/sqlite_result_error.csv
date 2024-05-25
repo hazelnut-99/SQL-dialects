@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitShiftLeft(toInt256(-2), 1);
+': no such function: toInt256

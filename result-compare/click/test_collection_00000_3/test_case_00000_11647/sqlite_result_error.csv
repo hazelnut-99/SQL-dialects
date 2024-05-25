@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayPartialShuffle([9223372036854775808], 0);
+': no such column: 9223372036854775808

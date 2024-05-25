@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() OVER dummy WINDOW dummy AS (PARTITION BY dummy);
+': no such column: dummy

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(accurateCastOrNull(70000, 'DateTime'), 'UTC');
+': no such function: accurateCastOrNull

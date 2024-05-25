@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CasT(123, 'String');
+': near ",": syntax error

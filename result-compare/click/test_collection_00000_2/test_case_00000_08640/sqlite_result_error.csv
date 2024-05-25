@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 2, 'Hello',bin(bitShiftLeft('Hello', 2));
+': no such function: bitShiftLeft

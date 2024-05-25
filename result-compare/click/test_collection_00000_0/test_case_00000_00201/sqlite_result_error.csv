@@ -1,0 +1,2 @@
+Execution failed on sql 'select log1p(-1) = -inf;
+': no such function: log1p

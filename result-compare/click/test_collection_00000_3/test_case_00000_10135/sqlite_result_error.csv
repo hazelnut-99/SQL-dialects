@@ -1,0 +1,2 @@
+Execution failed on sql 'select toColumnTypeName(arrayMap(x -> toInt32(x), []));
+': no such column: 

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpretAsFloat64(CAST(123456 AS Int64));
+': no such function: reinterpretAsFloat64

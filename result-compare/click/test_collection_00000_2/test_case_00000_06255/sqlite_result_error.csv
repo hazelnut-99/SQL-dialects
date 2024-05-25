@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize('prepre_f') ILIKE '%pre_f%';
+': near "'%pre_f%'": syntax error

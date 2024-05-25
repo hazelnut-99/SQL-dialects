@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT roundAge(0);
+': no such function: roundAge

@@ -1,0 +1,2 @@
+Execution failed on sql 'select '{ key: fn, value: concat }' == format('{}{}{}{}{}', '{ key: ', toFixedString('fn', 2), ', value: ', 'concat', ' }');
+': no such function: toFixedString

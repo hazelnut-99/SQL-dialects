@@ -1,0 +1,2 @@
+Execution failed on sql 'select concat(materialize('a'), toFixedString('b', 1)) == 'ab';
+': no such function: toFixedString

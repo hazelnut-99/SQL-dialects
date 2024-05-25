@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name shardnum does not exist!
+Did you mean "sum"?
+LINE 1: select shardNum() n, shardCount() c;
+               ^

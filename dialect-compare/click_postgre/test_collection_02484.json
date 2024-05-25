@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02484_00000", "type": "error", "result_detail": "syntax error at or near \"AS\"\nLINE 1: CREATE TEMPORARY TABLE test_02327 (name String) AS SELECT * ...\n                                                        ^\n", "error_stage": "set_up"}]

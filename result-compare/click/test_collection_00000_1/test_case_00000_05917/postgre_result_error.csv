@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select round(polygonAreaSpherical([[[(4.346693, 50.858306), ...
+                                          ^

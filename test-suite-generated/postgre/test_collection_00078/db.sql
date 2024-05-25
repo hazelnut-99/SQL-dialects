@@ -85,3 +85,31 @@ create temp view zv1 as select *,'dummy'::text AS junk from zt1;
 begin;
 create temp table a (i integer);
 create temp table b (x integer, y integer);
+rollback;
+begin;
+create type mycomptype as (id int, v bigint);
+create temp table tidv (idv mycomptype);
+create index on tidv (idv);
+rollback;
+begin;
+create temp table a (
+     code char not null,
+     constraint a_pk primary key (code)
+);
+create temp table b (
+     a char not null,
+     num integer not null,
+     constraint b_pk primary key (a, num)
+);
+create temp table c (
+     name char not null,
+     a char,
+     constraint c_pk primary key (name)
+);
+insert into a (code) values ('p');
+insert into a (code) values ('q');
+insert into b (a, num) values ('p', 1);
+insert into b (a, num) values ('p', 2);
+insert into c (name, a) values ('A', 'p');
+insert into c (name, a) values ('B', 'q');
+insert into c (name, a) values ('C', null);

@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...S x, materialize(toDate('2000-01-02')) AS y, 0 ? x : y AS z;
+                                                              ^

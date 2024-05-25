@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name makedate32 does not exist!
+Did you mean "make_date"?
+LINE 1: select makeDate32(2299,1,1);
+               ^

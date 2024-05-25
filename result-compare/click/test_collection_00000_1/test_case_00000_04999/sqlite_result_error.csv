@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitCount(0);
+': no such function: bitCount

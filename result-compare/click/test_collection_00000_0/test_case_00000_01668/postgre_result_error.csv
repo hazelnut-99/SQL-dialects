@@ -1,0 +1,3 @@
+syntax error at or near ".2"
+LINE 1: SELECT ('a', 'b').2
+                         ^

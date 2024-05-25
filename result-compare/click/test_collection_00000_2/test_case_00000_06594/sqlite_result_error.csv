@@ -1,0 +1,6 @@
+Execution failed on sql 'SELECT  least(toInt64(9223372036854775807), toInt256(0)) x, least(toInt64(9223372036854775807), toInt256('9223372036854775808')) x2,
+        least(toInt64(-9223372036854775808), toInt256(0)) x3, least(toInt64(-9223372036854775808), toInt256('-9223372036854775809')) x4,
+        greatest(toInt64(9223372036854775807), toInt256(0)) y, greatest(toInt64(9223372036854775807), toInt256('9223372036854775808')) y2,
+        greatest(toInt64(-9223372036854775808), toInt256(0)) y3, greatest(toInt64(-9223372036854775808), toInt256('-9223372036854775809')) y4,
+        toTypeName(x), toTypeName(y);
+': no such function: toInt256

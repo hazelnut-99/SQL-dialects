@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofminute does not exist!
+Did you mean "minute"?
+LINE 1: select toStartOfMinute(toDateTime(0, 'Asia/Ist...
+               ^

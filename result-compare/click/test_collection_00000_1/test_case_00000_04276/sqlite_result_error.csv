@@ -1,0 +1,2 @@
+Execution failed on sql 'select 50 = length(format((select arrayStringConcat(arrayMap(x ->'{', range(100)))), ''));
+': no such function: range

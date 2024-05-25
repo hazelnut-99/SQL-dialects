@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT OCTET_LENGTH('你好，世界');
+': no such function: OCTET_LENGTH

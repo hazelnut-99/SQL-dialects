@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstringsCaseInsensitive('com.foobar', 'COM');
+': no such function: countSubstringsCaseInsensitive

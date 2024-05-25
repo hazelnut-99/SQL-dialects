@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...e(s, '_', 'o') AS b, a = b FROM (SELECT arrayJoin(['_.', '._...
+                                                             ^

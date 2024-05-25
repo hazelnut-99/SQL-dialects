@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT (
+        SELECT 111111111111
+    ) AS first_column
+FROM t2;
+': no such table: t2

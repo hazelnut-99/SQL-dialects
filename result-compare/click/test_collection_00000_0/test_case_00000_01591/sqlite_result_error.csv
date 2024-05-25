@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has(materialize([1, -1]), materialize(1));
+': no such function: materialize

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sumMap([number % 3, number % 4 - 1], [number :: UInt256, NULL]) FROM numbers(3) GROUP BY number WITH CUBE ORDER BY number;
+': near "WITH": syntax error

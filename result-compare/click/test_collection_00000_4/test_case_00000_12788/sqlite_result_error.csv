@@ -1,0 +1,2 @@
+Execution failed on sql 'select SUBSTRING_INDEX('www.clickhouse.com', '.', 2);
+': no such function: SUBSTRING_INDEX

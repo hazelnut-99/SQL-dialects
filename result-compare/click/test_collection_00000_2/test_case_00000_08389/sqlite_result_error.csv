@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1::Decimal64(10);
+': unrecognized token: ":"

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal64 does not exist!
+Did you mean "today"?
+LINE 1: SELECT toDecimal64(12345.6789, 4) AS x, floor(...
+               ^

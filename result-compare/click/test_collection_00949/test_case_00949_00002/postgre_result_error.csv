@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 1: ...NOT EXISTS functional_index_mergetree (x Float64) ENGINE = M...
+                                                             ^

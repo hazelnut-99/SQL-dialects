@@ -1,0 +1,2 @@
+Execution failed on sql 'select (date '2001-09-29' + 7) x, toTypeName(x);
+': near "'2001-09-29'": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name dateadd does not exist!
+Did you mean "date_add"?
+LINE 1: SELECT DATEADD(YEAR, 1, DATE '2022-01-01');
+               ^

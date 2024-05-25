@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT YYYYMMDDToDate(20230911);
+': no such function: YYYYMMDDToDate

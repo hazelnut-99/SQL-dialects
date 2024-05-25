@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(if(number % 2, NULL, 'truex'), 'Bool') FROM numbers(4);
+': no such table: numbers

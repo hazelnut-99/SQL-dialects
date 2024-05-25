@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash64(CAST(-154477 AS Int64))  = toUInt64(1162348840373071858);
+': no such function: toUInt64

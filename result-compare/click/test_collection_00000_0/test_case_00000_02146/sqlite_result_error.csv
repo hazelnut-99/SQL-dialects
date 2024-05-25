@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT "numbers"."number" FROM "system"."numbers" LIMIT 1;
+': no such table: system.numbers

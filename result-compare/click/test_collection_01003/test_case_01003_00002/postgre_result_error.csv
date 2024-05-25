@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...reate table test (project LowCardinality(String)) engine=Mer...
+                                                             ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayCumSum([3, toInt128(1), toInt256(1)]), toTypeNam...
+                           ^

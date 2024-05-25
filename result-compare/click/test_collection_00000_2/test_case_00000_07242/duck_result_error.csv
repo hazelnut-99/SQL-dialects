@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name formatdatetime does not exist!
+Did you mean "format"?
+LINE 1: SELECT formatDateTime(toDate('2010-04-30'), '%...
+               ^

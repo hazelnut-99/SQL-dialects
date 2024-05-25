@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select ignore(dotProduct(materialize([9223372036854775807, 1...
+                                             ^

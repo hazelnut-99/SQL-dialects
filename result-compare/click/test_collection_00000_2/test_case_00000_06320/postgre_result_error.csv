@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 8:     d1 WITH FILL STEP 5,
+               ^

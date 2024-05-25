@@ -1,0 +1,2 @@
+Execution failed on sql 'select [1, 2] in [1, 2];
+': no such table: 1, 2

@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: ...ith_dot_column (date Date, regular_column String, `other_col...
+                                                             ^

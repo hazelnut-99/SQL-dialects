@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3cellarearads2 does not exist!
+Did you mean "era"?
+LINE 1: SELECT round(h3CellAreaRads2(arrayJoin([579205133326...
+                     ^

@@ -1,0 +1,1 @@
+Binder Error: Ambiguous reference to column name "key" (use: "t2.key" or "t1.key")

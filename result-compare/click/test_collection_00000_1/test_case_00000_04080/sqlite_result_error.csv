@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayReduce('simpleLinearRegression', [1, 2, 3, 4], [100, 110, 120, 131]);
+': no such function: arrayReduce

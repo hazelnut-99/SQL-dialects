@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: ...g(uniqState(x))) FROM (SELECT toNullable(1) AS x) WITH TOTAL...
+                                                             ^

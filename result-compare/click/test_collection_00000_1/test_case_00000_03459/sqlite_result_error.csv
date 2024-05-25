@@ -1,0 +1,2 @@
+Execution failed on sql 'select tryBase64Decode(toFixedString('Zm9v', 4));
+': no such function: toFixedString

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table map_test engine=TinyLog() as (select (number + ...
+                              ^

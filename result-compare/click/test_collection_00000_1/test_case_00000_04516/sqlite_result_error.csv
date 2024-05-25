@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniqRanked(x, 2) FROM VALUES('x Array(Array(String))', ([[]]), ([['a'], ['a'], ['b']]), ([['a'], ['a'], ['b']]));
+': near "VALUES": syntax error

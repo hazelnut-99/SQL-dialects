@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name untuple does not exist!
+Did you mean "quantile"?
+LINE 1: select * from (select untuple((1,2)));
+                              ^

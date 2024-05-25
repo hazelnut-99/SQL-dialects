@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00512_00000", "type": "error", "result_detail": "syntax error at or near \"CODEC\"\nLINE 3:     somedate Date CODEC(LZ4),\n                          ^\n", "error_stage": "set_up"}]

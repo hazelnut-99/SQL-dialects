@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDifference([toUInt128(1), 3]), toTypeName(arrayDifference([toUInt128(1), 3]));
+': no such column: toUInt128(1), 3

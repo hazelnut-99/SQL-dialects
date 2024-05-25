@@ -1,0 +1,2 @@
+Execution failed on sql 'select initcapUTF8('yeah, well, i`m gonna go build my own theme park');
+': no such function: initcapUTF8

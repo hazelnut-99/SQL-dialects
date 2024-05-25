@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select polygonsDistanceSpherical([[[(23.725750, 37.971536)]]...
+                                         ^

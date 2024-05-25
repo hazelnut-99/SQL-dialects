@@ -1,0 +1,5 @@
+relation "cte1" does not exist
+LINE 9: with cte3 as (select ref2.j as i from cte1 as ref2), cte1 as...
+                                              ^
+DETAIL:  There is a WITH item named "cte1", but it cannot be referenced from this part of the query.
+HINT:  Use WITH RECURSIVE, or re-order the WITH items to remove forward references.

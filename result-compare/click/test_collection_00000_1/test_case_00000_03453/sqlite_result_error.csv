@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tryBase64Decode(base64Encode('foo')) = 'foo', base64Encode(tryBase64Decode('Zm9v')) == 'Zm9v';
+': no such function: base64Encode

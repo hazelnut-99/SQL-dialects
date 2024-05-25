@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 0::INTEGER + -2147483647::INTEGER;
+': unrecognized token: ":"

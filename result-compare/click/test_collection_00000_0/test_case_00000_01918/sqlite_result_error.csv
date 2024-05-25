@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arraySort((x, y) -> y, ['hello', 'world'], [2, 1]);
+': no such column: 'hello', 'world'

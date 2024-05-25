@@ -1,0 +1,2 @@
+Execution failed on sql 'select arraySort(multiFuzzyMatchAllIndices(materialize('halo some wrld'), 2, materialize(['some random string', '^halo.*world$', '^halo.*world$', '^halo.*world$', '^hallllo.*world$'])));
+': no such function: materialize

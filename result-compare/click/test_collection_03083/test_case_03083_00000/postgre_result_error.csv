@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...(id Int64, a Nullable(Int64), b Nullable(String)) ENGINE = M...
+                                                             ^

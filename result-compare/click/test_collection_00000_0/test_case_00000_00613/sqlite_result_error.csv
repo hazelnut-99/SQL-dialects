@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayExists(x -> materialize(0), emptyArrayUInt8());
+': no such function: emptyArrayUInt8

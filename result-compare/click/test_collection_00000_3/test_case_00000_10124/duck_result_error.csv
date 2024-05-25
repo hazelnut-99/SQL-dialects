@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3hexring does not exist!
+Did you mean "hex"?
+LINE 1: SELECT h3HexRing(581276613233082367, toUInt16(...
+               ^

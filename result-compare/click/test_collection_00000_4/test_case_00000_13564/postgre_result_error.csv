@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: SELECT '2023-10-23' - INTERVAL 1 DAY, '2023-10-23 12:34:56.1...
+                                       ^

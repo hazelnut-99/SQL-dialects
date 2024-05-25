@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT s2GetNeighbors(arrayJoin([1157339245694594829, 507476...
+                                        ^

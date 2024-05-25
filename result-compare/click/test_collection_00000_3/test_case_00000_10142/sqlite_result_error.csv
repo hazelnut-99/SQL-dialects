@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(toInt32(assumeNotNull(materialize(NULL))));
+': no such function: materialize

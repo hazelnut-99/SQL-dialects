@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE test_00562 ( s String,  i Int64) ENGINE = Memor...
+                                                      ^

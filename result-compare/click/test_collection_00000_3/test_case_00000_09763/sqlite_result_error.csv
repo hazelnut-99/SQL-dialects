@@ -1,0 +1,2 @@
+Execution failed on sql 'select makeDate32(1969,12,31);
+': no such function: makeDate32

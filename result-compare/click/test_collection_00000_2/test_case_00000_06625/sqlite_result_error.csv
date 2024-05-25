@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT normalizeQuery('SELECT $doc$VALUE$doc$, xyz11');
+': no such function: normalizeQuery

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name concatwithseparator does not exist!
+Did you mean "concat_ws"?
+LINE 1: SELECT concatWithSeparator('|', 'a') == 'a';
+               ^

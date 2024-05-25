@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name intdiv does not exist!
+Did you mean "fdiv"?
+LINE 1: select intDiv(toInt128(-1), toInt128(-1)) x, i...
+               ^

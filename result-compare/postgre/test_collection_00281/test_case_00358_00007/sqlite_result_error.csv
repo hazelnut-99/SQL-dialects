@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '23:59:60'::time;  -- rounds up
+': unrecognized token: ":"

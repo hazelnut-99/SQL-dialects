@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has(materialize([111, 222]), NULL);
+': no such column: 111, 222

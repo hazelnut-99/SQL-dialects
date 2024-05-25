@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toBool(-10000000000);
+': no such function: toBool

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() FROM (SELECT count() FROM numbers(10));
+': no such table: numbers

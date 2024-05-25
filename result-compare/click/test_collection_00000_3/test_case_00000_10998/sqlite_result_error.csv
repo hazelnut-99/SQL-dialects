@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByAlpha('ab.cd.ef.gh');
+': no such function: splitByAlpha

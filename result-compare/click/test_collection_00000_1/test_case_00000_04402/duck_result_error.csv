@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name visitparamextractuint does not exist!
+Did you mean "list_extract"?
+LINE 1: SELECT visitParamExtractUInt('"a":123', 'a');
+               ^

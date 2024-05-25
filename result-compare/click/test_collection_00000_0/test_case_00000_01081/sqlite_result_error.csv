@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT identity(1 AS a) AS b, a, b;
+': near "AS": syntax error

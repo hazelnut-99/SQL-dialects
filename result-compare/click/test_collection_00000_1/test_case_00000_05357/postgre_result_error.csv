@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 2: ... 4), original_medians_array.medians_by_version[1] as l) l_ro...
+                                                             ^

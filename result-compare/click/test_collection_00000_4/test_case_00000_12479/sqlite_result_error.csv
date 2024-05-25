@@ -1,0 +1,2 @@
+Execution failed on sql 'select parseDateTimeInJodaSyntaxOrNull('2001 invalid 366 2000', 'yyyy D yyyy', 'UTC') IS NULL;
+': no such function: parseDateTimeInJodaSyntaxOrNull

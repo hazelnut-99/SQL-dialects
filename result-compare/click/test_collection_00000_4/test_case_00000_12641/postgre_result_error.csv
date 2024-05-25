@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...LECT arrayFold( acc,x -> arrayPushFront(acc, x),  [1, 2, 3, ...
+                                                             ^

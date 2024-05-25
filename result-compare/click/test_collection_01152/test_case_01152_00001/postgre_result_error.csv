@@ -1,0 +1,3 @@
+syntax error at or near "y"
+LINE 6:     CONSTRAINT c CHECK y < 5
+                               ^

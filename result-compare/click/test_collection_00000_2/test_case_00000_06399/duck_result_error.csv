@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name from_unixtime does not exist!
+Did you mean "from_hex"?
+LINE 1: SELECT FROM_UNIXTIME(toDateTime('2018-01-02 22...
+               ^

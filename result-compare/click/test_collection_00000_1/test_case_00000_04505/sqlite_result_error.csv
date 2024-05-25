@@ -1,0 +1,2 @@
+Execution failed on sql 'select number, arrayReduce( 'sum', a) from (select materialize([100,100,200]) a, number from numbers(10));
+': no such table: numbers

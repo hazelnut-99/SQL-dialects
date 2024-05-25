@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -0x1.2_34p+01;
+': unrecognized token: ".2_34p"

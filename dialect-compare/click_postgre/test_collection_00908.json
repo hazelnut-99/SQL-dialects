@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00908_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ..._exception_code_in_query_log_table (value UInt64) ENGINE=Mem...\n                                                             ^\n", "error_stage": "set_up"}]

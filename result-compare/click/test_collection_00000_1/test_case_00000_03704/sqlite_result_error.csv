@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT farmFingerprint64('123456');
+': no such function: farmFingerprint64

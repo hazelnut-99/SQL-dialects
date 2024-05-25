@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonhas does not exist!
+Did you mean "json"?
+LINE 1: SELECT JSONHas('{"a": "hello", "b": [-100, 200...
+               ^

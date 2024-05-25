@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt8OrZero('123'), toUInt8OrZero('-123'), toUInt8OrZero('1234'), toUInt8OrZero(' 123');
+': no such function: toUInt8OrZero

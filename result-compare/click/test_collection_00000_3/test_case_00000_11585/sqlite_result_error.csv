@@ -1,0 +1,2 @@
+Execution failed on sql 'select count() from numbers_mt(100) having count() > 1;
+': no such table: numbers_mt

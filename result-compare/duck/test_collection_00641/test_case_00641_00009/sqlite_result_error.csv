@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 0::TINYINT - 127::TINYINT;
+': unrecognized token: ":"

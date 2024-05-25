@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractTextFromHTML('Hello<style type="text/css">World <script>abc</script> </stylea> goodbye');
+': no such function: extractTextFromHTML

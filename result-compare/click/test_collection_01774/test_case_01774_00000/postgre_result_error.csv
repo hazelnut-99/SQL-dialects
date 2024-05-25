@@ -1,0 +1,3 @@
+syntax error at or near "SYSTEM"
+LINE 2: SYSTEM STOP MERGES merge_tree_deduplication;
+        ^

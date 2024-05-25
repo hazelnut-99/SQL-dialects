@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toBool('t');
+': no such function: toBool

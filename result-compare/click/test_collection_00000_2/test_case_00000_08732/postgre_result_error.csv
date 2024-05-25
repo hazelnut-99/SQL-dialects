@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 12:     x ASC WITH FILL FROM 3 TO 7,
+                   ^

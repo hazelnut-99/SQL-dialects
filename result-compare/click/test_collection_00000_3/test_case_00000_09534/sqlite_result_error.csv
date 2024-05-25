@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toColumnTypeName(toLowCardinality(1));
+': no such function: toLowCardinality

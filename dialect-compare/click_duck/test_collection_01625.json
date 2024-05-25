@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01625_00000", "type": "error", "result_detail": "Parser Error: syntax error at or near \"000.00\"", "error_stage": "query"}]

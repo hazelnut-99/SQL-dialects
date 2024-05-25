@@ -1,2 +1,2 @@
-main,sgreek,table_macro,,,['a' 'b' 'c'],[None None None],,"SELECT a, b FROM greek_tbl WHERE (id >= c)"
-main,xt,table_macro,,,['id' 'imax'],[None None],,"SELECT id, ""name"" FROM test_tbl WHERE (id <= imax)"
+main,sgreek,table_macro,,,"['a', 'b', 'c']","[None, None, None]",,"SELECT a, b FROM greek_tbl WHERE (id >= c)"
+main,xt,table_macro,,,"['id', 'imax']","[None, None]",,"SELECT id, ""name"" FROM test_tbl WHERE (id <= imax)"

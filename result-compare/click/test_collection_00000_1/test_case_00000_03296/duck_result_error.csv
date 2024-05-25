@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todayofyear does not exist!
+Did you mean "dayofyear"?
+LINE 1: SELECT toDayOfYear(toDate('2018-09-13'));
+               ^

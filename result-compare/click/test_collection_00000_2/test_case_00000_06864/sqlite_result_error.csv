@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(257, 'UInt8');
+': no such function: accurateCastOrNull

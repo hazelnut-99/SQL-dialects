@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 10:         exponentialTimeDecayedMax(100)(-x, t) OVER w AS max
+                                               ^

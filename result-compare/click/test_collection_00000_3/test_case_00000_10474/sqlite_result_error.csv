@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 = multiSearchAny(materialize('abc'), ['b']);
+': no such column: 'b'

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [1,2] AS arr1, [1,2,3,4] AS arr2, round(arrayJaccardI...
+               ^

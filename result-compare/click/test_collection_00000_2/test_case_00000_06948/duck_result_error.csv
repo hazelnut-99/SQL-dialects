@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name sumifornull does not exist!
+Did you mean "min"?
+LINE 1: SELECT sumIfOrNull(1, 0);
+               ^

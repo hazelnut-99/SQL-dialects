@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST('0.123456789123456789', 'Decimal(18,17)');
+': near ",": syntax error

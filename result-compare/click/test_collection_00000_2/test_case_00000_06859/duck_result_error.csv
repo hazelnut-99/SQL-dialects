@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name reinterpretasint64 does not exist!
+Did you mean "repeat"?
+LINE 1: SELECT reinterpretAsInt64(CAST(1.23456 AS Floa...
+               ^

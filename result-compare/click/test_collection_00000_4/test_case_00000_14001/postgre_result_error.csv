@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...ring(toDateTime('2022-01-01 12:13:14'), CAST('UTC', 'Nullabl...
+                                                             ^

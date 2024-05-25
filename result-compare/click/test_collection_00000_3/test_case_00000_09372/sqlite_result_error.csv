@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toBool(toDecimal64(100000000000.1, 2));
+': no such function: toDecimal64

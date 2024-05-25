@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...EventDate Date, CounterID UInt64, WatchID UInt64) engine = M...
+                                                             ^

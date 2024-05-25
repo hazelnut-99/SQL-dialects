@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReduce('quantile(0.5)', []::Array(DateTime('UTC')));
+': unrecognized token: ":"

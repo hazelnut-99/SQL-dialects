@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00795_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 3: ENGINE = MergeTree() PARTITION BY (pt) ORDER BY (_id);\n        ^\n", "error_stage": "set_up"}]

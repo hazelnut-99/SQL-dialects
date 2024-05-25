@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tolastdayofweek does not exist!
+Did you mean "dayofweek"?
+LINE 1: SELECT toLastDayOfWeek(toDate(16433), 1);
+               ^

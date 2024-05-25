@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATE_ADD(hour, '1', toDateTime(1234567890, 'UTC'));
+': no such column: hour

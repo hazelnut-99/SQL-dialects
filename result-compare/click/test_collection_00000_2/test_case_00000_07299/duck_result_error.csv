@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name decrypt does not exist!
+Did you mean "cbrt"?
+LINE 1: SELECT decrypt('aes-128-cbc', encrypt('aes-128...
+               ^

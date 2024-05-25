@@ -1,0 +1,2 @@
+Execution failed on sql 'select groupArrayLast(3)((number+1)::String) from numbers(5);
+': near "(": syntax error

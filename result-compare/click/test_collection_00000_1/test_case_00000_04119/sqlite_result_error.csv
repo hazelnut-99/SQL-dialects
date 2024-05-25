@@ -1,0 +1,2 @@
+Execution failed on sql 'select JSONExtractString('{"abc":"\\n\\u0000"}', 'abc');
+': no such function: JSONExtractString

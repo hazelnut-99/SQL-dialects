@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT topKWeighted(2)(x, weight), topK(2)(x) FROM (SELECT t...
+                              ^

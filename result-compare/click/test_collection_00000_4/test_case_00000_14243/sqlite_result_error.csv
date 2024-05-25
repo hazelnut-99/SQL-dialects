@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(1.123456789, 'Float32');
+': no such function: accurateCastOrNull

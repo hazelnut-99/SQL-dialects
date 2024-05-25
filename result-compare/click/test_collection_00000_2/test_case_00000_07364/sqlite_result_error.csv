@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpret(257, 'UInt64'), reinterpretAsUInt64(257);
+': no such function: reinterpret

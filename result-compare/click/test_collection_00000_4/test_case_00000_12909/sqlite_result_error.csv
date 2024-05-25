@@ -1,0 +1,2 @@
+Execution failed on sql 'select initcap('CRC32IEEE is the best function');
+': no such function: initcap

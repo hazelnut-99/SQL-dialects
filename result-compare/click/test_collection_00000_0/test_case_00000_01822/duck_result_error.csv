@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multiif does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT multiIf(rand() % 2 = 0, '', '');
+               ^

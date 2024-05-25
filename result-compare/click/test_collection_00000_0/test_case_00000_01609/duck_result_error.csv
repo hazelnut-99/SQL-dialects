@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: ...rayStringConcat(arr, ';') FROM (SELECT materialize([Null, 1, Null, 23, Null, 4...
+                                                  ^

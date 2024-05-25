@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(0 AS DateTime('Europe/Amsterdam'));
+': near "'Europe/Amsterdam'": syntax error

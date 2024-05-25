@@ -1,0 +1,2 @@
+Execution failed on sql 'select number from numbers(10) except select number from numbers(5);
+': no such table: numbers

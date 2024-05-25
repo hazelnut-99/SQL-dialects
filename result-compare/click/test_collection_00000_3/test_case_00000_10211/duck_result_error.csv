@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name generaterandom does not exist!
+Did you mean "generate_series"?
+LINE 1: select * from generateRandom('x UInt64 NULL', 7, 3) l...
+                      ^

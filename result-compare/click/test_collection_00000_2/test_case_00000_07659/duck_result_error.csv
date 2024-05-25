@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name revision does not exist!
+Did you mean "isinf"?
+LINE 1: SELECT revision()=Revision(), REVISION()=Revis...
+               ^

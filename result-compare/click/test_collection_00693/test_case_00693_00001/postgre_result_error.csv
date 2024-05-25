@@ -1,0 +1,3 @@
+syntax error at or near "nullable_str"
+LINE 5:   INDEX nullable_str_min_max nullable_str TYPE minmax GRANUL...
+                                     ^

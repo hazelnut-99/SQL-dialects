@@ -1,0 +1,3 @@
+syntax error at or near "table"
+LINE 1: CREATE TEMPORARY TABLE table (x UInt8);
+                               ^

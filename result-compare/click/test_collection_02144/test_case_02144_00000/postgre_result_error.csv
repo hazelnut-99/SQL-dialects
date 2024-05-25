@@ -1,0 +1,3 @@
+syntax error at or near "system"
+LINE 2: system stop ttl merges ttl_test_02129;
+        ^

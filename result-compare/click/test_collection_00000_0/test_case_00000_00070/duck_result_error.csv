@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv4toipv6 does not exist!
+Did you mean "pi"?
+LINE 1: SELECT hex(IPv4ToIPv6(1297626935));
+                   ^

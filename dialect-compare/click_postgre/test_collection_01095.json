@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01095_00000", "type": "error", "result_detail": "syntax error at or near \"Engine\"\nLINE 3: ... dict_db_01254.dict_data (key UInt64, val UInt64) Engine=Mem...\n                                                             ^\n", "error_stage": "set_up"}]

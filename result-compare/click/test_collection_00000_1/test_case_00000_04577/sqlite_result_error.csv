@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from (select toLowCardinality(4) as x) s1 left join (select 4 as x) s2 using x;
+': near "x": syntax error

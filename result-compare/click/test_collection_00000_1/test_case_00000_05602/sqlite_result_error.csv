@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isConstant('a' = 'b');
+': no such function: isConstant

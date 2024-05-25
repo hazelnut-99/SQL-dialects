@@ -1,6 +1,0 @@
-child2_delete_trig,DELETE,public,child2,1,,STATEMENT,AFTER,old_table,
-child2_insert_trig,INSERT,public,child2,1,,STATEMENT,AFTER,,new_table
-child2_update_trig,UPDATE,public,child2,1,,STATEMENT,AFTER,old_table,new_table
-child3_delete_trig,DELETE,public,child3,1,,STATEMENT,AFTER,old_table,
-child3_insert_trig,INSERT,public,child3,1,,STATEMENT,AFTER,,new_table
-child3_update_trig,UPDATE,public,child3,1,,STATEMENT,AFTER,old_table,new_table

@@ -1,115 +1,22 @@
-SHOW track_counts;  -- must be on
-COMMIT;
-CREATE TABLE trunc_stats_test(id serial);
-CREATE TABLE trunc_stats_test1(id serial, stuff text);
-CREATE TABLE trunc_stats_test2(id serial);
-CREATE TABLE trunc_stats_test3(id serial, stuff text);
-CREATE TABLE trunc_stats_test4(id serial);
-INSERT INTO trunc_stats_test DEFAULT VALUES;
-INSERT INTO trunc_stats_test DEFAULT VALUES;
-TRUNCATE trunc_stats_test;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-DELETE FROM trunc_stats_test1 WHERE id = 3;
-BEGIN;
-TRUNCATE trunc_stats_test1;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-SAVEPOINT p1;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-TRUNCATE trunc_stats_test2;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-RELEASE SAVEPOINT p1;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-SAVEPOINT p1;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-TRUNCATE trunc_stats_test3;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-ROLLBACK TO SAVEPOINT p1;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-TRUNCATE trunc_stats_test4;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-ROLLBACK;
-BEGIN;
-COMMIT;
-CREATE FUNCTION stats_test_func1() RETURNS VOID LANGUAGE plpgsql AS $$BEGIN END;$$;
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-ROLLBACK;
-BEGIN;
-DROP FUNCTION stats_test_func1();
-ROLLBACK;
-BEGIN;
-DROP FUNCTION stats_test_func1();
-COMMIT;
-BEGIN;
-COMMIT;
-CREATE TABLE drop_stats_test();
-INSERT INTO drop_stats_test DEFAULT VALUES;
-DROP TABLE drop_stats_test;
-BEGIN;
-ROLLBACK;
-BEGIN;
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-SAVEPOINT sp1;
-ROLLBACK TO SAVEPOINT sp1;
-COMMIT;
-BEGIN;
-SAVEPOINT sp1;
-COMMIT;
-DROP TABLE trunc_stats_test, trunc_stats_test1, trunc_stats_test2, trunc_stats_test3, trunc_stats_test4;
-BEGIN;
-CREATE TEMPORARY TABLE test_last_scan(idx_col int primary key, noidx_col int);
-INSERT INTO test_last_scan(idx_col, noidx_col) VALUES(1, 1);
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-COMMIT;
-BEGIN;
-COMMIT;
-COMMIT;
-CHECKPOINT;
-CHECKPOINT;
-COMMIT;
-BEGIN;
-ROLLBACK;
-ROLLBACK;
-ROLLBACK;
-CHECKPOINT;
-CHECKPOINT;
-COMMIT;
-COMMIT;
-CREATE TEMPORARY TABLE test_io_local(a int, b TEXT);
-CREATE TABLE brin_hot (
-  id  integer PRIMARY KEY,
-  val integer NOT NULL
-) WITH (autovacuum_enabled = off, fillfactor = 70);
-INSERT INTO brin_hot SELECT *, 0 FROM generate_series(1, 235);
-CREATE INDEX val_brin ON brin_hot using brin(val);
-DROP TABLE brin_hot;
-CREATE TABLE brin_hot_2 (a int, b int);
-INSERT INTO brin_hot_2 VALUES (1, 100);
-CREATE INDEX ON brin_hot_2 USING brin (b) WHERE a = 2;
-DROP TABLE brin_hot_2;
-CREATE TABLE brin_hot_3 (a int, filler text) WITH (fillfactor = 10);
-INSERT INTO brin_hot_3 SELECT 1, repeat(' ', 500) FROM generate_series(1, 20);
-CREATE INDEX ON brin_hot_3 USING brin (a) WITH (pages_per_range = 1);
+CREATE TEMP TABLE abbrev_abort_uuids (
+    id serial not null,
+    abort_increasing uuid,
+    abort_decreasing uuid,
+    noabort_increasing uuid,
+    noabort_decreasing uuid);
+INSERT INTO abbrev_abort_uuids (abort_increasing, abort_decreasing, noabort_increasing, noabort_decreasing)
+    SELECT
+        ('00000000-0000-0000-0000-'||to_char(g.i, '000000000000FM'))::uuid abort_increasing,
+        ('00000000-0000-0000-0000-'||to_char(20000 - g.i, '000000000000FM'))::uuid abort_decreasing,
+        (to_char(g.i % 10009, '00000000FM')||'-0000-0000-0000-'||to_char(g.i, '000000000000FM'))::uuid noabort_increasing,
+        (to_char(((20000 - g.i) % 10009), '00000000FM')||'-0000-0000-0000-'||to_char(20000 - g.i, '000000000000FM'))::uuid noabort_decreasing
+    FROM generate_series(0, 20000, 1) g(i);
+INSERT INTO abbrev_abort_uuids(id) VALUES(0);
+INSERT INTO abbrev_abort_uuids DEFAULT VALUES;
+INSERT INTO abbrev_abort_uuids DEFAULT VALUES;
+INSERT INTO abbrev_abort_uuids (abort_increasing, abort_decreasing, noabort_increasing, noabort_decreasing)
+    SELECT abort_increasing, abort_decreasing, noabort_increasing, noabort_decreasing
+    FROM abbrev_abort_uuids
+    WHERE (id < 10 OR id > 19990) AND id % 3 = 0 AND abort_increasing is not null;
+CREATE INDEX abbrev_abort_uuids__noabort_increasing_idx ON abbrev_abort_uuids (noabort_increasing);
+CREATE INDEX abbrev_abort_uuids__noabort_decreasing_idx ON abbrev_abort_uuids (noabort_decreasing);

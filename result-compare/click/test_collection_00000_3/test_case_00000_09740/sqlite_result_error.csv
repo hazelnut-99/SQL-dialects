@@ -1,0 +1,2 @@
+Execution failed on sql 'select makeDate32(2020, 08, 24);
+': no such function: makeDate32

@@ -1,0 +1,2 @@
+Execution failed on sql 'select getTypeSerializationStreams('Tuple(String, Int64, Float64)');
+': no such function: getTypeSerializationStreams

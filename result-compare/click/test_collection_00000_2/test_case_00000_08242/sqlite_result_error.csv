@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT range(number % 3) FROM numbers(10);
+': no such table: numbers

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayAll(x -> materialize(1), emptyArrayString());
+': no such function: emptyArrayString

@@ -1,0 +1,2 @@
+Execution failed on sql 'select lcm(255, 254);
+': no such function: lcm

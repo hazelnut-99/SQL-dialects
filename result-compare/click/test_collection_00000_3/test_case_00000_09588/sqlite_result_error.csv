@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT IPv6StringToNum('::ffff:127.0.0.1');
+': no such function: IPv6StringToNum

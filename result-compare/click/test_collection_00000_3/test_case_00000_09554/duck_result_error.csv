@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name s2rectunion does not exist!
+Did you mean "second"?
+LINE 1: SELECT s2RectUnion(5178914411069187297, 517705...
+               ^

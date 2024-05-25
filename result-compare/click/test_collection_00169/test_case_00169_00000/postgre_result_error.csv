@@ -1,0 +1,3 @@
+syntax error at or near "2"
+LINE 1: with pow(2,2) as four select pow(four, 2), 2 as two, pow(two...
+                 ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT nan = toInt8(0), nan != toInt8(0), nan < toInt8(0), nan > toInt8(0), nan <= toInt8(0), nan >= toInt8(0);
+': no such column: nan

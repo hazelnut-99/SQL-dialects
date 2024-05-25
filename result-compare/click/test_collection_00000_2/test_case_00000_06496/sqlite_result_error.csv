@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTimeBestEffort('1596752940', 'Asia/Istanbul');
+': no such function: parseDateTimeBestEffort

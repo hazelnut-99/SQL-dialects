@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name uniqthetaarray does not exist!
+Did you mean "era"?
+LINE 1: SELECT uniqThetaArray([0, 1, 1], [0, 1, 1], [0...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 / CAST(1, 'Nullable(Decimal(7, 2))');
+': near ",": syntax error

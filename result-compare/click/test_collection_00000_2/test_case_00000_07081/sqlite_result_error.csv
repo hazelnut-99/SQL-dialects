@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatches('foobarfoo', 'foo');
+': no such function: countMatches

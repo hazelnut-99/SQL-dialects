@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT readWKTPoint('POINT(0 0)');
+': no such function: readWKTPoint

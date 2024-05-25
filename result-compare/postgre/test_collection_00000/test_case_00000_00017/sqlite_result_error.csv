@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT current_timestamp = NOW();
+': no such function: NOW

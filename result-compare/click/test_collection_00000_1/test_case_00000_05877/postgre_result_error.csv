@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT SVG([(0., 0.), (10, 0), (10, 10), (0, 10)]);
+                   ^

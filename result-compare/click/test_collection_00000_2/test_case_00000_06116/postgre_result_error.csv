@@ -1,0 +1,3 @@
+syntax error at or near "k"
+LINE 4: using k order by js1.k, js2.k;
+              ^

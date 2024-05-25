@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toFloat64(-199) % 200 as k, toTypeName(k);
+': no such function: toFloat64

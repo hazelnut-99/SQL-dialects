@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayPopBack(['a', 'b', 'c']);
+': no such column: 'a', 'b', 'c'

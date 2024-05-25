@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hopend does not exist!
+Did you mean "hex"?
+LINE 1: SELECT hopEnd(toDateTime('2020-01-09 12:00:01'...
+               ^

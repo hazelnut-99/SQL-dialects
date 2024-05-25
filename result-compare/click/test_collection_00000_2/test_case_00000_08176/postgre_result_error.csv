@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT toTypeName([toDate('2000-01-01'), toDateTime('2000-01...
+                          ^

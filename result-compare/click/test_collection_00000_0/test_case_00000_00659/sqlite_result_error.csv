@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayExists(x -> 1, arrayMap(x -> toString(x), [1, 2, 3]));
+': no such column: 1, 2, 3

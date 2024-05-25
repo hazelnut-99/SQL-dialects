@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT countDigits(-123.456789::Decimal256(8));
+': unrecognized token: ":"

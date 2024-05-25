@@ -1,0 +1,2 @@
+Execution failed on sql 'select REGEXP_REPLACE('bar', '.', 'z');
+': no such function: REGEXP_REPLACE

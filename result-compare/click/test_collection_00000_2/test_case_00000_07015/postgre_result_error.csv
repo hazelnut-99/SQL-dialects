@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...itive(concat(toString(number), 'aaa111aa1'), char(number)) f...
+                                                             ^

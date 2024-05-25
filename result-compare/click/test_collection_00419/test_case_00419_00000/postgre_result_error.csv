@@ -1,0 +1,3 @@
+syntax error at or near "alias"
+LINE 2: create table tab_00712_1 (a UInt32, b UInt32 alias a + 1, c ...
+                                                     ^

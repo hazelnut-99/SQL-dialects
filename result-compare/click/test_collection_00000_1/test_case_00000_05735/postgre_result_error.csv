@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select min((n as a) + (1 as b)) c from (select number n from...
+                      ^

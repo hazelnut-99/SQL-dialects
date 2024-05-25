@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 2: create table replacing(    `A` Int64,    `D` DateTime64(9, '...
+                                   ^

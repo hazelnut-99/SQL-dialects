@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT least('hello');
+': no such function: least

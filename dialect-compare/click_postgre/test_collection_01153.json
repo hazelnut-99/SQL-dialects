@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01153_00000", "type": "error", "result_detail": "type \"datetime\" does not exist\nLINE 1: CREATE TEMPORARY TABLE times (t DateTime);\n                                        ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,3 @@
+relation "times" does not exist
+LINE 1: INSERT INTO times SELECT now();
+                    ^

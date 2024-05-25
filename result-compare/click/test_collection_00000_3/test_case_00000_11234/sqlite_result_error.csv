@@ -1,0 +1,2 @@
+Execution failed on sql 'select factorial(10) = 3628800;
+': no such function: factorial

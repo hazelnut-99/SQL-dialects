@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT finalizeAggregation(initializeAggregation('uniqExactState', initializeAggregation('uniqState', 0)));
+': no such function: initializeAggregation

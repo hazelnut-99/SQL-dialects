@@ -1,0 +1,2 @@
+Execution failed on sql 'select appendTrailingCharIfAbsent('a', 'a') = 'a';
+': no such function: appendTrailingCharIfAbsent

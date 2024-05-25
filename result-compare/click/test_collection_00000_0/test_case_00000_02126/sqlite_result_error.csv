@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT x, arrayJoin(x) FROM (SELECT materialize(arrayMap(x -> toFixedString(x, 5), ['Hello', 'world'])) AS x);
+': no such column: 'Hello', 'world'

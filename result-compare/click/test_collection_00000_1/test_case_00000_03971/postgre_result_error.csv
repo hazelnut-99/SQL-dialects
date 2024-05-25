@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...rrayWithConstant(number % 3, number % 2 ? 'Hello' : NULL) FR...
+                                                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraycount does not exist!
+Did you mean "array_concat"?
+LINE 1: SELECT arrayCount(x -> 1, emptyArrayUInt8());
+               ^

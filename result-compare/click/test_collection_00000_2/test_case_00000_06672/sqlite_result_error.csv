@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt128(123) IN (NULL);
+': no such function: toInt128

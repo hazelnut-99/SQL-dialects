@@ -1,0 +1,3 @@
+syntax error at or near "in"
+LINE 1: SELECT count(in(NULL, tuple(NULL)));
+                     ^

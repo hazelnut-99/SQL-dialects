@@ -1,0 +1,2 @@
+Execution failed on sql 'select upperUTF8('aaaaАБВГAAAAaaAA') = 'AAAAАБВГAAAAAAAA';
+': no such function: upperUTF8

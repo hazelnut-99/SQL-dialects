@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -30000::SMALLINT - 1::SMALLINT;
+': unrecognized token: ":"

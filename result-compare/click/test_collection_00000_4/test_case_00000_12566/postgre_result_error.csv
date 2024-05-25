@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT []::Array(UInt8) AS x, []::Array(UInt8) AS y, dotProd...
+               ^

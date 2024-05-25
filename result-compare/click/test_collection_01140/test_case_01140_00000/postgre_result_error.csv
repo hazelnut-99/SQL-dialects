@@ -1,0 +1,3 @@
+syntax error at or near "'2019-09-16 19:20:12.345678910'"
+LINE 1: WITH toDateTime64('2019-09-16 19:20:12.345678910', 3, 'Asia/...
+                          ^

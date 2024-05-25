@@ -1,0 +1,3 @@
+syntax error at or near "char"
+LINE 1: select number as char_code,  extract( char(char_code) || ' k...
+                                              ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint64ordefault does not exist!
+Did you mean "instr"?
+LINE 1: select toInt64OrDefault('-1', cast(-2 as Int64...
+               ^

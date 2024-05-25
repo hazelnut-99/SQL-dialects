@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(MD5('test'));
+': no such function: MD5

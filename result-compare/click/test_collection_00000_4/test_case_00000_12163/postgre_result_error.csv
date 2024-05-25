@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: ...te + number * 10) AS d FROM numbers(2) ORDER BY d WITH FILL;
+                                                             ^

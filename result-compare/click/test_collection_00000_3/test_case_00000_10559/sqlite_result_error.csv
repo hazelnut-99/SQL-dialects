@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize([[13]])[1::Int8];
+': unrecognized token: "]"

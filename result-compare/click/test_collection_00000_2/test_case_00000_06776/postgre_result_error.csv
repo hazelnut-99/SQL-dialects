@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: ...ct count(), count(a), max(a), min(a), avg(a), sum(a), any(a)
+                                                                 ^

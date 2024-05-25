@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00947_00000", "type": "error", "result_detail": "syntax error at or near \"Engine\"\nLINE 2: ...table da_memory_efficient_shard(A Int64, B Int64) Engine=Mer...\n                                                             ^\n", "error_stage": "set_up"}]

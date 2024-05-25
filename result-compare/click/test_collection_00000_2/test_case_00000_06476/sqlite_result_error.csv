@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT uniqExact(reinterpretAsFloat64(reinterpretAsFixedString(reinterpretAsUInt64(reinterpretAsFixedString(nan)) + number))) FROM numbers(10);
+': no such table: numbers

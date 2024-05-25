@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTime64('2011-11-11 11:11:11.11', 0);
+': no such function: toDateTime64

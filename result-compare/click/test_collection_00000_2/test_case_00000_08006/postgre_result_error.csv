@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...t splitByRegexp('\\d+', x) from (select arrayJoin(['a1ba5ba8...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT formatDateTime(toDate('2018-12-31'), '%g');
+': no such function: toDate

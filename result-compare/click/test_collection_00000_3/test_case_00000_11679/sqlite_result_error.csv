@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayShuffle(materialize([1, 2, 3]), 42) FROM numbers(10);
+': no such table: numbers

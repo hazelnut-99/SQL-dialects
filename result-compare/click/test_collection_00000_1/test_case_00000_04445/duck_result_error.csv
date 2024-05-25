@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraysort does not exist!
+Did you mean "array_sort"?
+LINE 1: SELECT arraySort(geohashesInBox(-1.0,   89.0, ...
+               ^

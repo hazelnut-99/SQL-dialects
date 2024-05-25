@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT transform(1, [1], [toDecimal32(42, 2)], toDecimal32(0...
+                            ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select startsWith(['a', 'b', 'c'], ['a', 'b']);
+': no such column: 'a', 'b', 'c'

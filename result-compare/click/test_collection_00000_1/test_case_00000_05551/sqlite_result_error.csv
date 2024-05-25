@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractAllGroupsHorizontal(CAST('hello world' AS FixedString(12)), CAST('(\\w+)' as FixedString(5)));
+': no such function: extractAllGroupsHorizontal

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT idnaDecode('');
+': no such function: idnaDecode

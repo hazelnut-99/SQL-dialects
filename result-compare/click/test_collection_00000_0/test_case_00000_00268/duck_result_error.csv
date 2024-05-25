@@ -1,0 +1,3 @@
+Binder Error: Referenced column "dummy" not found in FROM clause!
+LINE 1: SELECT * FROM (SELECT -1 as x, dummy UNION ALL SELECT arrayJoin([-1]) ...
+                                       ^

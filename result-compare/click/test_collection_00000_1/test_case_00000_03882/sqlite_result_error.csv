@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT filesystemCapacity() >= filesystemAvailable() AND filesystemAvailable() >= 0 AND filesystemUnreserved() >= 0;
+': no such function: filesystemAvailable

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01217_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: CREATE TABLE t_uuid (x UInt8, y UUID, z String) ENGINE = Tin...\n                                                        ^\n", "error_stage": "set_up"}]

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name stddevsampordefaultifstate does not exist!
+Did you mean "stddev_samp"?
+LINE 1: ...mpOrDefaultIfMerge(state) FROM (SELECT stddevSampOrDefaultIfState(x, x > 1) AS...
+                                                  ^

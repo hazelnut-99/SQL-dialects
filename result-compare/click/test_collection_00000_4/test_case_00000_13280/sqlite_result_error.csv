@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(YYYYMMDDToDate(cast(19910824 AS Nullable(UInt64))));
+': near "UInt64": syntax error

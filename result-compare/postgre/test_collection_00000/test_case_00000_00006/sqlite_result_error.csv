@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT char 'c' = char 'c' AS true;
+': near "=": syntax error

@@ -1,8 +1,9 @@
-CREATE TABLE mvtest_t (id int NOT NULL PRIMARY KEY, type text NOT NULL, amt numeric NOT NULL);
-INSERT INTO mvtest_t VALUES
-  (1, 'x', 2),
-  (2, 'x', 3),
-  (3, 'y', 5),
-  (4, 'y', 7),
-  (5, 'z', 11);
-CREATE VIEW mvtest_tv AS SELECT type, sum(amt) AS totamt FROM mvtest_t GROUP BY type;
+DROP TABLE IF EXISTS target;
+DROP TABLE IF EXISTS source;
+CREATE TABLE target (tid integer, balance integer)
+  WITH (autovacuum_enabled=off);
+CREATE TABLE source (sid integer, delta integer) -- no index
+  WITH (autovacuum_enabled=off);
+INSERT INTO target VALUES (1, 10);
+INSERT INTO target VALUES (2, 20);
+INSERT INTO target VALUES (3, 30);

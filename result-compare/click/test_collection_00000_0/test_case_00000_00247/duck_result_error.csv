@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name acosh does not exist!
+Did you mean "acos"?
+LINE 1: select abs(acosh(cosh(3)) - 3) < 1e-9;
+                   ^

@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "0x123p"
+LINE 1: ..., 0xFFFF AS x11, 0xFFFFFFFF AS x12, 123e2 AS x13, 0x123p4 AS...
+                                                             ^

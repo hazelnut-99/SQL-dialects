@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...lue_1, value.value_2 FROM (SELECT cast(tuple(1, 2), 'Tuple(v...
+                                                             ^

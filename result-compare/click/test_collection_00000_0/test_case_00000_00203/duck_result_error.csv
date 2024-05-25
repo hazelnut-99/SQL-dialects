@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name log1p does not exist!
+Did you mean "log"?
+LINE 1: select abs(log1p(exp(2) - 1) - 2) < 1e8;
+                   ^

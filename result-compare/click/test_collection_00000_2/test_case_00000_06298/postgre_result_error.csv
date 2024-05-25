@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ECT NOT x, isZeroOrNull(x) FROM (SELECT arrayJoin([1, 2, 3])...
+                                                             ^

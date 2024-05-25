@@ -1,0 +1,2 @@
+Execution failed on sql 'select javaHash('abc');
+': no such function: javaHash

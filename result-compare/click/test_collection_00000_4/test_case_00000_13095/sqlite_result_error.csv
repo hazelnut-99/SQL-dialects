@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT timestamp('2013-12-31 12:00:00', '-12:01:02.111111');
+': no such function: timestamp

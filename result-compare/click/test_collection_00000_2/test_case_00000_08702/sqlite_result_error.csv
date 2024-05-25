@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 19,toFixedString('Hello', 10), bin(bitShiftLeft(toFixedString('Hello', 10), 19));
+': no such function: toFixedString

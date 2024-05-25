@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00168_00000", "type": "error", "result_detail": "syntax error at or near \"2\"\nLINE 1: with pow(2,2) as four select pow(four, 2), 2 as two, pow(two...\n                 ^\n", "error_stage": "set_up"}]

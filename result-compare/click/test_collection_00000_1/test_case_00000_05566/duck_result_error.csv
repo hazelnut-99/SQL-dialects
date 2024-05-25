@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extractallgroupsvertical does not exist!
+Did you mean "factorial"?
+LINE 1: SELECT extractAllGroupsVertical(CAST('hello wo...
+               ^

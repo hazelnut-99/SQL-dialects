@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTime(fromUnixTimestamp64Micro(toInt64(0)), 'UTC') ts FROM numbers(2);
+': no such table: numbers

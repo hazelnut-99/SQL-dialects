@@ -1,0 +1,2 @@
+Execution failed on sql 'select gcd(4611686011984936962, 2147483647);
+': no such function: gcd

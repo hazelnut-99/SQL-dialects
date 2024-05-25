@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 2: ..._price Int64, product_weight Int16, amount Int64) Engine=Tin...
+                                                             ^

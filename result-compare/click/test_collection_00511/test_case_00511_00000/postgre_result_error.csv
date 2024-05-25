@@ -1,0 +1,3 @@
+syntax error at or near "CODEC"
+LINE 3:     somedate Date CODEC(LZ4),
+                          ^

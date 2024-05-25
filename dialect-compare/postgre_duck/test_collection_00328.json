@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00328_00000", "type": "error", "result_detail": "Invalid Input Error: Attempting to execute an unsuccessful or closed pending query result\nError: Catalog Error: Type with name serial does not exist!\nDid you mean \"real\"?", "error_stage": "set_up"}]

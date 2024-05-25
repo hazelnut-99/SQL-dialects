@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name char_length does not exist!
+Did you mean "array_length"?
+LINE 1: SELECT LENGTH('корова'), CHAR_LENGTH('ворона'), CHARACTER_LENGTH...
+                                 ^

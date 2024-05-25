@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name polygonswithinspherical does not exist!
+Did you mean "position"?
+LINE 1: select polygonsWithinSpherical([[[(4.3501568, ...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'clickhouse' AS s1, 'mouse' AS s2, damerauLevenshteinDistance(s1, s2);
+': no such column: s1

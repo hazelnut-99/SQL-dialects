@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: ...rand() as r, toHour(toDateTime(r, 'Pacific/Apia') AS t) AS h...
+                                                             ^

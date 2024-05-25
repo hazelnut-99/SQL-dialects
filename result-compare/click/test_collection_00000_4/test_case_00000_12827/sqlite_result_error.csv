@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT transform(number, [], [], 'Hello ' || number::String) FROM numbers(10);
+': unrecognized token: ":"

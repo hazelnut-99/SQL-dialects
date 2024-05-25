@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 1: ...kNum Decimal(10,0), eventTimestamp DateTime64(9)) Engine=Mer...
+                                                             ^

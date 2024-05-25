@@ -1,0 +1,2 @@
+Execution failed on sql 'select date '2001-09-29';
+': no such column: date

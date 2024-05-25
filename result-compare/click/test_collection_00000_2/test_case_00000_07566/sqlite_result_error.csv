@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractTextFromHTML(' \t Hello,\rworld \n ');
+': no such function: extractTextFromHTML

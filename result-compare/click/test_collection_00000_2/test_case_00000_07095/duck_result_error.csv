@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name countmatchescaseinsensitive does not exist!
+Did you mean "contains"?
+LINE 1: select countMatchesCaseInsensitive('foo.com BA...
+               ^

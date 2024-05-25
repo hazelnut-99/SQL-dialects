@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT wyHash64('');
+': no such function: wyHash64

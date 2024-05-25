@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01282_00000", "type": "error", "result_detail": "no such function: toDate", "error_stage": "query"}, {"test_case": "test_case_01282_00001", "type": "error", "result_detail": "no such function: toDateTime", "error_stage": "query"}]

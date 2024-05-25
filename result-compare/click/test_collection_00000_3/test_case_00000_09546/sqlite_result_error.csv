@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT geoToS2(37.79506683, arrayJoin([55.71290588,37.79506683]));
+': no such function: geoToS2

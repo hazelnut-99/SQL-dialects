@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 5: WITH 1::Nullable(UInt64) as my_literal Select sum(number + m...
+             ^

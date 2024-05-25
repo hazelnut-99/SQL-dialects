@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (1,'') IN (-1,'');
+': IN(...) element has 1 term - expected 2

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT kafkaMurmurHash('a-little-bit-longer-string');
+': no such function: kafkaMurmurHash

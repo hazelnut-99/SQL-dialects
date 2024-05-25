@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv6stringtonumordefault does not exist!
+Did you mean "printf"?
+LINE 1: SELECT IPv6StringToNumOrDefault('test');
+               ^

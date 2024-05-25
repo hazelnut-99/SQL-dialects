@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtractBool('{"passed": true}', 'passed');
+': no such function: JSONExtractBool

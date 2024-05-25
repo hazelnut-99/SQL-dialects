@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number FROM numbers() LIMIT 10;
+': no such table: numbers

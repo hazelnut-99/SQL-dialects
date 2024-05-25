@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: select materialize(toDecimal128(3.2, 12)) as x...
+               ^

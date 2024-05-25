@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: SELECT range(number % 3) FROM numbers(11);
+                                      ^

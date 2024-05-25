@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayFirst(x -> 0, emptyArrayString());
+': no such function: emptyArrayString

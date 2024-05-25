@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT regexpQuoteMeta('(h{ell}o)');
+': no such function: regexpQuoteMeta

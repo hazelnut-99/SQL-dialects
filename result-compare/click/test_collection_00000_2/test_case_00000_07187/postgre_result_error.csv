@@ -1,0 +1,3 @@
+syntax error at or near "DISTINCT"
+LINE 1: SELECT repeat('a', DISTINCT) FROM (SELECT number AS DISTINCT...
+                           ^

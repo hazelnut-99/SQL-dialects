@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extracturlparameters does not exist!
+Did you mean "nextafter"?
+LINE 2:     extractURLParameters('http://big...
+            ^

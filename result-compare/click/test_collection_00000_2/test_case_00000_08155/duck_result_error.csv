@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal64 does not exist!
+Did you mean "today"?
+LINE 1: select bin(toDecimal64(1.2, 17));
+                   ^

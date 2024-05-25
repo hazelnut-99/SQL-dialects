@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ..., [4, 5, 5, 5][number-4] as value from numbers(5, 4)) UNION ALL select deltaSu...
+                                                  ^

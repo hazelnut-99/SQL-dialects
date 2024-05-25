@@ -1,0 +1,3 @@
+syntax error at or near "MATERIALIZED"
+LINE 3: CREATE TABLE nums ( n UInt64, m UInt64 MATERIALIZED n+1 ) EN...
+                                               ^

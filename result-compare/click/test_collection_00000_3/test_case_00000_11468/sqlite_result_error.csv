@@ -1,0 +1,2 @@
+Execution failed on sql 'select x'0' == b'0';
+': unrecognized token: "x'0'"

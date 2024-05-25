@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DISTINCT blockSize() FROM t;
+': no such function: blockSize

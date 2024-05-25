@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01787_00000", "type": "error", "result_detail": "syntax error at or near \"kill\"\nLINE 2: kill mutation where table = 'test_wide_nested' and database ...\n        ^\n", "error_stage": "set_up"}]

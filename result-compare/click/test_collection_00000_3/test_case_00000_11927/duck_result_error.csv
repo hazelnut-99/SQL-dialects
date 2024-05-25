@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name transform does not exist!
+Did you mean "json_transform"?
+LINE 1: SELECT transform(toDecimal32(2, 1), [toDecimal...
+               ^

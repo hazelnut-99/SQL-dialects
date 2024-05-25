@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayReduce('median', [toDecimal128OrZero('1', 2)]);
+': no such function: arrayReduce

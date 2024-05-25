@@ -1,0 +1,2 @@
+Execution failed on sql 'select jsonb '{"b": {"a": 12}}' @? 'strict $.*.b';
+': unrecognized token: "@"

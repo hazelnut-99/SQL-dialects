@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02828_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 5:     `ip4Map.value` Array(IPv4), `ip4Map.total` Array(UInt32)...\n            ^\n", "error_stage": "set_up"}]

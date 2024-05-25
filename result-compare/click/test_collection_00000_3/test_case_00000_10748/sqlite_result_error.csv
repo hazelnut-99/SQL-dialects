@@ -1,0 +1,2 @@
+Execution failed on sql 'select mortonDecode((1, 2, 3, 1), 4205569);
+': no such function: mortonDecode

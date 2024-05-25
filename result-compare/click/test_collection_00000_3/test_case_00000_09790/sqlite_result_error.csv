@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(makeDate32(1991, 8));
+': no such function: makeDate32

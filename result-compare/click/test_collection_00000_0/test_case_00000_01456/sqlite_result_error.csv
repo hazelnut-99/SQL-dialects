@@ -1,0 +1,2 @@
+Execution failed on sql 'select 6 = position('/' IN s) FROM (SELECT 'Hello/World' AS s);
+': no such table: s

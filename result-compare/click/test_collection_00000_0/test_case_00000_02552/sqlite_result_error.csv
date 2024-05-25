@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visitParamExtractRaw('{"myparam": "["}', 'myparam');
+': no such function: visitParamExtractRaw

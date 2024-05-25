@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt8(0), bitPositionsToArray(toInt8(0));
+': no such function: toInt8

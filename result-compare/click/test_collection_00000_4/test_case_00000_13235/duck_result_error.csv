@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name yyyymmddhhmmsstodatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT YYYYMMDDhhmmssToDateTime(19691231595959...
+               ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name from_days does not exist!
+Did you mean "to_days"?
+LINE 1: SELECT FROM_DAYS(1);
+               ^

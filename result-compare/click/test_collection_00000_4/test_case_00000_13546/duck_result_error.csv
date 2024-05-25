@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractnanoseconds does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractNanoseconds(materialize('2023-1...
+               ^

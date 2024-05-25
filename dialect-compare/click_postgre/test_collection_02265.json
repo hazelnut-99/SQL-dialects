@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02265_00000", "type": "error", "result_detail": "trailing junk after numeric literal at or near \"02005_\"\nLINE 1: DROP TABLE IF EXISTS 02005_test_table;\n                             ^\n", "error_stage": "set_up"}]

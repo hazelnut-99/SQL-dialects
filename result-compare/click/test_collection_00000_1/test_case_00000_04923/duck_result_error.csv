@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hop does not exist!
+Did you mean "hour"?
+LINE 1: SELECT hop(toDateTime('2020-01-09 12:00:01', '...
+               ^

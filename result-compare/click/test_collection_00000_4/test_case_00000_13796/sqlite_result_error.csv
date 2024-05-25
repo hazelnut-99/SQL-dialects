@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sqidEncode(toNullable(1), toLowCardinality(2)) AS sqid;
+': no such function: toLowCardinality

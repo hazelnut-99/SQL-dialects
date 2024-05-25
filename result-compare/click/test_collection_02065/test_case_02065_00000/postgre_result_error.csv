@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE tmp (x Int64) ENGINE = MergeTree() ORDER BY tup...
+                                   ^

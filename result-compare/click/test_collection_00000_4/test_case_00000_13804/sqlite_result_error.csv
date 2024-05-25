@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sqidDecode('invalid sqid');
+': no such function: sqidDecode

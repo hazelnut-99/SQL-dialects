@@ -1,0 +1,2 @@
+Execution failed on sql 'select parseDateTime('MAY', '%M', 'UTC') = toDateTime('2000-05-01', 'UTC');
+': no such function: toDateTime

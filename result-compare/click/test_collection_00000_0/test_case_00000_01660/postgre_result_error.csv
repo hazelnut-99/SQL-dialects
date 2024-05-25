@@ -1,0 +1,3 @@
+syntax error at or near ".2"
+LINE 1: SELECT 1+-a[1].2*2 = -245 ? 'Ok' : 'Fail' AS res FROM (SELEC...
+                      ^

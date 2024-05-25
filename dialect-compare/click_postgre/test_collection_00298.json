@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00298_00000", "type": "error", "result_detail": "syntax error at or near \"column\"\nLINE 1: ...TE TEMPORARY TABLE IF NOT EXISTS temporary_table (column UIn...\n                                                             ^\n", "error_stage": "set_up"}]

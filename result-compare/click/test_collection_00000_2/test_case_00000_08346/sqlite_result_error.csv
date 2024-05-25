@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 != all (select number from numbers(10));
+': near "all": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(YYYYMMDDhhmmssToDateTime64(19910824));
+': no such function: YYYYMMDDhhmmssToDateTime64

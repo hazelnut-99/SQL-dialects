@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByNonAlpha('It is quite a wonderful day, isn\'t it?');
+': near "t": syntax error

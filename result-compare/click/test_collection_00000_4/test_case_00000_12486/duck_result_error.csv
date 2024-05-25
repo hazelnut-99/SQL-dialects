@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name isipv6string does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT isIPv6String('1234::1234:');
+               ^

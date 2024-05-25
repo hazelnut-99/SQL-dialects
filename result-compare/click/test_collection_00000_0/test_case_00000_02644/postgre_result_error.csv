@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: SELECT * FROM (select toUInt64(1) s limit 1) js1 any right j...
+                                                         ^

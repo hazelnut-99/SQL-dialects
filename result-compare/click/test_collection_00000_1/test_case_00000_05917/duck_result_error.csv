@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name polygonareaspherical does not exist!
+Did you mean "repeat"?
+LINE 1: select round(polygonAreaSpherical([[[(4.346693, 50.8...
+                     ^

@@ -1,0 +1,3 @@
+syntax error at or near "end"
+LINE 2: CREATE TABLE runningConcurrency_test(begin Date, end Date) E...
+                                                         ^

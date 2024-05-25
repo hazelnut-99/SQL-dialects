@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT isDecimalOverflow(materialize(toDecimal32(999999999, 0)), 9),
+       isDecimalOverflow(materialize(toDecimal32(999999999, 0))),
+       isDecimalOverflow(materialize(toDecimal32(-999999999, 0)), 9),
+       isDecimalOverflow(materialize(toDecimal32(-999999999, 0)));
+': no such function: toDecimal32

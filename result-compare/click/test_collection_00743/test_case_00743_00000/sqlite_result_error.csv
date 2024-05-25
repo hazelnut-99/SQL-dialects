@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT topKWeighted(10)(toString(number), number) from numbers(3000000);
+': near "(": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt256(1), bitPositionsToArray(toInt256(1));
+': no such function: toInt256

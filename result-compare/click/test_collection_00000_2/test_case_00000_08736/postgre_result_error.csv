@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...value, number AS time, exponentialMovingAverage(1)(value, ti...
+                                                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3unidirectionaledgeisvalid does not exist!
+Did you mean "unicode"?
+LINE 1: SELECT h3UnidirectionalEdgeIsValid(12482043887...
+               ^

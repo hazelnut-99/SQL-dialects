@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitcount does not exist!
+Did you mean "bit_count"?
+LINE 1: SELECT bitCount(CAST(-1 AS Int256) - 4);
+               ^

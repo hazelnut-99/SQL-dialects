@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(not 100000000);
+': no such function: toTypeName

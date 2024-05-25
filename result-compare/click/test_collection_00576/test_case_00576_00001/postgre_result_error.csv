@@ -1,0 +1,3 @@
+syntax error at or near "Codec"
+LINE 5:     t_i8 Int8 Codec(T64, LZ4),
+                      ^

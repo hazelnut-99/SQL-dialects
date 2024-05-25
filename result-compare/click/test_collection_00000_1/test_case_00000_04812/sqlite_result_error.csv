@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT char(-48, 0xB0 + number,-47,-128,-48,-72,-48,-78,-48,-75,-47,-126) AS hello FROM numbers(16);
+': no such table: numbers

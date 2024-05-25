@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(-1 AS DateTime64(0, 'Asia/Istanbul'));
+': near "'Asia/Istanbul'": syntax error

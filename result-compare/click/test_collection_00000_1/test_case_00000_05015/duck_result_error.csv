@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3getbasecell does not exist!
+Did you mean "setseed"?
+LINE 1: SELECT h3GetBaseCell(612916788725809151);
+               ^

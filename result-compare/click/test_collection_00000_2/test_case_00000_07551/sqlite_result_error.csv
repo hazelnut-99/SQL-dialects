@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDateTimeOrDefault(cast(19 as UInt64), 'UTC');
+': no such function: toDateTimeOrDefault

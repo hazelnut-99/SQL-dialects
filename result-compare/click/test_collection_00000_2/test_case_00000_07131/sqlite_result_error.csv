@@ -1,0 +1,2 @@
+Execution failed on sql 'select accurateCast('192.0.2.1', 'IPv6');
+': no such function: accurateCast

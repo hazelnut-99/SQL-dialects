@@ -1,0 +1,3 @@
+Conversion Error: Type INT32 with value 257 can't be cast because the value is out of range for the destination type UINT8
+LINE 1: SELECT CAST(257 AS UInt8);
+               ^

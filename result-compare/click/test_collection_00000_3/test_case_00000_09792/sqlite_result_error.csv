@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(makeDate32(1991, cast(8 as Nullable(UInt64))));
+': near "UInt64": syntax error

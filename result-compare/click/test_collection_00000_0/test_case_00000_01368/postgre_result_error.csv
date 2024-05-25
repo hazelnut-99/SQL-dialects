@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select positionUTF8('' as h, lowerUTF8('' as n)) = positionC...
+                               ^

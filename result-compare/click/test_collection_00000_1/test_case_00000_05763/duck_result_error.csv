@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name randomstringutf8 does not exist!
+Did you mean "random"?
+LINE 1: SELECT randomStringUTF8(0);
+               ^

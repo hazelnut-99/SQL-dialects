@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "02815_"
+LINE 1: drop table if exists 02815_first_line_vector;
+                             ^

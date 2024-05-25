@@ -1,0 +1,2 @@
+Execution failed on sql 'select toString(x) from values ('x Nullable(String)', '42', NULL, 'test');
+': near "values": syntax error

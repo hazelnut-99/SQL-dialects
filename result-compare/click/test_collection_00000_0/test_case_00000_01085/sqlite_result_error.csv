@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visibleWidth(21.99);
+': no such function: visibleWidth

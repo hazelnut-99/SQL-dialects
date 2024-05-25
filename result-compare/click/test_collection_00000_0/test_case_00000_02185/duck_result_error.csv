@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name macstringtonum does not exist!
+Did you mean "asin"?
+LINE 1: SELECT '01:02:03:04:05:06' AS mac_str, MACStringToNum(mac_str) AS mac_num, hex...
+                                               ^

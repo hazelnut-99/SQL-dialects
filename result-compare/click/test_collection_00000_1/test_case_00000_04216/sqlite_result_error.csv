@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT substringUTF8('hello, привет', number + 1, 3) FROM numbers(16);
+': no such table: numbers

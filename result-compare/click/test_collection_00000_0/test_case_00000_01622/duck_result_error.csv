@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuple does not exist!
+Did you mean "len"?
+LINE 1: select * from (select tuple(range(1)[1]) as a union all selec...
+                              ^

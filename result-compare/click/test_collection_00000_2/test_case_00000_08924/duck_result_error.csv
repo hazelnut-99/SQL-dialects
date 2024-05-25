@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: select toDateTime(0, 'Asia/Istanbul');
+               ^

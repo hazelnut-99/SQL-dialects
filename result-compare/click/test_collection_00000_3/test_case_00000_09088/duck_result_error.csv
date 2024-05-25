@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name replaceregexpall does not exist!
+Did you mean "replace"?
+LINE 1: SELECT replaceRegexpAll('aazzqa', 'z*', '') ==...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select notEmpty(map(1,2,3,4));
+': no such function: map

@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayShiftLeft([1, 2, 3, 4, 5], 3, 7);
+': no such column: 1, 2, 3, 4, 5

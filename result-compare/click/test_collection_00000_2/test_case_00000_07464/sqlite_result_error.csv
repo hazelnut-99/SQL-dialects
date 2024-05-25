@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal64(4,4) - materialize(toDecimal32(2,2));
+': no such function: toDecimal32

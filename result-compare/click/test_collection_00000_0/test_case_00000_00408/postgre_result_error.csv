@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select URLHash('' as url, 1) = URLHash(url);
+                          ^

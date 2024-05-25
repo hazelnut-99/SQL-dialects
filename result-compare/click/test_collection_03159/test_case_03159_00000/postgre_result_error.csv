@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...EATE TABLE IF NOT EXISTS test_0 (a DateTime64(0)) engine = M...
+                                                             ^

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00814_00000", "type": "error", "result_detail": "syntax error at or near \"BY\"\nLINE 12: ...T x FROM t1 UNION ALL SELECT x FROM t1) UNION ALL BY NAME SE...\n                                                              ^\n", "error_stage": "set_up"}]

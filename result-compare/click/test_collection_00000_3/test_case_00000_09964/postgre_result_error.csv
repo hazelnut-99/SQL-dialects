@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: SELECT substring(('1234' AS lhs) FROM (2 AS rhs)), lhs, rhs;
+                                 ^

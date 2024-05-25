@@ -1,0 +1,5 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 2: FROM (SELECT arrayJoin(range(360*5)) AS lon,  arrayJoin(range(180*5)) AS lat) WHERE length(g) != 1;
+...
+                     ^

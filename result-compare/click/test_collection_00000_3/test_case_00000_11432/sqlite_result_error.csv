@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -0x1.234p01;
+': unrecognized token: ".234p01"

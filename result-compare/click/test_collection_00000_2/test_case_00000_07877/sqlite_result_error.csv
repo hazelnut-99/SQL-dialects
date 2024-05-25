@@ -1,0 +1,2 @@
+Execution failed on sql 'select Null or isNull(intDiv(number, 1)) from numbers(5);
+': near "isNull": syntax error

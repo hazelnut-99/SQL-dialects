@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tumble does not exist!
+Did you mean "len"?
+LINE 1: SELECT tumble(toDateTime('2020-01-09 12:00:01'...
+               ^

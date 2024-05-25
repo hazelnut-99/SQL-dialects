@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name mapadd does not exist!
+Did you mean "add"?
+LINE 1: SELECT mapAdd(map('Hello', 1.2::Decimal128(30)...
+               ^

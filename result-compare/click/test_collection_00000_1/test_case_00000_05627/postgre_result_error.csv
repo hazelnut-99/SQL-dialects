@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT toDecimal32OrZero(CAST(-7174046, 'String'), 6);
+                                              ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name editdistance does not exist!
+Did you mean "editdist3"?
+LINE 1: ...ECT 'clickhouse' AS s1, 'mouse' AS s2, editDistance(s1, s2);
+                                                  ^

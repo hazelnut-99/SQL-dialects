@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT positionCaseInsensitiveUTF8(materialize('сссссс'), 'Ё');
+': no such function: materialize

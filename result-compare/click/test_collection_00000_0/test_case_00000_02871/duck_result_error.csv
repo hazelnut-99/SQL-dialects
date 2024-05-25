@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name has does not exist!
+Did you mean "hash"?
+LINE 1: SELECT has(materialize([111, NULL, 222]), mate...
+               ^

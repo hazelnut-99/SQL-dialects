@@ -1,0 +1,3 @@
+syntax error at or near "UNION"
+LINE 1: ...umbers_mt(1000000) ORDER BY number DESC LIMIT 100 UNION ALL ...
+                                                             ^

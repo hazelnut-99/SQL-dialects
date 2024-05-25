@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name s2cellsintersect does not exist!
+Did you mean "list_intersect"?
+LINE 1: SELECT s2CellsIntersect(9926595209846587392, a...
+               ^

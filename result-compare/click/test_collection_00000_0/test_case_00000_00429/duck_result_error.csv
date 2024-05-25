@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint32 does not exist!
+Did you mean "atan2"?
+LINE 1: ...Bankers(500, 4) round500, roundBankers(toInt32(5), 4) roundInt5, roundBankers(...
+                                                  ^

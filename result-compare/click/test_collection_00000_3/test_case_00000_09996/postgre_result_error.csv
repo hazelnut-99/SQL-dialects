@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: SELECT dateDiff(DAY, toDate('2019-05-05') AS arg_1, toDate('...
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM view(SELECT 1);
+': near "SELECT": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name globalnotin does not exist!
+Did you mean "bin"?
+LINE 1: SELECT globalNotIn(['"wh'], [NULL]);
+               ^

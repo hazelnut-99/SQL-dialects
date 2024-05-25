@@ -1,0 +1,3 @@
+syntax error at or near "UInt64"
+LINE 4: CREATE MATERIALIZED VIEW test_view (Rows UInt64,  MaxHitTime...
+                                                 ^

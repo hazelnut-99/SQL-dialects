@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3ToParent(599405990164561919, 0);
+': no such function: h3ToParent

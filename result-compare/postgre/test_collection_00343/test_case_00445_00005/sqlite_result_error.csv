@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count(*) FROM test_tsvector WHERE a @@ '(eq|yt)&(wr|qh)';
+': unrecognized token: "@"

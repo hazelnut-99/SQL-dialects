@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 IN 0;
+': near "0": syntax error

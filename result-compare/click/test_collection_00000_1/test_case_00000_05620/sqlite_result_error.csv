@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT finalizeAggregation(countState(DISTINCT toString(number % 20))) FROM numbers_mt(100000);
+': no such table: numbers_mt

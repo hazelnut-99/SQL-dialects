@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST(1, 'Enum8(\'hello\' = 1,\n\t\'world\' = 2)');
+                     ^

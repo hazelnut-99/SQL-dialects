@@ -1,0 +1,3 @@
+Binder Error: Referenced column "inf" not found in FROM clause!
+LINE 1: select isNaN(-inf) = 0;
+                      ^

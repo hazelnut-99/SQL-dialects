@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CRC32(murmurHash3_128());
+': no such function: murmurHash3_128

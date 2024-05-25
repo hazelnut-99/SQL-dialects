@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01743_00000", "type": "error", "result_detail": "syntax error at or near \"(\"\nLINE 5:     FROM Values('id UInt64, t UInt64', (1, 3))\n                       ^\n", "error_stage": "query"}]

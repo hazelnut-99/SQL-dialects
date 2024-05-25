@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT current_time = current_time(7);
+': near "(": syntax error

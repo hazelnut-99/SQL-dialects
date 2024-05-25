@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjaccardindex does not exist!
+Did you mean "array_indexof"?
+LINE 1: ...rr1, ['a', 'aa', 'aaa'] AS arr2, round(arrayJaccardIndex(arr1, arr2), 2);
+                                                  ^

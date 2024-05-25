@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [1, 2, 3][toInt8(1)];
+': no such column: 1, 2, 3

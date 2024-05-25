@@ -1,0 +1,2 @@
+Execution failed on sql 'select initcap('yeah, well, i`m gonna go build my own theme park');
+': no such function: initcap

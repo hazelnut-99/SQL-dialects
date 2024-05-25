@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3indexesareneighbors does not exist!
+Did you mean "degrees"?
+LINE 1: SELECT h3IndexesAreNeighbors(61742038835134463...
+               ^

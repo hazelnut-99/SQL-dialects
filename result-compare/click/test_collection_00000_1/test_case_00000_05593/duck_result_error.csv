@@ -1,0 +1,14 @@
+Binder Error: No function matches the given name and argument types 'greatest(NULL[][][], NULL[][][], NULL[][][])'. You might need to add explicit type casts.
+	Candidate functions:
+	greatest(BIGINT, [BIGINT...]) -> BIGINT
+	greatest(HUGEINT, [HUGEINT...]) -> HUGEINT
+	greatest(DOUBLE, [DOUBLE...]) -> DOUBLE
+	greatest(VARCHAR, [VARCHAR...]) -> VARCHAR
+	greatest(TIMESTAMP, [TIMESTAMP...]) -> TIMESTAMP
+	greatest(TIME, [TIME...]) -> TIME
+	greatest(DATE, [DATE...]) -> DATE
+	greatest(TIMESTAMP WITH TIME ZONE, [TIMESTAMP WITH TIME ZONE...]) -> TIMESTAMP WITH TIME ZONE
+	greatest(TIME WITH TIME ZONE, [TIME WITH TIME ZONE...]) -> TIME WITH TIME ZONE
+
+LINE 1: SELECT greatest([[[], []]], [[[]]], [[[]], [[]...
+               ^

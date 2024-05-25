@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table tesd_dedupl (x UInt32, y UInt32) engine = Merge...
+                                                      ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name inet6_ntoa does not exist!
+Did you mean "bit_or"?
+LINE 1: SELECT INET6_NTOA(toFixedString(unhex('2A0206B...
+               ^

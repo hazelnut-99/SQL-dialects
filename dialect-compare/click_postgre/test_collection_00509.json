@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00509_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 7: CREATE TABLE join_any_inner (s String, x Array(UInt8), k UIn...\n                                                 ^\n", "error_stage": "set_up"}]

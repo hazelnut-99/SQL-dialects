@@ -1,0 +1,3 @@
+syntax error at or near "not"
+LINE 1: create database if not exists shard_0;
+                           ^

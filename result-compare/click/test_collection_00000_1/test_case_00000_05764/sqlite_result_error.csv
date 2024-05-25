@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT varSamp(0.1) FROM numbers(1000000);
+': no such table: numbers

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(false);
+': no such function: toTypeName

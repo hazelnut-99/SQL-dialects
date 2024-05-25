@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 1: select count() from view(select 1 union all (select 2 union ...
+                                 ^

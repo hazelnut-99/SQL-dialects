@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatches(toFixedString('foobarfoo', 9), 'foo');
+': no such function: toFixedString

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtractBool('"HX-=');
+': no such function: JSONExtractBool

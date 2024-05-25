@@ -1,0 +1,3 @@
+LowCardinality(UInt64),LowCardinality(UInt64),LowCardinality(String),LowCardinality(String)
+LowCardinality(UInt64),LowCardinality(UInt64),LowCardinality(String),LowCardinality(String)
+LowCardinality(UInt64),LowCardinality(UInt64),LowCardinality(String),LowCardinality(String)

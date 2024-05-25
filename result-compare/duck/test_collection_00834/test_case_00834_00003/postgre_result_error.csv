@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 72: ...l AS SELECT NULL l FROM range(3) UNION ALL SELECT [i] l FROM...
+                                                              ^

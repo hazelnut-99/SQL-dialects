@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT current_schemas(false) AS result;
+': no such function: current_schemas

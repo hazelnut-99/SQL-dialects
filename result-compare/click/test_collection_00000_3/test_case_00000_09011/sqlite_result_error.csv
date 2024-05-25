@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '5935,5998,6014' == trim(BOTH ', ' FROM '5935,5998,6014, ') x;
+': near "', '": syntax error

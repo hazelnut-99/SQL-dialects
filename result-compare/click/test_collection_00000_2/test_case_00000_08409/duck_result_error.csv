@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tupledividebynumber does not exist!
+Did you mean "divide"?
+LINE 1: SELECT tupleDivideByNumber(tuple(1), materiali...
+               ^

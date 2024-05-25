@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 4:     foo Array(LowCardinality(String)),
+                ^

@@ -1,0 +1,3 @@
+syntax error at or near "0"
+LINE 1: ...LECT toDateTime('2017-01-01 00:00:00') - INTERVAL 0 MONTH AS...
+                                                             ^

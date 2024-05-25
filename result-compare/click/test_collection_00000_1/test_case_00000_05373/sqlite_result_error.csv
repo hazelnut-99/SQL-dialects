@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT countSubstringsCaseInsensitiveUTF8(materialize('ссссссссссссссссссс'), 'ёЁёЁёЁёЁёЁ');
+': no such function: materialize

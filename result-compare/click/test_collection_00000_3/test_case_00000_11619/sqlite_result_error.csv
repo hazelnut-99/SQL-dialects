@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1670853969::DateTime64(3, 'UTC');
+': unrecognized token: ":"

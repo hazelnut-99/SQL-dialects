@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT unhex('303132'), UNHEX('4D7953514C');
+': no such function: unhex

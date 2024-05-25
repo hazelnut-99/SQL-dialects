@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT histogram(10)(-2);
+': near "(": syntax error

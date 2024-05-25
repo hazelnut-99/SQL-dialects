@@ -1,0 +1,2 @@
+Execution failed on sql 'select CAST(toLowCardinality(val) as UInt64) from (select arrayJoin(['1']) as val);
+': no such column: '1'

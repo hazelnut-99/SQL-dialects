@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [toNullable(1)] AS x, x[materialize(toNullable(1))] A...
+               ^

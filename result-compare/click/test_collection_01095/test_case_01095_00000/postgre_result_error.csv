@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 3: ... dict_db_01254.dict_data (key UInt64, val UInt64) Engine=Mem...
+                                                             ^

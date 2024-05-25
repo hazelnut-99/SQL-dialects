@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractdays does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractDays('2023-10-22', materialize(...
+               ^

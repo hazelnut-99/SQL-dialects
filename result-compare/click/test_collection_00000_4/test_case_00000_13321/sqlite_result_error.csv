@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT YYYYMMDDToDate32(toDecimal64(19000101.1, 5));
+': no such function: toDecimal64

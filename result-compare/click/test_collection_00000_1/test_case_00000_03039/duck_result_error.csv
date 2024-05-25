@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tofloat64 does not exist!
+Did you mean "format"?
+LINE 1: SELECT toFloat64(999999999)   as x, toDecimal3...
+               ^

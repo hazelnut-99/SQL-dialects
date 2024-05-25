@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT EXTRACT('Hello, world', '^\w+');
+': no such function: EXTRACT

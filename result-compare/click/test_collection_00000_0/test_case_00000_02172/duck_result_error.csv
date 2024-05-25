@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touuid does not exist!
+Did you mean "uuid"?
+LINE 1: ...cb3-11e7-907b-a6006ad3dba2'         <= toUUID('61f0c404-5cb3-11e7-907b-a6006ad...
+                                                  ^

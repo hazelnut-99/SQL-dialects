@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select arrayConcat([1, 2], [-1, -2], [0.3, 0.7], [Null]);
+                           ^

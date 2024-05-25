@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...TE TABLE tab (id Int64, dflt Int64 DEFAULT 54321) ENGINE Mer...
+                                                             ^

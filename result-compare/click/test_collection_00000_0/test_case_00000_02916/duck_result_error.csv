@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraydistinct does not exist!
+Did you mean "array_distinct"?
+LINE 1: SELECT arrayDistinct(['1212', 'sef', '343r4', ...
+               ^

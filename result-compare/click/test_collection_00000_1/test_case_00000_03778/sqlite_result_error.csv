@@ -1,0 +1,2 @@
+Execution failed on sql 'select hiveHash('abc');
+': no such function: hiveHash

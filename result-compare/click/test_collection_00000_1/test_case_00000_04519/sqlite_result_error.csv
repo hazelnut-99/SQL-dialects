@@ -1,0 +1,2 @@
+Execution failed on sql 'select currentUser() = user(), currentUser() = USER(), current_user() = currentUser();
+': no such function: user

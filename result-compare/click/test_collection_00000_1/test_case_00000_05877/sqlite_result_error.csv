@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT SVG([(0., 0.), (10, 0), (10, 10), (0, 10)]);
+': no such column: (0., 0.), (10, 0), (10, 10), (0, 10)

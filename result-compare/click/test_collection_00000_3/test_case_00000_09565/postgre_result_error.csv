@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: SELECT n, any(source), sum(inter) AS inter_s FROM (
+                  ^

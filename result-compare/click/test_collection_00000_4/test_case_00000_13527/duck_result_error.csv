@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addweeks does not exist!
+Did you mean "week"?
+LINE 1: SELECT addWeeks(materialize('2023-10-22'), mat...
+               ^

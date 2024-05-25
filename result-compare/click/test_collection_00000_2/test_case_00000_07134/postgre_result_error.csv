@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: SELECT 'Array min ', (arrayMin(array(1,2,3,4,5,6)));
+                                             ^

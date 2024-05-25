@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT moduloLegacy(199, 200);
+': no such function: moduloLegacy

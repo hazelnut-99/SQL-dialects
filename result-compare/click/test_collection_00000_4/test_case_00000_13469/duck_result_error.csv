@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractmilliseconds does not exist!
+Did you mean "millisecond"?
+LINE 1: SELECT subtractMilliseconds('2023-10-22', 1), ...
+               ^

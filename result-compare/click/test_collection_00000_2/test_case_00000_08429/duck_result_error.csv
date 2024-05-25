@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name lpnorm does not exist!
+Did you mean "ln"?
+LINE 1: SELECT LpNorm((13, -84.4, 91, 63.1), 2) = L2No...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number DIV -number FROM numbers(1, 10);
+': near "-": syntax error

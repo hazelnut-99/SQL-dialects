@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...CT sum(if(number % 2 == 0, 1, 0)) FROM numbers(100);
+                                                  ^

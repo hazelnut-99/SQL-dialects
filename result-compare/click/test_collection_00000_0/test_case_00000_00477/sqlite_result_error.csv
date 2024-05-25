@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize(toDate('2015-02-03')) = '2015-02-03';
+': no such function: toDate

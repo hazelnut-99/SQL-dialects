@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint8 does not exist!
+Did you mean "bin"?
+LINE 1: SELECT  least(toInt8(127), toInt256(0)) x, least(toIn...
+                      ^

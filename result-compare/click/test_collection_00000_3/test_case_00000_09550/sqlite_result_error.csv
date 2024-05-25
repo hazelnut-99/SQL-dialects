@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT s2CapContains(1157339245694594829, toFloat64(1), arrayJoin([1157347770437378819,1157347770437378389]));
+': no such function: s2CapContains

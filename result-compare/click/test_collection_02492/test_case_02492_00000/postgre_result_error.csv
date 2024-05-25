@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table test_02377 (n UInt32, s String) engine=File(CSV...
+                                                     ^

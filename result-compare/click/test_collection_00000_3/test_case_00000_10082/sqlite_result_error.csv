@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3GetDestinationIndexFromUnidirectionalEdge(1248204388774707197);
+': no such function: h3GetDestinationIndexFromUnidirectionalEdge

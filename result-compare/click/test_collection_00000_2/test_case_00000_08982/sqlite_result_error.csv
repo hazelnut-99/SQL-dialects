@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT initializeAggregation('uniqExactState', toNullable(123)) = arrayReduce('uniqExactState', [toNullable(123)]);
+': no such function: arrayReduce

@@ -1,0 +1,2 @@
+Execution failed on sql 'select upperUTF8('AAAAAAAAAAAAAAA012345789,.!AAAA' as str) = str;
+': near "as": syntax error

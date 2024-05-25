@@ -1,0 +1,6 @@
+Execution failed on sql 'SELECT $$
+value1
+value2
+value3
+$$;
+': near "value2": syntax error

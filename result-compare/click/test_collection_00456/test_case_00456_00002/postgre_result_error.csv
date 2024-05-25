@@ -1,0 +1,3 @@
+syntax error at or near "ANY"
+LINE 7: ...ed_view_00740 AS SELECT *, N AS x FROM test_00740 ANY LEFT J...
+                                                             ^

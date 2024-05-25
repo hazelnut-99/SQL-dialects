@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT dateDiff('microseconds', toDateTime('2017-12-31', 'UTC'), toDate...
+                                        ^

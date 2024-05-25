@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByRegexp('\\d+', 'a12bc23de345f', 4);
+': no such function: splitByRegexp

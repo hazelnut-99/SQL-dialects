@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayProduct([1,2,3,4,5,6]) as a, toTypeName(a);
+': no such column: 1,2,3,4,5,6

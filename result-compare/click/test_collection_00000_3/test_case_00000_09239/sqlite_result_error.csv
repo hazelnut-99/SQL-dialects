@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATE_ADD(YEAR, 1, DATE '2022-01-01');
+': near "'2022-01-01'": syntax error

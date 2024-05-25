@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractTextFromHTML('<![CDATA[<sender>John <![CDATA[Smith</sender>]]>');
+': no such function: extractTextFromHTML

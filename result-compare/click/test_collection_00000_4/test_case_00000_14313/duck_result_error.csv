@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tupleintdivorzerobynumber does not exist!
+Did you mean "entropy"?
+LINE 1: SELECT tupleIntDivOrZeroByNumber((15, 10, 5), ...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT multiIf(NULL, 65536 :: UInt32, 3 :: Int32);
+': unrecognized token: ":"

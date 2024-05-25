@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayshuffle does not exist!
+Did you mean "array_slice"?
+LINE 1: SELECT arrayShuffle([9223372036854775808]);
+               ^

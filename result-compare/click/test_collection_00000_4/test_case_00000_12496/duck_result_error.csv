@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimalstring does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT toDecimalString(-32.345::Decimal32(3), ...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequenceCaseInsensitiveUTF8(materialize('для онлайн обработки аналитических запросов (OLAP)'), materialize('аналитика для аналитиков'));
+': no such function: materialize

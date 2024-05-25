@@ -1,0 +1,11 @@
+123.4,number
+-1,number
+foo,string
+True,boolean
+False,boolean
+,null
+"[1, 2, 3]",array
+[],array
+"{'x': 'foo', 'y': 123}",object
+{},object
+,

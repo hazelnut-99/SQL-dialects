@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDate('2019^7^8');
+': no such function: toDate

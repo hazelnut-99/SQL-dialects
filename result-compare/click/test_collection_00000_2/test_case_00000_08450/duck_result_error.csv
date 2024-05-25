@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name norml1 does not exist!
+Did you mean "now"?
+LINE 1: SELECT normL1((1, 1)), normL2((1, 1)), normLin...
+               ^

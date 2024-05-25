@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT materialize([2, 1, 3]) AS arr, arraySort(arr), arrayR...
+                           ^

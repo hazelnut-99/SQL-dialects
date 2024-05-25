@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 8:     d2 WITH FILL, 
+               ^

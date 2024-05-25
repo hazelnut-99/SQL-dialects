@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (5,4) % 2;
+': row value misused

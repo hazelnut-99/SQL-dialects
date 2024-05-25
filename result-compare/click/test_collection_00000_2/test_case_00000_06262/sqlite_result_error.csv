@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'abc\n\ntdef' ILIKE '%abc%deF%';
+': near "'%abc%deF%'": syntax error

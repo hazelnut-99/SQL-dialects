@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTimeZone(CAST(1 AS TIMESTAMP), 'UTC');
+': no such function: toTimeZone

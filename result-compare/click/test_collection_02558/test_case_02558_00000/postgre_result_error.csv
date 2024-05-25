@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 15:     `ss_sold_date_sk` Nullable(Int64),
+             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT quantiles(0.5)(inf) FROM numbers(300);
+': near "(": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATEDIFF(YEAR, DATE '2021-01-01', DATE '2022-01-01');
+': near "'2021-01-01'": syntax error

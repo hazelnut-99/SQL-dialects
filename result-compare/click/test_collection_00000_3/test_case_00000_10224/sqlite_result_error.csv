@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT base58Encode(val) FROM (select arrayJoin(['', 'f', 'fo', 'foo', 'foob', 'fooba', 'foobar']) val);
+': no such column: '', 'f', 'fo', 'foo', 'foob', 'fooba', 'foobar'

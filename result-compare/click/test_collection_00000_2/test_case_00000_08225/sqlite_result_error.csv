@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT rightPad('abc', 10, '*'), rightPad('abc', 10::Int32, '*');
+': unrecognized token: ":"

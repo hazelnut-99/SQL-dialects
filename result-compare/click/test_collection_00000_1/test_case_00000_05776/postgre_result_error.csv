@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select maxMap([1], [toInt32(number) - 50]) from numbers(1, 1...
+                      ^

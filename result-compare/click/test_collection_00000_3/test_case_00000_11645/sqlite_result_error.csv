@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayPartialShuffle([], 0, 0xbad_cafe);
+': near "_cafe": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractquarters does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractQuarters('2023-10-22', material...
+               ^

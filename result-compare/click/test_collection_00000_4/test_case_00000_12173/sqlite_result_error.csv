@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATE_FORMAT(toDateTime('2018-01-02 22:33:44'), '%F'), DATE_FORMAT(toDate32('2018-01-02'), '%F');
+': no such function: toDateTime

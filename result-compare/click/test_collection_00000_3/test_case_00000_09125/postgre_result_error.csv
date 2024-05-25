@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST(CAST(toUInt32(2), 'Bool'), 'UInt8');
+                                    ^

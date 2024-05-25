@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint8 does not exist!
+Did you mean "bin"?
+LINE 1: ...-1, 9007199254740992.000000000 >= -1 , toInt8(-1) = 9007199254740992.000000000...
+                                                  ^

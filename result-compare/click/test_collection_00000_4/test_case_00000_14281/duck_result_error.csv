@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name getsetting does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT 'async_insert' AS name, getSetting(name) AS value, toTypeName(v...
+                                       ^

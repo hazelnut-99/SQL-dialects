@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT CAST([('abc', 22), ('def', 33)], 'Map(String, UInt8)'...
+                    ^

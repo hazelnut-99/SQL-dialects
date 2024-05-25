@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arraySort((x, y) -> y, ['hello', 'world'], [2, 1]);
+                                      ^

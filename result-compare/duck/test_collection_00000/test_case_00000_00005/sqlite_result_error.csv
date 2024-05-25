@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT SETSEED(0.867309);
+': no such function: SETSEED

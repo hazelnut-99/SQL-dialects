@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: with (select number from numbers(10) intersect select 5) as ...
+             ^

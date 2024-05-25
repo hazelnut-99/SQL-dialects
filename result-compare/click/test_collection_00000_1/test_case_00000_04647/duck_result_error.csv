@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ngramsimhashutf8 does not exist!
+Did you mean "gamma"?
+LINE 1: SELECT ngramSimHashUTF8('what a cute cat.');
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 1: ...TE TEMPORARY TABLE hits (date Date, data Float64) engine=Mem...
+                                                             ^

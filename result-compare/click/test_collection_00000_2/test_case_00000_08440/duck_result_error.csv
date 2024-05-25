@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name l2normalize does not exist!
+Did you mean "nfc_normalize"?
+LINE 1: SELECT L2Normalize((3, 4));
+               ^

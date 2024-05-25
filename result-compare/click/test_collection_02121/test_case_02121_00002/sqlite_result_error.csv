@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'The results of query: SELECT id, mapExtractKeyLike(map, \'P1%\') FROM map_extractKeyLike_test ORDER BY id;';
+': near "%": syntax error

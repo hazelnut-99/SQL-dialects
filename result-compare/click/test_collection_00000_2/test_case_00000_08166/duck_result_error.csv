@@ -1,0 +1,10 @@
+Binder Error: No function matches the given name and argument types 'bin(BLOB)'. You might need to add explicit type casts.
+	Candidate functions:
+	bin(VARCHAR) -> VARCHAR
+	bin(UBIGINT) -> VARCHAR
+	bin(BIGINT) -> VARCHAR
+	bin(HUGEINT) -> VARCHAR
+	bin(UHUGEINT) -> VARCHAR
+
+LINE 1: select bin(unbin('')) == '';
+               ^

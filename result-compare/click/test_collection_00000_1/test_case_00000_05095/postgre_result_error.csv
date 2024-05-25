@@ -1,0 +1,3 @@
+syntax error at or near "UTC"
+LINE 3: FROM generateRandom('dt64 DateTime64(3, \'UTC\'), dts64 Date...
+                                                  ^

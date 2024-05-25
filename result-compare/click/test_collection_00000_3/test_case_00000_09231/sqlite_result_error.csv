@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TRIM(BOTH 'af' FROM 'abcdef');
+': near "'af'": syntax error

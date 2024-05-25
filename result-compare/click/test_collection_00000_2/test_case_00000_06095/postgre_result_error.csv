@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [toDateTime64('2000-01-01 01:01:01.123', 3), toDateTi...
+               ^

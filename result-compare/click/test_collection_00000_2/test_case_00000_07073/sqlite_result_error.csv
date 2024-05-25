@@ -1,0 +1,2 @@
+Execution failed on sql 'select toUnixTimestamp(makeDate(2023, 5, 10), 'Pacific/Auckland');
+': no such function: makeDate

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todate32 does not exist!
+Did you mean "today"?
+LINE 1: select 'year', date_diff('year', toDate32('1969-12-25'), toDate32('1970-...
+                                         ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hasTokenCaseInsensitiveOrNull('', '');
+': no such function: hasTokenCaseInsensitiveOrNull

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totypename does not exist!
+Did you mean "dayname"?
+LINE 1: ...2-03 12:01:02' AS DATETIME) AS result, toTypeName(result) AS native_type;
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ignore(now() + INTERVAL 9223372036854775807 MONTH);
+': near "9223372036854775807": syntax error

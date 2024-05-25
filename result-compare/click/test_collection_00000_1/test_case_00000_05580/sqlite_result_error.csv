@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT greatest('hello', 'world', 'z');
+': no such function: greatest

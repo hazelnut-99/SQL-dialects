@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3kring does not exist!
+Did you mean "bin"?
+LINE 1: SELECT h3kRing(581276613233082367, 0);
+               ^

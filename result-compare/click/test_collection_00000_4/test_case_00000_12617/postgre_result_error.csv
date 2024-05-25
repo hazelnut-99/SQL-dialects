@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 7:         CAST(NULL, 'Nullable(UInt32)') AS id,
+                         ^

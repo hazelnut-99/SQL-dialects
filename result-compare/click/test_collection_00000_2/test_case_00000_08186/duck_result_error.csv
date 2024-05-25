@@ -1,0 +1,1 @@
+Invalid Input Error: Invalid map argument(s). Valid map arguments are a list of key-value pairs (MAP {'key1': 'val1', ...}), two lists (MAP ([1, 2], [10, 11])), or no arguments.

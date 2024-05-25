@@ -1,0 +1,2 @@
+Execution failed on sql 'select IPv6StringToNum(CAST(NULL, 'Nullable(String)'));
+': near ",": syntax error

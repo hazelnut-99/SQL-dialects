@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT uniq(number >= 5 ? number : NULL) FROM numbers(10);
+': near "?": syntax error

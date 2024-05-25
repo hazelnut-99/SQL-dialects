@@ -1,0 +1,2 @@
+Execution failed on sql 'select unhex('34') || ' key="v" ' as haystack, length(haystack), extract( haystack, 'key="(.*?)"') as needle;
+': no such function: unhex

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totime does not exist!
+Did you mean "strftime"?
+LINE 1: select toTime(toDateTime(0, 'America/Los_Angel...
+               ^

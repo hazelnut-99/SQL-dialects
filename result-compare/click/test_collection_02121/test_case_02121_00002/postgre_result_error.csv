@@ -1,0 +1,3 @@
+syntax error at or near "%"
+LINE 1: ...s of query: SELECT id, mapExtractKeyLike(map, \'P1%\') FROM ...
+                                                             ^

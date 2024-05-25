@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractAllGroupsHorizontal('@#$%^&*', '(\w*)');
+': no such function: extractAllGroupsHorizontal

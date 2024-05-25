@@ -1,0 +1,3 @@
+syntax error at or near "Int64"
+LINE 1: CREATE TABLE null_02902 (t Tuple(num Int64, str String)) ENG...
+                                             ^

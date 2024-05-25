@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubstr([1], [Null]);
+': no such column: 1

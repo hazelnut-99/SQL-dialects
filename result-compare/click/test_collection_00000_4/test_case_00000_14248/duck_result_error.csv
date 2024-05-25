@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT toDateTime('2024-04-25 01:02:03');
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "or"
+LINE 1: ...'c' as c, 'd' as d, 'e' as e, 'f' as f) as t2 on (or(t1.d = ...
+                                                             ^

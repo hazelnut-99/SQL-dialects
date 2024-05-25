@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(encrypt('aes-128-cbc', 'text', 'keykeykeykeykeyk', ''));
+': no such function: encrypt

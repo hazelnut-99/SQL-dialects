@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ([materialize(1),materialize(2),materialize(3)]-[1,2,3]);
+': no such column: materialize(1),materialize(2),materialize(3)

@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from (select count(*) over (rows unbounded preceding) c from numbers(3)) where c > 0;
+': no such table: numbers

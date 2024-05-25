@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 2: FROM values('x String', '01HQ3KJJKHRWP357YVYBX32WHY', '01HQ3...
+                   ^

@@ -9,6 +9,8 @@ they are downloaded from:
 
 ### Compiled Test Cases
 The directory structure for the compiled test cases is as follows:
+1. Test cases are organized into *test collections*, each *test collection* consists of multiple *test cases*.
+2. All *test cases* inside a *test collection* has the same *db.sql* file as set-up statements, each *test case* consists of one *test.sql* file and one *result.csv* file
 
 
 ### Dialect Comparison

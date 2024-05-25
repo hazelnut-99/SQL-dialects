@@ -1,3 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 14 (''{"b": {"a": 12}}'') (line 1, col 14): '{"b": {"a": 12}}' @? '$.*.a'
- FORMAT Native. Expected one of: token, Dot, OR, AND, IS NOT DISTINCT FROM, IS NULL, IS NOT NULL, BETWEEN, NOT BETWEEN, LIKE, ILIKE, NOT LIKE, NOT ILIKE, REGEXP, IN, NOT IN, GLOBAL IN, GLOBAL NOT IN, MOD, DIV, alias, AS, identifier, Comma, FROM, PREWHERE, WHERE, GROUP BY, WITH, HAVING, WINDOW, ORDER BY, LIMIT, OFFSET, FETCH, SETTINGS, UNION, EXCEPT, INTERSECT, INTO OUTFILE, FORMAT, end of query. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

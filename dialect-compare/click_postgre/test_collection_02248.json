@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02248_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...ABLE t_async_insert_02193_1 (id UInt32, s String) ENGINE = M...\n                                                             ^\n", "error_stage": "set_up"}]

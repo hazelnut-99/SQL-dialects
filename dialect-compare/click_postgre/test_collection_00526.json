@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00526_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 5:     Arr Array(Int8),\n                ^\n", "error_stage": "set_up"}]

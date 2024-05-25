@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00644_00000", "type": "error", "result_detail": "type \"tinyint\" does not exist\nLINE 3: CREATE TABLE test2 (a INTEGER, b TINYINT);\n                                         ^\n", "error_stage": "set_up"}]

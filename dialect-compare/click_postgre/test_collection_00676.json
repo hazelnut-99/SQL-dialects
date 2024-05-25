@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00676_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: CREATE TABLE ipv6_range(ip IPv6, cidr UInt8) ENGINE = Memory...\n                                                     ^\n", "error_stage": "set_up"}]

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00420_00000", "type": "error", "result_detail": "syntax error at or near \"a\"\nLINE 2: ...e table prewhere_alias (a Int32, b Int32, c alias a + b) eng...\n                                                             ^\n", "error_stage": "set_up"}]

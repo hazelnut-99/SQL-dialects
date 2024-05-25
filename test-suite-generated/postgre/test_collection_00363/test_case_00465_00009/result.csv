@@ -75,7 +75,7 @@
   </xsd:sequence>
 </xsd:complexType>
 
-<xsd:simpleType name=""Domain.my_database.public.testxmldomain"">
+<xsd:simpleType name=""Domain.test_collection_00363_postgre_postgre.public.testxmldomain"">
   <xsd:restriction base=""VARCHAR""/>
 </xsd:simpleType>
 
@@ -83,12 +83,12 @@
   <xsd:restriction base=""xsd:boolean""></xsd:restriction>
 </xsd:simpleType>
 
-<xsd:simpleType name=""UDT.my_database.pg_catalog.bytea"">
+<xsd:simpleType name=""UDT.test_collection_00363_postgre_postgre.pg_catalog.bytea"">
   <xsd:restriction base=""xsd:base64Binary"">
   </xsd:restriction>
 </xsd:simpleType>
 
-<xsd:complexType name=""RowType.my_database.testxmlschema.test2"">
+<xsd:complexType name=""RowType.test_collection_00363_postgre_postgre.testxmlschema.test2"">
   <xsd:sequence>
     <xsd:element name=""z"" type=""INTEGER"" minOccurs=""0""></xsd:element>
     <xsd:element name=""y"" type=""VARCHAR"" minOccurs=""0""></xsd:element>
@@ -103,18 +103,18 @@
     <xsd:element name=""rtz"" type=""TIMESTAMP_WTZ"" minOccurs=""0""></xsd:element>
     <xsd:element name=""q"" type=""DATE"" minOccurs=""0""></xsd:element>
     <xsd:element name=""p"" type=""XML"" minOccurs=""0""></xsd:element>
-    <xsd:element name=""o"" type=""Domain.my_database.public.testxmldomain"" minOccurs=""0""></xsd:element>
+    <xsd:element name=""o"" type=""Domain.test_collection_00363_postgre_postgre.public.testxmldomain"" minOccurs=""0""></xsd:element>
     <xsd:element name=""n"" type=""BOOLEAN"" minOccurs=""0""></xsd:element>
-    <xsd:element name=""m"" type=""UDT.my_database.pg_catalog.bytea"" minOccurs=""0""></xsd:element>
+    <xsd:element name=""m"" type=""UDT.test_collection_00363_postgre_postgre.pg_catalog.bytea"" minOccurs=""0""></xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
-<xsd:complexType name=""TableType.my_database.testxmlschema.test2"">
+<xsd:complexType name=""TableType.test_collection_00363_postgre_postgre.testxmlschema.test2"">
   <xsd:sequence>
-    <xsd:element name=""row"" type=""RowType.my_database.testxmlschema.test2"" minOccurs=""0"" maxOccurs=""unbounded""/>
+    <xsd:element name=""row"" type=""RowType.test_collection_00363_postgre_postgre.testxmlschema.test2"" minOccurs=""0"" maxOccurs=""unbounded""/>
   </xsd:sequence>
 </xsd:complexType>
 
-<xsd:element name=""test2"" type=""TableType.my_database.testxmlschema.test2""/>
+<xsd:element name=""test2"" type=""TableType.test_collection_00363_postgre_postgre.testxmlschema.test2""/>
 
 </xsd:schema>"

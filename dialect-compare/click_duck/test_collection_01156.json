@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01156_00001", "type": "same"}, {"test_case": "test_case_01156_00000", "type": "error", "result_detail": "Binder Error: Cannot compare values of type INTERVAL and type INTEGER_LITERAL - an explicit cast is required\nLINE 1: SELECT max(t) - min(t) >= 1 FROM times;\n                               ^", "error_stage": "query"}]

@@ -1,4 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 173 ('VALUES') (line 4, col 9): VALUES (0), (1), (17), (42), (550273), (207112489)) x(v)
-WHERE  hashfloat8(v)::bit(32) != hashfloat8extended(v, 0)::bit(32)
-       OR hashfloat8(v)::bit(32) = h. Expected one of: SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, EXPLAIN, EXPLAIN. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

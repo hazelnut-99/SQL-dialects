@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02908_00000", "type": "error", "result_detail": "syntax error at or near \"SELECT\"\nLINE 2: ...rojections_lwd (a UInt32, b UInt32, PROJECTION p (SELECT * O...\n                                                             ^\n", "error_stage": "set_up"}]

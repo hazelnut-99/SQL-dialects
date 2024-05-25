@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01647_00000", "type": "error", "result_detail": "syntax error at or near \"Codec\"\nLINE 2: CREATE TABLE encryption_test (i Int, s String Codec(AES_128_...\n                                                      ^\n", "error_stage": "set_up"}]

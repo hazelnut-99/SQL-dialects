@@ -1,1 +1,0 @@
-[{"test_case": "test_case_05306_00000", "type": "error", "result_detail": ":HTTPDriver for http://localhost:18123 returned response code 404)\n Code: 50. DB::Exception: Unknown data type family: null. (UNKNOWN_TYPE) (version 24.4.1.2088 (official build))\n", "error_stage": "set_up"}]

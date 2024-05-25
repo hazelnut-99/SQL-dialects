@@ -1,1 +1,0 @@
-[{"test_case": "test_case_07699_00000", "type": "error", "result_detail": "syntax error at or near \"or\"\nLINE 3: insert or replace into tbl(a,b,c) values (5,2,20), (10,1,30)...\n               ^\n", "error_stage": "set_up"}]

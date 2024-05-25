@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02883_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 3: ...TE TABLE t0 (vkey UInt32, pkey UInt32, c0 UInt32) engine = T...\n                                                             ^\n", "error_stage": "set_up"}]

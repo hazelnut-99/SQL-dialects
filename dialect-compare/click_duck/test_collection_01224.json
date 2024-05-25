@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01224_00000", "type": "error", "result_detail": "Catalog Error: Table Function with name numbers_mt does not exist!\nDid you mean \"unnest\"?\nLINE 2: ...reate view table_01356_view_threads as select number % 10 as g, sum(number) as s from numbers_mt(1000000) group by g;\n                                                  ^", "error_stage": "set_up"}]

@@ -1,1 +1,0 @@
-Error HTTPSConnectionPool(host='ht57uux4i3.eu-west-2.aws.clickhouse.cloud', port=8443): Read timed out. (read timeout=300) executing HTTP request attempt 1 https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01451_00000", "type": "error", "result_detail": "Catalog Error: Scalar Function with name errorcodetoname does not exist!\nDid you mean \"error\"?\nLINE 2: SELECT errorCodeToName(0);\n               ^", "error_stage": "set_up"}]

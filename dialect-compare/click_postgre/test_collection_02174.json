@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02174_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: CREATE TABLE nested_test (x UInt32, `nest.col1` Array(String...\n                                            ^\n", "error_stage": "set_up"}]

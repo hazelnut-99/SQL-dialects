@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02252_00000", "type": "error", "result_detail": "syntax error at or near \"EPHEMERAL\"\nLINE 2: ...t_ephemeral_02205_1 (x UInt32 DEFAULT y, y UInt32 EPHEMERAL ...\n                                                             ^\n", "error_stage": "set_up"}]

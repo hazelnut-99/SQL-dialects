@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02795_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 4: CREATE TABLE t1 (`1a` Nullable(Int64), `2b` Nullable(String)...\n                         ^\n", "error_stage": "set_up"}]

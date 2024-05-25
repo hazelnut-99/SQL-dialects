@@ -1,2 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
- Code: 81. DB::Exception: Database test_collection_00000_click_postgre does not exist. Maybe you meant test_collection_00001_click_sqlite?. (UNKNOWN_DATABASE) (version 24.2.2.16233 (official build))

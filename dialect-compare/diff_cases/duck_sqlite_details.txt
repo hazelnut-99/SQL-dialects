@@ -1,9 +1,0 @@
-=============test_case_00663_00000 from duck
-duck result: [(0, 5.0885), (1, 223.88), (2, 359.1082), (4, 949.4105)]
-sqlite result: [(0, 5.0), (1, 224.0), (2, 359.0), (4, 949.0)]
-=============test_case_07681_00000 from duck
-duck result: [(30,), (10,)]
-sqlite result: [(20,), (30,)]
-=============test_case_07682_00000 from duck
-duck result: [(30,), (10,)]
-sqlite result: [(20,), (30,)]

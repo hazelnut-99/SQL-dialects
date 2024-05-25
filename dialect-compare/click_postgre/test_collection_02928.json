@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02928_00000", "type": "error", "result_detail": "syntax error at or near \"{\"\nLINE 2: with {param_test_val:UInt8} as param_test_val\n             ^\n", "error_stage": "set_up"}]

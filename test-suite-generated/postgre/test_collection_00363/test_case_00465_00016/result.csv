@@ -8,7 +8,7 @@
   </xsd:restriction>
 </xsd:simpleType>
 
-<xsd:simpleType name=""UDT.my_database.pg_catalog.text"">
+<xsd:simpleType name=""UDT.test_collection_00363_postgre_postgre.pg_catalog.text"">
   <xsd:restriction base=""xsd:string"">
   </xsd:restriction>
 </xsd:simpleType>
@@ -16,7 +16,7 @@
 <xsd:complexType name=""RowType"">
   <xsd:sequence>
     <xsd:element name=""a"" type=""INTEGER"" nillable=""true""></xsd:element>
-    <xsd:element name=""b"" type=""UDT.my_database.pg_catalog.text"" nillable=""true""></xsd:element>
+    <xsd:element name=""b"" type=""UDT.test_collection_00363_postgre_postgre.pg_catalog.text"" nillable=""true""></xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 

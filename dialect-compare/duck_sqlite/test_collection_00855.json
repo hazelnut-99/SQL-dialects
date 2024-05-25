@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00855_00000", "type": "error", "result_detail": "no such column: null", "error_stage": "set_up"}, {"test_case": "test_case_00855_00001", "type": "error", "result_detail": "no such column: null", "error_stage": "set_up"}]

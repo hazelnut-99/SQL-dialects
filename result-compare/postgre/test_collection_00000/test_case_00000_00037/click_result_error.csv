@@ -1,4 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 182 ('VALUES') (line 4, col 9): VALUES (NULL::oidvector), ('0 1 2 3 4'), ('17 18 19 20'),
-        ('42 43 42 45'), ('550273 550273 570274'),
-        ('207112489 207112499 21512 2155 372325 136. Expected one of: SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, EXPLAIN, EXPLAIN. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

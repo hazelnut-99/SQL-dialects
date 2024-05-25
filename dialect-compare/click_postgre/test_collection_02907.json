@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02907_00000", "type": "error", "result_detail": "type \"uint32\" does not exist\nLINE 1: CREATE TEMPORARY TABLE a (key UInt32, ID LowCardinality(Stri...\n                                      ^\n", "error_stage": "set_up"}]

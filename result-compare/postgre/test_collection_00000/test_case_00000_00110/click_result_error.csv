@@ -1,3 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 30 (''{1,2,NULL,3}'') (line 1, col 30): '{1,2,NULL,3}'::int[])
- FORMAT Native. Expected one of: token, Dot, Comma, ClosingRoundBracket, OR, AND, IS NOT DISTINCT FROM, IS NULL, IS NOT NULL, BETWEEN, NOT BETWEEN, LIKE, ILIKE, NOT LIKE, NOT ILIKE, REGEXP, IN, NOT IN, GLOBAL IN, GLOBAL NOT IN, MOD, DIV, alias, AS. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

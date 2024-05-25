@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00669_00000", "type": "error", "result_detail": "syntax error at or near \"ttl\"\nLINE 2: ... table ttl_00933_2 (d DateTime, a Int default 111 ttl d + in...\n                                                             ^\n", "error_stage": "set_up"}]

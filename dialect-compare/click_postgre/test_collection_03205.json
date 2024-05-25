@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03205_00000", "type": "error", "result_detail": "syntax error at or near \"UInt64\"\nLINE 8:         x UInt64,\n                  ^\n", "error_stage": "set_up"}]

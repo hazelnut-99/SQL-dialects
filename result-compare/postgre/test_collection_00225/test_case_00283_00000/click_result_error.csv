@@ -1,4 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 22 ('(') (line 1, col 22): (x anyelement) returns anyelement as $$
-  select x + 1
-$$ language sql. Expected one of: ON, AS. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

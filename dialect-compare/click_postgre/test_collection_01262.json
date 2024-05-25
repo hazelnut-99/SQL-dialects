@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01262_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 3: CREATE TABLE test_bloom_filter_index(`uint8` UInt8, `uint16`...\n                                             ^\n", "error_stage": "set_up"}]

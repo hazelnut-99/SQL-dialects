@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01392_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 9: ENGINE VersionedCollapsingMergeTree(sign, version)\n        ^\n", "error_stage": "set_up"}]

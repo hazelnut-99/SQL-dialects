@@ -1,5 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 176 ('VALUES') (line 4, col 9): VALUES (NULL::macaddr), ('08:00:2b:01:02:04'), ('08:00:2b:01:02:04'),
-        ('e2:7f:51:3e:70:49'), ('d6:a9:4a:78:1c:d5'),
-        ('ea:29:b1:5e:1f:a5')) x(v)
-. Expected one of: SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, EXPLAIN, EXPLAIN. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

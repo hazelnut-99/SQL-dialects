@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02710_00000", "type": "error", "result_detail": "syntax error at or near \"UInt32\"\nLINE 2: create table test (x Tuple(a UInt32, b UInt32)) engine=Memor...\n                                     ^\n", "error_stage": "set_up"}]

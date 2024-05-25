@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01103_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 4:     `fingerprint` UInt64, \n            ^\n", "error_stage": "set_up"}]

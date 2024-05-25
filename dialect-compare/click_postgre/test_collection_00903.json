@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00903_00000", "type": "error", "result_detail": "type \"nullable\" does not exist\nLINE 1: create temporary table t1 (a Nullable(UInt8));\n                                     ^\n", "error_stage": "set_up"}]

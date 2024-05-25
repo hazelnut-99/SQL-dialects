@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00150_00000", "type": "error", "result_detail": "syntax error at or near \"MACRO\"\nLINE 3: CREATE MACRO cte_sq(a,b) AS (WITH cte AS (SELECT a * 2 AS c)...\n               ^\n", "error_stage": "set_up"}]

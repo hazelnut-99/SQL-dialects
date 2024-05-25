@@ -1,2 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error: failed at position 6 ('SCHEMA'): SCHEMA IF EXISTS regress_rls_schema CASCADE. Expected one of: DATABASE, VIEW, DICTIONARY, TEMPORARY, TABLE, FUNCTION, NAMED COLLECTION, INDEX, USER, ROLE, SETTINGS PROFILE, PROFILE, ROW POLICY, POLICY, QUOTA. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

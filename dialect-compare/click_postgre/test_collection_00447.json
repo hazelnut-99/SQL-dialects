@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00447_00000", "type": "error", "result_detail": "syntax error at or near \"ENGINE\"\nLINE 2: ...t_saf_test(x SimpleAggregateFunction(max, Int32)) ENGINE=Mer...\n                                                             ^\n", "error_stage": "set_up"}]

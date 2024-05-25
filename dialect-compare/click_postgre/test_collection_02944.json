@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02944_00000", "type": "error", "result_detail": "syntax error at or near \"engine\"\nLINE 2: ...ion Int64, l String, accountCode String, z Int32) engine = R...\n                                                             ^\n", "error_stage": "set_up"}]

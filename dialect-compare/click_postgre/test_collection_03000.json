@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03000_00000", "type": "error", "result_detail": "syntax error at or near \"`\"\nLINE 2: CREATE TABLE t_reverse_order_virt_col (`order_0` Decimal(76,...\n                                               ^\n", "error_stage": "set_up"}]

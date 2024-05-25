@@ -1,2 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
- Code: 46. DB::Exception: Unknown function md5. Maybe you meant: ['MD5','MD4']: While processing md5(CAST('a', 'bytea')) = '0cc175b9c0f1b6a831c399e269772661' AS TRUE. (UNKNOWN_FUNCTION) (version 24.2.2.16233 (official build))

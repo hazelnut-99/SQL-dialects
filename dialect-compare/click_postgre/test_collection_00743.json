@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00743_00000", "type": "error", "result_detail": "syntax error at or near \"(\"\nLINE 1: SELECT topKWeighted(10)(toString(number), number) from numbe...\n                               ^\n", "error_stage": "query"}]

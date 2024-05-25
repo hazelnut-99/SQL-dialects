@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01674_00000", "type": "error", "result_detail": "syntax error at or near \"Array\"\nLINE 2: create table x (pk int, arr Array(int), projection p (select...\n                                    ^\n", "error_stage": "set_up"}]

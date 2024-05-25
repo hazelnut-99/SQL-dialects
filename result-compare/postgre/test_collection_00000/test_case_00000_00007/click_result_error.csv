@@ -1,3 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
- Code: 62. DB::Exception: Syntax error (Multi-statements are not allowed): failed at position 27 (end of query) (line 1, col 27): ; -- trailing single line
- FORMAT Native. . (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

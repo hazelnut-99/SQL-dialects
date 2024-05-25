@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03735_00000", "type": "error", "result_detail": "syntax error at or near \"[\"\nLINE 4: insert into null_list values (null), ([null]);\n                                              ^\n", "error_stage": "set_up"}]

@@ -1,1 +1,0 @@
-[{"test_case": "test_case_03045_00000", "type": "error", "result_detail": "syntax error at or near \"NAMED\"\nLINE 1: DROP NAMED COLLECTION IF EXISTS 02918_json_fuzzer;\n             ^\n", "error_stage": "set_up"}]

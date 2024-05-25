@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00950_00000", "type": "error", "result_detail": "syntax error at or near \"ALIAS\"\nLINE 2: CREATE TABLE test_alias (a UInt8 ALIAS b, b UInt8) ENGINE Lo...\n                                         ^\n", "error_stage": "set_up"}]

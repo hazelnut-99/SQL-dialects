@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01625_00000", "type": "error", "result_detail": "syntax error at or near \"000.00\"\nLINE 1: ...8901234567890123456789','1,000.00','1 000.00','1\\'000.00','1...\n                                                             ^\n", "error_stage": "query"}]

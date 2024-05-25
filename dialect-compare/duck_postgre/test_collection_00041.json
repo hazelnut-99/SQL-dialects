@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00041_00000", "type": "error", "result_detail": "syntax error at or near \"DESCRIBE\"\nLINE 38: DESCRIBE select 42 AS a;\n         ^\n", "error_stage": "set_up"}]

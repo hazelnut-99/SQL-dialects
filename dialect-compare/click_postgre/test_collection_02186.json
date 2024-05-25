@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02186_00000", "type": "error", "result_detail": "syntax error at or near \"table\"\nLINE 1: insert into table function file('data.avro', 'Parquet', 'x U...\n                    ^\n", "error_stage": "set_up"}]

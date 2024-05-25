@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02998_00000", "type": "error", "result_detail": "Catalog Error: Table with name my_table does not exist!\nDid you mean \"information_schema.tables\"?", "error_stage": "set_up"}]

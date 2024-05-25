@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00052_00000", "type": "error", "result_detail": "Invalid Input Error: Can not create a STORED generated column!", "error_stage": "set_up"}, {"test_case": "test_case_00052_00001", "type": "error", "result_detail": "Invalid Input Error: Can not create a STORED generated column!", "error_stage": "set_up"}]

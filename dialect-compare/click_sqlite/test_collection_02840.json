@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02840_00001", "type": "error", "result_detail": "near \"'foo'\": syntax error", "error_stage": "set_up"}, {"test_case": "test_case_02840_00000", "type": "error", "result_detail": "near \"'foo'\": syntax error", "error_stage": "set_up"}]

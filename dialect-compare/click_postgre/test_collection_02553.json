@@ -1,1 +1,0 @@
-[{"test_case": "test_case_02553_00001", "type": "error", "result_detail": "syntax error at or near \"SYSTEM\"\nLINE 1: SYSTEM STOP MERGES tbl;\n        ^\n", "error_stage": "set_up"}, {"test_case": "test_case_02553_00000", "type": "error", "result_detail": "syntax error at or near \"SYSTEM\"\nLINE 1: SYSTEM STOP MERGES tbl;\n        ^\n", "error_stage": "set_up"}]

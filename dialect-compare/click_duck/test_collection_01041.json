@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01041_00000", "type": "error", "result_detail": "Catalog Error: Scalar Function with name transactionid does not exist!\nDid you mean \"ascii\"?\nLINE 1: select transactionID();\n               ^", "error_stage": "query"}]

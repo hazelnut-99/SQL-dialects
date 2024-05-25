@@ -1,2 +1,0 @@
-:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
- Code: 50. DB::Exception: Unknown data type family: macaddr8: While processing CAST('    08:00:2b:01:02:03     ', 'macaddr8'). (UNKNOWN_TYPE) (version 24.2.2.16233 (official build))

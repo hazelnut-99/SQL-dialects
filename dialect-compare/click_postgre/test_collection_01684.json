@@ -1,1 +1,0 @@
-[{"test_case": "test_case_01684_00000", "type": "error", "result_detail": "syntax error at or near \"row\"\nLINE 2: drop row policy if exists filter on projection_test;\n             ^\n", "error_stage": "set_up"}]

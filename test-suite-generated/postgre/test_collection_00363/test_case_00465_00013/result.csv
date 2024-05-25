@@ -10,19 +10,19 @@
   </xsd:restriction>
 </xsd:simpleType>
 
-<xsd:simpleType name=""UDT.my_database.pg_catalog.text"">
+<xsd:simpleType name=""UDT.test_collection_00363_postgre_postgre.pg_catalog.text"">
   <xsd:restriction base=""xsd:string"">
   </xsd:restriction>
 </xsd:simpleType>
 
-<xsd:complexType name=""RowType.my_database.testxmlschema.test1"">
+<xsd:complexType name=""RowType.test_collection_00363_postgre_postgre.testxmlschema.test1"">
   <xsd:sequence>
     <xsd:element name=""a"" type=""INTEGER"" nillable=""true""></xsd:element>
-    <xsd:element name=""b"" type=""UDT.my_database.pg_catalog.text"" nillable=""true""></xsd:element>
+    <xsd:element name=""b"" type=""UDT.test_collection_00363_postgre_postgre.pg_catalog.text"" nillable=""true""></xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
-<xsd:element name=""test1"" type=""RowType.my_database.testxmlschema.test1""/>
+<xsd:element name=""test1"" type=""RowType.test_collection_00363_postgre_postgre.testxmlschema.test1""/>
 
 </xsd:schema>
 

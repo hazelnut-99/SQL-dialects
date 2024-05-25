@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00750_00000", "type": "error", "result_detail": "syntax error at or near \"domainWithoutWWW\"\nLINE 2: ...nstrained (URL String, CONSTRAINT is_censor CHECK domainWith...\n                                                             ^\n", "error_stage": "set_up"}]

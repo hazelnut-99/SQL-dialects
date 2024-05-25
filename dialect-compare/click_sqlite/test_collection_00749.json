@@ -1,1 +1,0 @@
-[{"test_case": "test_case_00749_00001", "type": "error", "result_detail": "near \"domainWithoutWWW\": syntax error", "error_stage": "set_up"}, {"test_case": "test_case_00749_00000", "type": "error", "result_detail": "near \"domainWithoutWWW\": syntax error", "error_stage": "set_up"}]

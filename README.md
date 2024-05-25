@@ -19,7 +19,7 @@ The directory structure for the compiled test cases is as follows:
 
 # Dialect Comparison
 
-All query results are located at: [Dialect Comparison](https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare)  
+All query results are located at (organized per test case): [Dialect Comparison](https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare)  
 <img width="287" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/8b30bcb6-ef57-4d82-bac3-d0167f8dec81">
 
 
@@ -41,7 +41,7 @@ pip install duckdb psycopg2 clickhouse-connect docker
 docker pull postgres:latest
 
 ```
-# To reproduce the results
+## To reproduce the results
 ```
 python scripts/generate_result guest_db host_db
 # e.g. to run SQLite's test cases on DuckDB:

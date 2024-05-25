@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3UnidirectionalEdgeIsValid(1248204388774707199) as edge;
+': no such function: h3UnidirectionalEdgeIsValid

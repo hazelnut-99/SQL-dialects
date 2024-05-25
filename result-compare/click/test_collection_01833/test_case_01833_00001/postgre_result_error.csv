@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...LE map_comb(a int, statusMap Map(UInt16, UInt32)) ENGINE = L...
+                                                             ^

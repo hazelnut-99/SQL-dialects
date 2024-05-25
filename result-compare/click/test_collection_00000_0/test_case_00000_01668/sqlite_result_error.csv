@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ('a', 'b').2
+': near ".2": syntax error

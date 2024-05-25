@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint64 does not exist!
+Did you mean "bin"?
+LINE 1: SELECT bin(toInt64(-100)) AS res;
+                   ^

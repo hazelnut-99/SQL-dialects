@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'привет пр' AS x, lengthUTF8(x) AS y;
+': no such column: x

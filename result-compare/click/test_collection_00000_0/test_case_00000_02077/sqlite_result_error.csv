@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT least(0, 1), least(-400, -200), least(toInt8(127), 255), least(-1, 1), least(toUInt64(1), toInt64(-1)), least(-128, 254), least(-128, 255), least(-9223372036854775808, 18446744073709551615), least(-9223372036854775807, 18446744073709551615), least(toInt64(9223372036854775807), 9223372036854775808);
+': no such function: least

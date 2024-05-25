@@ -1,0 +1,3 @@
+syntax error at or near "tuple"
+LINE 1: select tuple(1) in tuple(tuple(Null), tuple(1));
+                           ^

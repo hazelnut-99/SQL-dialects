@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayFilter((a) -> ((a, arrayJoin([[]])) IN (Null, [Null])), []);
+': unrecognized token: "]"

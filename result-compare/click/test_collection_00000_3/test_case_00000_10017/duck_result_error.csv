@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name l2distance does not exist!
+Did you mean "list_distance"?
+LINE 1: SELECT L2Distance([1, 2, 3], [0, 0, 0]);
+               ^

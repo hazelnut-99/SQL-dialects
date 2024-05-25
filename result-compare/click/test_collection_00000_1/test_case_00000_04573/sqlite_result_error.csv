@@ -1,0 +1,4 @@
+Execution failed on sql 'SELECT * FROM (SELECT 1 as A, 2 as B) X
+ALL LEFT JOIN (SELECT 3 as A, 2 as B) Y
+USING (B);
+': near "ALL": syntax error

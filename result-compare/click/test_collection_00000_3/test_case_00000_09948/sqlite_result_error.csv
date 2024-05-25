@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cast(('1234' AS lhs) rhs AS UInt32), rhs;
+': near "AS": syntax error

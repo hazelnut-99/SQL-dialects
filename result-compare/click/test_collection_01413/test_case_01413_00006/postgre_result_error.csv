@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 17: ENGINE=MergeTree PARTITION BY toStartOfDay(ts) ORDER BY id;
+         ^

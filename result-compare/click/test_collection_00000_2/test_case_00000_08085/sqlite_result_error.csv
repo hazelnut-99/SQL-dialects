@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByNonAlpha('There is.... so much to learn!');
+': no such function: splitByNonAlpha

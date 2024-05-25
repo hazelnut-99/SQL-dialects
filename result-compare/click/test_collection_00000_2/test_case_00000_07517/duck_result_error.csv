@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touuidordefault does not exist!
+Did you mean "uuid"?
+LINE 1: SELECT toUUIDOrDefault('61f0c404-5cb3-11e7-907...
+               ^

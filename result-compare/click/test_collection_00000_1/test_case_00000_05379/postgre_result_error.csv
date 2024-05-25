@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: select d from values('d Decimal(27, 8)', 0, 9) where d not i...
+                            ^

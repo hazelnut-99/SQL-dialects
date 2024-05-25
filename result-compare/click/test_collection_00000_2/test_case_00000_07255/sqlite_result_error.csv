@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [number][-0x8000000000000000] FROM numbers(1);
+': no such table: numbers

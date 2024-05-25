@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name dividedecimal does not exist!
+Did you mean "divide"?
+LINE 1: SELECT divideDecimal(toNullable(toDecimal64(10...
+               ^

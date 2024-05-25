@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraypartialshuffle does not exist!
+Did you mean "array_value"?
+LINE 1: SELECT arrayPartialShuffle([], 0);
+               ^

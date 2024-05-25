@@ -1,0 +1,2 @@
+Execution failed on sql 'select makeDateTime(2283, 11, 11, 23, 59, 59, 'UTC');
+': no such function: makeDateTime

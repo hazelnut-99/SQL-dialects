@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayMap(a -> arrayMap(b -> arrayMap(c -> (round(c.1, 6), round(c.2, 6)), b), a), polygonsIntersectionSpherical([[[(4.346693, 50.858306), (4.367945, 50.852455), (4.366227, 50.840809), (4.344961, 50.833264), (4.338074, 50.848677), (4.346693, 50.858306)]]], [[[(25.0010, 136.9987), (17.7500, 142.5000), (11.3733, 142.5917)]]]));
+': near ".1": syntax error

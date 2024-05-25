@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitCount(CAST(0xFFFFFFFFFFFFFFFF AS Int256));
+': no such function: bitCount

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT FROM_UNIXTIME(5345345, '%C', 'UTC');
+': no such function: FROM_UNIXTIME

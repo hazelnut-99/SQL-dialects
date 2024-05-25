@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCompact(arrayMap(x->0, [NULL]));
+': no such column: NULL

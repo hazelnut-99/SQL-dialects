@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from format(CSV, '""');
+': no such table: format

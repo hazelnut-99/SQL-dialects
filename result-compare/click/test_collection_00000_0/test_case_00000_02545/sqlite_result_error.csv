@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visitParamExtractString('{"myparam":"test_string"}', 'myparam');
+': no such function: visitParamExtractString

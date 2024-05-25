@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuplemultiply does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT (1, 2) + tupleMultiply((3, 4), materialize((5, 1...
+                        ^

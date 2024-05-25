@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name getserverport does not exist!
+Did you mean "inet_server_port"?
+LINE 1: select getServerPort('tcp_port');
+               ^

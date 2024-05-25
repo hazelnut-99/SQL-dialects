@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: SELECT dummy, count() GROUP BY dummy WITH TOTALS;
+                                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name siphash64keyed does not exist!
+Did you mean "hash"?
+LINE 1: select hex(sipHash64Keyed((toUInt64(50609752291423...
+                   ^

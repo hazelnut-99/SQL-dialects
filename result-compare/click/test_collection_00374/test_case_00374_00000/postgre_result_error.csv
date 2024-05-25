@@ -1,0 +1,3 @@
+syntax error at or near "temporary"
+LINE 1: drop temporary table if exists test_00670;
+             ^

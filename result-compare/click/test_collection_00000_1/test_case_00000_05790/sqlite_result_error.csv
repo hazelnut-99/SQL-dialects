@@ -1,0 +1,2 @@
+Execution failed on sql 'select maxMap(val, cnt) from values ('val Array(UInt64), cnt Array(UInt64)',  ([1], [1]), ([1], [2]));
+': near "values": syntax error

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ELECT arrayFold( acc,x -> arrayPushBack(acc, x),  [1, 2, 3, ...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toFixedString('Hello, world!!!!', 16) AS x, bitCount(x);
+': no such function: toFixedString

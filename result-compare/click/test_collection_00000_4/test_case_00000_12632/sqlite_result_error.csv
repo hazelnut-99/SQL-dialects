@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCumSumNonNegative([toInt128(1), -2]), toTypeName(arrayCumSumNonNegative([toInt128(1), -2]));
+': no such column: toInt128(1), -2

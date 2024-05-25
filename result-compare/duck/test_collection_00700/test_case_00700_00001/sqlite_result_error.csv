@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT x, y FROM a i1(x, y);
+': near "(": syntax error

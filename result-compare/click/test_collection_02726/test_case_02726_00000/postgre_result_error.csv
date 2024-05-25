@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...TABLE tab (key Tuple(UInt64, UInt64), val UInt64) ENGINE=Mem...
+                                                             ^

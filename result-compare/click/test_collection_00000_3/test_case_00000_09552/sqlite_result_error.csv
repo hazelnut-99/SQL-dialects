@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT s2RectAdd(5178914411069187297, 5177056748191934217, arrayJoin([5179056748191934217,5177914411069187297]));
+': no such function: s2RectAdd

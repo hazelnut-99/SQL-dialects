@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitmasktolist does not exist!
+Did you mean "list"?
+LINE 1: SELECT bitmaskToList(toInt64(-1));
+               ^

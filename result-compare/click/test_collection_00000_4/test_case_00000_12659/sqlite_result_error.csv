@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap((x) -> x.1 + x.2, [tuple(1, 2)]);
+': near ".1": syntax error

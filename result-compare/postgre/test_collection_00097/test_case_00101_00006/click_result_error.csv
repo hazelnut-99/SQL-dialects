@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 649. DB::Exception: There is no current transaction. (INVALID_TRANSACTION) (version 24.2.2.16233 (official build))

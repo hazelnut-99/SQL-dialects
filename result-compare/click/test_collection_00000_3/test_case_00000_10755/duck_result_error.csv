@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name mortonencode does not exist!
+Did you mean "encode"?
+LINE 1: select mortonEncode((4,4,4,4), 128, 128, 128, ...
+               ^

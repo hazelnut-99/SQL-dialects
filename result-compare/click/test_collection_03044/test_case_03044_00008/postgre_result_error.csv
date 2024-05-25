@@ -1,0 +1,3 @@
+syntax error at or near "NAMED"
+LINE 1: DROP NAMED COLLECTION IF EXISTS 02918_json_fuzzer;
+             ^

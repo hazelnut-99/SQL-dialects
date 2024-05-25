@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...093 (app String, c UInt64, k Map(String, String)) ENGINE=Mer...
+                                                             ^

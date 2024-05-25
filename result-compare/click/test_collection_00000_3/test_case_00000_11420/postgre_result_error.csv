@@ -1,0 +1,3 @@
+syntax error at or near ".234"
+LINE 1: SELECT -0x1.234;
+                   ^

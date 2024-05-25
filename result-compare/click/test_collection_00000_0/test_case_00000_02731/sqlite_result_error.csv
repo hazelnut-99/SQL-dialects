@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT EXTRACT(MINUTE FROM toDateTime('2017-12-31 18:59:58'));
+': near "FROM": syntax error

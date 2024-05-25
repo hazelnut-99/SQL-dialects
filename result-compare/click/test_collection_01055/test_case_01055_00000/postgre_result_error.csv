@@ -1,0 +1,3 @@
+syntax error at or near "table"
+LINE 4: insert into table function file('01188_attach/file/data.TSV'...
+                    ^

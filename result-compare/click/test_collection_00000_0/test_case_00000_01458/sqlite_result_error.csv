@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 as x, x = 1 or x = 2 or x = 3 or x = -1;
+': no such column: x

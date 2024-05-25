@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasAny(['a', 'b'], ['a', 'c']);
+': no such column: 'a', 'b'

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(count(toNullable('a') IN toNullable('a'))) AS x;
+': no such table: toNullable

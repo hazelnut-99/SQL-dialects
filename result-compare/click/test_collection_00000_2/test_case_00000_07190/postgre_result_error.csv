@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT repeat(ALL, DISTINCT) FROM (SELECT 'a' AS ALL, 5 AS D...
+                         ^

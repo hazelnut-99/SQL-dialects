@@ -1,0 +1,2 @@
+Execution failed on sql 'select JSON_VALUE('{"a":"\\u263a"}', '$.a');
+': no such function: JSON_VALUE

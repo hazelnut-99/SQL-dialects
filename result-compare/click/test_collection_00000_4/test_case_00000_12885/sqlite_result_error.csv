@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequenceCaseInsensitiveUTF8('для онлайн обработки аналитических запросов (OLAP)', 'я раб');
+': no such function: hasSubsequenceCaseInsensitiveUTF8

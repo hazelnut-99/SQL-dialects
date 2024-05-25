@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
+ Code: 47. DB::Exception: Missing columns: '0o17777777777' while processing query: 'SELECT `0o17777777777`', required columns: '0o17777777777'. (UNKNOWN_IDENTIFIER) (version 24.2.2.16233 (official build))

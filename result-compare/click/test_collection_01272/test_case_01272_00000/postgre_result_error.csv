@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 4: CREATE TABLE tableCommon (`key` FixedString(15), `value` Nul...
+                                  ^

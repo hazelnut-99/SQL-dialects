@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name json_value does not exist!
+Did you mean "json_valid"?
+LINE 1: SELECT JSON_VALUE('{"foo foo":"bar"}', '$."foo...
+               ^

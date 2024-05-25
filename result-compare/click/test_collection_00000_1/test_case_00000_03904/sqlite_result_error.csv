@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number FROM numbers(10) LIMIT toUInt8('1');
+': no such table: numbers

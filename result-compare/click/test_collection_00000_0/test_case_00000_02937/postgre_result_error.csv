@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: ...nt32(0x5bd1e995 * bitXor(toUInt32(3 * 0x5bd1e995) AS a, bitS...
+                                                             ^

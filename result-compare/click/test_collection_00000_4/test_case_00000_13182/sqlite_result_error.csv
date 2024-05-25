@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 − 2;
+': near "2": syntax error

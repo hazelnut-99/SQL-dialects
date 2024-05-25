@@ -1,0 +1,2 @@
+Execution failed on sql 'select parseDateTimeInJodaSyntax('01', 'YY', 'UTC') = toDateTime('2001-01-01', 'UTC');
+': no such function: toDateTime

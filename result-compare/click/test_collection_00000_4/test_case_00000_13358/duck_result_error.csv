@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jarowinklersimilarity does not exist!
+Did you mean "jaro_winkler_similarity"?
+LINE 1: ...ECT 'clickhouse' AS s1, 'mouse' AS s2, jaroWinklerSimilarity(s1, s2);
+                                                  ^

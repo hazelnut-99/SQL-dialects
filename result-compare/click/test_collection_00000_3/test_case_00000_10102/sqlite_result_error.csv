@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3UnidirectionalEdgeIsValid(stringToH3('85283473ffffff')) as edge;
+': no such function: stringToH3

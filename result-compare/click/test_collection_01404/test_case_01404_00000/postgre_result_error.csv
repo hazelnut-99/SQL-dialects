@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table tsv(a int, b int default 7) engine File(TSV);
+                                                 ^

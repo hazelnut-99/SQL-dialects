@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 2:     sumMapIf([1], [1], nullIf(number, 3) > 0) AS col1,
+                     ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT EXTRACT (MONTH FROM toDate('2017-06-15'));
+': near "FROM": syntax error

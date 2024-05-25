@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name countdigits does not exist!
+Did you mean "count"?
+LINE 1: SELECT countDigits(-123.456::Decimal32(5));
+               ^

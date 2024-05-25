@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: ..., toNullable(1) AS x FROM numbers(10)) GROUP BY k WITH TOTAL...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt32OrNull('-2147483648');
+': no such function: toInt32OrNull

@@ -1,0 +1,1 @@
+Binder Error: Ambiguous reference to column name "visitorId" (use: "orders.visitorId" or "sessions.visitorId")

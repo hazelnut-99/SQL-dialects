@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name reinterpretasfloat64 does not exist!
+Did you mean "repeat"?
+LINE 1: select reinterpretAsFloat64(unhex('875635fffff...
+               ^

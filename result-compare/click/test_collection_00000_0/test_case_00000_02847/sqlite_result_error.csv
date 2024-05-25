@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has([111, 222], 222);
+': no such column: 111, 222

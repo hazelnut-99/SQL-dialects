@@ -1,0 +1,2 @@
+Catalog Error: Table with name my_table does not exist!
+Did you mean "temp.information_schema.tables"?

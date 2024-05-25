@@ -1,0 +1,3 @@
+syntax error at or near "GLOBAL"
+LINE 1: SELECT * FROM (SELECT * WHERE dummy GLOBAL IN (SELECT 0));
+                                            ^

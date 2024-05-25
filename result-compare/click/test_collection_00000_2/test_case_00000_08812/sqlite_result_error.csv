@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(nan, 'Int128'), accurateCastOrDefault(nan, 'Int128', toInt128(5));
+': no such column: nan

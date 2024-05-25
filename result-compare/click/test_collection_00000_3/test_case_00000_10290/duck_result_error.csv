@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name translateutf8 does not exist!
+Did you mean "translate"?
+LINE 1: SELECT translateUTF8('中文内码', '久标准中文内...
+               ^

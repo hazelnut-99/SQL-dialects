@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * EXCLUDE (i, j) FROM integers;
+': near "EXCLUDE": syntax error

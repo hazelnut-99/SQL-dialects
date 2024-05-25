@@ -1,0 +1,3 @@
+syntax error at or near "t"
+LINE 1: ...plitByWhitespace('It is quite a wonderful day, isn\'t it?');
+                                                               ^

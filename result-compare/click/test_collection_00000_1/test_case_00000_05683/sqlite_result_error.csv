@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT round(max(log(2) * 3 * sin(0.3) * number * 4)) FROM numbers(100);
+': no such table: numbers

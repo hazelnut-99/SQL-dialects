@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 3: create table data_01811 (key Int) Engine=Memory();
+                                          ^

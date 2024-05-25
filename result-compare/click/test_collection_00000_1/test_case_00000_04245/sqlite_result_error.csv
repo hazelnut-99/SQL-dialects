@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT basename('bash');
+': no such function: basename

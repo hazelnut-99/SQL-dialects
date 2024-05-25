@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 6: ...able tab (a UInt32, b UInt32, c UInt32, d UInt32) engine = M...
+                                                             ^

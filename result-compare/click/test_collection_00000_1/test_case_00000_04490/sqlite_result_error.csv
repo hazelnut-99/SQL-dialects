@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDivOrZero(-1, number) FROM numbers(1, 10);
+': no such table: numbers

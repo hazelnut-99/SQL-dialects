@@ -1,0 +1,3 @@
+syntax error at or near "file"
+LINE 31: insert into function file(basic_types_02735.parquet) select ...
+                              ^

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE t02176(timestamp DateTime) ENGINE = MergeTree
+                                                ^

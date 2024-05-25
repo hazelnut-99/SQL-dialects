@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTimeBestEffort('20220101 010203', 'UTC');
+': no such function: parseDateTimeBestEffort

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'ab' REGEXP 'a.*b';
+': no such function: REGEXP

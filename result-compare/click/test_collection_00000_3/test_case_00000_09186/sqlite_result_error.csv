@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT RIGHT(materialize('Привет'), 4);
+': near "(": syntax error

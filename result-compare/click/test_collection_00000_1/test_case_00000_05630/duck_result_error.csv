@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofhour does not exist!
+Did you mean "hour"?
+LINE 1: SELECT toStartOfHour(toDateTime(10000, 'Asia/C...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitmapAndCardinality(bitmapBuild([1,2,3]),bitmapBuild([3,4,5]));
+': no such column: 3,4,5

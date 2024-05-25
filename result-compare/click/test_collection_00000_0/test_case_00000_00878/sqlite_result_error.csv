@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(toStartOfTenMinutes(toDateTime(1549483055), 'Europe/Paris'), 'Europe/Paris');
+': no such function: toDateTime

@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...ue, number AS time, exponentialTimeDecayedCount(1)(time) OVE...
+                                                             ^

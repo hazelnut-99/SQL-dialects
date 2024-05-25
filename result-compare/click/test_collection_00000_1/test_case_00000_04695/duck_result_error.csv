@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ... k, uniqCombined(number % 8192) u FROM numbers(8192 * 100) GROUP BY k);
+                                                  ^

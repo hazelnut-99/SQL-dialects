@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touuid does not exist!
+Did you mean "uuid"?
+LINE 1: SELECT toUUID('417ddc5d-e556-4d27-95dd-a34d84e...
+               ^

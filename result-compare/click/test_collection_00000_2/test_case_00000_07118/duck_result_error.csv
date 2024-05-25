@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name accuratecast does not exist!
+Did you mean "greatest"?
+LINE 1: SELECT accurateCast('2023-05-30 14:38:20', 'Da...
+               ^

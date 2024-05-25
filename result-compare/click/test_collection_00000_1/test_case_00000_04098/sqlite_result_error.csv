@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isValidJSON('not a json');
+': no such function: isValidJSON

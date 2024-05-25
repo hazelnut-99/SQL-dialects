@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT multiMatchAny('goodbye', ['^hello[, ]+world$', 'go+d *bye', 'w(or)+ld']);
+': near "', '": syntax error

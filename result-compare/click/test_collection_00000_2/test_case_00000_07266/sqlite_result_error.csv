@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TO_BASE64('test string');
+': no such function: TO_BASE64

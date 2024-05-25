@@ -1,0 +1,2 @@
+Execution failed on sql 'select 4 = indexOf([0, 1, 2, 3 as x], materialize(x));
+': no such column: 0, 1, 2, 3 as x

@@ -1,0 +1,10 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 86. DB::HTTPException: Received error from remote server http://127.0.0.1:8123/?query=select+12. HTTP status code: 403 Forbidden, body: Code: 516. DB::Exception: default: Authentication failed: password is incorrect, or there is no user with such name.
+
+If you have installed ClickHouse and forgot password you can reset it in the configuration file.
+The password for default user is typically located at /etc/clickhouse-server/users.d/default-password.xml
+and deleting this file will reset the password.
+See also /etc/clickhouse-server/users.xml on the server where ClickHouse is installed.
+
+. (AUTHENTICATION_FAILED) (version 24.2.2.16233 (official build))
+: (in file/uri http://127.0.0.1:8123/?query=select+12): While executing RawBLOBRowInputFormat: While executing URL. (RECEIVED_ERROR_FROM_REMOTE_IO_SERVER) (version 24.2.2.16233 (official build))

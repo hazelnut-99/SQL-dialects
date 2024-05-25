@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayflatten does not exist!
+Did you mean "flatten"?
+LINE 1: SELECT arrayFlatten([]);
+               ^

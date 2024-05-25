@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: create table t1_00816 (a Int8, val Float32) engine=Memory();
+                                                    ^

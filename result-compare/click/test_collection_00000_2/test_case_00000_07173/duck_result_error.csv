@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bytesize does not exist!
+Did you mean "abs"?
+LINE 1: SELECT byteSize();
+               ^

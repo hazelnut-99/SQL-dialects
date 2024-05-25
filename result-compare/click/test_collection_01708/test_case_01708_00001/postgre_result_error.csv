@@ -1,0 +1,3 @@
+syntax error at or near "dictionary"
+LINE 3: drop dictionary if exists db_01721.decimal_dict;
+             ^

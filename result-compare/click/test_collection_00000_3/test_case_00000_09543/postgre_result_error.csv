@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT round(h3EdgeAngle(arrayJoin([0,1,2])), 2);
+                                           ^

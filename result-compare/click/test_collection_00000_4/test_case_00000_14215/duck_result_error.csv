@@ -1,0 +1,3 @@
+Conversion Error: Could not convert string '1234' to UINT8
+LINE 1: SELECT CAST('1234' AS UInt8);
+               ^

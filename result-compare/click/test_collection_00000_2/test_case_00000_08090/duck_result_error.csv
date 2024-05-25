@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name splitbywhitespace does not exist!
+Did you mean "split"?
+LINE 1: SELECT splitByWhitespace('22:00 email@tut.by')...
+               ^

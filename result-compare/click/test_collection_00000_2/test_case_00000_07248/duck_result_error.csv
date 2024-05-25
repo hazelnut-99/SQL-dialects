@@ -1,0 +1,6 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 3: ...countIf(rating = 5)) - (countIf(rating < 5)), 4) as nps,
+       dense_rank() OVER (ORDER BY nps DESC)   as rank
+FROM (select number as rating, number%3 rest_id from numbers(10))
+                                                  ^

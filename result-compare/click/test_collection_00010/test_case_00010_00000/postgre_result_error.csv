@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 1: ...REATE TABLE IF NOT EXISTS empty_tiny_log(A UInt8) Engine = T...
+                                                             ^

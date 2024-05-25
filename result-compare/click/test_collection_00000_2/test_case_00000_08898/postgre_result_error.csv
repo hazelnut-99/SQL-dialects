@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 2: ...y -> round(y, 1), quantilesExactInclusive(0.1, 0.9)(x)) AS q
+                                                              ^

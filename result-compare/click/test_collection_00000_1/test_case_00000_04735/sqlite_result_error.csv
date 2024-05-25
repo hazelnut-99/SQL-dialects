@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReduce('maxOrDefault', [1]);
+': no such function: arrayReduce

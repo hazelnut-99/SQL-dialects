@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 2: CREATE TABLE test_02504 (`a` UInt32,`b` UInt32) ENGINE = Mer...
+                                 ^

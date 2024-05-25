@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(map(toLowCardinality('1'), toLowCardinality('2')));
+': no such function: toLowCardinality

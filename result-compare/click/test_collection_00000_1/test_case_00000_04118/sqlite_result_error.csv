@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtractString('{"a": "hello", "b": [-100, 200.0, 300]}', 1);
+': no such function: JSONExtractString

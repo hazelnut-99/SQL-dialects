@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...TE TABLE null_in_1 (u UInt32, n Nullable(UInt32)) ENGINE = M...
+                                                             ^

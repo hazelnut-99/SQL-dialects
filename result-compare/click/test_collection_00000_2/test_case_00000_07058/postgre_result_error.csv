@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: select sum(any(number + 1)) over (rows unbounded preceding) ...
+                   ^

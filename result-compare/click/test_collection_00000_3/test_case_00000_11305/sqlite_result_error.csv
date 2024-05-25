@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxh3('ClickHouse');
+': no such function: xxh3

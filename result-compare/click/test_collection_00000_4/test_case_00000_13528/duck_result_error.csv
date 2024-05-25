@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name adddays does not exist!
+Did you mean "add"?
+LINE 1: SELECT addDays(materialize('2023-10-22'), mate...
+               ^

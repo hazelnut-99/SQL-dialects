@@ -1,0 +1,3 @@
+syntax error at or near "'2023-06-30 23:59:30'"
+LINE 2:     toDateTime('2023-06-30 23:59:30') AS dt_ref,
+                       ^

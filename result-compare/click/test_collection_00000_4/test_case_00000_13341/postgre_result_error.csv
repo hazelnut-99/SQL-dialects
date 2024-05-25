@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [(NULL, 2), (2, NULL)] / 1;
+               ^

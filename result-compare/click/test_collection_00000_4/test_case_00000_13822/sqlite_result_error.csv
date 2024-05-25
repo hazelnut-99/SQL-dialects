@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dateTrunc('Nanosecond', toDateTime64('1950-03-01 12:12:12.0123', 3));
+': no such function: dateTrunc

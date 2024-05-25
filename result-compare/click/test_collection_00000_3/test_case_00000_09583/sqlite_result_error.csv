@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cast('127.0.0.1' , 'IPv4');
+': near ",": syntax error

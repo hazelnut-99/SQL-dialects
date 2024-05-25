@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extractgroups does not exist!
+Did you mean "acos"?
+LINE 1: SELECT extractGroups(CAST('hello world' AS Fix...
+               ^

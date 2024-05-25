@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT rightUTF8('Привет', 12);
+': no such function: rightUTF8

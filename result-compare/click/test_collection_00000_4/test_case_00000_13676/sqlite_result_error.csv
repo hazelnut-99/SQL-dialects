@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT finalizeAggregation(CAST(unhex('01'), 'AggregateFunction(any_respect_nulls, UInt64)'));
+': near ",": syntax error

@@ -1,0 +1,3 @@
+syntax error at or near "lhs"
+LINE 1: SELECT substring('1234' lhs FROM 2), lhs;
+                                ^

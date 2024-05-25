@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multiif does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT multiIf(1, [1,2], 1, [3,4], [5,6]);
+               ^

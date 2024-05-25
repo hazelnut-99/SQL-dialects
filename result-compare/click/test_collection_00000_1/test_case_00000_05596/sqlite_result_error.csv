@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT GREATEST([NULL], [0]);
+': no such column: NULL

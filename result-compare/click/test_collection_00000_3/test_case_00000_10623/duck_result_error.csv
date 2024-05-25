@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal128ordefault does not exist!
+Did you mean "decade"?
+LINE 1: SELECT toDecimal128OrDefault(333, 3, 123.456::...
+               ^

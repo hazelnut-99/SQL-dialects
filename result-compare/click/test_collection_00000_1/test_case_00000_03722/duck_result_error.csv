@@ -1,0 +1,6 @@
+Binder Error: No function matches the given name and argument types 'reverse(VARCHAR[][])'. You might need to add explicit type casts.
+	Candidate functions:
+	reverse(VARCHAR) -> VARCHAR
+
+LINE 1: SELECT reverse([[], [''], [' ']]);
+               ^

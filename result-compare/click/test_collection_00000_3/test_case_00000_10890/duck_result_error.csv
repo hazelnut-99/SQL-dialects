@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hasany does not exist!
+Did you mean "asin"?
+LINE 1: select hasAny([(toInt16(3), toInt16(3))],[(toI...
+               ^

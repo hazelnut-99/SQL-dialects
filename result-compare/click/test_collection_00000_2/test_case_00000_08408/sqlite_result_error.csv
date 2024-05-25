@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleMultiplyByNumber(tuple(1), 1);
+': no such function: tuple

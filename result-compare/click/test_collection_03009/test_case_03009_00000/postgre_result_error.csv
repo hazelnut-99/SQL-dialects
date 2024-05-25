@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: ...(currentDatabase(), '^view_without_sample$') SAMPLE 1 / 100;
+                                                               ^

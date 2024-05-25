@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toyear does not exist!
+Did you mean "to_years"?
+LINE 1: SELECT toYear(toDateTime64('1968-12-12 11:22:3...
+               ^

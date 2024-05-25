@@ -1,0 +1,2 @@
+Execution failed on sql 'select [toUInt8(255)] in [-1];
+': no such table: -1

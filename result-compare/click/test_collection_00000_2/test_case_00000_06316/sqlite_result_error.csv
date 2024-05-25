@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(x) FROM (SELECT 'hello' AS x UNION ALL SELECT toLowCardinality('hello'));
+': no such function: toLowCardinality

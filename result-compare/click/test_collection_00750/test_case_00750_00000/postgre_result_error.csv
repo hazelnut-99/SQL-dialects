@@ -1,0 +1,3 @@
+syntax error at or near "domainWithoutWWW"
+LINE 2: ...nstrained (URL String, CONSTRAINT is_censor CHECK domainWith...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT translate('aaa'::FixedString(10), 'a','A');
+': unrecognized token: ":"

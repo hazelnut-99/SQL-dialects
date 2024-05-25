@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT stringToH3('89184926cc3ffff');
+': no such function: stringToH3

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name lpdistance does not exist!
+Did you mean "list_distance"?
+LINE 1: SELECT LpDistance((1800, 1900), (18, 59), 12) ...
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: SELECT trim(LEADING 'a' AS arg_1 FROM 'abca' AS arg_2), arg_...
+                                ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT CAST([(1, 'Hello'), (2, 'World')] AS Array(Tuple(a UI...
+                    ^

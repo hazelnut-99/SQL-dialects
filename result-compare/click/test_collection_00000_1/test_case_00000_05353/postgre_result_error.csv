@@ -1,0 +1,3 @@
+syntax error at or near "asof"
+LINE 1: select * from (select 0 as k, toDate(0) as v) t1 asof join (...
+                                                         ^

@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 2: CREATE TABLE join_tbl (`id` String, `name` String, lcname Lo...
+                               ^

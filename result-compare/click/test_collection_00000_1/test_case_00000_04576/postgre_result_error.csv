@@ -1,0 +1,3 @@
+syntax error at or near "x"
+LINE 1: ... as x) s1 left join (select materialize(3) as x) s2 using x;
+                                                                     ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() FROM (SELECT sum(materialize(1)), sum(materialize(2)))
+': no such function: materialize

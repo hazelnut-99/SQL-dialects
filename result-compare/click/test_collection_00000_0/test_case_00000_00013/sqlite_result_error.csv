@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayExists(x -> position(x, 'a') > 0, ['a'])
+': no such function: arrayExists

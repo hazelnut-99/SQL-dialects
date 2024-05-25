@@ -1,0 +1,3 @@
+syntax error at or near "file"
+LINE 1: insert into function file('02892.orc')
+                             ^

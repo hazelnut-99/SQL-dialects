@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractTextFromHTML('<![CDATA[ \t Hello,\rworld \n ]]>');
+': no such function: extractTextFromHTML

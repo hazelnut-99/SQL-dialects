@@ -1,0 +1,2 @@
+Execution failed on sql 'select toStartOfInterval(toDateTime64('2023-10-09 00:01:34', 9), toIntervalSecond(100));
+': no such function: toIntervalSecond

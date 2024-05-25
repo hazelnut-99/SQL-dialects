@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: INSERT INTO my_table (values) VALUES ([12, 3, 1]);
+                                              ^

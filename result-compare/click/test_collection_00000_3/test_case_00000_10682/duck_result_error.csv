@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name anyheavy does not exist!
+Did you mean "year"?
+LINE 1: SELECT anyHeavy('1') FROM (SELECT anyHeavy(1));
+                                          ^

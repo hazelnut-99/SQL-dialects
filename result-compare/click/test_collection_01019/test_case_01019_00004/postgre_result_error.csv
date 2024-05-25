@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 4: create table src_table_1 (n UInt64) engine=Memory as select ...
+                                            ^

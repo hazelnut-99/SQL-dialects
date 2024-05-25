@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ignore does not exist!
+Did you mean "sign"?
+LINE 1: ...0]), replicate('hello', [1]) WHERE NOT ignore(replicate('hello', [1]));
+                                                  ^

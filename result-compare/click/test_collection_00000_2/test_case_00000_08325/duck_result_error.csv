@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multimatchanyindex does not exist!
+Did you mean "mismatches"?
+LINE 1: select multiMatchAnyIndex(materialize('123'), ...
+               ^

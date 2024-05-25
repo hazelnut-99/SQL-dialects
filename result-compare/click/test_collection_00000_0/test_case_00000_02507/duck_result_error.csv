@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todate does not exist!
+Did you mean "today"?
+LINE 1: SELECT dateDiff('hour', toDate('2014-10-26'), toDate('2014-10-2...
+                                ^

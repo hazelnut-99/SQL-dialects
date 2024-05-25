@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3IsValid(621807531097128959);
+': no such function: h3IsValid

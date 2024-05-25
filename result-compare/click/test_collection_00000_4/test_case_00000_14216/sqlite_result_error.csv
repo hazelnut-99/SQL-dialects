@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST('[ 123 ,456, ]' AS Array(UInt16));
+': near "UInt16": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'select makeDateTime64(1983, 2, 31, 2, 3, 4, 5, 9, 'UTC');
+': no such function: makeDateTime64

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT localtimestamp = localtimestamp(7);
+': no such column: localtimestamp

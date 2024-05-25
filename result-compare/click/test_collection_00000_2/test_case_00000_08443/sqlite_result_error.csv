@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cosineDistance(materialize((1, 1)), (2, 2));
+': no such function: materialize

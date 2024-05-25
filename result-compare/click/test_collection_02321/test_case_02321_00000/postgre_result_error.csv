@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 4:     Value Array(Enum8('Option1'=1, 'Option2'=2))
+                  ^

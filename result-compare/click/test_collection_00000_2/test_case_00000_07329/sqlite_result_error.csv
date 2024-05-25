@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from (select 'a' as a, number as c from numbers(2)) as t1 join (select 'a' as a, number as c from numbers(2)) as t2  on  t1.c = t2.c or t1.a = t2.a order by t1.c, t2.c;
+': no such table: numbers

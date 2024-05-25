@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT avgWeightedIf(number, number, number % 10) t, toTypeName(t) FROM numbers(100);
+': no such table: numbers

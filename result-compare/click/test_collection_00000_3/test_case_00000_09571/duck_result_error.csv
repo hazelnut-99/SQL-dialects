@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv4stringtonumornull does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT IPv4StringToNumOrNull('127.0.0.1');
+               ^

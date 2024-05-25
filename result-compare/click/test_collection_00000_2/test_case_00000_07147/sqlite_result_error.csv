@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from (select untuple((1,2)));
+': no such function: untuple

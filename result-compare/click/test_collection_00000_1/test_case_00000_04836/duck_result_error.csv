@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3isvalid does not exist!
+Did you mean "divide"?
+LINE 1: SELECT h3IsValid(621807531097128959);
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSON_VALUE('{"hello":1}', '$[hello]');
+': no such function: JSON_VALUE

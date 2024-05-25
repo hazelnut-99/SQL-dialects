@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sumIf(1, 1);
+': no such function: sumIf

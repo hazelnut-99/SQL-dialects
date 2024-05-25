@@ -1,0 +1,3 @@
+syntax error at or near "TEMPORARY"
+LINE 1: DROP TEMPORARY TABLE IF EXISTS src;
+             ^

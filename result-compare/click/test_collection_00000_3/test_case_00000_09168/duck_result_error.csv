@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name leftutf8 does not exist!
+Did you mean "left"?
+LINE 1: SELECT leftUTF8('Привет', 12);
+               ^

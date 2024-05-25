@@ -1,0 +1,3 @@
+syntax error at or near "ALL"
+LINE 1: SELECT blockSize() bs FROM (SELECT 1 s) js1 ALL RIGHT JOIN (...
+                                                    ^

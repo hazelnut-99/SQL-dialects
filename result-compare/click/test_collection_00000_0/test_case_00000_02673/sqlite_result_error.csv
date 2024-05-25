@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayResize(['a', 'b', 'c'], 5);
+': no such column: 'a', 'b', 'c'

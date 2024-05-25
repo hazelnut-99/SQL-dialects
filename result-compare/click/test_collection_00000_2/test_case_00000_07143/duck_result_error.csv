@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal32 does not exist!
+Did you mean "today"?
+LINE 1: SELECT round(30.033 * toDecimal32(5, 1), 6);
+                              ^

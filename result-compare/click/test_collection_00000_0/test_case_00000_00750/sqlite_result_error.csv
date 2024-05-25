@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfDay(toDateTime(1412106600), 'Asia/Istanbul');
+': no such function: toDateTime

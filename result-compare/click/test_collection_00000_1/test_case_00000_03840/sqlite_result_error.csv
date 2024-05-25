@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 as x, roundDown(x, [1]);
+': no such column: x

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT q FROM (select [1,2,3] AS q UNION ALL select groupArr...
+                              ^

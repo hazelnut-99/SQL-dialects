@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from t2;
+': no such table: t2

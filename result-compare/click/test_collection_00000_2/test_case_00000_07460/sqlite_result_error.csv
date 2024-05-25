@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT transform(number / 2, [0.5, 1.5], ['Hello', 'World'], '-') FROM numbers(10);
+': no such table: numbers

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concatWithSeparator('|', 'a', materialize(44.44 :: Decimal(2))) == 'a|44';
+': unrecognized token: ":"

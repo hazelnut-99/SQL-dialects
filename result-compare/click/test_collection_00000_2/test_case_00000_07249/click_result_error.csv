@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 501)
+ Code: 48. DB::Exception: The RANGE OFFSET frame for 'DB::ColumnNullable' ORDER BY column is not implemented. (NOT_IMPLEMENTED) (version 24.2.2.16233 (official build))

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM (SELECT x, toTypeName(x), count() FROM (SELECT 1 AS x UNION ALL SELECT NULL UNION ALL SELECT 1.0) GROUP BY x) ORDER BY x DESC;
+': no such function: toTypeName

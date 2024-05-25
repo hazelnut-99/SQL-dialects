@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name maxornullifstate does not exist!
+Did you mean "nullif"?
+LINE 1: ...T maxOrNullIfMerge(state) FROM (SELECT maxOrNullIfState(x, x > 0) AS state FRO...
+                                                  ^

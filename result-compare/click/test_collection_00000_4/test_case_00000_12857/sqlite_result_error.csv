@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequence(materialize('garbage'), 'arg');
+': no such function: materialize

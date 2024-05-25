@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CRC32IEEE(sipHash128());
+': no such function: sipHash128

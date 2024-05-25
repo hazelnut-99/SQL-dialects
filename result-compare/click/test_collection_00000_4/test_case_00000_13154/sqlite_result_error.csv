@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT decodeHTMLComponent('&amp;clickhouse');
+': no such function: decodeHTMLComponent

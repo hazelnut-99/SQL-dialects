@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 in Null;
+': near "Null": syntax error

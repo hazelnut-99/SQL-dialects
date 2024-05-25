@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatchesCaseInsensitive('oooo', 'Oo');
+': no such function: countMatchesCaseInsensitive

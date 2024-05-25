@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayPushBack([], 1), arrayPushFront([[]], []);
+': unrecognized token: "]"

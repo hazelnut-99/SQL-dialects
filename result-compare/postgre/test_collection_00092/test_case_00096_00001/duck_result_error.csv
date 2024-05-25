@@ -1,0 +1,3 @@
+Binder Error: Table "hjtest_1" does not have a column named "tableoid"
+LINE 1: SELECT hjtest_1.a a1, hjtest_2.a a2,hjtest_1.tableoid::regclass t1, hjtest_...
+                                            ^

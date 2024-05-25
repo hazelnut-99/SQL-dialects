@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayAUC([0, 3, 5, 6, 7.5, 8], [1, 0, 1, 0, 0, 0]);
+': no such column: 0, 3, 5, 6, 7.5, 8

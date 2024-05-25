@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 3:     SELECT ['left'] as ar, 42 AS left_number
+                   ^

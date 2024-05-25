@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTimeOrZero('<Empty>', 'UTC');
+': no such function: toDateTimeOrZero

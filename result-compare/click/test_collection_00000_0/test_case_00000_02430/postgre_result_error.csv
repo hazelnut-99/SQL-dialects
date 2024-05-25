@@ -1,0 +1,3 @@
+syntax error at or near "YEAR"
+LINE 1: SELECT toDate('2017-01-01') + INTERVAL -1 YEAR AS x;
+                                                  ^

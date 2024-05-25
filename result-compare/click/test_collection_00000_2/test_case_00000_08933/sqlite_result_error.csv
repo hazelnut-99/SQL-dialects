@@ -1,0 +1,2 @@
+Execution failed on sql 'select toStartOfYear(toDate(0));
+': no such function: toDate

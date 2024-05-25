@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT trim(BOTH '"' FROM '2') == '2'
+': near "'"'": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint64 does not exist!
+Did you mean "count"?
+LINE 1: SELECT -nan = toUInt64(0), -nan != toUInt64(0), -nan ...
+                      ^

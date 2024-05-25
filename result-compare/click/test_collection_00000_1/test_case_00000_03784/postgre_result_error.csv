@@ -1,0 +1,3 @@
+syntax error at or near "number"
+LINE 1: ...('2018-09-19 00:00:00', 'Asia/Tehran') + INTERVAL number * 3...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(inf, 'Int128'), accurateCastOrDefault(inf, 'Int128', toInt128(5));
+': no such column: inf

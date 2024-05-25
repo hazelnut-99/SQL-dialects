@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'OHello' NOT ILIKE '%lhell%';
+': near "ILIKE": syntax error

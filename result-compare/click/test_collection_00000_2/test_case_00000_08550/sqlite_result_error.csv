@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 8, 'Hello',bin(bitShiftRight('Hello', 8));
+': no such function: bitShiftRight

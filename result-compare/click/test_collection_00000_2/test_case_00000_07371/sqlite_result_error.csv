@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpret(toFloat64(0.2), 'UInt64'), reinterpretAsUInt64(toFloat64(0.2));
+': no such function: toFloat64

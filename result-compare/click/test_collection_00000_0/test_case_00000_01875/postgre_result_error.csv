@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...STINCT x, y) FROM (SELECT DISTINCT * FROM (SELECT [1, 2] AS ...
+                                                             ^

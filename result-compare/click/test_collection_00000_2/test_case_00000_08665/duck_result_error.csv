@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name bitshiftleft does not exist!
+Did you mean "left"?
+LINE 1: SELECT 27,'Hello',bin(bitShiftLeft('Hello', 27));
+                              ^

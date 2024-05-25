@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3EdgeLengthKm(11);
+': no such function: h3EdgeLengthKm

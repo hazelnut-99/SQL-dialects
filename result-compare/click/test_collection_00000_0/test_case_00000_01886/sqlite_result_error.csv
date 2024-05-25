@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT floor(greatCircleDistance(33.3, 55.3, 33.3, 55.3)) AS distance;
+': no such function: greatCircleDistance

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tobool does not exist!
+Did you mean "bool_or"?
+LINE 1: SELECT toBool(0);
+               ^

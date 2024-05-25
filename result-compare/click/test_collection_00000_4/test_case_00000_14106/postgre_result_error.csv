@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...2), c2 >= 0), maxIf((c1, c2), c2 >= 0) FROM values((NULL, 0....
+                                                             ^

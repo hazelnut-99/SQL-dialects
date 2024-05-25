@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDistinct(arraySort(arrayMap((x, y) -> (round(x, 3), round(y, 3)), arrayFlatten(polygonsSymDifferenceSpherical([[(50.,50.),(50.,-50.),(-50.,-50.),(-50.,50.),(50.,50.)],[(10.,10.),(10.,40.),(40.,40.),(40.,10.),(10.,10.)],[(-10.,-10.),(-10.,-40.),(-40.,-40.),(-40.,-10.),(-10.,-10.)]], [[[(-20.,-20.),(-20.,20.),(20.,20.),(20.,-20.),(-20.,-20.)]]])))));
+': unrecognized token: "]"

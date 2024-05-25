@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: ... least(x, y), greatest(x, y), least(x, materialize(y)), greatest(materialize(x...
+                                                  ^

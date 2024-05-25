@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: select toString(x) from values ('x Nullable(String)', '42', ...
+                                       ^

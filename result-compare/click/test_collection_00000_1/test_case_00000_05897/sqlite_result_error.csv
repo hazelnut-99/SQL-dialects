@@ -1,0 +1,2 @@
+Execution failed on sql 'select polygonsDistanceSpherical([[[(23.725750, 37.971536)]]], [[[(4.3826169, 50.8119483)]]]);
+': unrecognized token: "]"

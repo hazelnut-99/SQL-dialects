@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT anyLast(number) FROM numbers(1) GROUP BY number;
+': no such table: numbers

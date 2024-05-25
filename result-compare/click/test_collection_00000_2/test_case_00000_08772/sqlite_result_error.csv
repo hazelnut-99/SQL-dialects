@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 0b0100 as number, toTypeName(number);
+': unrecognized token: "0b0100"

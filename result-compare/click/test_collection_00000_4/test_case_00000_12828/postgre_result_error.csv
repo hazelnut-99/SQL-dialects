@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select transform('a', ['a', 'b'], [toDateTime64(1, 3, 'UTC')...
+                              ^

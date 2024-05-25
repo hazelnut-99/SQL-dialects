@@ -1,0 +1,2 @@
+Execution failed on sql 'select if(number > 0, intDiv(42, number), 0), if(number = 0, 0, intDiv(42, number)) from numbers(5);
+': no such table: numbers

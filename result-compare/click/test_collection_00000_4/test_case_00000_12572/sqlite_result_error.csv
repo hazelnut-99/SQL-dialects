@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (-1::Int8, -2::Int8, -3::Int8) AS x, (4::Int8, 5::Int8, 6::Int8) AS y, dotProduct(x, y) AS res, toTypeName(res);
+': unrecognized token: ":"

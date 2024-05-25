@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(accurateCast(19, 'DateTime'), 'UTC');
+': no such function: accurateCast

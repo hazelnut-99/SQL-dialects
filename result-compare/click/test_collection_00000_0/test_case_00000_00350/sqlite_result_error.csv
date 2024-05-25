@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize('World') IN (SELECT 'Hello');
+': no such function: materialize

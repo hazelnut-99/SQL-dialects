@@ -35,3 +35,24 @@ CREATE TYPE jsrec AS (
 CREATE TYPE jsrec_i_not_null AS (
 	i	js_int_not_null
 );
+create type jpop2 as (a int, b json, c int, d int);
+CREATE TEMP TABLE jspoptest (js json);
+INSERT INTO jspoptest
+SELECT '{
+	"jsa": [1, "2", null, 4],
+	"rec": {"a": "abc", "c": "01.02.2003", "x": 43.2},
+	"reca": [{"a": "abc", "b": 456}, null, {"c": "01.02.2003", "x": 43.2}]
+}'::json
+FROM generate_series(1, 3);
+DROP TYPE jsrec;
+DROP TYPE jsrec_i_not_null;
+DROP DOMAIN js_int_not_null;
+DROP DOMAIN js_int_array_1d;
+DROP DOMAIN js_int_array_2d;
+DROP DOMAIN j_ordered_pair;
+DROP TYPE j_unordered_pair;
+CREATE TEMP TABLE foo (serial_num int, name text, type text);
+INSERT INTO foo VALUES (847001,'t15','GE1043');
+INSERT INTO foo VALUES (847002,'t16','GE1043');
+INSERT INTO foo VALUES (847003,'sub-alpha','GESS90');
+INSERT INTO foo VALUES (999999, NULL, 'bar');

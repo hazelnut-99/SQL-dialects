@@ -1,0 +1,3 @@
+syntax error at or near "system"
+LINE 2: system stop merges txn_counters;
+        ^

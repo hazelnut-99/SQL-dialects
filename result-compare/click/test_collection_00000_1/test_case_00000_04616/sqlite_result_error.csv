@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toFloat64(number)) FROM numbers(202, 2);
+': no such table: numbers

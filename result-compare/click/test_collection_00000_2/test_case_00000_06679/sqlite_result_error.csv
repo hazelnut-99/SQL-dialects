@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toNullable(toInt256(321)) AS k GROUP BY k;
+': no such function: toInt256

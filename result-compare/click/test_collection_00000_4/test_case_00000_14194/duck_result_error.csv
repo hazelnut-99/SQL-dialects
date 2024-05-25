@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...ed1:daf0')) AS ipv6, SHA256(ipv6) from numbers(10);
+                                                  ^

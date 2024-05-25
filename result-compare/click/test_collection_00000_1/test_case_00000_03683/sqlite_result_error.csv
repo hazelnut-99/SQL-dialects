@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT halfMD5(1, 2, 3);
+': no such function: halfMD5

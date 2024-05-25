@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name positioncaseinsensitiveutf8 does not exist!
+Did you mean "position"?
+LINE 1: SELECT positionCaseInsensitiveUTF8(concat('  и...
+               ^

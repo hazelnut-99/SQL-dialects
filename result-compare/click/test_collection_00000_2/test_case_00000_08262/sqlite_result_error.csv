@@ -1,0 +1,2 @@
+Execution failed on sql 'select hostname();
+': no such function: hostname

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...t_saf_test(x SimpleAggregateFunction(max, Int32)) ENGINE=Mer...
+                                                             ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT 3 as nelems, [[1,2],[-10,-20],[10,20],[0,0],[-1.5,1]]...
+                            ^

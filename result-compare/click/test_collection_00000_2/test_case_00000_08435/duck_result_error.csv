@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name linfdistance does not exist!
+Did you mean "list_distance"?
+LINE 1: SELECT LinfDistance((1, 1), (1, 2));
+               ^

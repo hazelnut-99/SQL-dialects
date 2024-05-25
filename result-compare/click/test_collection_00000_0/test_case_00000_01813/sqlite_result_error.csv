@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cityHash64(*) FROM (SELECT 1 AS x, x AS y);
+': no such column: x

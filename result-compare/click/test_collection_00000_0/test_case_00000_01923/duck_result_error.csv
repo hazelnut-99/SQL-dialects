@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraymap does not exist!
+Did you mean "array_agg"?
+LINE 1: SELECT arrayMap(x -> range(x), [4,1,2,3]) AS a...
+               ^

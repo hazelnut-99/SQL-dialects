@@ -1,0 +1,3 @@
+syntax error at or near "CODEC"
+LINE 3:   epoch UInt64 CODEC(Delta,LZ4),
+                       ^

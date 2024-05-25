@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt32(0) AS x, toInt8(1) AS y, ((x > y) ? x : y) AS z, toTypeName(x), toTypeName(y), toTypeName(z);
+': near "?": syntax error

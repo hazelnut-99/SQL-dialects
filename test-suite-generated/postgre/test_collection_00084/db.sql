@@ -170,3 +170,8 @@ create temp table parent (k int primary key, pd int);
 create temp table child (k int unique, cd int);
 insert into parent values (1, 10), (2, 20), (3, 30);
 insert into child values (1, 100), (4, 400);
+begin;
+CREATE TEMP TABLE a (id int PRIMARY KEY);
+CREATE TEMP TABLE b (id int PRIMARY KEY, a_id int);
+INSERT INTO a VALUES (0), (1);
+INSERT INTO b VALUES (0, 0), (1, NULL);

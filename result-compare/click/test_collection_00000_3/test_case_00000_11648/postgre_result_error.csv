@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayPartialShuffle([9223372036854775808], 0, 0xbad_c...
+                                   ^

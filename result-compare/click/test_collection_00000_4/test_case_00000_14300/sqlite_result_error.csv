@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT zero FROM zeros() LIMIT 10;
+': no such table: zeros

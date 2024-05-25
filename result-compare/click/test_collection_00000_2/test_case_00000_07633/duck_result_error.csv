@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayproduct does not exist!
+Did you mean "array_dot_product"?
+LINE 1: SELECT arrayProduct([1,2,3,4,5,6]) as a, toTyp...
+               ^

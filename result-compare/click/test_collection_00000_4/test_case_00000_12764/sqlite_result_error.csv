@@ -1,0 +1,2 @@
+Execution failed on sql 'select substringIndex(materialize('www.clickhouse.com'), '.', -1);
+': no such function: materialize

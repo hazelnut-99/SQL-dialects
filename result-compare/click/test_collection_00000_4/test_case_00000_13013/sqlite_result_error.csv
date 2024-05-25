@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 ORDER BY tuple(count() OVER ());
+': no such function: tuple

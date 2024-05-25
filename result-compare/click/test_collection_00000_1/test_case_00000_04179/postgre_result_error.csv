@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select multiFuzzyMatchAny('halo some wrld', 3, ['^hello.*wor...
+                                                       ^

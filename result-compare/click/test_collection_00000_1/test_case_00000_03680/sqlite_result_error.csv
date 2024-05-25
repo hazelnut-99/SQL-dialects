@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(sipHash128('foo', 'foo'));
+': no such function: sipHash128

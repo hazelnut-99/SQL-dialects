@@ -1,0 +1,3 @@
+syntax error at or near "assumeNotNull"
+LINE 5:     INDEX value_idx assumeNotNull(value) TYPE minmax GRANULA...
+                            ^

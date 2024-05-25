@@ -1,0 +1,2 @@
+Execution failed on sql 'select endsWith([1, 2, 3, 4], [3]);
+': no such column: 1, 2, 3, 4

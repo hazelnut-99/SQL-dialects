@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name vectordifference does not exist!
+Did you mean "corr"?
+LINE 1: SELECT vectorDifference(tuplePlus((1, 2), (3, ...
+               ^

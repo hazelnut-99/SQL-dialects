@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint256 does not exist!
+Did you mean "atan2"?
+LINE 1: SELECT hex(toInt256(-100000000000)) AS res;
+                   ^

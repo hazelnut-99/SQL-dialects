@@ -1,0 +1,3 @@
+syntax error at or near "asof"
+LINE 1: select * from (select 0 as k, toInt32(1) as v) t1 asof join ...
+                                                          ^

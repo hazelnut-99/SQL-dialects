@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpret(a, 'String'), reinterpretAsString(a), reinterpretAsUInt16('11') as a;
+': no such column: a

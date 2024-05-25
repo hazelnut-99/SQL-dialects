@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSON_EXISTS('{"hello":1,"world":2}', '$.world');
+': no such function: JSON_EXISTS

@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatchesCaseInsensitive('foOBarBAZfoobarbaz', 'foo(bar)(?:baz|)');
+': no such function: countMatchesCaseInsensitive

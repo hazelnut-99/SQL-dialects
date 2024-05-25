@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addhours does not exist!
+Did you mean "hour"?
+LINE 1: SELECT addHours(toDateTime64('1984-03-31 23:00...
+               ^

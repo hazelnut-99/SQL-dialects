@@ -1,0 +1,3 @@
+syntax error at or near "ARRAY"
+LINE 1: ...ring'::FixedString(100), 0.5)), a FROM numbers(1) ARRAY JOIN...
+                                                             ^

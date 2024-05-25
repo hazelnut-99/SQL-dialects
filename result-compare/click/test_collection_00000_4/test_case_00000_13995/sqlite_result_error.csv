@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM generate_series(5, 4);
+': no such table: generate_series

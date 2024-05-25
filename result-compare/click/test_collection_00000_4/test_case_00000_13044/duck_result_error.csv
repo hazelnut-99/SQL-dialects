@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuple does not exist!
+Did you mean "len"?
+LINE 1: select [tuple(-4741124612489978151, 1), tuple(-...
+                ^

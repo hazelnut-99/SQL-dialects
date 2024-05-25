@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT geoDistance(0., 89., 0., 90.);
+': no such function: geoDistance

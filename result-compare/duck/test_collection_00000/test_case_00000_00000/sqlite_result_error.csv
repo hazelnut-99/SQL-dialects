@@ -1,0 +1,2 @@
+Execution failed on sql 'select typeof(x) from (select 1::INT as x group by x);
+': unrecognized token: ":"

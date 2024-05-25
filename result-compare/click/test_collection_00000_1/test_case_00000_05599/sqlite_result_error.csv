@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT GREATEST('B','A','C');
+': no such function: GREATEST

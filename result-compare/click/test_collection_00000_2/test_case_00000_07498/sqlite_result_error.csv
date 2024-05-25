@@ -1,0 +1,2 @@
+Execution failed on sql 'select toInt8OrDefault('-1xx', cast(-2 as Int8));
+': no such function: toInt8OrDefault

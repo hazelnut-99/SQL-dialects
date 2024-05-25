@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 < any (select number from numbers(10));
+': near "select": syntax error

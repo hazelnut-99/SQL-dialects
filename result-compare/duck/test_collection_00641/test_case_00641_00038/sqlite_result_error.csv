@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 2e38::REAL*2;
+': unrecognized token: ":"

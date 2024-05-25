@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 373. DB::Exception: Session 29626d65-c275-4459-9746-a9126c1ccbd2 is locked by a concurrent client. (SESSION_IS_LOCKED) (version 24.2.2.16233 (official build))

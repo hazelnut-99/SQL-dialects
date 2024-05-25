@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: ...') AS x, x, identity((SELECT 1)), identity((SELECT 1) AS y);
+                                                                 ^

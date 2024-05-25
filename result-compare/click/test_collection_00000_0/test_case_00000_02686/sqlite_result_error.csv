@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DISTINCT dumpColumnStructure([[], [1]]) FROM numbers(2);
+': unrecognized token: "]"

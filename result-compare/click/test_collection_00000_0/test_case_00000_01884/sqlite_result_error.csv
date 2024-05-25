@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toFloat64OrZero(arrayJoin(['123.456a', '456.789']));
+': no such column: '123.456a', '456.789'

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST('hello' AS FixedString(5)) ILIKE '%he%o%';
+': near "'%he%o%'": syntax error

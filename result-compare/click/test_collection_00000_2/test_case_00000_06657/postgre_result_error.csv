@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT anyIf(CAST(number, 'Nullable(UInt8)'), number = 3) AS...
+                                ^

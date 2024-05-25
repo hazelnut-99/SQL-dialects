@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'fooooo' EXCEPT ALL SELECT 'fooooo';
+': near "ALL": syntax error

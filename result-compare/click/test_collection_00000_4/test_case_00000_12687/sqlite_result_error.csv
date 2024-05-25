@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(multiIf(number = NULL, 65536, 3))  FROM numbers(3);
+': no such table: numbers

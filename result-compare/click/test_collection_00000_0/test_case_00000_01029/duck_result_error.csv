@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT date_trunc('minute', toDateTime('2020-01-01 20:11:22', 'Euro...
+                                    ^

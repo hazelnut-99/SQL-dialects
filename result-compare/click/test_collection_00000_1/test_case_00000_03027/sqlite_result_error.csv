@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '1e-39' AS x, toDecimal128(x, 38);
+': no such column: x

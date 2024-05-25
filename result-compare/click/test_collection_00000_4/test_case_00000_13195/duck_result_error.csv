@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonmergepatch does not exist!
+Did you mean "json_merge_patch"?
+LINE 1: select jsonMergePatch('{"a": {"b": 1, "c": 2}}...
+               ^

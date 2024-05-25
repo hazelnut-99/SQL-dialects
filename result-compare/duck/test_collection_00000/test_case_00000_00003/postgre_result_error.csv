@@ -1,0 +1,3 @@
+syntax error at or near "USING"
+LINE 1: SELECT COUNT(*) FROM range(10000) USING SAMPLE 5;
+                                          ^

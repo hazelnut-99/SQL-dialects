@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arraySort(geohashesInBox(20.0, 20.0, 21.0, 21.0, 4));
+': no such function: geohashesInBox

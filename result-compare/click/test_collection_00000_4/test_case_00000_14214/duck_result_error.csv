@@ -1,0 +1,3 @@
+Conversion Error: Type INT32 with value -123 can't be cast because the value is out of range for the destination type UINT8
+LINE 1: SELECT CAST(-123 AS UInt8), CAST(1234 AS UInt8...
+               ^

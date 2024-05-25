@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT
+    toTypeName(i)
+FROM generateRandom('i UUID')
+LIMIT 1;
+': no such table: generateRandom

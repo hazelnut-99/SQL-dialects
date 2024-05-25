@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateDense([10,20,10,30]);
+': no such column: 10,20,10,30

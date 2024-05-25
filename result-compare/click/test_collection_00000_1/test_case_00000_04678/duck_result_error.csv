@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name wordshingleminhashutf8 does not exist!
+Did you mean "least"?
+LINE 1: SELECT wordShingleMinHashUTF8('what a cute cat...
+               ^

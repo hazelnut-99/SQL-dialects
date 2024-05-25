@@ -1,0 +1,2 @@
+Execution failed on sql 'select [3] = multiSearchAllPositionsCaseInsensitiveUTF8(materialize('ab€AB'), materialize(['€ab']));
+': no such column: 3

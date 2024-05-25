@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT round(h3HexAreaM2(arrayJoin([1,2])), 2);
+': no such column: 1,2

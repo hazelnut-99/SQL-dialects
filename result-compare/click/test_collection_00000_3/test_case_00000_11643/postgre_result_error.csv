@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayShuffle([tuple(1, NULL), tuple(2, 'a'), tuple(3,...
+                            ^

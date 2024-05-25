@@ -1,0 +1,3 @@
+syntax error at or near "ARRAY"
+LINE 10:     LEFT ARRAY JOIN x AS n
+                  ^

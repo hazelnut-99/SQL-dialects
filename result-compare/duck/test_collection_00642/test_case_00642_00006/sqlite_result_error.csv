@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (i*10::TINYINT)*10::TINYINT FROM (SELECT * FROM tinyints) tbl(i) WHERE i=1 ORDER BY 1;
+': unrecognized token: ":"

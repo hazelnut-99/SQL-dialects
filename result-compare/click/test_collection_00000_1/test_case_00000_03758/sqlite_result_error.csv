@@ -1,0 +1,2 @@
+Execution failed on sql 'select right('bar', 123);
+': near "(": syntax error

@@ -145,3 +145,9 @@ create temp table q1 as select 1 as q1;
 create temp table q2 as select 0 as q2;
 analyze q1;
 analyze q2;
+with ctetable as not materialized ( select 1 as f1 )
+select * from ctetable c1
+where f1 in ( select c3.f1 from ctetable c2 full join ctetable c3 on true );
+create function f_immutable_int4(i integer) returns integer as
+$$ begin return i; end; $$ language plpgsql immutable;
+drop function f_immutable_int4(int);

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name fromunixtimestamp64milli does not exist!
+Did you mean "to_timestamp"?
+LINE 1: select fromUnixTimestamp64Milli(toInt64(-1), '...
+               ^

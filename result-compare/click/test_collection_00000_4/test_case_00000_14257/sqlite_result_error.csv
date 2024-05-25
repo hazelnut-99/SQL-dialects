@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(toUInt8OrNull('123')), toTypeName(toUInt8OrZero('123'));
+': no such function: toUInt8OrNull

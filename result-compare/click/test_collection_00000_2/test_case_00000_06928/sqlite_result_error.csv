@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT SUMOrNullIf(1, 0);
+': no such function: SUMOrNullIf

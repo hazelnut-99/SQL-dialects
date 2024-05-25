@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toString(initializeAggregation('uniqState', initializeAggregation('uniqState', 0))));
+': no such function: initializeAggregation

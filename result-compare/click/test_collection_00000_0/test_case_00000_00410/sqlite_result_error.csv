@@ -1,0 +1,2 @@
+Execution failed on sql 'select URLHash('http://ya.ru/a' as url, 0 as level) = URLHash(URLHierarchy(url)[level + 1]);
+': near "as": syntax error

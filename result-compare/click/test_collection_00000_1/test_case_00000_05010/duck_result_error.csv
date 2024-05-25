@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name replaceall does not exist!
+Did you mean "replace"?
+LINE 1: SELECT length(replaceAll(bin('clickhouse cloud'), '0'...
+                      ^

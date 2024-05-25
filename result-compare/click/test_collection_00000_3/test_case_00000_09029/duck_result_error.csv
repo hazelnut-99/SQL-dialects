@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...:UInt8)), sumCount(number::UInt8) FROM numbers(250);
+                                                  ^

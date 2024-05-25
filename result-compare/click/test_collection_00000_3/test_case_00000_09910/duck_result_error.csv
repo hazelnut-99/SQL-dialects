@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name makedatetime64 does not exist!
+Did you mean "make_date"?
+LINE 1: select makeDateTime64(1991, 8, 24, 21, 4, 6553...
+               ^

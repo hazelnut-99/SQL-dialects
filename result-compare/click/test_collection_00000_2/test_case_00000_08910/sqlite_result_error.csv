@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(SHA384('test'));
+': no such function: SHA384

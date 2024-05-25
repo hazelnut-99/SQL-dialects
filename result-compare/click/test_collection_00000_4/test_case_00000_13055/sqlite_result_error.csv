@@ -1,0 +1,2 @@
+Execution failed on sql 'select startsWithUTF8('富强民主文明和谐', '');
+': no such function: startsWithUTF8

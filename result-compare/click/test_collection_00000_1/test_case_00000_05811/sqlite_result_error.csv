@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count(nullIn(NULL, tuple(NULL)));
+': no such function: nullIn

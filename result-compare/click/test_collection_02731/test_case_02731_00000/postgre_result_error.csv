@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: CREATE TABLE test_02559__fuzz_20(`id1` Int16, `id2` Decimal(...
+                                         ^

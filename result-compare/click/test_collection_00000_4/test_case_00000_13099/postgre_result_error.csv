@@ -1,0 +1,3 @@
+syntax error at or near "materialize"
+LINE 1: SELECT timestamp(materialize('2013-12-31'));
+                         ^

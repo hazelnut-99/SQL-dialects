@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tofixedstring does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT toFixedString('00000000-0000-02f8-9cb8-...
+               ^

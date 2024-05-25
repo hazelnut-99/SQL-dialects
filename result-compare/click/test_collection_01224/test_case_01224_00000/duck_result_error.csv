@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers_mt does not exist!
+Did you mean "unnest"?
+LINE 2: ...reate view table_01356_view_threads as select number % 10 as g, sum(number) as s from numbers_mt(1000000) group by g;
+                                                  ^

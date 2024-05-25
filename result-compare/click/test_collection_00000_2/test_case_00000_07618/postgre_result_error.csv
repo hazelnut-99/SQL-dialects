@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT toUInt8(assumeNotNull(cast(cast(NULL, 'Nullable(Strin...
+                                                   ^

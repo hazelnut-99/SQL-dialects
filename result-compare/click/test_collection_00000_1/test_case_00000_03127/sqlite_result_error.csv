@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal128('4294967295', 10) AS x, toUInt32(x);
+': no such function: toDecimal128

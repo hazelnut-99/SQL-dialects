@@ -1,0 +1,3 @@
+syntax error at or near "array"
+LINE 1: DROP TABLE IF EXISTS array;
+                             ^

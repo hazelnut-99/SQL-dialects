@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(yesterday()) = 'Date';
+': no such function: yesterday

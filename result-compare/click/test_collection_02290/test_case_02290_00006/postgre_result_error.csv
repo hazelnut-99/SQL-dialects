@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: WITH h3ToGeo(arrayJoin([579205133326352383,58975384788323532...
+                              ^

@@ -1,3 +1,15 @@
-CREATE TABLE test_tablesample (id int, name text) WITH (fillfactor=10);
-INSERT INTO test_tablesample
-  SELECT i, repeat(i::text, 200) FROM generate_series(0, 9) s(i);
+CREATE TABLE vactst (i INT);
+INSERT INTO vactst VALUES (1);
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst SELECT * FROM vactst;
+INSERT INTO vactst VALUES (0);
+DELETE FROM vactst WHERE i != 0;

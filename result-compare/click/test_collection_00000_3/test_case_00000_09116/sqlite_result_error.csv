@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST('N', 'Bool');
+': near ",": syntax error

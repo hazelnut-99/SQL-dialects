@@ -1,0 +1,3 @@
+Conversion Error: Invalid hex escape code encountered in string -> blob conversion: unterminated escape code at end of blob
+LINE 1: select unbin('0') == '\0';
+                             ^

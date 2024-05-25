@@ -1,0 +1,2 @@
+Execution failed on sql 'select erfc(28) = 0;
+': no such function: erfc

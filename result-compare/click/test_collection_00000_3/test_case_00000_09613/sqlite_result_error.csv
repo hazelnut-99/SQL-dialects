@@ -1,0 +1,2 @@
+Execution failed on sql 'select getTypeSerializationStreams('Map(String, Int64)');
+': no such function: getTypeSerializationStreams

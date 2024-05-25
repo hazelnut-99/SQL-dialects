@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT num_nulls(VARIADIC '{1,2,NULL,3}'::int[]);
+': near "'{1,2,NULL,3}'": syntax error

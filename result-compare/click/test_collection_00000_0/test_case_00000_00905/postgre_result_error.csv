@@ -1,0 +1,3 @@
+syntax error at or near "2"
+LINE 1: ...oStartOfInterval(toDateTime(1549483055), INTERVAL 2 week, 'A...
+                                                             ^

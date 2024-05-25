@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sipHash64(1, 2, 3);
+': no such function: sipHash64

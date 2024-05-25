@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuplemodulobynumber does not exist!
+Did you mean "md5_number"?
+LINE 1: SELECT tupleModuloByNumber((15, 10, 5), 2);
+               ^

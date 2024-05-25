@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name byteswap does not exist!
+Did you mean "year"?
+LINE 1: SELECT byteSwap(-1::Int8);
+               ^

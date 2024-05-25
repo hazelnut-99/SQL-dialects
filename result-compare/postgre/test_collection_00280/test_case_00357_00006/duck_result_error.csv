@@ -1,0 +1,4 @@
+Binder Error: Referenced column "ctid" not found in FROM clause!
+Candidate bindings: "tidscan.id"
+LINE 2: WHERE (id = 3 AND ctid IN ('(...
+                          ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReduce('sumOrNull', []::Array(UInt8)) as a, toTypeName(a);
+': unrecognized token: ":"

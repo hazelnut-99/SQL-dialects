@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name adddate does not exist!
+Did you mean "add"?
+LINE 1: SELECT addDate('2022-05-07', INTERVAL 5 MINUTE...
+               ^

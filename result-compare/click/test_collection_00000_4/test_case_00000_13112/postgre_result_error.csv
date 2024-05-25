@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 5:   [toDate('20230815'), toDate('20230816')] as date,
+          ^

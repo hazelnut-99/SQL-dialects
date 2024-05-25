@@ -1,0 +1,3 @@
+syntax error at or near "TABLE"
+LINE 11: CREATE OR REPLACE TABLE t AS SELECT range x FROM range(10);
+                           ^

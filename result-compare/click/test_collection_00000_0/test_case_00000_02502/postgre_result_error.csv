@@ -1,0 +1,3 @@
+syntax error at or near "10"
+LINE 1: ...ELECT DATEDIFF('year', today(), today() - INTERVAL 10 YEAR);
+                                                              ^

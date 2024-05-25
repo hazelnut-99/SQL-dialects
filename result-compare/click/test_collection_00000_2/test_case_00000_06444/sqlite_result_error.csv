@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayJoin([NULL]) OR 1;
+': no such column: NULL

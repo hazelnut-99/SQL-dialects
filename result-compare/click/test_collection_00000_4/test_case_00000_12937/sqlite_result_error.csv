@@ -1,0 +1,2 @@
+Execution failed on sql 'select any_value(number) from numbers(10);
+': no such table: numbers

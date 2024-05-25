@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractweeks does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractWeeks(materialize('2023-10-22')...
+               ^

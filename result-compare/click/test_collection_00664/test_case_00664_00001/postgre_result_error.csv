@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: create table array_intersect (date Date, arr Array(UInt8)) e...
+                                                     ^

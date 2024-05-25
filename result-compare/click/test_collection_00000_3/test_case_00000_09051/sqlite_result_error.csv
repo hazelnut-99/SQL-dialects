@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal32('11.00', 2) > 1.;
+': no such function: toDecimal32

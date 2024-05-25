@@ -1,0 +1,2 @@
+Execution failed on sql 'select jsonMergePatch('{"a": {"b": 1, "c": 2}}', '{"a": {"b": [3, 4]}}');
+': no such function: jsonMergePatch

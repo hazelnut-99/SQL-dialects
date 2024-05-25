@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() FROM numbers_mt(100000000) WHERE NOT ignore(toIPv6OrZero(randomString(8)));
+': no such table: numbers_mt

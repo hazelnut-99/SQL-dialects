@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name blockserializedsize does not exist!
+Did you mean "lcase"?
+LINE 1: select 'String,UInt8', blockSerializedSize('foo', 1);
+                               ^

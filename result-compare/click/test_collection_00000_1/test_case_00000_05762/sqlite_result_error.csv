@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isValidUTF8(randomStringUTF8(100000));
+': no such function: randomStringUTF8

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name encrypt does not exist!
+Did you mean "cbrt"?
+LINE 1: SELECT hex(encrypt('aes-128-cbc', 'text', 'keykeyk...
+                   ^

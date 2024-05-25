@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayFilter(x -> x % 2, [1, NULL, 3, NULL]);
+': no such function: arrayFilter

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'test5', number FROM numbers(1000) GROUP BY number ORDER BY number;
+': no such table: numbers

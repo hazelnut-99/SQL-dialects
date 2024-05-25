@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3edgelengthm does not exist!
+Did you mean "length"?
+LINE 1: SELECT h3EdgeLengthM(2) * 180 / pi() / 6371007...
+               ^

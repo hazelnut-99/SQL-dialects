@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT [] AS x, CAST(x AS Array(Array(Array(Tuple(UInt64, St...
+               ^

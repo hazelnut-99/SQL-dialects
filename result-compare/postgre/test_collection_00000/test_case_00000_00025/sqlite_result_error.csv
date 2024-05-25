@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT current_schema;
+': no such column: current_schema

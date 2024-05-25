@@ -1,0 +1,2 @@
+Execution failed on sql 'select empty(map());
+': no such function: map

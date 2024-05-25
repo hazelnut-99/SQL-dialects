@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tonullable does not exist!
+Did you mean "nullif"?
+LINE 2: FROM (SELECT if(1 = 0, toNullable(toUInt8(0)), NULL) AS x);
+                               ^

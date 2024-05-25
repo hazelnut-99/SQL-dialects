@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tomonth does not exist!
+Did you mean "month"?
+LINE 1: SELECT toMonth(toDateTime(1412106600), 'Asia/I...
+               ^

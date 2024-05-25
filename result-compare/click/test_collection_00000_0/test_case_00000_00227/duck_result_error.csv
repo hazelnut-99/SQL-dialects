@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hypot does not exist!
+Did you mean "cot"?
+LINE 1: select hypot(0, 1) = 1;
+               ^

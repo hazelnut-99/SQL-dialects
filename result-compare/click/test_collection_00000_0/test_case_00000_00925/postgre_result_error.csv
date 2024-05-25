@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: SELECT toStartOfInterval(toDate(17933), INTERVAL 1 quarter);
+                                                         ^

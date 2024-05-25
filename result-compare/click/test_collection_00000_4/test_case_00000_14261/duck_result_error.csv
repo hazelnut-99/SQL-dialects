@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint8ornull does not exist!
+Did you mean "count"?
+LINE 1: SELECT toUInt8OrNull('123\0');
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT num_nonnulls(VARIADIC NULL::text[]);
+': near "NULL": syntax error

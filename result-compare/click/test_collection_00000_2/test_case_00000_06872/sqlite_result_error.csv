@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrNull(5, 'UInt64');
+': no such function: accurateCastOrNull

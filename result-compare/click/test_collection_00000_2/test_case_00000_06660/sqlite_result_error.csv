@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT uniq(bitNot(number)) FROM numbers(1);
+': no such table: numbers

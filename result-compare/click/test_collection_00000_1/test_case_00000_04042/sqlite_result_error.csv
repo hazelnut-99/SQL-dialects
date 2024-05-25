@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateDenseRanked(2, [[[1,2,3],[1,2,3],[1,2,3]],[[1,2,3],[1,2,3],[1,2,3]],[[1,2]]], 2);
+': unrecognized token: "]"

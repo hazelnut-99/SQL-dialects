@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...v) FROM (SELECT '1'::UInt256 AS v FROM numbers(100));
+                                                  ^

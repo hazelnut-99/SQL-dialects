@@ -1,0 +1,3 @@
+syntax error at or near "'aes-256-ecb'"
+LINE 1: WITH 'aes-256-ecb' as mode, 'Hello World!' as plaintext, 'te...
+             ^

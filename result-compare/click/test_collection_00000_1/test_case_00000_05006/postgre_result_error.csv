@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...Count(x), hex(reinterpretAsString(x)) FROM VALUES ('x Float6...
+                                                             ^

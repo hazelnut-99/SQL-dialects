@@ -1,0 +1,3 @@
+syntax error at or near "'a.*b'"
+LINE 1: SELECT 'ab' REGEXP 'a.*b';
+                           ^

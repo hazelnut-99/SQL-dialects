@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT argMin((n, n), n) t, toTypeName(t) FROM (SELECT if(number % 5 == 0, NULL, number::Int32) as n from numbers(5, 10));
+': unrecognized token: ":"

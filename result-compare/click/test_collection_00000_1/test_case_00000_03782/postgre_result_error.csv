@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 2:     ignore(toDateTime(370641600, 'Asia/Istanbul') AS t),
+                                                          ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name punycodeencode does not exist!
+Did you mean "decode"?
+LINE 1: SELECT 'MajiでKoiする5秒前' AS str, punycodeEncode(str) AS puny, punycodeDe...
+                                            ^

@@ -1,0 +1,3 @@
+syntax error at or near "x"
+LINE 1: ...aterialize(2) as x) s1 left join (select 2 as x) s2 using x;
+                                                                     ^

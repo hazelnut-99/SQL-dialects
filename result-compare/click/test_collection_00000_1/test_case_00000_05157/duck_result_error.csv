@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totypename does not exist!
+Did you mean "dayname"?
+LINE 1: ...e '2001-10-01' - date '2001-09-28') x, toTypeName(x);
+                                                  ^

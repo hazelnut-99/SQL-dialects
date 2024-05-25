@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 9:         arrayJoin([1, 2]) AS k,
+                          ^

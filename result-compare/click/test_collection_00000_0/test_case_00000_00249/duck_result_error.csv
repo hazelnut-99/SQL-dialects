@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name atanh does not exist!
+Did you mean "atan"?
+LINE 1: select atanh(0.5) = -atanh(-0.5);
+               ^

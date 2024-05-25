@@ -1,0 +1,3 @@
+syntax error at or near "LARGE"
+LINE 8:     e CHAR LARGE OBJECT COMMENT 'comment',
+                   ^

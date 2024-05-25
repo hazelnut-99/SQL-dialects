@@ -1,0 +1,3 @@
+syntax error at or near "4"
+LINE 1: SELECT  toDateTime('2018-01-01 22:00:00') + INTERVAL 4 h
+                                                             ^

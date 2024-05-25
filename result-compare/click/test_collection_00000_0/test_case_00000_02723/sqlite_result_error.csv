@@ -1,0 +1,2 @@
+Execution failed on sql 'select count() from view(select 1 union all (select 2 union all select 3));
+': near "select": syntax error

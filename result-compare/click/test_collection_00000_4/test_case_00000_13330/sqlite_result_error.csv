@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [2, 3, 5] * materialize(7);
+': no such column: 2, 3, 5

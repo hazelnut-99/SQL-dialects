@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3getunidirectionaledgeboundary does not exist!
+Did you mean "enum_range_boundary"?
+LINE 1: SELECT h3GetUnidirectionalEdgeBoundary(5996860...
+               ^

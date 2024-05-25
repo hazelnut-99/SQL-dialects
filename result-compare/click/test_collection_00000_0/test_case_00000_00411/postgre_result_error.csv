@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select URLHash('http://ya.ru/a' as url, 1 as level) = URLHas...
+                                        ^

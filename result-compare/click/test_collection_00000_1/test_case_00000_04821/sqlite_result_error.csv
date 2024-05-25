@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cityHash64(toDecimal128(128, 24));
+': no such function: toDecimal128

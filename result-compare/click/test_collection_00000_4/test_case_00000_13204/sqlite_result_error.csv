@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDaysSinceYearZero(toDate32('2023-09-08'));
+': no such function: toDate32

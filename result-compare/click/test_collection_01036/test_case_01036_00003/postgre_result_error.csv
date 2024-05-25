@@ -1,0 +1,3 @@
+syntax error at or near "FROM"
+LINE 1: SHOW TABLES FROM information_schema;
+                    ^

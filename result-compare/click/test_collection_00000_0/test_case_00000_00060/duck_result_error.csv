@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv4numtostring does not exist!
+Did you mean "bitstring"?
+LINE 1: select IPv4NumToString(toUInt32(0)) == '0.0.0....
+               ^

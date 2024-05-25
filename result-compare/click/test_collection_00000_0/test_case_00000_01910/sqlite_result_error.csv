@@ -1,0 +1,18 @@
+Execution failed on sql 'SELECT
+    firstSignificantSubdomain('http://hello.canada.c'),
+    firstSignificantSubdomain('http://hello.canada.'),
+    firstSignificantSubdomain('http://hello.canada'),
+    firstSignificantSubdomain('http://hello.c'),
+    firstSignificantSubdomain('http://hello.'),
+    firstSignificantSubdomain('http://hello'),
+    firstSignificantSubdomain('http://'),
+    firstSignificantSubdomain('http:/'),
+    firstSignificantSubdomain('http:'),
+    firstSignificantSubdomain('http'),
+    firstSignificantSubdomain('h'),
+    firstSignificantSubdomain('.'),
+    firstSignificantSubdomain(''),
+    firstSignificantSubdomain('http://hello.canada..com'),
+    firstSignificantSubdomain('http://hello..canada.com'),
+    firstSignificantSubdomain('http://hello.canada.com.');
+': no such function: firstSignificantSubdomain

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name blocksize does not exist!
+Did you mean "get_block_size"?
+LINE 1: SELECT DISTINCT blockSize() FROM t;
+                        ^

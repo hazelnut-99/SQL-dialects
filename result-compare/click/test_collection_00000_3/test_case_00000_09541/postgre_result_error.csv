@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT round(h3CellAreaRads2(arrayJoin([579205133326352383,5...
+                                               ^

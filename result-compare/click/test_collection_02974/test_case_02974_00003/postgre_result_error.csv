@@ -1,0 +1,3 @@
+syntax error at or near "CODEC"
+LINE 1: ... TEMPORARY TABLE table_lz4 (id UInt64, ui UInt256 CODEC(LZ4)...
+                                                             ^

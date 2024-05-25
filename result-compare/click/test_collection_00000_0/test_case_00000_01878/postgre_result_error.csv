@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ing((1, 'Hello', toDate('2016-01-01'))), toString([1, 2, 3])...
+                                                             ^

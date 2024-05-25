@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayReverseFill(x -> not isNull(x), [1, null, 3, 11,...
+                                                    ^

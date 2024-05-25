@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addmonths does not exist!
+Did you mean "month"?
+LINE 1: SELECT addMonths('2023-10-22', 1), addMonths('...
+               ^

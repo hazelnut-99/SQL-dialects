@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDivOrZero((5,4), 0);
+': no such function: intDivOrZero

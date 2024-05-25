@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayPartialShuffle([tuple(1, NULL), tuple(2, 'a'), tuple(3, 'A')], 0, 0xbad_cafe);
+': near "_cafe": syntax error

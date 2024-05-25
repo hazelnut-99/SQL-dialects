@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...e_op_mono(i int, tz String, create_time DateTime) ENGINE Mer...
+                                                             ^

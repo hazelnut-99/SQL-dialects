@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfWeek(toDateTime(1419800400), 1, 'Asia/Tokyo');
+': no such function: toDateTime

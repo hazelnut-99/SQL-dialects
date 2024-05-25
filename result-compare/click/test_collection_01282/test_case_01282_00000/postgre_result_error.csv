@@ -1,0 +1,4 @@
+function todate(integer) does not exist
+LINE 1: SELECT toDate(-1), toDate(10000000000000, 'Asia/Istanbul'), ...
+               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

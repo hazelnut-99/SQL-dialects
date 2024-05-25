@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT greatest(now(), now() + 10) - now();
+': no such function: now

@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 3: ...REATE TABLE replacing(d Date, x UInt32, s String) ENGINE = R...
+                                                             ^

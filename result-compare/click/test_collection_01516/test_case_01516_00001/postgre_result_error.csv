@@ -1,0 +1,3 @@
+syntax error at or near "SYNC"
+LINE 1: ...P TABLE IF EXISTS replicated_deduplicate_by_columns_r1 SYNC;
+                                                                  ^

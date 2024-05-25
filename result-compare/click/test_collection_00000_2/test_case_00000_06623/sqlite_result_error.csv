@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT normalizeQuery('SELECT 1, ''xyz11''');
+': no such function: normalizeQuery

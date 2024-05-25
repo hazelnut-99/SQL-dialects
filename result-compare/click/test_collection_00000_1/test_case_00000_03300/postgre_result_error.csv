@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayEnumerateDense([[1], [2], [34], [1]]);
+                                   ^

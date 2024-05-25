@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name geohashesinbox does not exist!
+Did you mean "asin"?
+LINE 1: SELECT geohashesInBox(1., 2., 3., 4., material...
+               ^

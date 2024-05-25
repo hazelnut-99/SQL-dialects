@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() <= 1 FROM (SELECT number FROM numbers(10) LIMIT randConstant() % 2);
+': no such table: numbers

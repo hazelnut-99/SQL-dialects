@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap((x) -> x, [tuple(1)]);
+': no such column: tuple(1)

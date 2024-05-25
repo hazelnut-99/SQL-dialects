@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hasTokenOrNull('', '');
+': no such function: hasTokenOrNull

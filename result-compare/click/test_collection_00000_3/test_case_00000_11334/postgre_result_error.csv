@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT cast(tuple('1'), 'Tuple(value String)') AS value, num...
+                              ^

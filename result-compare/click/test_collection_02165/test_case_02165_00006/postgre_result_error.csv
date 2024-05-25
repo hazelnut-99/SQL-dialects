@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...8(20), d4 Decimal256(40), f1 Float32, f2 Float64) ENGINE=Mem...
+                                                             ^

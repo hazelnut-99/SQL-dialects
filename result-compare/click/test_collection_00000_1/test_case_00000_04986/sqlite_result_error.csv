@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayZip(materialize([0, 1]), materialize(['hello', 'world']));
+': no such column: 'hello', 'world'

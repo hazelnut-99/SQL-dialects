@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayJoin(CAST(['hello', 'world'] AS Array(FixedString(5)))) LIKE '%o%w%';
+': near "FixedString": syntax error

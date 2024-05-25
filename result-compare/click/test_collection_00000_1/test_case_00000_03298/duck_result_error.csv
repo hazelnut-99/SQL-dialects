@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...000000 + rand64() % 1000000000))) FROM numbers(10000);
+                                                  ^

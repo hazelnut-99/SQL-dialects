@@ -1,0 +1,3 @@
+syntax error at or near "ALL"
+LINE 1: SELECT * FROM (SELECT materialize(1) AS x) AS t1 ALL RIGHT J...
+                                                         ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hasAll([['Hello, world']], [['Hello', 'world'], ['Hello, world']]);
+': unrecognized token: "]"

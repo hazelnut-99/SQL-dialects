@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAny(materialize('hallo some world'), 1, materialize(['^hello.*world$']));
+': no such function: materialize

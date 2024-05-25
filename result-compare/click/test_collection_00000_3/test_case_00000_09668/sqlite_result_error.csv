@@ -1,0 +1,2 @@
+Execution failed on sql 'select makeDate(1984, 2, 30);
+': no such function: makeDate

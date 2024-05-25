@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayPopBack([0.1, 0.2, 0.3]);
+': no such column: 0.1, 0.2, 0.3

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TRIM(TRAILING 'def' FROM 'abcdef');
+': near "'def'": syntax error

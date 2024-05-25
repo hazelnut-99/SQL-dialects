@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngrams(toFixedString('Test', 4), 4);
+': no such function: toFixedString

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name s2rectintersection does not exist!
+Did you mean "list_intersect"?
+LINE 1: SELECT s2RectIntersection(5178914411069187297,...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayStringConcat([Null, 'hello', Null, 'world', Null, 'xyz', 'def', Null], ';');
+': no such column: Null, 'hello', Null, 'world', Null, 'xyz', 'def', Null

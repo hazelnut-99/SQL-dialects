@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name generaterandom does not exist!
+Did you mean "generate_series"?
+LINE 3: FROM generateRandom('i UUID', 1, 10, 10)
+             ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...LECT x, lengthUTF8(x) AS y FROM (SELECT arrayJoin(['', 'h', ...
+                                                             ^

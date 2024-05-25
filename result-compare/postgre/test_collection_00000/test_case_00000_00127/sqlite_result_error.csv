@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 0b100101;
+': unrecognized token: "0b100101"

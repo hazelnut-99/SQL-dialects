@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT to_days(toDate('2023-09-08'));
+': no such function: toDate

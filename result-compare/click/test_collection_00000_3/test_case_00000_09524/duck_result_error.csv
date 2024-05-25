@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractmicroseconds does not exist!
+Did you mean "microsecond"?
+LINE 1: select subtractMicroseconds(toDateTime64('2023...
+               ^

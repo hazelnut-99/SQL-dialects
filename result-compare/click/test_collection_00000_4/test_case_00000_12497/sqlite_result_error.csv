@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimalString('-64.5671232345'::Decimal64(10), 10);
+': unrecognized token: ":"

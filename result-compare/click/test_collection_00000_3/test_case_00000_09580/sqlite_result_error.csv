@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toIPv4OrDefault(toIPv6('::ffff:1.2.3.4'));
+': no such function: toIPv6

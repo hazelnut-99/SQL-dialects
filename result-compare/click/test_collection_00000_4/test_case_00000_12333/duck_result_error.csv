@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name str_to_date does not exist!
+Did you mean "list_mode"?
+LINE 1: select str_to_date('10:04:11 03-07-2019', '%s:...
+               ^

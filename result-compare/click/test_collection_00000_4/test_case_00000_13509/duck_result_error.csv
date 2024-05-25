@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addnanoseconds does not exist!
+Did you mean "second"?
+LINE 1: SELECT addNanoseconds('2023-10-22', materializ...
+               ^

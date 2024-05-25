@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 2:     arrayJoin([toUUID('992f6910-42b2-43cd-98bc-c812fbf9b683'...
+                      ^

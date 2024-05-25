@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap(x -> x + 1, [2]), 123 AS y;
+': no such function: arrayMap

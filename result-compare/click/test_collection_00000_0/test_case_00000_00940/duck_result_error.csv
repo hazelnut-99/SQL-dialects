@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name torelativeyearnum does not exist!
+Did you mean "atan"?
+LINE 1: SELECT toRelativeYearNum(toDateTime(1412106600...
+               ^

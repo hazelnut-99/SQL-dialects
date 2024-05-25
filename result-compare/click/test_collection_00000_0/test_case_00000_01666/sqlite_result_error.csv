@@ -1,0 +1,2 @@
+Execution failed on sql 'select reinterpretAsFloat64(unhex('875635ffffffbfbe'))
+': no such function: unhex

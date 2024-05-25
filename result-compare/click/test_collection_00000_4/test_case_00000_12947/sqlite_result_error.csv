@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT today() = curDATE();
+': no such function: curDATE

@@ -1,0 +1,3 @@
+syntax error at or near "hello"
+LINE 1: SELECT JSON_QUERY('{"x":1}', '$[\'hello\']', materialize(toL...
+                                          ^

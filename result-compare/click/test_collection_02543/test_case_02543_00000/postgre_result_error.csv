@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...t (x Map(UInt8, AggregateFunction(uniq, UInt64))) engine=Mem...
+                                                             ^

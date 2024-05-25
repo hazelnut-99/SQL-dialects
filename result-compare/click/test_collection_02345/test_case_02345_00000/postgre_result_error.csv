@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...EATE TABLE h3_indexes (h3_index UInt64, k UInt16) ENGINE = M...
+                                                             ^

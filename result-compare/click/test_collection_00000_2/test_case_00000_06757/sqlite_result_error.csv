@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (toHour(now('Asia/Shanghai')) - toHour(now('UTC'))) IN (8, -16);
+': no such function: now

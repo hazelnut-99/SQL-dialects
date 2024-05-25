@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 3: ...oin(z) FROM (SELECT number AS x, number + 1 AS y, [number % ...
+                                                             ^

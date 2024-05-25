@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT range(toNullable(1));
+': no such function: toNullable

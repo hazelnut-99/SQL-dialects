@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name sinh does not exist!
+Did you mean "sin"?
+LINE 1: select abs(sinh(1) - 0.5 * (e() - exp(-1))) < 1e-6...
+                   ^

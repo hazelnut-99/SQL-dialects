@@ -1,0 +1,5 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
+ Code: 62. DB::Exception: Syntax error: failed at position 175 ('VALUES') (line 4, col 9): VALUES ('{0}'::int4[]), ('{0,1,2,3,4}'), ('{17,18,19,20}'),
+        ('{42,34,65,98}'), ('{550273,590027, 870273}'),
+        ('{207112489, 807112489}')) x(v)
+WHE. Expected one of: SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, EXPLAIN, EXPLAIN. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

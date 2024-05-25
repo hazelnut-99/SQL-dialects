@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dummy, count() GROUP BY dummy WITH TOTALS;
+': near "WITH": syntax error

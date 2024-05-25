@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 4: create table from_table (x UInt32) engine=MergeTree order by...
+                                           ^

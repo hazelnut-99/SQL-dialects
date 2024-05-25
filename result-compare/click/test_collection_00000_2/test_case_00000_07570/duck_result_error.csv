@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extracttextfromhtml does not exist!
+Did you mean "nextafter"?
+LINE 1: SELECT extractTextFromHTML('Hello<world>');
+               ^

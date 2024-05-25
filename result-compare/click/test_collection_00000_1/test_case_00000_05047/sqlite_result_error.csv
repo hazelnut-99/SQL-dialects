@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'Array', blockSerializedSize(['foo']);
+': no such column: 'foo'

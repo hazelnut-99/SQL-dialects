@@ -1,0 +1,4 @@
+LIMIT #,# syntax is not supported
+LINE 1: ... FROM numbers(100000) ORDER BY k ASC, number DESC LIMIT 1025...
+                                                             ^
+HINT:  Use separate LIMIT and OFFSET clauses.

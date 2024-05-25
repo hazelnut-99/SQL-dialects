@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByNonAlpha('Токенизация каких-либо других языков?');
+': no such function: splitByNonAlpha

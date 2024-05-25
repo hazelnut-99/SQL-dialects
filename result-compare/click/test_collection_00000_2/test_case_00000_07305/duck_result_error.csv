@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name inet6_aton does not exist!
+Did you mean "bit_and"?
+LINE 1: SELECT hex(INET6_ATON('2a02:6b8::11'));
+                   ^

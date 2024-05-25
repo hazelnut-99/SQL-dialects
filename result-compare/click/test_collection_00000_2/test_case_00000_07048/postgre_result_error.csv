@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: ...xact(number) over (partition by intDiv(number, 3) AS value o...
+                                                             ^

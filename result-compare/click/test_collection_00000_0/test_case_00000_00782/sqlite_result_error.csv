@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toLastDayOfWeek(toDateTime(1419800400), 0, 'Asia/Istanbul');
+': no such function: toDateTime

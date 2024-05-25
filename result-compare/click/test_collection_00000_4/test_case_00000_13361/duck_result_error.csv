@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name levenshteindistance does not exist!
+Did you mean "levenshtein"?
+LINE 1: ...ECT 'clickhouse' AS s1, 'mouse' AS s2, levenshteinDistance(s1, s2);
+                                                  ^

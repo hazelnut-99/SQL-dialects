@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayFilter(x -> toNullable(1), range(number)) from numbers(3);
+': no such table: numbers

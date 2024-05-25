@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT number::UInt8 AS c, toTypeName(c) FROM numbers(1);
+': unrecognized token: ":"

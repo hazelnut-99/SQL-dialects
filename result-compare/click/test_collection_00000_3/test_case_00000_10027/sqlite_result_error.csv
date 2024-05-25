@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT LinfNorm([0, 0, 2]);
+': no such column: 0, 0, 2

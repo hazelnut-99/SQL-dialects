@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATE('2024-04-25'), TIMESTAMP('2024-01-01 02:03:04'), FROM_UNIXTIME(1234567890);
+': no such function: TIMESTAMP

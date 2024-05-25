@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfInterval(toDate(17933), INTERVAL 5 year);
+': near "5": syntax error

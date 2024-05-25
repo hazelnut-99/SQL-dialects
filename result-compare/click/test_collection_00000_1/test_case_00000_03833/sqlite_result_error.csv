@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT xxHash32(1) = toUInt32(949155633);
+': no such function: toUInt32

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayresize does not exist!
+Did you mean "array_resize"?
+LINE 1: SELECT 4 as nelems, arrayResize(arrayPartialSort(nelems, [1...
+                            ^

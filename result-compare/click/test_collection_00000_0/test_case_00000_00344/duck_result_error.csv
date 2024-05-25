@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: SELECT (1, materialize(3)) IN (SELECT materialize(1), 2);
+                                              ^

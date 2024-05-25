@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasAny([-128, 1.0, 512], [.3]);
+': no such column: -128, 1.0, 512

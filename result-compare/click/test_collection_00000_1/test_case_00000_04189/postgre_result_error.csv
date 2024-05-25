@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...chAny(materialize('leftabcright'), 1, materialize(['a1c']));
+                                                             ^

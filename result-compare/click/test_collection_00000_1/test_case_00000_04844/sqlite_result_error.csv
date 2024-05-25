@@ -1,0 +1,7 @@
+Execution failed on sql 'SELECT
+    categoricalInformationValue(x.1, x.2)
+FROM (
+    SELECT
+        arrayJoin([(0, 0), (0, 1), (1, 0), (1, 1)]) as x
+);
+': near ".1": syntax error

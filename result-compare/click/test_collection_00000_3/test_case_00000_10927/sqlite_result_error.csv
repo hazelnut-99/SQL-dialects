@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dateDiff('s', UTCTimestamp(), now('UTC')) <= 2;
+': no such function: dateDiff

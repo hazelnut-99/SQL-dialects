@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from values([1, 2.2]);
+': near "values": syntax error

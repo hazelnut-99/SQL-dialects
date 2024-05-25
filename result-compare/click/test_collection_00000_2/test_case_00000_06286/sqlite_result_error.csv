@@ -1,0 +1,2 @@
+Execution failed on sql 'select intDiv(materialize(toInt32(1)), 0x100000000);
+': no such function: toInt32

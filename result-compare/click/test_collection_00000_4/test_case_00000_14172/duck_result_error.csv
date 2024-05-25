@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name formatquery does not exist!
+Did you mean "format"?
+LINE 1: SELECT formatQuery('SELECT NOT 0 + NOT 0');
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT materialize(['Hello', 'world'])[2::Int8];
+                           ^

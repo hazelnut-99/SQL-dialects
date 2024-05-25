@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() FROM generate_series(0, 999, 20);
+': no such table: generate_series

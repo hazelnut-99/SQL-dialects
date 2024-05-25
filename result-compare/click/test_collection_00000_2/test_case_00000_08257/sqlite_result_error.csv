@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT $doc$'\xc3\x28'$doc$;
+': near "$doc$": syntax error

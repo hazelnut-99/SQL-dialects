@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toModifiedJulianDayOrNull('1999-02-29');
+': no such function: toModifiedJulianDayOrNull

@@ -1,0 +1,3 @@
+syntax error at or near "distinct"
+LINE 1: DROP TABLE IF EXISTS distinct;
+                             ^

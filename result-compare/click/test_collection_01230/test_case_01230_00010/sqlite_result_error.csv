@@ -1,0 +1,2 @@
+Execution failed on sql 'select isZeroOrNull(Null);
+': no such function: isZeroOrNull

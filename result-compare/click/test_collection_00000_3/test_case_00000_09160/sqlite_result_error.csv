@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT LEFT('Привет', -4);
+': near "(": syntax error

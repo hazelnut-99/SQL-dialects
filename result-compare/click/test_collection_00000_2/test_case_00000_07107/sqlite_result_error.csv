@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT encodeXMLComponent('\'foo\'');
+': near "foo": syntax error

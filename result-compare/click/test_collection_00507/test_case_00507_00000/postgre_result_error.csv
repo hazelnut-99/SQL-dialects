@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: create table lc_00800_1 (names Array(LowCardinality(String))...
+                                       ^

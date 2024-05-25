@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toString(uniqStateForEachState([1, NULL])));
+': no such column: 1, NULL

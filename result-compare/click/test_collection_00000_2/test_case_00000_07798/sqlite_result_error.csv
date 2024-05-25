@@ -1,0 +1,2 @@
+Execution failed on sql 'select if(number % 5, Null, toInt64OrZero(toString(number))) from numbers(20);
+': no such table: numbers

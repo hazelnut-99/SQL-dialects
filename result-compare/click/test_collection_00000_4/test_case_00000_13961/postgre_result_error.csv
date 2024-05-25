@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 3: GROUP BY val WITH TOTALS
+                     ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...elect 0 = multiSearchFirstPositionUTF8('\0', CAST([], 'Array...
+                                                             ^

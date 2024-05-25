@@ -1,0 +1,2 @@
+Execution failed on sql 'select minMap([1, 1, 1], [(1, 2), (1, 1), (1, 3)]);
+': no such column: 1, 1, 1

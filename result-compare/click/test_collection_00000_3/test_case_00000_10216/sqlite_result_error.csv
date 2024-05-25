@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dummy;
+': no such column: dummy

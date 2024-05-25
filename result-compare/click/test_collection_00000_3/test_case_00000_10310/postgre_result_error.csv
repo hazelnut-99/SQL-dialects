@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "0x12_34_56_78p"
+LINE 1: select 0x12_34_56_78p1;
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT geohashesInBox(1., 2., 3., materialize(4.), 2);
+': no such function: geohashesInBox

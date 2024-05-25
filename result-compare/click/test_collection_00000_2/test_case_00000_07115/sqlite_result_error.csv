@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCast(5, 'Int8');
+': no such function: accurateCast

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [] = multiMatchAllIndices(materialize('aaaa'), materialize(['.*aa.*aaa.*', 'aaaaaa{2}', '\(aa\){3}']));
+': no such column: 

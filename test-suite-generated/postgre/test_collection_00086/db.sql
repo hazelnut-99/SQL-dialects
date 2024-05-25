@@ -186,3 +186,7 @@ rollback;
 begin;
 create temp table t (a int unique);
 insert into t values (1);
+rollback;
+begin;
+create temp table t (a int unique, b int);
+insert into t values (1,1), (2,2);

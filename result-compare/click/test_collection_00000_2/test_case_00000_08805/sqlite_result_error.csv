@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(1, 'Decimal32(9)');
+': no such function: accurateCastOrDefault

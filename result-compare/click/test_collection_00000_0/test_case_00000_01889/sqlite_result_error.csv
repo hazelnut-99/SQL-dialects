@@ -1,0 +1,2 @@
+Execution failed on sql 'select abs(greatCircleDistance(37.588144, 55.733842, 37.617780, 55.755830) - 3075.27332275) / 3075.27332275 < 0.004;
+': no such function: greatCircleDistance

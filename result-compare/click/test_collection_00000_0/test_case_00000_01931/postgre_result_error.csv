@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ..., arrayResize(arrayPartialSort((x) -> -x, nelems, [1, nan, 2...
+                                                             ^

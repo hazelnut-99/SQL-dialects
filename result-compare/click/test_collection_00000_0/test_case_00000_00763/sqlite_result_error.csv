@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toMonday(toDateTime(1419800400), 'Europe/London');
+': no such function: toDateTime

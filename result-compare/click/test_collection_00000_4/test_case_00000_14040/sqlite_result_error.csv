@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDiv(4, toDecimal128(2.2, 3));
+': no such function: intDiv

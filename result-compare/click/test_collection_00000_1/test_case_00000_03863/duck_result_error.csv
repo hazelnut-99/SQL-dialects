@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name truncate does not exist!
+Did you mean "trunc"?
+LINE 1: SELECT truncate(895, -16);
+               ^

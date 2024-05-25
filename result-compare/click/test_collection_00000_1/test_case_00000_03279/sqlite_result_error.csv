@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal128OrZero('-99999999999999999999999999999999999999', 0);
+': no such function: toDecimal128OrZero

@@ -1,0 +1,2 @@
+Execution failed on sql 'select arraySlice(materialize([1, 2, 3, 4, 5, 6, 7, 8]), -2, -1);
+': no such column: 1, 2, 3, 4, 5, 6, 7, 8

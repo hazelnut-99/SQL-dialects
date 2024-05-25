@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: CREATE TABLE array_element_test (arr Array(Int32), id Int32)...
+                                             ^

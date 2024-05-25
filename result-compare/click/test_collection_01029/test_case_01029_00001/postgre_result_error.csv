@@ -1,0 +1,3 @@
+syntax error at or near "join"
+LINE 4: drop table if exists join;
+                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuplehammingdistance does not exist!
+Did you mean "hamming"?
+LINE 1: SELECT tupleHammingDistance((120, 243), (120, ...
+               ^

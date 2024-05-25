@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers_mt does not exist!
+Did you mean "unnest"?
+LINE 3: ...oInt128(number) * number x, toInt256(number) * number y from numbers_mt(100000000) where x != y
+                                                  ^

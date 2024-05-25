@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...teCastOrDefault('123', 'FixedString(2)', cast('12', 'FixedSt...
+                                                             ^

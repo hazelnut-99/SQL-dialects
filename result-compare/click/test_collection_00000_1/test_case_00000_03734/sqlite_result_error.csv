@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDate('2018-01-01') == '2018-01-01';
+': no such function: toDate

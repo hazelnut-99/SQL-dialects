@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DISTINCT decodeURLComponent(encodeURLComponent(randomString(100) AS x)) = x FROM numbers(100000);
+': near "AS": syntax error

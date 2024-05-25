@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'Nullable(UInt64)', blockSerializedSize(toNullable(0xdeadbeafdead));
+': no such function: toNullable

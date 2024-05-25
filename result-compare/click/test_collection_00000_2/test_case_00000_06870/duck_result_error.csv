@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name accuratecastornull does not exist!
+Did you mean "atan"?
+LINE 1: SELECT accurateCastOrNull(4294967296, 'UInt32'...
+               ^

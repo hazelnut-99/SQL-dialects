@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtract(materialize('{"a": 18446744073709551615}'), 'a', 'LowCardinality(FixedString(20))');
+': no such function: materialize

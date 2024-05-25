@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt32OrZero('123a'), toUInt32OrZero('456');
+': no such function: toUInt32OrZero

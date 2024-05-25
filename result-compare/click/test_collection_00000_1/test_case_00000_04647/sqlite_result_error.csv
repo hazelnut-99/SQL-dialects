@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngramSimHashUTF8('what a cute cat.');
+': no such function: ngramSimHashUTF8

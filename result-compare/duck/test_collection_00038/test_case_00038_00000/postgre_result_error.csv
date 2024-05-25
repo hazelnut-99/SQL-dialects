@@ -1,0 +1,3 @@
+syntax error at or near "DESCRIBE"
+LINE 38: DESCRIBE select 42 AS a;
+         ^

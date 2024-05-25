@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name singlevalueornull does not exist!
+Did you mean "even"?
+LINE 1: SELECT singleValueOrNull(toNullable(123));
+               ^

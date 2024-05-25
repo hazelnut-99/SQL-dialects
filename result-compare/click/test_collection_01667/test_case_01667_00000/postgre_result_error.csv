@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 2: ...d1 Int32, d2 Int32, eventcnt Int64, projection p (select sum...
+                                                             ^

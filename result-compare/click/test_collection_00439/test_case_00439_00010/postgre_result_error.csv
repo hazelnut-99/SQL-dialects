@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE ipv4_test (ipv4_ IPv4) ENGINE = Memory;
+                                            ^

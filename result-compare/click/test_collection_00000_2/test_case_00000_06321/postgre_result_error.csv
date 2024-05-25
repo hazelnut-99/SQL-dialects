@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: SELECT hex(toString(uniqState(toNullable(1)))) WITH TOTALS;
+                                                       ^

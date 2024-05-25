@@ -1,0 +1,3 @@
+syntax error at or near "-"
+LINE 1: SELECT toInt32(number) DIV -1 FROM numbers(1, 10);
+                                   ^

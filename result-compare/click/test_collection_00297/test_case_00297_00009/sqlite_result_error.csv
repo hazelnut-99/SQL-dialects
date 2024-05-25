@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT id FROM (SELECT arrayJoin([1, 2, 3]) AS id) WHERE id = 1;
+': no such column: 1, 2, 3

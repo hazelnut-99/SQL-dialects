@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfDay(now()) = toDateTime(toDate(now()));
+': no such function: now

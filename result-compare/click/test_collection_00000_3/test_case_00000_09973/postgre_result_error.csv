@@ -1,0 +1,3 @@
+syntax error at or near "arg_2"
+LINE 1: SELECT trim(LEADING 'a' FROM 'abca' arg_2), arg_2;
+                                            ^

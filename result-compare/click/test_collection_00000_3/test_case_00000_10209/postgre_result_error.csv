@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: select * from values('x UInt8 NOT NULL', 1);
+                            ^

@@ -1,0 +1,5 @@
+select count(case
+when a=0 then 1
+when a=1 then 1
+when a=2 then 1
+when a=3 then 1

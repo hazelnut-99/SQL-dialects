@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sumMap(['a', 'b'], [1, toNullable(0)]);
+': no such column: 'a', 'b'

@@ -1,0 +1,3 @@
+syntax error at or near "Engine"
+LINE 2: ... columns_transformers (i Int64, j Int16, k Int64) Engine=Tin...
+                                                             ^

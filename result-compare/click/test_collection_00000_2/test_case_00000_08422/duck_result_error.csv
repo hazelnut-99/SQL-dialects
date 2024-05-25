@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name max2 does not exist!
+Did you mean "max"?
+LINE 1: SELECT max2(materialize(1), 1.5);
+               ^

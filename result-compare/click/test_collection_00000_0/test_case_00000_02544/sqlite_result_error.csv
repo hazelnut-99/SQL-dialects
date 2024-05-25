@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT visitParamExtractBool('{"myparam":true}', 'myparam');
+': no such function: visitParamExtractBool

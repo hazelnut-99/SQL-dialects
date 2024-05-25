@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE bool_test (value Bool,f String) ENGINE = Memory...
+                                                     ^

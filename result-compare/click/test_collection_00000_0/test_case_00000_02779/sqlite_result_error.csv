@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT startsWith(s, '') FROM (SELECT arrayJoin(['', 'h', 'hi']) AS s);
+': no such column: '', 'h', 'hi'

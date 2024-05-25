@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAny(materialize('leftabcright'), 1, materialize(['a1c']));
+': no such function: materialize

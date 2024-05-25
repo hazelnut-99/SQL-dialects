@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstringsCaseInsensitive('abaaaa', char(number)) from numbers(100) where number = 0x41;
+': no such table: numbers

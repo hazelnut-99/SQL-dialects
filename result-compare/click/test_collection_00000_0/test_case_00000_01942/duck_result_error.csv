@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name uuidnumtostring does not exist!
+Did you mean "bitstring"?
+LINE 1: ...7-89ab-cdef-0123-456789abcdef' AS str, UUIDNumToString(UUIDStringToNum(str)), ...
+                                                  ^

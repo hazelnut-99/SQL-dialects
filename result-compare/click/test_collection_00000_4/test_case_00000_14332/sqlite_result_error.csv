@@ -1,0 +1,5 @@
+Execution failed on sql 'SELECT logTrace(repeat('Hello', 100)), ignore(*)
+FROM (
+    SELECT ignore((SELECT groupArrayState(([number], [number])) FROM numbers(19000)))
+)
+': no such table: numbers

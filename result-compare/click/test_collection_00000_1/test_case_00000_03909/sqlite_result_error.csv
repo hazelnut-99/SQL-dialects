@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TOP 5 * FROM numbers(10);
+': near "5": syntax error

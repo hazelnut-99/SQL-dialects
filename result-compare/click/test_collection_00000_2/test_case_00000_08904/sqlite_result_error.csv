@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(halfMD5('test'));
+': no such function: halfMD5

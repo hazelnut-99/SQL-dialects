@@ -1,0 +1,8 @@
+Binder Error: No function matches the given name and argument types 'floor(INTEGER_LITERAL, INTEGER_LITERAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	floor(FLOAT) -> FLOAT
+	floor(DOUBLE) -> DOUBLE
+	floor(DECIMAL) -> DECIMAL
+
+LINE 1: SELECT 123456789 AS x, floor(x, -1), floor(x, -2), floor(x, -3...
+                               ^

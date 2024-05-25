@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name geotos2 does not exist!
+Did you mean "age"?
+LINE 1: SELECT geoToS2(37.79506683, arrayJoin([55.7129...
+               ^

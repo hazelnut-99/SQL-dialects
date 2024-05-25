@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: SELECT k, s FROM (SELECT 1 AS k FROM `system`.`one`) AS `xxx...
+                                             ^

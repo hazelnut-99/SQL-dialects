@@ -1,0 +1,3 @@
+syntax error at or near "ORDER"
+LINE 4: ORDER BY val;
+        ^

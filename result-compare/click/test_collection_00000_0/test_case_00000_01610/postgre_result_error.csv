@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...yStringConcat(arr, '; ') FROM (SELECT materialize([toIPv4('1...
+                                                             ^

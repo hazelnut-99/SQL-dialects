@@ -1,0 +1,4 @@
+Binder Error: Referenced column "ctid" not found in FROM clause!
+Candidate bindings: "tidscan.id"
+LINE 1: ...T ctid, * FROM tidscan WHERE '(0,1)' = ctid;
+                                                  ^

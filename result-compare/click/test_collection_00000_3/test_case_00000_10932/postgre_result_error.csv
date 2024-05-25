@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT if(materialize(0), extract(materialize(CAST('aaaaaa',...
+                                                     ^

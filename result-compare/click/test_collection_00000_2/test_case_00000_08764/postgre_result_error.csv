@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 11:         exponentialTimeDecayedAvg(100)(value, time) OVER (RO...
+                                               ^

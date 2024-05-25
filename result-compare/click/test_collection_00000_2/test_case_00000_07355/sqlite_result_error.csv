@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpretAsFixedString(49);
+': no such function: reinterpretAsFixedString

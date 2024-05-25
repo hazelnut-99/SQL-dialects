@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT wordShingleSimHash('what a cute cat.');
+': no such function: wordShingleSimHash

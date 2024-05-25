@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name linfnormalize does not exist!
+Did you mean "nfc_normalize"?
+LINE 1: SELECT LinfNormalize((5, -5, 5.0));
+               ^

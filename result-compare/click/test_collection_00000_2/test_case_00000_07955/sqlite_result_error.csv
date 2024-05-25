@@ -1,0 +1,2 @@
+Execution failed on sql 'select s2CapContains(1157339245694594829, 1.0, 1157347770437378819);
+': no such function: s2CapContains

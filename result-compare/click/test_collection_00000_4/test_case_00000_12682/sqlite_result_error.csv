@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT timezone(), timezoneOf(now());
+': no such function: timezone

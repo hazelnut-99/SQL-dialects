@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ctid,cmin,* FROM combocidtest;
+': no such column: ctid

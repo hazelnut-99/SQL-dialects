@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name parsedatetimeinjodasyntaxornull does not exist!
+Did you mean "arg_max_null"?
+LINE 1: select parseDateTimeInJodaSyntaxOrNull('2001 i...
+               ^

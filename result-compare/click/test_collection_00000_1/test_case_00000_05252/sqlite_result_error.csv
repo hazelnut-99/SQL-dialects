@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayJoin(['hello', 'world']) LIKE '%ow%';
+': no such column: 'hello', 'world'

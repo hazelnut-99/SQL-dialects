@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST($$['Hello', 'wo\'rld\\']$$ AS Array(String));
+': near "['Hello', 'wo\'rld\\']": syntax error

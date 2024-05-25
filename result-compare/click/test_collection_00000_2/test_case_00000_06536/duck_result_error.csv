@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint128 does not exist!
+Did you mean "atan2"?
+LINE 1: select (toInt128(-1) * toUInt64(1)) x, (toInt25...
+                ^

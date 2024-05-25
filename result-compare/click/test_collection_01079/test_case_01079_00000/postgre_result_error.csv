@@ -1,0 +1,3 @@
+syntax error at or near "system"
+LINE 1: system flush logs;
+        ^

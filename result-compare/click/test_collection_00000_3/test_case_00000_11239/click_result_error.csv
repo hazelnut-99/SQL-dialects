@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 403. DB::Exception: Illegal expression '1' in JOIN ON section: While processing 1. (INVALID_JOIN_ON_EXPRESSION) (version 24.2.2.16233 (official build))

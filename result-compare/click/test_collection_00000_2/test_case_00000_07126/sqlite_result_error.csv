@@ -1,0 +1,2 @@
+Execution failed on sql 'select accurateCast(1, 'Bool');
+': no such function: accurateCast

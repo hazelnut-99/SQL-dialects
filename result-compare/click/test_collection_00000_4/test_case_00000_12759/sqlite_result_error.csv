@@ -1,0 +1,2 @@
+Execution failed on sql 'select substringIndex('www.clickhouse.com', '.', 3);
+': no such function: substringIndex

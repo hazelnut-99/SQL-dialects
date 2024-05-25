@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST(a, 'Int32') as x, toTypeName(x) FROM (SELECT mat...
+                     ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select [] = multiSearchAllPositions('\0', CAST([], 'Array(St...
+               ^

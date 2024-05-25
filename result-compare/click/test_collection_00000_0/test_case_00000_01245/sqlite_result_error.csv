@@ -1,0 +1,2 @@
+Execution failed on sql 'select 2 = position(materialize('abc'), 'bc');
+': no such function: materialize

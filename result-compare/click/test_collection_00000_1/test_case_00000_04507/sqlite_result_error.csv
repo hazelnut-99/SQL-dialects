@@ -1,0 +1,2 @@
+Execution failed on sql 'select dumpColumnStructure([a]), arrayReduce('sumMap', [a], [a]) from (select [1, 2] a FROM numbers(2));
+': no such table: numbers

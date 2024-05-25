@@ -1,0 +1,2 @@
+Execution failed on sql 'select exp2(3) = 8;
+': no such function: exp2

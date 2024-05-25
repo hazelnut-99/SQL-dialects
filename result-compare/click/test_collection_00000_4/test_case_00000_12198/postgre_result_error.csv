@@ -1,0 +1,3 @@
+syntax error at or near "SELECT"
+LINE 1: SELECT count(*) FROM view(SELECT * FROM numbers(10));
+                                  ^

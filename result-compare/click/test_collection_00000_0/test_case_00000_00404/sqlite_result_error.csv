@@ -1,0 +1,2 @@
+Execution failed on sql 'select URLHash('http://ya.ru' as url) = URLHash(appendTrailingCharIfAbsent(url, '/'));
+': near "as": syntax error

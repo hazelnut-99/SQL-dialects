@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name timestamp_sub does not exist!
+Did you mean "to_timestamp"?
+LINE 1: SELECT TIMESTAMP_SUB(YEAR, 1, DATE '2022-01-01...
+               ^

@@ -95,3 +95,21 @@ delete from test_jsonb_subscript;
 insert into test_jsonb_subscript values (1, '{}');
 delete from test_jsonb_subscript;
 insert into test_jsonb_subscript values (1, '[]');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{"a": {}}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{"a": []}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, '{"a": 1}');
+delete from test_jsonb_subscript;
+insert into test_jsonb_subscript values (1, 'null');
+drop table test_jsonb_subscript;
+create temp table test_jsonb_subscript (
+       id text,
+       test_json jsonb
+);
+insert into test_jsonb_subscript values('foo', '{"foo": "bar"}');
+insert into test_jsonb_subscript
+  select s, ('{"' || s || '": "bar"}')::jsonb from repeat('xyzzy', 500) s;

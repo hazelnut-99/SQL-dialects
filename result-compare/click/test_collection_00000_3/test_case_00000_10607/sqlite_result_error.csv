@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap(x -> x + arrayMap(x -> x, [1])[1], [1,2,3]);
+': near "[1]": syntax error

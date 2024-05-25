@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT x FROM (SELECT DISTINCT 1 AS x, arrayJoin([1, 2]) AS y)
+': no such column: 1, 2

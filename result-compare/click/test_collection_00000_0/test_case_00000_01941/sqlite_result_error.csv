@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(UUIDStringToNum(materialize('01234567-89ab-cdef-0123-456789abcdef')));
+': no such function: materialize

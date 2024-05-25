@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toInt128(number * -1) * number  y, toInt128(y), toInt256(y), toUInt256(y) FROM numbers_mt(10) ORDER BY number;
+': no such table: numbers_mt

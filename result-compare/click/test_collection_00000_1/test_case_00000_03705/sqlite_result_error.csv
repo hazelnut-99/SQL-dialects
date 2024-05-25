@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT farmHash64(123456);
+': no such function: farmHash64

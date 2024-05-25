@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint256 does not exist!
+Did you mean "count"?
+LINE 1: SELECT hex(toUInt256(100000000000)) AS res;
+                   ^

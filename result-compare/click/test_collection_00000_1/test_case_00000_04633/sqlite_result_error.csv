@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arraySplit(x -> 1, []);
+': no such column: 

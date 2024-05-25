@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CASE WHEN 1 THEN toFixedString('A', 16) WHEN 2 THEN toFixedString('BC', 16) ELSE toFixedString('DEF', 16) END;
+': no such function: toFixedString

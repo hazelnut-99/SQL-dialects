@@ -1,0 +1,2 @@
+Execution failed on sql 'select if(number % 2, toLowCardinality(number), NULL) from numbers(2);
+': no such table: numbers

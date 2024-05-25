@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (dummy IN (1)) AS x GROUP BY x;
+': no such column: dummy

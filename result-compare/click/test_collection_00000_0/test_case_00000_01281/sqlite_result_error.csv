@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 = positionUTF8(materialize(''), '');
+': no such function: materialize

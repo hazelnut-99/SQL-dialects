@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isConstant(arrayJoin([NULL]) AND 1);
+': no such function: isConstant

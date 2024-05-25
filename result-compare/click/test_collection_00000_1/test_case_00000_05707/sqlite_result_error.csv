@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT max(abs(n) * 2), max(abs(n) * n), max(n / abs(n)), max(1 / abs(n)) FROM (SELECT number n FROM numbers(10));
+': no such table: numbers

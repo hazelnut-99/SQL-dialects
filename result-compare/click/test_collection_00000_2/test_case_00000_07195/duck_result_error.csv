@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name summap does not exist!
+Did you mean "map"?
+LINE 1: SELECT sumMap(['a', 'b'], [1, NULL]);
+               ^

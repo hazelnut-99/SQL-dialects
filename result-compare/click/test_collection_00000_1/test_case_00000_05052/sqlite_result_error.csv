@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'Block(UInt32)', blockSerializedSize(number) from numbers(2);
+': no such table: numbers

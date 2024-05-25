@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -.3_4e+21;
+': unrecognized token: ".3_4e"

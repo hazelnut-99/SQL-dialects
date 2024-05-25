@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT transform(number, [1, 2], ['google', 'censor.net'], 'other') FROM numbers(1);
+': no such table: numbers

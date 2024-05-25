@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name polygonsdistancespherical does not exist!
+Did you mean "list_distance"?
+LINE 1: select polygonsDistanceSpherical([[[(23.725750...
+               ^

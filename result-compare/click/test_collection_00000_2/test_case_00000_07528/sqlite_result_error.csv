@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDateOrDefault(cast(19 as Int32));
+': no such function: toDateOrDefault

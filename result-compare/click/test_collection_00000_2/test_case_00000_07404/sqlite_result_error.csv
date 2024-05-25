@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT geohashesInBox(100.0000991821289, 100.0000991821289, 1000.0001220703125, 1000.0001220703125, 0);
+': no such function: geohashesInBox

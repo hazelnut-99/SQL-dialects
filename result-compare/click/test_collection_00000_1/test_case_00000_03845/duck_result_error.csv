@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name regexpquotemeta does not exist!
+Did you mean "geomean"?
+LINE 1: SELECT regexpQuoteMeta('(h{ell}o)');
+               ^

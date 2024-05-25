@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 3: CREATE TABLE merge_tree_table1 (`x` UInt32) ENGINE = MergeTr...
+                                        ^

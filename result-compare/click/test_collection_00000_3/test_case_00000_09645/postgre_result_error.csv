@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...rialize(1) > 0, materialize(toInt32(1)), CAST(NULL, 'Nullabl...
+                                                             ^

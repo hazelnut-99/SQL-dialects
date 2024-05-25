@@ -1,0 +1,3 @@
+Binder Error: Referenced column "nan" not found in FROM clause!
+LINE 1: SELECT 1 + nan, 1 - nan, nan - 1, 1 * nan, 1 / nan...
+                   ^

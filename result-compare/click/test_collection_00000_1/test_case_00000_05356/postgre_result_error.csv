@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 4: from (select [1] l) s1,
+                     ^

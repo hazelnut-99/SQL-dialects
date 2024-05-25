@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ayDate()), emptyArrayToSingle(arrayFilter(x -> 0, [now('Asia...
+                                                             ^

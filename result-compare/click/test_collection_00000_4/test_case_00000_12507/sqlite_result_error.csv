@@ -1,0 +1,2 @@
+Execution failed on sql 'select count(distinct a) from t;
+': no such table: t

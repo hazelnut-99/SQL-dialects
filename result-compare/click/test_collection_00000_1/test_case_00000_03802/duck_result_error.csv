@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name xxhash64 does not exist!
+Did you mean "hash"?
+LINE 1: SELECT xxHash64('foo') = toUInt64(372869973954...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT regexpQuoteMeta('hel\\lo');
+': no such function: regexpQuoteMeta

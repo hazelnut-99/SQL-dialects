@@ -1,0 +1,2 @@
+Execution failed on sql 'select match(materialize('a key="v" '), 'key="(.*?)"');
+': no such function: materialize

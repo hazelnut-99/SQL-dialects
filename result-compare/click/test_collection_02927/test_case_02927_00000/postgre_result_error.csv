@@ -1,0 +1,3 @@
+syntax error at or near "{"
+LINE 2: with {param_test_val:UInt8} as param_test_val
+             ^

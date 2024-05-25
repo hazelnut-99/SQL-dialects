@@ -1,0 +1,3 @@
+syntax error at or near ".2_3_4"
+LINE 1: SELECT -0x1.2_3_4;
+                   ^

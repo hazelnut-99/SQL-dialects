@@ -1,0 +1,3 @@
+column "id" does not exist
+LINE 1: SELECT 1 AS id WHERE id = 1;
+                             ^

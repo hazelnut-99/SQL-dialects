@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT TIMESTAMP('2013-12-31');
+': no such function: TIMESTAMP

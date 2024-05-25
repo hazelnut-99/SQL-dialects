@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(toDateTime(1436956200), 'Asia/Istanbul');
+': no such function: toDateTime

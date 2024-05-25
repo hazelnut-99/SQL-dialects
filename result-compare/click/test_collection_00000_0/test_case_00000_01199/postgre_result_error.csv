@@ -1,0 +1,3 @@
+syntax error at or near "ANY"
+LINE 1: SELECT a, b FROM (SELECT 1 AS a, 2000 AS b) js1 ANY RIGHT JO...
+                                                        ^

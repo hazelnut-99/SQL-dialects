@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "02751_"
+LINE 1: DROP TABLE IF EXISTS 02751_query_log_test_partitions;
+                             ^

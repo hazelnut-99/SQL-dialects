@@ -1,0 +1,2 @@
+Execution failed on sql 'select splitByString('ab', 'cdeabcde');
+': no such function: splitByString

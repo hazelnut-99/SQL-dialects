@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT dateDiff('day', toDateTime('2014-10-26 00:00:00', 'Asia...
+                               ^

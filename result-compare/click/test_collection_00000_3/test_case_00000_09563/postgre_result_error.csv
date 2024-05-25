@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 3: ) ORDER BY n ASC WITH FILL FROM 0 TO 11.51 STEP 0.5 INTERPOL...
+                         ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(rand(Null));
+': no such function: rand

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multiif does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT sum(multiIf(1, dummy, NULL)) OVER ();
+                   ^

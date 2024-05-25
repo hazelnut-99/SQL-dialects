@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint64 does not exist!
+Did you mean "count"?
+LINE 1: ..., toUInt64(222222222222223))) group by toUInt64(222222222222223);
+                                                  ^

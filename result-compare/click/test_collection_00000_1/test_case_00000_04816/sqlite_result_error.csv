@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toFixedString('aa' , 2 ) as a, toTypeName(concat(a, a));
+': no such function: toFixedString

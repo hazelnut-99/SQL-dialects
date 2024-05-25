@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT has(['a', NULL, 'b'], NULL);
+': no such column: 'a', NULL, 'b'

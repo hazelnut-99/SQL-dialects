@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select position(materialize('абв') as h, lower('Бв' as n)) =...
+                                           ^

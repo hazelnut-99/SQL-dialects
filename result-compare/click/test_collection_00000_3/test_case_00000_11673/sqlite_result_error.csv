@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayPartialShuffle(['storage','tiger','imposter','terminal','uniform','sensation'], 3, 0xbad_cafe);
+': near "_cafe": syntax error

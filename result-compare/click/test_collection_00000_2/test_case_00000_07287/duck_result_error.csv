@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addminutes does not exist!
+Did you mean "minute"?
+LINE 1: SELECT addMinutes(toDateTime('2020-01-01 00:00...
+               ^

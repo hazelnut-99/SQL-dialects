@@ -1,0 +1,7 @@
+Catalog Error: Table Function with name generaterandom does not exist!
+Did you mean "generate_series"?
+LINE 5:     FROM generateRandom('a Map(String, String)', 20, 5, 1)
+    LIMIT 1000
+);
+...
+                 ^

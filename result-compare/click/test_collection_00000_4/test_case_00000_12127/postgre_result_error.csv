@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: ...mber * 2)::Int256 FROM numbers(10) ORDER BY 1 ASC WITH FILL ...
+                                                             ^

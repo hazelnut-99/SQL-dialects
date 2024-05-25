@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 5: ...E cat_hist (categoryId UUID, categoryName String) ENGINE Mem...
+                                                             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name roundduration does not exist!
+Did you mean "round"?
+LINE 1: SELECT roundDuration(37000);
+               ^

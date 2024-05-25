@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReverseSplit(x -> x % 2 = 1, [2]);
+': no such function: arrayReverseSplit

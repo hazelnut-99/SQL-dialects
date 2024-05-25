@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...lems, arrayResize(arrayPartialReverseSort(nelems, [NULL,9,4,...
+                                                             ^

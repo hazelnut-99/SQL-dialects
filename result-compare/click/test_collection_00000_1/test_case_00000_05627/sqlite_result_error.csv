@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal32OrZero(CAST(-7174046, 'String'), 6);
+': near ",": syntax error

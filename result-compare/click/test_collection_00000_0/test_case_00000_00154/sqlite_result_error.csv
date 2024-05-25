@@ -1,0 +1,2 @@
+Execution failed on sql 'select intDivOrZero(-127, -1) = 127;
+': no such function: intDivOrZero

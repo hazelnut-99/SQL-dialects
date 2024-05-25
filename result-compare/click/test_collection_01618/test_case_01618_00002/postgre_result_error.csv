@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: create table tab1 (a1 Int32, b1 Int32) engine = MergeTree or...
+                                               ^

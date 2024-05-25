@@ -1,0 +1,3 @@
+Binder Error: Referenced column "dummy" not found in FROM clause!
+LINE 1: ...co,co2,co3,count() AS num FROM (SELECT dummy+1 AS co,dummy+2 AS co2 ,dummy+3 A...
+                                                  ^

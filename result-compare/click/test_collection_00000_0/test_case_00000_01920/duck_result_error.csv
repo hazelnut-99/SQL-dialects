@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: SELECT materialize([9,4,8,10,5,2,3,7,1,6]) AS ...
+               ^

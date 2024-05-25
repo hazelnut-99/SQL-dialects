@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multiplydecimal does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT multiplyDecimal(toDecimal64(123.76, 2),...
+               ^

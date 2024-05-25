@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint16 does not exist!
+Did you mean "count"?
+LINE 1: SELECT [toUInt16(1)] AS arr1, [toUInt32(1)] AS ...
+                ^

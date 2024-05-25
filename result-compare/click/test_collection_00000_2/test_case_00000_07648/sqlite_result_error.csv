@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDiv(toInt64(number), -1) FROM numbers(9223372036854775807, 10);
+': no such table: numbers

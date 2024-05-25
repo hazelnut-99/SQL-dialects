@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT round(rankCorr(number, -number)) FROM numbers(5000000);
+': no such table: numbers

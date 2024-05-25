@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(128, 'Int8'),  accurateCastOrDefault(128, 'Int8', toInt8(5));
+': no such function: accurateCastOrDefault

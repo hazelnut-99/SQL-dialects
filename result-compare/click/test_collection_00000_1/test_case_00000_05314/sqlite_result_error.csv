@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT isConstant(x) FROM (SELECT 1 x);
+': no such function: isConstant

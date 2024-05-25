@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ll_00549 (k UInt64, a String, b Nullable(String)) ENGINE = L...
+                                                             ^

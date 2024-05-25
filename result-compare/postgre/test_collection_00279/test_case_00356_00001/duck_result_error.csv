@@ -1,0 +1,4 @@
+Binder Error: Referenced column "ctid" not found in FROM clause!
+Candidate bindings: "tidrangescan.id"
+LINE 1: SELECT ctid FROM tidrangescan WHERE ctid > '(9, 0)';
+                                            ^

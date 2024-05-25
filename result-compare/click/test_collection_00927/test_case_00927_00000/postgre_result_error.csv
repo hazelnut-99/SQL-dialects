@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table ttl (i Int, a Int, s String) engine = MergeTree...
+                                                  ^

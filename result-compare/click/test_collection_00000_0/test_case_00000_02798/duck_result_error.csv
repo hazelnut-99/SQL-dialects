@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name totimezone does not exist!
+Did you mean "timezone"?
+LINE 1: SELECT toTimeZone(CAST(1 AS TIMESTAMP), 'UTC')...
+               ^

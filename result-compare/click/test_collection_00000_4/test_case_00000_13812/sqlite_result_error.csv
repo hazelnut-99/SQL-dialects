@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT dateTrunc('Week', toDate('2022-03-01'));
+': no such function: dateTrunc

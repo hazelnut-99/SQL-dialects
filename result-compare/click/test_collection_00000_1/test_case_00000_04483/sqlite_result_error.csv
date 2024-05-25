@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(CAST('Hello' AS Nullable(String)) AS String);
+': near "String": syntax error

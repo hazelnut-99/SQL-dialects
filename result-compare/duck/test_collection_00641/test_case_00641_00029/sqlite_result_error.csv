@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '1e1000'::DOUBLE;
+': unrecognized token: ":"

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDateTime64('1925-01-02 03:04:05.678901', 6);
+': no such function: toDateTime64

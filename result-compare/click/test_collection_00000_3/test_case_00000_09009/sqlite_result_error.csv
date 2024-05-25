@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '1' == replaceRegexpOne(',,1', '^[,]*|[,]*$', '') x;
+': no such function: replaceRegexpOne

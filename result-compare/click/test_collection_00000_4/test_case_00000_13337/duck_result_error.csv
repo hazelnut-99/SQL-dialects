@@ -1,0 +1,8 @@
+Binder Error: No function matches the given name and argument types '/(INTEGER[][][], INTEGER_LITERAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	/(FLOAT, FLOAT) -> FLOAT
+	/(DOUBLE, DOUBLE) -> DOUBLE
+	/(INTERVAL, BIGINT) -> INTERVAL
+
+LINE 1: SELECT [[[2, 3, 5, 5]]] / 2;
+                                ^

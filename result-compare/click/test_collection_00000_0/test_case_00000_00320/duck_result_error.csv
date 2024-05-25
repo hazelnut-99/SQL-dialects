@@ -1,0 +1,3 @@
+Conversion Error: Unimplemented type for cast (INTEGER -> STRUCT(INTEGER, STRUCT(INTEGER, INTEGER)))
+LINE 1: ...3) AS tuple) WHERE (number, tuple) IN (3, (2, 3));
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select mortonEncode(tuple(1), 4294967286);
+': no such function: tuple

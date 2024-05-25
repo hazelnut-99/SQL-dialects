@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hastokencaseinsensitive does not exist!
+Did you mean "skewness"?
+LINE 1: SELECT hasTokenCaseInsensitive('', 'Hello');
+               ^

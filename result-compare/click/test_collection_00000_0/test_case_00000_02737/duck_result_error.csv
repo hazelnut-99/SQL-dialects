@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayjoin does not exist!
+Did you mean "array_to_json"?
+LINE 1: ...ECT x, lengthUTF8(x) AS y FROM (SELECT arrayJoin(['', 'h', 'hello', 'hello hel...
+                                                  ^

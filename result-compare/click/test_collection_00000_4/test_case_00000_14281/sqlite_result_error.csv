@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'async_insert' AS name, getSetting(name) AS value, toTypeName(value);
+': no such column: name

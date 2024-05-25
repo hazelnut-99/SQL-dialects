@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayCompact([toDecimal128(1.0,8), toDecimal128(1.0,8...
+                            ^

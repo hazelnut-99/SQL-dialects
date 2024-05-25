@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT char(65, 66 + number, 67 + number) from numbers(3);
+': no such table: numbers

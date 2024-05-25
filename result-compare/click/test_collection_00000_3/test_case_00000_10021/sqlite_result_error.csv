@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cosineDistance([1, 2, 3], [3, 5, 7]);
+': no such column: 1, 2, 3

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayReduce('stddevSampOrNull', arrayPopBack([1]));
+': no such function: arrayReduce

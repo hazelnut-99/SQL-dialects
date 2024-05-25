@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByChar('=', 'a==b=c=d');
+': no such function: splitByChar

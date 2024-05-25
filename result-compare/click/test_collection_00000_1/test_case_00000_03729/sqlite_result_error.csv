@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractURLParameter('?_', '\0');
+': no such function: extractURLParameter

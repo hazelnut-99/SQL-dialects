@@ -1,0 +1,11 @@
+Binder Error: No function matches the given name and argument types 'hex(DOUBLE)'. You might need to add explicit type casts.
+	Candidate functions:
+	hex(VARCHAR) -> VARCHAR
+	hex(BLOB) -> VARCHAR
+	hex(BIGINT) -> VARCHAR
+	hex(UBIGINT) -> VARCHAR
+	hex(HUGEINT) -> VARCHAR
+	hex(UHUGEINT) -> VARCHAR
+
+LINE 1: SELECT hex(1e+100);
+               ^

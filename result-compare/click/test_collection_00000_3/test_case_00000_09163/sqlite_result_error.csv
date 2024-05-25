@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT left(materialize(toNullable('Привет')), 13);
+': near "(": syntax error

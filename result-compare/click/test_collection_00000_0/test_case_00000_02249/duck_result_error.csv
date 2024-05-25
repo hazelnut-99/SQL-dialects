@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arraypopfront does not exist!
+Did you mean "array_pop_front"?
+LINE 1: select arrayPopFront([1, 2, 3]);
+               ^

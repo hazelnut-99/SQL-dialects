@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 + toDateTime(1) = toDateTime(2);
+': no such function: toDateTime

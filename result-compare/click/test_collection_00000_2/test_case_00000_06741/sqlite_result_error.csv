@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal64(1, 3) * toDecimal128(1, 2) x, toTypeName(x);
+': no such function: toDecimal128

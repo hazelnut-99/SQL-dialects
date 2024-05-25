@@ -1,0 +1,3 @@
+syntax error at or near "toFixedString"
+LINE 1: ...edString('a', toLowCardinality(toNullable(1))) IN toFixedStr...
+                                                             ^

@@ -46,3 +46,5 @@ INSERT INTO t3 VALUES (500, 100);
 DELETE FROM t3 USING t1 table1 WHERE t3.x = table1.a;
 DELETE FROM t3 USING t1 JOIN t2 USING (a) WHERE t3.x > t1.a;
 DELETE FROM t3 USING t3 t3_other WHERE t3.x = t3_other.x AND t3.y = t3_other.y;
+create temp table t2a () inherits (t2);
+insert into t2a values (200, 2001);

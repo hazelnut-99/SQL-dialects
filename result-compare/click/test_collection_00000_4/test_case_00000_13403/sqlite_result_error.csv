@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT byteSwap(-2147483649::Int64);
+': unrecognized token: ":"

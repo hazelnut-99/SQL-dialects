@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayConcat([Null], emptyArrayUInt8(), [1]);
+': no such column: Null

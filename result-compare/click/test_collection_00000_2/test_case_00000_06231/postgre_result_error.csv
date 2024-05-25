@@ -1,0 +1,3 @@
+syntax error at or near ".1"
+LINE 1: SELECT arrayExists(x -> ((x.1) = 'pattern'), cast([tuple('a'...
+                                   ^

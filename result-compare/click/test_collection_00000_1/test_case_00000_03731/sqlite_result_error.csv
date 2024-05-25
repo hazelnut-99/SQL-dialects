@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'Xx|sfF', match('', '\0'), [], ( SELECT cutURLParameter('C,Ai?X', '\0') ), '\0';
+': no such column: 

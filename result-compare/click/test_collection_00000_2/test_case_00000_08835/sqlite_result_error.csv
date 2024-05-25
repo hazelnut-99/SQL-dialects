@@ -1,0 +1,2 @@
+Execution failed on sql 'select accurateCastOrDefault('test', 'Nullable(IPv6)');
+': no such function: accurateCastOrDefault

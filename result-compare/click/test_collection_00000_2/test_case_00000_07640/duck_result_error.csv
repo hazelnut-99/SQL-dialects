@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofquarter does not exist!
+Did you mean "quarter"?
+LINE 1: SELECT toStartOfQuarter(toDateTime64('1990-01-...
+               ^

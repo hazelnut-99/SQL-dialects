@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayShingles([toLowCardinality(2), toLowCardinality(1)], 1);
+': no such column: toLowCardinality(2), toLowCardinality(1)

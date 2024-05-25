@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 1: CREATE TABLE table_key (keycol UInt16) ENGINE = MergeTree() ...
+                                               ^

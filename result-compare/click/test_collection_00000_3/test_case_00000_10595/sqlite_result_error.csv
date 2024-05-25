@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDate('2022-08-22T01:02:03');
+': no such function: toDate

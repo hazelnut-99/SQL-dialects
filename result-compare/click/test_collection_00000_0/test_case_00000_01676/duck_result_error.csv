@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name cuturlparameter does not exist!
+Did you mean "quarter"?
+LINE 2:     cutURLParameter(materialize('htt...
+            ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select rand(Null) * 0;
+': no such function: rand

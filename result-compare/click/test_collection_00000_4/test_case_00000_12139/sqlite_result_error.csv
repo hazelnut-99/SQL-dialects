@@ -1,0 +1,2 @@
+Execution failed on sql 'select REGEXP_EXTRACT('100-200', '(\\d+)-(\\d+)');
+': no such function: REGEXP_EXTRACT

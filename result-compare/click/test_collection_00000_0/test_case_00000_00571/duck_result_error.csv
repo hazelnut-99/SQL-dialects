@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayexists does not exist!
+Did you mean "array_sort"?
+LINE 1: SELECT arrayExists(x -> 0, [1, 2, 3]);
+               ^

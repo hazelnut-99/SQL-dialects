@@ -1,0 +1,2 @@
+Execution failed on sql 'select arraySlice(['a', 'b', 'c', 'd', 'e'], 2, 3);
+': no such column: 'a', 'b', 'c', 'd', 'e'

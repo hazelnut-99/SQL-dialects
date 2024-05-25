@@ -1,0 +1,2 @@
+Execution failed on sql 'select toDateTime64OrDefault('Aaaa e a.a.aaaaaaaaa', 9, 'UTC');
+': no such function: toDateTime64OrDefault

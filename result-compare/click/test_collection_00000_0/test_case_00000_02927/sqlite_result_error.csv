@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT murmurHash2_32(CAST(-154477 AS Int64));
+': no such function: murmurHash2_32

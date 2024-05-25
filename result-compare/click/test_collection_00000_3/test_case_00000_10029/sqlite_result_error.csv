@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toUInt256(100000000000)) AS res;
+': no such function: toUInt256

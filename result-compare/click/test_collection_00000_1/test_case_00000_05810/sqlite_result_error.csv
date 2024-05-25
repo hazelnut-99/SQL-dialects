@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count(notIn(NULL, tuple(NULL)));
+': no such function: notIn

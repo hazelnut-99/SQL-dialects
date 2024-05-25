@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT groupArrayMovingSum(10)(1) FROM numbers(100);
+': near "(": syntax error

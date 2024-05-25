@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name locate does not exist!
+Did you mean "lcase"?
+LINE 1: SELECT locate('abcabc', 'ca');
+               ^

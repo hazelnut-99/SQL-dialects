@@ -1,0 +1,2 @@
+Execution failed on sql 'select splitByChar(',', '1,2,3');
+': no such function: splitByChar

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toBool('disable');
+': no such function: toBool

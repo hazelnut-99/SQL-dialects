@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from generateRandom('x UInt64 NULL', 7, 3) limit 2;
+': no such table: generateRandom

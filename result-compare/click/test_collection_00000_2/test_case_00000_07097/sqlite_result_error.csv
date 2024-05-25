@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatchesCaseInsensitive(materialize('foobarfoo'), 'FOo');
+': no such function: materialize

@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 3:   select cast(x, 'AggregateFunction(sum, Decimal(50, 10))') ...
+                       ^

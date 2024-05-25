@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT quantileTiming(-0.)(number / 1.1754943508222875e-38) ...
+                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ifNotFinite(log(0), NULL);
+': no such function: ifNotFinite

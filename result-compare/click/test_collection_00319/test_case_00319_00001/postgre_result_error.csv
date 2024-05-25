@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 10: CREATE TABLE truncate_test_log(id UInt64) ENGINE = Log;
+                                                   ^

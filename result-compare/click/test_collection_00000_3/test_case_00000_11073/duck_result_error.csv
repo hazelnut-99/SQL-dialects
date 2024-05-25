@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: SELECT age('minute', materialize(toDate('2017-12-31')), toDa...
+                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDaysSinceYearZero(toDate32('1900-01-01'));
+': no such function: toDate32

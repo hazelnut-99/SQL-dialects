@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 HAVING 1;
+': HAVING clause on a non-aggregate query

@@ -1,0 +1,12 @@
+Execution failed on sql 'SELECT argMaxIfOrNull(id, timestamp, id IS NOT NULL)
+FROM
+(
+    SELECT
+        CAST(NULL, 'Nullable(UInt32)') AS id,
+        2 AS timestamp
+    UNION ALL
+    SELECT
+        1 AS id,
+        1 AS timestamp
+);
+': near ",": syntax error

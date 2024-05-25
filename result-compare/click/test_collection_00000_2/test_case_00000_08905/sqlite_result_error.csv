@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(MD4('test'));
+': no such function: MD4

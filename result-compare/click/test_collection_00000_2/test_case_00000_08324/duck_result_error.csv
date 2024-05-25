@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multimatchany does not exist!
+Did you mean "atan"?
+LINE 1: select multiMatchAny(materialize('123'), mater...
+               ^

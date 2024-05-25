@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name empty does not exist!
+Did you mean "exp"?
+LINE 1: SELECT if(empty(''), 0, throwIf(1, 'Executing FAL...
+                  ^

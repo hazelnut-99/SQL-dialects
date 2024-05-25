@@ -1,10 +1,7 @@
-create table t(a integer, b integer);
-insert into t(a, b) select i/100 + 1, i + 1 from generate_series(0, 999) n(i);
-analyze t;
-delete from t;
-insert into t(a, b) select i/50 + 1, i + 1 from generate_series(0, 999) n(i);
-analyze t;
-delete from t;
-insert into t(a, b) select (case when i < 5 then i else 9 end), i from generate_series(1, 1000) n(i);
-analyze t;
-begin;
+/*
+ * 1.1. test CREATE INDEX with buffered build
+ */
+
+CREATE TABLE tbl_gist (c1 int, c2 int, c3 int, c4 box);
+INSERT INTO tbl_gist SELECT x, 2*x, 3*x, box(point(x,x+1),point(2*x,2*x+1)) FROM generate_series(1,8000) AS x;
+CREATE INDEX tbl_gist_idx ON tbl_gist using gist (c4) INCLUDE (c1,c2,c3);

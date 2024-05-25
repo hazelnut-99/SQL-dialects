@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT x, isFinite(x), isInfinite(x), isNaN(x) FROM (SELECT arrayJoin([0, 1, -1, inf, -inf, nan, -nan, 0 / 0, 1 / 0, -1 / 0, 0 / -0., -0. / 0, 1 / -0., -1 / -0.]) AS x);
+': no such column: 0, 1, -1, inf, -inf, nan, -nan, 0 / 0, 1 / 0, -1 / 0, 0 / -0., -0. / 0, 1 / -0., -1 / -0.

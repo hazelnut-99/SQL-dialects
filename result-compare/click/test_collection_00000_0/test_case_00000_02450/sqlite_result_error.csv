@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 as x where 1 as x;
+': near "as": syntax error

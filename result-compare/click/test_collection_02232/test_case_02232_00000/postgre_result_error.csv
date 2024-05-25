@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "02185_"
+LINE 1: DROP TABLE IF EXISTS 02185_range_dictionary_source_table;
+                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT nan AS x, erf(x), erfc(x), lgamma(x), tgamma(x);
+': no such column: nan

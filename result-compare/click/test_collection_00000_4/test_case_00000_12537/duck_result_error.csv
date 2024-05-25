@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name mapsubtract does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT mapSubtract(map('Hello', 1.2::Decimal12...
+               ^

@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name zeros does not exist!
+Did you mean "glob"?
+LINE 1: select sum(zero), count() from zeros(10000000);
+                                       ^

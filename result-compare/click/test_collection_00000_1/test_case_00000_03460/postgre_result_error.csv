@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...CT number % 2 ? toDateTime('2000-01-01 00:00:00') : toDateTi...
+                                                             ^

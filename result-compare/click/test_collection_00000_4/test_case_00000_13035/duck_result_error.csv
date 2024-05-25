@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hastoken does not exist!
+Did you mean "asin"?
+LINE 1: SELECT hasToken('', 'Hello');
+               ^

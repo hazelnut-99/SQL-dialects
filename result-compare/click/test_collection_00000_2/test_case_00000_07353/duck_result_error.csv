@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name reinterpret does not exist!
+Did you mean "regr_intercept"?
+LINE 1: SELECT reinterpret(49, 'FixedString(3)');
+               ^

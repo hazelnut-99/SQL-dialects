@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTimeBestEffortOrNull('0100:0100:0000');
+': no such function: parseDateTimeBestEffortOrNull

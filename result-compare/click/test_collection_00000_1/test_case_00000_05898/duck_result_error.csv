@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name polygonsequalscartesian does not exist!
+Did you mean "least"?
+LINE 1: select polygonsEqualsCartesian([[[(0, 0),(0, 3...
+               ^

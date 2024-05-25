@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint32orzero does not exist!
+Did you mean "count"?
+LINE 1: SELECT toUInt32OrZero(arrayJoin(['123a', '456'...
+               ^

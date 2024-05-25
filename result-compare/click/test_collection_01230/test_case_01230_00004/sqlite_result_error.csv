@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM test WHERE isZeroOrNull(x = 'xyz');
+': no such function: isZeroOrNull

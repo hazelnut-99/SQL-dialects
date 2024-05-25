@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ctid, * FROM tidscan WHERE ctid = '(0,1)';
+': no such column: ctid

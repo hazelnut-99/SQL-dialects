@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDiv(1, CAST(materialize(NULL), 'Nullable(UInt32)'));
+': near ",": syntax error

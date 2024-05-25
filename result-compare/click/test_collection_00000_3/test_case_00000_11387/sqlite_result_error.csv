@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -1.3_4e-2_1;
+': unrecognized token: "1.3_4e"

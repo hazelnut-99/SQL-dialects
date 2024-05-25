@@ -1,0 +1,3 @@
+syntax error at or near ")"
+LINE 7:     d Nullable(DEC(9, 4)),
+                                ^

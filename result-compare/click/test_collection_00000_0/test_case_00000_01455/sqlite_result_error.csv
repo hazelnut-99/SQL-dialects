@@ -1,0 +1,2 @@
+Execution failed on sql 'select 5 = position('в' in 'абв');
+': no such table: абв

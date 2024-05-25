@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: ...ermanently_atomic.test_name_reuse (number UInt64) engine=Mer...
+                                                             ^

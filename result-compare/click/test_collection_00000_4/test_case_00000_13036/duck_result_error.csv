@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hastokenornull does not exist!
+Did you mean "asin"?
+LINE 1: SELECT hasTokenOrNull('', '');
+               ^

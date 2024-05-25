@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayDistinct(materialize([0, 1, 1, 0])) FROM numbers...
+                                         ^

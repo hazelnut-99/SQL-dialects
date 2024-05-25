@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name intdivorzero does not exist!
+Did you mean "instr"?
+LINE 1: SELECT intDivOrZero(toDecimal32(4.4, 2), 2.2);
+               ^

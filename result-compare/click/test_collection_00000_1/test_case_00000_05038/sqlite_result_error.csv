@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'UInt32', blockSerializedSize(0xdeadbeaf);
+': no such function: blockSerializedSize

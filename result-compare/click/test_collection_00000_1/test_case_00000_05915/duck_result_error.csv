@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name polygonperimetercartesian does not exist!
+Did you mean "geometric_mean"?
+LINE 1: select polygonPerimeterCartesian([[[(0., 0.), ...
+               ^

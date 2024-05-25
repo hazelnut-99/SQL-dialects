@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayMap((x, y) -> x + y, [tuple(1, 2)]);
+                                         ^

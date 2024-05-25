@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT divideDecimal(toDecimal128(123.76, 2), toDecimal128(11.123456, 6));
+': no such function: toDecimal128

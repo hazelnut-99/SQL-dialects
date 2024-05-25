@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...te, id Int8, name String, value Int64, sign Int8) ENGINE = C...
+                                                             ^

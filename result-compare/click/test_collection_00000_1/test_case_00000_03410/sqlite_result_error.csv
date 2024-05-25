@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concat('With ', materialize(44 :: Int32));
+': unrecognized token: ":"

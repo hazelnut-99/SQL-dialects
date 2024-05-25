@@ -1,0 +1,2 @@
+Execution failed on sql 'select toInt64OrDefault('-1', cast(-2 as Int64));
+': no such function: toInt64OrDefault

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayAll(x -> materialize(1), [1, 2, 3]);
+': no such column: 1, 2, 3

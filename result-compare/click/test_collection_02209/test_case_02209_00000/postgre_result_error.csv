@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "02183_"
+LINE 1: DROP TABLE IF EXISTS 02183_dictionary_source_table;
+                             ^

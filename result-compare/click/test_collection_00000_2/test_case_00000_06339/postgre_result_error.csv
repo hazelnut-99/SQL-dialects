@@ -1,0 +1,3 @@
+syntax error at or near "WITH"
+LINE 1: ...k, toNullable(1) AS x FROM numbers(1)) GROUP BY k WITH CUBE ...
+                                                             ^

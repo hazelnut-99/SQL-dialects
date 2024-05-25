@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 4: CREATE TABLE mv_source (`a` UInt64) ENGINE = MergeTree ORDER...
+                                ^

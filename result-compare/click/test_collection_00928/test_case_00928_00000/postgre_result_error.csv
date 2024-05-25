@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...BLE json_square_brackets (id UInt32, name String) ENGINE = M...
+                                                             ^

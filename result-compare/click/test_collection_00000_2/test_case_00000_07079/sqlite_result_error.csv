@@ -1,0 +1,2 @@
+Execution failed on sql 'select countMatches('foo', '[f]{0}foo');
+': no such function: countMatches

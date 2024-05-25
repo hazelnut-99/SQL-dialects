@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 6: col5 Array(UInt64), col6 Array(Nullable(UInt64)),
+             ^

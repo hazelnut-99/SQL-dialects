@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: SELECT today() + INTERVAL 1::UInt256 DAY - today();
+                                  ^

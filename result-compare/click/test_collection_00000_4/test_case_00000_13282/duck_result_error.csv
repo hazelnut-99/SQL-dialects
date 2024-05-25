@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name yyyymmddtodate does not exist!
+Did you mean "mode"?
+LINE 1: SELECT YYYYMMDDToDate(19691231);
+               ^

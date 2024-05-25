@@ -1,46 +1,10 @@
-SHOW track_counts;  -- must be on
-COMMIT;
-CREATE TABLE trunc_stats_test(id serial);
-CREATE TABLE trunc_stats_test1(id serial, stuff text);
-CREATE TABLE trunc_stats_test2(id serial);
-CREATE TABLE trunc_stats_test3(id serial, stuff text);
-CREATE TABLE trunc_stats_test4(id serial);
-INSERT INTO trunc_stats_test DEFAULT VALUES;
-INSERT INTO trunc_stats_test DEFAULT VALUES;
-TRUNCATE trunc_stats_test;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-DELETE FROM trunc_stats_test1 WHERE id = 3;
-BEGIN;
-TRUNCATE trunc_stats_test1;
-INSERT INTO trunc_stats_test1 DEFAULT VALUES;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-SAVEPOINT p1;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-TRUNCATE trunc_stats_test2;
-INSERT INTO trunc_stats_test2 DEFAULT VALUES;
-RELEASE SAVEPOINT p1;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-SAVEPOINT p1;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-TRUNCATE trunc_stats_test3;
-INSERT INTO trunc_stats_test3 DEFAULT VALUES;
-ROLLBACK TO SAVEPOINT p1;
-COMMIT;
-BEGIN;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-TRUNCATE trunc_stats_test4;
-INSERT INTO trunc_stats_test4 DEFAULT VALUES;
-ROLLBACK;
-BEGIN;
-COMMIT;
-CREATE FUNCTION stats_test_func1() RETURNS VOID LANGUAGE plpgsql AS $$BEGIN END;$$;
+CREATE TEXT SEARCH DICTIONARY ispell (
+                        Template=ispell,
+                        DictFile=ispell_sample,
+                        AffFile=ispell_sample
+);
+CREATE TEXT SEARCH DICTIONARY hunspell (
+                        Template=ispell,
+                        DictFile=ispell_sample,
+                        AffFile=hunspell_sample
+);

@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...x), state) from (select sumStateResample(0, 20, 1)(number, n...
+                                                             ^

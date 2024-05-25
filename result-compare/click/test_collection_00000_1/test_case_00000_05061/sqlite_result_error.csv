@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(reinterpretAsFixedString(0xdeadbeef));
+': no such function: reinterpretAsFixedString

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByWhitespace('Nein, nein, nein! Doch!', 2);
+': no such function: splitByWhitespace

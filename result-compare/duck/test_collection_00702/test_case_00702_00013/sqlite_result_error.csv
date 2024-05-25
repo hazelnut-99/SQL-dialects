@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT COALESCE(1, 'hello'::INT);
+': unrecognized token: ":"

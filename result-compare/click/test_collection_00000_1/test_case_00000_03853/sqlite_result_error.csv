@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateDense([STDDEV_SAMP(NULL, 910947.571364)], [NULL]);
+': no such column: STDDEV_SAMP(NULL, 910947.571364)

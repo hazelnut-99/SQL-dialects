@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostring does not exist!
+Did you mean "bitstring"?
+LINE 1: SELECT toString(toDateTime('1970-01-01 14:25:3...
+               ^

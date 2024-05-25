@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 4: create table test_1603_rename_bug_atomic.foo engine=Memory a...
+                                                     ^

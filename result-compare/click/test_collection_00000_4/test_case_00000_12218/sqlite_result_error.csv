@@ -1,0 +1,2 @@
+Execution failed on sql 'select JSONArrayLength('{"key":"not a json array"}');
+': no such function: JSONArrayLength

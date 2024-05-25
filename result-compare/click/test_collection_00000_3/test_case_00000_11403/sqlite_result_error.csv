@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -Inf;
+': no such column: Inf

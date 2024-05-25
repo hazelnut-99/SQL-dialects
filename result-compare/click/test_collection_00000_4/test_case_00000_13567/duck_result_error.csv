@@ -1,0 +1,11 @@
+Binder Error: Could not choose a best candidate function for the function call "-(STRING_LITERAL, INTERVAL)". In order to select one, please add explicit type casts.
+	Candidate functions:
+	-(DATE, INTERVAL) -> TIMESTAMP
+	-(TIME, INTERVAL) -> TIME
+	-(TIMESTAMP, INTERVAL) -> TIMESTAMP
+	-(TIME WITH TIME ZONE, INTERVAL) -> TIME WITH TIME ZONE
+	-(TIMESTAMP WITH TIME ZONE, INTERVAL) -> TIMESTAMP WITH TIME ZONE
+	-(INTERVAL, INTERVAL) -> INTERVAL
+
+LINE 1: SELECT '2023-10-23' - INTERVAL 1 SECOND, '2023-10-23 12:34:...
+                            ^

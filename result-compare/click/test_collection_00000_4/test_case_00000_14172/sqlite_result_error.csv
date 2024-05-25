@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT formatQuery('SELECT NOT 0 + NOT 0');
+': no such function: formatQuery

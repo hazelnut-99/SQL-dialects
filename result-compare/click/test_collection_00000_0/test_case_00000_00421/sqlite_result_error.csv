@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayMap(x -> 1, [2, 3]), 123 AS y;
+': no such column: 2, 3

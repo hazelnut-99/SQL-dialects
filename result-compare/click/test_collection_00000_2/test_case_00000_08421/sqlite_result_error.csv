@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT L2SquaredNorm(materialize((-12, 5)));
+': no such function: materialize

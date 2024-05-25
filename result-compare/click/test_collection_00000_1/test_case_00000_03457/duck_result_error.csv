@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name base64encode does not exist!
+Did you mean "base64"?
+LINE 1: select base64Encode(toFixedString('foo', 3));
+               ^

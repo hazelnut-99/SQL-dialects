@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name anyif does not exist!
+Did you mean "day"?
+LINE 1: SELECT anyIf('Hello', arrayJoin([1, NULL]) = 1...
+               ^

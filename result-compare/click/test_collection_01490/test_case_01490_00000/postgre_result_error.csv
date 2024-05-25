@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 5: ...reate table pl (dt DateTime, i int, projection p (select sum...
+                                                             ^

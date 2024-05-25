@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(initializeAggregation('uniqExact', 0));
+': no such function: initializeAggregation

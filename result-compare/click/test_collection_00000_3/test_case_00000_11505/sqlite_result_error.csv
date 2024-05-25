@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concatWithSeparator('|', 'a', materialize(false :: Bool)) == 'a|false';
+': unrecognized token: ":"

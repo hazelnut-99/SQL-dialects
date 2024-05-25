@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...l1 UInt64, col2 String, col3 String, col4 String) ENGINE=Tin...
+                                                             ^

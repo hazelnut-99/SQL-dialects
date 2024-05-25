@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT wordShingleMinHash('what a cute cat.');
+': no such function: wordShingleMinHash

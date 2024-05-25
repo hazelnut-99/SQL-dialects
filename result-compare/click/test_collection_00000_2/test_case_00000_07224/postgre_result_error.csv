@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...aySort(groupArray(x)) FROM (SELECT CAST(arrayJoin([1, 2, 3, ...
+                                                             ^

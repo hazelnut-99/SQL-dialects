@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(ALL) FROM (SELECT 1 AS ALL);
+': near "ALL": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayshingles does not exist!
+Did you mean "array_has"?
+LINE 1: ...'c', 'de', '', 'hi'] AS arr, 5 AS len, arrayShingles(arr, len), arrayShingles(...
+                                                  ^

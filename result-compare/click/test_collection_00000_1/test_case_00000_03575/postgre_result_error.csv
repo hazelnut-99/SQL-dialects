@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...e(toInt8(0)) AS x, toUInt16(1) AS y, ((x > y) ? x : y) AS z,...
+                                                             ^

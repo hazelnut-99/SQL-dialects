@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCumSum(x -> 0, arrayMap(x -> toString(x), [1, 2, 3]));
+': no such column: 1, 2, 3

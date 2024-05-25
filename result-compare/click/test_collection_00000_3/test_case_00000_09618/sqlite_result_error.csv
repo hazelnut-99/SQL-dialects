@@ -1,0 +1,2 @@
+Execution failed on sql 'select getTypeSerializationStreams(map('a', 1, 'b', 2));
+': no such function: map

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toDecimal32('-0.7', 2) AS x, toUInt16(x);
+': no such function: toDecimal32

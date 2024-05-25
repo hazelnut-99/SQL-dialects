@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name multifuzzymatchany does not exist!
+Did you mean "atan"?
+LINE 1: select multiFuzzyMatchAny(materialize('hello s...
+               ^

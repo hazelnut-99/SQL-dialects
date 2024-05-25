@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT least(toNullable(123), 456);
+': no such function: toNullable

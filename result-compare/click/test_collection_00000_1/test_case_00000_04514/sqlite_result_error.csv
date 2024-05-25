@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayReduce('quantile(0.2)', [toDecimal128OrNull('1', 2)]);
+': no such function: arrayReduce

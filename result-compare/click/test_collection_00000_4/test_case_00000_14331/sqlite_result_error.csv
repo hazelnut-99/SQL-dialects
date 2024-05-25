@@ -1,0 +1,12 @@
+Execution failed on sql 'SELECT count()
+FROM
+(
+    SELECT number AS key_1
+    FROM numbers(15)
+) AS x
+ALL INNER JOIN
+(
+    SELECT number AS key_1
+    FROM numbers(10)
+) AS z ON key_1 = z.key_1;
+': near "ALL": syntax error

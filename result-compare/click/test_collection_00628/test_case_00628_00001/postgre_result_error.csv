@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...d UInt64,val SimpleAggregateFunction(sum,Double)) engine=Agg...
+                                                             ^

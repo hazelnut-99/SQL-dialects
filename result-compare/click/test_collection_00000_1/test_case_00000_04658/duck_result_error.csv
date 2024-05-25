@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name wordshingleminhash does not exist!
+Did you mean "argmin"?
+LINE 1: SELECT wordShingleMinHash('what a cute cat.');
+               ^

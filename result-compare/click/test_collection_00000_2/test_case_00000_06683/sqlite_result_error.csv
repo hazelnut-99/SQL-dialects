@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniq([toNullable(toInt128(321)), toNullable(toInt128(456)), toNullable(toInt128(321))]);
+': no such column: toNullable(toInt128(321)), toNullable(toInt128(456)), toNullable(toInt128(321))

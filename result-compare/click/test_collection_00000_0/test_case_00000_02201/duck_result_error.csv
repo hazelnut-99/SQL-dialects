@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayconcat does not exist!
+Did you mean "array_concat"?
+LINE 1: SELECT arrayConcat([1, NULL, 2], [3, NULL, 4])...
+               ^

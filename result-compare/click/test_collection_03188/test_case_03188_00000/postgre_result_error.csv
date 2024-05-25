@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 1: create table query_run_metric_arrays engine Memory as with (...
+                                             ^

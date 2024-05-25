@@ -1,0 +1,3 @@
+syntax error at or near "vol1"
+LINE 1: ...Query('ALTER TABLE a (MODIFY TTL expr TO VOLUME \'vol1\', ex...
+                                                             ^

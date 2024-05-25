@@ -1,0 +1,3 @@
+trailing junk after numeric literal at or near "02181_"
+LINE 1: DROP TABLE IF EXISTS 02181_test_table;
+                             ^

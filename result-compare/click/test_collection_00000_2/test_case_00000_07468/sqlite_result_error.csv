@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDifference([65536, -9223372036854775808]);
+': no such column: 65536, -9223372036854775808

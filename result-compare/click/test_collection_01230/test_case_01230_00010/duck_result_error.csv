@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name iszeroornull does not exist!
+Did you mean "error"?
+LINE 1: select isZeroOrNull(Null);
+               ^

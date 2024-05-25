@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ['q', 'w', 'ert', 'y'];
+': no such column: 'q', 'w', 'ert', 'y'

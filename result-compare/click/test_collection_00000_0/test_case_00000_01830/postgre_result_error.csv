@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT CASE WHEN 1 THEN ['A','B'] WHEN 2 THEN ['C','D'] ELSE...
+                                ^

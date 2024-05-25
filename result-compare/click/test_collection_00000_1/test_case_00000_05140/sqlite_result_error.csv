@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() FROM numbers_mt(1000000000);
+': no such table: numbers_mt

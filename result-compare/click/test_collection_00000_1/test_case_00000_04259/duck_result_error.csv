@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toyearweek does not exist!
+Did you mean "yearweek"?
+LINE 1: SELECT toYearWeek(toDate('2000-01-01'),0) AS w...
+               ^

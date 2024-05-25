@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name yyyymmddtodate32 does not exist!
+Did you mean "mode"?
+LINE 1: SELECT YYYYMMDDToDate32(toDecimal64(22991231.1...
+               ^

@@ -1,3 +1,13 @@
-create function polyf(x anyelement) returns anyelement as $$
-  select x + 1
-$$ language sql;
+CREATE TABLE TIMESTAMP_TBL (d1 timestamp(2) without time zone);
+BEGIN;
+INSERT INTO TIMESTAMP_TBL VALUES ('today');
+INSERT INTO TIMESTAMP_TBL VALUES ('yesterday');
+INSERT INTO TIMESTAMP_TBL VALUES ('tomorrow');
+INSERT INTO TIMESTAMP_TBL VALUES ('tomorrow EST');
+INSERT INTO TIMESTAMP_TBL VALUES ('tomorrow zulu');
+COMMIT;
+DELETE FROM TIMESTAMP_TBL;
+INSERT INTO TIMESTAMP_TBL VALUES ('now');
+BEGIN;
+INSERT INTO TIMESTAMP_TBL VALUES ('now');
+INSERT INTO TIMESTAMP_TBL VALUES ('now');

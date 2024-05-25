@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toFloat32(toDecimal32(number, 1)), toFloat32(toDecimal64(number, 2)), toFloat32(toDecimal128(number, 3)) FROM numbers(12, 1);
+': no such table: numbers

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleHammingDistance(('abc', 2), ('abc', 257));
+': no such function: tupleHammingDistance

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name inet_aton does not exist!
+Did you mean "bit_and"?
+LINE 1: SELECT INET_ATON('192.168.0.1');
+               ^

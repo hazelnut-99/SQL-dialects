@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT sumForEachArrayIf([[number],[number%2]], number < 5) ...
+                                 ^

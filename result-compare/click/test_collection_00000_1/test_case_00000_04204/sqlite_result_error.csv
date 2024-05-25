@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arraySort(arrayIntersect(['a', 'b', 'c'], ['a', 'a']));
+': no such column: 'a', 'b', 'c'

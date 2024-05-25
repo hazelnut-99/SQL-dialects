@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...rrayMap(x -> x != 5, arr)) FROM (SELECT arrayJoin([[1, 2, 3]...
+                                                             ^

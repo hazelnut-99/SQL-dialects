@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiMatchAllIndices('123', ['1']);
+': no such function: multiMatchAllIndices

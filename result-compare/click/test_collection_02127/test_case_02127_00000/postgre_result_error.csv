@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...EATE TABLE t_map_contains (m Map(String, UInt32)) ENGINE = M...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequenceCaseInsensitive('GARGAGE', 'arg');
+': no such function: hasSubsequenceCaseInsensitive

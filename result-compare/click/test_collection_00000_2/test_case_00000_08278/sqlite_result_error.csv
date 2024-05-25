@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '2' FROM numbers(10) EXCEPT SELECT '1' FROM numbers(5);
+': no such table: numbers

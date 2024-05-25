@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tupleconcat does not exist!
+Did you mean "concat"?
+LINE 1: SELECT tupleConcat((1, 'y'), (2, 'n'));
+               ^

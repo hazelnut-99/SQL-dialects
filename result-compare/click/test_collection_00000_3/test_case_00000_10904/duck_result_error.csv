@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonextract does not exist!
+Did you mean "json_extract"?
+LINE 1: SELECT JSONExtract('{"a" : {"b" : {"c" : 1, "d...
+               ^

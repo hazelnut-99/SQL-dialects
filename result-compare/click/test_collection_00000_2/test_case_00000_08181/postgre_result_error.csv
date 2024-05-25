@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT groupArray('5'::UInt8)(number) FROM numbers(10);
+                                     ^

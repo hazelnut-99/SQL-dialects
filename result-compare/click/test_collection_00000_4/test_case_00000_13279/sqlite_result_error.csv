@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(YYYYMMDDToDate(19910824));
+': no such function: YYYYMMDDToDate

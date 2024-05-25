@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name startswith does not exist!
+Did you mean "starts_with"?
+LINE 1: select startsWith([NULL, 1], [NULL]);
+               ^

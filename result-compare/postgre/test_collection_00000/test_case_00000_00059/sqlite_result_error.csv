@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT INTERVAL '-08:00' AS "Eight hours";
+': near "AS": syntax error

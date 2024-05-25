@@ -1,0 +1,3 @@
+syntax error at or near "select"
+LINE 2: ... x (i UInt64, j UInt64, k UInt64, projection agg (select sum...
+                                                             ^

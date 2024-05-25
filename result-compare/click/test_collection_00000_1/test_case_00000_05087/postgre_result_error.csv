@@ -1,0 +1,3 @@
+syntax error at or near "hello"
+LINE 3: FROM generateRandom('i Array(Nullable(Enum8(\'hello\' = 1, \...
+                                                      ^

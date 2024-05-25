@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name simplejsonextractuint does not exist!
+Did you mean "json_extract"?
+LINE 1: SELECT simpleJSONExtractUInt('{"myparam":-1}',...
+               ^

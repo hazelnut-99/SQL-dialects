@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT min(n + -1), min(-1 + n), min(n - -1), min(-1 - n) FROM (SELECT number n FROM numbers(10));
+': no such table: numbers

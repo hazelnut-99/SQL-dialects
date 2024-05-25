@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT endsWithUTF8('123', '3');
+': no such function: endsWithUTF8

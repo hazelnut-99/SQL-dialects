@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT toDateTime('2017-06-28 12:01:01') < toD...
+               ^

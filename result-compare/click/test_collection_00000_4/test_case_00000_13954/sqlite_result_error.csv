@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from format(JSONEachRow, '{"x" : true}, {"x" : false}, {"x" : "str"}');
+': no such table: format

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleElement(('hello', 'world'), 'xyz', 'default');
+': no such function: tupleElement

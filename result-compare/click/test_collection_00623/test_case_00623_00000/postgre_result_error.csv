@@ -1,0 +1,3 @@
+syntax error at or near "'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'"
+LINE 1: WITH substring('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', ...
+                       ^

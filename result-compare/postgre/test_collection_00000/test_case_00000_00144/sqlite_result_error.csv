@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 0o777777777777777777777;
+': unrecognized token: "0o777777777777777777777"

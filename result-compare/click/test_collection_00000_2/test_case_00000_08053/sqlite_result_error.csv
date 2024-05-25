@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSON_QUERY('{"1key":1}', '$.1key');
+': no such function: JSON_QUERY

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT concat('With ', materialize([[(20, 20), (50, 20), (50, 50), (20, 50)], [(30, 30), (50, 50), (50, 30)]] :: Polygon));
+': unrecognized token: "]"

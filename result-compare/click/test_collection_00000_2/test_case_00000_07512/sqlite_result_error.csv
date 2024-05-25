@@ -1,0 +1,2 @@
+Execution failed on sql 'select toInt128OrDefault('-1xx', cast(-2 as Int128));
+': no such function: toInt128OrDefault

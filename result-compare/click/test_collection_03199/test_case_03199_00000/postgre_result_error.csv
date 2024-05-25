@@ -1,0 +1,3 @@
+syntax error at or near "str"
+LINE 2:   toString(number) as str
+                              ^

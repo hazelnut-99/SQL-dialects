@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toWeek(toDate('2000-12-31'),2),toWeek(toDate('2000-12-31'),3);
+': no such function: toDate

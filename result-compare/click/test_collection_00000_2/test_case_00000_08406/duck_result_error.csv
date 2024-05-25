@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tuplemultiplybynumber does not exist!
+Did you mean "multiply"?
+LINE 1: SELECT tupleMultiplyByNumber((1, 2, 3), 0.5);
+               ^

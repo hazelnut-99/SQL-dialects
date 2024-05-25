@@ -1,0 +1,3 @@
+Conversion Error: Unimplemented type for cast (INTEGER -> STRUCT(INTEGER, INTEGER))
+LINE 1: SELECT 1 IN (((1), (2)));
+               ^

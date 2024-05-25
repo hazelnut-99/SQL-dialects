@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name extractall does not exist!
+Did you mean "era"?
+LINE 1: SELECT extractAll('\0', '');
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiFuzzyMatchAllIndices(materialize('halo some wrld'), 2, materialize(['^halllllo.*world$', 'some random string']));
+': no such function: materialize

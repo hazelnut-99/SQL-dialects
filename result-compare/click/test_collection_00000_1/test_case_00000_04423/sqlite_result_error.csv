@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT roundDuration(0);
+': no such function: roundDuration

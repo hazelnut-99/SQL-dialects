@@ -1,0 +1,6 @@
+Catalog Error: Scalar Function with name ignore does not exist!
+Did you mean "sign"?
+LINE 3:     SELECT ignore((SELECT groupArrayState(([number], [number])) FROM numbers(19000)))
+)
+...
+                   ^

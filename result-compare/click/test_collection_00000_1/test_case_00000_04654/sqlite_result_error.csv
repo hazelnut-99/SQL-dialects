@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngramMinHash('what a cute cat.');
+': no such function: ngramMinHash

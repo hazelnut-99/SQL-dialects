@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name decodexmlcomponent does not exist!
+Did you mean "decode"?
+LINE 1: SELECT decodeXMLComponent('&#12345678;&apos;12...
+               ^

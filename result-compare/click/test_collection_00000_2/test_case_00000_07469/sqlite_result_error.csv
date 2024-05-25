@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDifference( cast([10, 1], 'Array(UInt8)'));
+': near ",": syntax error

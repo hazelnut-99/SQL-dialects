@@ -1,0 +1,3 @@
+syntax error at or near "5"
+LINE 1: SELECT subDate('2022-05-07'::Date, INTERVAL 5 MINUTE);
+                                                    ^

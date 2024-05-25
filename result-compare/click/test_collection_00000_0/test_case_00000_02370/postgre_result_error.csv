@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...ite(x), isNaN(x) FROM (SELECT toFloat32(arrayJoin([0, 1, -1,...
+                                                             ^

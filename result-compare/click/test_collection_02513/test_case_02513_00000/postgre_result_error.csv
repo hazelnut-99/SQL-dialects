@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: CREATE TEMPORARY TABLE test (`i` Int64, `d` DateTime);
+                                     ^

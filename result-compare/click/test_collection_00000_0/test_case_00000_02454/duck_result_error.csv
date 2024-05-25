@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name defaultvalueofargumenttype does not exist!
+Did you mean "format_type"?
+LINE 1: SELECT defaultValueOfArgumentType([1])[1];
+               ^

@@ -1,103 +1,40 @@
-COMMIT;
-CREATE TEMP TABLE test_jsonb (
-       json_type text,
-       test_json jsonb
-);
-INSERT INTO test_jsonb VALUES
-('scalar','"a scalar"'),
-('array','["zero", "one","two",null,"four","five", [1,2,3],{"f1":9}]'),
-('object','{"field1":"val1","field2":"val2","field3":null, "field4": 4, "field5": [1,2,3], "field6": {"f1":9}}');
-CREATE TEMP TABLE foo (serial_num int, name text, type text);
-INSERT INTO foo VALUES (847001,'t15','GE1043');
-INSERT INTO foo VALUES (847002,'t16','GE1043');
-INSERT INTO foo VALUES (847003,'sub-alpha','GESS90');
-INSERT INTO foo VALUES (999999, NULL, 'bar');
-CREATE TYPE jbpop AS (a text, b int, c timestamp);
-CREATE DOMAIN jsb_int_not_null  AS int     NOT NULL;
-CREATE DOMAIN jsb_int_array_1d  AS int[]   CHECK(array_length(VALUE, 1) = 3);
-CREATE DOMAIN jsb_int_array_2d  AS int[][] CHECK(array_length(VALUE, 2) = 3);
-create type jb_unordered_pair as (x int, y int);
-create domain jb_ordered_pair as jb_unordered_pair check((value).x <= (value).y);
-CREATE TYPE jsbrec AS (
-	i	int,
-	ia	_int4,
-	ia1	int[],
-	ia2	int[][],
-	ia3	int[][][],
-	ia1d	jsb_int_array_1d,
-	ia2d	jsb_int_array_2d,
-	t	text,
-	ta	text[],
-	c	char(10),
-	ca	char(10)[],
-	ts	timestamp,
-	js	json,
-	jsb	jsonb,
-	jsa	json[],
-	rec	jbpop,
-	reca	jbpop[]
-);
-CREATE TYPE jsbrec_i_not_null AS (
-	i	jsb_int_not_null
-);
-create type jsb_char2 as (a char(2));
-create type jsb_ia as (a int[]);
-create type jsb_ia2 as (a int[][]);
-create domain jsb_i_not_null as int not null;
-create domain jsb_i_gt_1 as int check (value > 1);
-create type jsb_i_not_null_rec as (a jsb_i_not_null);
-create type jsb_i_gt_1_rec as (a jsb_i_gt_1);
-drop type jsb_ia, jsb_ia2, jsb_char2, jsb_i_not_null_rec, jsb_i_gt_1_rec;
-drop domain jsb_i_not_null, jsb_i_gt_1;
-CREATE TEMP TABLE jsbpoptest (js jsonb);
-INSERT INTO jsbpoptest
-SELECT '{
-	"jsa": [1, "2", null, 4],
-	"rec": {"a": "abc", "c": "01.02.2003", "x": 43.2},
-	"reca": [{"a": "abc", "b": 456}, null, {"c": "01.02.2003", "x": 43.2}]
-}'::jsonb
-FROM generate_series(1, 3);
-DROP TYPE jsbrec;
-DROP TYPE jsbrec_i_not_null;
-DROP DOMAIN jsb_int_not_null;
-DROP DOMAIN jsb_int_array_1d;
-DROP DOMAIN jsb_int_array_2d;
-DROP DOMAIN jb_ordered_pair;
-DROP TYPE jb_unordered_pair;
-create temp table nestjsonb (j jsonb);
-insert into nestjsonb (j) values ('{"a":[["b",{"x":1}],["b",{"x":2}]],"c":3}');
-insert into nestjsonb (j) values ('[[14,2,3]]');
-insert into nestjsonb (j) values ('[1,[14,2,3]]');
-create index on nestjsonb using gin(j jsonb_path_ops);
-create TEMP TABLE test_jsonb_subscript (
-       id int,
-       test_json jsonb
-);
-insert into test_jsonb_subscript values
-(1, '{}'), -- empty jsonb
-(2, '{"key": "value"}'); -- jsonb with data
-insert into test_jsonb_subscript values (3, NULL);
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '[0]');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '[]');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{"b": 1}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '[]');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '[]');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{"a": {}}');
-delete from test_jsonb_subscript;
-insert into test_jsonb_subscript values (1, '{"a": []}');
+CREATE TABLE mvtest_t (id int NOT NULL PRIMARY KEY, type text NOT NULL, amt numeric NOT NULL);
+INSERT INTO mvtest_t VALUES
+  (1, 'x', 2),
+  (2, 'x', 3),
+  (3, 'y', 5),
+  (4, 'y', 7),
+  (5, 'z', 11);
+CREATE VIEW mvtest_tv AS SELECT type, sum(amt) AS totamt FROM mvtest_t GROUP BY type;
+CREATE MATERIALIZED VIEW mvtest_tm AS SELECT type, sum(amt) AS totamt FROM mvtest_t GROUP BY type WITH NO DATA;
+ROLLBACK;
+CREATE VIEW mvtest_vt1 AS SELECT 1 moo;
+CREATE VIEW mvtest_vt2 AS SELECT moo, 2*moo FROM mvtest_vt1 UNION ALL SELECT moo, 3*moo FROM mvtest_vt1;
+DROP VIEW mvtest_vt1 CASCADE;
+CREATE TABLE mvtest_foo(a, b) AS VALUES(1, 10);
+CREATE MATERIALIZED VIEW mvtest_mv AS SELECT * FROM mvtest_foo;
+CREATE UNIQUE INDEX ON mvtest_mv(a);
+INSERT INTO mvtest_foo SELECT * FROM mvtest_foo;
+DROP TABLE mvtest_foo CASCADE;
+CREATE TABLE mvtest_foo(a, b, c) AS VALUES(1, 2, 3);
+CREATE MATERIALIZED VIEW mvtest_mv AS SELECT * FROM mvtest_foo;
+CREATE UNIQUE INDEX ON mvtest_mv (a);
+CREATE UNIQUE INDEX ON mvtest_mv (b);
+CREATE UNIQUE INDEX on mvtest_mv (c);
+INSERT INTO mvtest_foo VALUES(2, 3, 4);
+INSERT INTO mvtest_foo VALUES(3, 4, 5);
+REFRESH MATERIALIZED VIEW mvtest_mv;
+REFRESH MATERIALIZED VIEW CONCURRENTLY mvtest_mv;
+DROP TABLE mvtest_foo CASCADE;
+CREATE MATERIALIZED VIEW mvtest_mv1 AS SELECT 1 AS col1 WITH NO DATA;
+CREATE MATERIALIZED VIEW mvtest_mv2 AS SELECT * FROM mvtest_mv1
+  WHERE col1 = (SELECT LEAST(col1) FROM mvtest_mv1) WITH NO DATA;
+DROP MATERIALIZED VIEW mvtest_mv1 CASCADE;
+CREATE TABLE mvtest_boxes (id serial primary key, b box);
+INSERT INTO mvtest_boxes (b) VALUES
+  ('(32,32),(31,31)'),
+  ('(2.0000004,2.0000004),(1,1)'),
+  ('(1.9999996,1.9999996),(1,1)');
+CREATE MATERIALIZED VIEW mvtest_boxmv AS SELECT * FROM mvtest_boxes;
+CREATE UNIQUE INDEX mvtest_boxmv_id ON mvtest_boxmv (id);
+REFRESH MATERIALIZED VIEW CONCURRENTLY mvtest_boxmv;

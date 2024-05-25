@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT startsWithUTF8('123', '12');
+': no such function: startsWithUTF8

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint8 does not exist!
+Did you mean "count"?
+LINE 1: ... 0, -9007199254740992.000000000 >= 0 , toUInt8(0) = -9007199254740992.00000000...
+                                                  ^

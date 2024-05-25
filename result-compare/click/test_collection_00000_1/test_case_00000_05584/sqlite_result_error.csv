@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT greatest(1, inf, nan);
+': no such function: greatest

@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(*), * from format(TSV, '0123');
+': no such table: format

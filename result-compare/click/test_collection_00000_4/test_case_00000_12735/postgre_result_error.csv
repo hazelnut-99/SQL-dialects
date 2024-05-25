@@ -1,0 +1,3 @@
+syntax error at or near "any"
+LINE 1: SELECT any(toTypeName(s)) FROM (SELECT ('a' :: String) as s)...
+               ^

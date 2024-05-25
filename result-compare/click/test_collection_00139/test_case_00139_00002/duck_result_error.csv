@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayreduce does not exist!
+Did you mean "array_reduce"?
+LINE 1: SELECT arrayReduce('groupUniqArrayMergeIf',
+               ^

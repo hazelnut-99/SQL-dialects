@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT CAST(toNullable(toFloat32(2)), 'Float32') as x, toTyp...
+                                            ^

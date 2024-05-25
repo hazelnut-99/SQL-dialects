@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayCompact([2,1,1]);
+': no such column: 2,1,1

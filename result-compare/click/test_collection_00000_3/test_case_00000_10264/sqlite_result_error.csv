@@ -1,0 +1,8 @@
+Execution failed on sql 'select
+       r
+from
+    (select  [('y',0),('n',1)] as cg,
+             if( arrayMap( x -> x.1, cg ) != ['y', 'n'], 'y', 'n')  as so,
+             arrayFilter( x -> x.1 = so , cg) as r
+    );
+': near ".1": syntax error

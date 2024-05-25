@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (1, 2) * toDecimal32(3.1, 8);
+': no such function: toDecimal32

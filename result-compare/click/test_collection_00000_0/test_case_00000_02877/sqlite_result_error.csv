@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT CAST(arrayJoin(['', 'abc', '123', '123a', '-123']) AS Nullable(String));
+': near "String": syntax error

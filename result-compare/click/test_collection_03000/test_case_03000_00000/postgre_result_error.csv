@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 2: CREATE TABLE t_reverse_order_virt_col (`order_0` Decimal(76,...
+                                               ^

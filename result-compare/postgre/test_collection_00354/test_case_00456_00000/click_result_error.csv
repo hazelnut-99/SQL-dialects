@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
+ Code: 60. DB::Exception: Table test_collection_00354_click_postgre.empsalary does not exist. (UNKNOWN_TABLE) (version 24.2.2.16233 (official build))

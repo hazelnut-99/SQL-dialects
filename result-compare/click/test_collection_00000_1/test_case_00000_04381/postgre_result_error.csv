@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select arrayReduce('groupArrayResample(1, 7, 1)', [10, 11, 1...
+                                                          ^

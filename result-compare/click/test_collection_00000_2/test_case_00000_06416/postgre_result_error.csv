@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT groupArrayMovingSum(10)(1) FROM numbers(100);
+                                      ^

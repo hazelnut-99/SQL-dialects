@@ -1,0 +1,3 @@
+Binder Error: Referenced column "INF" not found in FROM clause!
+LINE 1: SELECT +INF;
+                ^

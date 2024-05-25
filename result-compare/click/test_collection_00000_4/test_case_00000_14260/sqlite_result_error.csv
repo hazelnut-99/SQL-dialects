@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toUInt8OrNull('123\0'::FixedString(4));
+': unrecognized token: ":"

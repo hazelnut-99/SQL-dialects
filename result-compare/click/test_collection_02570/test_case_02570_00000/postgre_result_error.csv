@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...r LowCardinality(String), IntervalStart DateTime) engine Mer...
+                                                             ^

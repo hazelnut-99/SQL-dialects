@@ -1,0 +1,2 @@
+Execution failed on sql 'select log(0) = -inf;
+': no such column: inf

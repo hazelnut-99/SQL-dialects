@@ -1,0 +1,1 @@
+Binder Error: Column "c" referenced that exists in the SELECT clause - but this column cannot be referenced before it is defined

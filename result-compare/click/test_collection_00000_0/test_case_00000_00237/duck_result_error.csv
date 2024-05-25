@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name cosh does not exist!
+Did you mean "cos"?
+LINE 1: select cosh(1) = cosh(-1);
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...T arrayFold((acc, x) -> acc + x, materialize(CAST([NULL], 'A...
+                                                             ^

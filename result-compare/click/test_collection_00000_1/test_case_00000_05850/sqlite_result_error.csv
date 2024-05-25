@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT match('Hello', '\w+'), match('Hello', '\\w+'), match('Hello', '\\\w+'), match('Hello', '\w\+'), match('Hello', 'w+');
+': unable to use function MATCH in the requested context

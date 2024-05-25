@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 2: ...DEFAULT 42, s String DEFAULT concat('test', CAST(n, 'String'...
+                                                             ^

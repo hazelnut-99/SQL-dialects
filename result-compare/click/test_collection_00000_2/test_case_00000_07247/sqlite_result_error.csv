@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ISNULL('abc');
+': near "ISNULL": syntax error

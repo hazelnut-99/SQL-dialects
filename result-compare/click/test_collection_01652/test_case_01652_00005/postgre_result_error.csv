@@ -1,0 +1,3 @@
+syntax error at or near "'{ "v":1.1}'"
+LINE 1: WITH '{ "v":1.1}' AS raw
+             ^

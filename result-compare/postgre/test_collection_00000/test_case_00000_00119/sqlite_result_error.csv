@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT num_nulls(VARIADIC '{"1","2","3","4"}'::text[]);
+': near "'{"1","2","3","4"}'": syntax error

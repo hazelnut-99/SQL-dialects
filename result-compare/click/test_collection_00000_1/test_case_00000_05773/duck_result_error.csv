@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...nMap([1], [toInt32(number) - 50]) from numbers(1, 100);
+                                                  ^

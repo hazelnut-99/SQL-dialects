@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize('aяb') LIKE materialize('a_b');
+': no such function: materialize

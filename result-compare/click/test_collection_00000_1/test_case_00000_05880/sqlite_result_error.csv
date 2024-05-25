@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT SVG((0., 0.), 'b');
+': no such function: SVG

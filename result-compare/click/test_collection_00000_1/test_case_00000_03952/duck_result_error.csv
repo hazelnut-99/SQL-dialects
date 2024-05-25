@@ -1,0 +1,6 @@
+Catalog Error: Scalar Function with name touint64 does not exist!
+Did you mean "count"?
+LINE 4:     select toUInt64(2) as key, toNullable('') as value
+);
+...
+                   ^

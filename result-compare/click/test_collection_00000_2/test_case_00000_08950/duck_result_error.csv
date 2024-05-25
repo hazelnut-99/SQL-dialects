@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartoftenminutes does not exist!
+Did you mean "to_minutes"?
+LINE 1: select toStartOfTenMinutes(toDateTime(0, 'Amer...
+               ^

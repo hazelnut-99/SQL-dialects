@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint8 does not exist!
+Did you mean "count"?
+LINE 1: SELECT if(toUInt8(0), toNullable(toUInt8(0)), NUL...
+                  ^

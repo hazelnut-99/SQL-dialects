@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: select CAST(1.0, 'Decimal(15,2)') > CAST(1, 'Float32');
+                       ^

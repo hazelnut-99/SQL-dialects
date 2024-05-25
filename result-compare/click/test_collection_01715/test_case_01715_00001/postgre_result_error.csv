@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ... prewhere_move_select_final (x Int, y Int, z Int) ENGINE = R...
+                                                             ^

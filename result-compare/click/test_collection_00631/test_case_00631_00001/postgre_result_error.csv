@@ -1,0 +1,3 @@
+syntax error at or near "'UTC'"
+LINE 2: WITH 'UTC' as timezone SELECT timezone, timeZoneOf(now64(3, ...
+             ^

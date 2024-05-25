@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT nan AS value, value = value, value = materialize(value), materialize(value) = value, materialize(value) = materialize(value);
+': no such column: nan

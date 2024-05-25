@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name sumornullif does not exist!
+Did you mean "nullif"?
+LINE 1: SELECT SUMOrNullIf(1, 0);
+               ^

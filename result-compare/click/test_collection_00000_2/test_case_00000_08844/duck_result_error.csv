@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ngrams does not exist!
+Did you mean "abs"?
+LINE 1: SELECT ngrams('Test', 3);
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select gcd(-256, 64);
+': no such function: gcd

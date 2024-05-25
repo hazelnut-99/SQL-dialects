@@ -1,0 +1,2 @@
+Execution failed on sql 'select 'Real' as mysql_type, cast(49.22 as real) as result, toTypeName(result) as native_type;
+': no such column: result

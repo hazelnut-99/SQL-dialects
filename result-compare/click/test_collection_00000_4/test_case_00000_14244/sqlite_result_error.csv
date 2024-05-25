@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(-1, 'UInt64', 0::UInt64);
+': unrecognized token: ":"

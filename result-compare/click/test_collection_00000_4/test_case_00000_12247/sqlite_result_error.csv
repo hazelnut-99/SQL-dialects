@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(generateRandomStructure(5, 42));
+': no such function: generateRandomStructure

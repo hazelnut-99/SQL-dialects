@@ -1,0 +1,3 @@
+Binder Error: Referenced column "dummy" not found in FROM clause!
+LINE 1: ...ER dummy WINDOW dummy AS (PARTITION BY dummy);
+                                                  ^

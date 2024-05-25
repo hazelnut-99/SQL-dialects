@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT basename('C:\\\\Users\\Documents\\test_file');
+': no such function: basename

@@ -1,0 +1,3 @@
+syntax error at or near "numbers"
+LINE 2: CREATE TABLE num AS numbers(1000);
+                            ^

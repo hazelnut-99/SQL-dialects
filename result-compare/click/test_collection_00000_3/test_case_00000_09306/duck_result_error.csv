@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3edgelengthkm does not exist!
+Did you mean "length"?
+LINE 1: SELECT h3EdgeLengthKm(12);
+               ^

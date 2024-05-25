@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
+ Code: 50. DB::Exception: Unknown data type family: int2. Maybe you meant: ['Int32','Int8']. (UNKNOWN_TYPE) (version 24.2.2.16233 (official build))

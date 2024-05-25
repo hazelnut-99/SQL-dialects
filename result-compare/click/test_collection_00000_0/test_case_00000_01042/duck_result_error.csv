@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime64 does not exist!
+Did you mean "make_time"?
+LINE 1: SELECT date_trunc('week', toDateTime64('2020-01-01 04:11:22.123',...
+                                  ^

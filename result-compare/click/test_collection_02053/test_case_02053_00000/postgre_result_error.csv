@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: create table test(x1 Int, x2 Int, x3 Int) engine=Memory();
+                                                  ^

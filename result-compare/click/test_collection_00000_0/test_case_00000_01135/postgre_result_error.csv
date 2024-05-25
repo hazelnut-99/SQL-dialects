@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select (1 ? (toInt8(0) as i) : toInt16(1)) = i;
+                               ^

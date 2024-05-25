@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONExtract('["a"]', toNullable(1), 'Nullable(String)');
+': no such function: JSONExtract

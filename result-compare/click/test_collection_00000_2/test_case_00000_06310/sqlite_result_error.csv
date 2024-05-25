@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize(NULL) AND materialize(0);
+': no such function: materialize

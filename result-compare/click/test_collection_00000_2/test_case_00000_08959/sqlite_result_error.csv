@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTime(toDateTime(0, 'America/Paramaribo'), 'America/Paramaribo');
+': no such function: toDateTime

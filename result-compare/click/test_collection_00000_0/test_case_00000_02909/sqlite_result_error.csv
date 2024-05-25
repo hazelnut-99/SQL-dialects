@@ -1,0 +1,11 @@
+Execution failed on sql 'SELECT
+    [1] < [1000],
+    ['abc'] = [NULL],
+    ['abc'] = [toNullable('abc')],
+    [[]] = [[]],
+    [[], [1]] > [[], []],
+    [[1]] < [[], []],
+    [[], []] > [[]],
+    [([], ([], []))] < [([], ([], ['hello']))]
+;
+': unrecognized token: "]"

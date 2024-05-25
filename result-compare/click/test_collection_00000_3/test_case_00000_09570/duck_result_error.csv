@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ipv4stringtonumordefault does not exist!
+Did you mean "printf"?
+LINE 1: SELECT IPv4StringToNumOrDefault('127.0.0.1');
+               ^

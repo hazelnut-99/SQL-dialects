@@ -1,0 +1,3 @@
+syntax error at or near "ARRAY"
+LINE 1: ...CT range(0, number) as x FROM numbers(1000)) LEFT ARRAY JOIN...
+                                                             ^

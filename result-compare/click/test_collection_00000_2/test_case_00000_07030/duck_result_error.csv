@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name countsubstringscaseinsensitiveutf8 does not exist!
+Did you mean "substring"?
+LINE 1: select countSubstringsCaseInsensitiveUTF8('ФуФ...
+               ^

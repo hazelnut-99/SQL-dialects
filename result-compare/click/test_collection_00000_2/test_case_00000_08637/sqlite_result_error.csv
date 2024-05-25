@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bin('Hello') == bin(bitShiftLeft('Hello', 0));
+': no such function: bitShiftLeft

@@ -1,0 +1,2 @@
+Execution failed on sql 'select 1 % toLowCardinality(val) from (select arrayJoin([1]) as val);
+': no such column: 1

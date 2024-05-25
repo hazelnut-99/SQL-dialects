@@ -1,0 +1,2 @@
+Execution failed on sql 'select * from format(CSV, 'd Date, s String', '20200102,SomeString');
+': no such table: format

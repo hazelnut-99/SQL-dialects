@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name yesterday does not exist!
+Did you mean "day"?
+LINE 1: SELECT greatest(today(), yesterday() + 10) - today();
+                                 ^

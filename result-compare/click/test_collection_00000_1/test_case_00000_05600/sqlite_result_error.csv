@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT a FROM (SELECT ignore((SELECT 1)) AS a, a AS b);
+': no such function: ignore

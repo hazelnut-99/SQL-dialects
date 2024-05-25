@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT materialize(toDecimal32(1, 2)) / CAST(1, 'Nullable(UI...
+                                                      ^

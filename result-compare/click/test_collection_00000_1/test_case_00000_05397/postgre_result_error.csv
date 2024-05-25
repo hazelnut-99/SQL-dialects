@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayAUC([1, 1], [0, 0]);
+                        ^

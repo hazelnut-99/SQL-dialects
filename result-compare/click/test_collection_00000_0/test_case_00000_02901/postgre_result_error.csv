@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: SELECT uniqUpTo(3)(x) FROM (SELECT arrayJoin([[[]], [['a', '...
+                          ^

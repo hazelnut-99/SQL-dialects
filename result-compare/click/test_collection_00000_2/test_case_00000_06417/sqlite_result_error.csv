@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT groupArrayMovingSum(256)(toDecimal32(1, 9)) FROM numbers(300);
+': near "(": syntax error

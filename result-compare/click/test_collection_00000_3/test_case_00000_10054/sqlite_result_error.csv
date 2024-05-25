@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bin(toInt128(100000000000)) AS res;
+': no such function: toInt128

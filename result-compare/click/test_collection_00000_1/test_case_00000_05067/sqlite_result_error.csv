@@ -1,0 +1,2 @@
+Execution failed on sql 'select match('\0 key="v" ', 'key="(.*?)"');
+': unable to use function MATCH in the requested context

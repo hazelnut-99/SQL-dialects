@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: select k, groupArraySample(10, 123456)(v) from (select numbe...
+                                              ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstrings('100', toString(number)) from numbers(3);
+': no such table: numbers

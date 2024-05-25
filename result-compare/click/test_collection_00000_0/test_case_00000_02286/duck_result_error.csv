@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name pointinpolygon does not exist!
+Did you mean "position"?
+LINE 1: SELECT pointInPolygon((3.5, 1.5), [(0., 0.), (...
+               ^

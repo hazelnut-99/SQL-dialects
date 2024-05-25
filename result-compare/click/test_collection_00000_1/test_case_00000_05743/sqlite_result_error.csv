@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractGroups(CAST('hello world' AS FixedString(12)), '(\\w+) (\\w+)');
+': no such function: extractGroups

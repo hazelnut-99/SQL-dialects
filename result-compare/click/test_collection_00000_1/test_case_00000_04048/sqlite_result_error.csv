@@ -1,0 +1,2 @@
+Execution failed on sql 'select round(1000 * ngramDistanceUTF8('', 'абв'));
+': no such function: ngramDistanceUTF8

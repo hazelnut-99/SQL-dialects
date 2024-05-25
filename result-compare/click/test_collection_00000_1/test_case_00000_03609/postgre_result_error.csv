@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...e(toInt64(0)) AS x, toInt64(1) AS y, ((x > y) ? x : y) AS z,...
+                                                             ^

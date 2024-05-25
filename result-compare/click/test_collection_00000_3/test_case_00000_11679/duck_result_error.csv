@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...uffle(materialize([1, 2, 3]), 42) FROM numbers(10);
+                                                  ^

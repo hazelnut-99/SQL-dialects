@@ -1,0 +1,2 @@
+Execution failed on sql 'select regexpExtract('0123456789', '(\d+)(\d+)', 0);
+': no such function: regexpExtract

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCast(19, 'Date');
+': no such function: accurateCast

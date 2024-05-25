@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ignore does not exist!
+Did you mean "sign"?
+LINE 1: SELECT ignore(lcm(256, 9223372036854775807));
+               ^

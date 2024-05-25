@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT connection_id(), CONNECTION_ID(), CoNnEcTiOn_Id(), connectionid(), CONNECTIONID(), CoNnEcTiOnId();
+': no such function: connection_id

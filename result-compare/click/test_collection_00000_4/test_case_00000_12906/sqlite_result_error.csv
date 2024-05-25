@@ -1,0 +1,2 @@
+Execution failed on sql 'select initcap('hello');
+': no such function: initcap

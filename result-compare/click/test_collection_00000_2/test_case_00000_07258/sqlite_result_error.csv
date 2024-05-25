@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT [materialize(1)][0xFFFFFFFFFFFFFFFF];
+': no such column: materialize(1)

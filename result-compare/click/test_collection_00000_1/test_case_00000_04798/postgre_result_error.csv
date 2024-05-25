@@ -1,0 +1,3 @@
+syntax error at or near "+"
+LINE 1: SELECT char(65 + 256, 66 + 1024, 66 + 1024 + 1);
+                       ^

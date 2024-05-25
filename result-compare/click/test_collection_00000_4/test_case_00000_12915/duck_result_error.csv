@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name initcaputf8 does not exist!
+Did you mean "concat"?
+LINE 1: select initcapUTF8('ätsch, bätsch');
+               ^

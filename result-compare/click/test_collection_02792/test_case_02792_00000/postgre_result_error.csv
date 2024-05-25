@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...able decimal_insert_cast_issue (a Decimal(76, 0)) engine = T...
+                                                             ^

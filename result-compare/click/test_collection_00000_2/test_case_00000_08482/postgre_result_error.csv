@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT materialize(1) / CAST(NULL, 'Nullable(Decimal(7, 2))'...
+                                         ^

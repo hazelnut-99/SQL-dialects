@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngrams('😁😈😁😈', 2);
+': no such function: ngrams

@@ -1,0 +1,3 @@
+syntax error at or near "PASTE"
+LINE 1: ...t * from (SELECT number as a FROM numbers(10)) t1 PASTE JOIN...
+                                                             ^

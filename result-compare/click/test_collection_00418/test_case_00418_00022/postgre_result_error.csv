@@ -1,0 +1,3 @@
+syntax error at or near "ALIAS"
+LINE 2: ...TABLE prewhere_alias (a UInt8,  b Int32,  c UInt8 ALIAS a,  ...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize('prepre_f') LIKE '%pre_f%';
+': no such function: materialize

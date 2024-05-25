@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table ay engine AggregatingMergeTree order by i as se...
+                        ^

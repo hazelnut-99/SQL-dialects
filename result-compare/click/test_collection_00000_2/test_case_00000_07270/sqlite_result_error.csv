@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sumKahan(-8000000000000000000) FROM numbers(11);
+': no such table: numbers

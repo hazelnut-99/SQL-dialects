@@ -1,0 +1,3 @@
+syntax error at or near "CREATE"
+LINE 3: SHOW CREATE DATABASE memory_01069;
+             ^

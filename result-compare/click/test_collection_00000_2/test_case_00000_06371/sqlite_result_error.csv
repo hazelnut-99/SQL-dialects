@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT range(1025, 1048576 + (9223372036854775807 AS i), i);
+': near "AS": syntax error

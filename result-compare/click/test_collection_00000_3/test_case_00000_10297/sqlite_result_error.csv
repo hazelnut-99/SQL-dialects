@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName([materialize(toLowCardinality('1')), materialize(toLowCardinality('2'))]);
+': no such column: materialize(toLowCardinality('1')), materialize(toLowCardinality('2'))

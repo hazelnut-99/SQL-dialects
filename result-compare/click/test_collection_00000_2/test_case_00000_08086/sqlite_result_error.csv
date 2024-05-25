@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT splitByNonAlpha('22:00 email@tut.by');
+': no such function: splitByNonAlpha

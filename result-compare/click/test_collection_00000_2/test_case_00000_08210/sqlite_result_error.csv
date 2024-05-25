@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT leftPad('абвг', 4), leftPad('абвг', 4::Int32);
+': unrecognized token: ":"

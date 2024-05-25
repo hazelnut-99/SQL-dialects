@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name subtractseconds does not exist!
+Did you mean "subtract"?
+LINE 1: SELECT subtractSeconds(toDate('2021-02-15'), 1...
+               ^

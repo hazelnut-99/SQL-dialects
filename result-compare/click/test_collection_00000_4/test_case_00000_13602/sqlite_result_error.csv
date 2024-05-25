@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 % ( CASE WHEN 1 THEN (1 IS NOT NULL + *) ELSE NULL END );
+': near "*": syntax error

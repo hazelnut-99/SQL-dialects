@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '2010-10-10'::Date AS c;
+': unrecognized token: ":"

@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: select * from (select * from numbers(5) order by rand()) order by co...
+                                     ^

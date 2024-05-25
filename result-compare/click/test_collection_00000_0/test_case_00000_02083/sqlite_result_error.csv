@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT avg(arrayJoin([NULL, 1, 2]));
+': no such column: NULL, 1, 2

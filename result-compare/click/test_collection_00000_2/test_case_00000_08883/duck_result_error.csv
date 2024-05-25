@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tokens does not exist!
+Did you mean "cos"?
+LINE 1: SELECT tokens('test1, test2, test3');
+               ^

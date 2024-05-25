@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonarraylength does not exist!
+Did you mean "json_array_length"?
+LINE 1: select JSONArrayLength('[[1,2],[5,6,7]]');
+               ^

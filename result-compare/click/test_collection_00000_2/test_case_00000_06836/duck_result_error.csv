@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tomodifiedjuliandayornull does not exist!
+Did you mean "julian"?
+LINE 1: SELECT toModifiedJulianDayOrNull('1999-02-29')...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT gccMurmurHash('\x01');
+': no such function: gccMurmurHash

@@ -1,0 +1,2 @@
+Execution failed on sql 'select quantilesExactWeightedArray(0.5)(range(10), range(10))
+': near "(": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name materialize does not exist!
+Did you mean "finalize"?
+LINE 1: SELECT concat('With ', materialize('122.233.64.201' :: IPv4));
+                               ^

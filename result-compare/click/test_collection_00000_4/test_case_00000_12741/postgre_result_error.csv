@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT transform(2, [-1, 2], ['f', 's'], 'g');
+                            ^

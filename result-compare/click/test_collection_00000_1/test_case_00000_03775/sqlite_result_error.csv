@@ -1,0 +1,2 @@
+Execution failed on sql 'select javaHash(toInt64(-12345678901));
+': no such function: toInt64

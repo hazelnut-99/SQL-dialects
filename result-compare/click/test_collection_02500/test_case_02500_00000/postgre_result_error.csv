@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 5:     arr Array(Array(Tuple(c1 Int32, c2 UInt8)))
+                ^

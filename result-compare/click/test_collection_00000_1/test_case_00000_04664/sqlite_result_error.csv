@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ngramSimHashCaseInsensitive('what a cute cat.');
+': no such function: ngramSimHashCaseInsensitive

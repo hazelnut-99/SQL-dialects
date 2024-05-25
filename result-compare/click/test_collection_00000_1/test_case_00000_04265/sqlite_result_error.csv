@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toWeek(toDate('1998-12-31'),0) AS w0, toWeek(toDate('1998-12-31'),1) AS w1, toWeek(toDate('1998-12-31'),2) AS w2, toWeek(toDate('1998-12-31'),3) AS w3, toWeek(toDate('1998-12-31'),4) AS w4, toWeek(toDate('1998-12-31'),5) AS w5, toWeek(toDate('1998-12-31'),6) AS w6, toWeek(toDate('1998-12-31'),7) AS w7;
+': no such function: toDate

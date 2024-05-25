@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(xxHash32('ABC')) = upper('80712ed5');
+': no such function: xxHash32

@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 3: create table lc_00752 (str StringWithDictionary) engine = Me...
+                                                         ^

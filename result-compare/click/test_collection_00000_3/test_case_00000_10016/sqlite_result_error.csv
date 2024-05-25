@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT L1Distance([0, 0, 0], [1, 2, 3]);
+': no such column: 0, 0, 0

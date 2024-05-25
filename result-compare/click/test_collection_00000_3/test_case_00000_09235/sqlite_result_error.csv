@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT EXTRACT(YEAR FROM DATE '2022-01-01');
+': near "FROM": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT empty(toIPv6('::1'));
+': no such function: toIPv6

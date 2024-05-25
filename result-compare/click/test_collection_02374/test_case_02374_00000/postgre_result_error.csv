@@ -1,0 +1,3 @@
+syntax error at or near "UInt32"
+LINE 2: create table test_02312 (x Tuple(a UInt32, b UInt32)) engine...
+                                           ^

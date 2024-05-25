@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint128 does not exist!
+Did you mean "count"?
+LINE 1: SELECT toUInt128(toUUID('00000000-0000-0000-00...
+               ^

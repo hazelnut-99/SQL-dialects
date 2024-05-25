@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitmaskToList(toInt64(-128));
+': no such function: toInt64

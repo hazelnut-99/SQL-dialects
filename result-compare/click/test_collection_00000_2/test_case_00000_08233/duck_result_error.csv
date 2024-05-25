@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name rightpad does not exist!
+Did you mean "right"?
+LINE 1: SELECT rightPad('абвг', 4), rightPad('абвг', 4...
+               ^

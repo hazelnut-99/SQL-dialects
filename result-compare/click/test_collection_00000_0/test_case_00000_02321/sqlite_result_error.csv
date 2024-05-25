@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (toDateTime('2000-01-01 12:00:00') - INTERVAL 1234567 MILLISECOND) x, toTypeName(x);
+': near "1234567": syntax error

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT replaceRegexpAll('aaq', 'z*', '') == 'aaq';
+': no such function: replaceRegexpAll

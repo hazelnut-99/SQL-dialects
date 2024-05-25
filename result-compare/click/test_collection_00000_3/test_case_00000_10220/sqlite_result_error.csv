@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT base58Encode('Hold my beer...');
+': no such function: base58Encode

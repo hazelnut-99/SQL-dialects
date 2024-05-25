@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT bitCount('clickhouse cloud');
+': no such function: bitCount

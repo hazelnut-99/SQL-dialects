@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
+ Code: 47. DB::Exception: Missing columns: 'value.value_2' 'value.value_1' while processing query: 'SELECT value.value_1, value.value_2 FROM (SELECT CAST((1, 2), 'Tuple(value_1 UInt64, value_2 UInt64)') AS value)', required columns: 'value.value_1' 'value.value_2' 'value.value_1' 'value.value_2'. (UNKNOWN_IDENTIFIER) (version 24.2.2.16233 (official build))

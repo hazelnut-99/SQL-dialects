@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hassubsequence does not exist!
+Did you mean "abs"?
+LINE 1: select hasSubsequence('garbage', 'be');
+               ^

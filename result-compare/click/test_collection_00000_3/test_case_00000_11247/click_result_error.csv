@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 500)
+ Code: 403. DB::Exception: Unsupported JOIN ON conditions. Unexpected '1 != 1': While processing 1 != 1. (INVALID_JOIN_ON_EXPRESSION) (version 24.2.2.16233 (official build))

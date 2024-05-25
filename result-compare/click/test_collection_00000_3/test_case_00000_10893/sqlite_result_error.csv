@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT sum(number AS number) FROM numbers(10);
+': near "AS": syntax error

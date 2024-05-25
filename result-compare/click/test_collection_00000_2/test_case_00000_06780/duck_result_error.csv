@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name formatreadabletimedelta does not exist!
+Did you mean "formatReadableSize"?
+LINE 1: SELECT formatReadableTimeDelta(-(1 + 60 + 3600...
+               ^

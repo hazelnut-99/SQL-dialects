@@ -1,0 +1,2 @@
+Execution failed on sql 'select distinct sum(0) over (rows unbounded preceding) from numbers(2);
+': no such table: numbers

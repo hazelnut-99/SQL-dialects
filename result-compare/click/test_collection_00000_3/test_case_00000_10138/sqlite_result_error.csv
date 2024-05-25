@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(arrayMap(x ->map(1, x), []));
+': no such column: 

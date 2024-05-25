@@ -1,0 +1,2 @@
+Execution failed on sql 'select groupArray(number) over () from numbers(3);
+': no such table: numbers

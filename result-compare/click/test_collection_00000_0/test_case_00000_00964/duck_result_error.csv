@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name torelativehournum does not exist!
+Did you mean "even"?
+LINE 1: SELECT toRelativeHourNum(toDateTime(1412106600...
+               ^

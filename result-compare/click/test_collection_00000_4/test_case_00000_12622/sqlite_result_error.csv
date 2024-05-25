@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayDifference([toInt256(1), 3]), toTypeName(arrayDifference([toInt256(1), 3]));
+': no such column: toInt256(1), 3

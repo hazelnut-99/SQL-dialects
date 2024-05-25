@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '-x.xn--zca' AS idna, idnaEncode(idna) AS ascii, tryIdnaEncode(idna) AS ascii_try, idnaDecode(ascii) AS original, idnaDecode(ascii_try) AS original_try;
+': no such column: idna

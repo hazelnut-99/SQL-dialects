@@ -1,0 +1,3 @@
+syntax error at or near "key"
+LINE 1: CREATE TABLE xxxx_yyy (key UInt32, key_b ALIAS key) ENGINE=M...
+                                                       ^

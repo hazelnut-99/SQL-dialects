@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name generaterandom does not exist!
+Did you mean "generate_series"?
+LINE 1: ...lect toString(x)::Decimal(30, 20) from generateRandom('x Decimal(30, 20)', 42)...
+                                                  ^

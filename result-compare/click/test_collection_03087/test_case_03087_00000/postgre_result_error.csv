@@ -1,0 +1,3 @@
+relation "t" does not exist
+LINE 4: FROM t
+             ^

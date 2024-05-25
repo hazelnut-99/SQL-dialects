@@ -1,0 +1,4 @@
+function range(integer, integer) does not exist
+LINE 41:  FROM range(1, 10) tbl(i)
+               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

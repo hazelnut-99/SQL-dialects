@@ -1,0 +1,3 @@
+syntax error at or near "DICTIONARY"
+LINE 5: drop DICTIONARY if exists default.dict01747;
+             ^

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint64ordefault does not exist!
+Did you mean "count"?
+LINE 1: select toUInt64OrDefault('1', cast(2 as UInt64...
+               ^

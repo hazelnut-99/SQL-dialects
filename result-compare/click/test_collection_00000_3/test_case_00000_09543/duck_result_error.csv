@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name h3edgeangle does not exist!
+Did you mean "age"?
+LINE 1: SELECT round(h3EdgeAngle(arrayJoin([0,1,2])), 2);
+                     ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(randCanonical(Null));
+': no such function: randCanonical

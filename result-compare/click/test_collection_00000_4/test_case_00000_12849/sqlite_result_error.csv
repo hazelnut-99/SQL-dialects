@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubsequence('garbage', 'garbage');
+': no such function: hasSubsequence

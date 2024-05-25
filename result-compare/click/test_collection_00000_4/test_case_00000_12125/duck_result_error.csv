@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ... from (select 1 as a, number as b from numbers(65535)) limit 100;
+                                                  ^

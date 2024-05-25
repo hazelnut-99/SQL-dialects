@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: SELECT nan AS lhs, cast(nan, 'Float32') AS rhs, lhs = rhs, l...
+                                   ^

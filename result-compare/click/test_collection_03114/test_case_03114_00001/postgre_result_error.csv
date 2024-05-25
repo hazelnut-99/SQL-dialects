@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 2: CREATE TABLE spark_bar_test (`value` Int64, `event_date` Dat...
+                                     ^

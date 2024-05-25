@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...tegoricalInformationValue(c1, c2)), 3) FROM VALUES((0, 0), (...
+                                                             ^

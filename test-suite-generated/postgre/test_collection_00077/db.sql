@@ -82,3 +82,6 @@ create temp table zt3 (f3 int primary key);
 insert into zt1 values(53);
 insert into zt2 values(53);
 create temp view zv1 as select *,'dummy'::text AS junk from zt1;
+begin;
+create temp table a (i integer);
+create temp table b (x integer, y integer);

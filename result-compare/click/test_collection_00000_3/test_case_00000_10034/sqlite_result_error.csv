@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toInt32(100)) AS res;
+': no such function: toInt32

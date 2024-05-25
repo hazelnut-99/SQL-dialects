@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...se58Encode(val) as encoded FROM (select arrayJoin(['', 'f', ...
+                                                             ^

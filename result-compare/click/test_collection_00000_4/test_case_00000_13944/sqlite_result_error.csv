@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(BLAKE3(BLAKE3('a')));
+': no such function: BLAKE3

@@ -1,0 +1,2 @@
+Execution failed on sql 'select tuple(toNullable(number)) = tuple(toNullable(number + 1)) from numbers(1);
+': no such table: numbers

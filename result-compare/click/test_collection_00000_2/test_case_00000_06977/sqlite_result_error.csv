@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstrings('com.foobar.com', 'com');
+': no such function: countSubstrings

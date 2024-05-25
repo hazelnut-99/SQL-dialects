@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayFill(x -> (x < 10), emptyArrayUInt8());
+': no such function: emptyArrayUInt8

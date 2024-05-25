@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...REATE TABLE ip_part_test ( ipv4 IPv4, ipv6 IPv6 ) ENGINE = M...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT encodeXMLComponent('&clickhouse');
+': no such function: encodeXMLComponent

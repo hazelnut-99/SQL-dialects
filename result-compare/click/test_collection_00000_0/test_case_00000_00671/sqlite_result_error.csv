@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayCumSum(x -> 0, emptyArrayString());
+': no such function: emptyArrayString

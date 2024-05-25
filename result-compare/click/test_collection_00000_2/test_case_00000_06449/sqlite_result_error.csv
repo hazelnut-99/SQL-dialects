@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize([toNullable(1)]) AS x, x[materialize(toNullable(1))] AS y;
+': near "AS": syntax error

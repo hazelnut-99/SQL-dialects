@@ -1,0 +1,5 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 2: ...toTypeName(js2.k), toTypeName(js1.s), toTypeName(js2.s)
+from (select number k, toLowCardinality(toString(number)) s from numbers(2)) as js1
+                                                  ^

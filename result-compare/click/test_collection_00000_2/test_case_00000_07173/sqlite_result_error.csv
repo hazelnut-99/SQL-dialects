@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT byteSize();
+': no such function: byteSize

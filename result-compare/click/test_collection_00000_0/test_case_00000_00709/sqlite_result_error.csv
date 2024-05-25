@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayFirstIndex(x -> materialize(0), emptyArrayString());
+': no such function: emptyArrayString

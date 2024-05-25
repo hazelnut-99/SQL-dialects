@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 5: CREATE TABLE interval ( `id` String, `start` Int64, `end` In...
+                                ^

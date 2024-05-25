@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(today() - 1) = 'Date';
+': no such function: toTypeName

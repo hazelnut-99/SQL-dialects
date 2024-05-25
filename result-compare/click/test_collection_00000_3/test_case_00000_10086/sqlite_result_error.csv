@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3GetIndexesFromUnidirectionalEdge(599686042433355775);
+': no such function: h3GetIndexesFromUnidirectionalEdge

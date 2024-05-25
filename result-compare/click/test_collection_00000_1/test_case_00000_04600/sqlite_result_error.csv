@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT hex(toDecimal32(1., 2));
+': no such function: toDecimal32

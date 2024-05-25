@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select (1 ? (toInt32(0) as i) : toInt64(1)) = i;
+                                ^

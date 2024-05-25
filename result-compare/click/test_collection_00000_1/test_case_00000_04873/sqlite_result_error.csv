@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayZip(['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']);
+': no such column: 'a', 'b', 'c'

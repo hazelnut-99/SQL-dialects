@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 2: CREATE TABLE test_aggregation (x Array(Int)) ENGINE=TinyLog;
+                                         ^

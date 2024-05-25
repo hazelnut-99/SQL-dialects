@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '0.1' AS x, toDecimal64(x, 0);
+': no such column: x

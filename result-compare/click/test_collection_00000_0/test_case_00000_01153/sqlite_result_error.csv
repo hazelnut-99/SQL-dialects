@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT extractURLParameter('http://com/?testq=aaa&q=111', 'q');
+': no such function: extractURLParameter

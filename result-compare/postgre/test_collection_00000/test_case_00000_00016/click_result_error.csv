@@ -1,0 +1,2 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 404)
+ Code: 46. DB::Exception: Unknown function localtime. Maybe you meant: ['locate']: While processing CAST(CAST(now(), 'time(3)'), 'text') = CAST(localtime(3), 'text'). (UNKNOWN_FUNCTION) (version 24.2.2.16233 (official build))

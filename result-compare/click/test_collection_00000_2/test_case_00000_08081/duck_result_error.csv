@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name json_exists does not exist!
+Did you mean "json_keys"?
+LINE 1: SELECT JSON_EXISTS('{"a":[{"b":1},{"c":2}]}', ...
+               ^

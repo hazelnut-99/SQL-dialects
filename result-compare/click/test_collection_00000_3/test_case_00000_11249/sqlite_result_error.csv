@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT if(number % 2, NULL, toNullable(1)) FROM numbers(2);
+': no such table: numbers

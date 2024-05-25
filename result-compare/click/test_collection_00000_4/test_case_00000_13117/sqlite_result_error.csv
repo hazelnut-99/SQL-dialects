@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayRotateLeft(['H', 'e', 'l', 'l', 'o'], 2);
+': no such column: 'H', 'e', 'l', 'l', 'o'

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT JSONKey('{"a": "hello", "b": [-100, 200.0, 300]}', -2);
+': no such function: JSONKey

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arraySort(multiMatchAllIndices(arrayJoin(['aaaa', 'aaaaaa', 'bbbb', 'aaaaaaaaaaaaaa']), ['.*aa.*aaa.*', 'aaaaaa{2}', '(aa){3}']));
+': no such column: '.*aa.*aaa.*', 'aaaaaa{2}', '(aa){3}'

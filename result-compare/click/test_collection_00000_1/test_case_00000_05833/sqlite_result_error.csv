@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT parseDateTime64BestEffort('2020-05-14T03:37:03.253184Z', 3, 'UTC');
+': no such function: parseDateTime64BestEffort

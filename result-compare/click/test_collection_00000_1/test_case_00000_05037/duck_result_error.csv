@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name blockserializedsize does not exist!
+Did you mean "lcase"?
+LINE 1: select 'Nullable(UInt8)', blockSerializedSize(toNullable(0));
+                                  ^

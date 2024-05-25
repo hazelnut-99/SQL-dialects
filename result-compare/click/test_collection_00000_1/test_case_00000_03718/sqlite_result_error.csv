@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reverse([NULL, 123, NULL]);
+': no such column: NULL, 123, NULL

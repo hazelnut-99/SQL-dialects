@@ -1,0 +1,2 @@
+Execution failed on sql 'select intDiv(-9223372036854775808, 4294967295);
+': no such function: intDiv

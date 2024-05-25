@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...key_expression.test_for_dictionary (value String) ENGINE=Tin...
+                                                             ^

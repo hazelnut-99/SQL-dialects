@@ -1,0 +1,2 @@
+Execution failed on sql 'select median(x) over (partition by x) from (select 1 x);
+': no such function: median

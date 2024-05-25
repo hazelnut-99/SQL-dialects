@@ -1,0 +1,2 @@
+Execution failed on sql 'select format('{}{}{}', toFixedString('a', 1), toFixedString('b', 1), materialize('c')) == 'abc';
+': no such function: materialize

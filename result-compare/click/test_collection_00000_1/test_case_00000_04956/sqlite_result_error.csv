@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayAUC(cast([10, 40, 35, 80] as Array(UInt64)), [0, 0, 1, 1]);
+': near "UInt64": syntax error

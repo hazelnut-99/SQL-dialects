@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name jsonmergepatch does not exist!
+Did you mean "json_merge_patch"?
+LINE 1: select '{"id":1,"foo":["bar"]}' as a, jsonMergePatch(a,toJSONString(map('foo'...
+                                              ^

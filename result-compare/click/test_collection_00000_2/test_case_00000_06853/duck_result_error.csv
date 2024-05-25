@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name reinterpretasuint32 does not exist!
+Did you mean "repeat"?
+LINE 1: SELECT reinterpretAsUInt32(CAST(1.23456 AS Flo...
+               ^

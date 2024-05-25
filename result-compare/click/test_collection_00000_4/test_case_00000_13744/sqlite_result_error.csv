@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tryIdnaEncode('xn--a-yoc');
+': no such function: tryIdnaEncode

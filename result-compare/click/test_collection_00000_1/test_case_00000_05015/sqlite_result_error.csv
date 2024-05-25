@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT h3GetBaseCell(612916788725809151);
+': no such function: h3GetBaseCell

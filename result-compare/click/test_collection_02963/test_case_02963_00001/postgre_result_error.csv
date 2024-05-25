@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE Dates (date DateTime('UTC')) ENGINE = MergeTree...
+                                                  ^

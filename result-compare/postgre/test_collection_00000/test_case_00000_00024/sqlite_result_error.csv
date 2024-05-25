@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT current_catalog = current_database();
+': no such column: current_catalog

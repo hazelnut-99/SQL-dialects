@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint64 does not exist!
+Did you mean "count"?
+LINE 1: ...91.000000000 >= 18446744073709551615 , toUInt64(18446744073709551615) = 900719...
+                                                  ^

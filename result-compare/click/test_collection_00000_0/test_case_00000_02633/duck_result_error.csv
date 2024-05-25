@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name hassubstr does not exist!
+Did you mean "substr"?
+LINE 1: select hasSubstr([1, 2, 3, 4], [1, 3, 5]);
+               ^

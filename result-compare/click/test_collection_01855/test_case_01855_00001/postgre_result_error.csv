@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: ...ate table test_tbl (vend_nm String, ship_dt Date) engine Mer...
+                                                             ^

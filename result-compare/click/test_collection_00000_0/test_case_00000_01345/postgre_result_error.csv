@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: select positionCaseInsensitive(materialize('abc') as h, '' a...
+                                                          ^

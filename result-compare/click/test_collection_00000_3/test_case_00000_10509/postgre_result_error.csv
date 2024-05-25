@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 3:   select cast(x, 'AggregateFunction(min, Decimal(18, 10))') ...
+                       ^

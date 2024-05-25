@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 8: CREATE TABLE t_02156_log (k UInt32, v String) ENGINE = Log;
+                                                      ^

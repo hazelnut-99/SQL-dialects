@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: ..., 'UTC') AS t, t + 1, toDate(t) + 1, t + INTERVAL 1 SECOND, ...
+                                                             ^

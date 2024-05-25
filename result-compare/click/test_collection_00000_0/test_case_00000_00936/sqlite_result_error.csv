@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toString(toStartOfInterval(toDate(17933), INTERVAL 5 day, 'Asia/Istanbul'), 'Asia/Istanbul');
+': near "5": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...eft join (select 1 as xx, 2 as yy from numbers(5)) t2  on x = xx or y = yy;
+                                                  ^

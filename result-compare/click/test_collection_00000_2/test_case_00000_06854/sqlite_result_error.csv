@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reinterpretAsFloat32(CAST(123456 AS Int32));
+': no such function: reinterpretAsFloat32

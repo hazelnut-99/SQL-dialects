@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name torelativedaynum does not exist!
+Did you mean "today"?
+LINE 1: SELECT toRelativeDayNum(toDateTime(1412106600)...
+               ^

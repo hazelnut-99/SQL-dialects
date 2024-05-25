@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT name 'name string' = name 'name string' AS "True";
+': near "=": syntax error

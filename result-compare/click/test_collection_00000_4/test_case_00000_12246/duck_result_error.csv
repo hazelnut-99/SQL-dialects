@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name generaterandomstructure does not exist!
+Did you mean "generate_series"?
+LINE 1: select generateRandomStructure(5, 42);
+               ^

@@ -1,0 +1,3 @@
+syntax error at or near "Array"
+LINE 1: CREATE TABLE my_table (values Array(Int32)) ENGINE = MergeTr...
+                                      ^

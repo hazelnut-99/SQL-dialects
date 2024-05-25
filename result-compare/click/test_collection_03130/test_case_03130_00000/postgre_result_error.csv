@@ -1,0 +1,3 @@
+argument of JOIN/ON must be type boolean, not type integer
+LINE 26: LEFT JOIN a ON 1
+                        ^

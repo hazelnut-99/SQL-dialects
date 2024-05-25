@@ -1,0 +1,3 @@
+syntax error at or near "Codec"
+LINE 5:     t_u8 UInt8 Codec(T64, ZSTD),
+                       ^

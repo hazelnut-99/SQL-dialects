@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name regexpextract does not exist!
+Did you mean "regexp_extract"?
+LINE 1: select regexpExtract('100-200', '(\\d+).*', ma...
+               ^

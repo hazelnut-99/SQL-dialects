@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ... replacing_merge_tree (key UInt32, date Datetime) ENGINE=Rep...
+                                                             ^

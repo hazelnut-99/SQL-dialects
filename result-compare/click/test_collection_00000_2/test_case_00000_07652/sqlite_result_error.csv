@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfHour(toDateTime('2021-03-23 13:58:00', 'Asia/Kolkata'));
+': no such function: toDateTime

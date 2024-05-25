@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...lect multiFuzzyMatchAnyIndex('halo some wrld', 2, ['^halo.*w...
+                                                             ^

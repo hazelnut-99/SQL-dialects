@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 1: ...g(IPv6StringToNum(materialize('::ffff:127.0.0.1') as p) as n...
+                                                             ^

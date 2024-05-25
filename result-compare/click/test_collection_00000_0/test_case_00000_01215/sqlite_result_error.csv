@@ -1,0 +1,2 @@
+Execution failed on sql 'select 3 = countEqual(materialize([0 as x, 1, x, x]), x);
+': no such column: x

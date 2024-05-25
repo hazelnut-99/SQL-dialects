@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT reverse([toFixedString('Hello', 5), NULL]);
+': no such column: toFixedString('Hello', 5), NULL

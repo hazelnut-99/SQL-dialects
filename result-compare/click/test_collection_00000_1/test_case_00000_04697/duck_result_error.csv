@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...terpretAsString(number % 4096)) u FROM numbers(4096 * 100) GROUP BY k);
+                                                  ^

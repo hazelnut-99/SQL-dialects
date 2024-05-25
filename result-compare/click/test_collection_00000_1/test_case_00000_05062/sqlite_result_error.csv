@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT (1 AS `interval`) + `interval`;
+': near "AS": syntax error

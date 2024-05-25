@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT * FROM VALUES('x Decimal64(0)', (2));
+': near "VALUES": syntax error

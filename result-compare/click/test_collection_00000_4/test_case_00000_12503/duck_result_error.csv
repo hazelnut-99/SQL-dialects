@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name encodeurlcomponent does not exist!
+Did you mean "encode"?
+LINE 2:     encodeURLComponent('кликхаус') A...
+            ^

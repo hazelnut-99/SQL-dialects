@@ -1,0 +1,3 @@
+relation "t2" does not exist
+LINE 1: select * from t2;
+                      ^

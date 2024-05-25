@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT nan;
+': no such column: nan

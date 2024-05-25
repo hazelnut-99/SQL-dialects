@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 WHERE toNullable(0);
+': no such function: toNullable

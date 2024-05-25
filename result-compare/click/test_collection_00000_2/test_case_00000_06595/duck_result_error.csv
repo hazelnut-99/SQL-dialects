@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name touint8 does not exist!
+Did you mean "count"?
+LINE 1: SELECT  least(toUInt8(255), toUInt256(0)) x, least(to...
+                      ^

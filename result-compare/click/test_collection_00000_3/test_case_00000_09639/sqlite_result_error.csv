@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayLastOrNull(x -> x >= 2, [1, 2, 3]);
+': no such function: arrayLastOrNull

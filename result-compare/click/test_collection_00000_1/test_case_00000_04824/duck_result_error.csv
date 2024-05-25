@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...yHash64(toDecimal128(number, 16)) from numbers(123, 2);
+                                                  ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT i+32765::SMALLINT FROM smallints WHERE i=1;
+': unrecognized token: ":"

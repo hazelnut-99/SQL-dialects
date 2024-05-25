@@ -1,0 +1,3 @@
+syntax error at or near "as"
+LINE 2:     hex(leftPadUTF8(toFixedString('🇪🇸' as s, 8), number, 'Ñ'...
+                                               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1 = multiMatchAny(materialize('khljxzxlpcrxpkrfybbfk'), ['k']);
+': no such column: 'k'

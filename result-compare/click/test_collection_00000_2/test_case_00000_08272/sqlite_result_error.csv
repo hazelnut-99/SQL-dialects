@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT '1' FROM numbers(10) INTERSECT SELECT '1' FROM numbers(10);
+': no such table: numbers

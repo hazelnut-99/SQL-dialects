@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name arrayshingles does not exist!
+Did you mean "array_has"?
+LINE 1: ...LECT [1, 2, 3, 4, 5] AS arr, 1 AS len, arrayShingles(arr, len), arrayShingles(...
+                                                  ^

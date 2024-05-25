@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ...PORARY TABLE t0 AS SELECT quantileArrayState(0.10)([number])...
+                                                             ^

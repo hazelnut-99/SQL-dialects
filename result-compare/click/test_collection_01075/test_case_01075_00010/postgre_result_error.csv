@@ -1,0 +1,3 @@
+syntax error at or near "ALIAS"
+LINE 6: CREATE TABLE tt1 (a UInt32, b UInt32 ALIAS a) ENGINE = Memor...
+                                             ^

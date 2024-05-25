@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name murmurhash3_128 does not exist!
+Did you mean "hash"?
+LINE 1: SELECT hex(murmurHash3_128('\x01'));
+                   ^

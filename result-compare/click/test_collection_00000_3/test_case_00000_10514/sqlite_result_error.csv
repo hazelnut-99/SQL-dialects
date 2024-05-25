@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() OVER (ORDER BY number + 1) FROM numbers(10) ORDER BY number;
+': no such table: numbers

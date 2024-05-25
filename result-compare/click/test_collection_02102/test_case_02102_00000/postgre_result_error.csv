@@ -1,0 +1,4 @@
+function map(unknown, integer, unknown, integer) does not exist
+LINE 1: SELECT mapContainsKeyLike(map('aa', 1, 'bb', 2), 'a%');
+                                  ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

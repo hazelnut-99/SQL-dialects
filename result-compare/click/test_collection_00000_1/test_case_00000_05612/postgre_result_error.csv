@@ -1,0 +1,3 @@
+syntax error at or near "AS"
+LINE 1: ...nd() as r, toHour(toDateTime(r, 'Asia/Pyongyang') AS t) AS h...
+                                                             ^

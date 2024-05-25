@@ -1,0 +1,4 @@
+Invalid Input Error: Attempting to execute an unsuccessful or closed pending query result
+Error: Conversion Error: Could not convert string 'today' to INT64
+LINE 3: INSERT INTO TIMESTAMP_TBL VALUES ('today');
+                                          ^

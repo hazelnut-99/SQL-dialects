@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT arrayEnumerateUniqRanked(3, [[[1,2,3],[1,2,3],[1,2,3]],[[1,2,3],[1,2,3],[1,2,3]],[[1,2]]], 3);
+': unrecognized token: "]"

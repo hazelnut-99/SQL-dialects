@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ith_test(S1 String, S2 String, S3 FixedString(2)) ENGINE=Mem...
+                                                             ^

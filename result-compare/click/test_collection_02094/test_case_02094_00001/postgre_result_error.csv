@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: CREATE TABLE test_map (value Map(String, String)) ENGINE=Tin...
+                                                          ^

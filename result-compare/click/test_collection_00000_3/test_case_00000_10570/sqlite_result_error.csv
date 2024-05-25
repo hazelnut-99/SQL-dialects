@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT materialize(['Hello', 'world'])[3::Int8];
+': no such column: 'Hello', 'world'

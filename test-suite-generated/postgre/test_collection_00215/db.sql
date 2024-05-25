@@ -1,240 +1,782 @@
-CREATE TABLE prt1 (a int, b int, c varchar) PARTITION BY RANGE(a);
-CREATE TABLE prt1_p1 PARTITION OF prt1 FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt1_p3 PARTITION OF prt1 FOR VALUES FROM (500) TO (600);
-CREATE TABLE prt1_p2 PARTITION OF prt1 FOR VALUES FROM (250) TO (500);
-INSERT INTO prt1 SELECT i, i % 25, to_char(i, 'FM0000') FROM generate_series(0, 599) i WHERE i % 2 = 0;
-CREATE INDEX iprt1_p1_a on prt1_p1(a);
-CREATE INDEX iprt1_p2_a on prt1_p2(a);
-CREATE INDEX iprt1_p3_a on prt1_p3(a);
-CREATE TABLE prt2 (a int, b int, c varchar) PARTITION BY RANGE(b);
-CREATE TABLE prt2_p1 PARTITION OF prt2 FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt2_p2 PARTITION OF prt2 FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt2_p3 PARTITION OF prt2 FOR VALUES FROM (500) TO (600);
-INSERT INTO prt2 SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(0, 599) i WHERE i % 3 = 0;
-CREATE INDEX iprt2_p1_b on prt2_p1(b);
-CREATE INDEX iprt2_p2_b on prt2_p2(b);
-CREATE INDEX iprt2_p3_b on prt2_p3(b);
-CREATE TABLE prt1_e (a int, b int, c int) PARTITION BY RANGE(((a + b)/2));
-CREATE TABLE prt1_e_p1 PARTITION OF prt1_e FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt1_e_p2 PARTITION OF prt1_e FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt1_e_p3 PARTITION OF prt1_e FOR VALUES FROM (500) TO (600);
-INSERT INTO prt1_e SELECT i, i, i % 25 FROM generate_series(0, 599, 2) i;
-CREATE INDEX iprt1_e_p1_ab2 on prt1_e_p1(((a+b)/2));
-CREATE INDEX iprt1_e_p2_ab2 on prt1_e_p2(((a+b)/2));
-CREATE INDEX iprt1_e_p3_ab2 on prt1_e_p3(((a+b)/2));
-CREATE TABLE prt2_e (a int, b int, c int) PARTITION BY RANGE(((b + a)/2));
-CREATE TABLE prt2_e_p1 PARTITION OF prt2_e FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt2_e_p2 PARTITION OF prt2_e FOR VALUES FROM (250) TO (500);
-CREATE TABLE prt2_e_p3 PARTITION OF prt2_e FOR VALUES FROM (500) TO (600);
-INSERT INTO prt2_e SELECT i, i, i % 25 FROM generate_series(0, 599, 3) i;
-CREATE TABLE prt1_m (a int, b int, c int) PARTITION BY RANGE(a, ((a + b)/2));
-CREATE TABLE prt1_m_p1 PARTITION OF prt1_m FOR VALUES FROM (0, 0) TO (250, 250);
-CREATE TABLE prt1_m_p2 PARTITION OF prt1_m FOR VALUES FROM (250, 250) TO (500, 500);
-CREATE TABLE prt1_m_p3 PARTITION OF prt1_m FOR VALUES FROM (500, 500) TO (600, 600);
-INSERT INTO prt1_m SELECT i, i, i % 25 FROM generate_series(0, 599, 2) i;
-CREATE TABLE prt2_m (a int, b int, c int) PARTITION BY RANGE(((b + a)/2), b);
-CREATE TABLE prt2_m_p1 PARTITION OF prt2_m FOR VALUES FROM (0, 0) TO (250, 250);
-CREATE TABLE prt2_m_p2 PARTITION OF prt2_m FOR VALUES FROM (250, 250) TO (500, 500);
-CREATE TABLE prt2_m_p3 PARTITION OF prt2_m FOR VALUES FROM (500, 500) TO (600, 600);
-INSERT INTO prt2_m SELECT i, i, i % 25 FROM generate_series(0, 599, 3) i;
-CREATE TABLE plt1 (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE plt1_p1 PARTITION OF plt1 FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt1_p2 PARTITION OF plt1 FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt1_p3 PARTITION OF plt1 FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt1 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE plt2 (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE plt2_p1 PARTITION OF plt2 FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt2_p2 PARTITION OF plt2 FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt2_p3 PARTITION OF plt2 FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt2 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 3) i;
-CREATE TABLE plt1_e (a int, b int, c text) PARTITION BY LIST(ltrim(c, 'A'));
-CREATE TABLE plt1_e_p1 PARTITION OF plt1_e FOR VALUES IN ('0000', '0003', '0004', '0010');
-CREATE TABLE plt1_e_p2 PARTITION OF plt1_e FOR VALUES IN ('0001', '0005', '0002', '0009');
-CREATE TABLE plt1_e_p3 PARTITION OF plt1_e FOR VALUES IN ('0006', '0007', '0008', '0011');
-INSERT INTO plt1_e SELECT i, i, 'A' || to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE pht1 (a int, b int, c text) PARTITION BY HASH(c);
-CREATE TABLE pht1_p1 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht1_p2 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht1_p3 PARTITION OF pht1 FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht1 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE pht2 (a int, b int, c text) PARTITION BY HASH(c);
-CREATE TABLE pht2_p1 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht2_p2 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht2_p3 PARTITION OF pht2 FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht2 SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 3) i;
-CREATE TABLE pht1_e (a int, b int, c text) PARTITION BY HASH(ltrim(c, 'A'));
-CREATE TABLE pht1_e_p1 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 0);
-CREATE TABLE pht1_e_p2 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 1);
-CREATE TABLE pht1_e_p3 PARTITION OF pht1_e FOR VALUES WITH (MODULUS 3, REMAINDER 2);
-INSERT INTO pht1_e SELECT i, i, 'A' || to_char(i/50, 'FM0000') FROM generate_series(0, 299, 2) i;
-ALTER TABLE prt1 DETACH PARTITION prt1_p3;
-ALTER TABLE prt1 ATTACH PARTITION prt1_p3 DEFAULT;
-ALTER TABLE prt2 DETACH PARTITION prt2_p3;
-ALTER TABLE prt2 ATTACH PARTITION prt2_p3 DEFAULT;
-ALTER TABLE plt1 DETACH PARTITION plt1_p3;
-ALTER TABLE plt1 ATTACH PARTITION plt1_p3 DEFAULT;
-ALTER TABLE plt2 DETACH PARTITION plt2_p3;
-ALTER TABLE plt2 ATTACH PARTITION plt2_p3 DEFAULT;
-CREATE TABLE prt1_l (a int, b int, c varchar) PARTITION BY RANGE(a);
-CREATE TABLE prt1_l_p1 PARTITION OF prt1_l FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt1_l_p2 PARTITION OF prt1_l FOR VALUES FROM (250) TO (500) PARTITION BY LIST (c);
-CREATE TABLE prt1_l_p2_p1 PARTITION OF prt1_l_p2 FOR VALUES IN ('0000', '0001');
-CREATE TABLE prt1_l_p2_p2 PARTITION OF prt1_l_p2 FOR VALUES IN ('0002', '0003');
-CREATE TABLE prt1_l_p3 PARTITION OF prt1_l FOR VALUES FROM (500) TO (600) PARTITION BY RANGE (b);
-CREATE TABLE prt1_l_p3_p1 PARTITION OF prt1_l_p3 FOR VALUES FROM (0) TO (13);
-CREATE TABLE prt1_l_p3_p2 PARTITION OF prt1_l_p3 FOR VALUES FROM (13) TO (25);
-INSERT INTO prt1_l SELECT i, i % 25, to_char(i % 4, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE prt2_l (a int, b int, c varchar) PARTITION BY RANGE(b);
-CREATE TABLE prt2_l_p1 PARTITION OF prt2_l FOR VALUES FROM (0) TO (250);
-CREATE TABLE prt2_l_p2 PARTITION OF prt2_l FOR VALUES FROM (250) TO (500) PARTITION BY LIST (c);
-CREATE TABLE prt2_l_p2_p1 PARTITION OF prt2_l_p2 FOR VALUES IN ('0000', '0001');
-CREATE TABLE prt2_l_p2_p2 PARTITION OF prt2_l_p2 FOR VALUES IN ('0002', '0003');
-CREATE TABLE prt2_l_p3 PARTITION OF prt2_l FOR VALUES FROM (500) TO (600) PARTITION BY RANGE (a);
-CREATE TABLE prt2_l_p3_p1 PARTITION OF prt2_l_p3 FOR VALUES FROM (0) TO (13);
-CREATE TABLE prt2_l_p3_p2 PARTITION OF prt2_l_p3 FOR VALUES FROM (13) TO (25);
-INSERT INTO prt2_l SELECT i % 25, i, to_char(i % 4, 'FM0000') FROM generate_series(0, 599, 3) i;
-CREATE TABLE prt1_n (a int, b int, c varchar) PARTITION BY RANGE(c);
-CREATE TABLE prt1_n_p1 PARTITION OF prt1_n FOR VALUES FROM ('0000') TO ('0250');
-CREATE TABLE prt1_n_p2 PARTITION OF prt1_n FOR VALUES FROM ('0250') TO ('0500');
-INSERT INTO prt1_n SELECT i, i, to_char(i, 'FM0000') FROM generate_series(0, 499, 2) i;
-CREATE TABLE prt2_n (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE prt2_n_p1 PARTITION OF prt2_n FOR VALUES IN ('0000', '0003', '0004', '0010', '0006', '0007');
-CREATE TABLE prt2_n_p2 PARTITION OF prt2_n FOR VALUES IN ('0001', '0005', '0002', '0009', '0008', '0011');
-INSERT INTO prt2_n SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE prt3_n (a int, b int, c text) PARTITION BY LIST(c);
-CREATE TABLE prt3_n_p1 PARTITION OF prt3_n FOR VALUES IN ('0000', '0004', '0006', '0007');
-CREATE TABLE prt3_n_p2 PARTITION OF prt3_n FOR VALUES IN ('0001', '0002', '0008', '0010');
-CREATE TABLE prt3_n_p3 PARTITION OF prt3_n FOR VALUES IN ('0003', '0005', '0009', '0011');
-INSERT INTO prt2_n SELECT i, i, to_char(i/50, 'FM0000') FROM generate_series(0, 599, 2) i;
-CREATE TABLE prt4_n (a int, b int, c text) PARTITION BY RANGE(a);
-CREATE TABLE prt4_n_p1 PARTITION OF prt4_n FOR VALUES FROM (0) TO (300);
-CREATE TABLE prt4_n_p2 PARTITION OF prt4_n FOR VALUES FROM (300) TO (500);
-CREATE TABLE prt4_n_p3 PARTITION OF prt4_n FOR VALUES FROM (500) TO (600);
-INSERT INTO prt4_n SELECT i, i, to_char(i, 'FM0000') FROM generate_series(0, 599, 2) i;
-create temp table prtx1 (a integer, b integer, c integer)
-  partition by range (a);
-create temp table prtx1_1 partition of prtx1 for values from (1) to (11);
-create temp table prtx1_2 partition of prtx1 for values from (11) to (21);
-create temp table prtx1_3 partition of prtx1 for values from (21) to (31);
-create temp table prtx2 (a integer, b integer, c integer)
-  partition by range (a);
-create temp table prtx2_1 partition of prtx2 for values from (1) to (11);
-create temp table prtx2_2 partition of prtx2 for values from (11) to (21);
-create temp table prtx2_3 partition of prtx2 for values from (21) to (31);
-insert into prtx1 select 1 + i%30, i, i
-  from generate_series(1,1000) i;
-insert into prtx2 select 1 + i%30, i, i
-  from generate_series(1,500) i, generate_series(1,10) j;
-create index on prtx2 (b);
-create index on prtx2 (c);
-analyze prtx1;
-analyze prtx2;
-CREATE TABLE prt1_adv (a int, b int, c varchar) PARTITION BY RANGE (a);
-CREATE TABLE prt1_adv_p1 PARTITION OF prt1_adv FOR VALUES FROM (100) TO (200);
-CREATE TABLE prt1_adv_p2 PARTITION OF prt1_adv FOR VALUES FROM (200) TO (300);
-CREATE TABLE prt1_adv_p3 PARTITION OF prt1_adv FOR VALUES FROM (300) TO (400);
-CREATE INDEX prt1_adv_a_idx ON prt1_adv (a);
-INSERT INTO prt1_adv SELECT i, i % 25, to_char(i, 'FM0000') FROM generate_series(100, 399) i;
-CREATE TABLE prt2_adv (a int, b int, c varchar) PARTITION BY RANGE (b);
-CREATE TABLE prt2_adv_p1 PARTITION OF prt2_adv FOR VALUES FROM (100) TO (150);
-CREATE TABLE prt2_adv_p2 PARTITION OF prt2_adv FOR VALUES FROM (200) TO (300);
-CREATE TABLE prt2_adv_p3 PARTITION OF prt2_adv FOR VALUES FROM (350) TO (500);
-CREATE INDEX prt2_adv_b_idx ON prt2_adv (b);
-INSERT INTO prt2_adv_p1 SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(100, 149) i;
-INSERT INTO prt2_adv_p2 SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(200, 299) i;
-INSERT INTO prt2_adv_p3 SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(350, 499) i;
-CREATE TABLE prt2_adv_extra PARTITION OF prt2_adv FOR VALUES FROM (500) TO (MAXVALUE);
-INSERT INTO prt2_adv SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(500, 599) i;
-DROP TABLE prt2_adv_extra;
-ALTER TABLE prt2_adv DETACH PARTITION prt2_adv_p3;
-CREATE TABLE prt2_adv_p3_1 PARTITION OF prt2_adv FOR VALUES FROM (350) TO (375);
-CREATE TABLE prt2_adv_p3_2 PARTITION OF prt2_adv FOR VALUES FROM (375) TO (500);
-INSERT INTO prt2_adv SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(350, 499) i;
-DROP TABLE prt2_adv_p3_1;
-DROP TABLE prt2_adv_p3_2;
-ALTER TABLE prt1_adv DETACH PARTITION prt1_adv_p1;
-ALTER TABLE prt1_adv ATTACH PARTITION prt1_adv_p1 DEFAULT;
-ALTER TABLE prt1_adv DETACH PARTITION prt1_adv_p3;
-ALTER TABLE prt1_adv ATTACH PARTITION prt1_adv_p3 FOR VALUES FROM (300) TO (400);
-ALTER TABLE prt2_adv ATTACH PARTITION prt2_adv_p3 FOR VALUES FROM (350) TO (500);
-ALTER TABLE prt2_adv DETACH PARTITION prt2_adv_p3;
-ALTER TABLE prt2_adv ATTACH PARTITION prt2_adv_p3 DEFAULT;
-DROP TABLE prt1_adv_p3;
-DROP TABLE prt2_adv_p3;
-CREATE TABLE prt3_adv (a int, b int, c varchar) PARTITION BY RANGE (a);
-CREATE TABLE prt3_adv_p1 PARTITION OF prt3_adv FOR VALUES FROM (200) TO (300);
-CREATE TABLE prt3_adv_p2 PARTITION OF prt3_adv FOR VALUES FROM (300) TO (400);
-CREATE INDEX prt3_adv_a_idx ON prt3_adv (a);
-INSERT INTO prt3_adv SELECT i, i % 25, to_char(i, 'FM0000') FROM generate_series(200, 399) i;
-DROP TABLE prt1_adv;
-DROP TABLE prt2_adv;
-DROP TABLE prt3_adv;
-CREATE TABLE prt1_adv (a int, b int, c varchar) PARTITION BY RANGE (a);
-CREATE TABLE prt1_adv_p1 PARTITION OF prt1_adv FOR VALUES FROM (100) TO (200);
-CREATE TABLE prt1_adv_p2 PARTITION OF prt1_adv FOR VALUES FROM (200) TO (300);
-CREATE TABLE prt1_adv_p3 PARTITION OF prt1_adv FOR VALUES FROM (300) TO (400);
-CREATE INDEX prt1_adv_a_idx ON prt1_adv (a);
-INSERT INTO prt1_adv SELECT i, i % 25, to_char(i, 'FM0000') FROM generate_series(100, 399) i;
-CREATE TABLE prt2_adv (a int, b int, c varchar) PARTITION BY RANGE (b);
-CREATE TABLE prt2_adv_p1 PARTITION OF prt2_adv FOR VALUES FROM (100) TO (200);
-CREATE TABLE prt2_adv_p2 PARTITION OF prt2_adv FOR VALUES FROM (200) TO (400);
-CREATE INDEX prt2_adv_b_idx ON prt2_adv (b);
-INSERT INTO prt2_adv SELECT i % 25, i, to_char(i, 'FM0000') FROM generate_series(100, 399) i;
-DROP TABLE prt1_adv_p3;
-CREATE TABLE prt1_adv_default PARTITION OF prt1_adv DEFAULT;
-CREATE TABLE prt2_adv_default PARTITION OF prt2_adv DEFAULT;
-DROP TABLE prt1_adv;
-DROP TABLE prt2_adv;
-CREATE TABLE plt1_adv (a int, b int, c text) PARTITION BY LIST (c);
-CREATE TABLE plt1_adv_p1 PARTITION OF plt1_adv FOR VALUES IN ('0001', '0003');
-CREATE TABLE plt1_adv_p2 PARTITION OF plt1_adv FOR VALUES IN ('0004', '0006');
-CREATE TABLE plt1_adv_p3 PARTITION OF plt1_adv FOR VALUES IN ('0008', '0009');
-INSERT INTO plt1_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (1, 3, 4, 6, 8, 9);
-CREATE TABLE plt2_adv (a int, b int, c text) PARTITION BY LIST (c);
-CREATE TABLE plt2_adv_p1 PARTITION OF plt2_adv FOR VALUES IN ('0002', '0003');
-CREATE TABLE plt2_adv_p2 PARTITION OF plt2_adv FOR VALUES IN ('0004', '0006');
-CREATE TABLE plt2_adv_p3 PARTITION OF plt2_adv FOR VALUES IN ('0007', '0009');
-INSERT INTO plt2_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (2, 3, 4, 6, 7, 9);
-CREATE TABLE plt2_adv_extra PARTITION OF plt2_adv FOR VALUES IN ('0000');
-INSERT INTO plt2_adv_extra VALUES (0, 0, '0000');
-DROP TABLE plt2_adv_extra;
-ALTER TABLE plt2_adv DETACH PARTITION plt2_adv_p2;
-CREATE TABLE plt2_adv_p2_1 PARTITION OF plt2_adv FOR VALUES IN ('0004');
-CREATE TABLE plt2_adv_p2_2 PARTITION OF plt2_adv FOR VALUES IN ('0006');
-INSERT INTO plt2_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (4, 6);
-DROP TABLE plt2_adv_p2_1;
-DROP TABLE plt2_adv_p2_2;
-ALTER TABLE plt2_adv ATTACH PARTITION plt2_adv_p2 FOR VALUES IN ('0004', '0006');
-ALTER TABLE plt1_adv DETACH PARTITION plt1_adv_p1;
-CREATE TABLE plt1_adv_p1_null PARTITION OF plt1_adv FOR VALUES IN (NULL, '0001', '0003');
-INSERT INTO plt1_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (1, 3);
-INSERT INTO plt1_adv VALUES (-1, -1, NULL);
-ALTER TABLE plt2_adv DETACH PARTITION plt2_adv_p3;
-CREATE TABLE plt2_adv_p3_null PARTITION OF plt2_adv FOR VALUES IN (NULL, '0007', '0009');
-INSERT INTO plt2_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (7, 9);
-INSERT INTO plt2_adv VALUES (-1, -1, NULL);
-DROP TABLE plt1_adv_p1_null;
-ALTER TABLE plt1_adv ATTACH PARTITION plt1_adv_p1 FOR VALUES IN ('0001', '0003');
-CREATE TABLE plt1_adv_extra PARTITION OF plt1_adv FOR VALUES IN (NULL);
-INSERT INTO plt1_adv VALUES (-1, -1, NULL);
-DROP TABLE plt2_adv_p3_null;
-ALTER TABLE plt2_adv ATTACH PARTITION plt2_adv_p3 FOR VALUES IN ('0007', '0009');
-CREATE TABLE plt2_adv_extra PARTITION OF plt2_adv FOR VALUES IN (NULL);
-INSERT INTO plt2_adv VALUES (-1, -1, NULL);
-DROP TABLE plt1_adv_extra;
-DROP TABLE plt2_adv_extra;
-ALTER TABLE plt1_adv DETACH PARTITION plt1_adv_p1;
-ALTER TABLE plt1_adv ATTACH PARTITION plt1_adv_p1 DEFAULT;
-DROP TABLE plt1_adv_p3;
-DROP TABLE plt2_adv_p3;
-ALTER TABLE plt2_adv DETACH PARTITION plt2_adv_p2;
-CREATE TABLE plt2_adv_p2_ext PARTITION OF plt2_adv FOR VALUES IN ('0004', '0005', '0006');
-INSERT INTO plt2_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (4, 5, 6);
-ALTER TABLE plt2_adv DETACH PARTITION plt2_adv_p2_ext;
-ALTER TABLE plt2_adv ATTACH PARTITION plt2_adv_p2_ext DEFAULT;
-DROP TABLE plt2_adv_p2_ext;
-ALTER TABLE plt2_adv ATTACH PARTITION plt2_adv_p2 FOR VALUES IN ('0004', '0006');
-CREATE TABLE plt3_adv (a int, b int, c text) PARTITION BY LIST (c);
-CREATE TABLE plt3_adv_p1 PARTITION OF plt3_adv FOR VALUES IN ('0004', '0006');
-CREATE TABLE plt3_adv_p2 PARTITION OF plt3_adv FOR VALUES IN ('0007', '0009');
-INSERT INTO plt3_adv SELECT i, i, to_char(i % 10, 'FM0000') FROM generate_series(1, 299) i WHERE i % 10 IN (4, 6, 7, 9);
+create table Room (
+    roomno	char(8),
+    comment	text
+);
+create unique index Room_rno on Room using btree (roomno bpchar_ops);
+create table WSlot (
+    slotname	char(20),
+    roomno	char(8),
+    slotlink	char(20),
+    backlink	char(20)
+);
+create unique index WSlot_name on WSlot using btree (slotname bpchar_ops);
+create table PField (
+    name	text,
+    comment	text
+);
+create unique index PField_name on PField using btree (name text_ops);
+create table PSlot (
+    slotname	char(20),
+    pfname	text,
+    slotlink	char(20),
+    backlink	char(20)
+);
+create unique index PSlot_name on PSlot using btree (slotname bpchar_ops);
+create table PLine (
+    slotname	char(20),
+    phonenumber	char(20),
+    comment	text,
+    backlink	char(20)
+);
+create unique index PLine_name on PLine using btree (slotname bpchar_ops);
+create table Hub (
+    name	char(14),
+    comment	text,
+    nslots	integer
+);
+create unique index Hub_name on Hub using btree (name bpchar_ops);
+create table HSlot (
+    slotname	char(20),
+    hubname	char(14),
+    slotno	integer,
+    slotlink	char(20)
+);
+create unique index HSlot_name on HSlot using btree (slotname bpchar_ops);
+create index HSlot_hubname on HSlot using btree (hubname bpchar_ops);
+create table System (
+    name	text,
+    comment	text
+);
+create unique index System_name on System using btree (name text_ops);
+create table IFace (
+    slotname	char(20),
+    sysname	text,
+    ifname	text,
+    slotlink	char(20)
+);
+create unique index IFace_name on IFace using btree (slotname bpchar_ops);
+create table PHone (
+    slotname	char(20),
+    comment	text,
+    slotlink	char(20)
+);
+create unique index PHone_name on PHone using btree (slotname bpchar_ops);
+commit;
+create function refcursor_test2(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param2 int) for select * from rc_test where a > param1 and b > param2;
+    nonsense record;
+begin
+    open c1($1, $2);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function constant_refcursor() returns refcursor as $$
+declare
+    rc constant refcursor;
+begin
+    open rc for select a from rc_test;
+    return rc;
+end
+$$ language plpgsql;
+create or replace function constant_refcursor() returns refcursor as $$
+declare
+    rc constant refcursor := 'my_cursor_name';
+begin
+    open rc for select a from rc_test;
+    return rc;
+end
+$$ language plpgsql;
+create function namedparmcursor_test1(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param12 int) for select * from rc_test where a > param1 and b > param12;
+    nonsense record;
+begin
+    open c1(param12 := $2, param1 := $1);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function namedparmcursor_test2(int, int) returns boolean as $$
+declare
+    c1 cursor (param1 int, param2 int) for select * from rc_test where a > param1 and b > param2;
+    nonsense record;
+begin
+    open c1(param1 := $1, $2);
+    fetch c1 into nonsense;
+    close c1;
+    if found then
+        return true;
+    else
+        return false;
+    end if;
+end
+$$ language plpgsql;
+create function namedparmcursor_test7() returns void as $$
+declare
+  c1 cursor (p1 int, p2 int) for
+    select * from tenk1 where thousand = p1 and tenthous = p2;
+begin
+  open c1 (p2 := 77, p1 := 42/0);
+end $$ language plpgsql;
+create function namedparmcursor_test8() returns int4 as $$
+declare
+  c1 cursor (p1 int, p2 int) for
+    select count(*) from tenk1 where thousand = p1 and tenthous = p2;
+  n int4;
+begin
+  open c1 (77 -- test
+  , 42);
+  fetch c1 into n;
+  return n;
+end $$ language plpgsql;
+create function namedparmcursor_test9(p1 int) returns int4 as $$
+declare
+  c1 cursor (p1 int, p2 int, debug int) for
+    select count(*) from tenk1 where thousand = p1 and tenthous = p2
+      and four = debug;
+  p2 int4 := 1006;
+  n int4;
+begin
+  open c1 (p1 := p1, p2 := p2, debug := 2);
+  fetch c1 into n;
+  return n;
+end $$ language plpgsql;
+create function raise_test3(int) returns int as $$
+begin
+    raise notice 'This message has no parameters (despite having %% signs in it)!';
+    return $1;
+end;
+$$ language plpgsql;
+CREATE FUNCTION reraise_test() RETURNS void AS $$
+BEGIN
+   BEGIN
+       RAISE syntax_error;
+   EXCEPTION
+       WHEN syntax_error THEN
+           BEGIN
+               raise notice 'exception % thrown in inner block, reraising', sqlerrm;
+               RAISE;
+           EXCEPTION
+               WHEN OTHERS THEN
+                   raise notice 'RIGHT - exception % caught in inner block', sqlerrm;
+           END;
+   END;
+EXCEPTION
+   WHEN OTHERS THEN
+       raise notice 'WRONG - exception % caught in outer block', sqlerrm;
+END;
+$$ LANGUAGE plpgsql;
+create function void_return_expr() returns void as $$
+begin
+    perform 2+2;
+end;$$ language plpgsql;
+create function missing_return_expr() returns int as $$
+begin
+    perform 2+2;
+end;$$ language plpgsql;
+drop function void_return_expr();
+drop function missing_return_expr();
+create table eifoo (i integer, y integer);
+create type eitype as (i integer, y integer);
+create or replace function execute_into_test(varchar) returns record as $$
+declare
+    _r record;
+    _rt eifoo%rowtype;
+    _v eitype;
+    i int;
+    j int;
+    k int;
+begin
+    execute 'insert into '||$1||' values(10,15)';
+    execute 'select (row).* from (select row(10,1)::eifoo) s' into _r;
+    raise notice '% %', _r.i, _r.y;
+    execute 'select * from '||$1||' limit 1' into _rt;
+    raise notice '% %', _rt.i, _rt.y;
+    execute 'select *, 20 from '||$1||' limit 1' into i, j, k;
+    raise notice '% % %', i, j, k;
+    execute 'select 1,2' into _v;
+    return _v;
+end; $$ language plpgsql;
+drop table eifoo cascade;
+drop type eitype cascade;
+create function excpt_test1() returns void as $$
+begin
+    raise notice '% %', sqlstate, sqlerrm;
+end; $$ language plpgsql;
+create function excpt_test2() returns void as $$
+begin
+    begin
+        begin
+            raise notice '% %', sqlstate, sqlerrm;
+        end;
+    end;
+end; $$ language plpgsql;
+create function excpt_test3() returns void as $$
+begin
+    begin
+        raise exception 'user exception';
+    exception when others then
+	    raise notice 'caught exception % %', sqlstate, sqlerrm;
+	    begin
+	        raise notice '% %', sqlstate, sqlerrm;
+	        perform 10/0;
+        exception
+            when substring_error then
+                raise notice 'unexpected exception: % %', sqlstate, sqlerrm;
+	        when division_by_zero then
+	            raise notice 'caught exception % %', sqlstate, sqlerrm;
+	    end;
+	    raise notice '% %', sqlstate, sqlerrm;
+    end;
+end; $$ language plpgsql;
+create function excpt_test4() returns text as $$
+begin
+	begin perform 1/0;
+	exception when others then return sqlerrm; end;
+end; $$ language plpgsql;
+drop function excpt_test1();
+drop function excpt_test2();
+drop function excpt_test3();
+drop function excpt_test4();
+create function raise_exprs() returns void as $$
+declare
+    a integer[] = '{10,20,30}';
+    c varchar = 'xyz';
+    i integer;
+begin
+    i := 2;
+    raise notice '%; %; %; %; %; %', a, a[i], c, (select c || 'abc'), row(10,'aaa',NULL,30), NULL;
+end;$$ language plpgsql;
+drop function raise_exprs();
+create function multi_datum_use(p1 int) returns bool as $$
+declare
+  x int;
+  y int;
+begin
+  select into x,y unique1/p1, unique1/$1 from tenk1 group by unique1/p1;
+  return x = y;
+end$$ language plpgsql;
+create temp table foo (f1 int, f2 int);
+insert into foo values (1,2), (3,4);
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  insert into foo values(5,6) returning * into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  insert into foo values(7,8),(9,10) returning * into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'insert into foo values(5,6) returning *' into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'insert into foo values(7,8),(9,10) returning *' into x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 = 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 = 0 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 > 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = 0' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+drop function stricttest();
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 = p1 and f1::text = p3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := $a$'Valame Dios!' dijo Sancho; 'no le dije yo a vuestra merced que mirase bien lo que hacia?'$a$;
+begin
+  select * from foo where f1 = p1 and f1::text = p3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  select * from foo where f1 > 3 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 = $1 or f1::text = $2' using 0, 'foo' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > $1' using 1 into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+declare x record;
+begin
+  execute 'select * from foo where f1 > 3' into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+#print_strict_params off
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function stricttest() returns void as $$
+#print_strict_params on
+declare
+x record;
+p1 int := 2;
+p3 text := 'foo';
+begin
+  select * from foo where f1 > p1 or f1::text = p3  into strict x;
+  raise notice 'x.f1 = %, x.f2 = %', x.f1, x.f2;
+end$$ language plpgsql;
+create or replace function shadowtest(in1 int)
+	returns table (out1 int) as $$
+declare
+in1 int;
+out1 int;
+begin
+end
+$$ language plpgsql;
+create or replace function shadowtest(in1 int)
+	returns table (out1 int) as $$
+declare
+in1 int;
+out1 int;
+begin
+end
+$$ language plpgsql;
+drop function shadowtest(int);
+create or replace function shadowtest()
+	returns void as $$
+declare
+f1 int;
+begin
+	declare
+	f1 int;
+	begin
+	end;
+end$$ language plpgsql;
+drop function shadowtest();
+create or replace function shadowtest(in1 int)
+	returns void as $$
+declare
+in1 int;
+begin
+	declare
+	in1 int;
+	begin
+	end;
+end$$ language plpgsql;
+drop function shadowtest(int);
+create or replace function shadowtest()
+	returns void as $$
+declare
+f1 int;
+c1 cursor (f1 int) for select 1;
+begin
+end$$ language plpgsql;
+drop function shadowtest();
+create or replace function shadowtest(f1 int)
+	returns boolean as $$
+declare f1 int; begin return 1; end $$ language plpgsql;
+create or replace function shadowtest(f1 int)
+	returns boolean as $$
+declare f1 int; begin return 1; end $$ language plpgsql;
+do $$
+declare x int;
+begin
+  select v from generate_series(1,2) g(v) into x;
+end;
+$$;
+do $$
+declare x int;
+begin
+  select v from generate_series(1,2) g(v) into x;
+end;
+$$;
+do $$
+declare
+  x int;
+  y int;
+begin
+  select 1 into x, y;
+  select 1,2 into x, y;
+  select 1,2,3 into x, y;
+end
+$$;
+do $$
+declare
+  x int;
+  y int;
+begin
+  select 1 into x, y;
+  select 1,2 into x, y;
+  select 1,2,3 into x, y;
+end
+$$;
+create table test_01(a int, b int, c int);
+alter table test_01 drop column a;
+insert into test_01 values(10,20);
+do $$
+declare
+  x int;
+  y int;
+begin
+  select * from test_01 into x, y; -- should be ok
+  raise notice 'ok';
+  select * from test_01 into x;    -- should to fail
+end;
+$$;
+do $$
+declare
+  t test_01;
+begin
+  select 1, 2 into t;  -- should be ok
+  raise notice 'ok';
+  select 1, 2, 3 into t; -- should fail;
+end;
+$$;
+do $$
+declare
+  t test_01;
+begin
+  select 1 into t; -- should fail;
+end;
+$$;
+drop table test_01;
+create function pl_qual_names (param1 int) returns void as $$
+<<outerblock>>
+declare
+  param1 int := 1;
+begin
+  <<innerblock>>
+  declare
+    param1 int := 2;
+  begin
+    raise notice 'param1 = %', param1;
+    raise notice 'pl_qual_names.param1 = %', pl_qual_names.param1;
+    raise notice 'outerblock.param1 = %', outerblock.param1;
+    raise notice 'innerblock.param1 = %', innerblock.param1;
+  end;
+end;
+$$ language plpgsql;
+drop function pl_qual_names(int);
+create type record_type as (x text, y int, z boolean);
+create function exc_using(int, text) returns int as $$
+declare i int;
+begin
+  for i in execute 'select * from generate_series(1,$1)' using $1+1 loop
+    raise notice '%', i;
+  end loop;
+  execute 'select $2 + $2*3 + length($1)' into i using $2,$1;
+  return i;
+end
+$$ language plpgsql;
+drop function exc_using(int, text);
+create or replace function exc_using(int) returns void as $$
+declare
+  c refcursor;
+  i int;
+begin
+  open c for execute 'select * from generate_series(1,$1)' using $1+1;
+  loop
+    fetch c into i;
+    exit when not found;
+    raise notice '%', i;
+  end loop;
+  close c;
+  return;
+end;
+$$ language plpgsql;
+drop function exc_using(int);
+create or replace function forc01() returns void as $$
+declare
+  c cursor(r1 integer, r2 integer)
+       for select * from generate_series(r1,r2) i;
+  c2 cursor
+       for select * from generate_series(41,43) i;
+begin
+  c := 'c';
+  c2 := 'c2';
+  for r in c(5,7) loop
+    raise notice '% from %', r.i, c;
+  end loop;
+  for r in c(9,10) loop
+    raise notice '% from %', r.i, c;
+  end loop;
+  for r in c2 loop
+    raise notice '% from %', r.i, c2;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  c2 := 'special_name';
+  for r in c2 loop
+    raise notice '% from %', r.i, c2;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  c2 := null;
+  for r in c2 loop
+    raise notice '%', r.i;
+  end loop;
+  raise notice 'after loop, c2 = %', c2;
+  return;
+end;
+$$ language plpgsql;
+create temp table forc_test as
+  select n as i, n as j from generate_series(1,10) n;
+drop function forc01();
+create table tabwithcols(a int, b int, c int, d int);
+insert into tabwithcols values(10,20,30,40),(50,60,70,80);
+alter table tabwithcols drop column b;
+alter table tabwithcols drop column d;
+alter table tabwithcols add column d int;
+drop table tabwithcols;
+create type compostype as (x int, y varchar);
+create or replace function compos() returns compostype as $$
+declare
+  v compostype;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+declare
+  v record;
+begin
+  v := (1, 'hello'::varchar);
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello'::varchar);
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello');
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+begin
+  return (1, 'hello')::compostype;
+end;
+$$ language plpgsql;
+drop function compos();
+create or replace function composrec() returns record as $$
+declare
+  v record;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function composrec() returns record as $$
+begin
+  return (1, 'hello');
+end;
+$$ language plpgsql;
+drop function composrec();
+create or replace function compos() returns compostype as $$
+begin
+  return 1 + 1;
+end;
+$$ language plpgsql;
+create or replace function compos() returns compostype as $$
+declare x int := 42;
+begin
+  return x;
+end;
+$$ language plpgsql;
+drop function compos();
+create or replace function compos() returns int as $$
+declare
+  v compostype;
+begin
+  v := (1, 'hello');
+  return v;
+end;
+$$ language plpgsql;
+create or replace function compos() returns int as $$
+begin
+  return (1, 'hello')::compostype;
+end;
+$$ language plpgsql;
+drop function compos();
+drop type compostype;
+create or replace function raise_test() returns void as $$
+begin
+  raise notice '% % %', 1, 2, 3
+     using errcode = '55001', detail = 'some detail info', hint = 'some hint';
+  raise '% % %', 1, 2, 3
+     using errcode = 'division_by_zero', detail = 'some detail info';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = 'division_by_zero', detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = '1234F', detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise 'check me'
+     using errcode = '1234F', detail = 'some detail info';
+  exception
+    when sqlstate '1234F' then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using detail = 'some detail info';
+  exception
+    when others then
+      raise notice 'SQLSTATE: % SQLERRM: %', sqlstate, sqlerrm;
+      raise;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero;
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise sqlstate '1234F';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using message = 'custom' || ' message';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise notice 'some message' using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise division_by_zero using message = 'custom' || ' message', errcode = '22012';
+end;
+$$ language plpgsql;
+create or replace function raise_test() returns void as $$
+begin
+  raise;
+end;
+$$ language plpgsql;
+create function zero_divide() returns int as $$
+declare v int := 0;
+begin
+  return 10 / v;
+end;
+$$ language plpgsql parallel safe;
+create or replace function raise_test() returns void as $$
+begin
+  raise exception 'custom exception'
+     using detail = 'some detail of custom exception',
+           hint = 'some hint related to custom exception';
+end;
+$$ language plpgsql;
+create function error_trap_test() returns text as $$
+begin
+  perform zero_divide();
+  return 'no error detected!';
+exception when division_by_zero then
+  return 'division_by_zero detected';
+end;
+$$ language plpgsql parallel safe;

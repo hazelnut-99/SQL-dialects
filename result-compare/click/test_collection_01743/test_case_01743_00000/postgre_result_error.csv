@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 5:     FROM Values('id UInt64, t UInt64', (1, 3))
+                       ^

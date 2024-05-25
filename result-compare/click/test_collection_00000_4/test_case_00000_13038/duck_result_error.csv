@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name crc32ieee does not exist!
+Did you mean "chr"?
+LINE 1: SELECT CRC32IEEE(sipHash128());
+               ^

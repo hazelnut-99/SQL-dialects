@@ -1,0 +1,3 @@
+syntax error at or near ","
+LINE 1: ...LECT CAST('12345678901234567890123456789012345678', 'Decimal...
+                                                             ^

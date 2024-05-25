@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name timestampadd does not exist!
+Did you mean "to_timestamp"?
+LINE 1: SELECT TIMESTAMPADD(INTERVAL 1 YEAR, DATE '202...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select format('{}{}{}', materialize('a'), 'b', 'c') == 'abc';
+': no such function: materialize

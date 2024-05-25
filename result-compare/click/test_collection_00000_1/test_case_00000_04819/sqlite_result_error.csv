@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT cityHash64(toDecimal32(32, 2));
+': no such function: toDecimal32

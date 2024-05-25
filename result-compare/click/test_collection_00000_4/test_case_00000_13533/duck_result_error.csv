@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addmicroseconds does not exist!
+Did you mean "microsecond"?
+LINE 1: SELECT addMicroseconds(materialize('2023-10-22...
+               ^

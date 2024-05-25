@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 1: ... _CAST(x, 'UInt8') AS y, toTypeName(y) FROM VALUES('x Nullab...
+                                                             ^

@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 4: CREATE TABLE t1 ( `a1` Int64, `1a1` Int64 ) ENGINE = Memory;
+                          ^

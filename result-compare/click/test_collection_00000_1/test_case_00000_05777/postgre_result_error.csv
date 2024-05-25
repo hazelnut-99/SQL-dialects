@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select maxMap([cast(1, 'Decimal(10, 2)')], [cast(toInt32(num...
+                      ^

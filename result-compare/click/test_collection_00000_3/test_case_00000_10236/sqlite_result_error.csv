@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 1, 'test', [1, 2, 3], ['1', '2', '3'];
+': no such column: 1, 2, 3

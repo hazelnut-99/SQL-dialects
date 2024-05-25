@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todate32 does not exist!
+Did you mean "today"?
+LINE 1: SELECT dateDiff('second', toDate32('2015-08-18'), toDate('2015-08...
+                                  ^

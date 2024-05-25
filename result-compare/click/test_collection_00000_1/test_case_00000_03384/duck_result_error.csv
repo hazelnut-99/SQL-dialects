@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name formatdatetime does not exist!
+Did you mean "format"?
+LINE 1: select formatDateTime(toDateTime64('1962-12-08...
+               ^

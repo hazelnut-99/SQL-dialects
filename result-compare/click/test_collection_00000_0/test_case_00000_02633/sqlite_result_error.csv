@@ -1,0 +1,2 @@
+Execution failed on sql 'select hasSubstr([1, 2, 3, 4], [1, 3, 5]);
+': no such column: 1, 2, 3, 4

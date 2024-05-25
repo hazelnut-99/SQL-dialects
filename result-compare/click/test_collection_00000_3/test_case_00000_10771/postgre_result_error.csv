@@ -1,0 +1,3 @@
+syntax error at or near "1"
+LINE 1: ...actTupleOfIntervals('2022-10-11'::Date, (INTERVAL 1 DAY, INT...
+                                                             ^

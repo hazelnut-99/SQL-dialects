@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...ble (id UInt64, value_ipv4 IPv4, value_ipv6 IPv6) ENGINE=Mer...
+                                                             ^

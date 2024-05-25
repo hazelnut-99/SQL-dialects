@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 3: CREATE TABLE join_test ( `key` UInt64, `value` UInt64 ) ENGI...
+                                 ^

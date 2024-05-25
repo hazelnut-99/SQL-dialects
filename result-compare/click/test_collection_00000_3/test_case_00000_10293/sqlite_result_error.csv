@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT translateUTF8('abc', '', '');
+': no such function: translateUTF8

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toyear does not exist!
+Did you mean "to_years"?
+LINE 1: SELECT toYear(toDateTime(1412106600), 'Pacific...
+               ^

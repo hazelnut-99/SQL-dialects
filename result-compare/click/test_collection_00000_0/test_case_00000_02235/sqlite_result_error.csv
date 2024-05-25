@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayPushFront([0.5, 0.7], 1);
+': no such column: 0.5, 0.7

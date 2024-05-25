@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toint32ornull does not exist!
+Did you mean "instr"?
+LINE 1: SELECT toInt32OrNull('-2147483648');
+               ^

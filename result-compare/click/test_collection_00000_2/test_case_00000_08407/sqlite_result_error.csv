@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT tupleDivideByNumber((1, 2.5, 3), materialize(0.5));
+': no such function: tupleDivideByNumber

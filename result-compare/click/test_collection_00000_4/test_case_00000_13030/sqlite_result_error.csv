@@ -1,0 +1,2 @@
+Execution failed on sql 'select firstLine('foobarbaz');
+': no such function: firstLine

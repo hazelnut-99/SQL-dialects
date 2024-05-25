@@ -1,0 +1,2 @@
+Execution failed on sql 'select minMap(arrayJoin([([1, 2], [null, 11]), ([1, 2], [null, 22])]));
+': unrecognized token: "]"

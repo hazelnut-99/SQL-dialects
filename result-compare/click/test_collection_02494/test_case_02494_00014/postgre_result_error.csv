@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: ...REATE TABLE optimize_sorting (a UInt64, b UInt64) ENGINE Mer...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT count() AS x WITH TOTALS HAVING x != toNullable(0);
+': near "WITH": syntax error

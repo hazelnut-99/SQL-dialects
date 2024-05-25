@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todatetime does not exist!
+Did you mean "make_time"?
+LINE 1: select * from (select 0 as k, toDateTime(0, 'UTC') as v) t1 asof join...
+                                      ^

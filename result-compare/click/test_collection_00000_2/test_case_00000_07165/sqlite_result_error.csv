@@ -1,0 +1,2 @@
+Execution failed on sql 'select initializeAggregation('sumMap', [1, 2], [1, 2], [1, null]);
+': no such function: initializeAggregation

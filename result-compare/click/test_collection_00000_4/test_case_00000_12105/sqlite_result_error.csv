@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT countDigits(-12345);
+': no such function: countDigits

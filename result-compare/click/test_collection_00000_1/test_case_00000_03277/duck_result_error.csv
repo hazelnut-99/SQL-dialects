@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal128orzero does not exist!
+Did you mean "corr"?
+LINE 1: SELECT toDecimal128OrZero('9999999999999999999...
+               ^

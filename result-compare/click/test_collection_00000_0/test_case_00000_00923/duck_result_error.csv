@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name tostartofinterval does not exist!
+Did you mean "filter"?
+LINE 1: SELECT toStartOfInterval(toDate(17933), INTERV...
+               ^

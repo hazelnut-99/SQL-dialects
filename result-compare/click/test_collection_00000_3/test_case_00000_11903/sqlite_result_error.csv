@@ -1,0 +1,2 @@
+Execution failed on sql 'select transform(2, [1,2], [9,1], materialize(null));
+': no such function: transform

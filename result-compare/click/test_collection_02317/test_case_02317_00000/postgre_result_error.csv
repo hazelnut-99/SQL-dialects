@@ -1,0 +1,3 @@
+syntax error at or near "Nested"
+LINE 3: CREATE TABLE t_flatten_tuple(t Tuple(t1 Nested(a UInt32, s S...
+                                                ^

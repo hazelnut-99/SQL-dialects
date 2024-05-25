@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT kafkaMurmurHash('foobar');
+': no such function: kafkaMurmurHash

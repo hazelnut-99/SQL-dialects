@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT x, arrayJoin(x) FROM (SELECT materialize([1, NULL, 2]...
+                                                        ^

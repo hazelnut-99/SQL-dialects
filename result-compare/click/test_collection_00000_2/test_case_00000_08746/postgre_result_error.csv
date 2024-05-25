@@ -1,0 +1,3 @@
+syntax error at or near "("
+LINE 11:         exponentialTimeDecayedSum(1)(value, time) OVER (ROWS...
+                                             ^

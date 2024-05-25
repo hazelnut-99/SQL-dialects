@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name addweeks does not exist!
+Did you mean "week"?
+LINE 1: SELECT addWeeks(toDateTime('2020-01-01 00:00:0...
+               ^

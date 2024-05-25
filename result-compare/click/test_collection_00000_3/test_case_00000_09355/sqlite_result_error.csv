@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toTypeName(xor(false, true));
+': no such function: xor

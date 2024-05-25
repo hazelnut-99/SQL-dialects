@@ -1,0 +1,2 @@
+Execution failed on sql 'select toTypeName(map(1, assumeNotNull(materialize(NULL))));
+': no such function: map

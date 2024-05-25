@@ -1,0 +1,3 @@
+syntax error at or near "engine"
+LINE 2: create table url (i String) engine=URL('http://127.0.0.1:812...
+                                    ^

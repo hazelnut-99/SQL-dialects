@@ -1,0 +1,3 @@
+syntax error at or near "UInt16"
+LINE 2: ... Date, timeslot DateTime, statusMap Nested(status UInt16, re...
+                                                             ^

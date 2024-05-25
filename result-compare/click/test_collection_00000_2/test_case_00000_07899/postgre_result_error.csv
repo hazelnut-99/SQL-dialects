@@ -1,0 +1,3 @@
+syntax error at or near "`"
+LINE 1: SELECT (if(a.test == 'a', b.test, c.test)) as `a.test` FROM
+                                                      ^

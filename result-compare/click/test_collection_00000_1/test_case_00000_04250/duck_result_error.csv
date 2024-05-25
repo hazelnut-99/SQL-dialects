@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name toweek does not exist!
+Did you mean "to_weeks"?
+LINE 1: SELECT toWeek(toDate('1998-01-01')), toWeek(to...
+               ^

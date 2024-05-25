@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...toNullable(-8000000000000000000)) FROM numbers(65535 * 2);
+                                                  ^

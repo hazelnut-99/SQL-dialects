@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ifNull(toNullable('x'), toNullable('y')) AS res, toTypeName(res);
+': no such function: toNullable

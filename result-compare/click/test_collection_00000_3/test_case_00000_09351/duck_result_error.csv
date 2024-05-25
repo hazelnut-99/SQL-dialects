@@ -1,0 +1,16 @@
+Binder Error: No function matches the given name and argument types 'xor(BOOLEAN, BOOLEAN)'. You might need to add explicit type casts.
+	Candidate functions:
+	xor(TINYINT, TINYINT) -> TINYINT
+	xor(SMALLINT, SMALLINT) -> SMALLINT
+	xor(INTEGER, INTEGER) -> INTEGER
+	xor(BIGINT, BIGINT) -> BIGINT
+	xor(HUGEINT, HUGEINT) -> HUGEINT
+	xor(UTINYINT, UTINYINT) -> UTINYINT
+	xor(USMALLINT, USMALLINT) -> USMALLINT
+	xor(UINTEGER, UINTEGER) -> UINTEGER
+	xor(UBIGINT, UBIGINT) -> UBIGINT
+	xor(UHUGEINT, UHUGEINT) -> UHUGEINT
+	xor(BIT, BIT) -> BIT
+
+LINE 1: SELECT xor(false, true);
+               ^

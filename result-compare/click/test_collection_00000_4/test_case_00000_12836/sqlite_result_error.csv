@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT upperUTF8(materialize('aaaaАБВГaaaaaaaaaaaaАБВГAAAAaaAA')) FROM numbers(2);
+': no such table: numbers

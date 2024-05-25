@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT 'ёЁё' ILIKE 'Ё%Ё';
+': near "'Ё%Ё'": syntax error

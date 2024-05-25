@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT round(30.033 * toDecimal32(5, 1), 6);
+': no such function: toDecimal32

@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: ...bquery, arrayMap(x -> x + arrayMap(x -> subquery, [1])[1], [...
+                                                             ^

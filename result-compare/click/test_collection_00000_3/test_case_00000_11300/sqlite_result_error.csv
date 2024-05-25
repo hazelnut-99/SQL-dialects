@@ -1,0 +1,2 @@
+Execution failed on sql 'select if(materialize(0), materialize(toLowCardinality('a')), materialize(toLowCardinality('b')));
+': no such function: toLowCardinality

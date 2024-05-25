@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT toDateOrNull(arrayJoin(['', '2018', '2018-01-02', '20...
+                                      ^

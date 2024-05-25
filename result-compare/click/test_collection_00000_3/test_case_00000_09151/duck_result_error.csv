@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name proportionsztest does not exist!
+Did you mean "position"?
+LINE 1: SELECT proportionsZTest(10, 11, 100, 101, 0.95...
+               ^

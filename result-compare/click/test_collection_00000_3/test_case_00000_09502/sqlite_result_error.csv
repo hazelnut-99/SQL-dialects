@@ -1,0 +1,2 @@
+Execution failed on sql 'select endsWith([NULL, 1], [NULL]);
+': no such column: NULL, 1

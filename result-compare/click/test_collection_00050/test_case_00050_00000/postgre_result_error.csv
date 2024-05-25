@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 4: CREATE TABLE merge_view_00270 (number UInt64) ENGINE = Merge...
+                                                      ^

@@ -1,0 +1,8 @@
+:HTTPDriver for https://ht57uux4i3.eu-west-2.aws.clickhouse.cloud:8443 returned response code 400)
+ Code: 62. DB::Exception: Syntax error: failed at position 39 ('(') (line 1, col 39): ()
+RETURNS boolean AS
+$$
+DECLARE
+  n int := 1000;        -- Number of samples
+  c float8 := 1.94947;  -- Critical value for 99.9% confidence
+  ok boolean. Expected one of: ON, AS. (SYNTAX_ERROR) (version 24.2.2.16233 (official build))

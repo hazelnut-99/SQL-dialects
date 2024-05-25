@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT $РАЗДЕЛИТЕЛЬ$VALUE$РАЗДЕЛИТЕЛЬ$;
+': Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.

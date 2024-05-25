@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT -2::SMALLINT * 16384::SMALLINT;
+': unrecognized token: ":"

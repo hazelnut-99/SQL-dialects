@@ -1,0 +1,4 @@
+Catalog Error: Table Function with name numbers does not exist!
+Did you mean "unnest"?
+LINE 1: ...from (SELECT 1 AS a, count(1) + 1 FROM numbers(5));
+                                                  ^

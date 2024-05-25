@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT toStartOfQuarter(toDate(16343));
+': no such function: toDate

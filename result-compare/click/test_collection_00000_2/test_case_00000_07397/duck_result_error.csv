@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name greatcircleangle does not exist!
+Did you mean "range"?
+LINE 1: SELECT round(greatCircleAngle(0, 45, 0.1, 45.1), 4);
+                     ^

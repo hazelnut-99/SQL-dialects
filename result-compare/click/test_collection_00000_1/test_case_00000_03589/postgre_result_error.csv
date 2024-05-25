@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: ...toInt16(0)) AS x, toFloat32(1) AS y, ((x > y) ? x : y) AS z,...
+                                                             ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT accurateCastOrDefault(inf, 'Int64'), accurateCastOrDefault(inf, 'Int64', toInt64(5));
+': no such column: inf

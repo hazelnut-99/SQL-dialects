@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name l2squarednorm does not exist!
+Did you mean "quarter"?
+LINE 1: SELECT L2SquaredNorm([3., 4., 5.]);
+               ^

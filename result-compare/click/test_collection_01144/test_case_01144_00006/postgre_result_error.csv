@@ -1,0 +1,3 @@
+syntax error at or near "ENGINE"
+LINE 2: create table t (x UInt8, id UInt8) ENGINE = MergeTree() orde...
+                                           ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select multiMatchAny(materialize('\0 key="v" '), ['key="(.*?)"']);
+': no such column: 'key="(.*?)"'

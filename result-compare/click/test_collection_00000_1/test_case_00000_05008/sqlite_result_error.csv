@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT length(replaceAll(bin('clickhouse cloud'), '0', ''));
+': no such function: bin

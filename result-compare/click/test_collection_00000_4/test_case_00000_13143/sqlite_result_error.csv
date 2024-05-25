@@ -1,0 +1,2 @@
+Execution failed on sql 'select arrayShiftRight(['a', 'b', 'c', 'd', 'e'], 3);
+': no such column: 'a', 'b', 'c', 'd', 'e'

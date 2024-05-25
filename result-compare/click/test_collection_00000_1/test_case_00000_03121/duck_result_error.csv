@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name todecimal128 does not exist!
+Did you mean "today"?
+LINE 1: SELECT toDecimal128('-0.6', 6) AS x, toUInt8(x...
+               ^

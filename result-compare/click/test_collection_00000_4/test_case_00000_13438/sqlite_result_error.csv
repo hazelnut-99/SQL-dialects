@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT ['ab', 'c', 'de', '', 'hi'] AS arr, 3 AS len, arrayShingles(arr, len), arrayShingles(materialize(arr), len);
+': no such column: 'ab', 'c', 'de', '', 'hi'

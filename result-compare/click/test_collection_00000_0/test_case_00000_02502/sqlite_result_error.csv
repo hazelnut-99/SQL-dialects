@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATEDIFF('year', today(), today() - INTERVAL 10 YEAR);
+': near "10": syntax error

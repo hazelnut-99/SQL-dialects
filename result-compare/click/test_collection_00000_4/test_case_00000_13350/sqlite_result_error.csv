@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT DATE_ADD(toDateTime(1234567890, 'UTC'), INTERVAL '2 days');
+': near "'2 days'": syntax error

@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name errorcodetoname does not exist!
+Did you mean "error"?
+LINE 1: SELECT errorCodeToName(toUInt32(-1));
+               ^

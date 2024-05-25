@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: select [map(1, -4741124612489978151, 2, -3236599669630092879...
+               ^

@@ -1,0 +1,2 @@
+Execution failed on sql 'select tuple(1) in tuple(tuple(1));
+': no such table: tuple

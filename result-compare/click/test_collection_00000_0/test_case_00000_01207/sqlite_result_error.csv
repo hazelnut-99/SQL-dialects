@@ -1,0 +1,2 @@
+Execution failed on sql 'select has(materialize([0 as x]), x);
+': no such column: x

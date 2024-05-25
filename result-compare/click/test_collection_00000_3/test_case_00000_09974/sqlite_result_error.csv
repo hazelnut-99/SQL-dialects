@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT trim(LEADING 'a' AS arg_1 FROM 'abca'), arg_1;
+': near "'a'": syntax error

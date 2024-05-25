@@ -1,0 +1,3 @@
+syntax error at or near "["
+LINE 1: SELECT arrayReduce('sum', [NULL]::Array(Nullable(UInt8))) as...
+                                  ^

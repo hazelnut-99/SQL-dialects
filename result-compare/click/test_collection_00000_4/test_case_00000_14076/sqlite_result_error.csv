@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT intDivOrZero(4, toDecimal256(2.2, 4));
+': no such function: intDivOrZero

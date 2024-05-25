@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT indexOf(['a', 'b', 'c'], toLowCardinality('a'));
+': no such column: 'a', 'b', 'c'

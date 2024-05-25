@@ -1,0 +1,2 @@
+Execution failed on sql 'SELECT scalarProduct(tuple(1), tuple(0));
+': no such function: tuple

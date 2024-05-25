@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name notempty does not exist!
+Did you mean "cot"?
+LINE 1: SELECT notEmpty(toIPv6('::1'));
+               ^

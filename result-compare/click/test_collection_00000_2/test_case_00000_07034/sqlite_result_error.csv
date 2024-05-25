@@ -1,0 +1,2 @@
+Execution failed on sql 'select countSubstringsCaseInsensitiveUTF8('рф.подстрока', 'рф');
+': no such function: countSubstringsCaseInsensitiveUTF8

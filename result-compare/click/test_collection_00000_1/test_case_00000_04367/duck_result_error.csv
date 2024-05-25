@@ -1,0 +1,4 @@
+Catalog Error: Scalar Function with name ngramsearchutf8 does not exist!
+Did you mean "gamma"?
+LINE 1: select round(1000 * ngramSearchUTF8('абв', ''));
+                            ^

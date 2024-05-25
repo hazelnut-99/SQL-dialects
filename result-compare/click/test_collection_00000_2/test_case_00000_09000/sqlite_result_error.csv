@@ -1,0 +1,2 @@
+Execution failed on sql 'select '2283-11-11' >= toDate32('2283-11-10');
+': no such function: toDate32

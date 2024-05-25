@@ -1,0 +1,3 @@
+syntax error at or near ":"
+LINE 1: SELECT leftUTF8('Привет', number % 3 = 0 ? NULL : (number % ...
+                                                        ^

@@ -1,0 +1,91 @@
+
+
+postgre as guest:
+
+duck: 
+ERROR: 1991
+SUCCESS: 106
+  SAME: 62
+  DIFFERENT: 44
+
+./test_collection_00000/test_case_00000_00025
+./test_collection_00000/test_case_00000_00148
+./test_collection_00000/test_case_00000_00135
+./test_collection_00000/test_case_00000_00027
+./test_collection_00000/test_case_00000_00131
+./test_collection_00000/test_case_00000_00127
+./test_collection_00000/test_case_00000_00144
+./test_collection_00000/test_case_00000_00138
+./test_collection_00000/test_case_00000_00132
+./test_collection_00000/test_case_00000_00147
+./test_collection_00000/test_case_00000_00130
+./test_collection_00000/test_case_00000_00026
+./test_collection_00000/test_case_00000_00141
+./test_collection_00000/test_case_00000_00133
+./test_collection_00000/test_case_00000_00153
+./test_collection_00000/test_case_00000_00143
+./test_collection_00000/test_case_00000_00151
+./test_collection_00000/test_case_00000_00139
+./test_collection_00000/test_case_00000_00150
+./test_collection_00000/test_case_00000_00136
+./test_collection_00000/test_case_00000_00128
+./test_collection_00000/test_case_00000_00129
+./test_collection_00000/test_case_00000_00145
+./test_collection_00000/test_case_00000_00134
+./test_collection_00000/test_case_00000_00013
+./test_collection_00000/test_case_00000_00152
+./test_collection_00000/test_case_00000_00146
+./test_collection_00000/test_case_00000_00137
+./test_collection_00000/test_case_00000_00149
+./test_collection_00000/test_case_00000_00140
+./test_collection_00000/test_case_00000_00142
+./test_collection_00000/test_case_00000_00065
+./test_collection_00355/test_case_00457_00000
+./test_collection_00055/test_case_00056_00000
+./test_collection_00261/test_case_00338_00000
+./test_collection_00294/test_case_00371_00000
+./test_collection_00091/test_case_00095_00000
+./test_collection_00054/test_case_00055_00003
+./test_collection_00054/test_case_00055_00004
+./test_collection_00260/test_case_00337_00000
+./test_collection_00260/test_case_00337_00001
+./test_collection_00260/test_case_00337_00003
+./test_collection_00016/test_case_00016_00007
+./test_collection_00016/test_case_00016_00006
+
+
+
+sqlite: 
+ERROR: 2023
+SUCCESS: 74
+  SAME: 46
+  DIFFERENT: 28
+
+./test_collection_00140/test_case_00171_00000
+./test_collection_00000/test_case_00000_00147
+./test_collection_00000/test_case_00000_00153
+./test_collection_00000/test_case_00000_00001
+./test_collection_00000/test_case_00000_00002
+./test_collection_00281/test_case_00358_00001
+./test_collection_00281/test_case_00358_00004
+./test_collection_00281/test_case_00358_00000
+./test_collection_00281/test_case_00358_00002
+./test_collection_00128/test_case_00132_00000
+./test_collection_00261/test_case_00338_00000
+./test_collection_00144/test_case_00175_00000
+./test_collection_00139/test_case_00170_00000
+./test_collection_00142/test_case_00173_00000
+./test_collection_00137/test_case_00168_00000
+./test_collection_00260/test_case_00337_00000
+./test_collection_00260/test_case_00337_00001
+./test_collection_00260/test_case_00337_00003
+./test_collection_00133/test_case_00164_00000
+./test_collection_00133/test_case_00164_00001
+./test_collection_00133/test_case_00164_00006
+./test_collection_00133/test_case_00164_00002
+./test_collection_00133/test_case_00164_00005
+./test_collection_00133/test_case_00164_00004
+./test_collection_00141/test_case_00172_00000
+./test_collection_00135/test_case_00166_00000
+./test_collection_00136/test_case_00167_00000
+./test_collection_00138/test_case_00169_00000

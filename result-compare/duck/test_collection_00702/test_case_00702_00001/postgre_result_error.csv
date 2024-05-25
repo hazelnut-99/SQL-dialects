@@ -1,0 +1,3 @@
+syntax error at or near "EXCLUDE"
+LINE 1: SELECT * EXCLUDE (i, j) FROM integers;
+                 ^

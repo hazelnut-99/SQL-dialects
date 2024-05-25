@@ -1,0 +1,3 @@
+syntax error at or near "REPLACE"
+LINE 1: SELECT * REPLACE (i+100 AS i, j+200 AS "J") FROM integers;
+                 ^

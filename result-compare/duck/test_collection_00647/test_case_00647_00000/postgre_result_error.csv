@@ -1,0 +1,3 @@
+syntax error at or near "ALL"
+LINE 1: SELECT * FROM tbl WHERE COLUMNS(*) >= 2 ORDER BY ALL;
+                                                         ^

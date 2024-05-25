@@ -39,6 +39,8 @@ docker pull postgres:latest
 python scripts/generate_result guest_db host_db
 e.g. to run sqlite's test cases on duck: python scripts/generate_result sqlite duck
 
+```
+
 
 #### Sidenote
 We encountered some issues while working with ClickHouse. There were session lock issues that we couldn't resolve, and as a result, we didn't include results from ClickHouse in the report.

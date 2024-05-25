@@ -1,5 +1,7 @@
 
-### Original Test Suites
+### Original Test Suites 
+
+Find original test suites of each DBMS at: https://github.com/hazelnut-99/SQL-dialects/tree/main/original-test-suites
 
 they are downloaded from:  
   duckdb: https://github.com/duckdb/duckdb/tree/main/test/sql  
@@ -7,7 +9,7 @@ they are downloaded from:
   postgresql: https://github.com/postgres/postgres/tree/master/src/test  
   clickhouse: https://github.com/ClickHouse/ClickHouse/tree/master/tests/queries/0_stateless  
 
-### Compiled Test Cases
+### Compiled Test Cases https://github.com/hazelnut-99/SQL-dialects/tree/main/test-suite-generated
 The directory structure for the compiled test cases is as follows:
 1. Test cases are organized into *test collections*, each *test collection* consists of multiple *test cases*.
 2. All *test cases* inside a *test collection* shares the same *db.sql* file as set-up statements, each *test case* consists of one *test.sql* file and one *result.csv* file
@@ -17,7 +19,7 @@ The directory structure for the compiled test cases is as follows:
 
 
 ### Dialect Comparison
-All query results are located at:
+All query results are located at: https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare
 
 
 ### To Reproduce the Results

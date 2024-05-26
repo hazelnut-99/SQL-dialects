@@ -14,7 +14,7 @@ They are downloaded from:
 2. *test.sql*: contains the test Query  
 3. *result.csv*: contains the query result.  
 
-### directory structure
+### Directory structure
 1. Test cases are organized into *test collections*, each *test collection* consists of multiple *test cases*.
 2. All *test cases* inside a *test collection* share the same *db.sql* file as set-up statements.  (none if doesn't need set up statements)  
 3. Each *test case* consists of one *test.sql* file and one *result.csv* file.

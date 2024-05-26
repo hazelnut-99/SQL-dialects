@@ -11,13 +11,15 @@ They are downloaded from:
 # Compiled Test Cases
 ### Each test case stored in 3 files
 1. *db.sql*: contains SQL statements for setting up database  (none if doesn't need set up statements)  
-2. *test.sql*: contains the test Query  
+2. *test.sql*: contains the test query  
 3. *result.csv*: contains the query result.  
 
 ### Directory structure
 1. Test cases are organized into *test collections*, each *test collection* consists of multiple *test cases*.
-2. All *test cases* inside a *test collection* share the same *db.sql* file as set-up statements.  (none if doesn't need set up statements)  
-3. Each *test case* consists of one *test.sql* file and one *result.csv* file.
+   <img width="358" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/903b78f1-836c-4b18-83c4-2092b6bff6ae">
+
+3. All *test cases* inside a *test collection* share the same *db.sql* file as set-up statements.  (none if doesn't need set up statements)  
+4. Each *test case* consists of one *test.sql* file and one *result.csv* file.
 
 ![Directory Structure](https://github.com/hazelnut-99/SQL-dialects/assets/130122455/73b44a3f-681a-4793-aef6-5cd88f574712)
 

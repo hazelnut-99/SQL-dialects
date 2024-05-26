@@ -27,7 +27,7 @@ They are downloaded from:
 
 1. All query results are located at: [Dialect Comparison](https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare)  
 2. Top level is the guest DBMS
-   <img width="221" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/5679a2f1-9dcf-4a7e-b766-8c1f0617de6b">
+   <img width="221" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/5679a2f1-9dcf-4a7e-b766-8c1f0617de6b">  
 3. Execution of the same test case on different DBMS are stored together.
 <img width="287" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/8b30bcb6-ef57-4d82-bac3-d0167f8dec81">
 

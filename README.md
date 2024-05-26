@@ -9,17 +9,24 @@ They are downloaded from:
 - ClickHouse: [ClickHouse Test Queries](https://github.com/ClickHouse/ClickHouse/tree/master/tests/queries/0_stateless)
 
 # Compiled Test Cases
+### Each test case stored in 3 files
+1. *db.sql*: contains SQL statements for setting up database  (none if doesn't need set up statements)  
+2. *test.sql*: contains the test Query  
+3. *result.csv*: contains the query result.  
 
-The directory structure for the compiled test cases is as follows:
-
+### directory structure
 1. Test cases are organized into *test collections*, each *test collection* consists of multiple *test cases*.
-2. All *test cases* inside a *test collection* share the same *db.sql* file as set-up statements. Each *test case* consists of one *test.sql* file and one *result.csv* file.
+2. All *test cases* inside a *test collection* share the same *db.sql* file as set-up statements.  (none if doesn't need set up statements)  
+3. Each *test case* consists of one *test.sql* file and one *result.csv* file.
 
 ![Directory Structure](https://github.com/hazelnut-99/SQL-dialects/assets/130122455/73b44a3f-681a-4793-aef6-5cd88f574712)
 
 # Dialect Comparison
 
-All query results are located at (organized per test case): [Dialect Comparison](https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare)  
+1. All query results are located at: [Dialect Comparison](https://github.com/hazelnut-99/SQL-dialects/tree/main/result-compare)  
+2. Top level is the guest DBMS
+   <img width="221" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/5679a2f1-9dcf-4a7e-b766-8c1f0617de6b">
+3. Execution of the same test case on different DBMS are stored together.
 <img width="287" alt="image" src="https://github.com/hazelnut-99/SQL-dialects/assets/130122455/8b30bcb6-ef57-4d82-bac3-d0167f8dec81">
 
 
